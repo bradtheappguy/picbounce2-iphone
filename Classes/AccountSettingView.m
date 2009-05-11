@@ -272,15 +272,10 @@
            
 
        
-<<<<<<< HEAD
-           [tmblrbutton setImage:[UIImage imageNamed:@"tumblr_button.png"] forState:UIControlStateNormal];
-           [tmblrbutton addTarget:self action:@selector(tumblrButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-=======
            [tmblrbutton setImage:[UIImage imageNamed:@"btn_connect_nt_78x28.png"] forState:UIControlStateNormal];
            
             cell.imageView.image = [UIImage imageNamed:@"btn_tumLog_n_34x35.png"];
        
->>>>>>> eb83e1c3915aef0afff4aac973a6d8cb39753fe5
            [tmblrview addSubview:tmblrbutton];
        
            [cell.contentView addSubview:tmblrview];
@@ -301,15 +296,11 @@
            
 
        
-<<<<<<< HEAD
-           [pstrsbutton setImage:[UIImage imageNamed:@"posterousbtn.png"] forState:UIControlStateNormal];
-           [pstrsbutton addTarget:self action:@selector(posterousButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-=======
+
            [pstrsbutton setImage:[UIImage imageNamed:@"btn_connect_nt_78x28.png"] forState:UIControlStateNormal];
         
            cell.imageView.image = [UIImage imageNamed:@"btn_postLog_n_34x35.png"];
            
->>>>>>> eb83e1c3915aef0afff4aac973a6d8cb39753fe5
            [pstrsview addSubview:pstrsbutton];
        
            [cell.contentView addSubview:pstrsview];
@@ -328,15 +319,11 @@
            
 
        
-<<<<<<< HEAD
-           [myspacebutton setImage:[UIImage imageNamed:@"myspacebtn.png"] forState:UIControlStateNormal];
-           [myspacebutton addTarget:self action:@selector(myspaceButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-=======
+
            [myspacebutton setImage:[UIImage imageNamed:@"btn_connect_nt_78x28.png"] forState:UIControlStateNormal];
        
             cell.imageView.image = [UIImage imageNamed:@"btn_msLog_n_34x35.png"];
            
->>>>>>> eb83e1c3915aef0afff4aac973a6d8cb39753fe5
            [myspaceview addSubview:myspacebutton];
        
            [cell.contentView addSubview:myspaceview];
@@ -379,10 +366,10 @@
 - (void)fbDidLogout {
   NSLog(@"ssss");
 }
-<<<<<<< HEAD
 
-- (void) presentAuthenticationWebViewControllerWithTitle:(NSString *) title forURL:(NSURL *)url {
-=======
+
+//- (void) presentAuthenticationWebViewControllerWithTitle:(NSString *) title forURL:(NSURL *)url {}
+
 -(IBAction)twitterlogin:(id)sender{
     
     UIImage *deselected = [UIImage imageNamed:@"btn_connect_nt_78x28.png"];
@@ -403,16 +390,7 @@
     }
 }
 
--(void)twitterLogin{
-    
->>>>>>> eb83e1c3915aef0afff4aac973a6d8cb39753fe5
-    TwitterView *twitweb = [[[TwitterView alloc]initWithNibName:nil bundle:nil]autorelease];
-    twitweb.authenticationURL = url; 
-    twitweb.title = title;
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:twitweb] autorelease];
-    [self presentModalViewController:navController animated:YES];
-<<<<<<< HEAD
-}
+
 
 -(void)twitterLogin {    
     [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Twitter", nil) forURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/twitter"]];
@@ -431,7 +409,7 @@
 - (void) myspaceButtonPressed:(id)sender {
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/myspace"]];
     [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Myspace", nil) forURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/myspace"]];
-=======
+
     
     }
     
@@ -499,7 +477,7 @@
         [sender setSelected:YES];
         NSLog(@"login myspace");
     }
->>>>>>> eb83e1c3915aef0afff4aac973a6d8cb39753fe5
+
 }
 
 @end
