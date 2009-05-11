@@ -73,8 +73,8 @@
  
 -(IBAction)facebooklogin:(id)sender {
   
-  UIImage *deselected = [UIImage imageNamed:@"login.png"];
-  UIImage *selected = [UIImage imageNamed:@"logout.png"];
+  UIImage *deselected = [UIImage imageNamed:@"btn_connect_nt_78x28.png"];
+  UIImage *selected = [UIImage imageNamed:@"btn_connect_st_78x28.png"];
   
   if ([sender isSelected]) {
     [sender setImage:deselected forState:UIControlStateNormal];
@@ -200,9 +200,11 @@
       fbbutton.frame = CGRectMake(0, 0, 80,30);
       [fbbutton addTarget:self action:@selector(facebooklogin:) forControlEvents:UIControlEventTouchUpInside];
       
-      [fbbutton setImage:[UIImage imageNamed:@"login.png"] forState:UIControlStateNormal];
-      [fbview addSubview:fbbutton];
+      [fbbutton setImage:[UIImage imageNamed:@"btn_connect_nt_78x28.png"] forState:UIControlStateNormal];
+      
+          [fbview addSubview:fbbutton];
         
+      cell.imageView.image = [UIImage imageNamed:@"btn_fbLog_n_34x35.png"];
       
       [cell.contentView addSubview:fbview]; 
        
@@ -217,11 +219,15 @@
           
           twbutton.frame = CGRectMake(0, 0, 80 , 30);
 
-          [twbutton addTarget:self action:@selector(twitterLogin) forControlEvents:UIControlEventTouchUpInside];
+          [twbutton addTarget:self action:@selector(twitterlogin:) forControlEvents:UIControlEventTouchUpInside];
 
           
           
-          [twbutton setImage:[UIImage imageNamed:@"twitterlogo.png"] forState:UIControlStateNormal];
+          [twbutton setImage:[UIImage imageNamed:@"btn_connect_nt_78x28.png"] forState:UIControlStateNormal];
+          
+                    
+          cell.imageView.image = [UIImage imageNamed:@"btn_twitLog_n_34x35.png"];
+         
           
           [twview addSubview:twbutton];
           
@@ -236,8 +242,15 @@
            flkrbutton = [UIButton buttonWithType:UIButtonTypeCustom];
            [flkrbutton addTarget:self action:@selector(flickrButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
            flkrbutton.frame = CGRectMake(0, 0, 80 , 30);
+
+           [flkrbutton addTarget:self action:@selector(flickerlogin:) forControlEvents:UIControlEventTouchUpInside];
+           
+
+           
        
-           [flkrbutton setImage:[UIImage imageNamed:@"Flickrbtn.png"] forState:UIControlStateNormal];
+           [flkrbutton setImage:[UIImage imageNamed:@"btn_connect_nt_78x28.png"] forState:UIControlStateNormal];
+           
+            cell.imageView.image = [UIImage imageNamed:@"btn_flicLog_n_34x35.png"];
        
            [flkrview addSubview:flkrbutton];
        
@@ -254,9 +267,20 @@
            tmblrbutton = [UIButton buttonWithType:UIButtonTypeCustom];
        
            tmblrbutton.frame = CGRectMake(0, 0, 80 , 30);
+           
+           [tmblrbutton addTarget:self action:@selector(tumblerlogin:) forControlEvents:UIControlEventTouchUpInside];
+           
+
        
+<<<<<<< HEAD
            [tmblrbutton setImage:[UIImage imageNamed:@"tumblr_button.png"] forState:UIControlStateNormal];
            [tmblrbutton addTarget:self action:@selector(tumblrButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+=======
+           [tmblrbutton setImage:[UIImage imageNamed:@"btn_connect_nt_78x28.png"] forState:UIControlStateNormal];
+           
+            cell.imageView.image = [UIImage imageNamed:@"btn_tumLog_n_34x35.png"];
+       
+>>>>>>> eb83e1c3915aef0afff4aac973a6d8cb39753fe5
            [tmblrview addSubview:tmblrbutton];
        
            [cell.contentView addSubview:tmblrview];
@@ -272,9 +296,20 @@
            pstrsbutton = [UIButton buttonWithType:UIButtonTypeCustom];
        
            pstrsbutton.frame = CGRectMake(0, 0, 80 , 30);
+           
+           [pstrsbutton addTarget:self action:@selector(posteriouslogin:) forControlEvents:UIControlEventTouchUpInside];
+           
+
        
+<<<<<<< HEAD
            [pstrsbutton setImage:[UIImage imageNamed:@"posterousbtn.png"] forState:UIControlStateNormal];
            [pstrsbutton addTarget:self action:@selector(posterousButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+=======
+           [pstrsbutton setImage:[UIImage imageNamed:@"btn_connect_nt_78x28.png"] forState:UIControlStateNormal];
+        
+           cell.imageView.image = [UIImage imageNamed:@"btn_postLog_n_34x35.png"];
+           
+>>>>>>> eb83e1c3915aef0afff4aac973a6d8cb39753fe5
            [pstrsview addSubview:pstrsbutton];
        
            [cell.contentView addSubview:pstrsview];
@@ -288,9 +323,20 @@
            myspacebutton = [UIButton buttonWithType:UIButtonTypeCustom];
        
            myspacebutton.frame = CGRectMake(0, 0, 80 , 30);
+           
+           [myspacebutton addTarget:self action:@selector(myspacelogin:) forControlEvents:UIControlEventTouchUpInside];
+           
+
        
+<<<<<<< HEAD
            [myspacebutton setImage:[UIImage imageNamed:@"myspacebtn.png"] forState:UIControlStateNormal];
            [myspacebutton addTarget:self action:@selector(myspaceButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+=======
+           [myspacebutton setImage:[UIImage imageNamed:@"btn_connect_nt_78x28.png"] forState:UIControlStateNormal];
+       
+            cell.imageView.image = [UIImage imageNamed:@"btn_msLog_n_34x35.png"];
+           
+>>>>>>> eb83e1c3915aef0afff4aac973a6d8cb39753fe5
            [myspaceview addSubview:myspacebutton];
        
            [cell.contentView addSubview:myspaceview];
@@ -333,13 +379,39 @@
 - (void)fbDidLogout {
   NSLog(@"ssss");
 }
+<<<<<<< HEAD
 
 - (void) presentAuthenticationWebViewControllerWithTitle:(NSString *) title forURL:(NSURL *)url {
+=======
+-(IBAction)twitterlogin:(id)sender{
+    
+    UIImage *deselected = [UIImage imageNamed:@"btn_connect_nt_78x28.png"];
+    UIImage *selected = [UIImage imageNamed:@"btn_connect_st_78x28.png"];
+    
+    if ([sender isSelected]) {
+        [sender setImage:deselected forState:UIControlStateNormal];
+        [sender setSelected:NO];
+        
+    }
+    else {
+        [sender setImage:selected forState:UIControlStateSelected];
+        [sender setSelected:YES];
+        [self twitterLogin];
+        
+        
+
+    }
+}
+
+-(void)twitterLogin{
+    
+>>>>>>> eb83e1c3915aef0afff4aac973a6d8cb39753fe5
     TwitterView *twitweb = [[[TwitterView alloc]initWithNibName:nil bundle:nil]autorelease];
     twitweb.authenticationURL = url; 
     twitweb.title = title;
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:twitweb] autorelease];
     [self presentModalViewController:navController animated:YES];
+<<<<<<< HEAD
 }
 
 -(void)twitterLogin {    
@@ -359,6 +431,75 @@
 - (void) myspaceButtonPressed:(id)sender {
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/myspace"]];
     [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Myspace", nil) forURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/myspace"]];
+=======
+    
+    }
+    
+-(IBAction)flickerlogin:(id)sender {
+    
+    UIImage *deselected = [UIImage imageNamed:@"btn_connect_nt_78x28.png"];
+    UIImage *selected = [UIImage imageNamed:@"btn_connect_st_78x28.png"];
+    
+    if ([sender isSelected]) {
+        [sender setImage:deselected forState:UIControlStateNormal];
+        [sender setSelected:NO];
+        NSLog(@"logout flicker");
+        
+    }
+    else {
+        [sender setImage:selected forState:UIControlStateSelected];
+        [sender setSelected:YES];
+        NSLog(@"login flicker");
+    }
+}
+-(IBAction)tumblerlogin:(id)sender {
+    
+    UIImage *deselected = [UIImage imageNamed:@"btn_connect_nt_78x28.png"];
+    UIImage *selected = [UIImage imageNamed:@"btn_connect_st_78x28.png"];
+    
+    if ([sender isSelected]) {
+        [sender setImage:deselected forState:UIControlStateNormal];
+        [sender setSelected:NO];
+        NSLog(@"logout tumbler");
+    }
+    else {
+        [sender setImage:selected forState:UIControlStateSelected];
+        [sender setSelected:YES];
+        NSLog(@"login tumbler");
+    }
+}
+-(IBAction)posteriouslogin:(id)sender {
+    
+    UIImage *deselected = [UIImage imageNamed:@"btn_connect_nt_78x28.png"];
+    UIImage *selected = [UIImage imageNamed:@"btn_connect_st_78x28.png"];
+    
+    if ([sender isSelected]) {
+        [sender setImage:deselected forState:UIControlStateNormal];
+        [sender setSelected:NO];
+        NSLog(@"logout posterious");
+    }
+    else {
+        [sender setImage:selected forState:UIControlStateSelected];
+        [sender setSelected:YES];
+        NSLog(@"login posterious");
+    }
+}
+-(IBAction)myspacelogin:(id)sender {
+    
+    UIImage *deselected = [UIImage imageNamed:@"btn_connect_nt_78x28.png"];
+    UIImage *selected = [UIImage imageNamed:@"btn_connect_st_78x28.png"];
+    
+    if ([sender isSelected]) {
+        [sender setImage:deselected forState:UIControlStateNormal];
+        [sender setSelected:NO];
+        NSLog(@"logout myspace");
+    }
+    else {
+        [sender setImage:selected forState:UIControlStateSelected];
+        [sender setSelected:YES];
+        NSLog(@"login myspace");
+    }
+>>>>>>> eb83e1c3915aef0afff4aac973a6d8cb39753fe5
 }
 
 @end
