@@ -24,6 +24,6 @@
 }
 
 @property(nonatomic,retain) UIWebView *TwitWeb;
-
+@property(nonatomic,retain) NSURL *authenticationURL;
 
 @end

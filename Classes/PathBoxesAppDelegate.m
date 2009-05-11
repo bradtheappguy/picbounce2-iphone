@@ -37,6 +37,8 @@
   [container addSubview:view1];
   [container addSubview:view2];
   [window addSubview:tabBarController.view];
+    tabBarController.selectedIndex = 4;
+    tabBarController.tabBar.userInteractionEnabled = NO;
   [window makeKeyAndVisible];
     
     return YES;
