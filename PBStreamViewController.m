@@ -62,7 +62,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return 25; 
+  return 45; 
 } 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -72,7 +72,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (indexPath.section == 0) {
     if (shouldShowProfileHeader) {
-      return 148;
+      return 85;
     }
     else {
       return 35;
@@ -206,7 +206,7 @@
     _cell.badgesCountLabel.text = @"X";
     _cell.followingCountLabel.text = @"X";
     _cell.photosCountLabel.text = [userData objectForKey:@"photo_count"];
-    _cell.nameLabel.text = @"XX";
+    _cell.nameLabel.text = @"Micheal Sorrentino";
     _cell.locationLabel.text = @"XXXXXX";
     _cell.avatarIcon.imageURL = [NSURL URLWithString: @"http://a2.twimg.com/profile_images/1225485762/image_normal.jpg"];
   }  
