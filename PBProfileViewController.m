@@ -8,6 +8,9 @@
 #import "PBProfileViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define CELL_PADDING 15
+
+
 @implementation PBProfileViewController
 
 @synthesize shouldShowProfileHeader;
@@ -72,7 +75,7 @@
       return 35;
     }
   }
-  return 526 + 15;
+  return [PhotoCell height] + CELL_PADDING;
   
 }
 

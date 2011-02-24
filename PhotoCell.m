@@ -10,7 +10,7 @@
 #import "EGOImageButton.h"
 #import "PBCommentListViewController.h"
 
-#define PhotoCellHeight 498
+#define PhotoCellHeight 585
 
 @implementation PhotoCell
 @synthesize tableViewController;
@@ -50,6 +50,7 @@
 
 
 -(void) commentView1Tapped:(id)sender {
+  self.tableViewController.title = @"Back";
   PBCommentListViewController *commentViewController = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
   [self.tableViewController.navigationController pushViewController:commentViewController animated:YES];
   [commentViewController release];
@@ -61,6 +62,7 @@
 -(void) addPhotoView:(UIView *)view ToFollowerScrollViewAtIndex:(NSUInteger) index {
   view.frame = CGRectMake(index * 25, 0, 20, 20);
   [followersScrollView addSubview:view];
+  followersScrollView.delaysContentTouches = YES;
   if ((index+1) * 25 > followersScrollView.contentSize.width) {
     followersScrollView.contentSize = CGSizeMake((index+1) * 25, followersScrollView.contentSize.height);
   }
