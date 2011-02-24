@@ -272,6 +272,7 @@
 			A209146213171DD20075548C /* PBXTextBookmark */ = A209146213171DD20075548C /* PBXTextBookmark */;
 			A209146313171DD20075548C /* PBXTextBookmark */ = A209146313171DD20075548C /* PBXTextBookmark */;
 			A209146413171DD20075548C /* PBXTextBookmark */ = A209146413171DD20075548C /* PBXTextBookmark */;
+			A209146813171E450075548C /* PBXTextBookmark */ = A209146813171E450075548C /* PBXTextBookmark */;
 			A231BEB01316C45000AE9F71 = A231BEB01316C45000AE9F71 /* PBXBookmark */;
 			A231BEB11316C45000AE9F71 = A231BEB11316C45000AE9F71 /* PBXBookmark */;
 			A231BEC71316D94200AE9F71 = A231BEC71316D94200AE9F71 /* PBXTextBookmark */;
@@ -812,9 +813,9 @@
 	};
 	A205F41213145069003756CA /* PhotoCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1353, 1901}}";
-			sepNavSelRange = "{1984, 0}";
-			sepNavVisRange = "{1459, 1188}";
+			sepNavIntBoundsRect = "{{0, 0}, {1353, 1885}}";
+			sepNavSelRange = "{2505, 0}";
+			sepNavVisRange = "{1561, 1136}";
 		};
 	};
 	A205F41413145084003756CA /* ProfileHeaderCell.m */ = {
@@ -1650,6 +1651,16 @@
 		vrLen = 1188;
 		vrLoc = 1459;
 	};
+	A209146813171E450075548C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A205F41213145069003756CA /* PhotoCell.m */;
+		name = "PhotoCell.m: 77";
+		rLen = 0;
+		rLoc = 2505;
+		rType = 0;
+		vrLen = 1136;
+		vrLoc = 1561;
+	};
 	A227E36212FB38A600701013 /* EGORefreshTableHeaderView.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1348, 873}}";
@@ -2177,7 +2188,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 1;
-		modificationTime = 320282064.237321;
+		modificationTime = 320282178.215442;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -2566,7 +2577,7 @@
 		ignoreCount = 0;
 		lineNumber = 46;
 		location = PicBounce2;
-		modificationTime = 320281995.166078;
+		modificationTime = 320282067.553882;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};

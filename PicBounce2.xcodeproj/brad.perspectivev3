@@ -468,7 +468,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A209146413171DD20075548C</string>
+										<string>A209146813171E450075548C</string>
 										<key>history</key>
 										<array>
 											<string>A205F0991312C59E003756CA</string>
@@ -882,7 +882,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>A209146513171DD20075548C</string>
+		<string>A209146913171E450075548C</string>
 		<string>A2091443131719DA0075548C</string>
 		<string>A209143D131719A90075548C</string>
 		<string>/Users/brad/Code/newpicbounce/PicBounce2.xcodeproj</string>
