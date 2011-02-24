@@ -1,0 +1,677 @@
+TPathBoxes
+v7
+r0
+t319056912.670183
+cCheck dependencies
+cProcessInfoPlistFile /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/Info.plist PathBoxes-Info.plist
+cCompileXIB /Users/brad/Code/PathBoxes/MainWindow.xib
+cCpResource build/Debug-iphonesimulator/PathBoxes.app/avatar@2x.png avatar@2x.png
+cCpResource build/Debug-iphonesimulator/PathBoxes.app/title@2x.png title@2x.png
+cCompileXIB /Users/brad/Code/PathBoxes/Classes/MyTableViewController.xib
+cCpResource build/Debug-iphonesimulator/PathBoxes.app/blackArrow.png Classes/blackArrow.png
+cCpResource build/Debug-iphonesimulator/PathBoxes.app/blueArrow.png Classes/blueArrow.png
+cCpResource build/Debug-iphonesimulator/PathBoxes.app/whiteArrow.png Classes/whiteArrow.png
+cCpResource build/Debug-iphonesimulator/PathBoxes.app/btn_smiley.png btn_smiley.png
+cCpResource build/Debug-iphonesimulator/PathBoxes.app/btn_comment_bubble.png btn_comment_bubble.png
+cCpResource build/Debug-iphonesimulator/PathBoxes.app/btn_map_marker.png btn_map_marker.png
+cProcessPCH /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch.gch PathBoxes_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/main.o /Users/brad/Code/PathBoxes/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/PathBoxesAppDelegate.o /Users/brad/Code/PathBoxes/Classes/PathBoxesAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/ExpandingPhotoView.o /Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/ContainerView.o /Users/brad/Code/PathBoxes/Classes/ContainerView.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/BSNavigationBar.o /Users/brad/Code/PathBoxes/Classes/BSNavigationBar.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/MyTableViewController.o /Users/brad/Code/PathBoxes/Classes/MyTableViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/MyTableViewCell.o /Users/brad/Code/PathBoxes/Classes/MyTableViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/EGORefreshTableHeaderView.o /Users/brad/Code/PathBoxes/Classes/EGORefreshTableHeaderView.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/RootViewController.o /Users/brad/Code/PathBoxes/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes normal i386
+cGenerateDSYMFile /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app.dSYM /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes
+cTouch /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk
+c000000004C6C30170000000000000110
+t1282158615
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004C5A4DB60000000000295900
+t1280986550
+s2709760
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004C5A4DB0000000000029D580
+t1280986544
+s2741632
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004C5A4DA10000000000001466
+t1280986529
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004C6241ED00000000000009CD
+t1281507821
+s2509
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004C6242840000000001E228C0
+t1281507972
+s31598784
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk
+c000000004CC128950000000000000110
+t1287727253
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004CC12246000000000029B310
+t1287725638
+s2732816
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004CC1226D000000000029D5D0
+t1287725677
+s2741712
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004CC1225F0000000000001466
+t1287725663
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
+c000000004CC1233C00000000000000C4
+t1287725884
+s196
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004CC12431000000000015CDB0
+t1287726129
+s1428912
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004CC1281F0000000000000AA1
+t1287727135
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004CC12883000000000074D7B0
+t1287727235
+s7657392
+
+N/Users/brad/Code/PathBoxes/Classes/BSNavigationBar.h
+c000000004CEDC90800000000000000FF
+t1290651912
+s255
+i<Foundation/Foundation.h>
+
+N/Users/brad/Code/PathBoxes/Classes/BSNavigationBar.m
+c000000004CEDC91F000000000000026D
+t1290651935
+s621
+i"BSNavigationBar.h"
+
+N/Users/brad/Code/PathBoxes/Classes/ContainerView.h
+c000000004CE4736E00000000000000D0
+t1290040174
+s208
+i<UIKit/UIKit.h>
+
+N/Users/brad/Code/PathBoxes/Classes/ContainerView.m
+c000000004CE486AA000000000000081C
+t1290045098
+s2076
+i"ContainerView.h"
+i"ExpandingPhotoView.h"
+
+N/Users/brad/Code/PathBoxes/Classes/EGORefreshTableHeaderView.h
+c000000004B6B9B5500000000000006D2
+t1265343317
+s1746
+i<UIKit/UIKit.h>
+i<QuartzCore/QuartzCore.h>
+
+N/Users/brad/Code/PathBoxes/Classes/EGORefreshTableHeaderView.m
+c000000004D4B07B9000000000000116F
+t1296762809
+s4463
+i"EGORefreshTableHeaderView.h"
+
+N/Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.h
+c000000004D5422E400000000000001C8
+t1297359588
+s456
+i<Foundation/Foundation.h>
+
+N/Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m
+c000000004D54346B000000000000197F
+t1297364075
+s6527
+i"ExpandingPhotoView.h"
+i<QuartzCore/QuartzCore.h>
+
+N/Users/brad/Code/PathBoxes/Classes/MyTableViewCell.h
+c000000004CEE06E900000000000001CB
+t1290667753
+s459
+i<Foundation/Foundation.h>
+i"ExpandingPhotoView.h"
+
+N/Users/brad/Code/PathBoxes/Classes/MyTableViewCell.m
+c000000004D5420510000000000000565
+t1297358929
+s1381
+i"MyTableViewCell.h"
+
+N/Users/brad/Code/PathBoxes/Classes/MyTableViewController.h
+c000000004D4B018B000000000000011C
+t1296761227
+s284
+i<UIKit/UIKit.h>
+i"RootViewController.h"
+
+N/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m
+c000000004CEE53D50000000000000B5B
+t1290687445
+s2907
+i"MyTableViewController.h"
+i"MyTableViewCell.h"
+
+N/Users/brad/Code/PathBoxes/Classes/MyTableViewController.xib
+c000000004CEDC96B0000000000001C8A
+t1290652011
+s7306
+
+N/Users/brad/Code/PathBoxes/Classes/PathBoxesAppDelegate.h
+c000000004CEDC2DC00000000000001B6
+t1290650332
+s438
+i<UIKit/UIKit.h>
+
+N/Users/brad/Code/PathBoxes/Classes/PathBoxesAppDelegate.m
+c000000004CEDC45B0000000000000C06
+t1290650715
+s3078
+i"PathBoxesAppDelegate.h"
+i"ExpandingPhotoView.h"
+i"ContainerView.h"
+
+N/Users/brad/Code/PathBoxes/Classes/RootViewController.h
+c000000004B6B9B55000000000000068A
+t1265343317
+s1674
+
+N/Users/brad/Code/PathBoxes/Classes/RootViewController.m
+c000000004D4B068B0000000000001BD2
+t1296762507
+s7122
+i"RootViewController.h"
+i"EGORefreshTableHeaderView.h"
+
+N/Users/brad/Code/PathBoxes/Classes/blackArrow.png
+c000000004B6B9B5500000000000010DC
+t1265343317
+s4316
+
+N/Users/brad/Code/PathBoxes/Classes/blueArrow.png
+c000000004B6B9B55000000000000118C
+t1265343317
+s4492
+
+N/Users/brad/Code/PathBoxes/Classes/whiteArrow.png
+c000000004B6B9B550000000000001054
+t1265343317
+s4180
+
+N/Users/brad/Code/PathBoxes/MainWindow.xib
+c000000004CEDCB7500000000000092AD
+t1290652533
+s37549
+
+N/Users/brad/Code/PathBoxes/PathBoxes_Prefix.pch
+c000000004CE4636D00000000000000BB
+t1290036077
+s187
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/brad/Code/PathBoxes/avatar@2x.png
+c000000004CEDA001000000000000124F
+t1290641409
+s4687
+
+N/Users/brad/Code/PathBoxes/btn_comment_bubble.png
+c000000004D5430C50000000000000634
+t1297363141
+s1588
+
+N/Users/brad/Code/PathBoxes/btn_map_marker.png
+c000000004D5433F8000000000000077B
+t1297363960
+s1915
+
+N/Users/brad/Code/PathBoxes/btn_map_marker@2x.png
+c000000004D5430AB000000000000061A
+t1297363115
+s1562
+
+N/Users/brad/Code/PathBoxes/btn_smiley.png
+c000000004D5430D90000000000000D83
+t1297363161
+s3459
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app
+t1297364112
+s510
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app.dSYM
+t1297364112
+s102
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/Info.plist
+t1297364105
+s586
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/MainWindow.nib
+t1297364108
+s2535
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/MyTableViewController.nib
+t1297364108
+s979
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes
+t1297364112
+s57492
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PkgInfo
+t1297364105
+s8
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/avatar@2x.png
+t1297364105
+s4687
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/blackArrow.png
+t1297364105
+s4316
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/blueArrow.png
+t1297364105
+s4492
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/btn_comment_bubble.png
+t1297364105
+s1588
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/btn_map_marker.png
+t1297364105
+s1915
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/btn_map_marker@2x.png
+t1297363306
+s1562
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/btn_smiley.png
+t1297364105
+s3459
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/title@2x.png
+t1297364105
+s11531
+
+N/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/whiteArrow.png
+t1297364105
+s4180
+
+N/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/BSNavigationBar.o
+t1297364112
+s39056
+
+N/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/ContainerView.o
+t1297364112
+s45616
+
+N/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/EGORefreshTableHeaderView.o
+t1297364112
+s48680
+
+N/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/ExpandingPhotoView.o
+t1297364112
+s54044
+
+N/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/MyTableViewCell.o
+t1297364112
+s43152
+
+N/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/MyTableViewController.o
+t1297364112
+s47236
+
+N/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/PathBoxes.LinkFileList
+c000000004D5434890000000000000473
+t1297364105
+s1139
+
+N/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/PathBoxesAppDelegate.o
+t1297364112
+s56336
+
+N/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/RootViewController.o
+t1297364112
+s57560
+
+N/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/main.o
+t1297364112
+s6280
+
+N/Users/brad/Code/PathBoxes/main.m
+c000000004CE4636D000000000000015F
+t1290036077
+s351
+i<UIKit/UIKit.h>
+
+N/Users/brad/Code/PathBoxes/title@2x.png
+c000000004D541F670000000000002D0B
+t1297358695
+s11531
+
+N/var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-dkdtuwsatdctyddwaapiapdwimma/PathBoxes_Prefix.pch.gch
+t1296760751
+s15211536
+
+N/var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch.gch
+t1297364111
+s15453392
+
+NPathBoxes-Info.plist
+c000000004CEDF9A9000000000000036A
+t1290664361
+s874
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies319056905#319056905#0(0"0(0#1#0"8639612128#0"0#
+
+CCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/BSNavigationBar.o /Users/brad/Code/PathBoxes/Classes/BSNavigationBar.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s319056912.107244
+e319056912.331087
+r1
+xCompileC
+xbuild/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/BSNavigationBar.o
+x/Users/brad/Code/PathBoxes/Classes/BSNavigationBar.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@60"Compile /Users/brad/Code/PathBoxes/Classes/BSNavigationBar.m319056912#319056912#0(0"0(0#0#52"/Users/brad/Code/PathBoxes/Classes/BSNavigationBar.m8610443040#1852"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -include /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch -c /Users/brad/Code/PathBoxes/Classes/BSNavigationBar.m -o /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/BSNavigationBar.o0#
+
+CCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/ContainerView.o /Users/brad/Code/PathBoxes/Classes/ContainerView.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s319056911.989027
+e319056912.155380
+r1
+xCompileC
+xbuild/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/ContainerView.o
+x/Users/brad/Code/PathBoxes/Classes/ContainerView.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@58"Compile /Users/brad/Code/PathBoxes/Classes/ContainerView.m319056911#319056912#0(0"0(0#0#50"/Users/brad/Code/PathBoxes/Classes/ContainerView.m8620877632#1848"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -include /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch -c /Users/brad/Code/PathBoxes/Classes/ContainerView.m -o /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/ContainerView.o0#
+
+CCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/EGORefreshTableHeaderView.o /Users/brad/Code/PathBoxes/Classes/EGORefreshTableHeaderView.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s319056912.155530
+e319056912.389447
+r1
+xCompileC
+xbuild/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/EGORefreshTableHeaderView.o
+x/Users/brad/Code/PathBoxes/Classes/EGORefreshTableHeaderView.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@70"Compile /Users/brad/Code/PathBoxes/Classes/EGORefreshTableHeaderView.m319056912#319056912#0(0"0(0#0#62"/Users/brad/Code/PathBoxes/Classes/EGORefreshTableHeaderView.m8643797600#1872"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -include /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch -c /Users/brad/Code/PathBoxes/Classes/EGORefreshTableHeaderView.m -o /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/EGORefreshTableHeaderView.o0#
+
+CCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/ExpandingPhotoView.o /Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s319056911.987779
+e319056912.131183
+r1
+xCompileC
+xbuild/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/ExpandingPhotoView.o
+x/Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m: In function '-[ExpandingPhotoView drawRect:]':
+o/Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m:100: warning: unused variable 'height'
+lSLF07#2@63"Compile /Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m319056911#319056912#0(199"/Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m: In function '-[ExpandingPhotoView drawRect:]':/Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m:100: warning: unused variable 'height'1(22@24"Unused variable 'height'319056912#104#95#0(6@55"/Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m319056875#100#0#100#0#19"unused variable '*'0(0#0#55"/Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m8623305088#1858"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -include /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch -c /Users/brad/Code/PathBoxes/Classes/ExpandingPhotoView.m -o /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/ExpandingPhotoView.o0#
+
+CCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/MyTableViewCell.o /Users/brad/Code/PathBoxes/Classes/MyTableViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s319056912.143358
+e319056912.389828
+r1
+xCompileC
+xbuild/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/MyTableViewCell.o
+x/Users/brad/Code/PathBoxes/Classes/MyTableViewCell.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@60"Compile /Users/brad/Code/PathBoxes/Classes/MyTableViewCell.m319056912#319056912#0(0"0(0#0#52"/Users/brad/Code/PathBoxes/Classes/MyTableViewCell.m8644396512#1852"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -include /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch -c /Users/brad/Code/PathBoxes/Classes/MyTableViewCell.m -o /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/MyTableViewCell.o0#
+
+CCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/MyTableViewController.o /Users/brad/Code/PathBoxes/Classes/MyTableViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s319056912.131329
+e319056912.389206
+r1
+xCompileC
+xbuild/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/MyTableViewController.o
+x/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m: In function '-[MyTableViewController viewDidLoad]':
+o/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m:27: warning: 'MyTableViewController' may not respond to '-loadMockData'
+o/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m:27: warning: (Messages without a matching method signature
+o/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m:27: warning: will be assumed to return 'id' and accept
+o/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m:27: warning: '...' as arguments.)
+lSLF07#2@66"Compile /Users/brad/Code/PathBoxes/Classes/MyTableViewController.m319056912#319056912#0(568"/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m: In function '-[MyTableViewController viewDidLoad]':/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m:27: warning: 'MyTableViewController' may not respond to '-loadMockData'/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m:27: warning: (Messages without a matching method signature/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m:27: warning: will be assumed to return 'id' and accept/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m:27: warning: '...' as arguments.)2(22@58"'MyTableViewController' may not respond to '-loadMockData'319056912#112#131#0(6@58"/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m312380245#27#0#27#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)319056912#243#118#0(6@58"/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m312380245#27#0#27#0#0"0(0#0#58"/Users/brad/Code/PathBoxes/Classes/MyTableViewController.m8596148736#1864"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -include /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch -c /Users/brad/Code/PathBoxes/Classes/MyTableViewController.m -o /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/MyTableViewController.o0#
+
+CCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/PathBoxesAppDelegate.o /Users/brad/Code/PathBoxes/Classes/PathBoxesAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s319056911.986695
+e319056912.143207
+r1
+xCompileC
+xbuild/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/PathBoxesAppDelegate.o
+x/Users/brad/Code/PathBoxes/Classes/PathBoxesAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@65"Compile /Users/brad/Code/PathBoxes/Classes/PathBoxesAppDelegate.m319056911#319056912#0(0"0(0#0#57"/Users/brad/Code/PathBoxes/Classes/PathBoxesAppDelegate.m8636277312#1862"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -include /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch -c /Users/brad/Code/PathBoxes/Classes/PathBoxesAppDelegate.m -o /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/PathBoxesAppDelegate.o0#
+
+CCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/RootViewController.o /Users/brad/Code/PathBoxes/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s319056912.331199
+e319056912.499090
+r1
+xCompileC
+xbuild/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/RootViewController.o
+x/Users/brad/Code/PathBoxes/Classes/RootViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@63"Compile /Users/brad/Code/PathBoxes/Classes/RootViewController.m319056912#319056912#0(0"0(0#0#55"/Users/brad/Code/PathBoxes/Classes/RootViewController.m8647894848#1858"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -include /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch -c /Users/brad/Code/PathBoxes/Classes/RootViewController.m -o /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/RootViewController.o0#
+
+CCompileC build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/main.o /Users/brad/Code/PathBoxes/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s319056911.985179
+e319056912.107080
+r1
+xCompileC
+xbuild/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/main.o
+x/Users/brad/Code/PathBoxes/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@41"Compile /Users/brad/Code/PathBoxes/main.m319056911#319056912#0(0"0(0#0#33"/Users/brad/Code/PathBoxes/main.m8641555712#1822"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -include /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch -c /Users/brad/Code/PathBoxes/main.m -o /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/brad/Code/PathBoxes/Classes/MyTableViewController.xib
+s319056905.834010
+e319056908.479832
+r1
+xCompileXIB
+x/Users/brad/Code/PathBoxes/Classes/MyTableViewController.xib
+lSLF07#2@44"CompileXIB Classes/MyTableViewController.xib319056905#319056908#0(0"0(0#0#60"/Users/brad/Code/PathBoxes/Classes/MyTableViewController.xib8636384928#566"    cd /Users/brad/Code/PathBoxes    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/MyTableViewController.nib /Users/brad/Code/PathBoxes/Classes/MyTableViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCompileXIB /Users/brad/Code/PathBoxes/MainWindow.xib
+s319056905.832028
+e319056908.485253
+r1
+xCompileXIB
+x/Users/brad/Code/PathBoxes/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib319056905#319056908#0(0"0(0#0#41"/Users/brad/Code/PathBoxes/MainWindow.xib8644160352#536"    cd /Users/brad/Code/PathBoxes    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/MainWindow.nib /Users/brad/Code/PathBoxes/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCpResource build/Debug-iphonesimulator/PathBoxes.app/avatar@2x.png avatar@2x.png
+s319056905.832850
+e319056905.980141
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/PathBoxes.app/avatar@2x.png
+xavatar@2x.png
+lSLF07#2@18"Copy avatar@2x.png319056905#319056905#0(0"0(0#0#40"/Users/brad/Code/PathBoxes/avatar@2x.png8637039168#437"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/brad/Code/PathBoxes/avatar@2x.png /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app0#
+
+CCpResource build/Debug-iphonesimulator/PathBoxes.app/blackArrow.png Classes/blackArrow.png
+s319056905.980282
+e319056905.987723
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/PathBoxes.app/blackArrow.png
+xClasses/blackArrow.png
+lSLF07#2@27"Copy Classes/blackArrow.png319056905#319056905#0(0"0(0#0#49"/Users/brad/Code/PathBoxes/Classes/blackArrow.png8624372800#446"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/brad/Code/PathBoxes/Classes/blackArrow.png /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app0#
+
+CCpResource build/Debug-iphonesimulator/PathBoxes.app/blueArrow.png Classes/blueArrow.png
+s319056905.981261
+e319056905.987906
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/PathBoxes.app/blueArrow.png
+xClasses/blueArrow.png
+lSLF07#2@26"Copy Classes/blueArrow.png319056905#319056905#0(0"0(0#0#48"/Users/brad/Code/PathBoxes/Classes/blueArrow.png8624178720#445"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/brad/Code/PathBoxes/Classes/blueArrow.png /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app0#
+
+CCpResource build/Debug-iphonesimulator/PathBoxes.app/btn_comment_bubble.png btn_comment_bubble.png
+s319056905.983855
+e319056905.992064
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/PathBoxes.app/btn_comment_bubble.png
+xbtn_comment_bubble.png
+lSLF07#2@27"Copy btn_comment_bubble.png319056905#319056905#0(0"0(0#0#49"/Users/brad/Code/PathBoxes/btn_comment_bubble.png8622818688#446"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/brad/Code/PathBoxes/btn_comment_bubble.png /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app0#
+
+CCpResource build/Debug-iphonesimulator/PathBoxes.app/btn_map_marker.png btn_map_marker.png
+s319056905.984737
+e319056905.992345
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/PathBoxes.app/btn_map_marker.png
+xbtn_map_marker.png
+lSLF07#2@23"Copy btn_map_marker.png319056905#319056905#0(0"0(0#0#45"/Users/brad/Code/PathBoxes/btn_map_marker.png8622210272#442"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/brad/Code/PathBoxes/btn_map_marker.png /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app0#
+
+CCpResource build/Debug-iphonesimulator/PathBoxes.app/btn_map_marker@2x.png btn_map_marker@2x.png
+s319056106.384978
+e319056106.526164
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/PathBoxes.app/btn_map_marker@2x.png
+xbtn_map_marker@2x.png
+lSLF07#2@26"Copy btn_map_marker@2x.png319056106#319056106#0(0"0(0#0#48"/Users/brad/Code/PathBoxes/btn_map_marker@2x.png8639920896#445"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/brad/Code/PathBoxes/btn_map_marker@2x.png /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app0#
+
+CCpResource build/Debug-iphonesimulator/PathBoxes.app/btn_smiley.png btn_smiley.png
+s319056905.982987
+e319056905.991838
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/PathBoxes.app/btn_smiley.png
+xbtn_smiley.png
+lSLF07#2@19"Copy btn_smiley.png319056905#319056905#0(0"0(0#0#41"/Users/brad/Code/PathBoxes/btn_smiley.png8623225280#438"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/brad/Code/PathBoxes/btn_smiley.png /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app0#
+
+CCpResource build/Debug-iphonesimulator/PathBoxes.app/title@2x.png title@2x.png
+s319056905.833396
+e319056905.985791
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/PathBoxes.app/title@2x.png
+xtitle@2x.png
+lSLF07#2@17"Copy title@2x.png319056905#319056905#0(0"0(0#0#39"/Users/brad/Code/PathBoxes/title@2x.png8636603872#436"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/brad/Code/PathBoxes/title@2x.png /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app0#
+
+CCpResource build/Debug-iphonesimulator/PathBoxes.app/whiteArrow.png Classes/whiteArrow.png
+s319056905.982120
+e319056905.988323
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/PathBoxes.app/whiteArrow.png
+xClasses/whiteArrow.png
+lSLF07#2@27"Copy Classes/whiteArrow.png319056905#319056905#0(0"0(0#0#49"/Users/brad/Code/PathBoxes/Classes/whiteArrow.png8623804352#446"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/brad/Code/PathBoxes/Classes/whiteArrow.png /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app0#
+
+CGenerateDSYMFile /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app.dSYM /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes
+s319056912.573692
+e319056912.666659
+r1
+xGenerateDSYMFile
+x/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app.dSYM
+x/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes
+lSLF07#2@115"GenerateDSYMFile build/Debug-iphonesimulator/PathBoxes.app.dSYM build/Debug-iphonesimulator/PathBoxes.app/PathBoxes319056912#319056912#0(0"0(0#0#78"/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes8620551040#353"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes -o /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app.dSYM0#
+
+CLd /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes normal i386
+s319056912.499174
+e319056912.573403
+r1
+xLd
+x/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes
+xnormal
+xi386
+lSLF07#2@83"Link /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes319056912#319056912#0(0"0(0#0#0"8624190432#872"    cd /Users/brad/Code/PathBoxes    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -L/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -filelist /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/Objects-normal/i386/PathBoxes.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework QuartzCore -o /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PathBoxes0#
+
+CProcessInfoPlistFile /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/Info.plist PathBoxes-Info.plist
+s319056905.795483
+e319056905.831938
+r1
+xProcessInfoPlistFile
+x/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/Info.plist
+xPathBoxes-Info.plist
+lSLF07#2@28"Process PathBoxes-Info.plist319056905#319056905#0(0"0(0#0#47"/Users/brad/Code/PathBoxes/PathBoxes-Info.plist8616505536#449"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility PathBoxes-Info.plist -genpkginfo /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app/Info.plist0#
+
+CProcessPCH /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-dkdtuwsatdctyddwaapiapdwimma/PathBoxes_Prefix.pch.gch PathBoxes_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s318453550.727346
+e318453551.898691
+r1
+xProcessPCH
+x/var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-dkdtuwsatdctyddwaapiapdwimma/PathBoxes_Prefix.pch.gch
+xPathBoxes_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@31"Precompile PathBoxes_Prefix.pch318453550#318453551#0(0"0(0#0#47"/Users/brad/Code/PathBoxes/PathBoxes_Prefix.pch8609429952#1724"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -c /Users/brad/Code/PathBoxes/PathBoxes_Prefix.pch -o /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-dkdtuwsatdctyddwaapiapdwimma/PathBoxes_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch.gch PathBoxes_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s319056908.485408
+e319056911.984897
+r1
+xProcessPCH
+x/var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch.gch
+xPathBoxes_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@31"Precompile PathBoxes_Prefix.pch319056908#319056911#0(0"0(0#0#47"/Users/brad/Code/PathBoxes/PathBoxes_Prefix.pch8621985152#1724"    cd /Users/brad/Code/PathBoxes    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-generated-files.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-own-target-headers.hmap -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-all-target-headers.hmap -iquote /Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/PathBoxes-project-headers.hmap -F/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator -I/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/include -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources/i386 -I/Users/brad/Code/PathBoxes/build/PathBoxes.build/Debug-iphonesimulator/PathBoxes.build/DerivedSources -c /Users/brad/Code/PathBoxes/PathBoxes_Prefix.pch -o /var/folders/QR/QRu8PwqwGQ8hSBbrfF5C5k+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/PathBoxes_Prefix-ertkehckrqbfrbexsmbcvenhvixz/PathBoxes_Prefix.pch.gch0#
+
+CTouch /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app
+s319056912.666760
+e319056912.669972
+r1
+xTouch
+x/Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app
+lSLF07#2@74"Touch /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app319056912#319056912#0(0"0(0#0#0"8596814912#256"    cd /Users/brad/Code/PathBoxes    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/brad/Code/PathBoxes/build/Debug-iphonesimulator/PathBoxes.app0#
+

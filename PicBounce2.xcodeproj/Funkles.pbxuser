@@ -1,0 +1,103 @@
+// !$*UTF8*$!
+{
+	1D6058900D05DD3D006BFB54 /* PicBounce2 */ = {
+		activeExec = 0;
+		executables = (
+			8A1D105613159451006F9E5B /* PicBounce2 */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 8A1D105613159451006F9E5B /* PicBounce2 */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* PicBounce2 */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* PicBounce2 */,
+		);
+		codeSenseManager = 8A1D10801315945D006F9E5B /* Code sense */;
+		executables = (
+			8A1D105613159451006F9E5B /* PicBounce2 */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					649,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 320266323;
+			PBXWorkspaceStateSaveDate = 320266323;
+		};
+		perUserProjectItems = {
+			8A1D10C91315ADC8006F9E5B = 8A1D10C91315ADC8006F9E5B /* PBXBookmark */;
+			8A1D10CA1315ADC8006F9E5B = 8A1D10CA1315ADC8006F9E5B /* PBXBookmark */;
+		};
+		sourceControlManager = 8A1D107F1315945D006F9E5B /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8A1D105613159451006F9E5B /* PicBounce2 */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = PicBounce2;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	8A1D107F1315945D006F9E5B /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8A1D10801315945D006F9E5B /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8A1D10C91315ADC8006F9E5B /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = A205F9781314BCEE003756CA /* globe.png */;
+	};
+	8A1D10CA1315ADC8006F9E5B /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = A205F9781314BCEE003756CA /* globe.png */;
+	};
+}

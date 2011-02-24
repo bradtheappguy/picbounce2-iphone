@@ -1,0 +1,14 @@
+/Users/brad/Code/PicBounce2/PBProfileViewController.m: In function '-[PBProfileViewController viewDidLoad]':
+/Users/brad/Code/PicBounce2/PBProfileViewController.m:29: warning: 'PBProfileViewController' may not respond to '-headerForAboveTableView:'
+/Users/brad/Code/PicBounce2/PBProfileViewController.m:29: warning: (Messages without a matching method signature
+/Users/brad/Code/PicBounce2/PBProfileViewController.m:29: warning: will be assumed to return 'id' and accept
+/Users/brad/Code/PicBounce2/PBProfileViewController.m:29: warning: '...' as arguments.)
+/Users/brad/Code/PicBounce2/PBProfileViewController.m:30: warning: 'PBProfileViewController' may not respond to '-footerViewForTable:'
+/Users/brad/Code/PicBounce2/PBProfileViewController.m: In function '-[PBProfileViewController viewWillAppear:]':
+/Users/brad/Code/PicBounce2/PBProfileViewController.m:36: warning: 'PBProfileViewController' may not respond to '-enterReloadMode'
+/Users/brad/Code/PicBounce2/PBProfileViewController.m: In function '-[PBProfileViewController profileHeaderCellForRowAtIndexPath:]':
+/Users/brad/Code/PicBounce2/PBProfileViewController.m:138: warning: incompatible Objective-C types assigning 'struct PhotoCell *', expected 'struct ProfileHeaderCell *'
+/Users/brad/Code/PicBounce2/PBProfileViewController.m: In function '-[PBProfileViewController bounceButtonPressed:]':
+/Users/brad/Code/PicBounce2/PBProfileViewController.m:363: warning: class 'PBProfileViewController' does not implement the 'UIActionSheetDelegate' protocol
+/Users/brad/Code/PicBounce2/PBProfileViewController.m: In function '-[PBProfileViewController actionSheet:clickedButtonAtIndex:]':
+/Users/brad/Code/PicBounce2/PBProfileViewController.m:378: warning: class 'PBProfileViewController' does not implement the 'UINavigationControllerDelegate' protocol
