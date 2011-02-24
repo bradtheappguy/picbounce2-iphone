@@ -1,8 +1,0 @@
-In file included from /Users/brad/Code/PicBounce2/TableTitleTableViewCell.m:8:
-/Users/brad/Code/PicBounce2/TableTitleTableViewCell.h:11: error: expected identifier before '{' token
-/Users/brad/Code/PicBounce2/TableTitleTableViewCell.h:15: warning: '@end' must appear in an @implementation context
-/Users/brad/Code/PicBounce2/TableTitleTableViewCell.m:11: warning: cannot find interface declaration for 'TableTitleTableViewCell'
-/Users/brad/Code/PicBounce2/TableTitleTableViewCell.m:11: error: no declaration of property 'textLabel' found in the interface
-/Users/brad/Code/PicBounce2/TableTitleTableViewCell.m: In function '-[TableTitleTableViewCell dealloc]':
-/Users/brad/Code/PicBounce2/TableTitleTableViewCell.m:14: error: request for member 'textLabel' in something not a structure or union
-/Users/brad/Code/PicBounce2/TableTitleTableViewCell.m:15: error: no super class declared in @interface for 'TableTitleTableViewCell'
