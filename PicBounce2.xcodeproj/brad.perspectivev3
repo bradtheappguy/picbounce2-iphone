@@ -468,7 +468,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A209144D13171A780075548C</string>
+										<string>A209146413171DD20075548C</string>
 										<key>history</key>
 										<array>
 											<string>A205F0991312C59E003756CA</string>
@@ -562,8 +562,8 @@
 											<string>A2F266461315C12400F4E0A0</string>
 											<string>A231BEB01316C45000AE9F71</string>
 											<string>A209144B13171A780075548C</string>
-											<string>A209144C13171A780075548C</string>
-											<string>A209144613171A2F0075548C</string>
+											<string>A209146213171DD20075548C</string>
+											<string>A209146313171DD20075548C</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -882,7 +882,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>A209144E13171A780075548C</string>
+		<string>A209146513171DD20075548C</string>
 		<string>A2091443131719DA0075548C</string>
 		<string>A209143D131719A90075548C</string>
 		<string>/Users/brad/Code/newpicbounce/PicBounce2.xcodeproj</string>

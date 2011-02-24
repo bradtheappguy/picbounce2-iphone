@@ -27,6 +27,18 @@
 @synthesize commentView1;
 @synthesize commentView2;
 @synthesize commentView3;
+@synthesize comment1AvaratImageView;
+@synthesize comment2AvaratImageView;
+@synthesize comment3AvaratImageView;
+@synthesize comment1NameLabel;
+@synthesize comment2NameLabel;
+@synthesize comment3NameLabel;
+@synthesize comment1CommentLabel;
+@synthesize comment2CommentLabel;
+@synthesize comment3CommentLabel;
+@synthesize comment1TimeLabel;
+@synthesize comment2TimeLabel;
+@synthesize comment3TimeLabel;
 
 
 -(void) awakeFromNib {
@@ -44,8 +56,15 @@
   
   UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentView1Tapped:)];
    UITapGestureRecognizer *tgr2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentView2Tapped:)];
-  [commentView1 addGestureRecognizer:tgr];;
-  [commentView2 addGestureRecognizer:tgr2];; 
+  [commentView1 addGestureRecognizer:tgr];
+  [commentView2 addGestureRecognizer:tgr2];
+  
+  comment1AvaratImageView.backgroundColor = [UIColor lightGrayColor];
+  comment2AvaratImageView.backgroundColor = [UIColor lightGrayColor];
+  
+  comment3AvaratImageView.backgroundColor = [UIColor lightGrayColor];
+  
+  
 }
 
 
@@ -82,6 +101,18 @@
   self.commentView1 = nil;
   self.commentView2 = nil;
   self.commentView3 = nil;
+  self.comment1AvaratImageView = nil;
+  self.comment2AvaratImageView = nil;
+  self.comment3AvaratImageView = nil;
+  self.comment1NameLabel = nil;
+  self.comment2NameLabel = nil;
+  self.comment3NameLabel = nil;
+  self.comment1CommentLabel = nil;
+  self.comment2CommentLabel = nil;
+  self.comment3CommentLabel = nil;
+  self.comment1TimeLabel = nil;
+  self.comment2TimeLabel = nil;
+  self.comment3TimeLabel = nil;
   [super dealloc];
 }
 

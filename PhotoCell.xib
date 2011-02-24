@@ -63,6 +63,42 @@
 							<object class="IBUIView" id="730628511">
 								<reference key="NSNextResponder" ref="794438720"/>
 								<int key="NSvFlags">292</int>
+								<object class="NSMutableArray" key="NSSubviews">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<object class="IBUIImageView" id="60931443">
+										<reference key="NSNextResponder" ref="730628511"/>
+										<int key="NSvFlags">292</int>
+										<string key="NSFrame">{{64, 60}, {60, 47}}</string>
+										<reference key="NSSuperview" ref="730628511"/>
+										<int key="IBUIContentMode">4</int>
+										<bool key="IBUIUserInteractionEnabled">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<object class="NSCustomResource" key="IBUIImage" id="694256707">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">frame_icon_profile.png</string>
+										</object>
+									</object>
+									<object class="IBUIImageView" id="234627489">
+										<reference key="NSNextResponder" ref="730628511"/>
+										<int key="NSvFlags">292</int>
+										<string key="NSFrame">{{137, 60}, {60, 47}}</string>
+										<reference key="NSSuperview" ref="730628511"/>
+										<int key="IBUIContentMode">4</int>
+										<bool key="IBUIUserInteractionEnabled">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<reference key="IBUIImage" ref="694256707"/>
+									</object>
+									<object class="IBUIImageView" id="458277581">
+										<reference key="NSNextResponder" ref="730628511"/>
+										<int key="NSvFlags">292</int>
+										<string key="NSFrame">{{64, 122}, {60, 47}}</string>
+										<reference key="NSSuperview" ref="730628511"/>
+										<int key="IBUIContentMode">4</int>
+										<bool key="IBUIUserInteractionEnabled">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<reference key="IBUIImage" ref="694256707"/>
+									</object>
+								</object>
 								<string key="NSFrame">{{8, 57}, {305, 304}}</string>
 								<reference key="NSSuperview" ref="794438720"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
@@ -224,15 +260,12 @@
 								<int key="IBUIContentMode">4</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">frame_icon_profile.png</string>
-								</object>
+								<reference key="IBUIImage" ref="694256707"/>
 							</object>
 							<object class="IBUILabel" id="958365182">
 								<reference key="NSNextResponder" ref="794438720"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 483}, {163, 31}}</string>
+								<string key="NSFrame">{{55, 468}, {163, 31}}</string>
 								<reference key="NSSuperview" ref="794438720"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -271,7 +304,7 @@
 							<object class="IBUILabel" id="1065871793">
 								<reference key="NSNextResponder" ref="794438720"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 469}, {58, 31}}</string>
+								<string key="NSFrame">{{51, 448}, {58, 31}}</string>
 								<reference key="NSSuperview" ref="794438720"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -292,7 +325,24 @@
 							<object class="IBUILabel" id="315207685">
 								<reference key="NSNextResponder" ref="794438720"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 522}, {163, 31}}</string>
+								<string key="NSFrame">{{55, 500}, {163, 31}}</string>
+								<reference key="NSSuperview" ref="794438720"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">This is a comment</string>
+								<reference key="IBUIFont" ref="674353034"/>
+								<reference key="IBUITextColor" ref="708399302"/>
+								<reference key="IBUIHighlightedColor" ref="158725894"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">10</float>
+							</object>
+							<object class="IBUILabel" id="23473117">
+								<reference key="NSNextResponder" ref="794438720"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{55, 526}, {163, 31}}</string>
 								<reference key="NSSuperview" ref="794438720"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -324,10 +374,45 @@
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">2</int>
 							</object>
+							<object class="IBUILabel" id="650731707">
+								<reference key="NSNextResponder" ref="794438720"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{226, 527}, {53, 31}}</string>
+								<reference key="NSSuperview" ref="794438720"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">25hr Ago</string>
+								<reference key="IBUIFont" ref="282581283"/>
+								<reference key="IBUITextColor" ref="708399302"/>
+								<reference key="IBUIHighlightedColor" ref="158725894"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">10</float>
+								<int key="IBUITextAlignment">2</int>
+							</object>
 							<object class="IBUILabel" id="1063906574">
 								<reference key="NSNextResponder" ref="794438720"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 508}, {58, 31}}</string>
+								<string key="NSFrame">{{55, 487}, {58, 31}}</string>
+								<reference key="NSSuperview" ref="794438720"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">Dr. Dre</string>
+								<reference key="IBUIFont" ref="6125886"/>
+								<reference key="IBUITextColor" ref="708399302"/>
+								<reference key="IBUIHighlightedColor" ref="158725894"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">10</float>
+							</object>
+							<object class="IBUILabel" id="128097555">
+								<reference key="NSNextResponder" ref="794438720"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{60, 513}, {58, 31}}</string>
 								<reference key="NSSuperview" ref="794438720"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -361,7 +446,7 @@
 							<object class="IBUILabel" id="181126383">
 								<reference key="NSNextResponder" ref="794438720"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{67, 448}, {171, 21}}</string>
+								<string key="NSFrame">{{84, 442}, {171, 21}}</string>
 								<reference key="NSSuperview" ref="794438720"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -439,6 +524,30 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="634912435"/>
+							</object>
+							<object class="IBUIImageView" id="590519389">
+								<reference key="NSNextResponder" ref="794438720"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{5, 442}, {42, 42}}</string>
+								<reference key="NSSuperview" ref="794438720"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
+							<object class="IBUIImageView" id="306388658">
+								<reference key="NSNextResponder" ref="794438720"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{7, 487}, {40, 31}}</string>
+								<reference key="NSSuperview" ref="794438720"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
+							<object class="IBUIImageView" id="875926184">
+								<reference key="NSNextResponder" ref="794438720"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{6, 526}, {40, 31}}</string>
+								<reference key="NSSuperview" ref="794438720"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</object>
 						<string key="NSFrameSize">{321, 585}</string>
@@ -591,6 +700,102 @@
 					</object>
 					<int key="connectionID">57</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment1AvaratImageView</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="590519389"/>
+					</object>
+					<int key="connectionID">64</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment1CommentLabel</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="958365182"/>
+					</object>
+					<int key="connectionID">65</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment1NameLabel</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="1065871793"/>
+					</object>
+					<int key="connectionID">66</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment1TimeLabel</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="1071377754"/>
+					</object>
+					<int key="connectionID">67</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment2AvaratImageView</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="306388658"/>
+					</object>
+					<int key="connectionID">68</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment2CommentLabel</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="315207685"/>
+					</object>
+					<int key="connectionID">69</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment2NameLabel</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="1063906574"/>
+					</object>
+					<int key="connectionID">70</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment2TimeLabel</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="1009120280"/>
+					</object>
+					<int key="connectionID">71</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment3AvaratImageView</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="875926184"/>
+					</object>
+					<int key="connectionID">72</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment3CommentLabel</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="23473117"/>
+					</object>
+					<int key="connectionID">76</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment3NameLabel</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="128097555"/>
+					</object>
+					<int key="connectionID">77</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">comment3TimeLabel</string>
+						<reference key="source" ref="845767291"/>
+						<reference key="destination" ref="650731707"/>
+					</object>
+					<int key="connectionID">78</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -630,14 +835,20 @@
 							<reference ref="16918766"/>
 							<reference ref="645193642"/>
 							<reference ref="132136226"/>
-							<reference ref="181126383"/>
-							<reference ref="958365182"/>
-							<reference ref="1065871793"/>
-							<reference ref="1063906574"/>
-							<reference ref="315207685"/>
 							<reference ref="1009120280"/>
 							<reference ref="1071377754"/>
 							<reference ref="123458421"/>
+							<reference ref="1065871793"/>
+							<reference ref="958365182"/>
+							<reference ref="1063906574"/>
+							<reference ref="315207685"/>
+							<reference ref="590519389"/>
+							<reference ref="181126383"/>
+							<reference ref="306388658"/>
+							<reference ref="875926184"/>
+							<reference ref="23473117"/>
+							<reference ref="128097555"/>
+							<reference ref="650731707"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -664,6 +875,9 @@
 						<reference key="object" ref="730628511"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="60931443"/>
+							<reference ref="234627489"/>
+							<reference ref="458277581"/>
 						</object>
 						<reference key="parent" ref="845767291"/>
 					</object>
@@ -752,6 +966,51 @@
 						<reference key="object" ref="132136226"/>
 						<reference key="parent" ref="845767291"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">58</int>
+						<reference key="object" ref="60931443"/>
+						<reference key="parent" ref="730628511"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">59</int>
+						<reference key="object" ref="234627489"/>
+						<reference key="parent" ref="730628511"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">60</int>
+						<reference key="object" ref="458277581"/>
+						<reference key="parent" ref="730628511"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">61</int>
+						<reference key="object" ref="590519389"/>
+						<reference key="parent" ref="845767291"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">62</int>
+						<reference key="object" ref="306388658"/>
+						<reference key="parent" ref="845767291"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">63</int>
+						<reference key="object" ref="875926184"/>
+						<reference key="parent" ref="845767291"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">73</int>
+						<reference key="object" ref="23473117"/>
+						<reference key="parent" ref="845767291"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">74</int>
+						<reference key="object" ref="128097555"/>
+						<reference key="parent" ref="845767291"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">75</int>
+						<reference key="object" ref="650731707"/>
+						<reference key="parent" ref="845767291"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -801,10 +1060,31 @@
 					<string>54.IBViewBoundsToFrameTransform</string>
 					<string>56.IBPluginDependency</string>
 					<string>56.IBViewBoundsToFrameTransform</string>
+					<string>58.IBPluginDependency</string>
+					<string>58.IBViewBoundsToFrameTransform</string>
+					<string>59.IBPluginDependency</string>
+					<string>59.IBViewBoundsToFrameTransform</string>
 					<string>6.IBPluginDependency</string>
 					<string>6.IBViewBoundsToFrameTransform</string>
+					<string>60.IBPluginDependency</string>
+					<string>60.IBViewBoundsToFrameTransform</string>
+					<string>61.CustomClassName</string>
+					<string>61.IBPluginDependency</string>
+					<string>61.IBViewBoundsToFrameTransform</string>
+					<string>62.CustomClassName</string>
+					<string>62.IBPluginDependency</string>
+					<string>62.IBViewBoundsToFrameTransform</string>
+					<string>63.CustomClassName</string>
+					<string>63.IBPluginDependency</string>
+					<string>63.IBViewBoundsToFrameTransform</string>
 					<string>7.IBPluginDependency</string>
 					<string>7.IBViewBoundsToFrameTransform</string>
+					<string>73.IBPluginDependency</string>
+					<string>73.IBViewBoundsToFrameTransform</string>
+					<string>74.IBPluginDependency</string>
+					<string>74.IBViewBoundsToFrameTransform</string>
+					<string>75.IBPluginDependency</string>
+					<string>75.IBViewBoundsToFrameTransform</string>
 					<string>8.CustomClassName</string>
 					<string>8.IBPluginDependency</string>
 					<string>8.IBViewBoundsToFrameTransform</string>
@@ -826,7 +1106,7 @@
 						<bytes key="NSTransformStruct">AUJwAAAAAAAAA</bytes>
 					</object>
 					<string>PhotoCell</string>
-					<string>{{376, 86}, {321, 585}}</string>
+					<string>{{837, 398}, {321, 585}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw/gAAA</bytes>
@@ -846,7 +1126,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABA4AAAxAOAAA</bytes>
+						<bytes key="NSTransformStruct">Ab+AAABAwAAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -858,7 +1138,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCGAAAw/0AAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCTAAAxAAAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -866,19 +1146,19 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCGAAAw/QAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCTAAAw/kAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCpAAAxAfAAA</bytes>
+						<bytes key="NSTransformStruct">AUJcAABD+gAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDdgAAxAfAAA</bytes>
+						<bytes key="NSTransformStruct">AUN2AABD/gAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBkAAAxAfAAA</bytes>
+						<bytes key="NSTransformStruct">AUJcAABD84AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -894,11 +1174,50 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AUKAAABCcAAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AUMJAABCcAAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABChgAAw+mAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDDgAAwtwAAA</bytes>
+					</object>
+					<string>EGOImageView</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAADAoAAAw+6AAA</bytes>
+					</object>
+					<string>EGOImageView</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AUDgAABD84AAA</bytes>
+					</object>
+					<string>EGOImageView</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABBQAAAxAJAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AUNiAABBAAAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABCcAAAxAWAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABCcAAAxAJAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDewAAxAeAAA</bytes>
 					</object>
 					<string>EGOImageView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -923,7 +1242,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">57</int>
+			<int key="maxID">78</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1182,6 +1501,18 @@
 							<string>bounceButton</string>
 							<string>bounceCountLabel</string>
 							<string>cell</string>
+							<string>comment1AvaratImageView</string>
+							<string>comment1CommentLabel</string>
+							<string>comment1NameLabel</string>
+							<string>comment1TimeLabel</string>
+							<string>comment2AvaratImageView</string>
+							<string>comment2CommentLabel</string>
+							<string>comment2NameLabel</string>
+							<string>comment2TimeLabel</string>
+							<string>comment3AvaratImageView</string>
+							<string>comment3CommentLabel</string>
+							<string>comment3NameLabel</string>
+							<string>comment3TimeLabel</string>
 							<string>commentCountLabel</string>
 							<string>commentLabel</string>
 							<string>commentView1</string>
@@ -1198,6 +1529,18 @@
 							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>PhotoCell</string>
+							<string>EGOImageView</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>EGOImageView</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>EGOImageView</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIView</string>
@@ -1217,6 +1560,18 @@
 							<string>bounceButton</string>
 							<string>bounceCountLabel</string>
 							<string>cell</string>
+							<string>comment1AvaratImageView</string>
+							<string>comment1CommentLabel</string>
+							<string>comment1NameLabel</string>
+							<string>comment1TimeLabel</string>
+							<string>comment2AvaratImageView</string>
+							<string>comment2CommentLabel</string>
+							<string>comment2NameLabel</string>
+							<string>comment2TimeLabel</string>
+							<string>comment3AvaratImageView</string>
+							<string>comment3CommentLabel</string>
+							<string>comment3NameLabel</string>
+							<string>comment3TimeLabel</string>
 							<string>commentCountLabel</string>
 							<string>commentLabel</string>
 							<string>commentView1</string>
@@ -1244,6 +1599,54 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">cell</string>
 								<string key="candidateClassName">PhotoCell</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment1AvaratImageView</string>
+								<string key="candidateClassName">EGOImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment1CommentLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment1NameLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment1TimeLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment2AvaratImageView</string>
+								<string key="candidateClassName">EGOImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment2CommentLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment2NameLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment2TimeLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment3AvaratImageView</string>
+								<string key="candidateClassName">EGOImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment3CommentLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment3NameLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment3TimeLabel</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">commentCountLabel</string>
