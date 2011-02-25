@@ -29,16 +29,23 @@
     [super viewWillAppear:animated];
 }
 */
-/*
+
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+  [super viewDidAppear:animated];
+
+  [self.tableView.superview addSubview:textEntryView];
+  textEntryView.center = CGPointMake(textEntryView.center.x, textEntryView.center.y+self.tableView.frame.size.height - 35);
+  textField.inputAccessoryView = textEntryView;
+
 }
-*/
-/*
+
+
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+//  [super viewWillDisappear:animated];
+  [textField resignFirstResponder];
+  
 }
-*/
+
 /*
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
@@ -75,11 +82,13 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
-    
+    cell.textLabel.text = @"Dr Dre.";
+    cell.detailTextLabel.text = @"I am a comment";
+  cell.imageView.image = [UIImage imageNamed:@"btn_smiley.png"];  
+  
     return cell;
 }
 

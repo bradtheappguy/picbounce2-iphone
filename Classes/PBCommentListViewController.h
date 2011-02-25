@@ -10,7 +10,8 @@
 
 
 @interface PBCommentListViewController : UITableViewController {
-
+  IBOutlet UITextField *textField;
+  IBOutlet UIView *textEntryView;
 }
 
 @end
