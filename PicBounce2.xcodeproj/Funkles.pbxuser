@@ -9,6 +9,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 8A1D105613159451006F9E5B /* PicBounce2 */;
+		activeSDKPreference = iphoneos4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* PicBounce2 */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* PicBounce2 */,
@@ -23,7 +24,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					649,
+					604,
 					20,
 					48,
 					43,
@@ -40,12 +41,31 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 320280107;
-			PBXWorkspaceStateSaveDate = 320280107;
+			PBXConfiguration.PBXFileTableDataSource3.PBXFindDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					663,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFindDataSource_MessageID,
+					PBXFindDataSource_LocationID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 320614110;
+			PBXWorkspaceStateSaveDate = 320614110;
 		};
 		perUserProjectItems = {
 			8A1D10C91315ADC8006F9E5B = 8A1D10C91315ADC8006F9E5B /* PBXBookmark */;
-			8A1D10CA1315ADC8006F9E5B = 8A1D10CA1315ADC8006F9E5B /* PBXBookmark */;
+			8A21856F131C2EE300B50366 /* PBXTextBookmark */ = 8A21856F131C2EE300B50366 /* PBXTextBookmark */;
+			8A4494D913183E5500ADD914 = 8A4494D913183E5500ADD914 /* PBXTextBookmark */;
+			8A4494DA13183E5500ADD914 = 8A4494DA13183E5500ADD914 /* PBXBookmark */;
+			8A4494DB13183E5500ADD914 = 8A4494DB13183E5500ADD914 /* PBXBookmark */;
+			8A4494DC13183E5500ADD914 = 8A4494DC13183E5500ADD914 /* PBXTextBookmark */;
+			8A4494DD13183E5500ADD914 = 8A4494DD13183E5500ADD914 /* PBXTextBookmark */;
+			8A4494DE13183E5500ADD914 = 8A4494DE13183E5500ADD914 /* PBXTextBookmark */;
+			8A4494DF13183E5500ADD914 = 8A4494DF13183E5500ADD914 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 8A1D107F1315945D006F9E5B /* Source Control */;
 		userBuildSettings = {
@@ -67,6 +87,7 @@
 		dataTipSortType = 0;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
@@ -74,6 +95,8 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = PicBounce2;
+		savedGlobals = {
+		};
 		showTypeColumn = 0;
 		sourceDirectories = (
 		);
@@ -96,8 +119,101 @@
 		isa = PBXBookmark;
 		fRef = A205F9781314BCEE003756CA /* globe.png */;
 	};
-	8A1D10CA1315ADC8006F9E5B /* PBXBookmark */ = {
+	8A21856F131C2EE300B50366 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A205F9291314B41E003756CA /* PBPersonListViewController.m */;
+		name = "PBPersonListViewController.m: 128";
+		rLen = 1;
+		rLoc = 3696;
+		rType = 0;
+		vrLen = 830;
+		vrLoc = 3699;
+	};
+	8A4494D913183E5500ADD914 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A205F1111312E708003756CA /* PBProfileViewController.m */;
+		name = "PBProfileViewController.m: 238";
+		rLen = 0;
+		rLoc = 8104;
+		rType = 0;
+		vrLen = 1274;
+		vrLoc = 7435;
+	};
+	8A4494DA13183E5500ADD914 /* PBXBookmark */ = {
 		isa = PBXBookmark;
-		fRef = A205F9781314BCEE003756CA /* globe.png */;
+		fRef = 8A05E1731317164600C4F2C3 /* btn_bouncet_up@2x.png */;
+	};
+	8A4494DB13183E5500ADD914 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8A1D109B13159649006F9E5B /* btn_follow_alt_up@2x.png */;
+	};
+	8A4494DC13183E5500ADD914 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A205F41113145069003756CA /* PhotoCell.h */;
+		name = "PhotoCell.h: 23";
+		rLen = 19;
+		rLoc = 561;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 111;
+	};
+	8A4494DD13183E5500ADD914 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A205F41213145069003756CA /* PhotoCell.m */;
+		name = "PhotoCell.m: 79";
+		rLen = 0;
+		rLoc = 2559;
+		rType = 0;
+		vrLen = 491;
+		vrLoc = 3339;
+	};
+	8A4494DE13183E5500ADD914 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A205F9291314B41E003756CA /* PBPersonListViewController.m */;
+		name = "PBPersonListViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 538;
+		vrLoc = 0;
+	};
+	8A4494DF13183E5500ADD914 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A205F9291314B41E003756CA /* PBPersonListViewController.m */;
+		name = "PBPersonListViewController.m: 128";
+		rLen = 1;
+		rLoc = 3696;
+		rType = 0;
+		vrLen = 826;
+		vrLoc = 3702;
+	};
+	A205F1111312E708003756CA /* PBProfileViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {942, 6006}}";
+			sepNavSelRange = "{8006, 0}";
+			sepNavVisRange = "{7612, 770}";
+		};
+	};
+	A205F41113145069003756CA /* PhotoCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {827, 1260}}";
+			sepNavSelRange = "{561, 19}";
+			sepNavVisRange = "{111, 807}";
+		};
+	};
+	A205F41213145069003756CA /* PhotoCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 1764}}";
+			sepNavSelRange = "{2559, 0}";
+			sepNavVisRange = "{3339, 491}";
+		};
+	};
+	A205F9291314B41E003756CA /* PBPersonListViewController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{3936, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{3987, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{4037, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 4738}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {900, 2198}}";
+			sepNavSelRange = "{3696, 1}";
+			sepNavVisRange = "{3699, 773}";
+		};
 	};
 }

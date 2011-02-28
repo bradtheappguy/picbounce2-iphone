@@ -232,7 +232,7 @@
   _cell.photoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://s3.amazonaws.com/com.clixtr.picbounce/photos/%@/big.jpg",uuid]];
   _cell.viewCountLabel.text = [NSString stringWithFormat:@"Views: %@",viewCount];
   _cell.bounceCountLabel.text = [NSString stringWithFormat:@"%d",19];
-  _cell.commentCountLabel.text = [NSString stringWithFormat:@"Comments: %d",3000];
+  _cell.commentCountLabel.text = [NSString stringWithFormat:@"View all %d comments",50];
   if (![caption isEqual:[NSNull null]])
     _cell.commentLabel.text = caption;
   return cell;  

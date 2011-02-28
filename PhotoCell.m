@@ -10,7 +10,7 @@
 #import "EGOImageButton.h"
 #import "PBCommentListViewController.h"
 
-#define PhotoCellHeight 585
+#define PhotoCellHeight 620
 
 @implementation PhotoCell
 @synthesize tableViewController;
@@ -47,7 +47,7 @@
    UIView *view = [[EGOImageButton alloc] initWithPlaceholderImage:nil];
    view.frame = CGRectMake(0, 0, 20, 20);
    view.backgroundColor = [UIColor darkGrayColor];
-   view.layer.cornerRadius = 2;
+   view.layer.cornerRadius = 0;
    [self addPhotoView:view ToFollowerScrollViewAtIndex:c];
   
  }
@@ -80,6 +80,7 @@
 }
 -(void) addPhotoView:(UIView *)view ToFollowerScrollViewAtIndex:(NSUInteger) index {
   view.frame = CGRectMake(index * 25, 0, 20, 20);
+	
   [followersScrollView addSubview:view];
   followersScrollView.delaysContentTouches = YES;
   if ((index+1) * 25 > followersScrollView.contentSize.width) {
