@@ -33,13 +33,19 @@
   self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_grey.png"]];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   [self.tableView.backgroundView addSubview:[self headerForAboveTableView:self.tableView]]; 
+  [self.tableView.backgroundView addSubview:[self footerForBelowTableView:self.tableView]]; 
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
+  
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+  self.navigationItem.backBarButtonItem = backButton;
+  [backButton release];
 }
 
 
 - (void) viewWillAppear:(BOOL)animated {
+   self.navigationItem.title  = @" ";
   if ([data count] < 1) {
-    [self enterReloadMode];
+    [self loadDataFromCacheIfAvailable];
     
   }  
 } 
@@ -47,6 +53,18 @@
 
 #pragma mark Table View Layout and Sizes
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
+  if ([data isKindOfClass:[NSDictionary class]]) {
+    if ([data objectForKey:@"user"]) {
+      NSUInteger x = [[[data objectForKey:@"user"] objectForKey:@"photos"] count] +1;
+      
+      return x;
+    }
+    
+    NSUInteger x = [[data objectForKey:@"photos"] count] +1;
+    
+    return x;
+  }
+  
   if ([data count] > 0) {
     return [data count] + 1;
   }
@@ -83,8 +101,15 @@
 - (UIImageView *) headerForAboveTableView:(UITableView *)tableView {
   UIImageView *header = [[UIImageView alloc] initWithFrame:CGRectMake(0, -200, 320, 200)];
   header.image = [UIImage imageNamed:@"bg_grey.png"];
-  header.backgroundColor = [UIColor blueColor];
+  //header.backgroundColor = [UIColor blueColor];
   return [header autorelease];
+}
+
+- (UIImageView *) footerForBelowTableView:(UITableView *)tableView {
+  UIImageView *footer = [[UIImageView alloc] initWithFrame:CGRectMake(0, 367, 320, 200)];
+  footer.image = [UIImage imageNamed:@"bg_grey.png"];
+  //footer.backgroundColor = [UIColor redColor];
+  return footer;
 }
 
 - (UIView *) footerViewForTable:(UITableView *)tableView {
@@ -116,7 +141,12 @@
     arrayOfPhotos = data;
   }
   else {
-    arrayOfPhotos = [data objectForKey:@"photos"];
+    if ([data objectForKey:@"user"]) {
+      arrayOfPhotos = [[data objectForKey:@"user"] objectForKey:@"photos"];
+    }
+    else {
+      arrayOfPhotos = [data objectForKey:@"photos"];
+    }
   }
 
   
@@ -131,11 +161,11 @@
   // NSString *caption = [y objectForKey:@"caption"];
   // NSString *viewCount = [y objectForKey:@"view_count"];
   // NSString *uuid = [y objectForKey:@"uuid"];
-  NSString *name = [y objectForKey:@"twitter_screen_name"];
-  NSString *avatarURL = [y objectForKey:@"twitter_avatar_url"];
+  NSString *name = [x objectForKey:@"twitter_screen_name"];
+  NSString *avatarURL = [x objectForKey:@"twitter_avatar_url"];
   
   headerTableViewCell.nameLabel.text = name;
-  headerTableViewCell.locationLabel.text = @"New Work City, NYC";
+  headerTableViewCell.locationLabel.text = @"YYNew Work City, NYC";
   headerTableViewCell.timeLabel.text = @"1h";
   if (![avatarURL isEqual:[NSNull null]]) {
      headerTableViewCell.avatarImage.imageURL = [NSURL URLWithString: avatarURL];
@@ -150,7 +180,7 @@
 
 - (UITableViewCell *)profileHeaderCellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
-  NSDictionary *userData;
+  NSDictionary *userData = nil;
   if ([[data class] isSubclassOfClass:[NSArray class]]) {
     userData = nil;
   }
@@ -180,18 +210,26 @@
     _cell.followersCountLabel.text = @"";
     _cell.badgesCountLabel.text = @"";
     _cell.followingCountLabel.text = @"";
-    _cell.photosCountLabel.text = @"";
+    _cell.photosCountLabel.text = [NSString stringWithFormat:@"%d", [[userData objectForKey:@"photo_count"] intValue]];
     _cell.nameLabel.text = preloadedName;
     _cell.locationLabel.text = preloadedLocation;
     _cell.avatarIcon.imageURL = preloadedAvatarURL;
+    _cell.avatarIcon.backgroundColor = [UIColor redColor];
+    if (YES) {
+      NSString *url = [[[userData objectForKey:@"photos"] objectAtIndex:0] objectForKey:@"twitter_avatar_url"];
+      if (![url isEqual:[NSNull null]]) {
+        _cell.avatarIcon.imageURL = [NSURL URLWithString:url];
+      }
+    }
+    
   }
   else {
-    _cell.followersCountLabel.text = @"1";
-    _cell.badgesCountLabel.text = @"1";
-    _cell.followingCountLabel.text = @"1";
-    _cell.photosCountLabel.text = @"1";
-    _cell.nameLabel.text = @"Lessfame";
-    _cell.locationLabel.text = @"LowerEastSide";
+    _cell.followersCountLabel.text = @"X";
+    _cell.badgesCountLabel.text = @"X";
+    _cell.followingCountLabel.text = @"X";
+    _cell.photosCountLabel.text = [userData objectForKey:@"photo_count"];
+    _cell.nameLabel.text = @"XX";
+    _cell.locationLabel.text = @"XXXXXX";
     _cell.avatarIcon.imageURL = [NSURL URLWithString: @"http://a2.twimg.com/profile_images/1225485762/image_normal.jpg"];
   }  
   return _cell;
@@ -203,7 +241,12 @@
     arrayOfPhotos = data;
   }
   else {
+    if ([data objectForKey:@"user"]) {
+      arrayOfPhotos = [[data objectForKey:@"user"] objectForKey:@"photos"];
+    }
+    else {
     arrayOfPhotos = [data objectForKey:@"photos"];
+         }
   }
   
   
@@ -212,9 +255,10 @@
     x = [arrayOfPhotos objectAtIndex:(indexPath.section)-1];
   }
   id y = [x objectForKey:@"photo"];
-  NSString *caption = [y objectForKey:@"caption"];
-  NSString *viewCount = [y objectForKey:@"view_count"];
-  NSString *uuid = [y objectForKey:@"uuid"];
+  NSString *caption = [x objectForKey:@"caption"];
+  NSString *viewCount = [x objectForKey:@"view_count"];
+  NSString *uuid = [x objectForKey:@"uuid"];
+  NSString *twitter_avatar_url = [x objectForKey:@"twitter_avatar_url"];
   //NSString *name = [y objectForKey:@"twitter_screen_name"];
   
   static NSString *MyIdentifier = @"CELL";
@@ -227,7 +271,7 @@
   }
   
   _cell.tableViewController = self;
-  _cell.avatarImageView.imageURL = [NSURL URLWithString:@"http://a0.twimg.com/profile_images/1239447061/Unnamed-1_reasonably_small.jpg"];
+  _cell.avatarImageView.imageURL = [NSURL URLWithString:twitter_avatar_url];
   
   _cell.photoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://s3.amazonaws.com/com.clixtr.picbounce/photos/%@/big.jpg",uuid]];
   _cell.viewCountLabel.text = [NSString stringWithFormat:@"Views: %@",viewCount];
@@ -240,7 +284,7 @@
 
 - (UITableViewCell *)infoHeaderCellForRowAtIndexPath:(NSIndexPath *)indexPath {
   [[NSBundle mainBundle] loadNibNamed:@"TableTitleTableViewCell" owner:self options:nil];
-  tableTitleTableViewCell.textLabel.text = @"Following 1337 People";
+  tableTitleTableViewCell.textLabel.text = @"Following XXX People";
   return tableTitleTableViewCell;
 
 }
@@ -362,7 +406,7 @@
   HeaderTableViewCell *view = (HeaderTableViewCell *)sender.view;
   
   PBProfileViewController *new = [[PBProfileViewController alloc] init];
-  new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:3000/users/b2test/profile",API_BASE]];
+  new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/%@/profile",API_BASE,view.nameLabel.text]];
   
   
   new.shouldShowProfileHeaderBeforeNetworkLoad = YES;
@@ -370,8 +414,9 @@
   new.preloadedLocation = view.locationLabel.text;
   new.preloadedName = view.nameLabel.text;
   new.preloadedAvatarURL = view.avatarImage.imageURL;
+  new.title = @" ";
   [self.navigationController pushViewController:new animated:YES];
-  [new release];
+  //[new release];
 }
 
 -(IBAction) photosButtonPressed {

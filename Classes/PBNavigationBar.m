@@ -26,11 +26,13 @@
  
     [self insertSubview:backgroundView atIndex:0];
     [backgroundView release];
+    
+    //self.titleView.alpha = 0.5;
   }
 }
 
 -(void) layoutSubviews {
-  [self addCustomBackground];
+ [self addCustomBackground];
 }
 
 

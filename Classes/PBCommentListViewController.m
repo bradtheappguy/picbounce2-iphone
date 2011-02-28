@@ -15,28 +15,27 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+ [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+ [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+  self.tableView.superview;
 }
-*/
 
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
+
 
 - (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
+    [super viewDidAppear:animated];
+  [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:99 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
 
-  [self.tableView.superview addSubview:textEntryView];
-  textEntryView.center = CGPointMake(textEntryView.center.x, textEntryView.center.y+self.tableView.frame.size.height - 35);
-  textField.inputAccessoryView = textEntryView;
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
 }
 
 
@@ -85,13 +84,30 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
+ 
+  
+    if (indexPath.row == 99) {
+      cell.contentView.backgroundColor = [UIColor redColor];
+      textField = [[UITextField alloc] initWithFrame:CGRectMake(50, 4, 320-60, 35)];
+      textField.delegate = self;
+      textField.returnKeyType = UIReturnKeySend;
+      [textField setBackgroundColor:[UIColor whiteColor]];
+      [cell.contentView addSubview:textField];
+    }
+  else {
     cell.textLabel.text = @"Dr Dre.";
+    
     cell.detailTextLabel.text = @"I am a comment";
-  cell.imageView.image = [UIImage imageNamed:@"btn_smiley.png"];  
+    cell.imageView.image = [UIImage imageNamed:@"btn_smiley.png"]; 
+  }
+
   
     return cell;
 }
 
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -168,6 +184,79 @@
     [super dealloc];
 }
 
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+  
+  /*
+   Reduce the size of the text view so that it's not obscured by the keyboard.
+   Animate the resize so that it's in sync with the appearance of the keyboard.
+   */
+  
+  NSDictionary *userInfo = [notification userInfo];
+  
+  // Get the origin of the keyboard when it's displayed.
+  NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+  
+  // Get the top of the keyboard as the y coordinate of its origin in self's view's coordinate system. The bottom of the text view's frame should align with the top of the keyboard's final position.
+  CGRect keyboardRect = [aValue CGRectValue];
+  keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
+  
+  CGFloat keyboardTop = keyboardRect.origin.y;
+  
+  
+  CGRect newTextViewFrame = textEntryView.bounds;
+  newTextViewFrame.origin.y =  textEntryView.frame.origin.y - 167;
+  
+  // Get the duration of the animation.
+  NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+  NSTimeInterval animationDuration;
+  [animationDurationValue getValue:&animationDuration];
+  
+  // Animate the resize of the text view's frame in sync with the keyboard's appearance.
+  [UIView beginAnimations:nil context:NULL];
+  [UIView setAnimationDuration:animationDuration];
+  
+  textEntryView.frame = newTextViewFrame;
+  
+  [UIView commitAnimations];
+}
+
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+  
+  /*
+   Reduce the size of the text view so that it's not obscured by the keyboard.
+   Animate the resize so that it's in sync with the appearance of the keyboard.
+   */
+  
+  NSDictionary *userInfo = [notification userInfo];
+  
+  // Get the origin of the keyboard when it's displayed.
+  NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+  
+  // Get the top of the keyboard as the y coordinate of its origin in self's view's coordinate system. The bottom of the text view's frame should align with the top of the keyboard's final position.
+  CGRect keyboardRect = [aValue CGRectValue];
+  keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
+  
+  CGFloat keyboardTop = keyboardRect.origin.y;
+  
+  
+  CGRect newTextViewFrame = textEntryView.bounds;
+  newTextViewFrame.origin.y =  textEntryView.frame.origin.y + 167;
+  
+  // Get the duration of the animation.
+  NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+  NSTimeInterval animationDuration;
+  [animationDurationValue getValue:&animationDuration];
+  
+  // Animate the resize of the text view's frame in sync with the keyboard's appearance.
+  [UIView beginAnimations:nil context:NULL];
+  [UIView setAnimationDuration:animationDuration];
+  
+ // textEntryView.frame = newTextViewFrame;
+  
+  [UIView commitAnimations];
+}
 
 @end
 

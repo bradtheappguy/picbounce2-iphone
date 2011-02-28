@@ -13,10 +13,8 @@
 
 @synthesize reloading=_reloading, url;
 
-
 - (void)viewDidLoad {
-    [super viewDidLoad];
-
+  [super viewDidLoad];
 	if (refreshHeaderView == nil) {
 		refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, 320.0f, self.tableView.bounds.size.height)];
 		[self.tableView addSubview:refreshHeaderView];
@@ -25,68 +23,28 @@
 	}
 }
 
-
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
-
-
- // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return YES;
-}
- 
-
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
 	// Release any cached data, images, etc that aren't in use.
 }
 
 - (void)viewDidUnload {
-	refreshHeaderView=nil;
+	refreshHeaderView = nil;
 }
 
 
-#pragma mark Table view methods
 
-
-- (void)reloadTableViewDataSource {
-  if (!self.url) {
-    NSLog(@"Error: url not set");
-    [self doneLoadingTableViewDataFromNetwork:nil];
-    return;
-  }
-  request = [ASIHTTPRequest requestWithURL:self.url
-                                                usingCache:[ASIDownloadCache sharedCache]
-                                            andCachePolicy:ASIDoNotReadFromCacheCachePolicy];
-  [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-  [request setDelegate:self];
-  [request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
-  [request startAsynchronous];
-  
-	//  should be calling your tableviews model to reload
-	//  put here just for demo
-	//[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+-(BOOL) cachedDataAvailable {
+  NSDictionary *headers = [[ASIDownloadCache sharedCache] cachedResponseHeadersForURL:[self url]];
+	if (!headers) {
+		return NO;
+	}
+	NSString *dataPath = [[ASIDownloadCache sharedCache] pathToCachedResponseDataForURL:[self url]];
+	if (!dataPath) {
+		return NO;
+	}
+  return YES;
 }
 
 - (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) request {
@@ -100,7 +58,23 @@
 	[self dataSourceDidFinishLoadingNewData];
 }
 
+- (void)reloadTableViewDataSourceUsingCache:(BOOL)useCache {
+  if (!self.url) {
+    NSLog(@"Error: url not set");
+    [self doneLoadingTableViewDataFromNetwork:nil];
+    return;
+  }
+  
+  ASICachePolicy cachePolicy = useCache?ASIOnlyLoadIfNotCachedCachePolicy:ASIDoNotReadFromCacheCachePolicy;
 
+  request = [ASIHTTPRequest requestWithURL:self.url
+                                                usingCache:[ASIDownloadCache sharedCache]
+                                            andCachePolicy:cachePolicy];
+  [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+  [request setDelegate:self];
+  [request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
+  [request startAsynchronous];
+}
 
 
 
@@ -115,21 +89,30 @@
 	}
 }
 
+- (void) enterReloadMode {
+  _reloading = YES;
+  [self reloadTableViewDataSourceUsingCache:NO];
+  [refreshHeaderView setState:EGOOPullRefreshLoading];
+  [UIView beginAnimations:nil context:NULL];
+  [UIView setAnimationDuration:0.2];
+  self.tableView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
+  [UIView commitAnimations];
+}
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 	if (scrollView.contentOffset.y <= - 65.0f && !_reloading) {
     [self enterReloadMode];
   }
 }
 
-- (void) enterReloadMode {
-  _reloading = YES;
-  [self reloadTableViewDataSource];
-  [refreshHeaderView setState:EGOOPullRefreshLoading];
-  [UIView beginAnimations:nil context:NULL];
-  [UIView setAnimationDuration:0.2];
-  self.tableView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
-  [UIView commitAnimations];
-  
+
+-(void) loadDataFromCacheIfAvailable {
+  if ([self cachedDataAvailable]) {
+    [self reloadTableViewDataSourceUsingCache:YES];
+  }
+  else {
+    [self enterReloadMode];      
+  }
 }
 
 - (void)dataSourceDidFinishLoadingNewData{
