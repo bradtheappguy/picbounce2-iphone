@@ -54,7 +54,7 @@
 								<reference key="NSSuperview" ref="759141217"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAgMC44AA</bytes>
+									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
 								</object>
 								<int key="IBUIContentMode">5</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -76,13 +76,14 @@
 									<double key="NSSize">12</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<object class="NSColor" key="IBUITextColor" id="384966363">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAxIDEAA</bytes>
-								</object>
-								<object class="NSColor" key="IBUIHighlightedColor" id="826982029">
+								<object class="NSColor" key="IBUITextColor" id="826982029">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
+								</object>
+								<reference key="IBUIHighlightedColor" ref="826982029"/>
+								<object class="NSColor" key="IBUIShadowColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
 								</object>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
@@ -103,15 +104,22 @@
 									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<reference key="IBUITextColor" ref="384966363"/>
+								<object class="NSColor" key="IBUITextColor" id="384966363">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MSAxIDEAA</bytes>
+								</object>
 								<reference key="IBUIHighlightedColor" ref="826982029"/>
+								<object class="NSColor" key="IBUIShadowColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
+								</object>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 							<object class="IBUILabel" id="604086569">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{287, 2}, {42, 21}}</string>
+								<string key="NSFrame">{{293, 2}, {42, 21}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -126,13 +134,17 @@
 								</object>
 								<reference key="IBUITextColor" ref="384966363"/>
 								<reference key="IBUIHighlightedColor" ref="826982029"/>
+								<object class="NSColor" key="IBUIShadowColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
+								</object>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 							<object class="IBUIImageView" id="170065079">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{270, 5}, {15, 15}}</string>
+								<string key="NSFrame">{{276, 6}, {12, 12}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -292,14 +304,14 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDkIAAwagAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDj4AAwagAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABDh4AAwZAAAA</bytes>
 					</object>
 					<string>HeaderTableViewCell</string>
-					<string>{{432, 701}, {320, 25}}</string>
+					<string>{{444, 420}, {320, 25}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -307,7 +319,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCngAAwagAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCqAAAwbAAAA</bytes>
 					</object>
 				</object>
 			</object>
@@ -586,8 +598,23 @@
 							<string>bounceButton</string>
 							<string>bounceCountLabel</string>
 							<string>cell</string>
+							<string>comment1AvaratImageView</string>
+							<string>comment1CommentLabel</string>
+							<string>comment1NameLabel</string>
+							<string>comment1TimeLabel</string>
+							<string>comment2AvaratImageView</string>
+							<string>comment2CommentLabel</string>
+							<string>comment2NameLabel</string>
+							<string>comment2TimeLabel</string>
+							<string>comment3AvaratImageView</string>
+							<string>comment3CommentLabel</string>
+							<string>comment3NameLabel</string>
+							<string>comment3TimeLabel</string>
 							<string>commentCountLabel</string>
 							<string>commentLabel</string>
+							<string>commentView1</string>
+							<string>commentView2</string>
+							<string>commentView3</string>
 							<string>followersScrollView</string>
 							<string>leaveCommentButton</string>
 							<string>photoImageView</string>
@@ -599,8 +626,23 @@
 							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>PhotoCell</string>
+							<string>EGOImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>EGOImageView</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>EGOImageView</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UIView</string>
+							<string>UIView</string>
+							<string>UIView</string>
 							<string>UIScrollView</string>
 							<string>UIButton</string>
 							<string>EGOImageView</string>
@@ -615,8 +657,23 @@
 							<string>bounceButton</string>
 							<string>bounceCountLabel</string>
 							<string>cell</string>
+							<string>comment1AvaratImageView</string>
+							<string>comment1CommentLabel</string>
+							<string>comment1NameLabel</string>
+							<string>comment1TimeLabel</string>
+							<string>comment2AvaratImageView</string>
+							<string>comment2CommentLabel</string>
+							<string>comment2NameLabel</string>
+							<string>comment2TimeLabel</string>
+							<string>comment3AvaratImageView</string>
+							<string>comment3CommentLabel</string>
+							<string>comment3NameLabel</string>
+							<string>comment3TimeLabel</string>
 							<string>commentCountLabel</string>
 							<string>commentLabel</string>
+							<string>commentView1</string>
+							<string>commentView2</string>
+							<string>commentView3</string>
 							<string>followersScrollView</string>
 							<string>leaveCommentButton</string>
 							<string>photoImageView</string>
@@ -641,12 +698,72 @@
 								<string key="candidateClassName">PhotoCell</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">comment1AvaratImageView</string>
+								<string key="candidateClassName">EGOImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment1CommentLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment1NameLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment1TimeLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment2AvaratImageView</string>
+								<string key="candidateClassName">EGOImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment2CommentLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment2NameLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment2TimeLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment3AvaratImageView</string>
+								<string key="candidateClassName">EGOImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment3CommentLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment3NameLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comment3TimeLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">commentCountLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">commentLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">commentView1</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">commentView2</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">commentView3</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">followersScrollView</string>

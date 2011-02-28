@@ -203,9 +203,9 @@
 	};
 	A205F41213145069003756CA /* PhotoCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {918, 1764}}";
-			sepNavSelRange = "{2559, 0}";
-			sepNavVisRange = "{3339, 491}";
+			sepNavIntBoundsRect = "{{0, 0}, {782, 1890}}";
+			sepNavSelRange = "{262, 0}";
+			sepNavVisRange = "{19, 637}";
 		};
 	};
 	A205F9291314B41E003756CA /* PBPersonListViewController.m */ = {

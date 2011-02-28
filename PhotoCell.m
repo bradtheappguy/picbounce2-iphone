@@ -10,7 +10,7 @@
 #import "EGOImageButton.h"
 #import "PBCommentListViewController.h"
 
-#define PhotoCellHeight 620
+#define PhotoCellHeight 363
 
 @implementation PhotoCell
 @synthesize tableViewController;
