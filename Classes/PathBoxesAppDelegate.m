@@ -21,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
   
+  feedViewController.url = [NSURL URLWithString:@"http://localhost:3000/users/bradsmithinc/feed"];
+  
   feedViewController.shouldShowProfileHeader = NO;
   profileViewController.shouldShowProfileHeader = YES;
   
@@ -33,7 +35,7 @@
   [container addSubview:view1];
   [container addSubview:view2];
   [window addSubview:tabBarController.view];
-    [window makeKeyAndVisible];
+  [window makeKeyAndVisible];
     
     return YES;
 }

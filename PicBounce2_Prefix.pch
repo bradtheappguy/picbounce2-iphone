@@ -7,4 +7,4 @@
     #import <UIKit/UIKit.h>
 #endif
 
-#define API_BASE @"picbounce.com"
+#define API_BASE @"localhost:3000"

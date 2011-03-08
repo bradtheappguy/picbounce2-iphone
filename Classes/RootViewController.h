@@ -26,6 +26,7 @@
 
 #import "ASIHTTPRequest.h"
 #import "SBJSON.h"
+#import "PBAPIResponce.h"
 
 @class EGORefreshTableHeaderView;
 @interface RootViewController : UITableViewController  <UITableViewDelegate, UITableViewDataSource>{
@@ -35,7 +36,13 @@
 	//  Putting it here for demo purposes 
 	BOOL _reloading;
     NSMutableArray *data;
+  
+  PBAPIResponce *responceData;
+  
+  
   NSURL *url;
+  
+  NSURL *loadMoreDataURL;
   
   ASIHTTPRequest *request;
 }

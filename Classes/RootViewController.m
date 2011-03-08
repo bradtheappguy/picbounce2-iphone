@@ -2,6 +2,7 @@
 #import "EGORefreshTableHeaderView.h"
 #import "ASIDownloadCache.h"
 
+
 @interface RootViewController (Private)
 
 - (void)dataSourceDidFinishLoadingNewData;
@@ -22,6 +23,13 @@
 		[refreshHeaderView release];
 	}
 }
+
+- (void) viewWillAppear:(BOOL)animated {
+  self.navigationItem.title  = @" ";
+  if ([data count] < 1) {
+    [self loadDataFromCacheIfAvailable];
+  }  
+} 
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -47,23 +55,51 @@
   return YES;
 }
 
+- (void)doneLoadingMoreDataFromNetwork:(ASIHTTPRequest *) request {
+  
+  NSString *json_string = request.responseString;
+  NSLog(@"%@",json_string);
+  [responceData mergeNewResponceData:json_string];
+  [self.tableView reloadData];
+}
+
+
+
 - (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) request {
 	NSString *json_string = request.responseString;
-	NSArray *array = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
+  responceData = [[PBAPIResponce alloc] initWithResponceData:request.responseString];
+  
+
+  NSArray *array = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
   
   NSLog(@"%@",json_string);
   data = [array retain];
+  
+  loadMoreDataURL = nil;
+/* 
+  if ([[data class] isSubclassOfClass:[NSDictionary class]]) {
+    if ([data objectForKey:@"user"]) {
+      if ([[data objectForKey:@"user"] objectForKey:@"more_photos_url"]) {
+        loadMoreDataURL = [[data objectForKey:@"user"] objectForKey:@"more_photos_url"];
+      }
+    }
+  }
+*/ 
+  
   [self.tableView reloadData];
   
 	[self dataSourceDidFinishLoadingNewData];
 }
 
 - (void)reloadTableViewDataSourceUsingCache:(BOOL)useCache {
+  NSLog(@"\n");
+  NSLog(@"Loading %@",self.url);
   if (!self.url) {
     NSLog(@"Error: url not set");
     [self doneLoadingTableViewDataFromNetwork:nil];
     return;
   }
+  
   
   ASICachePolicy cachePolicy = useCache?ASIOnlyLoadIfNotCachedCachePolicy:ASIDoNotReadFromCacheCachePolicy;
 
@@ -76,6 +112,26 @@
   [request startAsynchronous];
 }
 
+
+
+
+- (void)loadMoreFromNetwork {
+  NSLog(@"\n");
+  NSLog(@"Loading More: %@",loadMoreDataURL);
+  if (!loadMoreDataURL) {
+    NSLog(@"Error: load more url not set");
+    [self doneLoadingTableViewDataFromNetwork:nil];
+    return;
+  }
+  
+  request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:loadMoreDataURL]
+                                usingCache:[ASIDownloadCache sharedCache]
+                            andCachePolicy:ASIUseDefaultCachePolicy];
+  [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+  [request setDelegate:self];
+  [request setDidFinishSelector:@selector(doneLoadingMoreDataFromNetwork:)];
+  [request startAsynchronous];
+}
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
@@ -132,8 +188,8 @@
 #pragma mark Dealloc
 
 - (void)dealloc {
-  [request cancel];
-  [request release];
+ // [request cancel];
+ // [request release];
 	refreshHeaderView = nil;
   [super dealloc];
 }
