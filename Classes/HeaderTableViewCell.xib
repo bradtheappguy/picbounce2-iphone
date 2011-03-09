@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10J567</string>
+		<string key="IBDocument.SystemVersion">10H574</string>
 		<string key="IBDocument.InterfaceBuilderVersion">823</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">462.00</string>
+		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">132</string>
@@ -63,7 +63,7 @@
 							<object class="IBUILabel" id="695372064">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{84, 3}, {195, 21}}</string>
+								<string key="NSFrame">{{155, 2}, {101, 21}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -91,7 +91,7 @@
 							<object class="IBUILabel" id="612126978">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{7, 2}, {69, 22}}</string>
+								<string key="NSFrame">{{7, 2}, {172, 22}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -114,16 +114,17 @@
 									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
 								</object>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 							<object class="IBUILabel" id="604086569">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{293, 2}, {42, 21}}</string>
+								<string key="NSFrame">{{254, 2}, {62, 21}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">7</int>
+								<int key="IBUIContentMode">8</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">25h</string>
@@ -139,12 +140,14 @@
 									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
 								</object>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
+								<int key="IBUITextAlignment">2</int>
 							</object>
 							<object class="IBUIImageView" id="170065079">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{276, 6}, {12, 12}}</string>
+								<string key="NSFrame">{{284, 6}, {12, 12}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -213,6 +216,14 @@
 					</object>
 					<int key="connectionID">19</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">clockIcon</string>
+						<reference key="source" ref="303421369"/>
+						<reference key="destination" ref="170065079"/>
+					</object>
+					<int key="connectionID">20</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -240,10 +251,10 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="866163844"/>
-							<reference ref="170065079"/>
 							<reference ref="695372064"/>
 							<reference ref="612126978"/>
 							<reference ref="604086569"/>
+							<reference ref="170065079"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -251,26 +262,31 @@
 						<int key="objectID">4</int>
 						<reference key="object" ref="866163844"/>
 						<reference key="parent" ref="303421369"/>
+						<string key="objectName">Background</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">9</int>
 						<reference key="object" ref="695372064"/>
 						<reference key="parent" ref="303421369"/>
+						<string key="objectName">Location Label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
 						<reference key="object" ref="612126978"/>
 						<reference key="parent" ref="303421369"/>
+						<string key="objectName">Name Label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">11</int>
 						<reference key="object" ref="604086569"/>
 						<reference key="parent" ref="303421369"/>
+						<string key="objectName">Time Label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">13</int>
 						<reference key="object" ref="170065079"/>
 						<reference key="parent" ref="303421369"/>
+						<string key="objectName">Clock Icon</string>
 					</object>
 				</object>
 			</object>
@@ -308,10 +324,10 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDh4AAwZAAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDgIAAwYAAAA</bytes>
 					</object>
 					<string>HeaderTableViewCell</string>
-					<string>{{444, 420}, {320, 25}}</string>
+					<string>{{118, 630}, {320, 25}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -339,7 +355,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">19</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -371,6 +387,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>avatarImage</string>
+							<string>clockIcon</string>
 							<string>locationLabel</string>
 							<string>nameLabel</string>
 							<string>timeLabel</string>
@@ -378,6 +395,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>EGOImageView</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
@@ -388,6 +406,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>avatarImage</string>
+							<string>clockIcon</string>
 							<string>locationLabel</string>
 							<string>nameLabel</string>
 							<string>timeLabel</string>
@@ -397,6 +416,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">avatarImage</string>
 								<string key="candidateClassName">EGOImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">clockIcon</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">locationLabel</string>

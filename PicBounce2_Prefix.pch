@@ -7,4 +7,5 @@
     #import <UIKit/UIKit.h>
 #endif
 
-#define API_BASE @"localhost:3000"
+//#define API_BASE @"localhost:3000"
+#define API_BASE @"10.1.255.60:3000"

@@ -57,13 +57,19 @@
     
     NSString *dateString = nil;
     
-    if (ago < 3600) {  // < 1 hr ago
+	if (ago < 60) {  // < 1 hr ago
+		  dateString = @"Now";
+	  }
+    else if (ago < 3600) {  // < 1 hr ago
       dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 60)] stringByAppendingString:@" m"];
     } else if (ago < 3600 * 24) { // < 24 hr ago
-      dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 3600)] stringByAppendingString:@"h ago"];
+      dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 3600)] stringByAppendingString:@" h"];
     }
-    else if (ago < 3600 * 24 * 7 * 1000) {  // < 7 days
-      dateString = [[NSString stringWithFormat:@"%d", (int)(ago / (24*3600))]stringByAppendingString:@" day"];
+    else if (ago < 3600 * 24 * 2) {  // < 2 days
+		dateString = [[NSString stringWithFormat:@"%d", (int)(ago / (24*3600))]stringByAppendingString:@" day"];
+    }
+    else if (ago < 3600 * 24 * 7000) {  // < 7000 days
+		dateString = [[NSString stringWithFormat:@"%d", (int)(ago / (24*3600))]stringByAppendingString:@" days"];
     }
     return dateString;
   }

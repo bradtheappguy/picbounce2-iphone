@@ -21,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
   
-  feedViewController.url = [NSURL URLWithString:@"http://localhost:3000/users/bradsmithinc/feed"];
+  feedViewController.url = [NSURL URLWithString:@"http://10.1.255.60:3000/users/bradsmithinc/feed"];
   
   feedViewController.shouldShowProfileHeader = NO;
   profileViewController.shouldShowProfileHeader = YES;
