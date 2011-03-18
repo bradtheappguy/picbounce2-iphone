@@ -44,7 +44,8 @@
 -(void) awakeFromNib {
   followersScrollView.backgroundColor = [UIColor clearColor];
  for (int c=0; c<30; c++) {
-   UIView *view = [[EGOImageButton alloc] initWithPlaceholderImage:nil];
+    UIView *view = [[EGOImageButton alloc] initWithPlaceholderImage:nil];
+     [self.avatarImageView setPlaceholderImage:[UIImage imageNamed:@"icon_avatar.png"]];
    view.frame = CGRectMake(0, 0, 20, 20);
    view.backgroundColor = [UIColor darkGrayColor];
    view.layer.cornerRadius = 0;
