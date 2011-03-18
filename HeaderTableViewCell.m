@@ -24,7 +24,7 @@
 	//Float the clock icon to the left of the time label
 	CGSize textSize = [timeLabel.text sizeWithFont:timeLabel.font];	
 	CGFloat x = self.frame.size.width - textSize.width;
-	clockIcon.center = CGPointMake(x - (clockIcon.frame.size.width/2) - kSpacingBetweenClockIconAndTimeLabel, clockIcon.center.y);
+	clockIcon.center = CGPointMake(x - (clockIcon.frame.size.width) - kSpacingBetweenClockIconAndTimeLabel, clockIcon.center.y);
 	
 	//Float the location label to the right of the name label
 	CGSize nameTextSize = [nameLabel.text sizeWithFont:nameLabel.font];
