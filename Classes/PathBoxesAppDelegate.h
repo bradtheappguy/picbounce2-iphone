@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PBProfileViewController.h"
+#import "PBStreamViewController.h"
 
 @interface PathBoxesAppDelegate : NSObject <UIApplicationDelegate> {
   UIWindow *window;
   UITabBarController *tabBarController;
   
-  IBOutlet PBProfileViewController *feedViewController;
-  IBOutlet PBProfileViewController *profileViewController;
+  IBOutlet PBStreamViewController *feedViewController;
+  IBOutlet PBStreamViewController *profileViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

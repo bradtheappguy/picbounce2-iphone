@@ -1,9 +1,9 @@
 //
-//  EGORefreshTableHeaderView.h
-//  Demo
+//  RootViewController.h
+//  TableViewPull
 //
-//  Created by Devin Doty on 10/14/09October14.
-//  Copyright 2009 enormego. All rights reserved.
+//  Created by Devin Doty on 10/16/09October16.
+//  Copyright enormego 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,29 +24,31 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
+#import "ASIHTTPRequest.h"
+#import "SBJSON.h"
+#import "PBAPIResponce.h"
 
-
-typedef enum {
-	EGOOPullRefreshPulling = 0,
-	EGOOPullRefreshNormal,
-	EGOOPullRefreshLoading,	
-} EGOPullRefreshState;
-
-
-@interface EGORefreshTableHeaderView : UIView {	
-	UILabel *lastUpdatedLabel;
-	UILabel *statusLabel;
-	CALayer *arrowImage;
-	UIActivityIndicatorView *activityView;
-	EGOPullRefreshState _state;
+@class EGORefreshTableHeaderView;
+@interface PBRootViewController : UITableViewController  <UITableViewDelegate, UITableViewDataSource>{
+	EGORefreshTableHeaderView *refreshHeaderView;
+	
+	//  Reloading should really be your tableviews model class
+	//  Putting it here for demo purposes 
+	BOOL _reloading;
+    NSMutableArray *data;
+  
+  PBAPIResponce *responceData;
+  
+  
+  NSURL *url;
+  
+  NSURL *loadMoreDataURL;
+  
+  ASIHTTPRequest *request;
 }
+@property(nonatomic, retain)  NSURL *url;
+@property(assign,getter=isReloading) BOOL reloading;
 
-
-@property(nonatomic,assign) EGOPullRefreshState state;
-
-- (void)setCurrentDate;
-- (void)setState:(EGOPullRefreshState)aState;
-
+- (void)reloadTableViewDataSource;
+- (void)doneLoadingTableViewData;
 @end

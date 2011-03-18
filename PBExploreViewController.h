@@ -7,12 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "PBProfileViewController.h"
+#import "PBStreamViewController.h"
 
 @interface PBExploreViewController : UIViewController {
-  IBOutlet PBProfileViewController *firstViewController;
-  IBOutlet PBProfileViewController *secondViewController;
-  IBOutlet PBProfileViewController *thirdViewController;
+  IBOutlet PBStreamViewController *firstViewController;
+  IBOutlet PBStreamViewController *secondViewController;
+  IBOutlet PBStreamViewController *thirdViewController;
 }
 
 -(IBAction) segmentedControlValueDidChange:(id)sender;

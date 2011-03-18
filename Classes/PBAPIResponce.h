@@ -12,12 +12,17 @@
 @interface PBAPIResponce : NSObject {
   id data;
   
+  NSMutableArray *user;
   NSMutableArray *photos;
   NSMutableArray *people;
+  NSString *url;
+  NSString *next;
 }
 
+- (BOOL) validate:(id)data;
 - (NSDictionary *) photoAtIndex:(NSUInteger) index;
-- (NSArray *) photos;
+- (NSMutableArray *) photos;
 - (NSUInteger) numberOfPeople;
+- (void) mergeNewResponceData:(id)json_string;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "VenueViewController.h"
-#import "MyTableViewCell.h"
+#import "PBTableViewCell.h"
 #import "ASIDownloadCache.h"
 #import "MyTableViewController.h"
 
@@ -102,9 +102,9 @@
   
   static NSString *CellIdentifier = @"Cell";
   
-  MyTableViewCell *cell = nil;// = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  PBTableViewCell *cell = nil;// = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    cell = [[[MyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    cell = [[[PBTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     
     cell.tableView = self.tableView;
   }

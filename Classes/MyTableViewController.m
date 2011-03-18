@@ -7,7 +7,7 @@
 //
 
 #import "MyTableViewController.h"
-#import "MyTableViewCell.h"
+#import "PBTableViewCell.h"
 #import "ASIDownloadCache.h"
 @implementation MyTableViewController
 
@@ -29,15 +29,15 @@
 }
 
 -(void) loadFromCache {
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://API_BASE/api/popular"] 
+    ASIHTTPRequest *_request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://API_BASE/api/popular"] 
                                                   usingCache:[ASIDownloadCache sharedCache]
                                               andCachePolicy:ASIOnlyLoadIfNotCachedCachePolicy];
-    [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-    [request setDelegate:self];
-    [request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
-  [request setDidFailSelector:@selector(requestDidFail:)];
-    [request startAsynchronous];
-   [request retain];
+    [_request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+    [_request setDelegate:self];
+    [_request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
+  [_request setDidFailSelector:@selector(requestDidFail:)];
+    [_request startAsynchronous];
+   [_request retain];
 }
 
    -(void) requestDidFail {
@@ -103,9 +103,9 @@
   
   static NSString *CellIdentifier = @"Cell";
     
-  MyTableViewCell *cell = nil;// = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  PBTableViewCell *cell = nil;// = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[MyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[PBTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       
       cell.tableView = self.tableView;
     }

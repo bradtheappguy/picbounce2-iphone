@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "RootViewController.h"
+#import "PBRootViewController.h"
 
-@interface MyTableViewController : RootViewController {
+@interface MyTableViewController : PBRootViewController {
 
   
   BOOL showProfileHeader;
@@ -20,6 +20,7 @@
 
 
 -(void) loadMockData;
+-(void) loadFromCache;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *headerCell;
 

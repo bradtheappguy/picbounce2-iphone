@@ -5,13 +5,13 @@
 //  Copyright 2011 Clixtr. All rights reserved.
 //
 
-#import "PBProfileViewController.h"
+#import "PBStreamViewController.h"
+#import "ASIFormDataRequest.h"
 #import <QuartzCore/QuartzCore.h>
-
 #define CELL_PADDING 15
 
 
-@implementation PBProfileViewController
+@implementation PBStreamViewController
 
 @synthesize shouldShowProfileHeader;
 @synthesize shouldShowProfileHeaderBeforeNetworkLoad;
@@ -76,7 +76,7 @@
       return 35;
     }
   }
-  return [PhotoCell height] + CELL_PADDING;
+  return [PBPhotoCell height] + CELL_PADDING;
   
 }
 
@@ -160,7 +160,7 @@
   
   static NSString *MyIdentifier = @"CELL";
   
-  ProfileHeaderCell *_cell = (ProfileHeaderCell *) [self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+  PBProfileHeaderCell *_cell = (PBProfileHeaderCell *) [self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
   if (_cell == nil) {
     [[NSBundle mainBundle] loadNibNamed:@"ProfileHeaderCell" owner:self options:nil];
     _cell = cell;
@@ -223,7 +223,7 @@
   
   static NSString *MyIdentifier = @"CELL";
   
-  PhotoCell *_cell = (PhotoCell *)[self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+  PBPhotoCell *_cell = (PBPhotoCell *)[self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
   if (_cell == nil) {
     [[NSBundle mainBundle] loadNibNamed:@"PhotoCell" owner:self options:nil];
     _cell = cell;
@@ -239,6 +239,8 @@
   _cell.commentCountLabel.text = [NSString stringWithFormat:@"View all %d comments",50];
   if (![caption isEqual:[NSNull null]])
     _cell.commentLabel.text = caption;
+  else
+    _cell.commentLabel.text = @"";
   return cell;  
 }
 
@@ -376,9 +378,9 @@
 }
 
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
-  HeaderTableViewCell *view = (HeaderTableViewCell *)sender.view;
+  PBHeaderTableViewCell *view = (PBHeaderTableViewCell *)sender.view;
   
-  PBProfileViewController *new = [[PBProfileViewController alloc] init];
+  PBStreamViewController *new = [[PBStreamViewController alloc] init];
   new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/%@/profile",API_BASE,view.nameLabel.text]];
   
   
@@ -399,7 +401,7 @@
 }
 
 -(IBAction) followingButtonPressed { 
-  NSURL *followingURL = [responceData followersURL];
+  NSURL *followingURL = [responceData followingURL];
   if (followingURL) {
     PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
     vc.url = followingURL;
@@ -409,9 +411,13 @@
 }
 
 -(IBAction) followersButtonPressed {
-  PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
-  [self.navigationController pushViewController:vc animated:YES];
-  [vc release];  
+  NSURL *followersURL = [responceData followersURL];
+  if (followersURL) {
+    PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
+    vc.url = followersURL;
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release]; 
+  }  
 }
 
 -(IBAction) badgesButtonPressed {
@@ -420,8 +426,15 @@
   [vc release];
 }
 
+
+//Follow 
 -(IBAction) followButtonPressed:(UIButton *) sender {
-  [sender setTitle:@"Following" forState:UIControlStateNormal];
+ /* 
+  
+  ASIFormDataRequest *followRequest = [ASIFormDataRequest requestWithURL:[responceData followUserURLForUser]];
+  followRequest.requestMethod = @"POST";
+  [followRequest setPostValue:@"1" forKey:@"id"];
+  [followRequest startAsynchronous];*/
 }
 
 -(IBAction) bounceButtonPressed:(id) sender {

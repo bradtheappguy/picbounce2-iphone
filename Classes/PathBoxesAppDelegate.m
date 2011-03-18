@@ -7,8 +7,8 @@
 //
 
 #import "PathBoxesAppDelegate.h"
-#import "ExpandingPhotoView.h"
-#import "ContainerView.h"
+#import "PBExpandingPhotoView.h"
+#import "PBContainerView.h"
 @implementation PathBoxesAppDelegate
 
 @synthesize window;
@@ -21,15 +21,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
   
-feedViewController.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/bradsmithinc/feed",API_BASE]];
+
+  feedViewController.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/bradsmithinc/feed",API_BASE]];
   
   feedViewController.shouldShowProfileHeader = NO;
   profileViewController.shouldShowProfileHeader = YES;
   
-  ContainerView *container = [[ContainerView alloc] initWithFrame:window.frame];
+  PBContainerView *container = [[PBContainerView alloc] initWithFrame:window.frame];
   container.backgroundColor = [UIColor colorWithRed:0.945 green:0.933 blue:0.941 alpha:1.0];
-  ExpandingPhotoView *view1 = [[ExpandingPhotoView alloc] initWithFrame:CGRectMake(0, 40, 320, 100)];
-  ExpandingPhotoView *view2 = [[ExpandingPhotoView alloc] initWithFrame:CGRectMake(0, 100+40+40, 320, 100)]; 
+  PBExpandingPhotoView *view1 = [[PBExpandingPhotoView alloc] initWithFrame:CGRectMake(0, 40, 320, 100)];
+  PBExpandingPhotoView *view2 = [[PBExpandingPhotoView alloc] initWithFrame:CGRectMake(0, 100+40+40, 320, 100)]; 
   // Override point for customization after application launch.
   
   [container addSubview:view1];

@@ -7,23 +7,23 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "RootViewController.h"
-#import "ProfileHeaderCell.h"
-#import "HeaderTableViewCell.h"
-#import "PhotoCell.h"
+#import "PBRootViewController.h"
+#import "PBProfileHeaderCell.h"
+#import "PBHeaderTableViewCell.h"
+#import "PBPhotoCell.h"
 #import "PBPersonListViewController.h"
 #import "PBBadgeCollectionViewController.h"
-#import "TableTitleTableViewCell.h"
+#import "PBTableTitleTableViewCell.h"
 
-@interface PBProfileViewController : RootViewController {
+@interface PBStreamViewController : PBRootViewController <UINavigationControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UISegmentedControl *segmentedControl;
   
-  IBOutlet ProfileHeaderCell *headerCell;
-  IBOutlet HeaderTableViewCell *headerTableViewCell;
-  IBOutlet TableTitleTableViewCell *tableTitleTableViewCell;
+  IBOutlet PBProfileHeaderCell *headerCell;
+  IBOutlet PBHeaderTableViewCell *headerTableViewCell;
+  IBOutlet PBTableTitleTableViewCell *tableTitleTableViewCell;
   
   
-  IBOutlet PhotoCell *cell;
+  IBOutlet PBPhotoCell *cell;
   
   BOOL shouldShowProfileHeader;
   BOOL shouldShowProfileHeaderBeforeNetworkLoad;

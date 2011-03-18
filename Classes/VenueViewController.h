@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "RootViewController.h"
+#import "PBRootViewController.h"
 
 
-@interface VenueViewController : RootViewController {
+@interface VenueViewController : PBRootViewController {
   
   BOOL showProfileHeader;
   

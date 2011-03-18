@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootViewController.h"
+#import "PBRootViewController.h"
 
-@interface PBPersonListViewController : RootViewController {
+@interface PBPersonListViewController : PBRootViewController {
 
 }
 

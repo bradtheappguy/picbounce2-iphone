@@ -12,20 +12,43 @@
 @implementation PBAPIResponce
 
 -(id) initWithResponceData:(id)json_string {
-  if (self = [super init]) {
-    data = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
-    [data retain];
-  }
-  return self;
+    if (self = [super init]) {
+        data = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
+        [data retain];
+        if ([self validate:data]) {
+          photos = [[data objectForKey:@"responce"] objectForKey:@"photos"];
+          people = [[data objectForKey:@"responce"] objectForKey:@"people"];
+          user = [[data objectForKey:@"responce"] objectForKey:@"user"];
+          url = [[data objectForKey:@"responce"] objectForKey:@"url"];
+          next = [[data objectForKey:@"responce"] objectForKey:@"next"];
+        }
+    }
+    return self;
 }
 
+-(BOOL) validate:(id)_data {
+    if (![[_data class] isSubclassOfClass:[NSDictionary class]]) {
+        return NO;
+    }
+  return YES;
+}
+
+
 -(void) mergeNewResponceData:(id)json_string {
-  id photos = [self photos];
-  photos = [[NSMutableArray alloc] initWithArray:photos];
+ // id _photos = [[NSMutableArray alloc] initWithArray:[self photos]];
   
   SBJSON *newData = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
-  NSArray *newPhotos = [newData objectForKey:@"photos"];
-  [[self photos] addObjectsFromArray:newPhotos];
+  [newData retain];
+  if ([self validate:newData]) {
+    NSMutableArray *newPhotos = [[newData objectForKey:@"responce"] objectForKey:@"photos"];
+    NSMutableArray *newPeople = [[newData objectForKey:@"responce"] objectForKey:@"people"];
+    [photos addObjectsFromArray:newPhotos];
+    [people addObjectsFromArray:newPeople];
+    user = [[newData objectForKey:@"responce"] objectForKey:@"user"];
+    url = [[newData objectForKey:@"responce"] objectForKey:@"url"];
+    next = [[newData objectForKey:@"responce"] objectForKey:@"next"];
+  }
+  
 }
 
 -(NSUInteger) followingCount {
@@ -76,7 +99,7 @@
   return @"X";
 }
 
--(NSArray *) photos {
+-(NSMutableArray *) photos {
  if (!photos) {
    if ([data isKindOfClass:[NSDictionary class]]) {
      if ([data objectForKey:@"user"]) {
@@ -111,14 +134,7 @@
 
 
 -(NSString *) loadMoreDataURL {
-  id x = [data objectForKey:@"user"];
-  if (x) {
-    id y = [x objectForKey:@"more_photos_url"];
-    if (y) {
-      return y;
-    }
-  }
-  return nil;
+  return next;
 }
 
 - (NSDictionary *) photoAtIndex:(NSUInteger) index {
@@ -152,15 +168,29 @@
   return name;
 }
 
--(NSURL *) followersURL {
-  id x = [data objectForKey:@"user"];
-  if (x) {
-    id y = [x objectForKey:@"followers_url"];
+- (NSURL *) followersURL {
+  id x = user;
+  if (x) { 
+    id y = [x objectForKey:@"followers_url"]; 
     if (y) {
       return [NSURL URLWithString:y];
     }
   }
   return nil;
 }
-                    
+
+-(NSURL *) followingURL {
+  id x = user;
+  if (x) { 
+    id y = [x objectForKey:@"following_url"]; 
+    if (y) {
+      return [NSURL URLWithString:y];
+    }
+  }
+  return nil;
+}
+    
+-(NSURL *)followUserURLForUser {
+  return [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/me/following",API_BASE]];
+}
 @end
