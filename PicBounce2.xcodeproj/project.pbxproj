@@ -96,7 +96,6 @@
 		A235790413271107008D31A2 /* dino.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A235790313271107008D31A2 /* dino.jpg */; };
 		A24259D212949C2300EBC83A /* PBExpandingPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A24259D112949C2300EBC83A /* PBExpandingPhotoView.m */; };
 		A2425A0B1294A1F700EBC83A /* PBContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2425A0A1294A1F700EBC83A /* PBContainerView.m */; };
-		A26E720A1334239200BD737D /* ProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26E72091334239200BD737D /* ProfileHeaderCell.xib */; };
 		A26E720D1334244E00BD737D /* PBHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A26E720C1334244E00BD737D /* PBHeaderTableViewCell.m */; };
 		A26E72131334274A00BD737D /* comment_bubble_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A26E720E1334274500BD737D /* comment_bubble_box@2x.png */; };
 		A26E72141334274A00BD737D /* Wrath.png in Resources */ = {isa = PBXBuildFile; fileRef = A26E720F1334274600BD737D /* Wrath.png */; };
@@ -276,7 +275,6 @@
 		A24259D112949C2300EBC83A /* PBExpandingPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBExpandingPhotoView.m; sourceTree = "<group>"; };
 		A2425A091294A1F700EBC83A /* PBContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBContainerView.h; sourceTree = "<group>"; };
 		A2425A0A1294A1F700EBC83A /* PBContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBContainerView.m; sourceTree = "<group>"; };
-		A26E72091334239200BD737D /* ProfileHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileHeaderCell.xib; path = ../../PicBounce2/Classes/ProfileHeaderCell.xib; sourceTree = "<group>"; };
 		A26E720B1334243800BD737D /* PBHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBHeaderTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		A26E720C1334244E00BD737D /* PBHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBHeaderTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		A26E720E1334274500BD737D /* comment_bubble_box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment_bubble_box@2x.png"; path = "ArtAssets/comment_bubble_box@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -425,7 +423,6 @@
 				A26E72121334274900BD737D /* btn_follow_alt_up@2x.png */,
 				A26E720C1334244E00BD737D /* PBHeaderTableViewCell.m */,
 				A26E720B1334243800BD737D /* PBHeaderTableViewCell.h */,
-				A26E72091334239200BD737D /* ProfileHeaderCell.xib */,
 				A205F0931312C56F003756CA /* PBTabBar.m */,
 				A205F0941312C56F003756CA /* PBTabBar.h */,
 				A205F0961312C579003756CA /* PBTabBarController.h */,
@@ -925,7 +922,6 @@
 				A235790413271107008D31A2 /* dino.jpg in Resources */,
 				E7010CB213341DA60094FAA0 /* icon_avatar.png in Resources */,
 				E7010CB313341DA60094FAA0 /* icon_avatar@2x.png in Resources */,
-				A26E720A1334239200BD737D /* ProfileHeaderCell.xib in Resources */,
 				A26E72131334274A00BD737D /* comment_bubble_box@2x.png in Resources */,
 				A26E72141334274A00BD737D /* Wrath.png in Resources */,
 				A26E72151334274A00BD737D /* Wrath.acorn in Resources */,

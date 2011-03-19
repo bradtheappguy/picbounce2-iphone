@@ -156,6 +156,14 @@
   }
 
   
+    
+    
+    id photo = [responceData photoAtIndex:indexPath.section];
+  
+   
+    NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
+    
+    
   
   
   static NSString *MyIdentifier = @"CELL";
@@ -171,6 +179,8 @@
   [_cell.avatarIcon addGestureRecognizer:tapRecoginizer];
   
   profileAvatarImageView = _cell.avatarIcon;
+    
+    
 //  if (shouldShowProfileHeaderBeforeNetworkLoad && ([data count] < 1)) {
   if (preloadedName) {
     _cell.followersCountLabel.text = @"";
@@ -182,7 +192,7 @@
     _cell.avatarIcon.imageURL = preloadedAvatarURL;
     _cell.avatarIcon.backgroundColor = [UIColor redColor];
     if (YES) {
-      NSString *url = [[[userData objectForKey:@"photos"] objectAtIndex:0] objectForKey:@"twitter_avatar_url"];
+        NSString *url = avatarURL;
       if (![url isEqual:[NSNull null]]) {
         _cell.avatarIcon.imageURL = [NSURL URLWithString:url];
       }
