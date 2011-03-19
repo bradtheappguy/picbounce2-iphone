@@ -76,7 +76,7 @@
   
   UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
   if (cell == nil) {
-    [[NSBundle mainBundle] loadNibNamed:@"HeaderTableViewCell" owner:self options:nil];
+    [[NSBundle mainBundle] loadNibNamed:@"PBHeaderTableViewCell" owner:self options:nil];
     cell = headerCell;
     self.headerCell = nil;
   }

@@ -116,7 +116,7 @@
   if (section == 0) {
     return nil;
   }
-  [[NSBundle mainBundle] loadNibNamed:@"HeaderTableViewCell" owner:self options:nil];
+  [[NSBundle mainBundle] loadNibNamed:@"PBHeaderTableViewCell" owner:self options:nil];
   
  
   id photo = [responceData photoAtIndex:section-1];

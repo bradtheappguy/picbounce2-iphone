@@ -103,6 +103,7 @@
 		A26E72151334274A00BD737D /* Wrath.acorn in Resources */ = {isa = PBXBuildFile; fileRef = A26E72101334274700BD737D /* Wrath.acorn */; };
 		A26E72161334274A00BD737D /* containter_profile_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A26E72111334274700BD737D /* containter_profile_header@2x.png */; };
 		A26E72171334274A00BD737D /* btn_follow_alt_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A26E72121334274900BD737D /* btn_follow_alt_up@2x.png */; };
+		A26E721B133431C800BD737D /* PBHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26E721A133431B700BD737D /* PBHeaderTableViewCell.xib */; };
 		A273CA21130AEBDC003FE8DA /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A273C973130AEBDC003FE8DA /* ASIAuthenticationDialog.m */; };
 		A273CA22130AEBDC003FE8DA /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = A273C976130AEBDC003FE8DA /* ASIDataCompressor.m */; };
 		A273CA23130AEBDC003FE8DA /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = A273C978130AEBDC003FE8DA /* ASIDataDecompressor.m */; };
@@ -283,6 +284,7 @@
 		A26E72101334274700BD737D /* Wrath.acorn */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wrath.acorn; sourceTree = SOURCE_ROOT; };
 		A26E72111334274700BD737D /* containter_profile_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "containter_profile_header@2x.png"; sourceTree = SOURCE_ROOT; };
 		A26E72121334274900BD737D /* btn_follow_alt_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_follow_alt_up@2x.png"; sourceTree = SOURCE_ROOT; };
+		A26E721A133431B700BD737D /* PBHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		A273C972130AEBDC003FE8DA /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		A273C973130AEBDC003FE8DA /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		A273C974130AEBDC003FE8DA /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A26E721A133431B700BD737D /* PBHeaderTableViewCell.xib */,
 				A26E720E1334274500BD737D /* comment_bubble_box@2x.png */,
 				A26E720F1334274600BD737D /* Wrath.png */,
 				A26E72101334274700BD737D /* Wrath.acorn */,
@@ -928,6 +931,7 @@
 				A26E72151334274A00BD737D /* Wrath.acorn in Resources */,
 				A26E72161334274A00BD737D /* containter_profile_header@2x.png in Resources */,
 				A26E72171334274A00BD737D /* btn_follow_alt_up@2x.png in Resources */,
+				A26E721B133431C800BD737D /* PBHeaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
