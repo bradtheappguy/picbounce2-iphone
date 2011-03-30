@@ -167,12 +167,12 @@
 		A2CF0331130473EA004362AA /* bg_section_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2CF0330130473EA004362AA /* bg_section_header@2x.png */; };
 		A2D2A4AE133D318400013C8D /* bg_green_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D2A4AD133D318400013C8D /* bg_green_btn@2x.png */; };
 		A2D2A4B0133D363700013C8D /* greenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D2A4AF133D363700013C8D /* greenButton.png */; };
+		A2E415F81343EE3F000D9CFA /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */; };
 		A2F263FD1315940200F4E0A0 /* ProfileHeaderCell-old1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F263FC1315940200F4E0A0 /* ProfileHeaderCell-old1.xib */; };
 		A2F2663B1315C04B00F4E0A0 /* TableTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F2663A1315C04B00F4E0A0 /* TableTitleTableViewCell.xib */; };
 		A2F2663F1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F2663D1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m */; };
 		A2F67324133E86F900A4B87B /* feed-bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F67323133E86F900A4B87B /* feed-bubble@2x.png */; };
 		A2F67380133EF79000A4B87B /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F6737F133EF79000A4B87B /* bg@2x.png */; };
-		A2F88BC2133DE0C100DA7EE7 /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F88BBF133DE0C000DA7EE7 /* HPTextViewInternal.m */; };
 		A2F88BC4133DE5D100DA7EE7 /* msg_bar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F88BC3133DE5D100DA7EE7 /* msg_bar_bg@2x.png */; };
 		A2FD90D6134051DA0091A1E3 /* btn_StrechableBlueBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2FD90D5134051DA0091A1E3 /* btn_StrechableBlueBubble@2x.png */; };
 		E7010CB213341DA60094FAA0 /* icon_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = E7010CB013341DA60094FAA0 /* icon_avatar.png */; };
@@ -411,14 +411,14 @@
 		A2CF0330130473EA004362AA /* bg_section_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_section_header@2x.png"; sourceTree = "<group>"; };
 		A2D2A4AD133D318400013C8D /* bg_green_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_green_btn@2x.png"; sourceTree = "<group>"; };
 		A2D2A4AF133D363700013C8D /* greenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenButton.png; sourceTree = "<group>"; };
+		A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
+		A2E415F71343EE3F000D9CFA /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
 		A2F263FC1315940200F4E0A0 /* ProfileHeaderCell-old1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "ProfileHeaderCell-old1.xib"; sourceTree = "<group>"; };
 		A2F2663A1315C04B00F4E0A0 /* TableTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableTitleTableViewCell.xib; sourceTree = "<group>"; };
 		A2F2663D1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBTableTitleTableViewCell.m; path = ../PBTableTitleTableViewCell.m; sourceTree = "<group>"; };
 		A2F2663E1315C07C00F4E0A0 /* PBTableTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBTableTitleTableViewCell.h; path = ../PBTableTitleTableViewCell.h; sourceTree = "<group>"; };
 		A2F67323133E86F900A4B87B /* feed-bubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-bubble@2x.png"; sourceTree = "<group>"; };
 		A2F6737F133EF79000A4B87B /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
-		A2F88BBF133DE0C000DA7EE7 /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPTextViewInternal.m; path = "../../../Downloads/GrowingTextView 2/example/Classes/HPTextViewInternal.m"; sourceTree = "<group>"; };
-		A2F88BC0133DE0C000DA7EE7 /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPTextViewInternal.h; path = "../../../Downloads/GrowingTextView 2/example/Classes/HPTextViewInternal.h"; sourceTree = "<group>"; };
 		A2F88BC3133DE5D100DA7EE7 /* msg_bar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg_bar_bg@2x.png"; sourceTree = "<group>"; };
 		A2FD90D5134051DA0091A1E3 /* btn_StrechableBlueBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_StrechableBlueBubble@2x.png"; sourceTree = "<group>"; };
 		E7010CB013341DA60094FAA0 /* icon_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_avatar.png; sourceTree = "<group>"; };
@@ -654,10 +654,10 @@
 		A2363F38133F0E7E00F76FFD /* Comments */ = {
 			isa = PBXGroup;
 			children = (
+				A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */,
+				A2E415F71343EE3F000D9CFA /* HPTextViewInternal.h */,
 				A222282F133F075E00239E0F /* MyView.m */,
 				A2222830133F075E00239E0F /* MyView.h */,
-				A2F88BBF133DE0C000DA7EE7 /* HPTextViewInternal.m */,
-				A2F88BC0133DE0C000DA7EE7 /* HPTextViewInternal.h */,
 				A231BF931316F62800AE9F71 /* PBCommentListViewController.h */,
 				A231BF941316F62800AE9F71 /* PBCommentListViewController.m */,
 				A231BF951316F62800AE9F71 /* PBCommentListViewController.xib */,
@@ -1081,8 +1081,8 @@
 				A26E720D1334244E00BD737D /* PBHeaderTableViewCell.m in Sources */,
 				A25D4D82133D6BE6006D9BE6 /* test.m in Sources */,
 				A25D4D8E133D7EEF006D9BE6 /* btn_post.m in Sources */,
-				A2F88BC2133DE0C100DA7EE7 /* HPTextViewInternal.m in Sources */,
 				A2222831133F075E00239E0F /* MyView.m in Sources */,
+				A2E415F81343EE3F000D9CFA /* HPTextViewInternal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
