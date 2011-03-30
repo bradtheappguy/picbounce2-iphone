@@ -87,13 +87,15 @@
 }
 
 - (void)networkLoadDidFail:(ASIHTTPRequest *) request {  
- /* MBProgressHUD *errorHud = [[MBProgressHUD alloc] initWithView:self.tableView];
+  MBProgressHUD *errorHud = [[MBProgressHUD alloc] initWithView:self.tableView];
   [self.view addSubview:errorHud];
-  errorHud.labelText = @"AHHH";
-  [errorHud showUsingAnimation:YES];*/
-  UIAlertView *a = [[UIAlertView alloc] initWithTitle:nil message:@"Error" delegate:nil cancelButtonTitle:@"k" otherButtonTitles:nil];
-  [a show];
-  [a release];
+  errorHud.labelText = @"Error";
+  [errorHud showUsingAnimation:YES];
+  
+  [errorHud performSelector:@selector(hideUsingAnimation:) withObject:self afterDelay:2.0];
+ // UIAlertView *a = [[UIAlertView alloc] initWithTitle:nil message:@"Error" delegate:nil cancelButtonTitle:@"k" otherButtonTitles:nil];
+ // [a show];
+ // [a release];
   
 	[self dataSourceDidFinishLoadingNewData];
 }

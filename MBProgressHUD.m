@@ -138,7 +138,7 @@
         [(UIActivityIndicatorView *)indicator startAnimating];
     }
 
-    [self addSubview:indicator];
+   // [self addSubview:indicator];
 }
 
 #pragma mark -

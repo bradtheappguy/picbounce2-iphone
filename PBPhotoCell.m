@@ -71,6 +71,7 @@
 -(void) commentView1Tapped:(id)sender {
   self.tableViewController.title = @"Back";
   PBCommentListViewController *commentViewController = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
+  commentViewController.hidesBottomBarWhenPushed = YES;
   [self.tableViewController.navigationController pushViewController:commentViewController animated:YES];
   [commentViewController release];
 }

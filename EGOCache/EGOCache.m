@@ -3,11 +3,25 @@
 //  enormego
 //
 //  Created by Shaun Harrison on 7/4/09.
-//  Copyright 2009 enormego. All rights reserved.
+//  Copyright (c) 2009-2010 enormego
 //
-//  This work is licensed under the Creative Commons GNU General Public License License.
-//  To view a copy of this license, visit http://creativecommons.org/licenses/GPL/2.0/
-//  or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 
 #import "EGOCache.h"
@@ -26,12 +40,8 @@ static NSString* _EGOCacheDirectory;
 
 static inline NSString* EGOCacheDirectory() {
 	if(!_EGOCacheDirectory) {
-#ifdef TARGET_OS_IPHONE
-		_EGOCacheDirectory = [[NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/EGOCache"] copy];
-#else
-		NSString* appSupportDir = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-		_EGOCacheDirectory = [[[appSupportDir stringByAppendingPathComponent:[[NSProcessInfo processInfo] processName]] stringByAppendingPathComponent:@"EGOCache"] copy];
-#endif
+		NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+		_EGOCacheDirectory = [[[cachesDirectory stringByAppendingPathComponent:[[NSProcessInfo processInfo] processName]] stringByAppendingPathComponent:@"EGOCache"] copy];
 	}
 	
 	return _EGOCacheDirectory;
@@ -126,6 +136,19 @@ static EGOCache* __instance;
 	if([[[NSDate date] earlierDate:date] isEqualToDate:date]) return NO;
 	return [[NSFileManager defaultManager] fileExistsAtPath:cachePathForKey(key)];
 }
+
+#pragma mark -
+#pragma mark Copy file methods
+
+- (void)copyFilePath:(NSString*)filePath asKey:(NSString*)key {
+	[self copyFilePath:filePath asKey:key withTimeoutInterval:self.defaultTimeoutInterval];
+}
+
+- (void)copyFilePath:(NSString*)filePath asKey:(NSString*)key withTimeoutInterval:(NSTimeInterval)timeoutInterval {
+	[[NSFileManager defaultManager] copyItemAtPath:filePath toPath:cachePathForKey(key) error:NULL];
+	[cacheDictionary setObject:[NSDate dateWithTimeIntervalSinceNow:timeoutInterval] forKey:key];
+	[self performSelectorOnMainThread:@selector(saveAfterDelay) withObject:nil waitUntilDone:YES];
+}																												   
 
 #pragma mark -
 #pragma mark Data methods

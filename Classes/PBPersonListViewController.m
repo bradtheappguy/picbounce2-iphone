@@ -32,6 +32,10 @@
   return num;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 52;
+}
+  
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -41,24 +45,29 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+      cell.frame = CGRectMake(0, 0, self.view.frame.size.width, 52);
     }
     
-    // Configure the cell...
+  // Configure the cell...
     
-  UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-  image.backgroundColor = [UIColor lightGrayColor];
-  image.layer.cornerRadius = 4;
+  
+  
   cell.textLabel.text = [responceData usernameForPersonAtIndex:indexPath.row];
   cell.detailTextLabel.text = @"Lady Gaga";
   cell.imageView.image = [UIImage imageNamed:@"btn_smiley.png"];
-  EGOImageView *avatarImage = [[EGOImageView alloc] initWithFrame:CGRectMake(1, 1, 40, 40)];
+  
+  EGOImageView *avatarImage = [[EGOImageView alloc] initWithFrame:CGRectMake(7, 52/2-40/2, 40, 40)];
   
   avatarImage.imageURL = [NSURL URLWithString:@"http://a0.twimg.com/profile_images/1236631904/DSC07560_-_C_pia_-_C_pia_normal.JPG"];
   [cell.contentView addSubview:avatarImage];
   [avatarImage release];
   
   UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-  button.frame = CGRectMake(240, 5, 75, 30);
+  button.frame = CGRectMake(243, 52/2-24/2, 70, 24);
+ 
+  //UIImage *bg = [[UIImage imageNamed:@"bg_green_btn.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
+  
+  [button setBackgroundImage:[UIImage imageNamed:@"greenButton.png"] forState:UIControlStateNormal];
   [button setTitle:@"Follow" forState:UIControlStateNormal];
   [button addTarget:self action:@selector(followButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   [cell.contentView addSubview:button];
@@ -70,14 +79,7 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-    */
+//TODO
 }
 
 

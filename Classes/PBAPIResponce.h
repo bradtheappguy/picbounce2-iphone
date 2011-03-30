@@ -23,6 +23,7 @@
 - (NSDictionary *) photoAtIndex:(NSUInteger) index;
 - (NSMutableArray *) photos;
 - (NSUInteger) numberOfPeople;
+- (NSUInteger) numberOfPhotos;
 - (void) mergeNewResponceData:(id)json_string;
 
 @end

@@ -9,7 +9,7 @@
 #import "ASIFormDataRequest.h"
 #import <QuartzCore/QuartzCore.h>
 #define CELL_PADDING 15
-
+#import "PBCommentListViewController.h"
 
 @implementation PBStreamViewController
 
@@ -387,11 +387,20 @@
   [UIView commitAnimations];
 }
 
+
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
+  PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
+  vc.hidesBottomBarWhenPushed = YES;
+  [self.navigationController pushViewController:vc animated:YES];
+  
+  
+  return;
+  //TODO
+  //[self pushNewStreamViewControllerWithPerson:(NSString *)person];
   PBHeaderTableViewCell *view = (PBHeaderTableViewCell *)sender.view;
   
   PBStreamViewController *new = [[PBStreamViewController alloc] init];
-  new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/%@/profile",API_BASE,view.nameLabel.text]];
+  new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/%@/profile",API_BASE,view.nameLabel.text]];
   
   
   new.shouldShowProfileHeaderBeforeNetworkLoad = YES;

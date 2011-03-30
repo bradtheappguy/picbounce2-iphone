@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyView.h"
 
-
-@interface PBCommentListViewController : UITableViewController {
-  IBOutlet UITextField *textField;
-  IBOutlet UIView *textEntryView;
+@interface PBCommentListViewController : UIViewController {
+  
+  IBOutlet MyView *myView;
+  
+  IBOutlet UIScrollView *scrollView;
+  
+  CGFloat keyboardHeight;
+  
 }
 
 @end
