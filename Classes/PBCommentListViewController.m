@@ -52,23 +52,24 @@
     return 25;
 }
 
+- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 100;
+}
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+     
+  
+  
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+      cell = [[[NSBundle mainBundle] loadNibNamed:@"PBCommentCell" owner:self options:nil] objectAtIndex:0];
     }
     
 
   else {
-    cell.textLabel.text = @"Dr Dre.";
-    
-    cell.detailTextLabel.text = @"I am a comment";
-    cell.imageView.image = [UIImage imageNamed:@"btn_smiley.png"]; 
   }
 
   

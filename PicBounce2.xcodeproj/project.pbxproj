@@ -168,6 +168,7 @@
 		A2D2A4AE133D318400013C8D /* bg_green_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D2A4AD133D318400013C8D /* bg_green_btn@2x.png */; };
 		A2D2A4B0133D363700013C8D /* greenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D2A4AF133D363700013C8D /* greenButton.png */; };
 		A2E415F81343EE3F000D9CFA /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */; };
+		A2E415FA13441392000D9CFA /* PBCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2E415F913441392000D9CFA /* PBCommentCell.xib */; };
 		A2F263FD1315940200F4E0A0 /* ProfileHeaderCell-old1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F263FC1315940200F4E0A0 /* ProfileHeaderCell-old1.xib */; };
 		A2F2663B1315C04B00F4E0A0 /* TableTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F2663A1315C04B00F4E0A0 /* TableTitleTableViewCell.xib */; };
 		A2F2663F1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F2663D1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m */; };
@@ -413,6 +414,7 @@
 		A2D2A4AF133D363700013C8D /* greenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenButton.png; sourceTree = "<group>"; };
 		A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
 		A2E415F71343EE3F000D9CFA /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
+		A2E415F913441392000D9CFA /* PBCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBCommentCell.xib; sourceTree = "<group>"; };
 		A2F263FC1315940200F4E0A0 /* ProfileHeaderCell-old1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "ProfileHeaderCell-old1.xib"; sourceTree = "<group>"; };
 		A2F2663A1315C04B00F4E0A0 /* TableTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableTitleTableViewCell.xib; sourceTree = "<group>"; };
 		A2F2663D1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBTableTitleTableViewCell.m; path = ../PBTableTitleTableViewCell.m; sourceTree = "<group>"; };
@@ -661,6 +663,7 @@
 				A231BF931316F62800AE9F71 /* PBCommentListViewController.h */,
 				A231BF941316F62800AE9F71 /* PBCommentListViewController.m */,
 				A231BF951316F62800AE9F71 /* PBCommentListViewController.xib */,
+				A2E415F913441392000D9CFA /* PBCommentCell.xib */,
 			);
 			name = Comments;
 			sourceTree = "<group>";
@@ -1008,6 +1011,7 @@
 				A2F67324133E86F900A4B87B /* feed-bubble@2x.png in Resources */,
 				A2F67380133EF79000A4B87B /* bg@2x.png in Resources */,
 				A2FD90D6134051DA0091A1E3 /* btn_StrechableBlueBubble@2x.png in Resources */,
+				A2E415FA13441392000D9CFA /* PBCommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
