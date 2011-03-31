@@ -46,6 +46,12 @@
   textHeight = textView.contentSize.height;
       textView.scrollEnabled = NO;
   [textViewClipp addSubview:textView];
+    
+    //add the avatar
+    
+    UIView *avatar = [[UIView alloc] initWithFrame:CGRectMake(6, 5, 30, 30)];
+    avatar.backgroundColor = [UIColor blueColor];
+    [self addSubview:avatar];
   
 }
 
