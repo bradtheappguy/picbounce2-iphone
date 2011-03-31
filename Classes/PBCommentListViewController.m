@@ -23,26 +23,6 @@
   self.view.backgroundColor = [UIColor lightGrayColor];
 
   myView.scrollView = scrollView;
-  UIImage *image = [UIImage imageNamed:@"btn_StrechableBlueBubble.png"];
-  
-  
-
-  
-  
-  UIButton *postButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  postButton.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-  [postButton setBackgroundImage:image forState:UIControlStateNormal];
-  [postButton setTitleShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:.25] forState:UIControlStateNormal];
-  [postButton setFont:[UIFont boldSystemFontOfSize:16]];
-  [postButton setTitle:NSLocalizedString(@"Post", nil) forState:UIControlStateNormal];
-  postButton.backgroundColor  = [UIColor clearColor];
-  CGSize myOffset;
-  myOffset.width = 0.0f;
-  myOffset.height = -1.0f;
-  postButton.titleShadowOffset = myOffset;
-  postButton.center = CGPointMake(myView.frame.size.width - (postButton.frame.size.width / 2) - 6, 1 + (myView.frame.size.height/2));
-  [myView addSubview:postButton];
-  
 }
 
 

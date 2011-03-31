@@ -20,26 +20,26 @@
     }
     return self;
 }
-
+    
 - (void) awakeFromNib {
   numberOfLines = 1;
-  UIImage * bgImage = [[UIImage imageNamed:@"bg.png"] stretchableImageWithLeftCapWidth:159 topCapHeight:19];
+  UIImage * bgImage = [[UIImage imageNamed:@"bg.png"] stretchableImageWithLeftCapWidth:200 topCapHeight:22];
   self.image = bgImage;
   [self setContentMode:UIViewContentModeScaleToFill];
   self.clipsToBounds = YES;
   self.userInteractionEnabled = YES;
  
   
-  textViewClipp = [[UIView alloc] initWithFrame:CGRectMake(40, 8, 210, 26)];
+  textViewClipp = [[UIView alloc] initWithFrame:CGRectMake(48, 8, 265, 26)];
   textViewClipp.backgroundColor = [UIColor clearColor];
   textViewClipp.alpha = 1;
   
   [self addSubview:textViewClipp];
   
-  textView = [[HPTextViewInternal alloc] initWithFrame:CGRectMake(0, -4, 210, 36)];
+  textView = [[HPTextViewInternal alloc] initWithFrame:CGRectMake(0, -4, 265, 36)];
   textView.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
   textView.font = [UIFont systemFontOfSize:16];
-  textView.scrollIndicatorInsets = UIEdgeInsetsMake(11, 0, 13, 0);
+  textView.scrollIndicatorInsets = UIEdgeInsetsMake(3, 0, 5, 0);
   textView.backgroundColor = [UIColor clearColor];
   textView.delegate = self;
   textView.alpha = 1;
