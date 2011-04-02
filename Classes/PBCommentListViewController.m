@@ -21,8 +21,11 @@
   [super viewDidLoad];
   UIBarButtonItem *x = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
   self.view.backgroundColor = [UIColor lightGrayColor];
-
-  myView.scrollView = scrollView;
+  //  tableView.separatorStyle    = UITableViewCellSeparatorStyleSingleLine;
+  //    tableView.separatorStyle    = UITableViewCellSeparatorStyleSingleLineEtched;
+    tableView.separatorStyle    = UITableViewCellSeparatorStyleNone;
+    
+  myView.scrollView;
 }
 
 
@@ -53,7 +56,7 @@
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 150;
+  return 100;
 }
 
 // Customize the appearance of table view cells.
@@ -152,8 +155,8 @@
   CGRect keyboardFrame = [self.view convertRect:keyboardEndFrame toView:nil];
   
   myView.center = CGPointMake(myView.center.x, myView.center.y - 216);   
-  scrollView.contentInset = UIEdgeInsetsMake(0, 0, 216, 0);
-  scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 216, 0);
+  tableView.contentInset = UIEdgeInsetsMake(0, 0, 216, 0);
+  tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 216, 0);
   /*  CGPoint newOffset = tableView.contentOffset;
    newOffset.y += 216-50 * (up? 1 : -1);
    [tableView setContentOffset:newOffset animated:YES];

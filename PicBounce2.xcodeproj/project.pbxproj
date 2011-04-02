@@ -180,6 +180,7 @@
 		E7010CB313341DA60094FAA0 /* icon_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7010CB113341DA60094FAA0 /* icon_avatar@2x.png */; };
 		E71E93F11344277400620AB5 /* bg_com.png in Resources */ = {isa = PBXBuildFile; fileRef = E71E93EF1344277400620AB5 /* bg_com.png */; };
 		E71E93F21344277400620AB5 /* bg_com@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E71E93F01344277400620AB5 /* bg_com@2x.png */; };
+		E7E072761346C5E800B6758E /* avatar_holder.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E072751346C5E800B6758E /* avatar_holder.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -429,6 +430,7 @@
 		E7010CB113341DA60094FAA0 /* icon_avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_avatar@2x.png"; sourceTree = "<group>"; };
 		E71E93EF1344277400620AB5 /* bg_com.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_com.png; sourceTree = "<group>"; };
 		E71E93F01344277400620AB5 /* bg_com@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_com@2x.png"; sourceTree = "<group>"; };
+		E7E072751346C5E800B6758E /* avatar_holder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar_holder.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -644,6 +646,7 @@
 				A205F2711314299A003756CA /* btn_leavecomment_up@2x.png */,
 				A205F2721314299A003756CA /* container_image@2x.png */,
 				A205F2731314299A003756CA /* header_image@2x.png */,
+				E7E072751346C5E800B6758E /* avatar_holder.png */,
 				A205F2741314299A003756CA /* header_layer1@2x.png */,
 				A205F2751314299A003756CA /* header_layer2@2x.png */,
 				A205F2761314299A003756CA /* icon_location@2x.png */,
@@ -1020,6 +1023,7 @@
 				A2E415FA13441392000D9CFA /* PBCommentCell.xib in Resources */,
 				E71E93F11344277400620AB5 /* bg_com.png in Resources */,
 				E71E93F21344277400620AB5 /* bg_com@2x.png in Resources */,
+				E7E072761346C5E800B6758E /* avatar_holder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

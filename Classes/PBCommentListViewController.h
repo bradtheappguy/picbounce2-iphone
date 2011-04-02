@@ -13,7 +13,7 @@
   
   IBOutlet MyView *myView;
   
-  IBOutlet UIScrollView *scrollView;
+  IBOutlet UITableView *tableView;
   
   CGFloat keyboardHeight;
   
