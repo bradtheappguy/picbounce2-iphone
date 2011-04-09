@@ -12,7 +12,7 @@
 @implementation PBAPIResponce
 
 -(id) initWithResponceData:(id)json_string {
-    if (self = [super init]) {
+    if (self == [super init]) {
         data = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
         [data retain];
         if ([self validate:data]) {
@@ -40,13 +40,13 @@
   SBJSON *newData = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
   [newData retain];
   if ([self validate:newData]) {
-    NSMutableArray *newPhotos = [[newData objectForKey:@"responce"] objectForKey:@"photos"];
-    NSMutableArray *newPeople = [[newData objectForKey:@"responce"] objectForKey:@"people"];
+    NSMutableArray *newPhotos = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"responce"] objectForKey:@"photos"];
+    NSMutableArray *newPeople = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"responce"] objectForKey:@"people"];
     [photos addObjectsFromArray:newPhotos];
     [people addObjectsFromArray:newPeople];
-    user = [[newData objectForKey:@"responce"] objectForKey:@"user"];
-    url = [[newData objectForKey:@"responce"] objectForKey:@"url"];
-    next = [[newData objectForKey:@"responce"] objectForKey:@"next"];
+    user = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"responce"] objectForKey:@"user"];
+    url = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"responce"] objectForKey:@"url"];
+    next = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"responce"] objectForKey:@"next"];
   }
   
 }
@@ -133,8 +133,8 @@
 }
 
 
--(NSString *) loadMoreDataURL {
-  return next;
+-(NSURL *) loadMoreDataURL {
+  return [NSURL URLWithString:next];
 }
 
 - (NSDictionary *) photoAtIndex:(NSUInteger) index {
@@ -191,6 +191,6 @@
 }
     
 -(NSURL *)followUserURLForUser {
-  return [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/me/following",API_BASE]];
+  return [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/me/following",API_BASE]];
 }
 @end

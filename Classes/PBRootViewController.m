@@ -60,9 +60,9 @@
   [self.tableView reloadData];
 }
 
-- (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) request {
-	NSString *json_string = request.responseString;
-  responceData = [[PBAPIResponce alloc] initWithResponceData:request.responseString];
+- (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) _request {
+	NSString *json_string = _request.responseString;
+  responceData = [[PBAPIResponce alloc] initWithResponceData:_request.responseString];
   
 
   NSArray *array = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
@@ -115,6 +115,7 @@
   request = [ASIHTTPRequest requestWithURL:self.url
                                                 usingCache:[ASIDownloadCache sharedCache]
                                             andCachePolicy:cachePolicy];
+  [request setTimeOutSeconds:60];
   [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
   [request setDelegate:self];
   [request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
@@ -132,9 +133,10 @@
     return;
   }
   
-  request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:loadMoreDataURL]
+  request = [ASIHTTPRequest requestWithURL:loadMoreDataURL
                                 usingCache:[ASIDownloadCache sharedCache]
                             andCachePolicy:ASIUseDefaultCachePolicy];
+  [request setTimeOutSeconds:60];
   [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
   [request setDelegate:self];
   [request setDidFinishSelector:@selector(doneLoadingMoreDataFromNetwork:)];

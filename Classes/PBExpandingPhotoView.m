@@ -100,8 +100,8 @@
 -(void) layoutSubviews {
   CGRect rrect = CGRectMake(60, 0.0, self.bounds.size.width-60-10, self.bounds.size.height-10);
 	CGFloat radius = 5.0;
-	CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
-	CGFloat miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
+	CGFloat minx = CGRectGetMinX(rrect),  maxx = CGRectGetMaxX(rrect);
+	CGFloat miny = CGRectGetMinY(rrect),  maxy = CGRectGetMaxY(rrect);
   CGRect rectangle = CGRectMake(minx+radius,miny+radius,(maxx-minx)-(2*radius),(maxy-miny)-(2*radius));
   pictureView.frame = rectangle;
   NSLog(@"%f",rectangle.size.height);
@@ -140,7 +140,6 @@
 -(void) drawRect:(CGRect)rect {
  CGContextRef context = UIGraphicsGetCurrentContext();
 
-  NSUInteger height = 100;
   // As a bonus, we'll combine arcs to create a round rectangle!
 	
 	// Drawing with a white stroke color

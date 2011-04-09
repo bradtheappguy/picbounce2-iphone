@@ -15,7 +15,7 @@
 #import "PBBadgeCollectionViewController.h"
 #import "PBTableTitleTableViewCell.h"
 
-@interface PBStreamViewController : PBRootViewController <UINavigationControllerDelegate, UIActionSheetDelegate> {
+@interface PBStreamViewController : PBRootViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UISegmentedControl *segmentedControl;
   
   IBOutlet PBProfileHeaderCell *headerCell;
@@ -64,5 +64,5 @@
 
 - (UIImageView *) headerForAboveTableView:(UITableView *)tableView;
 - (UIImageView *) footerForBelowTableView:(UITableView *)tableView;
-
+- (UIView *) footerViewForTable:(UITableView *)tableView;
 @end

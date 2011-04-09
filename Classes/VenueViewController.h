@@ -20,8 +20,7 @@
   
 }
 
-
--(void) loadMockData;
+-(void) loadFromCache;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *headerCell;
 

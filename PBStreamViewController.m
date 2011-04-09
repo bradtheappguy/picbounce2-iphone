@@ -171,7 +171,7 @@
   PBProfileHeaderCell *_cell = (PBProfileHeaderCell *) [self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
   if (_cell == nil) {
     [[NSBundle mainBundle] loadNibNamed:@"ProfileHeaderCell" owner:self options:nil];
-    _cell = cell;
+    _cell = (PBProfileHeaderCell *)cell;
     // self.tvCell = nil;
   }
   
@@ -192,9 +192,9 @@
     _cell.avatarIcon.imageURL = preloadedAvatarURL;
     _cell.avatarIcon.backgroundColor = [UIColor redColor];
     if (YES) {
-        NSString *url = avatarURL;
-      if (![url isEqual:[NSNull null]]) {
-        _cell.avatarIcon.imageURL = [NSURL URLWithString:url];
+        NSString *_url = avatarURL;
+      if (![_url isEqual:[NSNull null]]) {
+        _cell.avatarIcon.imageURL = [NSURL URLWithString:_url];
       }
     }
     
@@ -389,12 +389,12 @@
 
 
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
-  PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
+ /* PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
   vc.hidesBottomBarWhenPushed = YES;
   [self.navigationController pushViewController:vc animated:YES];
   
   
-  return;
+  return;*/
   //TODO
   //[self pushNewStreamViewControllerWithPerson:(NSString *)person];
   PBHeaderTableViewCell *view = (PBHeaderTableViewCell *)sender.view;
@@ -448,12 +448,13 @@
 
 //Follow 
 -(IBAction) followButtonPressed:(UIButton *) sender {
- /* 
+ 
   
   ASIFormDataRequest *followRequest = [ASIFormDataRequest requestWithURL:[responceData followUserURLForUser]];
   followRequest.requestMethod = @"POST";
   [followRequest setPostValue:@"1" forKey:@"id"];
-  [followRequest startAsynchronous];*/
+  [followRequest startAsynchronous];
+  
 }
 
 -(IBAction) bounceButtonPressed:(id) sender {

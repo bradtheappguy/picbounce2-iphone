@@ -43,7 +43,6 @@
 
 
 -(void) setDatum:(NSMutableDictionary *)d {
- NSDictionary *photo = [d objectForKey:@"photo"];
   NSString *caption = [d objectForKey:@"name"];
   if (caption) {
     if (![caption isEqual:[NSNull null]]) {
