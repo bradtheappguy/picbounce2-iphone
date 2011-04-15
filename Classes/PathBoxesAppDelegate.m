@@ -22,7 +22,7 @@
     
   
 
-  feedViewController.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/bradsmithinc/feed",API_BASE]];
+  feedViewController.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/bradsmithinc/feed",API_BASE]];
   
   feedViewController.shouldShowProfileHeader = NO;
   profileViewController.shouldShowProfileHeader = YES;

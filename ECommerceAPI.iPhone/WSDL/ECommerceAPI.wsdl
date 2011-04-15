@@ -1,0 +1,1562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="ECommerceAPI" targetNamespace="http://api.art.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://api.art.com" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+  <wsdl:binding name="BasicHttpBinding_IECommerceAPI" type="i0:IECommerceAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CartAddItem">
+      <soap:operation soapAction="http://api.art.com/ICart/CartAddItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CartGetShippingOptions">
+      <soap:operation soapAction="http://api.art.com/ICart/CartGetShippingOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CartSubmitForOrder">
+      <soap:operation soapAction="http://api.art.com/ICart/CartSubmitForOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CartUpdateCartItemQuantity">
+      <soap:operation soapAction="http://api.art.com/ICart/CartUpdateCartItemQuantity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CartUpdateShippingAddress">
+      <soap:operation soapAction="http://api.art.com/ICart/CartUpdateShippingAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CartUpdateShipmentPriority">
+      <soap:operation soapAction="http://api.art.com/ICart/CartUpdateShipmentPriority" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemGet">
+      <soap:operation soapAction="http://api.art.com/ICatalog/CatalogItemGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemGetFrameRecommendations">
+      <soap:operation soapAction="http://api.art.com/ICatalog/CatalogItemGetFrameRecommendations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemSearch">
+      <soap:operation soapAction="http://api.art.com/ICatalog/CatalogItemSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemSearchByImage">
+      <soap:operation soapAction="http://api.art.com/ICatalog/CatalogItemSearchByImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogGetFeaturedCategories">
+      <soap:operation soapAction="http://api.art.com/ICatalog/CatalogGetFeaturedCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GalleryAddItem">
+      <soap:operation soapAction="http://api.art.com/IGallery/GalleryAddItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GalleryAddForUser">
+      <soap:operation soapAction="http://api.art.com/IGallery/GalleryAddForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GalleryAddWallImageByImageGUID">
+      <soap:operation soapAction="http://api.art.com/IGallery/GalleryAddWallImageByImageGUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGet">
+      <soap:operation soapAction="http://api.art.com/IGallery/GalleryGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGetByUser">
+      <soap:operation soapAction="http://api.art.com/IGallery/GalleryGetByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGetUserDefaultMobileGallery">
+      <soap:operation soapAction="http://api.art.com/IGallery/GalleryGetUserDefaultMobileGallery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGetUserDefaultWallGallery">
+      <soap:operation soapAction="http://api.art.com/IGallery/GalleryGetUserDefaultWallGallery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GalleryRemoveItem">
+      <soap:operation soapAction="http://api.art.com/IGallery/GalleryRemoveItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InitializeAPI">
+      <soap:operation soapAction="http://api.art.com/IECommerceAPI/InitializeAPI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:types />
+  <wsdl:service name="ECommerceAPI">
+    <wsdl:port name="BasicHttpBinding_IECommerceAPI" binding="i0:BasicHttpBinding_IECommerceAPI">
+      <soap:address location="http://dev-api.art.com/ECommerceAPI.svc/soap" />
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:portType name="IECommerceAPI">
+    <wsdl:operation name="CartAddItem">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartAddItem" message="tns:IECommerceAPI_CartAddItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartAddItemResponse" message="tns:IECommerceAPI_CartAddItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CartGetShippingOptions">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartGetShippingOptions" message="tns:IECommerceAPI_CartGetShippingOptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartGetShippingOptionsResponse" message="tns:IECommerceAPI_CartGetShippingOptions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CartSubmitForOrder">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartSubmitForOrder" message="tns:IECommerceAPI_CartSubmitForOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartSubmitForOrderResponse" message="tns:IECommerceAPI_CartSubmitForOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CartUpdateCartItemQuantity">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartUpdateCartItemQuantity" message="tns:IECommerceAPI_CartUpdateCartItemQuantity_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartUpdateCartItemQuantityResponse" message="tns:IECommerceAPI_CartUpdateCartItemQuantity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CartUpdateShippingAddress">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartUpdateShippingAddress" message="tns:IECommerceAPI_CartUpdateShippingAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartUpdateShippingAddressResponse" message="tns:IECommerceAPI_CartUpdateShippingAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CartUpdateShipmentPriority">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartUpdateShipmentPriority" message="tns:IECommerceAPI_CartUpdateShipmentPriority_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartUpdateShipmentPriorityResponse" message="tns:IECommerceAPI_CartUpdateShipmentPriority_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemGet">
+      <wsdl:input wsaw:Action="http://api.art.com/ICatalog/CatalogItemGet" message="tns:IECommerceAPI_CatalogItemGet_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICatalog/CatalogItemGetResponse" message="tns:IECommerceAPI_CatalogItemGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemGetFrameRecommendations">
+      <wsdl:input wsaw:Action="http://api.art.com/ICatalog/CatalogItemGetFrameRecommendations" message="tns:IECommerceAPI_CatalogItemGetFrameRecommendations_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICatalog/CatalogItemGetFrameRecommendationsResponse" message="tns:IECommerceAPI_CatalogItemGetFrameRecommendations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemSearch">
+      <wsdl:input wsaw:Action="http://api.art.com/ICatalog/CatalogItemSearch" message="tns:IECommerceAPI_CatalogItemSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICatalog/CatalogItemSearchResponse" message="tns:IECommerceAPI_CatalogItemSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemSearchByImage">
+      <wsdl:input wsaw:Action="http://api.art.com/ICatalog/CatalogItemSearchByImage" message="tns:IECommerceAPI_CatalogItemSearchByImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICatalog/CatalogItemSearchByImageResponse" message="tns:IECommerceAPI_CatalogItemSearchByImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogGetFeaturedCategories">
+      <wsdl:input wsaw:Action="http://api.art.com/ICatalog/CatalogGetFeaturedCategories" message="tns:IECommerceAPI_CatalogGetFeaturedCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICatalog/CatalogGetFeaturedCategoriesResponse" message="tns:IECommerceAPI_CatalogGetFeaturedCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryAddItem">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryAddItem" message="tns:IECommerceAPI_GalleryAddItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryAddItemResponse" message="tns:IECommerceAPI_GalleryAddItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryAddForUser">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryAddForUser" message="tns:IECommerceAPI_GalleryAddForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryAddForUserResponse" message="tns:IECommerceAPI_GalleryAddForUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryAddWallImageByImageGUID">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryAddWallImageByImageGUID" message="tns:IECommerceAPI_GalleryAddWallImageByImageGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryAddWallImageByImageGUIDResponse" message="tns:IECommerceAPI_GalleryAddWallImageByImageGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGet">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryGet" message="tns:IECommerceAPI_GalleryGet_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryGetResponse" message="tns:IECommerceAPI_GalleryGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGetByUser">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryGetByUser" message="tns:IECommerceAPI_GalleryGetByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryGetByUserResponse" message="tns:IECommerceAPI_GalleryGetByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGetUserDefaultMobileGallery">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryGetUserDefaultMobileGallery" message="tns:IECommerceAPI_GalleryGetUserDefaultMobileGallery_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryGetUserDefaultMobileGalleryResponse" message="tns:IECommerceAPI_GalleryGetUserDefaultMobileGallery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGetUserDefaultWallGallery">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryGetUserDefaultWallGallery" message="tns:IECommerceAPI_GalleryGetUserDefaultWallGallery_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryGetUserDefaultWallGalleryResponse" message="tns:IECommerceAPI_GalleryGetUserDefaultWallGallery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryRemoveItem">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryRemoveItem" message="tns:IECommerceAPI_GalleryRemoveItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryRemoveItemResponse" message="tns:IECommerceAPI_GalleryRemoveItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InitializeAPI">
+      <wsdl:input wsaw:Action="http://api.art.com/IECommerceAPI/InitializeAPI" message="tns:IECommerceAPI_InitializeAPI_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IECommerceAPI/InitializeAPIResponse" message="tns:IECommerceAPI_InitializeAPI_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:message name="IECommerceAPI_InitializeAPI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeAPIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_InitializeAPI_InputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeAPI" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryRemoveItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryRemoveItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryRemoveItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryRemoveItem" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetUserDefaultWallGallery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetUserDefaultWallGalleryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetUserDefaultWallGallery_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetUserDefaultWallGallery" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetUserDefaultMobileGallery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetUserDefaultMobileGalleryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetUserDefaultMobileGallery_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetUserDefaultMobileGallery" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetByUser" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGet" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddWallImageByImageGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddWallImageByImageGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddWallImageByImageGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddWallImageByImageGUID" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddForUser" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddItem" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogGetFeaturedCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogGetFeaturedCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogGetFeaturedCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogGetFeaturedCategories" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemSearchByImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemSearchByImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemSearchByImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemSearchByImage" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemSearch" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemGetFrameRecommendations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemGetFrameRecommendationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemGetFrameRecommendations_InputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemGetFrameRecommendations" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemGet" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateShipmentPriority_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateShipmentPriorityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateShipmentPriority_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateShipmentPriority" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateShippingAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateShippingAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateShippingAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateShippingAddress" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateCartItemQuantity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateCartItemQuantityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateCartItemQuantity_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateCartItemQuantity" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartSubmitForOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartSubmitForOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartSubmitForOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartSubmitForOrder" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartGetShippingOptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartGetShippingOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartGetShippingOptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartGetShippingOptions" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartAddItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartAddItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartAddItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartAddItem" />
+  </wsdl:message>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://api.art.com/Imports">
+      <xsd:import schemaLocation="http://dev-api.art.com/ECommerceAPI.svc?xsd=xsd0" namespace="http://api.art.com" />
+      <xsd:import schemaLocation="http://dev-api.art.com/ECommerceAPI.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://dev-api.art.com/ECommerceAPI.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+      <xsd:import schemaLocation="http://dev-api.art.com/ECommerceAPI.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:import namespace="http://tempuri.org/" location="http://dev-api.art.com/ECommerceAPI.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://api.art.com/Imports">
+      <xs:element name="InitializeAPIResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InitializeAPIResult" nillable="true" type="q26:SessionResponse" xmlns:q26="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InitializeAPI" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="twoDigitISOCountryCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="twoDigitISOLanguageCode" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryRemoveItemResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GalleryRemoveItemResult" nillable="true" type="q25:GalleryDetailResponse" xmlns:q25="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryRemoveItem" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="authToken" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="galleryId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="galleryItemId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryGetUserDefaultWallGalleryResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GalleryGetUserDefaultWallGalleryResult" nillable="true" type="q24:GalleryDetailResponse" xmlns:q24="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryGetUserDefaultWallGallery" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="authToken" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryGetUserDefaultMobileGalleryResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GalleryGetUserDefaultMobileGalleryResult" nillable="true" type="q23:GalleryDetailResponse" xmlns:q23="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryGetUserDefaultMobileGallery" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="authToken" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryGetByUserResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GalleryGetByUserResult" nillable="true" type="q22:GalleryListResponse" xmlns:q22="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryGetByUser" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="authToken" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryGetResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GalleryGetResult" nillable="true" type="q21:GalleryDetailResponse" xmlns:q21="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryGet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="galleryId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryAddWallImageByImageGUIDResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GalleryAddWallImageByImageGUIDResult" nillable="true" type="q20:GalleryDetailResponse" xmlns:q20="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryAddWallImageByImageGUID" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="authToken" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="galleryId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="wallName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="wallImageGuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="wallAreaWidth" type="xs:decimal" />
+            <xs:element minOccurs="0" name="wallAreaHeight" type="xs:decimal" />
+            <xs:element minOccurs="0" name="wallAreaWidthInches" type="xs:decimal" />
+            <xs:element minOccurs="0" name="wallAreaHeightInches" type="xs:decimal" />
+            <xs:element minOccurs="0" name="rulerX1" type="xs:decimal" />
+            <xs:element minOccurs="0" name="rulerX2" type="xs:decimal" />
+            <xs:element minOccurs="0" name="rulerY1" type="xs:decimal" />
+            <xs:element minOccurs="0" name="rulerY2" type="xs:decimal" />
+            <xs:element minOccurs="0" name="rulerLength" type="xs:decimal" />
+            <xs:element minOccurs="0" name="caption" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryAddForUserResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GalleryAddForUserResult" nillable="true" type="q19:GalleryDetailResponse" xmlns:q19="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryAddForUser" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="authToken" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="galleryName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="galleryVisibility" type="q18:GalleryVisibility" xmlns:q18="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryAddItemResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GalleryAddItemResult" nillable="true" type="q17:GalleryDetailResponse" xmlns:q17="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GalleryAddItem" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="authToken" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="galleryId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="itemId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lookupType" type="q16:ItemLookupType" xmlns:q16="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CatalogGetFeaturedCategoriesResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CatalogGetFeaturedCategoriesResult" nillable="true" type="q15:FeaturedCategoryResponse" xmlns:q15="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CatalogGetFeaturedCategories" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CatalogItemSearchByImageResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CatalogItemSearchByImageResult" nillable="true" type="q14:ItemSearchResponse" xmlns:q14="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CatalogItemSearchByImage" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="imageUrl" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="numberOfRecords" type="xs:int" />
+            <xs:element minOccurs="0" name="pageNumbers" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CatalogItemSearchResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CatalogItemSearchResult" nillable="true" type="q13:ItemSearchResponse" xmlns:q13="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CatalogItemSearch" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="searchText" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="categoryIdList" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="artistCategoryId" type="xs:int" />
+            <xs:element minOccurs="0" name="numberOfRecords" type="xs:int" />
+            <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
+            <xs:element minOccurs="0" name="sortBy" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sortDirection" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CatalogItemGetFrameRecommendationsResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CatalogItemGetFrameRecommendationsResult" nillable="true" type="q12:ItemResponse" xmlns:q12="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CatalogItemGetFrameRecommendations" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="itemId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lookupType" type="q11:ItemLookupType" xmlns:q11="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+            <xs:element minOccurs="0" name="maxNumberOfRecommendations" type="xs:int" />
+            <xs:element minOccurs="0" name="maxJpegImageWidth" type="xs:int" />
+            <xs:element minOccurs="0" name="maxJpegImageHeight" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CatalogItemGetResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CatalogItemGetResult" nillable="true" type="q10:ItemResponse" xmlns:q10="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CatalogItemGet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="itemId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lookupType" type="q9:ItemLookupType" xmlns:q9="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartUpdateShipmentPriorityResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CartUpdateShipmentPriorityResult" nillable="true" type="q8:CartResponse" xmlns:q8="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartUpdateShipmentPriority" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="shipmentPriority" type="q7:ShippingPriority" xmlns:q7="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartUpdateShippingAddressResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CartUpdateShippingAddressResult" nillable="true" type="q6:CartResponse" xmlns:q6="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartUpdateShippingAddress" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="addressLine1" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="addressLine2" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="companyName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="twoDigitIsoCountryCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="zipCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="primaryPhone" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="secondaryPhone" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="emailAddress" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartUpdateCartItemQuantityResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CartUpdateCartItemQuantityResult" nillable="true" type="q5:CartResponse" xmlns:q5="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartUpdateCartItemQuantity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="cartItemId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="quantity" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartSubmitForOrderResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CartSubmitForOrderResult" nillable="true" type="q4:OrderResponse" xmlns:q4="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartSubmitForOrder" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartGetShippingOptionsResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CartGetShippingOptionsResult" nillable="true" type="q3:ShippingOptionResponse" xmlns:q3="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartGetShippingOptions" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartAddItemResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CartAddItemResult" nillable="true" type="q2:CartResponse" xmlns:q2="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CartAddItem" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="itemId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lookupType" type="q1:ItemLookupType" xmlns:q1="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" />
+            <xs:element minOccurs="0" name="quantity" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:import schemaLocation="http://dev-api.art.com/ECommerceAPI.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Art.Data.Contract.API" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:attribute name="Ref" type="xs:IDREF" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:attribute name="Id" type="xs:ID" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:attribute name="FactoryType" type="xs:QName" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:simpleType name="guid" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:simpleType name="duration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:simpleType name="char" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="char" nillable="true" type="tns:char" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="string" nillable="true" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="short" nillable="true" type="xs:short" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="QName" nillable="true" type="xs:QName" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="long" nillable="true" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="int" nillable="true" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="float" nillable="true" type="xs:float" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="double" nillable="true" type="xs:double" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="byte" nillable="true" type="xs:byte" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="anyType" nillable="true" type="xs:anyType" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="SessionResponse" nillable="true" type="tns:SessionResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="SessionResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="SessionId" nillable="true" type="xs:string" />
+          <xs:element name="DateExpires" type="xs:dateTime" />
+          <xs:element name="GeoIPCountryCode" nillable="true" type="xs:string" />
+          <xs:element name="IsoCurrencyCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfGalleryAttributes" nillable="true" type="tns:ArrayOfGalleryAttributes" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfGalleryAttributes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="GalleryAttributes" nillable="true" type="tns:GalleryAttributes" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GalleryListResponse" nillable="true" type="tns:GalleryListResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="GalleryListResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="OperationResponse" nillable="true" type="tns:OperationResponse" />
+          <xs:element name="Galleries" nillable="true" type="tns:ArrayOfGalleryAttributes" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WallImage" nillable="true" type="tns:WallImage" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="WallImage" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="Id" nillable="true" type="xs:string" />
+          <xs:element name="Name" nillable="true" type="xs:string" />
+          <xs:element name="LargeImage" nillable="true" type="tns:Image" />
+          <xs:element name="ThumbnailImage" nillable="true" type="tns:Image" />
+          <xs:element name="UsableAreaWidth" type="xs:float" />
+          <xs:element name="UsableAreaHeight" type="xs:float" />
+          <xs:element name="UsableAreaPosY" type="xs:int" />
+          <xs:element name="UsableAreaPosX" type="xs:int" />
+          <xs:element name="ProductTargetAreaPosX" type="xs:int" />
+          <xs:element name="ProductTargetAreaPosY" type="xs:int" />
+          <xs:element name="WallAreaWidth" type="xs:float" />
+          <xs:element name="WallAreaHeight" type="xs:float" />
+          <xs:element name="WallAreaWidthInches" type="xs:float" />
+          <xs:element name="WallAreaHeightInches" type="xs:float" />
+          <xs:element name="Guide1Y" type="xs:int" />
+          <xs:element name="Guide2Y" type="xs:int" />
+          <xs:element name="RulerX1" type="xs:float" />
+          <xs:element name="RulerX2" type="xs:float" />
+          <xs:element name="RulerY1" type="xs:float" />
+          <xs:element name="RulerY2" type="xs:float" />
+          <xs:element name="RulerLength" type="xs:float" />
+          <xs:element name="Caption" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfWallImage" nillable="true" type="tns:ArrayOfWallImage" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfWallImage" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="WallImage" nillable="true" type="tns:WallImage" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GalleryItem" nillable="true" type="tns:GalleryItem" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="GalleryItem" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="GalleryItemId" nillable="true" type="xs:string" />
+          <xs:element name="Item" nillable="true" type="tns:Item" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfGalleryItem" nillable="true" type="tns:ArrayOfGalleryItem" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfGalleryItem" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="GalleryItem" nillable="true" type="tns:GalleryItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GalleryVisibility" nillable="true" type="tns:GalleryVisibility" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:simpleType name="GalleryVisibility" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Public">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Private">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Restricted">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="GalleryAttributes" nillable="true" type="tns:GalleryAttributes" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="GalleryAttributes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="GalleryId" nillable="true" type="xs:string" />
+          <xs:element name="Title" nillable="true" type="xs:string" />
+          <xs:element name="GalleryVisibility" type="tns:GalleryVisibility" />
+          <xs:element name="ShortDescription" nillable="true" type="xs:string" />
+          <xs:element name="LongDescription" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Gallery" nillable="true" type="tns:Gallery" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Gallery" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="GalleryAttributes" nillable="true" type="tns:GalleryAttributes" />
+          <xs:element minOccurs="0" name="GalleryItems" nillable="true" type="tns:ArrayOfGalleryItem" />
+          <xs:element minOccurs="0" name="WallImages" nillable="true" type="tns:ArrayOfWallImage" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GalleryDetailResponse" nillable="true" type="tns:GalleryDetailResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="GalleryDetailResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="OperationResponse" nillable="true" type="tns:OperationResponse" />
+          <xs:element name="Gallery" nillable="true" type="tns:Gallery" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FeaturedCategory" nillable="true" type="tns:FeaturedCategory" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="FeaturedCategory" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfFeaturedCategory" nillable="true" type="tns:ArrayOfFeaturedCategory" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfFeaturedCategory" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="FeaturedCategory" nillable="true" type="tns:FeaturedCategory" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FeaturedCategoryResponse" nillable="true" type="tns:FeaturedCategoryResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="FeaturedCategoryResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="OperationResponse" nillable="true" type="tns:OperationResponse" />
+          <xs:element name="FeaturedCategories" nillable="true" type="tns:ArrayOfFeaturedCategory" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Category" nillable="true" type="tns:Category" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Category" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="CategoryId" nillable="true" type="xs:string" />
+          <xs:element name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfCategory" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Refinements" nillable="true" type="tns:Refinements" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Refinements" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Categories" nillable="true" type="tns:ArrayOfCategory" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ItemSearchResponse" nillable="true" type="tns:ItemSearchResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ItemSearchResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="OperationResponse" nillable="true" type="tns:OperationResponse" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfItem" />
+          <xs:element name="Refinements" nillable="true" type="tns:Refinements" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfItem" nillable="true" type="tns:ArrayOfItem" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfItem" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ItemResponse" nillable="true" type="tns:ItemResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ItemResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="OperationResponse" nillable="true" type="tns:OperationResponse" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OrderAttributes" nillable="true" type="tns:OrderAttributes" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="OrderAttributes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="OrderNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OrderResponse" nillable="true" type="tns:OrderResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="OrderResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="OperationResponse" nillable="true" type="tns:OperationResponse" />
+          <xs:element minOccurs="0" name="OrderAttributes" nillable="true" type="tns:OrderAttributes" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ShippingOption" nillable="true" type="tns:ShippingOption" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ShippingOption" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="ShippingOption" type="tns:ShippingPriority" />
+          <xs:element name="ShippingCharge" type="xs:decimal" />
+          <xs:element name="TransitTime" nillable="true" type="tns:TransitTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfShippingOption" nillable="true" type="tns:ArrayOfShippingOption" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfShippingOption" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ShippingOption" nillable="true" type="tns:ShippingOption" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ShippingOptionResponse" nillable="true" type="tns:ShippingOptionResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ShippingOptionResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="OperationResponse" nillable="true" type="tns:OperationResponse" />
+          <xs:element minOccurs="0" name="ShippingOptions" nillable="true" type="tns:ArrayOfShippingOption" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TransitTime" nillable="true" type="tns:TransitTime" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="TransitTime" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="DaysMinimum" type="xs:int" />
+          <xs:element name="DaysMaximum" type="xs:int" />
+          <xs:element name="TransitTimeText" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ComponentDimensions" nillable="true" type="tns:ComponentDimensions" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ComponentDimensions" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="Top" type="xs:double" />
+          <xs:element name="Bottom" type="xs:double" />
+          <xs:element name="Left" type="xs:double" />
+          <xs:element name="Right" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SelectedComponent" nillable="true" type="tns:SelectedComponent" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="SelectedComponent" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="ItemNumber" type="xs:int" />
+          <xs:element name="Name" nillable="true" type="xs:string" />
+          <xs:element name="Dimensions" nillable="true" type="tns:ComponentDimensions" />
+          <xs:element name="Price" nillable="true" type="tns:ItemPrice" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Frame" nillable="true" type="tns:Frame" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Frame" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Moulding" nillable="true" type="tns:SelectedComponent" />
+          <xs:element minOccurs="0" name="Glass" nillable="true" type="tns:SelectedComponent" />
+          <xs:element minOccurs="0" name="TopMat" nillable="true" type="tns:SelectedComponent" />
+          <xs:element minOccurs="0" name="MiddleMat" nillable="true" type="tns:SelectedComponent" />
+          <xs:element minOccurs="0" name="BottomMat" nillable="true" type="tns:SelectedComponent" />
+          <xs:element minOccurs="0" name="FittingFee" nillable="true" type="tns:ItemPrice" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Service" nillable="true" type="tns:Service" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Frame" nillable="true" type="tns:Frame" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ItemPrice" nillable="true" type="tns:ItemPrice" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ItemPrice" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="Price" type="xs:decimal" />
+          <xs:element minOccurs="0" name="MSRP" type="xs:decimal" />
+          <xs:element name="DisplayPrice" nillable="true" type="xs:string" />
+          <xs:element name="MarkDownPrice" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CropType" nillable="true" type="tns:CropType" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:simpleType name="CropType" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CropToPrint">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="CustomCrop">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="CropInformation" nillable="true" type="tns:CropInformation" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="CropInformation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="CropType" type="tns:CropType" />
+          <xs:element name="Dimensions" nillable="true" type="tns:Dimensions" />
+          <xs:element name="Image" nillable="true" type="tns:ImageInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCropInformation" nillable="true" type="tns:ArrayOfCropInformation" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfCropInformation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CropInformation" nillable="true" type="tns:CropInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeepZoom" nillable="true" type="tns:DeepZoom" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="DeepZoom" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="IsEnabled" type="xs:boolean" />
+          <xs:element name="TileImageFolder" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PixelDimensions" nillable="true" type="tns:PixelDimensions" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="PixelDimensions" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="Height" type="xs:int" />
+          <xs:element name="Width" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Image" nillable="true" type="tns:Image" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Image" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="HttpImageURL" nillable="true" type="xs:string" />
+          <xs:element name="HttpsImageURL" nillable="true" type="xs:string" />
+          <xs:element name="Dimensions" nillable="true" type="tns:PixelDimensions" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ImageInformation" nillable="true" type="tns:ImageInformation" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ImageInformation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SmallImage" nillable="true" type="tns:Image" />
+          <xs:element minOccurs="0" name="ThumbnailImage" nillable="true" type="tns:Image" />
+          <xs:element minOccurs="0" name="MediumImage" nillable="true" type="tns:Image" />
+          <xs:element minOccurs="0" name="LargeImage" nillable="true" type="tns:Image" />
+          <xs:element minOccurs="0" name="ZoomImage" nillable="true" type="tns:Image" />
+          <xs:element minOccurs="0" name="DeepZoom" nillable="true" type="tns:DeepZoom" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Dimensions" nillable="true" type="tns:Dimensions" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Dimensions" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="Height" type="xs:double" />
+          <xs:element name="Width" type="xs:double" />
+          <xs:element name="Depth" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Artist" nillable="true" type="tns:Artist" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Artist" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="ArtistId" type="xs:int" />
+          <xs:element name="FirstName" nillable="true" type="xs:string" />
+          <xs:element name="LastName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ItemAttributes" nillable="true" type="tns:ItemAttributes" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ItemAttributes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="Title" nillable="true" type="xs:string" />
+          <xs:element name="Artist" nillable="true" type="tns:Artist" />
+          <xs:element name="Type" nillable="true" type="xs:string" />
+          <xs:element name="PhysicalDimensions" nillable="true" type="tns:Dimensions" />
+          <xs:element name="CanFrame" type="xs:boolean" />
+          <xs:element name="Description" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ItemType" nillable="true" type="tns:ItemType" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:simpleType name="ItemType" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CatalogItem">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="CustomFramedItem">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="FramedItemRecommendation">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="UserUploadedItem">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="Item" nillable="true" type="tns:Item" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Item" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="ItemType" type="tns:ItemType" />
+          <xs:element name="ItemNumber" nillable="true" type="xs:string" />
+          <xs:element name="Sku" nillable="true" type="xs:string" />
+          <xs:element name="ItemAttributes" nillable="true" type="tns:ItemAttributes" />
+          <xs:element minOccurs="0" name="ImageInformation" nillable="true" type="tns:ImageInformation" />
+          <xs:element minOccurs="0" name="AvailableCrops" nillable="true" type="tns:ArrayOfCropInformation" />
+          <xs:element minOccurs="0" name="Variations" nillable="true" type="q1:ArrayOfint" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+          <xs:element minOccurs="0" name="ItemPrice" nillable="true" type="tns:ItemPrice" />
+          <xs:element minOccurs="0" name="Service" nillable="true" type="tns:Service" />
+          <xs:element minOccurs="0" name="TransitTime" nillable="true" type="tns:TransitTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CartItem" nillable="true" type="tns:CartItem" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="CartItem" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="Id" nillable="true" type="xs:string" />
+          <xs:element name="Quantity" type="xs:int" />
+          <xs:element name="SubTotal" type="xs:decimal" />
+          <xs:element name="Item" nillable="true" type="tns:Item" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCartItem" nillable="true" type="tns:ArrayOfCartItem" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfCartItem" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CartItem" nillable="true" type="tns:CartItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PhoneNumber" nillable="true" type="tns:PhoneNumber" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="PhoneNumber" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Primary" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Secondary" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PersonName" nillable="true" type="tns:PersonName" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="PersonName" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Address" nillable="true" type="tns:Address" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Address" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="tns:PersonName" />
+          <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="County" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Phone" nillable="true" type="tns:PhoneNumber" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ShippingPriority" nillable="true" type="tns:ShippingPriority" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:simpleType name="ShippingPriority" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Standard">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Expedited">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Overnight">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="Shipment" nillable="true" type="tns:Shipment" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Shipment" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="ShipmentId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShippingPriority" type="tns:ShippingPriority" />
+          <xs:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
+          <xs:element name="CartItems" nillable="true" type="tns:ArrayOfCartItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfShipment" nillable="true" type="tns:ArrayOfShipment" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfShipment" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Shipment" nillable="true" type="tns:Shipment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CartTotal" nillable="true" type="tns:CartTotal" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="CartTotal" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="ProductSubTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TaxTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ShippingTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Total" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Cart" nillable="true" type="tns:Cart" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="Cart" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="CartId" nillable="true" type="xs:string" />
+          <xs:element name="CartTotal" nillable="true" type="tns:CartTotal" />
+          <xs:element name="Shipments" nillable="true" type="tns:ArrayOfShipment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OperationResponse" nillable="true" type="tns:OperationResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="OperationResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ResponseCode" type="xs:int" />
+          <xs:element minOccurs="0" name="ResponseMessage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CartResponse" nillable="true" type="tns:CartResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="CartResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element name="OperationResponse" nillable="true" type="tns:OperationResponse" />
+          <xs:element name="Cart" nillable="true" type="tns:Cart" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ItemLookupType" nillable="true" type="tns:ItemLookupType" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:simpleType name="ItemLookupType" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ItemNumber" />
+          <xs:enumeration value="Sku" />
+          <xs:enumeration value="CustomFramedItem" />
+          <xs:enumeration value="UserUploadedItem" />
+          <xs:enumeration value="FramedRecommendationItem" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:import schemaLocation="http://dev-api.art.com/ECommerceAPI.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:import schemaLocation="http://dev-api.art.com/ECommerceAPI.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:element name="ArrayOfint" nillable="true" type="tns:ArrayOfint" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+      <xs:complexType name="ArrayOfint" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="int" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IECommerceAPI_CartAddItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartAddItem" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartAddItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartAddItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartGetShippingOptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartGetShippingOptions" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartGetShippingOptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartGetShippingOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartSubmitForOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartSubmitForOrder" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartSubmitForOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartSubmitForOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateCartItemQuantity_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateCartItemQuantity" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateCartItemQuantity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateCartItemQuantityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateShippingAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateShippingAddress" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateShippingAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateShippingAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateShipmentPriority_InputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateShipmentPriority" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CartUpdateShipmentPriority_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CartUpdateShipmentPriorityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemGet" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemGetFrameRecommendations_InputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemGetFrameRecommendations" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemGetFrameRecommendations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemGetFrameRecommendationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemSearch" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemSearchByImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemSearchByImage" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogItemSearchByImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogItemSearchByImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogGetFeaturedCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogGetFeaturedCategories" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_CatalogGetFeaturedCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CatalogGetFeaturedCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddItem" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddForUser" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddWallImageByImageGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddWallImageByImageGUID" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryAddWallImageByImageGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryAddWallImageByImageGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGet" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetByUser" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetUserDefaultMobileGallery_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetUserDefaultMobileGallery" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetUserDefaultMobileGallery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetUserDefaultMobileGalleryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetUserDefaultWallGallery_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetUserDefaultWallGallery" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryGetUserDefaultWallGallery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryGetUserDefaultWallGalleryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryRemoveItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryRemoveItem" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_GalleryRemoveItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GalleryRemoveItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_InitializeAPI_InputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeAPI" />
+  </wsdl:message>
+  <wsdl:message name="IECommerceAPI_InitializeAPI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeAPIResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IECommerceAPI">
+    <wsdl:operation name="CartAddItem">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartAddItem" message="tns:IECommerceAPI_CartAddItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartAddItemResponse" message="tns:IECommerceAPI_CartAddItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CartGetShippingOptions">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartGetShippingOptions" message="tns:IECommerceAPI_CartGetShippingOptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartGetShippingOptionsResponse" message="tns:IECommerceAPI_CartGetShippingOptions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CartSubmitForOrder">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartSubmitForOrder" message="tns:IECommerceAPI_CartSubmitForOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartSubmitForOrderResponse" message="tns:IECommerceAPI_CartSubmitForOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CartUpdateCartItemQuantity">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartUpdateCartItemQuantity" message="tns:IECommerceAPI_CartUpdateCartItemQuantity_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartUpdateCartItemQuantityResponse" message="tns:IECommerceAPI_CartUpdateCartItemQuantity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CartUpdateShippingAddress">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartUpdateShippingAddress" message="tns:IECommerceAPI_CartUpdateShippingAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartUpdateShippingAddressResponse" message="tns:IECommerceAPI_CartUpdateShippingAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CartUpdateShipmentPriority">
+      <wsdl:input wsaw:Action="http://api.art.com/ICart/CartUpdateShipmentPriority" message="tns:IECommerceAPI_CartUpdateShipmentPriority_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICart/CartUpdateShipmentPriorityResponse" message="tns:IECommerceAPI_CartUpdateShipmentPriority_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemGet">
+      <wsdl:input wsaw:Action="http://api.art.com/ICatalog/CatalogItemGet" message="tns:IECommerceAPI_CatalogItemGet_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICatalog/CatalogItemGetResponse" message="tns:IECommerceAPI_CatalogItemGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemGetFrameRecommendations">
+      <wsdl:input wsaw:Action="http://api.art.com/ICatalog/CatalogItemGetFrameRecommendations" message="tns:IECommerceAPI_CatalogItemGetFrameRecommendations_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICatalog/CatalogItemGetFrameRecommendationsResponse" message="tns:IECommerceAPI_CatalogItemGetFrameRecommendations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemSearch">
+      <wsdl:input wsaw:Action="http://api.art.com/ICatalog/CatalogItemSearch" message="tns:IECommerceAPI_CatalogItemSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICatalog/CatalogItemSearchResponse" message="tns:IECommerceAPI_CatalogItemSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogItemSearchByImage">
+      <wsdl:input wsaw:Action="http://api.art.com/ICatalog/CatalogItemSearchByImage" message="tns:IECommerceAPI_CatalogItemSearchByImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICatalog/CatalogItemSearchByImageResponse" message="tns:IECommerceAPI_CatalogItemSearchByImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogGetFeaturedCategories">
+      <wsdl:input wsaw:Action="http://api.art.com/ICatalog/CatalogGetFeaturedCategories" message="tns:IECommerceAPI_CatalogGetFeaturedCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/ICatalog/CatalogGetFeaturedCategoriesResponse" message="tns:IECommerceAPI_CatalogGetFeaturedCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryAddItem">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryAddItem" message="tns:IECommerceAPI_GalleryAddItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryAddItemResponse" message="tns:IECommerceAPI_GalleryAddItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryAddForUser">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryAddForUser" message="tns:IECommerceAPI_GalleryAddForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryAddForUserResponse" message="tns:IECommerceAPI_GalleryAddForUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryAddWallImageByImageGUID">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryAddWallImageByImageGUID" message="tns:IECommerceAPI_GalleryAddWallImageByImageGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryAddWallImageByImageGUIDResponse" message="tns:IECommerceAPI_GalleryAddWallImageByImageGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGet">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryGet" message="tns:IECommerceAPI_GalleryGet_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryGetResponse" message="tns:IECommerceAPI_GalleryGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGetByUser">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryGetByUser" message="tns:IECommerceAPI_GalleryGetByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryGetByUserResponse" message="tns:IECommerceAPI_GalleryGetByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGetUserDefaultMobileGallery">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryGetUserDefaultMobileGallery" message="tns:IECommerceAPI_GalleryGetUserDefaultMobileGallery_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryGetUserDefaultMobileGalleryResponse" message="tns:IECommerceAPI_GalleryGetUserDefaultMobileGallery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryGetUserDefaultWallGallery">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryGetUserDefaultWallGallery" message="tns:IECommerceAPI_GalleryGetUserDefaultWallGallery_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryGetUserDefaultWallGalleryResponse" message="tns:IECommerceAPI_GalleryGetUserDefaultWallGallery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GalleryRemoveItem">
+      <wsdl:input wsaw:Action="http://api.art.com/IGallery/GalleryRemoveItem" message="tns:IECommerceAPI_GalleryRemoveItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IGallery/GalleryRemoveItemResponse" message="tns:IECommerceAPI_GalleryRemoveItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InitializeAPI">
+      <wsdl:input wsaw:Action="http://api.art.com/IECommerceAPI/InitializeAPI" message="tns:IECommerceAPI_InitializeAPI_InputMessage" />
+      <wsdl:output wsaw:Action="http://api.art.com/IECommerceAPI/InitializeAPIResponse" message="tns:IECommerceAPI_InitializeAPI_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="ECommerceAPI">
+    <wsdl:port name="BasicHttpBinding_IECommerceAPI" binding="i0:BasicHttpBinding_IECommerceAPI">
+      <soap:address location="http://dev-api.art.com/ECommerceAPI.svc/soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

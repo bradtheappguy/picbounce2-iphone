@@ -400,7 +400,7 @@
   PBHeaderTableViewCell *view = (PBHeaderTableViewCell *)sender.view;
   
   PBStreamViewController *new = [[PBStreamViewController alloc] init];
-  new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/%@/profile",API_BASE,view.nameLabel.text]];
+  new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/%@/profile",API_BASE,view.nameLabel.text]];
   
   
   new.shouldShowProfileHeaderBeforeNetworkLoad = YES;

@@ -191,6 +191,6 @@
 }
     
 -(NSURL *)followUserURLForUser {
-  return [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/me/following",API_BASE]];
+  return [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/me/following",API_BASE]];
 }
 @end
