@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #define CELL_PADDING 15
 #import "PBCommentListViewController.h"
+#import "ProfileSettingView.h"
 
 @implementation PBStreamViewController
 
@@ -460,6 +461,18 @@
 -(IBAction) bounceButtonPressed:(id) sender {
   }
 
+
+-(IBAction) doSettings:(id)sender{
+   
+    
+    
+    ProfileSettingView *profile = [[[ProfileSettingView alloc]initWithNibName:nil bundle:nil]autorelease];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:profile] autorelease];
+
+    [self presentModalViewController:navController animated:YES];
+    
+
+}
 -(IBAction) changeProfilePhotoButtonPressed:(id) sender {
   UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Change Profile Photo"
                                                            delegate:self 

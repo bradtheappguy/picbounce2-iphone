@@ -13,6 +13,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		7452D1AE135D916F0024C63C /* ProfileSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452D1AD135D916F0024C63C /* ProfileSettingView.m */; };
+		7452D1C0135DB8220024C63C /* ProfileAboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452D1BF135DB8220024C63C /* ProfileAboutView.m */; };
 		8A05E1741317164600C4F2C3 /* btn_bouncet_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A05E1731317164600C4F2C3 /* btn_bouncet_up@2x.png */; };
 		8A1D109D1315964A006F9E5B /* btn_follow_alt_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A1D109B13159649006F9E5B /* btn_follow_alt_up@2x.png */; };
 		8A1D109E1315964A006F9E5B /* containter_profile_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A1D109C1315964A006F9E5B /* containter_profile_header@2x.png */; };
@@ -205,6 +207,10 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = ../MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PicBounce2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicBounce2_Prefix.pch; sourceTree = "<group>"; };
+		7452D1AC135D916F0024C63C /* ProfileSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSettingView.h; sourceTree = "<group>"; };
+		7452D1AD135D916F0024C63C /* ProfileSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSettingView.m; sourceTree = "<group>"; };
+		7452D1BE135DB8210024C63C /* ProfileAboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAboutView.h; sourceTree = "<group>"; };
+		7452D1BF135DB8220024C63C /* ProfileAboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileAboutView.m; sourceTree = "<group>"; };
 		8A05E1731317164600C4F2C3 /* btn_bouncet_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_bouncet_up@2x.png"; sourceTree = "<group>"; };
 		8A1D109B13159649006F9E5B /* btn_follow_alt_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_follow_alt_up@2x.png"; sourceTree = "<group>"; };
 		8A1D109C1315964A006F9E5B /* containter_profile_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "containter_profile_header@2x.png"; sourceTree = "<group>"; };
@@ -714,6 +720,10 @@
 				A26E721A133431B700BD737D /* PBHeaderTableViewCell.xib */,
 				A26E720C1334244E00BD737D /* PBHeaderTableViewCell.m */,
 				A26E720B1334243800BD737D /* PBHeaderTableViewCell.h */,
+				7452D1AC135D916F0024C63C /* ProfileSettingView.h */,
+				7452D1AD135D916F0024C63C /* ProfileSettingView.m */,
+				7452D1BE135DB8210024C63C /* ProfileAboutView.h */,
+				7452D1BF135DB8220024C63C /* ProfileAboutView.m */,
 			);
 			name = Streams;
 			sourceTree = "<group>";
@@ -1190,6 +1200,8 @@
 				A25D4D8E133D7EEF006D9BE6 /* btn_post.m in Sources */,
 				A2222831133F075E00239E0F /* MyView.m in Sources */,
 				A2E415F81343EE3F000D9CFA /* HPTextViewInternal.m in Sources */,
+				7452D1AE135D916F0024C63C /* ProfileSettingView.m in Sources */,
+				7452D1C0135DB8220024C63C /* ProfileAboutView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1360,6 +1372,7 @@
 				A25CEA46134FDE0000CD33D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PicBounce2" */ = {
 			isa = XCConfigurationList;

@@ -61,6 +61,7 @@
 -(IBAction) followingButtonPressed;
 -(IBAction) followersButtonPressed;
 -(IBAction) badgesButtonPressed;
+-(IBAction) doSettings:(id)sender;
 
 - (UIImageView *) headerForAboveTableView:(UITableView *)tableView;
 - (UIImageView *) footerForBelowTableView:(UITableView *)tableView;
