@@ -1,26 +1,19 @@
 //
-//  ProfileSettingView.m
+//  AccountSettingView.m
 //  PicBounce2
 //
-//  Created by Nitin on 4/19/11.
+//  Created by Nitin on 4/20/11.
 //  Copyright 2011 Ampere Software Private Limited. All rights reserved.
 //
 
-#import "ProfileSettingView.h"
-#import "ProfileAboutView.h"
 #import "AccountSettingView.h"
 
 
-@implementation ProfileSettingView
-
-@synthesize toggle;
+@implementation AccountSettingView
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     //self = [super initWithStyle:style];
-    
-    //self = [super initWithStyle:UITableViewStyleGrouped];
-
     if (self) {
         // Custom initialization
     }
@@ -29,9 +22,6 @@
 
 - (void)dealloc
 {
-    [array1 release];
-    [array2 release];
-    [array3 release];
     [super dealloc];
 }
 
@@ -48,29 +38,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Account Settings";
     
-    toggle = [[[UISwitch alloc]initWithFrame:CGRectMake(200, 8, 70,30 )]autorelease];
+    array6	= [[NSArray arrayWithObjects:@"   Facebook", @"   Twitter", @"   Flicker",@"   Tumbler",@"   Posterous",@"   MySpace", nil] retain];    
     
-    mytable = [[UITableView alloc]initWithFrame:CGRectMake(0,0,320, 415) style:UITableViewStyleGrouped];
-    mytable.userInteractionEnabled = YES;
-    mytable.delegate = self;
-    mytable.dataSource = self;
+    accountTable = [[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 310, 415) style:UITableViewStylePlain]autorelease];
+    accountTable.dataSource = self;
+    accountTable.delegate = self;
+    accountTable.userInteractionEnabled = YES;
+     
+    [self.view addSubview:accountTable];
     
-    self.navigationItem.leftBarButtonItem =[[[UIBarButtonItem alloc] initWithTitle:@" Back" style:UIBarButtonItemStylePlain target:self action:@selector(back)]autorelease];
     
-    
-
-    
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"About"style:UIBarButtonItemStyleBordered target:self action:@selector(about)] autorelease];
-    
-    [self.view addSubview:mytable];
-    
-    self.title = @"Settings";
-    
-     array1	= [[NSArray arrayWithObjects:@"Find Friends", @"Invite Friends", @"Search", nil] retain];
-    array2 =[[NSArray arrayWithObjects:@"Edit Profile",@"Share Account",@"Change Profile Pic",@"Log Out", nil]retain] ;
-    array3 = [[NSArray arrayWithObjects:@"Photos are Private", nil]retain];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -81,23 +60,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    //self.tableView.style = UITableViewStyleGrouped;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
--(void)back{
-
-    [self dismissModalViewControllerAnimated:YES];
-
-}
--(void)about{
-    ProfileAboutView *about = [[[ProfileAboutView alloc]initWithNibName:nil bundle:nil]autorelease];
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:about] autorelease];
-    
-    [self presentModalViewController:navController animated:YES];
-    
-
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -132,25 +96,14 @@
 {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 3;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    
-    if(section == 0){
-        return [array1 count];
-    }
-    else if(section == 1){
-    
-        return [array2 count];
-    }
-    else{
-    
-        return [array3 count ];
-    } 
+    return [array6 count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -160,34 +113,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        
     }
-        
-    
-    if (indexPath.section == 0) {
-       
-        cell.textLabel.text = [array1 objectAtIndex:indexPath.row];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
-        
-    
-    
-    }
-    else if (indexPath.section == 1) {
-        cell.textLabel.text = [array2 objectAtIndex:indexPath.row];
-        
-        if (indexPath.row == 0 |indexPath.row == 1) {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
-        }
-    }
-    else if(indexPath.section == 2){
-        cell.textLabel.text = [array3 objectAtIndex:indexPath.row];
-        [cell.contentView addSubview:toggle];
-    }
+    cell.textLabel.text = [array6 objectAtIndex:indexPath.row];
     // Configure the cell...
     
-
     return cell;
 }
 
@@ -234,15 +163,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (indexPath.section == 1 |indexPath.row == 1) {
-        
-        AccountSettingView *account = [[[AccountSettingView alloc]init]autorelease];
-        //UINavigationController *navigation = [[[UINavigationController alloc]initWithRootViewController:account]autorelease];
-        [self .navigationController pushViewController:account animated:YES];
-        
-            }
-    
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
