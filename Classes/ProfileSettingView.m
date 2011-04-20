@@ -57,10 +57,10 @@
     mytable.dataSource = self;
     
     self.navigationItem.leftBarButtonItem =[[[UIBarButtonItem alloc] initWithTitle:@" Back" style:UIBarButtonItemStylePlain target:self action:@selector(back)]autorelease];
-    
-    
+//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+//    self.navigationItem.backBarButtonItem = backButton;
+//    [backButton release];
 
-    
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"About"style:UIBarButtonItemStyleBordered target:self action:@selector(about)] autorelease];
     
     [self.view addSubview:mytable];
@@ -235,11 +235,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (indexPath.section == 1 |indexPath.row == 1) {
+    if (indexPath.section == 1 ) {
+        if (indexPath.row == 1) {
+            AccountSettingView *account = [[[AccountSettingView alloc]init]autorelease];
+            [self .navigationController pushViewController:account animated:YES];
+            
+        }
         
-        AccountSettingView *account = [[[AccountSettingView alloc]init]autorelease];
-        //UINavigationController *navigation = [[[UINavigationController alloc]initWithRootViewController:account]autorelease];
-        [self .navigationController pushViewController:account animated:YES];
+       
         
             }
     

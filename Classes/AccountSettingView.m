@@ -23,6 +23,7 @@
 - (void)dealloc
 {
     [super dealloc];
+    [array6 release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +43,7 @@
     
     array6	= [[NSArray arrayWithObjects:@"   Facebook", @"   Twitter", @"   Flicker",@"   Tumbler",@"   Posterous",@"   MySpace", nil] retain];    
     
-    accountTable = [[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 310, 415) style:UITableViewStylePlain]autorelease];
+    accountTable = [[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStyleGrouped]autorelease];
     accountTable.dataSource = self;
     accountTable.delegate = self;
     accountTable.userInteractionEnabled = YES;

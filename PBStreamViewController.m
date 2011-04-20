@@ -468,7 +468,7 @@
     
     ProfileSettingView *profile1 = [[[ProfileSettingView alloc]initWithNibName:nil bundle:nil]autorelease];
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:profile1] autorelease];
-
+      
     [self presentModalViewController:navController animated:YES];
     
 

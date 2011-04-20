@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ProfileSettingView : UIViewController<UITableViewDelegate,UITableViewDataSource> {
+@interface ProfileSettingView : UIViewController<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate> {
     
     NSArray *array1;
     NSArray *array2;
