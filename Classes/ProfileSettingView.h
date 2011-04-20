@@ -17,8 +17,7 @@
     UITableView *mytable;
     UISwitch *toggle;
     
-    UINavigationController *navigation;
-}
+  }
 
 @property(nonatomic,retain)UISwitch *toggle;
 

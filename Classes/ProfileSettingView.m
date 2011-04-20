@@ -58,6 +58,8 @@
     self.navigationItem.leftBarButtonItem =[[[UIBarButtonItem alloc] initWithTitle:@" Back" style:UIBarButtonItemStylePlain target:self action:@selector(back)]autorelease];
     
     
+
+    
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"About"style:UIBarButtonItemStyleBordered target:self action:@selector(about)] autorelease];
     
     [self.view addSubview:mytable];
