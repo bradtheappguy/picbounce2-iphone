@@ -462,7 +462,7 @@
   }
 
 
--(IBAction) doSettings:(id)sender{
+-(IBAction) Dosettings:(id)sender{
    
     
     
