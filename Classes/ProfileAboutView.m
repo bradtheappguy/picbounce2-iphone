@@ -7,6 +7,8 @@
 //
 
 #import "ProfileAboutView.h"
+#import "AboutWebView.h"
+
 
 
 @implementation ProfileAboutView
@@ -118,7 +120,7 @@
     if (section == 0) {
         return [array4 count];
     }  
-    else {
+    else  {
         return [array5 count];
     } 
 }
@@ -138,7 +140,8 @@
     }
     else if (indexPath.section == 1) {
         cell.textLabel.text = [array5 objectAtIndex:indexPath.row];
-    }
+        
+            }
     
     // Configure the cell...
     
@@ -183,11 +186,87 @@
     return YES;
 }
 */
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+	[self becomeFirstResponder];
+	[self dismissModalViewControllerAnimated:YES];
+}
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0) { //check the section
+        
+        if (indexPath.row == 0  ) {  //check the row no.
+            
+            
+               
+                        
+            MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+            controller.mailComposeDelegate = self;
+            
+           
+            [controller setToRecipients:[NSArray arrayWithObject:@"feedback@clixtr.com"]];
+            
+            
+            [self presentModalViewController:controller animated:YES];
+            [controller release];
+            
+        
+                        
+            
+        } 
+                
+       
+            else if (indexPath.row == 1) {
+                
+                MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+                controller.mailComposeDelegate = self;
+                            
+                [controller setToRecipients:[NSArray arrayWithObject:@"support@clixtr.com"]];
+            
+                
+                [self presentModalViewController:controller animated:YES];
+                [controller release];    
+        
+        
+      }
+       else if (indexPath.row ==2 ) {
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=378022697&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"]];
+        }
+
+    } 
+ 
+    ///////////////////////////////////////////////////////////////////////
+    
+    else if(indexPath.section == 1){
+    
+        if (indexPath.row == 0) {
+            AboutWebView *webview = [[[AboutWebView alloc]initWithNibName:nil bundle:nil]autorelease];
+            webview.link = 1; ///assign flag to compare and do activity
+            [self.navigationController pushViewController:webview animated:YES];
+            
+        }
+        else if(indexPath.row == 1){
+            AboutWebView *webview = [[[AboutWebView alloc]initWithNibName:nil bundle:nil]autorelease];
+            webview.link = 2; ////assign flag to compare and do activity
+            [self.navigationController pushViewController:webview animated:YES];
+
+        
+        }
+        else if(indexPath.row == 2){
+            AboutWebView *webview = [[[AboutWebView alloc]initWithNibName:nil bundle:nil]autorelease];
+            webview.link = 3; ////assign flag to compare and do activity
+            [self.navigationController pushViewController:webview animated:YES];
+            
+            
+        }
+
+    
+    }
+    
+    
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

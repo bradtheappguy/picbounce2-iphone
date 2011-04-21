@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
 
-@interface ProfileAboutView : UIViewController<UITableViewDataSource,UITableViewDelegate> {
+@interface ProfileAboutView : UIViewController<UITableViewDataSource,UITableViewDelegate,MFMailComposeViewControllerDelegate> {
     
     NSArray *array4;
     NSArray *array5;
