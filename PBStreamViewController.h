@@ -36,6 +36,8 @@
   IBOutlet NSString *preloadedLocation;
   IBOutlet NSString *preloadedName;
   
+   IBOutlet UIButton *setting;  
+  
   UITextView *commentTextField;
   
   UIButton *activeLeaveCommentButton;
@@ -48,6 +50,7 @@
 @property (nonatomic, retain) IBOutlet NSString *preloadedName;
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
+@property(nonatomic,retain)IBOutlet UIButton *setting; 
 
 @property (readwrite) BOOL shouldShowProfileHeader;
 @property (readwrite) BOOL shouldShowProfileHeaderBeforeNetworkLoad;

@@ -22,6 +22,7 @@
 @synthesize preloadedAvatarURL;
 @synthesize preloadedLocation;
 @synthesize preloadedName;
+@synthesize setting;
 
 
 #pragma mark View LifeCycle
