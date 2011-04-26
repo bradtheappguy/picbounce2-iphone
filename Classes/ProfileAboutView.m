@@ -195,6 +195,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
     if (indexPath.section == 0) { //check the section
         
         if (indexPath.row == 0  ) {  //check the row no.

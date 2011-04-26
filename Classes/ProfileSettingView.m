@@ -52,14 +52,13 @@
     toggle = [[[UISwitch alloc]initWithFrame:CGRectMake(200, 8, 70,30 )]autorelease];
     
     mytable = [[UITableView alloc]initWithFrame:CGRectMake(0,0,320, 415) style:UITableViewStyleGrouped];
+    
     mytable.userInteractionEnabled = YES;
     mytable.delegate = self;
     mytable.dataSource = self;
     
     self.navigationItem.leftBarButtonItem =[[[UIBarButtonItem alloc] initWithTitle:@" Back" style:UIBarButtonItemStylePlain target:self action:@selector(back)]autorelease];
-//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
-//    self.navigationItem.backBarButtonItem = backButton;
-//    [backButton release];
+
 
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"About"style:UIBarButtonItemStyleBordered target:self action:@selector(about)] autorelease];
     
@@ -91,6 +90,7 @@
 
 }
 -(void)about{
+    
     ProfileAboutView *about = [[[ProfileAboutView alloc]initWithNibName:nil bundle:nil]autorelease];
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:about] autorelease];
     
@@ -156,6 +156,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    
+	
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -234,7 +236,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+   
     if (indexPath.section == 1 ) {
         if (indexPath.row == 1) {
             AccountSettingView *account = [[[AccountSettingView alloc]init]autorelease];
