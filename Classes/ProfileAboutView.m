@@ -44,7 +44,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"About";
+    self.title = NSLocalizedString(@"About",nil);
     
     aboutTable = [[UITableView alloc]initWithFrame:CGRectMake(0,0,320, 415) style:UITableViewStyleGrouped];
     aboutTable.userInteractionEnabled = YES;
@@ -53,12 +53,12 @@
     
     [self.view addSubview:aboutTable];
 
-    array4	= [[NSArray arrayWithObjects:@"Send Feedback", @"Contact Support", @"Rate PicBounce in App Store", nil] retain];
+    array4	= [[NSArray arrayWithObjects:NSLocalizedString(@"Send Feedback",nil), NSLocalizedString(@"Contact Support",nil), NSLocalizedString(@"Rate PicBounce in App Store",nil), nil] retain];
    
-    array5 =[[NSArray arrayWithObjects:@"PicBounce Web",@"Terms of Use",@"Privacy Policy", nil]retain] ;
+    array5 =[[NSArray arrayWithObjects:NSLocalizedString(@"PicBounce Web",nil),NSLocalizedString(@"Terms of Use",nil),NSLocalizedString(@"Privacy Policy",nil), nil]retain] ;
     
     
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"Done"style:UIBarButtonItemStyleBordered target:self action:@selector(Done)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Done",nil)style:UIBarButtonItemStyleBordered target:self action:@selector(Done)] autorelease];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

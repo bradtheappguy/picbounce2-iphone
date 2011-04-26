@@ -10,6 +10,7 @@
 
 
 @implementation AccountSettingView
+@synthesize sw;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -22,6 +23,7 @@
 
 - (void)dealloc
 {
+    //[sw release];
     [super dealloc];
     [array6 release];
 }
@@ -39,9 +41,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Account Settings";
     
-    array6	= [[NSArray arrayWithObjects:@"   Facebook", @"   Twitter", @"   Flicker",@"   Tumbler",@"   Posterous",@"   MySpace", nil] retain];    
+   // UIImage *login = [UIImage imageNamed:@"login.png"];
+    
+    sw = [[[UIButton alloc]initWithFrame:CGRectMake(200, 8, 70,30 )]autorelease];
+    
+    
+   
+    
+    
+//    [sw addTarget:self action:@selector(facebooklogin:) forControlEvents:
+//     UIControlEventTouchUpInside];
+//    [sw setImage:login forState:UIControlStateNormal];
+    
+    //sw.frame = CGRectMake(200, 8, 70,30 );
+ 
+    
+    self.title =NSLocalizedString( @"Account Settings",nil);
+    
+    array6	= [[NSArray arrayWithObjects:NSLocalizedString(@"Facebook",nil), NSLocalizedString(@"Twitter",nil),NSLocalizedString( @"Flicker",nil ),NSLocalizedString(@"Tumbler",nil),NSLocalizedString(@"Posterous",nil),NSLocalizedString(@"MySpace",nil), nil] retain];    
     
     accountTable = [[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStyleGrouped]autorelease];
     accountTable.dataSource = self;
@@ -64,6 +82,24 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+
+-(IBAction)facebooklogin:(id)sender {
+    
+//    UIImage *selected = [UIImage imageNamed:@"logout.png"];
+//    UIImage *deselected = [UIImage imageNamed:@"login.png"];
+//    
+//    
+//    if ([sender isSelected]) {
+//        [sender setImage:selected forState:UIControlStateNormal];
+//        [sender setSelected:NO];
+//    }
+//    
+//    else {
+//        [sender setImage:deselected forState:UIControlStateSelected];
+//        [sender setSelected:YES];
+//    }
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -115,7 +151,16 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    cell.textLabel.text = [array6 objectAtIndex:indexPath.row];
+    if (indexPath.section ==0) {
+       cell.textLabel.text = [array6 objectAtIndex:indexPath.row];
+        
+        if(indexPath.row == 0){
+            
+           //[cell.contentView addSubview:sw] ;///crashing have to be worked on;
+        
+        }
+    }    
+    
     // Configure the cell...
     
     return cell;

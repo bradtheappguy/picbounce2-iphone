@@ -12,7 +12,19 @@
 @interface AccountSettingView : UIViewController<UITableViewDataSource,UITableViewDelegate> {
     
     NSArray *array6;
+    
     UITableView *accountTable;
+    
+    UIButton *sw;
+    
+          
 }
+
+
+@property(nonatomic,retain)UIButton *sw;
+
+
+-(IBAction)facebooklogin:(id)sender ;
+
 
 @end

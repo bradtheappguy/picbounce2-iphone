@@ -50,25 +50,28 @@
     [super viewDidLoad];
     
     toggle = [[[UISwitch alloc]initWithFrame:CGRectMake(200, 8, 70,30 )]autorelease];
-    
-    mytable = [[UITableView alloc]initWithFrame:CGRectMake(0,0,320, 415) style:UITableViewStyleGrouped];
+        
+   mytable = [[UITableView alloc]initWithFrame:CGRectMake(0,0,320, 415) style:UITableViewStyleGrouped];
     
     mytable.userInteractionEnabled = YES;
     mytable.delegate = self;
     mytable.dataSource = self;
     
-    self.navigationItem.leftBarButtonItem =[[[UIBarButtonItem alloc] initWithTitle:@" Back" style:UIBarButtonItemStylePlain target:self action:@selector(back)]autorelease];
+    self.navigationItem.leftBarButtonItem =[[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@" Back",nil) style:UIBarButtonItemStylePlain target:self action:@selector(back)]autorelease];
 
 
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"About"style:UIBarButtonItemStyleBordered target:self action:@selector(about)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"About",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(about)] autorelease];
     
     [self.view addSubview:mytable];
     
-    self.title = @"Settings";
+    self.title = NSLocalizedString(@"Settings",nil);
     
-     array1	= [[NSArray arrayWithObjects:@"Find Friends", @"Invite Friends", @"Search", nil] retain];
-    array2 =[[NSArray arrayWithObjects:@"Edit Profile",@"Share Account",@"Change Profile Pic",@"Log Out", nil]retain] ;
-    array3 = [[NSArray arrayWithObjects:@"Photos are Private", nil]retain];
+ 
+    array1	= [[NSArray arrayWithObjects:NSLocalizedString (@"Find Friends",nil), NSLocalizedString(@"Invite Friends",nil),NSLocalizedString( @"Search",nil), nil] retain];
+
+    array2 =[[NSArray arrayWithObjects:NSLocalizedString(@"Edit Profile",nil),NSLocalizedString(@"Share Account",nil),NSLocalizedString(@"Change Profile Pic",nil),NSLocalizedString(@"Log Out",nil), nil]retain] ;
+   
+    array3 = [[NSArray arrayWithObjects:NSLocalizedString(@"Photos are Private",nil), nil]retain];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -186,6 +189,7 @@
     else if(indexPath.section == 2){
         cell.textLabel.text = [array3 objectAtIndex:indexPath.row];
         [cell.contentView addSubview:toggle];
+        
     }
     // Configure the cell...
     
@@ -241,6 +245,7 @@
     if (indexPath.section == 1 ) {
         if (indexPath.row == 1) {
             AccountSettingView *account = [[[AccountSettingView alloc]init]autorelease];
+            
             [self .navigationController pushViewController:account animated:YES];
             
         }

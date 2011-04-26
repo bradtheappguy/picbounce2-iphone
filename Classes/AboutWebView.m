@@ -111,10 +111,10 @@
     
     [scrollingWheel stopAnimating];
     
-    UIAlertView *myAlertView = [[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]autorelease];
+    UIAlertView *myAlertView = [[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:self cancelButtonTitle:NSLocalizedString( @"OK",nil) otherButtonTitles:nil]autorelease];
 	
 	[myAlertView show];
-	[myAlertView release];
+	
 
 
 }
