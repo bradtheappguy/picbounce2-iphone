@@ -7,7 +7,7 @@
 //
 
 #import "AccountSettingView.h"
-
+#import "FBConnect.h"
 
 @implementation AccountSettingView
 @synthesize fbbutton;
@@ -148,7 +148,7 @@
         if (indexPath.row == 0) {  ////set the button for facebbok
             
                        
-            fbview = [[[UIView alloc]initWithFrame:CGRectMake(200, 6, 80,30)]autorelease];
+            fbview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80,30)]autorelease];
             //fbview.backgroundColor = [UIColor redColor];
             
             fbbutton = [UIButton buttonWithType:UIButtonTypeCustom];
