@@ -50,7 +50,8 @@
     [super viewDidLoad];
     
     toggle = [[[UISwitch alloc]initWithFrame:CGRectMake(200, 8, 70,30 )]autorelease];
-        
+     
+    
    mytable = [[UITableView alloc]initWithFrame:CGRectMake(0,0,320, 415) style:UITableViewStyleGrouped];
     
     mytable.userInteractionEnabled = YES;

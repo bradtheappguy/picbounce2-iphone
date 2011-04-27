@@ -14,17 +14,15 @@
     NSArray *array6;
     
     UITableView *accountTable;
+   
+    UIView *fbview;
+    UIButton *fbbutton;
     
-    UIButton *sw;
+    
     
           
 }
 
-
-@property(nonatomic,retain)UIButton *sw;
-
-
--(IBAction)facebooklogin:(id)sender ;
-
+@property(nonatomic,retain)UIButton *fbbutton;
 
 @end

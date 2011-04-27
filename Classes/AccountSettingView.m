@@ -10,7 +10,8 @@
 
 
 @implementation AccountSettingView
-@synthesize sw;
+@synthesize fbbutton;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,7 +24,7 @@
 
 - (void)dealloc
 {
-    //[sw release];
+    
     [super dealloc];
     [array6 release];
 }
@@ -41,21 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-   // UIImage *login = [UIImage imageNamed:@"login.png"];
-    
-    sw = [[[UIButton alloc]initWithFrame:CGRectMake(200, 8, 70,30 )]autorelease];
-    
-    
-   
-    
-    
-//    [sw addTarget:self action:@selector(facebooklogin:) forControlEvents:
-//     UIControlEventTouchUpInside];
-//    [sw setImage:login forState:UIControlStateNormal];
-    
-    //sw.frame = CGRectMake(200, 8, 70,30 );
- 
+        	
     
     self.title =NSLocalizedString( @"Account Settings",nil);
     
@@ -85,19 +72,19 @@
 
 -(IBAction)facebooklogin:(id)sender {
     
-//    UIImage *selected = [UIImage imageNamed:@"logout.png"];
-//    UIImage *deselected = [UIImage imageNamed:@"login.png"];
-//    
-//    
-//    if ([sender isSelected]) {
-//        [sender setImage:selected forState:UIControlStateNormal];
-//        [sender setSelected:NO];
-//    }
-//    
-//    else {
-//        [sender setImage:deselected forState:UIControlStateSelected];
-//        [sender setSelected:YES];
-//    }
+    UIImage *deselected = [UIImage imageNamed:@"login.png"];
+    UIImage *selected = [UIImage imageNamed:@"logout.png"];
+    
+    
+    if ([sender isSelected]) {
+        [sender setImage:deselected forState:UIControlStateNormal];
+        [sender setSelected:NO];
+    }
+    
+    else {
+        [sender setImage:selected forState:UIControlStateSelected];
+        [sender setSelected:YES];
+    }
 }
 
 
@@ -148,18 +135,36 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+   
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    if (indexPath.section ==0) {
-       cell.textLabel.text = [array6 objectAtIndex:indexPath.row];
+    
+    if (indexPath.section == 0 ) {
         
-        if(indexPath.row == 0){
+        cell.textLabel.text = [array6 objectAtIndex:indexPath.row];
+        
+        
+        if (indexPath.row == 0) {  ////set the button for facebbok
             
-           //[cell.contentView addSubview:sw] ;///crashing have to be worked on;
+                       
+            fbview = [[[UIView alloc]initWithFrame:CGRectMake(200, 6, 80,30)]autorelease];
+            //fbview.backgroundColor = [UIColor redColor];
+            
+            fbbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+            fbbutton.frame = CGRectMake(0, 0, 80,30);
+            [fbbutton addTarget:self action:@selector(facebooklogin:) forControlEvents:UIControlEventTouchUpInside];
+            
+            [fbbutton setImage:[UIImage imageNamed:@"login.png"] forState:UIControlStateNormal];
+            
+            [fbview addSubview:fbbutton];
+
+           [cell.contentView addSubview:fbview]; 
+           
+            //
         
-        }
-    }    
+      }
+    }
     
     // Configure the cell...
     
