@@ -10,7 +10,7 @@
 #import "FBConnect.h"
 
 @implementation AccountSettingView
-@synthesize fbbutton;
+@synthesize fbbutton,facebook = _facebook,label = _label;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -42,7 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        	
+        	//[self Fbconnect];
     
     self.title =NSLocalizedString( @"Account Settings",nil);
     
@@ -57,7 +57,7 @@
     
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+     //self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -82,12 +82,29 @@
     }
     
     else {
+        
         [sender setImage:selected forState:UIControlStateSelected];
         [sender setSelected:YES];
     }
 }
+////////////Facebook login //////////////
+-(void)Fbconnect{
 
+   
+    facebook = [[Facebook alloc]initWithAppId:@"125208417509976"];
+    
+    [self.label setText:@"Please log in"];
+    
+}
+- (void)login {
+    [_facebook authorize:_permissions delegate:self];
+}
 
+- (void)logout {
+    [_facebook logout:self];
+}
+
+////////////////////////////////////////////////////////////
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
