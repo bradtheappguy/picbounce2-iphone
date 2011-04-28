@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
 
+//#import "FBLoginButton.h"
+
 
 @interface AccountSettingView : UIViewController
 
@@ -23,7 +25,8 @@
    
     IBOutlet UILabel* _label;
     
-    Facebook *facebook;
+    Facebook *_facebook;
+    
     
     
     IBOutlet UIButton* _getUserInfoButton;
@@ -31,7 +34,7 @@
     IBOutlet UIButton* _publishButton;
     IBOutlet UIButton* _uploadPhotoButton;
     
-    NSArray* _permissions;
+    NSArray *_permissions;
     
           
 }
@@ -51,5 +54,9 @@
 -(IBAction)uploadPhoto:(id)sender;
 
 -(void)Fbconnect;
+
+- (void)login;
+- (void)logout;
+- (void) getFBRequestWithGraphPath:(NSString*) _path andDelegate:(id) _delegate;
 
 @end

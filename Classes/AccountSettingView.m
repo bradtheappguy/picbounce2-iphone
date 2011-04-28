@@ -10,22 +10,35 @@
 #import "FBConnect.h"
 
 @implementation AccountSettingView
-@synthesize fbbutton,facebook = _facebook,label = _label;
+@synthesize fbbutton,facebook = _facebook,label = label;
 
+//- (id)initWithStyle:(UITableViewStyle)style
+//{
+//    //self = [super initWithStyle:style];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    //self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    
+    
+    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+        _permissions =  [[NSArray arrayWithObjects:
+                         @"publish_stream",nil] retain];
     }
+    
     return self;
 }
 
 - (void)dealloc
 {
-    
     [super dealloc];
+    [_permissions release];
+    [_facebook release];
+     _facebook = nil;
     [array6 release];
 }
 
@@ -42,8 +55,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        	//[self Fbconnect];
-    
+     
+   
+   
     self.title =NSLocalizedString( @"Account Settings",nil);
     
     array6	= [[NSArray arrayWithObjects:NSLocalizedString(@"Facebook",nil), NSLocalizedString(@"Twitter",nil),NSLocalizedString( @"Flicker",nil ),NSLocalizedString(@"Tumbler",nil),NSLocalizedString(@"Posterous",nil),NSLocalizedString(@"MySpace",nil), nil] retain];    
@@ -72,6 +86,7 @@
 
 -(IBAction)facebooklogin:(id)sender {
     
+  
     UIImage *deselected = [UIImage imageNamed:@"login.png"];
     UIImage *selected = [UIImage imageNamed:@"logout.png"];
     
@@ -79,31 +94,68 @@
     if ([sender isSelected]) {
         [sender setImage:deselected forState:UIControlStateNormal];
         [sender setSelected:NO];
+        [self logout];
     }
     
     else {
         
         [sender setImage:selected forState:UIControlStateSelected];
         [sender setSelected:YES];
+        [self login];
     }
 }
 ////////////Facebook login //////////////
--(void)Fbconnect{
 
-   
-    facebook = [[Facebook alloc]initWithAppId:@"125208417509976"];
-    
-    [self.label setText:@"Please log in"];
-    
-}
+
+
 - (void)login {
-    [_facebook authorize:_permissions delegate:self];
+   
+    BOOL isLoggedIn;
+    
+	if (_facebook == nil) {
+		_facebook = [[Facebook alloc] initWithAppId:@"125208417509976"];
+		
+		NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"access_token"];
+		NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
+		
+		if (token != nil && exp != nil && [token length] > 2) {
+			isLoggedIn = YES;
+			_facebook.accessToken = token;
+            _facebook.expirationDate = [NSDate distantFuture];
+		} 
+		
+		
+		[_facebook retain];
+	}
+	
+	    
+	
+    //if no session is available login
+	[_facebook authorize:_permissions   delegate:self];
+       
+
 }
 
 - (void)logout {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"access_token"];
+	[[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"exp_date"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	
+
     [_facebook logout:self];
 }
+- (void) getFBRequestWithGraphPath:(NSString*) _path andDelegate:(id) _delegate{
 
+    if (_path != nil) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+		
+		if (_delegate == nil)
+			_delegate = self;
+		
+		[_facebook requestWithGraphPath:@"me" andDelegate:self];
+	}
+}
 ////////////////////////////////////////////////////////////
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -162,7 +214,7 @@
         cell.textLabel.text = [array6 objectAtIndex:indexPath.row];
         
         
-        if (indexPath.row == 0) {  ////set the button for facebbok
+        if (indexPath.row == 0) {  ////set the button for facebook
             
                        
             fbview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80,30)]autorelease];
@@ -172,13 +224,14 @@
             fbbutton.frame = CGRectMake(0, 0, 80,30);
             [fbbutton addTarget:self action:@selector(facebooklogin:) forControlEvents:UIControlEventTouchUpInside];
             
-            [fbbutton setImage:[UIImage imageNamed:@"login.png"] forState:UIControlStateNormal];
-            
+           [fbbutton setImage:[UIImage imageNamed:@"login.png"] forState:UIControlStateNormal];
             [fbview addSubview:fbbutton];
+            
+            
 
            [cell.contentView addSubview:fbview]; 
            
-            //
+            
         
       }
     }
@@ -195,7 +248,7 @@
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
+*/      
 
 /*
 // Override to support editing the table view.
