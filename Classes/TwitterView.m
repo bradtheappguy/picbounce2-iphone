@@ -86,6 +86,7 @@
 	[TwitWeb loadRequest:requestObj];
     
     
+    
     [super viewDidLoad];
 }
 -(void)Done{
@@ -104,6 +105,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView { 
     
     [scrollingWheel stopAnimating];  /// stop activity indicator
+    
+    NSString *myText = [TwitWeb stringByEvaluatingJavaScriptFromString:@"document.documentElement.textContent"];
+//     NSString *myText = [TwitWeb stringByEvaluatingJavaScriptFromString:@" twttr.form_authenticity_token"];/// uncomment to print only the twitter authenticity token.
+    
+    NSLog(@"twitter authenticity token = %@",myText);//print the data recieved. 
     
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{   /// handle http  loading error
