@@ -8,146 +8,119 @@
 
 #import "AccountSettingView.h"
 #import "FBConnect.h"
-
+#import "FacebookSingleton.h"
 @implementation AccountSettingView
-@synthesize fbbutton,facebook = _facebook,label = label;
 
-//- (id)initWithStyle:(UITableViewStyle)style
-//{
-//    //self = [super initWithStyle:style];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
+@synthesize fbbutton;
+@synthesize facebook = _facebook;
+@synthesize label = label;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
-    
-    
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        _permissions =  [[NSArray arrayWithObjects:
-                         @"publish_stream",nil] retain];
-    }
-    
-    return self;
+  if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+    _permissions =  [[NSArray arrayWithObject: @"publish_stream"] retain];
+  }
+  return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-    [_permissions release];
-    [_facebook release];
-     _facebook = nil;
-    [array6 release];
+
+- (void)dealloc {
+  [_permissions release];
+  [_facebook release];
+  _facebook = nil;
+  [serviceNames release];
+  [super dealloc];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+
+- (void)didReceiveMemoryWarning {
+  [super didReceiveMemoryWarning];
 }
+
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-     
-   
-   
-    self.title =NSLocalizedString( @"Account Settings",nil);
-    
-    array6	= [[NSArray arrayWithObjects:NSLocalizedString(@"Facebook",nil), NSLocalizedString(@"Twitter",nil),NSLocalizedString( @"Flicker",nil ),NSLocalizedString(@"Tumbler",nil),NSLocalizedString(@"Posterous",nil),NSLocalizedString(@"MySpace",nil), nil] retain];    
-    
-    accountTable = [[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStyleGrouped]autorelease];
-    accountTable.dataSource = self;
-    accountTable.delegate = self;
-    accountTable.userInteractionEnabled = YES;
-     
-    [self.view addSubview:accountTable];
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-     //self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
--(IBAction)facebooklogin:(id)sender {
-    
+- (void)viewDidLoad {
+  [super viewDidLoad];  
+  self.title = NSLocalizedString(@"Account Settings",nil);
+  serviceNames	= [[NSArray arrayWithObjects:
+                    NSLocalizedString(@"Facebook",nil), 
+                    NSLocalizedString(@"Twitter",nil),
+                    NSLocalizedString( @"Flicker",nil ),
+                    NSLocalizedString(@"Tumbler",nil),
+                    NSLocalizedString(@"Posterous",nil),
+                    NSLocalizedString(@"MySpace",nil), nil] retain];    
   
-    UIImage *deselected = [UIImage imageNamed:@"login.png"];
-    UIImage *selected = [UIImage imageNamed:@"logout.png"];
-    
-    
-    if ([sender isSelected]) {
-        [sender setImage:deselected forState:UIControlStateNormal];
-        [sender setSelected:NO];
-        [self logout];
-    }
-    
-    else {
-        
-        [sender setImage:selected forState:UIControlStateSelected];
-        [sender setSelected:YES];
-        [self login];
-    }
+  accountTable = [[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStyleGrouped] autorelease];
+  accountTable.dataSource = self;
+  accountTable.delegate = self;
+  accountTable.userInteractionEnabled = YES;
+  [self.view addSubview:accountTable];
 }
-////////////Facebook login //////////////
 
 
+- (void)viewDidUnload {
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
+  // e.g. self.myOutlet = nil;
+}
+ 
+-(IBAction)facebooklogin:(id)sender {
+  
+  UIImage *deselected = [UIImage imageNamed:@"login.png"];
+  UIImage *selected = [UIImage imageNamed:@"logout.png"];
+  
+  if ([sender isSelected]) {
+    [sender setImage:deselected forState:UIControlStateNormal];
+    [sender setSelected:NO];
+    [self logout];
+  }
+  else {
+    [sender setImage:selected forState:UIControlStateSelected];
+    [sender setSelected:YES];
+    [self login];
+  }
+}
+
+
+#pragma mark Facebook Logout
 
 - (void)login {
-   
-    BOOL isLoggedIn;
-    
+  
+  BOOL isLoggedIn;
+  
 	if (_facebook == nil) {
-		_facebook = [[Facebook alloc] initWithAppId:@"125208417509976"];
-		
+		_facebook = [FacebookSingleton sharedFacebook];
+		_facebook.sessionDelegate = self;
 		NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"access_token"];
 		NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
 		
 		if (token != nil && exp != nil && [token length] > 2) {
 			isLoggedIn = YES;
 			_facebook.accessToken = token;
-            _facebook.expirationDate = [NSDate distantFuture];
+      _facebook.expirationDate = [NSDate distantFuture];
 		} 
 		
 		
 		[_facebook retain];
 	}
 	
-	    
-	
-    //if no session is available login
+  //if no session is available login
 	[_facebook authorize:_permissions   delegate:self];
-       
-
 }
 
-- (void)logout {
-    
-    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"access_token"];
+
+- (void)logout {  
+  [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"access_token"];
 	[[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"exp_date"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
-	
-
-    [_facebook logout:self];
+  [_facebook logout:self];
 }
-- (void) getFBRequestWithGraphPath:(NSString*) _path andDelegate:(id) _delegate{
 
-    if (_path != nil) {
+
+- (void) getFBRequestWithGraphPath:(NSString*) _path andDelegate:(id) _delegate{
+  
+  if (_path != nil) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 		
 		if (_delegate == nil)
@@ -156,144 +129,115 @@
 		[_facebook requestWithGraphPath:@"me" andDelegate:self];
 	}
 }
-////////////////////////////////////////////////////////////
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
+
+- (void)viewDidDisappear:(BOOL)animated {
+  [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+  // Return YES for supported orientations
+  return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-//#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  //#warning Potentially incomplete method implementation.
+  // Return the number of sections.
+  return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return [array6 count];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  //#warning Incomplete method implementation.
+  // Return the number of rows in the section.
+  return [serviceNames count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  static NSString *CellIdentifier = @"Cell";
+  
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  
+  if (cell == nil) {
+    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+  }
+  
+  if (indexPath.section == 0 ) {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-   
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    cell.textLabel.text = [serviceNames objectAtIndex:indexPath.row];
+    
+    
+    if (indexPath.row == 0) {  ////set the button for facebook
+      
+      
+      fbview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80,30)]autorelease];
+      //fbview.backgroundColor = [UIColor redColor];
+      
+      fbbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+      fbbutton.frame = CGRectMake(0, 0, 80,30);
+      [fbbutton addTarget:self action:@selector(facebooklogin:) forControlEvents:UIControlEventTouchUpInside];
+      
+      [fbbutton setImage:[UIImage imageNamed:@"login.png"] forState:UIControlStateNormal];
+      [fbview addSubview:fbbutton];
+      
+      
+      
+      [cell.contentView addSubview:fbview]; 
+      
+      
+      
     }
-    
-    if (indexPath.section == 0 ) {
-        
-        cell.textLabel.text = [array6 objectAtIndex:indexPath.row];
-        
-        
-        if (indexPath.row == 0) {  ////set the button for facebook
-            
-                       
-            fbview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80,30)]autorelease];
-            //fbview.backgroundColor = [UIColor redColor];
-            
-            fbbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-            fbbutton.frame = CGRectMake(0, 0, 80,30);
-            [fbbutton addTarget:self action:@selector(facebooklogin:) forControlEvents:UIControlEventTouchUpInside];
-            
-           [fbbutton setImage:[UIImage imageNamed:@"login.png"] forState:UIControlStateNormal];
-            [fbview addSubview:fbbutton];
-            
-            
-
-           [cell.contentView addSubview:fbview]; 
-           
-            
-        
-      }
-    }
-    
-    // Configure the cell...
-    
-    return cell;
+  }
+  
+  // Configure the cell...
+  
+  return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/      
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-    
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
+
++ (void)showAlertViewWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancel otherButtonTitles:(NSString *)otherButonTitles, ... {
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:delegate cancelButtonTitle:cancel otherButtonTitles:otherButonTitles,nil];
+  [alert show];
+  [alert release];
+}
+
+-(void) fbDidLogin {
+  NSLog(@"I DID LOGZ INTQQQQQ");
+}
+
+- (void)fbDidNotLogin:(BOOL)cancelled {
+  NSLog(@"FFFF");
+}
+
+/**
+ * Called when the user logged out.
+ */
+- (void)fbDidLogout {
+  NSLog(@"ssss");
+}
 @end

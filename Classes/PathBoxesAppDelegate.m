@@ -9,6 +9,7 @@
 #import "PathBoxesAppDelegate.h"
 #import "PBExpandingPhotoView.h"
 #import "PBContainerView.h"
+#import "FacebookSingleton.h"
 @implementation PathBoxesAppDelegate
 
 @synthesize window;
@@ -83,6 +84,12 @@
 -(void) cameraButtonPressed:(id) sender {
   self.tabBarController.selectedIndex = 2;
 }
+
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+  return [[FacebookSingleton sharedFacebook] handleOpenURL:url];
+}
+ 
 
 #pragma mark -
 #pragma mark Memory management

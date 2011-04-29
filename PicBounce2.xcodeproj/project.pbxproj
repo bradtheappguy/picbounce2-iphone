@@ -183,6 +183,7 @@
 		A2CF0331130473EA004362AA /* bg_section_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2CF0330130473EA004362AA /* bg_section_header@2x.png */; };
 		A2D2A4AE133D318400013C8D /* bg_green_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D2A4AD133D318400013C8D /* bg_green_btn@2x.png */; };
 		A2D2A4B0133D363700013C8D /* greenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D2A4AF133D363700013C8D /* greenButton.png */; };
+		A2E15821136A42D3003E96B9 /* FacebookSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E15820136A42D3003E96B9 /* FacebookSingleton.m */; };
 		A2E415F81343EE3F000D9CFA /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */; };
 		A2E415FA13441392000D9CFA /* PBCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2E415F913441392000D9CFA /* PBCommentCell.xib */; };
 		A2F263FD1315940200F4E0A0 /* ProfileHeaderCell-old1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F263FC1315940200F4E0A0 /* ProfileHeaderCell-old1.xib */; };
@@ -225,7 +226,7 @@
 		7452D1BF135DB8220024C63C /* ProfileAboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileAboutView.m; sourceTree = "<group>"; };
 		74A1CA321367FA3900F63EF5 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		74A1CA331367FA3900F63EF5 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
-		74A1CA37136810D600F63EF5 /* Eng.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Eng.strings; path = "../../../Users/amperesoftware/picbounce2-iphone/Eng.strings"; sourceTree = "<group>"; };
+		74A1CA37136810D600F63EF5 /* Eng.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Eng.strings; sourceTree = "<group>"; };
 		74A1CA5213682C8E00F63EF5 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = "facebook-ios-sdk/src/FBDialog.bundle"; sourceTree = "<group>"; };
 		74A1CA5513682CF100F63EF5 /* FBDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBDialog.m; path = "facebook-ios-sdk/src/FBDialog.m"; sourceTree = "<group>"; };
 		74A1CA5713682CFA00F63EF5 /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBDialog.h; path = "facebook-ios-sdk/src/FBDialog.h"; sourceTree = "<group>"; };
@@ -469,6 +470,8 @@
 		A2CF0330130473EA004362AA /* bg_section_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_section_header@2x.png"; path = "../bg_section_header@2x.png"; sourceTree = "<group>"; };
 		A2D2A4AD133D318400013C8D /* bg_green_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_green_btn@2x.png"; sourceTree = "<group>"; };
 		A2D2A4AF133D363700013C8D /* greenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenButton.png; sourceTree = "<group>"; };
+		A2E1581F136A42D3003E96B9 /* FacebookSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookSingleton.h; sourceTree = "<group>"; };
+		A2E15820136A42D3003E96B9 /* FacebookSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookSingleton.m; sourceTree = "<group>"; };
 		A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
 		A2E415F71343EE3F000D9CFA /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
 		A2E415F913441392000D9CFA /* PBCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBCommentCell.xib; sourceTree = "<group>"; };
@@ -572,6 +575,8 @@
 				A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */,
 				A29A9309131DA68300DB6D46 /* PBAPIResponce.h */,
 				A29A930A131DA68300DB6D46 /* PBAPIResponce.m */,
+				A2E1581F136A42D3003E96B9 /* FacebookSingleton.h */,
+				A2E15820136A42D3003E96B9 /* FacebookSingleton.m */,
 			);
 			name = Source;
 			path = Classes;
@@ -1280,6 +1285,7 @@
 				74A1CA5913682CFF00F63EF5 /* FBLoginDialog.m in Sources */,
 				74A1CA5D13682D1100F63EF5 /* Facebook.m in Sources */,
 				74A1CA5F13682D1700F63EF5 /* FBRequest.m in Sources */,
+				A2E15821136A42D3003E96B9 /* FacebookSingleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
