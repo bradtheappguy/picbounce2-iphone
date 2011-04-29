@@ -68,9 +68,18 @@
     self.title = NSLocalizedString(@"Settings",nil);
     
  
-    array1	= [[NSArray arrayWithObjects:NSLocalizedString (@"Find Friends",nil), NSLocalizedString(@"Invite Friends",nil),NSLocalizedString( @"Search",nil), nil] retain];
+    array1	= [[NSArray arrayWithObjects:
+                NSLocalizedString (@"Find Friends",nil),
+                NSLocalizedString(@"Invite Friends",nil),
+                NSLocalizedString( @"Search",nil), nil]
+                retain];
 
-    array2 =[[NSArray arrayWithObjects:NSLocalizedString(@"Edit Profile",nil),NSLocalizedString(@"Share Account",nil),NSLocalizedString(@"Change Profile Pic",nil),NSLocalizedString(@"Log Out",nil), nil]retain] ;
+    array2 =[[NSArray arrayWithObjects:
+              NSLocalizedString(@"Edit Profile",nil),
+              NSLocalizedString(@"Share Account",nil),
+              NSLocalizedString(@"Change Profile Pic",nil),
+              NSLocalizedString(@"Log Out",nil), nil]
+              retain] ;
    
     array3 = [[NSArray arrayWithObjects:NSLocalizedString(@"Photos are Private",nil), nil]retain];
 

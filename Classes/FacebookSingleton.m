@@ -19,4 +19,5 @@ static Facebook *sharedFacebook = nil;
   }
   return sharedFacebook;
 }
+
 @end

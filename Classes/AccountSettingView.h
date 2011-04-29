@@ -17,8 +17,13 @@
     
     UITableView *accountTable;
    
-    UIView *fbview;
+    
     UIButton *fbbutton;
+    UIButton *twbutton;
+    UIButton *flkrbutton;
+    UIButton *tmblrbutton;
+    UIButton *pstrsbutton;
+    UIButton *myspacebutton;
    
     IBOutlet UILabel* _label;
     
@@ -35,9 +40,14 @@
 @property(readonly) Facebook *facebook;
 @property(nonatomic,retain)UIButton *fbbutton;
 @property(nonatomic, retain) UILabel* label;
+@property(nonatomic,retain)UIButton *twbutton;
+@property(nonatomic,retain)UIButton *flkrbutton;
+@property(nonatomic,retain)UIButton *tmblrbutton;
+@property(nonatomic,retain)UIButton *pstrsbutton;
+@property(nonatomic,retain)UIButton *myspacebutton;
 
 - (void)login;
 - (void)logout;
 - (void) getFBRequestWithGraphPath:(NSString*) _path andDelegate:(id) _delegate;
-
+-(void)twitterLogin;
 @end

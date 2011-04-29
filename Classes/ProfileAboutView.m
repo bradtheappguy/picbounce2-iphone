@@ -53,9 +53,17 @@
     
     [self.view addSubview:aboutTable];
 
-    array4	= [[NSArray arrayWithObjects:NSLocalizedString(@"Send Feedback",nil), NSLocalizedString(@"Contact Support",nil), NSLocalizedString(@"Rate PicBounce in App Store",nil), nil] retain];
+    array4	= [[NSArray arrayWithObjects:
+                NSLocalizedString(@"Send Feedback",nil),
+                NSLocalizedString(@"Contact Support",nil),
+                NSLocalizedString(@"Rate PicBounce in App Store",nil), nil]
+                retain];
    
-    array5 =[[NSArray arrayWithObjects:NSLocalizedString(@"PicBounce Web",nil),NSLocalizedString(@"Terms of Use",nil),NSLocalizedString(@"Privacy Policy",nil), nil]retain] ;
+    array5 =[[NSArray arrayWithObjects:
+              NSLocalizedString(@"PicBounce Web",nil),
+              NSLocalizedString(@"Terms of Use",nil),
+              NSLocalizedString(@"Privacy Policy",nil), nil]
+              retain] ;
     
     
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Done",nil)style:UIBarButtonItemStyleBordered target:self action:@selector(Done)] autorelease];

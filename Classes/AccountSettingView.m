@@ -9,12 +9,17 @@
 #import "AccountSettingView.h"
 #import "FBConnect.h"
 #import "FacebookSingleton.h"
+#import "TwitterView.h"
 @implementation AccountSettingView
 
 @synthesize fbbutton;
 @synthesize facebook = _facebook;
 @synthesize label = label;
-
+@synthesize twbutton;
+@synthesize flkrbutton;
+@synthesize tmblrbutton;
+@synthesize pstrsbutton;
+@synthesize myspacebutton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -29,6 +34,7 @@
   [_facebook release];
   _facebook = nil;
   [serviceNames release];
+    
   [super dealloc];
 }
 
@@ -98,10 +104,9 @@
 		if (token != nil && exp != nil && [token length] > 2) {
 			isLoggedIn = YES;
 			_facebook.accessToken = token;
-      _facebook.expirationDate = [NSDate distantFuture];
+            _facebook.expirationDate = [NSDate distantFuture];
 		} 
-		
-		
+				
 		[_facebook retain];
 	}
 	
@@ -185,10 +190,10 @@
     cell.textLabel.text = [serviceNames objectAtIndex:indexPath.row];
     
     
-    if (indexPath.row == 0) {  ////set the button for facebook
+      if (indexPath.row == 0) {  ////set the button for facebook
       
       
-      fbview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80,30)]autorelease];
+      UIView *fbview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80,30)]autorelease];
       //fbview.backgroundColor = [UIColor redColor];
       
       fbbutton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -197,15 +202,103 @@
       
       [fbbutton setImage:[UIImage imageNamed:@"login.png"] forState:UIControlStateNormal];
       [fbview addSubview:fbbutton];
-      
-      
+        
       
       [cell.contentView addSubview:fbview]; 
-      
-      
-      
+       
     }
-  }
+      else if(indexPath.row == 1){     // set the button for twitter;
+      
+      
+          UIView *twview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80, 30)]autorelease];
+          //twview.backgroundColor = [UIColor redColor];
+            
+          twbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+          
+          twbutton.frame = CGRectMake(0, 0, 80 , 30);
+
+          [twbutton addTarget:self action:@selector(twitterLogin) forControlEvents:UIControlEventTouchUpInside];
+
+          
+          
+          [twbutton setImage:[UIImage imageNamed:@"twitterlogo.png"] forState:UIControlStateNormal];
+          
+          [twview addSubview:twbutton];
+          
+          [cell.contentView addSubview:twview];
+      
+      }
+       else if(indexPath.row == 2){ //set the button for flicker;
+       
+           UIView *flkrview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80, 30)]autorelease];
+       //twview.backgroundColor = [UIColor redColor];
+           
+           flkrbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+       
+           flkrbutton.frame = CGRectMake(0, 0, 80 , 30);
+       
+           [flkrbutton setImage:[UIImage imageNamed:@"Flickrbtn.png"] forState:UIControlStateNormal];
+       
+           [flkrview addSubview:flkrbutton];
+       
+           [cell.contentView addSubview:flkrview];
+       
+       
+       }
+       
+       else if(indexPath.row == 3){ //set the button for tumbler;
+       
+           UIView *tmblrview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80, 30)]autorelease];
+       //twview.backgroundColor = [UIColor redColor];
+       
+           tmblrbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+       
+           tmblrbutton.frame = CGRectMake(0, 0, 80 , 30);
+       
+           [tmblrbutton setImage:[UIImage imageNamed:@"tumblr_button.png"] forState:UIControlStateNormal];
+       
+           [tmblrview addSubview:tmblrbutton];
+       
+           [cell.contentView addSubview:tmblrview];
+       
+       
+       
+       }
+       else if(indexPath.row == 4){
+       
+           UIView *pstrsview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80, 30)]autorelease];
+       //twview.backgroundColor = [UIColor redColor];
+       
+           pstrsbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+       
+           pstrsbutton.frame = CGRectMake(0, 0, 80 , 30);
+       
+           [pstrsbutton setImage:[UIImage imageNamed:@"posterousbtn.png"] forState:UIControlStateNormal];
+       
+           [pstrsview addSubview:pstrsbutton];
+       
+           [cell.contentView addSubview:pstrsview];
+       }
+       
+       else if (indexPath.row == 5){
+           
+           UIView *myspaceview = [[[UIView alloc]initWithFrame:CGRectMake(200, 7, 80, 30)]autorelease];
+       //twview.backgroundColor = [UIColor redColor];
+       
+           myspacebutton = [UIButton buttonWithType:UIButtonTypeCustom];
+       
+           myspacebutton.frame = CGRectMake(0, 0, 80 , 30);
+       
+           [myspacebutton setImage:[UIImage imageNamed:@"myspacebtn.png"] forState:UIControlStateNormal];
+       
+           [myspaceview addSubview:myspacebutton];
+       
+           [cell.contentView addSubview:myspaceview];
+       
+       
+       }
+
+    }
   
   // Configure the cell...
   
@@ -240,4 +333,13 @@
 - (void)fbDidLogout {
   NSLog(@"ssss");
 }
+-(void)twitterLogin{
+    
+    TwitterView *twitweb = [[[TwitterView alloc]initWithNibName:nil bundle:nil]autorelease];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:twitweb] autorelease];
+    
+    [self presentModalViewController:navController animated:YES];
+    
+}
+
 @end
