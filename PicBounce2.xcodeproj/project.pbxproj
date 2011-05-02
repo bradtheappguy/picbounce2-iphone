@@ -231,8 +231,8 @@
 		7426954D136AA04C00768ACE /* posterousbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = posterousbtn.png; sourceTree = "<group>"; };
 		7426954E136AA04C00768ACE /* tumblr_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tumblr_button.png; sourceTree = "<group>"; };
 		74269553136AC4DE00768ACE /* Flickrbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flickrbtn.png; sourceTree = "<group>"; };
-		74269555136ACF1900768ACE /* TwitterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterView.h; path = "../../../../Users/amperesoftware/picbounce2-iphone/Classes/TwitterView.h"; sourceTree = "<group>"; };
-		74269556136ACF1900768ACE /* TwitterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterView.m; path = "../../../../Users/amperesoftware/picbounce2-iphone/Classes/TwitterView.m"; sourceTree = "<group>"; };
+		74269555136ACF1900768ACE /* TwitterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterView.h; path = Classes/TwitterView.h; sourceTree = SOURCE_ROOT; };
+		74269556136ACF1900768ACE /* TwitterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterView.m; path = Classes/TwitterView.m; sourceTree = SOURCE_ROOT; };
 		7452D1AC135D916F0024C63C /* ProfileSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSettingView.h; sourceTree = "<group>"; };
 		7452D1AD135D916F0024C63C /* ProfileSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSettingView.m; sourceTree = "<group>"; };
 		7452D1BE135DB8210024C63C /* ProfileAboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAboutView.h; sourceTree = "<group>"; };
