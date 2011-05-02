@@ -30,6 +30,7 @@
 		74A1CA5D13682D1100F63EF5 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A1CA5C13682D1100F63EF5 /* Facebook.m */; };
 		74A1CA5F13682D1700F63EF5 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A1CA5E13682D1700F63EF5 /* FBRequest.m */; };
 		74A1CAA6136858DD00F63EF5 /* FBConnect.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 74A1CAA5136858DD00F63EF5 /* FBConnect.bundle */; };
+		74AED8D1136E83A900CC6164 /* FriendListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AED8D0136E83A900CC6164 /* FriendListView.m */; };
 		74C514F3135EE3C800ED9844 /* AccountSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C514F2135EE3C800ED9844 /* AccountSettingView.m */; };
 		74F7A4E71360450F005D2F98 /* AboutWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F7A4E61360450E005D2F98 /* AboutWebView.m */; };
 		74F7A4FE13605C3B005D2F98 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F7A4FD13605C3B005D2F98 /* MessageUI.framework */; };
@@ -251,6 +252,8 @@
 		74A1CA6013682D1C00F63EF5 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = "facebook-ios-sdk/src/FBRequest.h"; sourceTree = "<group>"; };
 		74A1CA6113682D2D00F63EF5 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBConnect.h; path = "facebook-ios-sdk/src/FBConnect.h"; sourceTree = "<group>"; };
 		74A1CAA5136858DD00F63EF5 /* FBConnect.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBConnect.bundle; path = "facebook-ios-sdk/sample/FBConnect.bundle"; sourceTree = "<group>"; };
+		74AED8CF136E83A900CC6164 /* FriendListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListView.h; sourceTree = "<group>"; };
+		74AED8D0136E83A900CC6164 /* FriendListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListView.m; sourceTree = "<group>"; };
 		74C514F1135EE3C700ED9844 /* AccountSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSettingView.h; sourceTree = "<group>"; };
 		74C514F2135EE3C800ED9844 /* AccountSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSettingView.m; sourceTree = "<group>"; };
 		74F7A4E51360450E005D2F98 /* AboutWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWebView.h; sourceTree = "<group>"; };
@@ -814,6 +817,8 @@
 				74F7A4E61360450E005D2F98 /* AboutWebView.m */,
 				74269555136ACF1900768ACE /* TwitterView.h */,
 				74269556136ACF1900768ACE /* TwitterView.m */,
+				74AED8CF136E83A900CC6164 /* FriendListView.h */,
+				74AED8D0136E83A900CC6164 /* FriendListView.m */,
 			);
 			name = Streams;
 			sourceTree = "<group>";
@@ -1312,6 +1317,7 @@
 				74A1CA5F13682D1700F63EF5 /* FBRequest.m in Sources */,
 				A2E15821136A42D3003E96B9 /* FacebookSingleton.m in Sources */,
 				74269557136ACF1900768ACE /* TwitterView.m in Sources */,
+				74AED8D1136E83A900CC6164 /* FriendListView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
