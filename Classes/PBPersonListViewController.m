@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ASIFormDataRequest.h"
 
+
 @implementation PBPersonListViewController
 
 
@@ -28,8 +29,9 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  NSUInteger num = [responceData numberOfPeople];
-  return num;
+//  NSUInteger num = [responceData numberOfPeople];
+//  return num;
+    return 10;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,7 +84,11 @@
 //TODO
 }
 
+-(void)ABcontacts{
+    
+   
 
+} 
 #pragma mark -
 #pragma mark Memory management
 
