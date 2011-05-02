@@ -1,38 +1,30 @@
 //
-//  ProfileSettingView.m
+//  FriendListView.m
 //  PicBounce2
 //
-//  Created by Nitin on 4/19/11.
+//  Created by Sunil on 5/2/11.
 //  Copyright 2011 Ampere Software Private Limited. All rights reserved.
 //
 
-#import "ProfileSettingView.h"
-#import "ProfileAboutView.h"
-#import "AccountSettingView.h"
 #import "FriendListView.h"
+#import "PBPersonListViewController.h"
 
 
-@implementation ProfileSettingView
-
-@synthesize toggle;
+@implementation FriendListView
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     //self = [super initWithStyle:style];
-    
-    //self = [super initWithStyle:UITableViewStyleGrouped];
-
-    if (self) {
-        // Custom initialization
-    }
+//    if (self) {
+//        // Custom initialization
+//    }
     return self;
 }
 
 - (void)dealloc
 {
-    [array1 release];
-    [array2 release];
-    [array3 release];
+    [Contactlist release];
+    [Suggestlist release];
     [super dealloc];
 }
 
@@ -50,42 +42,32 @@
 {
     [super viewDidLoad];
     
-    toggle = [[[UISwitch alloc]initWithFrame:CGRectMake(200, 8, 70,30 )]autorelease];
-     
+    frendlistTable = [[UITableView alloc]initWithFrame:CGRectMake(0,0,320, 415) style:UITableViewStyleGrouped];
     
-   mytable = [[UITableView alloc]initWithFrame:CGRectMake(0,0,320, 415) style:UITableViewStyleGrouped];
-    
-    mytable.userInteractionEnabled = YES;
-    mytable.delegate = self;
-    mytable.dataSource = self;
-    
-    self.navigationItem.leftBarButtonItem =[[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@" Back",nil) style:UIBarButtonItemStylePlain target:self action:@selector(back)]autorelease];
+    frendlistTable.userInteractionEnabled = YES;
+    frendlistTable.delegate = self;
+    frendlistTable.dataSource = self;
 
-
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"About",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(about)] autorelease];
     
-    [self.view addSubview:mytable];
+    [self.view addSubview:frendlistTable];
     
-    self.title = NSLocalizedString(@"Settings",nil);
+   self.title = NSLocalizedString(@"Friends List",nil);
     
- 
-    array1	= [[NSArray arrayWithObjects:
-                NSLocalizedString (@"Find Friends",nil),
-                NSLocalizedString(@"Invite Friends",nil),
-                NSLocalizedString( @"Search",nil), nil]
+    
+    Contactlist	= [[NSArray arrayWithObjects:
+                NSLocalizedString (@"From my contact list",nil),
+                NSLocalizedString(@"Facebook friends",nil),
+                NSLocalizedString( @"Twitter Friends",nil),
+                NSLocalizedString( @"Search names and usernames",nil), nil]
                 retain];
-
-    array2 =[[NSArray arrayWithObjects:
-              NSLocalizedString(@"Edit Profile",nil),
-              NSLocalizedString(@"Share Account",nil),
-              NSLocalizedString(@"Change Profile Pic",nil),
-              NSLocalizedString(@"Log Out",nil), nil]
-              retain] ;
-   
-    array3 = [[NSArray arrayWithObjects:
-              NSLocalizedString(@"Photos are Private",nil), nil]
-              retain];
-
+    
+    Suggestlist = [[NSArray arrayWithObjects:
+                  NSLocalizedString(@"Suggest users ",nil), nil]
+                  retain];
+    
+    
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -96,24 +78,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    //self.tableView.style = UITableViewStyleGrouped;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
--(void)back{
-
-    [self dismissModalViewControllerAnimated:YES];
-
-}
--(void)about{
-    
-    ProfileAboutView *about = [[[ProfileAboutView alloc]initWithNibName:nil bundle:nil]autorelease];
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:about] autorelease];
-    
-    [self presentModalViewController:navController animated:YES];
-    
-
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -146,67 +112,46 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    
     if(section == 0){
-        return [array1 count];
+        return [Contactlist count];
     }
-    else if(section == 1){
+    else {
     
-        return [array2 count];
-    }
-    else{
+        return [Suggestlist count];
     
-        return [array3 count ];
     } 
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     
-	
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        
     }
-        
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     
     if (indexPath.section == 0) {
-       
-        cell.textLabel.text = [array1 objectAtIndex:indexPath.row];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
-        
-    
-    
+        cell.textLabel.text = [Contactlist objectAtIndex:indexPath.row];
     }
-    else if (indexPath.section == 1) {
-        cell.textLabel.text = [array2 objectAtIndex:indexPath.row];
-        
-        if (indexPath.row == 0 |indexPath.row == 1) {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
-        }
-    }
-    else if(indexPath.section == 2){
-        cell.textLabel.text = [array3 objectAtIndex:indexPath.row];
-        [cell.contentView addSubview:toggle];
-        
+    else if(indexPath.section == 1){
+    
+        cell.textLabel.text = [Suggestlist objectAtIndex:indexPath.row];
     }
     // Configure the cell...
     
-
     return cell;
 }
 
@@ -254,40 +199,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-   
+    
     if (indexPath.section == 0) {
-        
         if (indexPath.row == 0) {
             
-            FriendListView *frndlist = [[[FriendListView alloc]init]autorelease];
+            PBPersonListViewController *personlist = [[[PBPersonListViewController alloc]initWithNibName:@"PBPersonListViewController" bundle:nil]autorelease];
             
-            [self.navigationController pushViewController:frndlist animated:YES];
+            [self.navigationController pushViewController:personlist animated:YES];
             
         }
+        
+         if (indexPath.row == 1) {
+            
+            PBPersonListViewController *personlist = [[[PBPersonListViewController alloc]initWithNibName:@"PBPersonListViewController" bundle:nil]autorelease];
+            
+            [self.navigationController pushViewController:personlist animated:YES];
+            
+        }
+        if (indexPath.row == 2) {
+            
+            PBPersonListViewController *personlist = [[[PBPersonListViewController alloc]initWithNibName:@"PBPersonListViewController" bundle:nil]autorelease];
+            
+            [self.navigationController pushViewController:personlist animated:YES];
+            
+        }
+    
+    
     }
+ 
     
     
-    
-    if (indexPath.section == 1 ) {
-        if (indexPath.row == 1) {
-            AccountSettingView *account = [[[AccountSettingView alloc]init]autorelease];
-            
-            [self .navigationController pushViewController:account animated:YES];
-            
-        }
-        
-       
-        
-            }
-    
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
 }
 
 @end

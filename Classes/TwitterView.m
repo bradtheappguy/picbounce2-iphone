@@ -106,8 +106,11 @@
     
     [scrollingWheel stopAnimating];  /// stop activity indicator
     
-    NSString *myText = [TwitWeb stringByEvaluatingJavaScriptFromString:@"document.documentElement.textContent"];
-//     NSString *myText = [TwitWeb stringByEvaluatingJavaScriptFromString:@" twttr.form_authenticity_token"];/// uncomment to print only the twitter authenticity token.
+    NSString *myText = [TwitWeb stringByEvaluatingJavaScriptFromString:@"document.documentElement.textContent"]; //to print the whole page returned by the the url call.
+
+    
+    
+    //     NSString *myText = [TwitWeb stringByEvaluatingJavaScriptFromString:@" twttr.form_authenticity_token"];/// uncomment to print only the twitter authenticity token.
     
     NSLog(@"twitter authenticity token = %@",myText);//print the data recieved. 
     
