@@ -96,6 +96,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //TODO
+    
+     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 -(void)ABcontacts{
@@ -112,13 +114,12 @@
      
     NSString *name;
     NSString *homeEmail;
-    NSString *officeEmail;
-    NSString *email;
+    //NSString *officeEmail;
+   // NSString *email;
 
    
-    
-           
-    
+               
+
     for( int i = 0 ; i < nPeople ; i++ )
     {
         
@@ -131,17 +132,17 @@
             name = (NSString *)ABRecordCopyCompositeName((ABRecordRef)ref);
                  
             homeEmail =  (NSString *) ABMultiValueCopyValueAtIndex(multiEmail, 0);
-            officeEmail =  (NSString *) ABMultiValueCopyValueAtIndex(multiEmail, 1);
+            //officeEmail =  (NSString *) ABMultiValueCopyValueAtIndex(multiEmail, 1);// second email if user have.
             
-        email = [NSString stringWithFormat:@"home email = %@ Office email =  %@", homeEmail, officeEmail];     
+        //email = [NSString stringWithFormat:@"Email(H)= %@ Office email =  %@", homeEmail, officeEmail];    // uncomment to get multiple email. 
         
         
        
         [Namelist addObject:name];
-        [emailList addObject:email];
+        [emailList addObject:homeEmail];/// replace "homemail" by "email" to get multiple email             
             
         [homeEmail release];
-        [officeEmail release];
+        //[officeEmail release];
         
         [name release];
         
@@ -150,24 +151,20 @@
         
         CFRelease(ref);
         
-        NSLog(@"name = %@   email = %@", name, email);
+        NSLog(@"name = %@   email = %@", name, homeEmail);
 
         
     }
       
+  }
     
-    
-    
-       
-       
-
-} 
 - (void)viewDidLoad {
+    
     [self ABcontacts];
     
     [super viewDidLoad];
     
-    }
+  }
 
 #pragma mark -
 #pragma mark Memory management
