@@ -132,9 +132,10 @@
             name = (NSString *)ABRecordCopyCompositeName((ABRecordRef)ref);
                  
             homeEmail =  (NSString *) ABMultiValueCopyValueAtIndex(multiEmail, 0);
+            
             //officeEmail =  (NSString *) ABMultiValueCopyValueAtIndex(multiEmail, 1);// second email if user have.
             
-        //email = [NSString stringWithFormat:@"Email(H)= %@ Office email =  %@", homeEmail, officeEmail];    // uncomment to get multiple email. 
+            //email = [NSString stringWithFormat:@"Email(H)= %@ Office email =  %@", homeEmail, officeEmail];    // uncomment to get multiple email. 
         
         
        
@@ -142,6 +143,7 @@
         [emailList addObject:homeEmail];/// replace "homemail" by "email" to get multiple email             
             
         [homeEmail release];
+        
         //[officeEmail release];
         
         [name release];
@@ -159,8 +161,11 @@
   }
     
 - (void)viewDidLoad {
+    if (sl == 1) {
+     
+     [self ABcontacts];
     
-    [self ABcontacts];
+    }
     
     [super viewDidLoad];
     
