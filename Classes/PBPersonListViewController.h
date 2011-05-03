@@ -13,8 +13,12 @@
 
 @interface PBPersonListViewController : PBRootViewController {
 
+    NSMutableArray *Namelist;
+    NSMutableArray *emailList;
+    NSInteger sl;
+
 }
 
-
+@property (nonatomic,readwrite) NSInteger sl;
 
 @end
