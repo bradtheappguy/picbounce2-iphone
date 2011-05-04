@@ -9,10 +9,11 @@
 #import "AboutWebView.h"
 
 
+
 @implementation AboutWebView
 
 @synthesize PicBounceWeb;
-@synthesize scrollingWheel; 
+
 @synthesize  link;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,15 +52,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    scrollingWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(-200, 0, 30, 30)];///alloc activity indicator
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:scrollingWheel];///set it to the navigation
+   
     
     PicBounceWeb = [[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)]autorelease];
     PicBounceWeb.delegate = self;
     PicBounceWeb.scalesPageToFit = YES;
-    
     [self.view addSubview:PicBounceWeb];
+    
+    
+    progressbar = [[MBProgressHUD alloc] initWithView:self.view];
+    [PicBounceWeb addSubview:progressbar];
+
+    
     
     
     if (link == 1) {
@@ -99,35 +103,28 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView { 
     
-    [scrollingWheel startAnimating];  ///start activity indicator
+      
+    progressbar.labelText = NSLocalizedString(@"Loading...", nil) ;
+    [progressbar showUsingAnimation:YES];
+    
+    
+
 
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView { 
 
-[scrollingWheel stopAnimating];  /// stop activity indicator
+    [progressbar performSelector:@selector(hideUsingAnimation:) withObject:self];//hide the progress bar         
     
 }
+
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{   /// handle http  loading error
     
-    [scrollingWheel stopAnimating];
+    progressbar.labelText = NSLocalizedString(@"Error while loading...",nil) ;
     
-    UIAlertView *myAlertView = [[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:self cancelButtonTitle:NSLocalizedString( @"OK",nil) otherButtonTitles:nil]autorelease];
+    [progressbar performSelector:@selector(hideUsingAnimation:) withObject:self]; 
 	
-	[myAlertView show];
-	
-
-
 }
 
-- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	
-	if ( buttonIndex == 0)
-	{
-		NSLog(@"ok");
-		[[self navigationController] popViewControllerAnimated:YES];
-		
-	}
-}	
 
 
 - (void)viewDidUnload

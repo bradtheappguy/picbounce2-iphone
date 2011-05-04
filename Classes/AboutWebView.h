@@ -7,21 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
 
 @interface AboutWebView : UIViewController<UIWebViewDelegate> {
     
     UIWebView *PicBounceWeb;
    
-    UIView *indicatorView;
-	UIActivityIndicatorView *scrollingWheel;
-   
+       
     NSInteger link;  ///flag
     NSString *urlAddress;
     
+    MBProgressHUD *progressbar;
 }
 @property(nonatomic,retain) UIWebView *PicBounceWeb;
-@property(nonatomic,retain)UIActivityIndicatorView *scrollingWheel;
+
 @property(nonatomic,readwrite) NSInteger link;
 
 

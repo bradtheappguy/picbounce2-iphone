@@ -12,7 +12,7 @@
 @implementation TwitterView
 
 @synthesize TwitWeb;
-@synthesize scrollingWheel;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,10 +53,8 @@
     
     self.title = NSLocalizedString(@"Twitter",nil);
     
-    scrollingWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(-200, 0, 30, 30)];
-    ///alloc activity indicator
+  
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:scrollingWheel]; ///set it to the navigation
    
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Done",nil)style:UIBarButtonItemStyleBordered target:self action:@selector(Done)] autorelease];// set the back button
     
@@ -71,7 +69,14 @@
     
     [self.view addSubview:TwitWeb];
     
+    progressbar = [[MBProgressHUD alloc] initWithView:self.view];
+    
+    [TwitWeb addSubview:progressbar];
+    
+
+    
      urladdress = @"http://smooth-night-98.heroku.com/auth/twitter";
+    // urladdress = @"http://smooth-night-98.heroku.com/auth/users/twitter";
     
     
     NSURL *url = [NSURL URLWithString:urladdress];
@@ -99,13 +104,17 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView { 
     
-    [scrollingWheel startAnimating];  ///start activity indicator
+    progressbar.labelText = NSLocalizedString(@"Loading...", nil) ;
+    [progressbar showUsingAnimation:YES];
+    
+
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView { 
     
-    [scrollingWheel stopAnimating];  /// stop activity indicator
+     [progressbar performSelector:@selector(hideUsingAnimation:) withObject:self];//hide the progress bar 
     
+   
     NSString *myText = [TwitWeb stringByEvaluatingJavaScriptFromString:@"document.documentElement.textContent"]; //to print the whole page returned by the the url call.
 
     
@@ -117,26 +126,16 @@
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{   /// handle http  loading error
     
-    [scrollingWheel stopAnimating];
+    progressbar.labelText = NSLocalizedString(@"Error while loading...",nil) ;
     
-    UIAlertView *myAlertView = [[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:self cancelButtonTitle:NSLocalizedString( @"OK",nil) otherButtonTitles:nil]autorelease];
+    [progressbar performSelector:@selector(hideUsingAnimation:) withObject:self]; 
 	
-	[myAlertView show];
-	
+   
     
     
 }
 
-- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	
-	if ( buttonIndex == 0)
-        
-	{
-		NSLog(@"ok");
-		[[self navigationController] popViewControllerAnimated:YES];
-		
-	}
-}	
+
 
 - (void)viewDidUnload
 {
