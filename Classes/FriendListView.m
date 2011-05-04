@@ -204,6 +204,7 @@
         if (indexPath.row == 0) {
             
             PBPersonListViewController *personlist = [[[PBPersonListViewController alloc]initWithNibName:@"PBPersonListViewController" bundle:nil]autorelease];
+            personlist.sl = 1;
             
             [self.navigationController pushViewController:personlist animated:YES];
             
