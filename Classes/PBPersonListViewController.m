@@ -28,8 +28,9 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  NSUInteger num = [responceData numberOfPeople];
-  return num;
+  return 10;
+  //NSUInteger num = [responceData numberOfPeople];
+  //return num;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
