@@ -18,11 +18,15 @@
     NSInteger link;  ///flag
     NSString *urlAddress;
     
+    UIView *progressView;
     MBProgressHUD *progressbar;
+    UIActivityIndicatorView *scrollingWheel;
 }
 @property(nonatomic,retain) UIWebView *PicBounceWeb;
 
 @property(nonatomic,readwrite) NSInteger link;
+
+
 
 
 @end

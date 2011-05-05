@@ -52,18 +52,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
     
+    
+    progressView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)]autorelease]; 
+    progressView.backgroundColor = [UIColor redColor];
+    scrollingWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    scrollingWheel = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:   UIActivityIndicatorViewStyleWhiteLarge];
+   
     PicBounceWeb = [[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)]autorelease];
     PicBounceWeb.delegate = self;
     PicBounceWeb.scalesPageToFit = YES;
-    [self.view addSubview:PicBounceWeb];
-    
-    
     progressbar = [[MBProgressHUD alloc] initWithView:self.view];
-    [PicBounceWeb addSubview:progressbar];
-
     
+   
+    [progressView addSubview:scrollingWheel];
+    [self.view addSubview:PicBounceWeb];//add webview on the view
+       
+    [PicBounceWeb addSubview:progressbar];//add MBProgressHUD to the webview 
+   // [progressbar addSubview:progressView];
+    [progressbar addSubview:progressView];
     
     
     if (link == 1) {
@@ -103,7 +110,7 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView { 
     
-      
+    [scrollingWheel startAnimating]; 
     progressbar.labelText = NSLocalizedString(@"Loading...", nil) ;
     [progressbar showUsingAnimation:YES];
     
@@ -112,15 +119,18 @@
 
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView { 
-
+    
+    [scrollingWheel stopAnimating];
     [progressbar performSelector:@selector(hideUsingAnimation:) withObject:self];//hide the progress bar         
     
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{   /// handle http  loading error
     
+    
     progressbar.labelText = NSLocalizedString(@"Error while loading...",nil) ;
     
+    [scrollingWheel stopAnimating];
     [progressbar performSelector:@selector(hideUsingAnimation:) withObject:self]; 
 	
 }
