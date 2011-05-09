@@ -10,9 +10,8 @@
 
 
 @interface TwitterView : UIViewController<UIWebViewDelegate> {
-    
     UIWebView *TwitWeb;
-     NSString *urladdress;
+     
     
     UIView *indicatorView;
 	UIActivityIndicatorView *scrollingWheel;
@@ -21,7 +20,8 @@
     
 }
 
-@property(nonatomic,retain) UIWebView *TwitWeb;
-@property(nonatomic,retain)UIActivityIndicatorView *scrollingWheel;
+@property (nonatomic, retain) NSURL *authenticationURL;
+@property (nonatomic,retain) UIWebView *TwitWeb;
+@property (nonatomic,retain)UIActivityIndicatorView *scrollingWheel;
 
 @end

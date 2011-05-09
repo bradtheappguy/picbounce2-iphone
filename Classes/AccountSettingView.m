@@ -52,7 +52,7 @@
   serviceNames	= [[NSArray arrayWithObjects:
                     NSLocalizedString(@"Facebook",nil), 
                     NSLocalizedString(@"Twitter",nil),
-                    NSLocalizedString( @"Flicker",nil ),
+                    NSLocalizedString(@"Flickr",nil ),
                     NSLocalizedString(@"Tumbler",nil),
                     NSLocalizedString(@"Posterous",nil),
                     NSLocalizedString(@"MySpace",nil), nil] retain];    
@@ -234,7 +234,7 @@
        //twview.backgroundColor = [UIColor redColor];
            
            flkrbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-       
+           [flkrbutton addTarget:self action:@selector(flickrButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
            flkrbutton.frame = CGRectMake(0, 0, 80 , 30);
        
            [flkrbutton setImage:[UIImage imageNamed:@"Flickrbtn.png"] forState:UIControlStateNormal];
@@ -256,7 +256,7 @@
            tmblrbutton.frame = CGRectMake(0, 0, 80 , 30);
        
            [tmblrbutton setImage:[UIImage imageNamed:@"tumblr_button.png"] forState:UIControlStateNormal];
-       
+           [tmblrbutton addTarget:self action:@selector(tumblrButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
            [tmblrview addSubview:tmblrbutton];
        
            [cell.contentView addSubview:tmblrview];
@@ -274,7 +274,7 @@
            pstrsbutton.frame = CGRectMake(0, 0, 80 , 30);
        
            [pstrsbutton setImage:[UIImage imageNamed:@"posterousbtn.png"] forState:UIControlStateNormal];
-       
+           [pstrsbutton addTarget:self action:@selector(posterousButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
            [pstrsview addSubview:pstrsbutton];
        
            [cell.contentView addSubview:pstrsview];
@@ -290,7 +290,7 @@
            myspacebutton.frame = CGRectMake(0, 0, 80 , 30);
        
            [myspacebutton setImage:[UIImage imageNamed:@"myspacebtn.png"] forState:UIControlStateNormal];
-       
+           [myspacebutton addTarget:self action:@selector(myspaceButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
            [myspaceview addSubview:myspacebutton];
        
            [cell.contentView addSubview:myspaceview];
@@ -333,13 +333,32 @@
 - (void)fbDidLogout {
   NSLog(@"ssss");
 }
--(void)twitterLogin{
-    
+
+- (void) presentAuthenticationWebViewControllerWithTitle:(NSString *) title forURL:(NSURL *)url {
     TwitterView *twitweb = [[[TwitterView alloc]initWithNibName:nil bundle:nil]autorelease];
+    twitweb.authenticationURL = url; 
+    twitweb.title = title;
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:twitweb] autorelease];
-    
     [self presentModalViewController:navController animated:YES];
-    
+}
+
+-(void)twitterLogin {    
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Twitter", nil) forURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/twitter"]];
+}
+- (void) flickrButtonPressed:(id)sender {
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Flickr", nil) forURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/flickr"]];
+}
+- (void) tumblrButtonPressed:(id)sender {
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Tumbler", nil) forURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/tumblr"]];
+}
+
+- (void) posterousButtonPressed:(id)sender {
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Posterous", nil) forURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/posterous"]];
+}
+
+- (void) myspaceButtonPressed:(id)sender {
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/myspace"]];
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Myspace", nil) forURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/myspace"]];
 }
 
 @end

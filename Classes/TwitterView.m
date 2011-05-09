@@ -11,6 +11,7 @@
 
 @implementation TwitterView
 
+@synthesize authenticationURL = _authenticationURL;
 @synthesize TwitWeb;
 @synthesize scrollingWheel;
 
@@ -51,7 +52,6 @@
 - (void)viewDidLoad
 {
     
-    self.title = NSLocalizedString(@"Twitter",nil);
     
     scrollingWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(-200, 0, 30, 30)];
     ///alloc activity indicator
@@ -71,16 +71,8 @@
     
     [self.view addSubview:TwitWeb];
     
-     urladdress = @"http://smooth-night-98.heroku.com/auth/twitter";
-    
-    
-    NSURL *url = [NSURL URLWithString:urladdress];
-    
-    
-    
-    
     //URL Requst Object
-	NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+	NSURLRequest *requestObj = [NSURLRequest requestWithURL:self.authenticationURL];
 	
 	//Load the request in the UIWebView.
 	[TwitWeb loadRequest:requestObj];
@@ -102,12 +94,17 @@
     [scrollingWheel startAnimating];  ///start activity indicator
     
 }
+
+static NSUInteger reloadCount = 0;
 - (void)webViewDidFinishLoad:(UIWebView *)webView { 
     
     [scrollingWheel stopAnimating];  /// stop activity indicator
     
     NSString *myText = [TwitWeb stringByEvaluatingJavaScriptFromString:@"document.documentElement.textContent"]; //to print the whole page returned by the the url call.
 
+    if ([myText rangeOfString:@"Oops!"].length > 0  && reloadCount++ < 3) {
+        [TwitWeb reload];
+    }
     
     
     //     NSString *myText = [TwitWeb stringByEvaluatingJavaScriptFromString:@" twttr.form_authenticity_token"];/// uncomment to print only the twitter authenticity token.
