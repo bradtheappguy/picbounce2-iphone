@@ -1,0 +1,38 @@
+//
+//  TwitterView.h
+//  PicBounce2
+//
+//  Created by Sunil on 4/29/11.
+//  Copyright 2011 Ampere Software Private Limited. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
+
+
+
+@interface TwitterView : UIViewController<UIWebViewDelegate> {
+    UIWebView *TwitWeb;
+<<<<<<< HEAD
+     
+=======
+>>>>>>> 247fb0c9b2555a6feec558285c90698c479d0534
+    
+    NSString *urladdress;
+    
+        
+    MBProgressHUD *progressbar;
+
+    
+}
+
+<<<<<<< HEAD
+@property (nonatomic, retain) NSURL *authenticationURL;
+@property (nonatomic,retain) UIWebView *TwitWeb;
+@property (nonatomic,retain)UIActivityIndicatorView *scrollingWheel;
+=======
+@property(nonatomic,retain) UIWebView *TwitWeb;
+
+>>>>>>> 247fb0c9b2555a6feec558285c90698c479d0534
+
+@end

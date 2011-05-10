@@ -7,21 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
+
 
 
 @interface TwitterView : UIViewController<UIWebViewDelegate> {
     UIWebView *TwitWeb;
      
     
-    UIView *indicatorView;
-	UIActivityIndicatorView *scrollingWheel;
+    NSString *urladdress;
     
+        
+    MBProgressHUD *progressbar;
 
     
 }
 
-@property (nonatomic, retain) NSURL *authenticationURL;
-@property (nonatomic,retain) UIWebView *TwitWeb;
-@property (nonatomic,retain)UIActivityIndicatorView *scrollingWheel;
+@property(nonatomic,retain) UIWebView *TwitWeb;
+
 
 @end

@@ -34,6 +34,6 @@
 "Facebook friends" = "Facebook friends";
 "Search names and usernames" = "Search names and usernames";
 "Suggested users" = "Suggested users" ;
-
-
+"Loading..." = "Loading...";
+"Error while loading..." = "Error while loading...";
 

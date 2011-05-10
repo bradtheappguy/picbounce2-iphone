@@ -116,8 +116,6 @@
     NSString *homeEmail;
     //NSString *officeEmail;
    // NSString *email;
-
-   
                
 
     for( int i = 0 ; i < nPeople ; i++ )

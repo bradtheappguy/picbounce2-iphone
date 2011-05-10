@@ -13,7 +13,7 @@
 
 @synthesize authenticationURL = _authenticationURL;
 @synthesize TwitWeb;
-@synthesize scrollingWheel;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,10 +53,8 @@
 {
     
     
-    scrollingWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(-200, 0, 30, 30)];
-    ///alloc activity indicator
+  
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:scrollingWheel]; ///set it to the navigation
    
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Done",nil)style:UIBarButtonItemStyleBordered target:self action:@selector(Done)] autorelease];// set the back button
     
@@ -70,6 +68,21 @@
     
     
     [self.view addSubview:TwitWeb];
+    
+    progressbar = [[MBProgressHUD alloc] initWithView:self.view];
+    
+    [TwitWeb addSubview:progressbar];
+    
+
+    
+     urladdress = @"http://smooth-night-98.heroku.com/auth/twitter";
+    // urladdress = @"http://smooth-night-98.heroku.com/auth/users/twitter";
+    
+    
+    NSURL *url = [NSURL URLWithString:urladdress];
+    
+    
+    
     
     //URL Requst Object
 	NSURLRequest *requestObj = [NSURLRequest requestWithURL:self.authenticationURL];
@@ -91,15 +104,19 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView { 
     
-    [scrollingWheel startAnimating];  ///start activity indicator
+    progressbar.labelText = NSLocalizedString(@"Loading...", nil) ;
+    [progressbar showUsingAnimation:YES];
+    
+
     
 }
 
 static NSUInteger reloadCount = 0;
 - (void)webViewDidFinishLoad:(UIWebView *)webView { 
     
-    [scrollingWheel stopAnimating];  /// stop activity indicator
+     [progressbar performSelector:@selector(hideUsingAnimation:) withObject:self];//hide the progress bar 
     
+   
     NSString *myText = [TwitWeb stringByEvaluatingJavaScriptFromString:@"document.documentElement.textContent"]; //to print the whole page returned by the the url call.
 
     if ([myText rangeOfString:@"Oops!"].length > 0  && reloadCount++ < 3) {
@@ -114,26 +131,16 @@ static NSUInteger reloadCount = 0;
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{   /// handle http  loading error
     
-    [scrollingWheel stopAnimating];
+    progressbar.labelText = NSLocalizedString(@"Error while loading...",nil) ;
     
-    UIAlertView *myAlertView = [[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:self cancelButtonTitle:NSLocalizedString( @"OK",nil) otherButtonTitles:nil]autorelease];
+    [progressbar performSelector:@selector(hideUsingAnimation:) withObject:self]; 
 	
-	[myAlertView show];
-	
+   
     
     
 }
 
-- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	
-	if ( buttonIndex == 0)
-        
-	{
-		NSLog(@"ok");
-		[[self navigationController] popViewControllerAnimated:YES];
-		
-	}
-}	
+
 
 - (void)viewDidUnload
 {

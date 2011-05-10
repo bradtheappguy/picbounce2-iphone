@@ -9,10 +9,11 @@
 #import "AboutWebView.h"
 
 
+
 @implementation AboutWebView
 
 @synthesize PicBounceWeb;
-@synthesize scrollingWheel; 
+
 @synthesize  link;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -52,14 +53,24 @@
 {
     [super viewDidLoad];
     
-    scrollingWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(-200, 0, 30, 30)];///alloc activity indicator
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:scrollingWheel];///set it to the navigation
     
+    progressView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)]autorelease]; 
+    progressView.backgroundColor = [UIColor redColor];
+    scrollingWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    scrollingWheel = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:   UIActivityIndicatorViewStyleWhiteLarge];
+   
     PicBounceWeb = [[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)]autorelease];
     PicBounceWeb.delegate = self;
     PicBounceWeb.scalesPageToFit = YES;
+    progressbar = [[MBProgressHUD alloc] initWithView:self.view];
     
-    [self.view addSubview:PicBounceWeb];
+   
+    [progressView addSubview:scrollingWheel];
+    [self.view addSubview:PicBounceWeb];//add webview on the view
+       
+    [PicBounceWeb addSubview:progressbar];//add MBProgressHUD to the webview 
+   // [progressbar addSubview:progressView];
+    [progressbar addSubview:progressView];
     
     
     if (link == 1) {
@@ -99,35 +110,31 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView { 
     
-    [scrollingWheel startAnimating];  ///start activity indicator
+    [scrollingWheel startAnimating]; 
+    progressbar.labelText = NSLocalizedString(@"Loading...", nil) ;
+    [progressbar showUsingAnimation:YES];
+    
+    
+
 
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView { 
-
-[scrollingWheel stopAnimating];  /// stop activity indicator
-    
-}
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{   /// handle http  loading error
     
     [scrollingWheel stopAnimating];
+    [progressbar performSelector:@selector(hideUsingAnimation:) withObject:self];//hide the progress bar         
     
-    UIAlertView *myAlertView = [[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:self cancelButtonTitle:NSLocalizedString( @"OK",nil) otherButtonTitles:nil]autorelease];
-	
-	[myAlertView show];
-	
-
-
 }
 
-- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{   /// handle http  loading error
+    
+    
+    progressbar.labelText = NSLocalizedString(@"Error while loading...",nil) ;
+    
+    [scrollingWheel stopAnimating];
+    [progressbar performSelector:@selector(hideUsingAnimation:) withObject:self]; 
 	
-	if ( buttonIndex == 0)
-	{
-		NSLog(@"ok");
-		[[self navigationController] popViewControllerAnimated:YES];
-		
-	}
-}	
+}
+
 
 
 - (void)viewDidUnload
