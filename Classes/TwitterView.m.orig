@@ -69,6 +69,8 @@
     
     [self.view addSubview:TwitWeb];
     
+<<<<<<< HEAD
+=======
     progressbar = [[MBProgressHUD alloc] initWithView:self.view];
     
     [TwitWeb addSubview:progressbar];
@@ -84,6 +86,7 @@
     
     
     
+>>>>>>> 247fb0c9b2555a6feec558285c90698c479d0534
     //URL Requst Object
 	NSURLRequest *requestObj = [NSURLRequest requestWithURL:self.authenticationURL];
 	

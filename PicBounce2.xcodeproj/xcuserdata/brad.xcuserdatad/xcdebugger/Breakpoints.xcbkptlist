@@ -32,27 +32,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/PBPersonListViewController.m"
-         timestampString = "323834823.427782"
+         filePath = "Classes/PathBoxesAppDelegate.m"
+         timestampString = "326683104.782884"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "107"
-         endingLineNumber = "107"
-         landmarkName = "-followButtonPressed:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/PBPersonListViewController.m"
-         timestampString = "323834854.794284"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "72"
-         endingLineNumber = "72"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "90"
+         endingLineNumber = "90"
+         landmarkName = "-application:handleOpenURL:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
