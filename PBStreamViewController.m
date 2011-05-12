@@ -32,10 +32,14 @@
     self.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/popular",API_BASE]];
   }
   
-  self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_grey.png"]];
+  self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
+    
+    UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
+  //self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage //imageNamed:@"bg_grey.png"]];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  [self.tableView.backgroundView addSubview:[self headerForAboveTableView:self.tableView]]; 
-  [self.tableView.backgroundView addSubview:[self footerForBelowTableView:self.tableView]]; 
+  //[self.tableView.backgroundView addSubview:[self headerForAboveTableView:self.tableView]]; 
+  //[self.tableView.backgroundView addSubview:[self footerForBelowTableView:self.tableView]]; 
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
@@ -62,7 +66,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return 45; 
+  return 43;  
 } 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -72,13 +76,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (indexPath.section == 0) {
     if (shouldShowProfileHeader) {
-      return 85;
+      return 105;
     }
     else {
       return 35;
     }
   }
-  return [PBPhotoCell height] + CELL_PADDING;
+  return [PBPhotoCell height] + 0;
   
 }
 
@@ -87,7 +91,7 @@
   UIImageView *header = [[UIImageView alloc] initWithFrame:CGRectMake(0, -200, 320, 200)];
   header.image = [UIImage imageNamed:@"bg_grey.png"];
   //header.backgroundColor = [UIColor blueColor];
-  return [header autorelease];
+    return nil; //[header autorelease];
 }
 
 - (UIImageView *) footerForBelowTableView:(UITableView *)tableView {
@@ -410,7 +414,7 @@
   new.preloadedLocation = view.locationLabel.text;
   new.preloadedName = view.nameLabel.text;
   new.preloadedAvatarURL = view.avatarImage.imageURL;
-  new.title = @" ";
+  new.title = @"NAME";
   [self.navigationController pushViewController:new animated:YES];
   //[new release];
 }
