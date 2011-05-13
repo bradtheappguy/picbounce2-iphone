@@ -66,7 +66,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return 43;  
+  return 42;  
 } 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -76,7 +76,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (indexPath.section == 0) {
     if (shouldShowProfileHeader) {
-      return 105;
+      return 115;
     }
     else {
       return 35;
@@ -369,6 +369,12 @@
 }
 
 -(IBAction) leaveCommentButtonPressed:(UIButton *) sender {
+  PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
+  vc.hidesBottomBarWhenPushed = YES;
+  [self.navigationController pushViewController:vc animated:YES];
+   
+  
+  return;
   commentTextField = [self commentTextView];
   
   CGRect rect = [sender.superview convertRect:sender.frame toView:self.tableView];  

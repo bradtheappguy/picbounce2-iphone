@@ -12,7 +12,7 @@
 
 //#define PhotoCellHeight 363
 
-#define PhotoCellHeight 390
+#define PhotoCellHeight 385
 @implementation PBPhotoCell
 @synthesize tableViewController;
 @synthesize viewCountLabel;

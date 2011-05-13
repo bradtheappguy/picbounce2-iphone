@@ -51,7 +51,7 @@
 							<object class="IBUIImageView" id="531394062">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrameSize">{320, 44}</string>
+								<string key="NSFrameSize">{320, 43}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="861972836"/>
@@ -69,7 +69,7 @@
 							<object class="IBUIImageView" id="689091328">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{223, 5}, {58, 19}}</string>
+								<string key="NSFrame">{{223, 4}, {58, 19}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="304109906"/>
@@ -83,7 +83,7 @@
 							<object class="IBUILabel" id="304109906">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{268, 2}, {42, 23}}</string>
+								<string key="NSFrame">{{268, -1}, {42, 23}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -147,7 +147,7 @@
 							<object class="IBUILabel" id="467112205">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{52, 0}, {143, 21}}</string>
+								<string key="NSFrame">{{52, 1}, {143, 21}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="765202652"/>
@@ -157,9 +157,9 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Michael Sorrentino</string>
-								<object class="NSFont" key="IBUIFont" id="848825377">
-									<string key="NSName">Helvetica</string>
-									<double key="NSSize">17</double>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">HelveticaNeue-Bold</string>
+									<double key="NSSize">12</double>
 									<int key="NSfFlags">16</int>
 								</object>
 								<object class="NSColor" key="IBUITextColor" id="1028257809">
@@ -173,7 +173,7 @@
 							<object class="IBUILabel" id="765202652">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{52, 20}, {268, 21}}</string>
+								<string key="NSFrame">{{52, 19}, {268, 21}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="689091328"/>
@@ -183,14 +183,18 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Las Vegas, NV</string>
-								<reference key="IBUIFont" ref="848825377"/>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">HelveticaNeue</string>
+									<double key="NSSize">12</double>
+									<int key="NSfFlags">16</int>
+								</object>
 								<reference key="IBUITextColor" ref="1028257809"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 						</object>
-						<string key="NSFrameSize">{320, 44}</string>
+						<string key="NSFrameSize">{320, 43}</string>
 						<reference key="NSSuperview" ref="303421369"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="531394062"/>
@@ -205,7 +209,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 44}</string>
+				<string key="NSFrameSize">{320, 43}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="759141217"/>
@@ -447,8 +451,8 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{40, 40}</string>
-				<string>{71, 71}</string>
-				<string>{640, 87}</string>
+				<string>{68, 70}</string>
+				<string>{640, 86}</string>
 				<string>{117, 38}</string>
 			</object>
 		</object>
