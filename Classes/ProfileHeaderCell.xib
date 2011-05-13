@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
 		<string key="IBDocument.SystemVersion">10J869</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1306</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1305</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">301</string>
+			<string key="NS.object.0">300</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -141,9 +141,14 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAgMC42MwA</bytes>
 								</object>
+								<object class="NSCustomResource" key="IBUISelectedImage" id="200646746">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">btn_follow_s@2x.png</string>
+								</object>
+								<reference key="IBUISelectedBackgroundImage" ref="200646746"/>
 								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">btn_n_follow@2x.png</string>
+									<string key="NSResourceName">btn_follow_n@2x.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="203679385">
@@ -182,19 +187,20 @@
 							<object class="IBUISegmentedControl" id="344222602">
 								<reference key="NSNextResponder" ref="1037660338"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{57, 75}, {207, 30}}</string>
+								<string key="NSFrame">{{12, 75}, {302, 30}}</string>
 								<reference key="NSSuperview" ref="1037660338"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
+								<int key="IBUIContentMode">2</int>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBSegmentControlStyle">2</int>
 								<int key="IBNumberOfSegments">2</int>
 								<int key="IBSelectedSegmentIndex">0</int>
 								<object class="NSArray" key="IBSegmentTitles">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<string>Photos</string>
-									<string>Info</string>
+									<string/>
+									<string/>
 								</object>
 								<object class="NSMutableArray" key="IBSegmentWidths">
 									<bool key="EncodedWithXMLCoder">YES</bool>
@@ -213,8 +219,14 @@
 								</object>
 								<object class="NSMutableArray" key="IBSegmentImages">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<object class="NSNull" id="4"/>
-									<reference ref="4"/>
+									<object class="NSCustomResource">
+										<string key="NSClassName">NSImage</string>
+										<string key="NSResourceName">btn_profileheader_s@2x.png</string>
+									</object>
+									<object class="NSCustomResource">
+										<string key="NSClassName">NSImage</string>
+										<string key="NSResourceName">btn_profileheader_n@2x.png</string>
+									</object>
 								</object>
 								<object class="NSColor" key="IBTintColor">
 									<int key="NSColorSpace">1</int>
@@ -1153,6 +1165,7 @@
 					<string>72.IBPluginDependency</string>
 					<string>72.IBViewBoundsToFrameTransform</string>
 					<string>89.IBPluginDependency</string>
+					<string>89.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>90.IBPluginDependency</string>
 					<string>90.IBViewBoundsToFrameTransform</string>
 					<string>91.IBPluginDependency</string>
@@ -1258,6 +1271,7 @@
 						<bytes key="NSTransformStruct">AUEgAABChgAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<real value="2"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABCaAAAwdAAAA</bytes>
@@ -1842,7 +1856,10 @@
 				<string>avatar_main_stroke@2x.png</string>
 				<string>bg_stroke_top@2x.png</string>
 				<string>btn_follow_alt_up.png</string>
-				<string>btn_n_follow@2x.png</string>
+				<string>btn_follow_n@2x.png</string>
+				<string>btn_follow_s@2x.png</string>
+				<string>btn_profileheader_n@2x.png</string>
+				<string>btn_profileheader_s@2x.png</string>
 				<string>containter_profile_header.png</string>
 				<string>frame_icon_profile.png</string>
 				<string>icon_location.png</string>
@@ -1854,11 +1871,14 @@
 				<string>{640, 2}</string>
 				<string>{111.5, 45}</string>
 				<string>{150, 64}</string>
+				<string>{150, 64}</string>
+				<string>{154, 64}</string>
+				<string>{150, 64}</string>
 				<string>{320, 229.5}</string>
 				<string>{48.5, 49}</string>
 				<string>{17.5, 17.5}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">301</string>
+		<string key="IBCocoaTouchPluginVersion">300</string>
 	</data>
 </archive>
