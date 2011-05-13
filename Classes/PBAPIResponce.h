@@ -25,5 +25,14 @@
 - (NSUInteger) numberOfPeople;
 - (NSUInteger) numberOfPhotos;
 - (void) mergeNewResponceData:(id)json_string;
-
+- (id) initWithResponceData:(id)json_string;
+- (NSURL *) loadMoreDataURL;
+- (NSString *) usernameForPersonAtIndex:(NSUInteger) index;
+- (NSURL *) followersURL;
+- (NSString *) lastLocation;
+- (NSString *) timeLabelTextForPhotoAtIndex:(NSUInteger)index;
+- (NSUInteger) followingCount;
+- (NSUInteger) followersCount;
+- (NSURL *) followUserURLForUser;
+-(NSURL *) followingURL;
 @end

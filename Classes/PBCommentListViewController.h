@@ -18,5 +18,5 @@
   CGFloat keyboardHeight;
   
 }
-
+- (void) moveViewsForKeyboard:(NSNotification*)aNotification up: (BOOL) up;
 @end

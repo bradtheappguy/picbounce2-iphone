@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'PicBounce2 Tests' target in the 'PicBounce2 Tests' project
+//
+
+#ifdef __OBJC__
+  #import <UIKit/UIKit.h>
+#endif

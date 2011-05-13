@@ -15,7 +15,7 @@
 #import "PBBadgeCollectionViewController.h"
 #import "PBTableTitleTableViewCell.h"
 
-@interface PBStreamViewController : PBRootViewController <UINavigationControllerDelegate, UIActionSheetDelegate> {
+@interface PBStreamViewController : PBRootViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UISegmentedControl *segmentedControl;
   
   IBOutlet PBProfileHeaderCell *headerCell;
@@ -36,6 +36,8 @@
   IBOutlet NSString *preloadedLocation;
   IBOutlet NSString *preloadedName;
   
+   IBOutlet UIButton *setting;  
+  
   UITextView *commentTextField;
   
   UIButton *activeLeaveCommentButton;
@@ -48,6 +50,7 @@
 @property (nonatomic, retain) IBOutlet NSString *preloadedName;
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
+@property(nonatomic,retain)IBOutlet UIButton *setting; 
 
 @property (readwrite) BOOL shouldShowProfileHeader;
 @property (readwrite) BOOL shouldShowProfileHeaderBeforeNetworkLoad;
@@ -61,8 +64,9 @@
 -(IBAction) followingButtonPressed;
 -(IBAction) followersButtonPressed;
 -(IBAction) badgesButtonPressed;
+-(IBAction) Dosettings:(id)sender;
 
 - (UIImageView *) headerForAboveTableView:(UITableView *)tableView;
 - (UIImageView *) footerForBelowTableView:(UITableView *)tableView;
-
+- (UIView *) footerViewForTable:(UITableView *)tableView;
 @end

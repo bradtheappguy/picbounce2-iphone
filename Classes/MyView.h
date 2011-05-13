@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MyView : UIImageView {
+@interface MyView : UIImageView <UITextViewDelegate>{
   NSUInteger numberOfLines;
   
   UITextView *textView;

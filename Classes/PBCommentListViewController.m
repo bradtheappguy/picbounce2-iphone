@@ -19,13 +19,10 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  UIBarButtonItem *x = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
   self.view.backgroundColor = [UIColor lightGrayColor];
   //  tableView.separatorStyle    = UITableViewCellSeparatorStyleSingleLine;
   //    tableView.separatorStyle    = UITableViewCellSeparatorStyleSingleLineEtched;
     tableView.separatorStyle    = UITableViewCellSeparatorStyleNone;
-    
-  myView.scrollView;
 }
 
 
@@ -60,13 +57,13 @@
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
      
   
   
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
       cell = [[[NSBundle mainBundle] loadNibNamed:@"PBCommentCell" owner:self options:nil] objectAtIndex:0];
     }
@@ -155,8 +152,8 @@
   CGRect keyboardFrame = [self.view convertRect:keyboardEndFrame toView:nil];
   
   myView.center = CGPointMake(myView.center.x, myView.center.y - 216);   
-  tableView.contentInset = UIEdgeInsetsMake(0, 0, 216, 0);
-  tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 216, 0);
+  tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height, 0);
+  tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height, 0);
   /*  CGPoint newOffset = tableView.contentOffset;
    newOffset.y += 216-50 * (up? 1 : -1);
    [tableView setContentOffset:newOffset animated:YES];

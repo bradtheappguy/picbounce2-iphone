@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #define CELL_PADDING 15
 #import "PBCommentListViewController.h"
+#import "ProfileSettingView.h"
 
 @implementation PBStreamViewController
 
@@ -21,6 +22,7 @@
 @synthesize preloadedAvatarURL;
 @synthesize preloadedLocation;
 @synthesize preloadedName;
+@synthesize setting;
 
 
 #pragma mark View LifeCycle
@@ -30,10 +32,14 @@
     self.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/popular",API_BASE]];
   }
   
-  self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_grey.png"]];
+  self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
+    
+    UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
+  //self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage //imageNamed:@"bg_grey.png"]];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  [self.tableView.backgroundView addSubview:[self headerForAboveTableView:self.tableView]]; 
-  [self.tableView.backgroundView addSubview:[self footerForBelowTableView:self.tableView]]; 
+  //[self.tableView.backgroundView addSubview:[self headerForAboveTableView:self.tableView]]; 
+  //[self.tableView.backgroundView addSubview:[self footerForBelowTableView:self.tableView]]; 
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
@@ -60,7 +66,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return 25; 
+  return 42;  
 } 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -70,13 +76,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (indexPath.section == 0) {
     if (shouldShowProfileHeader) {
-      return 148;
+      return 115;
     }
     else {
       return 35;
     }
   }
-  return [PBPhotoCell height] + CELL_PADDING;
+  return [PBPhotoCell height] + 0;
   
 }
 
@@ -85,7 +91,7 @@
   UIImageView *header = [[UIImageView alloc] initWithFrame:CGRectMake(0, -200, 320, 200)];
   header.image = [UIImage imageNamed:@"bg_grey.png"];
   //header.backgroundColor = [UIColor blueColor];
-  return [header autorelease];
+    return nil; //[header autorelease];
 }
 
 - (UIImageView *) footerForBelowTableView:(UITableView *)tableView {
@@ -171,7 +177,7 @@
   PBProfileHeaderCell *_cell = (PBProfileHeaderCell *) [self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
   if (_cell == nil) {
     [[NSBundle mainBundle] loadNibNamed:@"ProfileHeaderCell" owner:self options:nil];
-    _cell = cell;
+    _cell = (PBProfileHeaderCell *)cell;
     // self.tvCell = nil;
   }
   
@@ -192,9 +198,9 @@
     _cell.avatarIcon.imageURL = preloadedAvatarURL;
     _cell.avatarIcon.backgroundColor = [UIColor redColor];
     if (YES) {
-        NSString *url = avatarURL;
-      if (![url isEqual:[NSNull null]]) {
-        _cell.avatarIcon.imageURL = [NSURL URLWithString:url];
+        NSString *_url = avatarURL;
+      if (![_url isEqual:[NSNull null]]) {
+        _cell.avatarIcon.imageURL = [NSURL URLWithString:_url];
       }
     }
     
@@ -204,7 +210,7 @@
     _cell.badgesCountLabel.text = @"X";
     _cell.followingCountLabel.text = @"X";
     _cell.photosCountLabel.text = [userData objectForKey:@"photo_count"];
-    _cell.nameLabel.text = @"XX";
+    _cell.nameLabel.text = @"Micheal Sorrentino";
     _cell.locationLabel.text = @"XXXXXX";
     _cell.avatarIcon.imageURL = [NSURL URLWithString: @"http://a2.twimg.com/profile_images/1225485762/image_normal.jpg"];
   }  
@@ -363,6 +369,12 @@
 }
 
 -(IBAction) leaveCommentButtonPressed:(UIButton *) sender {
+  PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
+   vc.hidesBottomBarWhenPushed = YES;
+   [self.navigationController pushViewController:vc animated:YES];
+   
+  
+  return;
   commentTextField = [self commentTextView];
   
   CGRect rect = [sender.superview convertRect:sender.frame toView:self.tableView];  
@@ -389,18 +401,18 @@
 
 
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
-  PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
+ /* PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
   vc.hidesBottomBarWhenPushed = YES;
   [self.navigationController pushViewController:vc animated:YES];
   
   
-  return;
+  return;*/
   //TODO
   //[self pushNewStreamViewControllerWithPerson:(NSString *)person];
   PBHeaderTableViewCell *view = (PBHeaderTableViewCell *)sender.view;
   
   PBStreamViewController *new = [[PBStreamViewController alloc] init];
-  new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/%@/profile",API_BASE,view.nameLabel.text]];
+  new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/%@/profile",API_BASE,view.nameLabel.text]];
   
   
   new.shouldShowProfileHeaderBeforeNetworkLoad = YES;
@@ -408,7 +420,7 @@
   new.preloadedLocation = view.locationLabel.text;
   new.preloadedName = view.nameLabel.text;
   new.preloadedAvatarURL = view.avatarImage.imageURL;
-  new.title = @" ";
+  new.title = @"NAME";
   [self.navigationController pushViewController:new animated:YES];
   //[new release];
 }
@@ -448,17 +460,30 @@
 
 //Follow 
 -(IBAction) followButtonPressed:(UIButton *) sender {
- /* 
+ 
   
   ASIFormDataRequest *followRequest = [ASIFormDataRequest requestWithURL:[responceData followUserURLForUser]];
   followRequest.requestMethod = @"POST";
   [followRequest setPostValue:@"1" forKey:@"id"];
-  [followRequest startAsynchronous];*/
+  [followRequest startAsynchronous];
+  
 }
 
 -(IBAction) bounceButtonPressed:(id) sender {
   }
 
+
+-(IBAction) Dosettings:(id)sender{
+   
+    
+    
+    ProfileSettingView *profile1 = [[[ProfileSettingView alloc]initWithNibName:nil bundle:nil]autorelease];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:profile1] autorelease];
+      
+    [self presentModalViewController:navController animated:YES];
+    
+
+}
 -(IBAction) changeProfilePhotoButtonPressed:(id) sender {
   UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Change Profile Photo"
                                                            delegate:self 

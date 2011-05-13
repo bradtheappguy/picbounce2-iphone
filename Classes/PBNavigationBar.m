@@ -18,16 +18,15 @@
 
 -(void) addCustomBackground {
   if (!backgroundView){
-    backgroundView = [[UIImageView alloc] initWithFrame:self.bounds];
+    UIImage *image  = [UIImage imageNamed:@"bg_navigationbar"];
+    backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, image.size.height)];
+    self.clipsToBounds = NO;
     backgroundView.clipsToBounds = NO;
     backgroundView.contentMode = UIViewContentModeTop;
-    backgroundView.image = [UIImage imageNamed:@"header_withlogo.png"];
-    
+      backgroundView.image = image;    
  
     [self insertSubview:backgroundView atIndex:0];
     [backgroundView release];
-    
-    //self.titleView.alpha = 0.5;
   }
 }
 

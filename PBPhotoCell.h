@@ -47,6 +47,7 @@
 }
 
 + (CGFloat) height;
+-(void) addPhotoView:(UIView *)view ToFollowerScrollViewAtIndex:(NSUInteger) index;
 
 @property (nonatomic, assign) UITableViewController *tableViewController;
 

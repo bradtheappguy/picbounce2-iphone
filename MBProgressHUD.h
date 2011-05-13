@@ -255,5 +255,5 @@ typedef enum {
  * not use animations while appearing and disappearing.
  */
 - (void)showWhileExecuting:(SEL)method onTarget:(id)target withObject:(id)object animated:(BOOL)animated;
-
+- (void)showUsingAnimation:(BOOL)animated;
 @end

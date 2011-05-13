@@ -1,0 +1,3 @@
+[submodule "External/TTAttributedLabel"]
+	path = External/TTAttributedLabel
+	url = https://github.com/mattt/TTTAttributedLabel.git

@@ -29,7 +29,7 @@
 #import "PBAPIResponce.h"
 
 @class EGORefreshTableHeaderView;
-@interface PBRootViewController : UITableViewController  <UITableViewDelegate, UITableViewDataSource>{
+@interface PBRootViewController : UITableViewController {
 	EGORefreshTableHeaderView *refreshHeaderView;
 	
 	//  Reloading should really be your tableviews model class
@@ -46,9 +46,12 @@
   
   ASIHTTPRequest *request;
 }
+
+- (void) loadDataFromCacheIfAvailable;
+- (void) dataSourceDidFinishLoadingNewData;
+- (void) loadMoreFromNetwork;
+
 @property(nonatomic, retain)  NSURL *url;
 @property(assign,getter=isReloading) BOOL reloading;
 
-- (void)reloadTableViewDataSource;
-- (void)doneLoadingTableViewData;
 @end

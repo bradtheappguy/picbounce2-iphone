@@ -13,6 +13,7 @@
 
 @implementation VenueViewController
 
+@synthesize headerCell, showProfileHeader;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -30,16 +31,16 @@
 }
 
 -(void) loadFromCache {
-  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:self.url
+  ASIHTTPRequest *_request = [ASIHTTPRequest requestWithURL:self.url
                                                 usingCache:[ASIDownloadCache sharedCache]
                                             andCachePolicy:ASIOnlyLoadIfNotCachedCachePolicy];
-  [request setUsername:@"4152386496"];
-  [request setPassword:@"poopypants"];
+  [_request setUsername:@"4152386496"];
+  [_request setPassword:@"poopypants"];
   
-  [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-  [request setDelegate:self];
-  [request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
-  [request startAsynchronous];
+  [_request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+  [_request setDelegate:self];
+  [_request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
+  [_request startAsynchronous];
 }
 
 #pragma mark -
@@ -167,9 +168,9 @@
 }
 
 
-- (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) request {
-	NSString *json_string = request.responseString;
-  NSLog(json_string);
+- (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) _request {
+	NSString *json_string = _request.responseString;
+  NSLog(@"%@",json_string);
 	NSArray *array = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
   
   if ([array isKindOfClass:[NSArray class]]) {

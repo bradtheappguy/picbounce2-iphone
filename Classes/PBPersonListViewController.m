@@ -11,8 +11,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ASIFormDataRequest.h"
 
-@implementation PBPersonListViewController
 
+
+@implementation PBPersonListViewController
+@synthesize sl;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -28,8 +30,16 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  NSUInteger num = [responceData numberOfPeople];
-  return num;
+//  NSUInteger num = [responceData numberOfPeople];
+//  return num;
+    if (sl == 1) {
+        return [Namelist count];
+    }
+    
+       
+        return 10;
+    
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -49,9 +59,13 @@
     }
     
   // Configure the cell...
+    if (sl == 1) {
     
+        cell.textLabel.text = [Namelist objectAtIndex:indexPath.row];
+        cell.detailTextLabel.text = [emailList objectAtIndex:indexPath.row];
+    }
   
-  
+    else{
   cell.textLabel.text = [responceData usernameForPersonAtIndex:indexPath.row];
   cell.detailTextLabel.text = @"Lady Gaga";
   cell.imageView.image = [UIImage imageNamed:@"btn_smiley.png"];
@@ -71,6 +85,8 @@
   [button setTitle:@"Follow" forState:UIControlStateNormal];
   [button addTarget:self action:@selector(followButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   [cell.contentView addSubview:button];
+        
+    }      
   return cell;
 }
 
@@ -80,8 +96,78 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //TODO
+    
+     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
+-(void)ABcontacts{
+    Namelist = [[NSMutableArray alloc]init];
+    emailList = [[NSMutableArray alloc]init];
+    
+    ABMutableMultiValueRef multiEmail;
+    
+    ABAddressBookRef addressBook = ABAddressBookCreate();
+    
+    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    
+    CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
+     
+    NSString *name;
+    NSString *homeEmail;
+    //NSString *officeEmail;
+   // NSString *email;
+               
+
+    for( int i = 0 ; i < nPeople ; i++ )
+    {
+        
+        ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i );
+        
+           
+        
+            multiEmail = ABRecordCopyValue(ref, kABPersonEmailProperty);
+                       
+            name = (NSString *)ABRecordCopyCompositeName((ABRecordRef)ref);
+                 
+            homeEmail =  (NSString *) ABMultiValueCopyValueAtIndex(multiEmail, 0);
+            
+            //officeEmail =  (NSString *) ABMultiValueCopyValueAtIndex(multiEmail, 1);// second email if user have.
+            
+            //email = [NSString stringWithFormat:@"Email(H)= %@ Office email =  %@", homeEmail, officeEmail];    // uncomment to get multiple email. 
+        
+        
+       
+        [Namelist addObject:name];
+        [emailList addObject:homeEmail];/// replace "homemail" by "email" to get multiple email             
+            
+        [homeEmail release];
+        
+        //[officeEmail release];
+        
+        [name release];
+        
+        
+        CFRelease(multiEmail);
+        
+        CFRelease(ref);
+        
+        NSLog(@"name = %@   email = %@", name, homeEmail);
+
+        
+    }
+      
+  }
+    
+- (void)viewDidLoad {
+    if (sl == 1) {
+     
+     [self ABcontacts];
+    
+    }
+    
+    [super viewDidLoad];
+    
+  }
 
 #pragma mark -
 #pragma mark Memory management
