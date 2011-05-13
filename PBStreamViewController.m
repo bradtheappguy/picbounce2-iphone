@@ -370,8 +370,8 @@
 
 -(IBAction) leaveCommentButtonPressed:(UIButton *) sender {
   PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
-  vc.hidesBottomBarWhenPushed = YES;
-  [self.navigationController pushViewController:vc animated:YES];
+   vc.hidesBottomBarWhenPushed = YES;
+   [self.navigationController pushViewController:vc animated:YES];
    
   
   return;

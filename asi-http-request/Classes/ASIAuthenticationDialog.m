@@ -397,7 +397,7 @@ static const NSUInteger kDomainSection = 1;
 - (CGFloat)tableView:(UITableView *)aTableView heightForFooterInSection:(NSInteger)section
 {
 	if (section == [self numberOfSectionsInTableView:aTableView]-1) {
-		return 30;
+		return 45;
 	}
 	return 0;
 }
