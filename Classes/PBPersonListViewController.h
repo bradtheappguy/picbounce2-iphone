@@ -16,6 +16,8 @@
     NSMutableArray *Namelist;
     NSMutableArray *emailList;
     NSInteger sl;
+  
+  IBOutlet UITableViewCell *_cell; 
 
 }
 

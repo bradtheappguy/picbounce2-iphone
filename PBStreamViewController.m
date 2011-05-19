@@ -76,7 +76,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (indexPath.section == 0) {
     if (shouldShowProfileHeader) {
-      return 115;
+      return 82;
     }
     else {
       return 35;
@@ -442,15 +442,21 @@
 }
 
 -(IBAction) followersButtonPressed {
-  NSURL *followersURL = [responceData followersURL];
-  if (followersURL) {
+  //NSURL *followersURL = [responceData followersURL];
+  //if (followersURL) {
     PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
-    vc.url = followersURL;
+    //vc.url = followersURL;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release]; 
-  }  
+  //}  
 }
 
+-(IBAction) taggedPeopleButtonPressed:(id)sender {
+  PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
+  //vc.url = followersURL;
+  [self.navigationController pushViewController:vc animated:YES];
+  [vc release]; 
+}
 -(IBAction) badgesButtonPressed {
   PBBadgeCollectionViewController *vc = [[PBBadgeCollectionViewController alloc] initWithNibName:@"PBBadgeCollectionViewController" bundle:nil];
   [self.navigationController pushViewController:vc animated:YES];

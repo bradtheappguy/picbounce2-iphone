@@ -50,23 +50,16 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"PersonCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-      cell.frame = CGRectMake(0, 0, self.view.frame.size.width, 52);
+      [[NSBundle mainBundle] loadNibNamed:@"PBPersonTableViewCell" owner:self options:nil];
+      cell = _cell;
+      _cell = nil;
     }
-    
-  // Configure the cell...
-    if (sl == 1) {
-    
-        cell.textLabel.text = [Namelist objectAtIndex:indexPath.row];
-        cell.detailTextLabel.text = [emailList objectAtIndex:indexPath.row];
-    }
-  
-    else{
-  cell.textLabel.text = [responceData usernameForPersonAtIndex:indexPath.row];
+
+/*  cell.textLabel.text = [responceData usernameForPersonAtIndex:indexPath.row];
   cell.detailTextLabel.text = @"Lady Gaga";
   cell.imageView.image = [UIImage imageNamed:@"btn_smiley.png"];
   
@@ -85,8 +78,8 @@
   [button setTitle:@"Follow" forState:UIControlStateNormal];
   [button addTarget:self action:@selector(followButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   [cell.contentView addSubview:button];
-        
-    }      
+     */   
+    //}      
   return cell;
 }
 
