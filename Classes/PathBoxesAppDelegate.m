@@ -23,7 +23,7 @@
     
   
 
-  feedViewController.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/bradsmithinc/feed",API_BASE]];
+  feedViewController.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/bradsmithinc/feed.json",API_BASE]];
   
   feedViewController.shouldShowProfileHeader = NO;
   profileViewController.shouldShowProfileHeader = YES;
@@ -38,7 +38,6 @@
   [container addSubview:view2];
   [window addSubview:tabBarController.view];
     tabBarController.selectedIndex = 4;
-    tabBarController.tabBar.userInteractionEnabled = NO;
   [window makeKeyAndVisible];
     
     return YES;

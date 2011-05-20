@@ -29,7 +29,7 @@
 }
 
 -(void) loadFromCache {
-    ASIHTTPRequest *_request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://API_BASE/api/popular"] 
+    ASIHTTPRequest *_request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://API_BASE/users/me/feed?authtoken=pKtq9rrdbXr4hbseJORe.json"] 
                                                   usingCache:[ASIDownloadCache sharedCache]
                                               andCachePolicy:ASIOnlyLoadIfNotCachedCachePolicy];
     [_request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];

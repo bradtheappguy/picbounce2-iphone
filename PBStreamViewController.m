@@ -29,7 +29,7 @@
 - (void) viewDidLoad {
   [super viewDidLoad];
   if (!self.url) {
-    self.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/popular",API_BASE]];
+    self.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/bbb.json?auth_token=pKtq9rrdbXr4hbseJORe",API_BASE]];
   }
   
   self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
@@ -45,6 +45,10 @@
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
+  
+  UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(settingsButtonPressed:)];
+  self.navigationItem.rightBarButtonItem = settings;
+  [settings release];
 }
 
 
@@ -473,7 +477,7 @@
   }
 
 
--(IBAction) Dosettings:(id)sender{
+-(IBAction) settingsButtonPressed:(id)sender{
    
     
     

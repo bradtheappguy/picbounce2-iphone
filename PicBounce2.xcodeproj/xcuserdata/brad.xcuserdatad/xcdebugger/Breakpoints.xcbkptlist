@@ -33,12 +33,40 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PathBoxesAppDelegate.m"
-         timestampString = "326683104.782884"
+         timestampString = "327538540.719438"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "-application:handleOpenURL:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/MyTableViewController.m"
+         timestampString = "327541006.748613"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "32"
+         endingLineNumber = "32"
+         landmarkName = "-loadFromCache"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "PBStreamViewController.m"
+         timestampString = "327541859.730814"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "343"
+         endingLineNumber = "343"
+         landmarkName = "-moreDataDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
