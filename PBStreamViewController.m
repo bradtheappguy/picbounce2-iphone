@@ -11,6 +11,7 @@
 #define CELL_PADDING 15
 #import "PBCommentListViewController.h"
 #import "ProfileSettingView.h"
+#import "PBLoginViewController.h"
 
 @implementation PBStreamViewController
 
@@ -49,6 +50,11 @@
   UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(settingsButtonPressed:)];
   self.navigationItem.rightBarButtonItem = settings;
   [settings release];
+
+  UIBarButtonItem *loginButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Login",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(loginButtonPressed:)];
+  self.navigationItem.leftBarButtonItem = loginButton;
+  [settings release];
+
 }
 
 
@@ -57,20 +63,20 @@
 
 #pragma mark Table View Layout and Sizes
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
-  if (responceData) {
-    NSUInteger x = [responceData numberOfPhotos]  + 0;
-    return x;
-  }
-  else {
-    if (shouldShowProfileHeaderBeforeNetworkLoad) {
-      return 1;
-    }
-    return 0;
-  }
+  return [[responceData photos] count] + 2;  // person + photos + load more
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return 42;  
+  if (section == 0) { //user
+    return 100;
+  }
+  if (section == 1) { //photos
+    return 42; //Photo headers
+  }
+  if (section == 2) { //load more
+    return 0;
+  }
+  
 } 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -80,7 +86,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (indexPath.section == 0) {
     if (shouldShowProfileHeader) {
-      return 115;
+      return 82;
     }
     else {
       return 35;
@@ -123,25 +129,24 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-  if (section == 0) {
-    return nil;
-  }
   [[NSBundle mainBundle] loadNibNamed:@"PBHeaderTableViewCell" owner:self options:nil];
   
  
-  id photo = [responceData photoAtIndex:section-1];
-  
+  NSDictionary *photo = [responceData photoAtIndex:section];
+  NSDictionary *user = [photo objectForKey:@"user"];
   
   
   //id y = [x objectForKey:@"photo"];
- // // NSString *caption = [y objectForKey:@"caption"];
+  // NSString *caption = [y objectForKey:@"caption"];
   // NSString *viewCount = [y objectForKey:@"view_count"];
   // NSString *uuid = [y objectForKey:@"uuid"];
-  NSString *name = [photo objectForKey:@"twitter_screen_name"];
+  
+  NSString *name = [user objectForKey:@"display_name"];
+  NSString *lastLocation = [user objectForKey:@"last_location"];
   NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
   
   headerTableViewCell.nameLabel.text = name;
-  headerTableViewCell.locationLabel.text = [responceData lastLocation];
+  headerTableViewCell.locationLabel.text = lastLocation;
   headerTableViewCell.timeLabel.text = [responceData timeLabelTextForPhotoAtIndex:section-1];
   if (![avatarURL isEqual:[NSNull null]]) {
      headerTableViewCell.avatarImage.imageURL = [NSURL URLWithString: avatarURL];
@@ -155,7 +160,6 @@
 }
 
 - (UITableViewCell *)profileHeaderCellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  
   NSDictionary *userData = nil;
   if ([[data class] isSubclassOfClass:[NSArray class]]) {
     userData = nil;
@@ -165,16 +169,9 @@
    // id badges_count = [userData objectForKey:"badges_count"];
   }
 
+  id photo = nil;//[responceData photoAtIndex:indexPath.section];
   
-    
-    
-    id photo = [responceData photoAtIndex:indexPath.section];
-  
-   
-    NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
-    
-    
-  
+  NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
   
   static NSString *MyIdentifier = @"CELL";
   
@@ -272,14 +269,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.section == 0) {
-    if (shouldShowProfileHeader) {
-      return [self profileHeaderCellForRowAtIndexPath:indexPath];
-    }
-    else {
-      return [self infoHeaderCellForRowAtIndexPath:indexPath];
-    }
+  if (indexPath.section == 0  && shouldShowProfileHeader) {
+    return [self profileHeaderCellForRowAtIndexPath:indexPath];
   }
+  
   return [self photoHeaderCellForRowAtIndexPath:indexPath];
 }
 
@@ -446,15 +439,21 @@
 }
 
 -(IBAction) followersButtonPressed {
-  NSURL *followersURL = [responceData followersURL];
-  if (followersURL) {
+  //NSURL *followersURL = [responceData followersURL];
+  //if (followersURL) {
     PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
-    vc.url = followersURL;
+    //vc.url = followersURL;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release]; 
-  }  
+  //}  
 }
 
+-(IBAction) taggedPeopleButtonPressed:(id)sender {
+  PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
+  //vc.url = followersURL;
+  [self.navigationController pushViewController:vc animated:YES];
+  [vc release]; 
+}
 -(IBAction) badgesButtonPressed {
   PBBadgeCollectionViewController *vc = [[PBBadgeCollectionViewController alloc] initWithNibName:@"PBBadgeCollectionViewController" bundle:nil];
   [self.navigationController pushViewController:vc animated:YES];
@@ -475,6 +474,13 @@
 
 -(IBAction) bounceButtonPressed:(id) sender {
   }
+
+
+-(IBAction) loginButtonPressed:(id)sender {
+  PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];
+  [self presentModalViewController:loginViewController animated:YES];
+  [loginViewController release];
+}
 
 
 -(IBAction) settingsButtonPressed:(id)sender{

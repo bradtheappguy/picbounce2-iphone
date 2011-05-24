@@ -12,7 +12,7 @@
 @interface PBAPIResponce : NSObject {
   id data;
   
-  NSMutableArray *user;
+  NSDictionary *user;
   NSMutableArray *photos;
   NSMutableArray *people;
   NSString *url;
@@ -35,4 +35,6 @@
 - (NSUInteger) followersCount;
 - (NSURL *) followUserURLForUser;
 -(NSURL *) followingURL;
+- (NSDictionary *) user;
+
 @end

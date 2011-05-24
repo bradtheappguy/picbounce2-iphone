@@ -69,7 +69,7 @@
 							<object class="IBUIImageView" id="689091328">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{223, 4}, {58, 19}}</string>
+								<string key="NSFrame">{{235, 10}, {47, 13}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="304109906"/>
@@ -77,13 +77,13 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">photo_header_icons@2x_20.png</string>
+									<string key="NSResourceName">photo_header_icons@2x.png</string>
 								</object>
 							</object>
 							<object class="IBUILabel" id="304109906">
 								<reference key="NSNextResponder" ref="759141217"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{268, -1}, {42, 23}}</string>
+								<string key="NSFrame">{{269, 2}, {42, 23}}</string>
 								<reference key="NSSuperview" ref="759141217"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -233,6 +233,30 @@
 					</object>
 					<int key="connectionID">19</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">nameLabel</string>
+						<reference key="source" ref="303421369"/>
+						<reference key="destination" ref="467112205"/>
+					</object>
+					<int key="connectionID">29</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">locationLabel</string>
+						<reference key="source" ref="303421369"/>
+						<reference key="destination" ref="765202652"/>
+					</object>
+					<int key="connectionID">31</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">clockIcon</string>
+						<reference key="source" ref="303421369"/>
+						<reference key="destination" ref="689091328"/>
+					</object>
+					<int key="connectionID">32</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -351,7 +375,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">27</int>
+			<int key="maxID">32</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -446,14 +470,14 @@
 				<string>avatar_holder.png</string>
 				<string>avatar_pHeader_stroke@2x.png</string>
 				<string>photo_header_bg@2x.png</string>
-				<string>photo_header_icons@2x_20.png</string>
+				<string>photo_header_icons@2x.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{40, 40}</string>
+				<string>{100, 100}</string>
 				<string>{68, 70}</string>
 				<string>{640, 86}</string>
-				<string>{117, 38}</string>
+				<string>{94, 26}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">301</string>
