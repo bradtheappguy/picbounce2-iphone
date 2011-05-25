@@ -12,7 +12,8 @@
 #import "PBCommentListViewController.h"
 #import "ProfileSettingView.h"
 #import "PBLoginViewController.h"
-
+#import "PathBoxesAppDelegate.h"
+#import "ASIDownloadCache.h"
 @implementation PBStreamViewController
 
 @synthesize shouldShowProfileHeader;
@@ -26,12 +27,56 @@
 @synthesize setting;
 
 
+-(void)xxx {
+    [self dismissModalViewControllerAnimated:YES];
+    [self loadDataFromCacheIfAvailable];
+}
+
+-(void) configureNavigationBar {
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+  self.navigationItem.backBarButtonItem = backButton;
+  [backButton release];
+  
+  //UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self //action:@selector(settingsButtonPressed:)];
+  //self.navigationItem.rightBarButtonItem = settings;
+ 
+  if ([(PathBoxesAppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
+    UIBarButtonItem *logoutButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
+    self.navigationItem.rightBarButtonItem = logoutButton;
+    self.navigationItem.leftBarButtonItem = nil;
+  }
+  else {
+    UIBarButtonItem *loginButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Login",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(loginButtonPressed:)];
+    self.navigationItem.leftBarButtonItem = loginButton;
+    self.navigationItem.rightBarButtonItem = nil;
+  }
+
+}
+
+- (void) logoutButtonPressed:(id)sender {
+  [(PathBoxesAppDelegate *)[[UIApplication sharedApplication] delegate] setAuthToken:nil];
+  //self.url = nil;
+  responceData = nil;
+  [self loadDataFromCacheIfAvailable];
+  [self configureNavigationBar];
+  [self.tableView reloadData];
+  [[ASIDownloadCache sharedCache] clearSession];
+  [[ASIDownloadCache sharedCache] clearCachedResponsesForStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+}
+
+-(void) userDidLogin:(id)dender {
+  [self performSelector:@selector(xxx)withObject:nil afterDelay:.75];
+
+  [self configureNavigationBar];
+}
+
 #pragma mark View LifeCycle
 - (void) viewDidLoad {
   [super viewDidLoad];
-  if (!self.url) {
-    self.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/bbb.json?auth_token=pKtq9rrdbXr4hbseJORe",API_BASE]];
-  }
+
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(userDidLogin:)
+                                               name:@"USER_LOGGED_IN" object:nil];
   
   self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
     
@@ -43,18 +88,12 @@
   //[self.tableView.backgroundView addSubview:[self footerForBelowTableView:self.tableView]]; 
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
   
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
-  self.navigationItem.backBarButtonItem = backButton;
-  [backButton release];
   
-  UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(settingsButtonPressed:)];
-  self.navigationItem.rightBarButtonItem = settings;
-  [settings release];
+}
 
-  UIBarButtonItem *loginButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Login",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(loginButtonPressed:)];
-  self.navigationItem.leftBarButtonItem = loginButton;
-  [settings release];
-
+-(void) viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self configureNavigationBar];
 }
 
 
@@ -63,12 +102,12 @@
 
 #pragma mark Table View Layout and Sizes
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
-  return [[responceData photos] count] + 2;  // person + photos + load more
+  return [[responceData photos] count] + 1;  // person + photos + load more
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
   if (section == 0) { //user
-    return 100;
+    return 0;
   }
   if (section == 1) { //photos
     return 42; //Photo headers
@@ -85,15 +124,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (indexPath.section == 0) {
-    if (shouldShowProfileHeader) {
-      return 82;
-    }
-    else {
-      return 35;
-    }
+    return 0;
   }
-  return [PBPhotoCell height] + 0;
-  
+  else {
+    return [PBPhotoCell height];
+  } 
 }
 
 #pragma mark Cells and Headers
@@ -129,6 +164,9 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+  if (section == 0) {
+    return nil;
+  }
   [[NSBundle mainBundle] loadNibNamed:@"PBHeaderTableViewCell" owner:self options:nil];
   
  
@@ -409,7 +447,7 @@
   PBHeaderTableViewCell *view = (PBHeaderTableViewCell *)sender.view;
   
   PBStreamViewController *new = [[PBStreamViewController alloc] init];
-  new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/%@/profile",API_BASE,view.nameLabel.text]];
+  //new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/%@/profile",API_BASE,view.nameLabel.text]];
   
   
   new.shouldShowProfileHeaderBeforeNetworkLoad = YES;
@@ -432,7 +470,7 @@
   NSURL *followingURL = [responceData followingURL];
   if (followingURL) {
     PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
-    vc.url = followingURL;
+    //vc.url = followingURL;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release]; 
   }
@@ -477,9 +515,15 @@
 
 
 -(IBAction) loginButtonPressed:(id)sender {
+  
+  
   PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];
-  [self presentModalViewController:loginViewController animated:YES];
-  [loginViewController release];
+  
+  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+  
+  [self presentModalViewController:navigationController animated:YES];
+  [navigationController release];
+  
 }
 
 

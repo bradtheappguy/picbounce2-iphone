@@ -12,7 +12,13 @@
 
 @implementation PBRootViewController
 
-@synthesize reloading=_reloading, url;
+@synthesize reloading = _reloading;
+@synthesize baseURL = _baseURL;
+
+- (NSURL *) url {
+  NSString *authToken = [[[UIApplication sharedApplication] delegate] authToken];
+  return [NSURL URLWithString:[NSString stringWithFormat:@"%@?auth_token=%@",self.baseURL,authToken]];
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -102,8 +108,7 @@
 
 - (void)reloadTableViewDataSourceUsingCache:(BOOL)useCache {
   NSLog(@"\n");
-  NSLog(@"Loading %@",self.url);
-  if (!self.url) {
+  if (!self.baseURL) {
     NSLog(@"Error: url not set");
     [self doneLoadingTableViewDataFromNetwork:nil];
     return;

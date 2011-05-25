@@ -38,9 +38,7 @@
     NSMutableArray *data;
   
   PBAPIResponce *responceData;
-  
-  
-  NSURL *url;
+
   
   NSURL *loadMoreDataURL;
   
@@ -50,8 +48,9 @@
 - (void) loadDataFromCacheIfAvailable;
 - (void) dataSourceDidFinishLoadingNewData;
 - (void) loadMoreFromNetwork;
+- (NSURL *) url;
 
-@property(nonatomic, retain)  NSURL *url;
+@property(nonatomic, retain)  NSString *baseURL;
 @property(assign,getter=isReloading) BOOL reloading;
 
 @end

@@ -26,12 +26,12 @@
   self.tableView.separatorColor = [UIColor clearColor];
   
   
-  self.url = [NSURL URLWithString:@"https://api.foursquare.com/v1/venues.json?geolat=40&geolong=-73&l=10"];
+  //self.url = [NSURL URLWithString:@"https://api.foursquare.com/v1/venues.json?geolat=40&geolong=-73&l=10"];
   [self loadFromCache];
 }
 
 -(void) loadFromCache {
-  ASIHTTPRequest *_request = [ASIHTTPRequest requestWithURL:self.url
+/*  ASIHTTPRequest *_request = [ASIHTTPRequest requestWithURL:self.url
                                                 usingCache:[ASIDownloadCache sharedCache]
                                             andCachePolicy:ASIOnlyLoadIfNotCachedCachePolicy];
   [_request setUsername:@"4152386496"];
@@ -40,7 +40,7 @@
   [_request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
   [_request setDelegate:self];
   [_request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
-  [_request startAsynchronous];
+  [_request startAsynchronous];*/
 }
 
 #pragma mark -

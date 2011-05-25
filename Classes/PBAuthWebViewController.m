@@ -7,7 +7,7 @@
 //
 
 #import "PBAuthWebViewController.h"
-
+#import "PathBoxesAppDelegate.h"
 
 @implementation PBAuthWebViewController
 
@@ -68,6 +68,9 @@
   NSRange range = [urlString rangeOfString:@"picbounce?auth_token"];
   
   if (range.length > 0) {
+    NSString *key = [urlString substringFromIndex:range.location+range.length+1];
+    [(PathBoxesAppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
     [self dismissModalViewControllerAnimated:YES];
     return NO;
   }

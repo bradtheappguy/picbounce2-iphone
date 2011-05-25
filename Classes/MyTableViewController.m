@@ -29,7 +29,7 @@
 }
 
 -(void) loadFromCache {
-    ASIHTTPRequest *_request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://API_BASE/users/me/feed?authtoken=pKtq9rrdbXr4hbseJORe.json"] 
+    /*ASIHTTPRequest *_request = [ASIHTTPRequest requestWithURL:self.url 
                                                   usingCache:[ASIDownloadCache sharedCache]
                                               andCachePolicy:ASIOnlyLoadIfNotCachedCachePolicy];
     [_request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
@@ -37,7 +37,7 @@
     [_request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
   [_request setDidFailSelector:@selector(requestDidFail:)];
     [_request startAsynchronous];
-   [_request retain];
+   [_request retain];*/
 }
 
    -(void) requestDidFail {
