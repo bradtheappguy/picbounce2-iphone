@@ -51,8 +51,32 @@
 
 #pragma mark Button Handeling
 -(IBAction) submitButtonPressed:(id)sender {
-  
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/picbounce"]];
+  [request setRequestCookies:nil];
+  [request setUsername:emailTextField.text];
+  [request setPassword:passwordTextField.text];
+  [request setDelegate:self];
+  [request setDidFailSelector:@selector(loginRequestDidFail:)];
+  [request setDidFinishSelector:@selector(loginRequestDidFinish:)];
+  [request startAsynchronous];
 }
+
+-(void) loginRequestDidFail:(ASIHTTPRequest *)request {
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops" message:@"An Error Occured" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+}
+
+-(void) loginRequestDidFinish:(ASIHTTPRequest *)request {
+  int code = [request responseStatusCode];
+  if (code > 200) {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops" message:@"Incorrect Username or password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+  }
+}
+
+
 -(IBAction) facebookButtonPressed:(id)sender {
   
   FacebookSingleton *_facebook = nil;
@@ -174,6 +198,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
     [self dismissModalViewControllerAnimated:YES];
   }
+ 
+  [request redirectToURL:url];
 }
 
 -(void) requestDidFinish:(ASIHTTPRequest *)request{
