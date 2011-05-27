@@ -139,7 +139,7 @@
 
 - (NSDictionary *) photoAtIndex:(NSUInteger) index {
   NSArray *arrayOfPhotos = [self photos];
-  if ([arrayOfPhotos count] >= index) {
+  if ([arrayOfPhotos count] > index) {
     return [arrayOfPhotos objectAtIndex:index];
   }
   else {
@@ -192,5 +192,9 @@
     
 -(NSURL *)followUserURLForUser {
   return [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/me/following",API_BASE]];
+}
+
+- (NSDictionary *) user {
+  return user;
 }
 @end

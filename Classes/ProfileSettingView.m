@@ -105,14 +105,10 @@
 
 }
 -(void)about{
-    
     ProfileAboutView *about = [[[ProfileAboutView alloc]initWithNibName:nil bundle:nil]autorelease];
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:about] autorelease];
     
     [self presentModalViewController:navController animated:YES];
-    
-
-
 }
 
 - (void)viewWillAppear:(BOOL)animated

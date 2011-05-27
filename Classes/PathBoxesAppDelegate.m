@@ -14,6 +14,24 @@
 
 @synthesize window;
 @synthesize tabBarController;
+@synthesize authToken = _authToken;
+
+
+-(void) setAuthToken:(NSString *)authToken {
+  [[NSUserDefaults standardUserDefaults] setObject:authToken forKey:@"AUTH_TOKEN"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+  _authToken = authToken;
+  [_authToken retain];
+}
+
+-(NSString *) authToken {
+  if (!_authToken) {
+    _authToken = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AUTH_TOKEN"] retain];
+  }
+  
+  return _authToken;
+}
+
 
 
 #pragma mark -
@@ -21,24 +39,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-  
-
-  feedViewController.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/bradsmithinc/feed",API_BASE]];
-  
+  feedViewController.baseURL = [NSString stringWithFormat:@"http://%@/users/me/feed.json",API_BASE];
   feedViewController.shouldShowProfileHeader = NO;
-  profileViewController.shouldShowProfileHeader = YES;
   
-  PBContainerView *container = [[PBContainerView alloc] initWithFrame:window.frame];
-  container.backgroundColor = [UIColor colorWithRed:0.945 green:0.933 blue:0.941 alpha:1.0];
-  PBExpandingPhotoView *view1 = [[PBExpandingPhotoView alloc] initWithFrame:CGRectMake(0, 40, 320, 100)];
-  PBExpandingPhotoView *view2 = [[PBExpandingPhotoView alloc] initWithFrame:CGRectMake(0, 100+40+40, 320, 100)]; 
+  
+  profileViewController.shouldShowProfileHeader = YES;
+  profileViewController.baseURL = [NSString stringWithFormat:@"http://%@/users/me.json",API_BASE];
+  
+  
+  
+  //PBContainerView *container = [[PBContainerView alloc] initWithFrame:window.frame];
+  //container.backgroundColor = [UIColor colorWithRed:0.945 green:0.933 blue:0.941 alpha:1.0];
+  //PBExpandingPhotoView *view1 = [[PBExpandingPhotoView alloc] initWithFrame:CGRectMake(0, 40, 320, 100)];
+  //PBExpandingPhotoView *view2 = [[PBExpandingPhotoView alloc] initWithFrame:CGRectMake(0, 100+40+40, 320, 100)]; 
   // Override point for customization after application launch.
   
-  [container addSubview:view1];
-  [container addSubview:view2];
+  //[container addSubview:view1];
+  //[container addSubview:view2];
+  
   [window addSubview:tabBarController.view];
     tabBarController.selectedIndex = 4;
-    tabBarController.tabBar.userInteractionEnabled = NO;
   [window makeKeyAndVisible];
     
     return YES;

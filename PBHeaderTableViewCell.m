@@ -22,7 +22,7 @@
 -(void) layoutSubviews {
 	[super layoutSubviews];	
 	//Float the clock icon to the left of the time label
-	CGSize textSize = [timeLabel.text sizeWithFont:timeLabel.font];	
+	/*CGSize textSize = [timeLabel.text sizeWithFont:timeLabel.font];	
 	CGFloat x = self.frame.size.width - textSize.width;
 	clockIcon.center = CGPointMake(x - (clockIcon.frame.size.width) - kSpacingBetweenClockIconAndTimeLabel, clockIcon.center.y);
 	
@@ -30,7 +30,7 @@
 	CGSize nameTextSize = [nameLabel.text sizeWithFont:nameLabel.font];
 	CGFloat x2 = nameTextSize.width;
 	locationLabel.center = CGPointMake(x2+(locationLabel.frame.size.width/2) + kSpacingBetweenNameLabelAndLocationLabel, locationLabel.center.y);
-
+*/
 }
 
 

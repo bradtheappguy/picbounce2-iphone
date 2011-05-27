@@ -12,7 +12,14 @@
 
 @implementation PBRootViewController
 
-@synthesize reloading=_reloading, url;
+@synthesize reloading = _reloading;
+@synthesize baseURL = _baseURL;
+@synthesize responceData = _responceData;
+
+- (NSURL *) url {
+  NSString *authToken = [[[UIApplication sharedApplication] delegate] authToken];
+  return authToken?[NSURL URLWithString:[NSString stringWithFormat:@"%@?auth_token=%@",self.baseURL,authToken]]:nil;
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -56,13 +63,13 @@
 - (void)doneLoadingMoreDataFromNetwork:(ASIHTTPRequest *) _request {  
   NSString *json_string = _request.responseString;
   NSLog(@"%@",json_string);
-  [responceData mergeNewResponceData:json_string];
-  [self.tableView reloadData];
+  [self.responceData mergeNewResponceData:json_string];
+  [self reload];
 }
 
 - (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) _request {
 	NSString *json_string = _request.responseString;
-  responceData = [[PBAPIResponce alloc] initWithResponceData:_request.responseString];
+  self.responceData = [[PBAPIResponce alloc] initWithResponceData:_request.responseString];
   
 
   NSArray *array = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
@@ -81,7 +88,7 @@
   }
 */ 
   
-  [self.tableView reloadData];
+  [self reload];
   
 	[self dataSourceDidFinishLoadingNewData];
 }
@@ -102,8 +109,7 @@
 
 - (void)reloadTableViewDataSourceUsingCache:(BOOL)useCache {
   NSLog(@"\n");
-  NSLog(@"Loading %@",self.url);
-  if (!self.url) {
+  if (!self.baseURL) {
     NSLog(@"Error: url not set");
     [self doneLoadingTableViewDataFromNetwork:nil];
     return;
@@ -206,6 +212,8 @@
   [super dealloc];
 }
 
-
+-(void) reload {
+  [self.tableView reloadData];
+}
 @end
 

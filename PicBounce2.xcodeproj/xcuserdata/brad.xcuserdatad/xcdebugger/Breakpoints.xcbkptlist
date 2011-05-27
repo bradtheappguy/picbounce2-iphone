@@ -16,29 +16,31 @@
          endingLineNumber = "46">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/PBAPIResponce.m"
-         timestampString = "321501606.245706"
+         filePath = "Classes/PBLoginViewController.m"
+         timestampString = "328156102.556273"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "158"
-         endingLineNumber = "158">
+         startingLineNumber = "220"
+         endingLineNumber = "220"
+         landmarkName = "-fbDidLogout"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/PathBoxesAppDelegate.m"
-         timestampString = "326683104.782884"
+         filePath = "Classes/PBLoginViewController.m"
+         timestampString = "328156102.556273"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
-         landmarkName = "-application:handleOpenURL:"
+         startingLineNumber = "206"
+         endingLineNumber = "206"
+         landmarkName = "-requestDidFinish:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

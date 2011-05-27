@@ -7,13 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+
+
 #import "PBRootViewController.h"
-#import "PBProfileHeaderCell.h"
-#import "PBHeaderTableViewCell.h"
-#import "PBPhotoCell.h"
-#import "PBPersonListViewController.h"
-#import "PBBadgeCollectionViewController.h"
-#import "PBTableTitleTableViewCell.h"
+#import "EGOImageView.h"
+
+@class PBProfileHeaderCell, PBHeaderTableViewCell, PBTableTitleTableViewCell, PBPhotoCell;
 
 @interface PBStreamViewController : PBRootViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UISegmentedControl *segmentedControl;
@@ -43,7 +42,28 @@
   UIButton *activeLeaveCommentButton;
   
   UIImageView *profileAvatarImageView;
+  
 }
+
+
+
+
+
+
+
+@property (nonatomic, retain) IBOutlet UIView *profileHeader;
+@property (nonatomic, retain) IBOutlet EGOImageView *avatarIcon;
+@property (nonatomic, retain) IBOutlet UILabel *nameLabel;
+@property (nonatomic, retain) IBOutlet UILabel *locationLabel;
+@property (nonatomic, retain) IBOutlet UILabel *photosCountLabel;
+@property (nonatomic, retain) IBOutlet UILabel *followersCountLabel;
+@property (nonatomic, retain) IBOutlet UILabel *followingCountLabel;
+@property (nonatomic, retain) IBOutlet UILabel *badgesCountLabel;
+
+
+
+
+
 
 @property (nonatomic, retain) IBOutlet NSURL *preloadedAvatarURL;
 @property (nonatomic, retain) IBOutlet NSString *preloadedLocation;
@@ -58,16 +78,13 @@
 
 -(IBAction) followButtonPressed:(id) sender;
 -(IBAction) bounceButtonPressed:(id) sender;
--(IBAction) leaveCommentButtonPressed:(id) sender;
 
 -(IBAction) photosButtonPressed;
 -(IBAction) followingButtonPressed;
 -(IBAction) followersButtonPressed;
 -(IBAction) badgesButtonPressed;
--(IBAction) Dosettings:(id)sender;
 -(IBAction) taggedPeopleButtonPressed:(id)sender;
 
-- (UIImageView *) headerForAboveTableView:(UITableView *)tableView;
-- (UIImageView *) footerForBelowTableView:(UITableView *)tableView;
+
 - (UIView *) footerViewForTable:(UITableView *)tableView;
 @end
