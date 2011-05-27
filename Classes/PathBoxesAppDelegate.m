@@ -39,15 +39,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-  
-
-  NSString *auth_token = [self authToken];
   feedViewController.baseURL = [NSString stringWithFormat:@"http://%@/users/me/feed.json",API_BASE];
   feedViewController.shouldShowProfileHeader = NO;
   
   
   profileViewController.shouldShowProfileHeader = YES;
-  //feedViewController.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/me/feed.jso=%@",API_BASE, auth_token]];
+  profileViewController.baseURL = [NSString stringWithFormat:@"http://%@/users/me.json",API_BASE];
   
   
   

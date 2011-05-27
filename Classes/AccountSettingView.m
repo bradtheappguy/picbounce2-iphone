@@ -112,7 +112,7 @@
 	}
 	
   //if no session is available login
-	[_facebook authorize:_permissions   delegate:self];
+	[_facebook authorize:_permissions delegate:self];
 }
 
 

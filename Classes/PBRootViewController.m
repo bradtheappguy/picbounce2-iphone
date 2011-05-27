@@ -14,10 +14,11 @@
 
 @synthesize reloading = _reloading;
 @synthesize baseURL = _baseURL;
+@synthesize responceData = _responceData;
 
 - (NSURL *) url {
   NSString *authToken = [[[UIApplication sharedApplication] delegate] authToken];
-  return [NSURL URLWithString:[NSString stringWithFormat:@"%@?auth_token=%@",self.baseURL,authToken]];
+  return authToken?[NSURL URLWithString:[NSString stringWithFormat:@"%@?auth_token=%@",self.baseURL,authToken]]:nil;
 }
 
 - (void)viewDidLoad {
@@ -62,13 +63,13 @@
 - (void)doneLoadingMoreDataFromNetwork:(ASIHTTPRequest *) _request {  
   NSString *json_string = _request.responseString;
   NSLog(@"%@",json_string);
-  [responceData mergeNewResponceData:json_string];
-  [self.tableView reloadData];
+  [self.responceData mergeNewResponceData:json_string];
+  [self reload];
 }
 
 - (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) _request {
 	NSString *json_string = _request.responseString;
-  responceData = [[PBAPIResponce alloc] initWithResponceData:_request.responseString];
+  self.responceData = [[PBAPIResponce alloc] initWithResponceData:_request.responseString];
   
 
   NSArray *array = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
@@ -87,7 +88,7 @@
   }
 */ 
   
-  [self.tableView reloadData];
+  [self reload];
   
 	[self dataSourceDidFinishLoadingNewData];
 }
@@ -211,6 +212,8 @@
   [super dealloc];
 }
 
-
+-(void) reload {
+  [self.tableView reloadData];
+}
 @end
 

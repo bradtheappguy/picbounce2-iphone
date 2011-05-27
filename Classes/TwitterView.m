@@ -79,7 +79,7 @@
     // urladdress = @"http://smooth-night-98.heroku.com/auth/users/twitter";
     
     
-    NSURL *url = [NSURL URLWithString:urladdress];
+
     
     
     

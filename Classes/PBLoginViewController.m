@@ -8,7 +8,8 @@
 
 #import "PBLoginViewController.h"
 #import "PBAuthWebViewController.h"
-
+#import "FacebookSingleton.h"
+#import "PathBoxesAppDelegate.h"
 @implementation PBLoginViewController
 
 @synthesize emailTextField;
@@ -50,11 +51,58 @@
 
 #pragma mark Button Handeling
 -(IBAction) submitButtonPressed:(id)sender {
-  
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/picbounce"]];
+  [request setRequestCookies:nil];
+  [request setUsername:emailTextField.text];
+  [request setPassword:passwordTextField.text];
+  [request setDelegate:self];
+  [request setDidFailSelector:@selector(loginRequestDidFail:)];
+  [request setDidFinishSelector:@selector(loginRequestDidFinish:)];
+  [request startAsynchronous];
 }
+
+-(void) loginRequestDidFail:(ASIHTTPRequest *)request {
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops" message:@"An Error Occured" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+}
+
+-(void) loginRequestDidFinish:(ASIHTTPRequest *)request {
+  int code = [request responseStatusCode];
+  if (code > 200) {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops" message:@"Incorrect Username or password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+  }
+}
+
+
 -(IBAction) facebookButtonPressed:(id)sender {
   
+  FacebookSingleton *_facebook = nil;
+  
+  BOOL isLoggedIn;
+  
+	if (_facebook == nil) {
+		_facebook = [FacebookSingleton sharedFacebook];
+		_facebook.sessionDelegate = self;
+		NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"access_token"];
+		NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
+		
+		if (token != nil && exp != nil && [token length] > 2) {
+			isLoggedIn = YES;
+			_facebook.accessToken = token;
+      _facebook.expirationDate = [NSDate distantFuture];
+		} 
+    
+		[_facebook retain];
+	}
+	
+  //if no session is available login
+	[_facebook authorize:[NSArray arrayWithObject: @"publish_stream"] delegate:self];
 }
+
+
 -(IBAction) twitterButtonPressed:(id)sender {
   PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
   viewController.authenticationURLString = @"http://localhost:3000/users/auth/twitter";
@@ -112,4 +160,63 @@
   scrollView = (UIScrollView *)self.view;
 }
 
+
+
+#pragma mark Facebbok Session Delegate
+- (void)fbDidLogin {
+  NSString *token = [[[FacebookSingleton sharedFacebook] accessToken] copy];
+  NSDate *expirationDate = [[FacebookSingleton sharedFacebook] expirationDate];
+  NSString *appID = @"125208417509976";
+  
+  NSTimeInterval time = [expirationDate timeIntervalSince1970];
+  PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
+//  NSString *s = [NSString stringWithFormat:@"http://localhost:3000/users/auth/facebooksso?expires=%d &fb_access_token=%@&fb_app_id=%@",time,token,appID];
+  
+  
+  
+
+  NSString *s = [NSString stringWithFormat:@"http://localhost:3000/users/auth/facebooksso?fb_access_token=%@&fb_app_id=%@&expires=%d",token,appID,time];
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:s]];
+  [request setRequestMethod:@"POST"];
+  [request setDelegate:self];
+  [request setWillRedirectSelector:@selector(request:willRedirectToURL:)];
+  [request startAsynchronous];
+  
+                             
+  
+  NSLog(@"%@",token);
+}
+
+
+-(void) request:(ASIHTTPRequest *)request willRedirectToURL:(NSURL *)url {
+  NSString *urlString = [url absoluteString];
+  NSRange range = [urlString rangeOfString:@"picbounce?auth_token"];
+  
+  if (range.length > 0) {
+    NSString *key = [urlString substringFromIndex:range.location+range.length+1];
+    [(PathBoxesAppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
+    [self dismissModalViewControllerAnimated:YES];
+  }
+ 
+  [request redirectToURL:url];
+}
+
+-(void) requestDidFinish:(ASIHTTPRequest *)request{
+  NSLog(@""); 
+}
+
+/**
+ * Called when the user dismissed the dialog without logging in.
+ */
+- (void)fbDidNotLogin:(BOOL)cancelled {
+  
+}
+
+/**
+ * Called when the user logged out.
+ */
+- (void)fbDidLogout {
+  
+}
 @end
