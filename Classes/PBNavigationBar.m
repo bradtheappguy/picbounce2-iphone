@@ -18,7 +18,7 @@
 
 -(void) addCustomBackground {
   if (!backgroundView){
-    UIImage *image  = [UIImage imageNamed:@"bg_navbar"];
+    UIImage *image  = [UIImage imageNamed:@"navbar_bg"];
     backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, image.size.height)];
     self.clipsToBounds = NO;
     backgroundView.clipsToBounds = NO;
