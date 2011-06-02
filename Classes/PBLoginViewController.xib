@@ -200,9 +200,16 @@
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="62311887"/>
 								<bool key="IBUIReversesTitleShadowWhenHighlighted">YES</bool>
+								<bool key="IBUIAdjustsImageWhenHighlighted">NO</bool>
+								<bool key="IBUIAdjustsImageWhenDisabled">NO</bool>
 								<string key="IBUITitleShadowOffset">{0, -1}</string>
+								<string key="IBUIDisabledTitle">Submit</string>
 								<string key="IBUINormalTitle">Submit</string>
 								<reference key="IBUIHighlightedTitleColor" ref="681069676"/>
+								<object class="NSColor" key="IBUIDisabledTitleColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MC42MDA4MDY0NTE2AA</bytes>
+								</object>
 								<reference key="IBUISelectedTitleColor" ref="681069676"/>
 								<reference key="IBUINormalTitleColor" ref="681069676"/>
 								<object class="NSColor" key="IBUINormalTitleShadowColor">
@@ -212,6 +219,10 @@
 								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">btn_submit_logIn_s@2x.png</string>
+								</object>
+								<object class="NSCustomResource" key="IBUIDisabledBackgroundImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">btn_submit_logIn_d@2x.png</string>
 								</object>
 								<object class="NSCustomResource" key="IBUISelectedBackgroundImage">
 									<string key="NSClassName">NSImage</string>
@@ -398,6 +409,22 @@
 					</object>
 					<int key="connectionID">59</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="6783226"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">60</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">submitButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="573060450"/>
+					</object>
+					<int key="connectionID">62</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -541,7 +568,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<real value="1"/>
+					<real value="3"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -564,7 +591,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">59</int>
+			<int key="maxID">62</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -617,11 +644,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>emailTextField</string>
 							<string>passwordTextField</string>
+							<string>submitButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UITextField</string>
 							<string>UITextField</string>
+							<string>UIButton</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -630,6 +659,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>emailTextField</string>
 							<string>passwordTextField</string>
+							<string>submitButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -640,6 +670,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">passwordTextField</string>
 								<string key="candidateClassName">UITextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">submitButton</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 						</object>
 					</object>
@@ -669,6 +703,7 @@
 				<string>btn_fb_logIn_s@2x.png</string>
 				<string>btn_fb_login_s@2x.png</string>
 				<string>btn_submit_logIn@2x.png</string>
+				<string>btn_submit_logIn_d@2x.png</string>
 				<string>btn_submit_logIn_s@2x.png</string>
 				<string>btn_twitter_logIn_n@2x.png</string>
 				<string>btn_twitter_logIn_s@2x.png</string>
@@ -683,6 +718,7 @@
 				<string>{566, 94}</string>
 				<string>{566, 94}</string>
 				<string>{16, 16}</string>
+				<string>{176, 70}</string>
 				<string>{176, 70}</string>
 				<string>{176, 70}</string>
 				<string>{566, 94}</string>

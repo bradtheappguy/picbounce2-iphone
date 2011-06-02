@@ -15,7 +15,7 @@ static Facebook *sharedFacebook = nil;
 
 + (Facebook *) sharedFacebook {
   if (!sharedFacebook) {
-   	sharedFacebook = [[Facebook alloc] initWithAppId:@"125208417509976"];
+   	sharedFacebook = [[Facebook alloc] initWithAppId:@"221310351230872"];
   }
   return sharedFacebook;
 }

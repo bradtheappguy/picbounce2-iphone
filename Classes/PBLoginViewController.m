@@ -14,6 +14,8 @@
 
 @synthesize emailTextField;
 @synthesize passwordTextField;
+@synthesize submitButton = _submitButton;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
@@ -51,7 +53,7 @@
 
 #pragma mark Button Handeling
 -(IBAction) submitButtonPressed:(id)sender {
-  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://localhost:3000/users/auth/picbounce"]];
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://smokey.picbounce.com/users/auth/picbounce"]];
   [request setRequestCookies:nil];
   [request setUsername:emailTextField.text];
   [request setPassword:passwordTextField.text];
@@ -105,7 +107,7 @@
 
 -(IBAction) twitterButtonPressed:(id)sender {
   PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
-  viewController.authenticationURLString = @"http://localhost:3000/users/auth/twitter";
+  viewController.authenticationURLString = @"http://smokey.picbounce.com/users/auth/twitter";
   viewController.title = NSLocalizedString(@"Twitter", nil);
   
   UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
@@ -158,6 +160,10 @@
   self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
   [(UIScrollView *)self.view setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-80)];
   scrollView = (UIScrollView *)self.view;
+  [self.submitButton setTitleShadowOffset:CGSizeMake(0,  0)];
+  [self.submitButton setEnabled:NO];
+  
+  
 }
 
 
@@ -166,16 +172,16 @@
 - (void)fbDidLogin {
   NSString *token = [[[FacebookSingleton sharedFacebook] accessToken] copy];
   NSDate *expirationDate = [[FacebookSingleton sharedFacebook] expirationDate];
-  NSString *appID = @"125208417509976";
+  NSString *appID = @"221310351230872";
   
   NSTimeInterval time = [expirationDate timeIntervalSince1970];
   PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
-//  NSString *s = [NSString stringWithFormat:@"http://localhost:3000/users/auth/facebooksso?expires=%d &fb_access_token=%@&fb_app_id=%@",time,token,appID];
+//  NSString *s = [NSString stringWithFormat:@"http://smokey.picbounce.com/users/auth/facebooksso?expires=%d &fb_access_token=%@&fb_app_id=%@",time,token,appID];
   
   
   
 
-  NSString *s = [NSString stringWithFormat:@"http://localhost:3000/users/auth/facebooksso?fb_access_token=%@&fb_app_id=%@&expires=%d",token,appID,time];
+  NSString *s = [NSString stringWithFormat:@"http://smokey.picbounce.com/users/auth/facebooksso?fb_access_token=%@&fb_app_id=%@&expires=%d",token,appID,time];
   ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:s]];
   [request setRequestMethod:@"POST"];
   [request setDelegate:self];
@@ -218,5 +224,16 @@
  */
 - (void)fbDidLogout {
   
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+  if ([emailTextField.text length] > 0 || [passwordTextField.text length] > 0) {
+    self.submitButton.enabled = YES;
+  }
+  else  {
+    self.submitButton.enabled = NO;
+  }
+  
+  return YES;
 }
 @end

@@ -11,10 +11,12 @@
 
 @interface PBLoginViewController : UIViewController {
   UIScrollView *scrollView;
+  
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *emailTextField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordTextField;
+@property (nonatomic, retain) IBOutlet UIButton *submitButton;
 
 
 -(IBAction) submitButtonPressed:(id)sender;
