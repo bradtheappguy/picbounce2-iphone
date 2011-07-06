@@ -15,11 +15,39 @@
 -(void) viewDidLoad {
   self.wantsFullScreenLayout = YES;
   [super viewDidLoad];
+  [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
   self.view.frame = CGRectMake(0, 0, 320, 480);
+  
+  toolBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_capture_tabbar"]];
+  toolBar.frame = CGRectMake(0, 480-54, 320, 54);
+  [self.view addSubview:toolBar];
+  
+  cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  [cameraButton setBackgroundImage:[UIImage imageNamed:@"btn_capture_n"] forState:UIControlStateNormal];
+  [cameraButton addTarget:self action:@selector(cameraButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  cameraButton.frame = CGRectMake(160-53, 5, 106, 44);
+  [toolBar addSubview:cameraButton];
+  
+ /* cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  [cancelButton setBackgroundImage:[UIImage imageNamed:@"btn_capture_cancel_n"] forState:UIControlStateNormal];
+  [cancelButton addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  cancelButton.frame = CGRectMake(0, 0, 32, 33);
+  cancelButton.center = toolBar.center;
+  [toolBar addSubview:cancelButton];
+  */
+  
+  
 }
 
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+  if (UIDeviceOrientationIsLandscape(orientation)) {
+    NSLog(@" ");
+  }
+  else {
+    NSLog(@" ");
+  }
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
   [[self.tabBarController tabBar] setAlpha:0];
   

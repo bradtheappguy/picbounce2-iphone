@@ -18,8 +18,8 @@
   UIButton *doneButton;
   UIButton *cancelButton;
   
-  UIView *toolBar;
-  UIButton *camceraButton;
+  UIImageView *toolBar;
+  UIButton *cameraButton;
   UIView *history;
 }
 @end
