@@ -49,11 +49,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "0"
          filePath = "/Users/brad/Code/art/Source/CaptureSessionManager.m"
-         timestampString = "331600252.6411"
+         timestampString = "331682605.0831"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
+         startingLineNumber = "144"
+         endingLineNumber = "144"
          landmarkName = "-reset"
          landmarkType = "5">
       </FileBreakpoint>

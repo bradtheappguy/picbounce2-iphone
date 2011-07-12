@@ -190,7 +190,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self registerForKeyboardNotifications];
-  self.navigationController.navigationBarHidden = YES;
+  //self.navigationController.navigationBarHidden = YES;
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
   self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
   [(UIScrollView *)self.view setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-80)];

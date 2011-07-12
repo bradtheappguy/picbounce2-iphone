@@ -12,7 +12,7 @@
 @interface PBCameraViewController : UIViewController {
   UIButton *flashButton;
   UIButton *flipButton;
-  UIButton *HIDButton;
+  UIButton *HDRButton;
   UIButton *filterButton;
   UIButton *shareButton;
   UIButton *doneButton;
@@ -21,5 +21,8 @@
   UIImageView *toolBar;
   UIButton *cameraButton;
   UIView *history;
+  
+  dispatch_queue_t queue;
+  
 }
 @end
