@@ -19,6 +19,7 @@
   UIView *onView;
   UIView *offView;
   UIView *autoView;
+  UIView *torchView;
 }
 
 @property (readwrite) BOOL expanded;

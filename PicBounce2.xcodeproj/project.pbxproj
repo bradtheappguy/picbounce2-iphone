@@ -421,6 +421,9 @@
 		A2E415FA13441392000D9CFA /* PBCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2E415F913441392000D9CFA /* PBCommentCell.xib */; };
 		A2E69CDF13ABF1E8009B300E /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E69CDE13ABF1E8009B300E /* libicucore.dylib */; };
 		A2E8EFDE13CCEA9400CB9B76 /* FlashButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E8EFDD13CCEA9400CB9B76 /* FlashButton.m */; };
+		A2E8EFE013CD0C5900CB9B76 /* bg_flash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2E8EFDF13CD0C5900CB9B76 /* bg_flash@2x.png */; };
+		A2E8EFE313CD143B00CB9B76 /* ico_flash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2E8EFE113CD143B00CB9B76 /* ico_flash@2x.png */; };
+		A2E8EFE413CD143B00CB9B76 /* ico_torch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2E8EFE213CD143B00CB9B76 /* ico_torch@2x.png */; };
 		A2F2663B1315C04B00F4E0A0 /* TableTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F2663A1315C04B00F4E0A0 /* TableTitleTableViewCell.xib */; };
 		A2F2663F1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F2663D1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m */; };
 		A2F513C813ABF786000FD084 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F513C713ABF786000FD084 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -962,6 +965,9 @@
 		A2E69CDE13ABF1E8009B300E /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		A2E8EFDC13CCEA9400CB9B76 /* FlashButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashButton.h; sourceTree = "<group>"; };
 		A2E8EFDD13CCEA9400CB9B76 /* FlashButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashButton.m; sourceTree = "<group>"; };
+		A2E8EFDF13CD0C5900CB9B76 /* bg_flash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_flash@2x.png"; path = "ArtAssets/brownAssets/capture/bg_flash@2x.png"; sourceTree = "<group>"; };
+		A2E8EFE113CD143B00CB9B76 /* ico_flash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ico_flash@2x.png"; path = "ArtAssets/brownAssets/capture/ico_flash@2x.png"; sourceTree = "<group>"; };
+		A2E8EFE213CD143B00CB9B76 /* ico_torch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ico_torch@2x.png"; path = "ArtAssets/brownAssets/capture/ico_torch@2x.png"; sourceTree = "<group>"; };
 		A2F2663A1315C04B00F4E0A0 /* TableTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableTitleTableViewCell.xib; sourceTree = "<group>"; };
 		A2F2663D1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBTableTitleTableViewCell.m; path = ../PBTableTitleTableViewCell.m; sourceTree = "<group>"; };
 		A2F2663E1315C07C00F4E0A0 /* PBTableTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBTableTitleTableViewCell.h; path = ../PBTableTitleTableViewCell.h; sourceTree = "<group>"; };
@@ -1228,6 +1234,9 @@
 		A25CEAB3134FF46600CD33D9 /* PicBounce2 */ = {
 			isa = PBXGroup;
 			children = (
+				A2E8EFE113CD143B00CB9B76 /* ico_flash@2x.png */,
+				A2E8EFE213CD143B00CB9B76 /* ico_torch@2x.png */,
+				A2E8EFDF13CD0C5900CB9B76 /* bg_flash@2x.png */,
 				A2ADE68913CBCFAB0032DEBF /* ArtAssets */,
 				A2A0FDB213CC2ADC0058908D /* External */,
 				74A1CA361368109C00F63EF5 /* localization */,
@@ -2294,6 +2303,9 @@
 				A2ADE8D313CBCFAC0032DEBF /* title@2x.png in Resources */,
 				A2ADE8D413CBCFAC0032DEBF /* Wrath.acorn in Resources */,
 				A2ADE8D513CBCFAC0032DEBF /* Wrath.png in Resources */,
+				A2E8EFE013CD0C5900CB9B76 /* bg_flash@2x.png in Resources */,
+				A2E8EFE313CD143B00CB9B76 /* ico_flash@2x.png in Resources */,
+				A2E8EFE413CD143B00CB9B76 /* ico_torch@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

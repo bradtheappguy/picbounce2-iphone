@@ -62,7 +62,7 @@
   [HDRButton setBackgroundImage:[UIImage imageNamed:@"btn_hdr_n"] forState:UIControlStateNormal];
   [HDRButton addTarget:self action:@selector(hdrButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   HDRButton.frame = CGRectMake((320/2) - (95/2), 5, 95, 37);
-  [self.view addSubview:HDRButton];
+ // [self.view addSubview:HDRButton];
   
   queue = dispatch_queue_create("com.picbounce.internalqueue", NULL);
 }
