@@ -10,6 +10,8 @@
 #import "PBExpandingPhotoView.h"
 #import "PBContainerView.h"
 #import "FacebookSingleton.h"
+#import "HTNotifier.h"
+#import "CaptureSessionManager.h"
 @implementation PathBoxesAppDelegate
 
 @synthesize window;
@@ -38,7 +40,8 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
+  [HTNotifier startNotifierWithAPIKey:@"57b7289a9cad881773f2ebcc303ff2db"
+                      environmentName:HTNotifierDevelopmentEnvironment];
   feedViewController.baseURL = [NSString stringWithFormat:@"http://%@/users/me/feed.json",API_BASE];
   feedViewController.shouldShowProfileHeader = NO;
   
@@ -89,6 +92,10 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+  [[CaptureSessionManager sharedManager] addVideoInput];
+  [[CaptureSessionManager sharedManager] addVideoPreviewLayer];
+    [[[CaptureSessionManager sharedManager] captureSession] startRunning];
+  
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
@@ -104,7 +111,8 @@
 
 
 -(void) cameraButtonPressed:(id) sender {
-  self.tabBarController.selectedIndex = 2;
+  [self.tabBarController presentModalViewController:[self.tabBarController.viewControllers objectAtIndex:1] animated:YES];
+//  self.tabBarController.selectedIndex = 1;
 }
 
 

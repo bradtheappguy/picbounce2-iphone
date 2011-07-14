@@ -21,11 +21,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PBLoginViewController.m"
-         timestampString = "328157625.168522"
+         timestampString = "330307970.808344"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "226"
-         endingLineNumber = "226"
+         startingLineNumber = "261"
+         endingLineNumber = "261"
          landmarkName = "-fbDidLogout"
          landmarkType = "5">
       </FileBreakpoint>
@@ -35,12 +35,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PBLoginViewController.m"
-         timestampString = "328157625.168522"
+         timestampString = "330307970.808344"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "212"
-         endingLineNumber = "212"
+         startingLineNumber = "247"
+         endingLineNumber = "247"
          landmarkName = "-requestDidFinish:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/brad/Code/art/Source/CaptureSessionManager.m"
+         timestampString = "331682605.0831"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "144"
+         endingLineNumber = "144"
+         landmarkName = "-reset"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

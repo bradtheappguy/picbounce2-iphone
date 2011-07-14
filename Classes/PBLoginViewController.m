@@ -10,6 +10,8 @@
 #import "PBAuthWebViewController.h"
 #import "FacebookSingleton.h"
 #import "PathBoxesAppDelegate.h"
+#import <Accounts/Accounts.h>
+#import <Twitter/Twitter.h>
 @implementation PBLoginViewController
 
 @synthesize emailTextField;
@@ -105,11 +107,44 @@
 }
 
 
+-(void) twitterFramework {
+  ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+  ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+  
+  NSArray *twitterAccounts =  [accountStore accountsWithAccountType:accountType];
+  if ([twitterAccounts count] < 1) {
+    NSLog(@"No Twitter Account Found");
+    ACAccount *newTwitterAccount = [[ACAccount alloc] initWithAccountType:accountType];
+    [accountStore saveAccount:newTwitterAccount withCompletionHandler:nil];
+  }
+  else {
+    
+    [accountStore requestAccessToAccountsWithType:accountType
+                            withCompletionHandler:^(BOOL granted, NSError *error)
+     {
+       if (granted) {
+         NSLog(@"GRANTED");
+       }
+       else {
+         NSLog(@"Not Granted");
+       }
+       if (error) {
+         NSLog(@"Error: %@",[error description]);
+       }
+     }
+     ];
+  }
+}
+
 -(IBAction) twitterButtonPressed:(id)sender {
+  //if (NSClassFromString(@"ACAccountStore") && NSClassFromString(@"ACAccountType")) {
+  //  [self twitterFramework];
+  //  return;
+  //}
   PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
   viewController.authenticationURLString = @"http://smokey.picbounce.com/users/auth/twitter";
   viewController.title = NSLocalizedString(@"Twitter", nil);
-  
+  viewController.webView.backgroundColor = [UIColor blueColor];
   UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
   viewController.navigationItem.rightBarButtonItem = cancelButton;
   
@@ -155,7 +190,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self registerForKeyboardNotifications];
-  
+  //self.navigationController.navigationBarHidden = YES;
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
   self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
   [(UIScrollView *)self.view setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-80)];

@@ -78,10 +78,10 @@
   return YES;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-  
+    [self.activityIndicatorView setHidden:NO];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-  
+  [self.activityIndicatorView setHidden:YES];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   
