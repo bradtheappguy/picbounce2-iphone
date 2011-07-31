@@ -118,7 +118,7 @@
   
   ASICachePolicy cachePolicy = useCache?ASIOnlyLoadIfNotCachedCachePolicy:ASIDoNotReadFromCacheCachePolicy;
 
-  request = [ASIHTTPRequest requestWithURL:self.url
+  request = [ASIHTTPRequest requestWithURL:[self url]
                                                 usingCache:[ASIDownloadCache sharedCache]
                                             andCachePolicy:cachePolicy];
   [request setTimeOutSeconds:60];

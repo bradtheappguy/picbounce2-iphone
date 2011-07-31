@@ -21,26 +21,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PBLoginViewController.m"
-         timestampString = "330307970.808344"
+         timestampString = "333660522.890462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "261"
-         endingLineNumber = "261"
+         startingLineNumber = "268"
+         endingLineNumber = "268"
          landmarkName = "-fbDidLogout"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/PBLoginViewController.m"
-         timestampString = "330307970.808344"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "247"
-         endingLineNumber = "247"
-         landmarkName = "-requestDidFinish:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -55,6 +41,34 @@
          startingLineNumber = "144"
          endingLineNumber = "144"
          landmarkName = "-reset"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBRootViewController.m"
+         timestampString = "333071340.448646"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "20"
+         endingLineNumber = "20"
+         landmarkName = "-url"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBLoginViewController.m"
+         timestampString = "333660647.213235"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "69"
+         endingLineNumber = "69"
+         landmarkName = "-loginRequestDidFail:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

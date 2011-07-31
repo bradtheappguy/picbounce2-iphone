@@ -111,9 +111,11 @@
 
 
 -(void) cameraButtonPressed:(id) sender {
-  [self.tabBarController presentModalViewController:[self.tabBarController.viewControllers objectAtIndex:1] animated:YES];
+
+  [self.tabBarController presentModalViewController:cameraViewController animated:YES];
 //  self.tabBarController.selectedIndex = 1;
 }
+
 
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {

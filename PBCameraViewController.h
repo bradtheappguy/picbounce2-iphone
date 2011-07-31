@@ -24,5 +24,20 @@
   
   dispatch_queue_t queue;
   
+  
+  IBOutlet UIButton *facebookButton;
+  IBOutlet UIButton *twitterButton;
+  IBOutlet UIButton *tubmlerButton;
+  IBOutlet UIButton *flickrButton;
+  IBOutlet UIButton *posteriousButton;
+  IBOutlet UIButton *myspaceButton;
+  
+  IBOutlet UIScrollView *filterScrollView;
 }
+
+-(IBAction) cameraButtonPressed:(id)sender;
+-(IBAction) optionsButtonPressed:(id)sender;
+-(IBAction) cancelButtonPressed:(id)sender;
+-(IBAction) uploadButtonPressed:(id)sender;
+-(IBAction) retakeButtonPressed:(id)sender;
 @end

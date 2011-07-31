@@ -15,6 +15,8 @@
 
 #define padding 4
 
+
+
 @implementation FlashButton
 
 @synthesize expanded;
@@ -52,18 +54,21 @@
 
 
 -(id) initWithFrame:(CGRect)frame {
-  if (self = [super initWithFrame:frame]) {
+  if (self = [super initWithFrame:frame]) {    
     self.frame = CGRectMake(5, 5, 73, 36);
     self.adjustsImageWhenHighlighted = NO;
     
     UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self addGestureRecognizer:tgr];
     [tgr release];
+    [self addTarget:self action:@selector(viewTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     flashIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ico_flash"]];
+    flashIcon.userInteractionEnabled = YES;
     flashIcon.center = CGPointMake(flashIcon.center.x+10, self.bounds.size.height/2);
     [self addSubview:flashIcon];
-    
+    [flashIcon addGestureRecognizer:tgr];
     
     autoLabel = [self labelWithText:@"Auto"];
     onLabel = [self labelWithText:@"On"];
@@ -75,14 +80,15 @@
 
     torchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ico_torch"]];
     torchIcon.contentMode = UIViewContentModeCenter;
-    torchIcon.backgroundColor = [UIColor whiteColor];
+    torchIcon.backgroundColor = [UIColor clearColor];
     torchView = [self viewWithLabel:torchIcon];
+
     
-    autoView.backgroundColor = [UIColor redColor];
-    onView.layer.borderColor = [UIColor purpleColor].CGColor;
+    autoView.backgroundColor = [UIColor clearColor];
+    onView.layer.borderColor = [UIColor clearColor].CGColor;
     onView.layer.borderWidth = 1.0;
     
-    offView.backgroundColor = [UIColor greenColor];
+    offView.backgroundColor = [UIColor clearColor];
     
     [self addSubview:autoView];
     [self addSubview:onView];
@@ -160,7 +166,7 @@
                               autoView.frame.origin.y, offLabel.frame.size.width + padding, 
                               autoView.frame.size.height);
   
-  torchView.backgroundColor = [UIColor redColor];
+  torchView.backgroundColor = [UIColor clearColor];
   
   torchView.frame = CGRectMake(autoView.frame.origin.x + autoView.frame.size.width + onView.frame.size.width + offView.frame.size.width + padding, 
                                autoView.frame.origin.y, 
@@ -177,10 +183,14 @@
 
 - (void) viewTapped:(UITapGestureRecognizer *)sender {
   [UIView beginAnimations:@"" context:nil];
-  [UIView setAnimationDuration:2];
+  [UIView setAnimationDuration:0.33];
   
   if (self.expanded) {
-    UIView *sendingView = [sender view];
+    UIView *sendingView;
+    if ([sender respondsToSelector:@selector(view)]) {
+      sendingView = [sender view];
+    }
+    
     if (sendingView == autoView) {
       [self setAuto];
     }
