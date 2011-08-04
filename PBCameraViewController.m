@@ -17,36 +17,13 @@
 @implementation PBCameraViewController
 
 -(void) viewDidLoad {
+  filterScrollView.contentSize = filterScrollView.bounds.size;
+  filterScrollView.alwaysBounceHorizontal = YES;
   self.wantsFullScreenLayout = YES;
   [super viewDidLoad];
   [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
   self.view.frame = CGRectMake(0, 0, 320, 480);
   
-  toolBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_capture_tabbar"]];
-  toolBar.frame = CGRectMake(0, 480-55, 320, 55);
-  toolBar.userInteractionEnabled = YES;
-  [self.view addSubview:toolBar];
-  
-  CGRect x = {1,2,3,4};
-  x = x;
-  cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  [cameraButton setBackgroundImage:[UIImage imageNamed:@"btn_capture_n"] forState:UIControlStateNormal];
-  [cameraButton setBackgroundImage:[UIImage imageNamed:@"btn_capture_s"] forState:UIControlStateSelected];
-  [cameraButton addTarget:self action:@selector(cameraButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-  cameraButton.frame = CGRectMake(160-53, 5, 106, 44);
-  [toolBar addSubview:cameraButton];
-  
-  cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  [cancelButton setBackgroundImage:[UIImage imageNamed:@"btn_capture_cancel_n"] forState:UIControlStateNormal];
-  [cancelButton setBackgroundImage:[UIImage imageNamed:@"btn_capture_cancel_s"] forState:UIControlStateSelected];
-  [cancelButton addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-  cancelButton.frame = CGRectMake(320-32-5, 10, 32, 33);
-  [toolBar addSubview:cancelButton];
-    
-  UIImageView *cropRect = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 850/2)];
-  [cropRect setImage:[UIImage imageNamed:@"bg_photo_crop"]];
-  [self.view addSubview:cropRect];
- 
   flipButton = [UIButton buttonWithType:UIButtonTypeCustom];
   [flipButton setBackgroundImage:[UIImage imageNamed:@"btn_flip_n"] forState:UIControlStateNormal];
   [flipButton addTarget:self action:@selector(flipButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -95,7 +72,7 @@
   
 }
 
--(void) cameraButtonPressed:(id)sender {
+-(IBAction) cameraButtonPressed:(id)sender {
   [[CaptureSessionManager sharedManager] capturePhotoWithCompletionHandler:
    ^(CMSampleBufferRef ref, NSError *error) {
      dispatch_async(queue, ^(void) {
@@ -107,7 +84,7 @@
 }
 
 -(void) cancelButtonPressed:(id)sender {
-  [self dismissModalViewControllerAnimated:NO];
+  [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void) flashButtonPressed:(id)sender {
@@ -123,9 +100,17 @@
   
 }
 
+-(void) optionsButtonPressed:(id)sender {
+  UIViewController *viewCOntroller = [[UIViewController alloc] init];
+  [self.navigationController pushViewController:viewCOntroller animated:YES];
+  [viewCOntroller release];
+}
+
 -(void) dealloc {
   [super dealloc];
   dispatch_release(queue);
 }
+
+
 
 @end

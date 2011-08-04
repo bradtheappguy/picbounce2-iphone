@@ -403,22 +403,22 @@
 
 
 -(void)twitterLogin {    
-    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Twitter", nil) forURLString:@"http://smokey.picbounce.com/users/auth/twitter"];
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Twitter", nil) forURLString:@"http://API_BASE/users/auth/twitter"];
 }
 - (void) flickrButtonPressed:(id)sender {
-    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Flickr", nil) forURLString:@"http://smokey.picbounce.com/users/auth/flickr"];
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Flickr", nil) forURLString:@"http://API_BASE/users/auth/flickr"];
 }
 - (void) tumblrButtonPressed:(id)sender {
-    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Tumbler", nil) forURLString:@"http://smokey.picbounce.com/users/auth/tumblr"];
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Tumbler", nil) forURLString:@"http://API_BASE/users/auth/tumblr"];
 }
 
 - (void) posterousButtonPressed:(id)sender {
-    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Posterous", nil) forURLString:@"http://smokey.picbounce.com/users/auth/posterous"];
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Posterous", nil) forURLString:@"http://API_BASE/users/auth/posterous"];
 }
 
 - (void) myspaceButtonPressed:(id)sender {
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://smokey.picbounce.com/users/auth/myspace"]];
-    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Myspace", nil) forURLString:@"http://smokey.picbounce.com/users/auth/myspace"];
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://API_BASE/users/auth/myspace"]];
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Myspace", nil) forURLString:@"http://API_BASE/users/auth/myspace"];
     }
     
 -(IBAction)flickerlogin:(id)sender {

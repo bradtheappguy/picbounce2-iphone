@@ -1,4 +1,4 @@
-//
+    //
 //  PBLoginViewController.m
 //  PicBounce2
 //
@@ -55,7 +55,7 @@
 
 #pragma mark Button Handeling
 -(IBAction) submitButtonPressed:(id)sender {
-  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://smokey.picbounce.com/users/auth/picbounce"]];
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"API_BASE/users/auth/picbounce"]];
   [request setRequestCookies:nil];
   [request setUsername:emailTextField.text];
   [request setPassword:passwordTextField.text];
@@ -142,7 +142,7 @@
   //  return;
   //}
   PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
-  viewController.authenticationURLString = @"http://smokey.picbounce.com/users/auth/twitter";
+  viewController.authenticationURLString = @"http://API_BASE/users/auth/twitter";
   viewController.title = NSLocalizedString(@"Twitter", nil);
   viewController.webView.backgroundColor = [UIColor blueColor];
   UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
@@ -211,23 +211,30 @@
   
   NSTimeInterval time = [expirationDate timeIntervalSince1970];
   PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
-//  NSString *s = [NSString stringWithFormat:@"http://smokey.picbounce.com/users/auth/facebooksso?expires=%d &fb_access_token=%@&fb_app_id=%@",time,token,appID];
+//  NSString *s = [NSString stringWithFormat:@"http://API_BASE/users/auth/facebooksso?expires=%d &fb_access_token=%@&fb_app_id=%@",time,token,appID];
   
   
   
 
-  NSString *s = [NSString stringWithFormat:@"http://smokey.picbounce.com/users/auth/facebooksso?fb_access_token=%@&fb_app_id=%@&expires=%d",token,appID,time];
+  NSString *s = [NSString stringWithFormat:@"http://API_BASE/users/auth/facebooksso?fb_access_token=%@&fb_app_id=%@&expires=%d",token,appID,time];
   ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:s]];
   [request setRequestMethod:@"POST"];
   [request setDelegate:self];
+  [request setDidFailSelector:@selector(picbounceTokenRequestDidFail:)];
   [request setWillRedirectSelector:@selector(request:willRedirectToURL:)];
   [request startAsynchronous];
   
                              
   
-  NSLog(@"%@",token);
+  NSLog(@"FAcebook Token: %@",token);
 }
 
+-(void) picbounceTokenRequestDidFail:(id) sender {
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"FAiled to retrieve picbounce token" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+  
+}
 
 -(void) request:(ASIHTTPRequest *)request willRedirectToURL:(NSURL *)url {
   NSString *urlString = [url absoluteString];

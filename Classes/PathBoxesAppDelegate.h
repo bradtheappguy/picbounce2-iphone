@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PBStreamViewController.h"
+#import "PBCameraViewController.h"
 
 @interface PathBoxesAppDelegate : NSObject <UIApplicationDelegate> {
   UIWindow *window;
@@ -15,6 +16,8 @@
   
   IBOutlet PBStreamViewController *feedViewController;
   IBOutlet PBStreamViewController *profileViewController;
+  
+  IBOutlet PBCameraViewController *cameraViewController;
 }
 
 @property (nonatomic, retain) IBOutlet NSString *authToken;
