@@ -2,15 +2,15 @@
 //	image@2x.m
 //	New Image
 //
-//	Created by Ruth Martin on 8/4/11
+//	Created by Ruth Martin on 8/5/11
 //	Copyright Like Thought, LLC. All rights reserved.
 //	THIS CODE IS FOR EVALUATION ONLY. YOU MAY NOT USE IT FOR ANY OTHER PURPOSE UNLESS YOU PURCHASE A LICENSE FOR OPACITY.
 //
 
 #import "image@2x.h"
 
-const CGFloat kMyViewWidth = 150.0f;
-const CGFloat kMyViewHeight = 100.0f;
+const CGFloat kMyViewWidth = 100.0f;
+const CGFloat kMyViewHeight = 80.0f;
 
 @implementation MyView
 
@@ -93,31 +93,31 @@ const CGFloat kMyViewHeight = 100.0f;
 	
 	alignStroke = 0.0f;
 	path = CGPathCreateMutable();
-	point = CGPointMake(8.0f, 8.0f);
+	point = CGPointMake(16.0f, 4.0f);
 	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
 	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
 	CGPathMoveToPoint(path, NULL, point.x, point.y);
-	point = CGPointMake(8.0f, 83.0f);
+	point = CGPointMake(16.0f, 42.0f);
 	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
 	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
 	CGPathAddLineToPoint(path, NULL, point.x, point.y);
-	point = CGPointMake(74.0f, 78.0f);
+	point = CGPointMake(50.0f, 39.533f);
 	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
 	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
-	controlPoint1 = CGPointMake(8.0f, 83.0f);
-	controlPoint2 = CGPointMake(66.0f, 78.0f);
+	controlPoint1 = CGPointMake(16.0f, 42.0f);
+	controlPoint2 = CGPointMake(45.879f, 39.533f);
 	CGPathAddCurveToPoint(path, NULL, controlPoint1.x, controlPoint1.y, controlPoint2.x, controlPoint2.y, point.x, point.y);
-	point = CGPointMake(140.0f, 83.0f);
+	point = CGPointMake(84.0f, 42.0f);
 	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
 	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
-	controlPoint1 = CGPointMake(82.0f, 78.0f);
-	controlPoint2 = CGPointMake(140.0f, 83.0f);
+	controlPoint1 = CGPointMake(54.121f, 39.533f);
+	controlPoint2 = CGPointMake(84.0f, 42.0f);
 	CGPathAddCurveToPoint(path, NULL, controlPoint1.x, controlPoint1.y, controlPoint2.x, controlPoint2.y, point.x, point.y);
-	point = CGPointMake(140.0f, 8.0f);
+	point = CGPointMake(83.0f, 4.0f);
 	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
 	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
 	CGPathAddLineToPoint(path, NULL, point.x, point.y);
-	point = CGPointMake(8.0f, 8.0f);
+	point = CGPointMake(16.0f, 4.0f);
 	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
 	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
 	CGPathAddLineToPoint(path, NULL, point.x, point.y);
@@ -136,7 +136,7 @@ const CGFloat kMyViewHeight = 100.0f;
 	
 	alignStroke = 0.0f;
 	path = CGPathCreateMutable();
-	drawRect = CGRectMake(8.0f, 7.0f, 132.0f, 76.0f);
+	drawRect = CGRectMake(16.0f, 3.0f, 68.0f, 39.0f);
 	drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
 	drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
@@ -203,12 +203,12 @@ const CGFloat kMyViewHeight = 100.0f;
 	CGContextEndTransparencyLayer(context);
 	
 	// Layer 1
-	CGContextSetAlpha(context, 0.052f);
+	CGContextSetAlpha(context, 0.154f);
 	CGContextBeginTransparencyLayer(context, NULL);
 	
 	alignStroke = 0.0f;
 	path = CGPathCreateMutable();
-	drawRect = CGRectMake(8.0f, 7.0f, 132.0f, 76.0f);
+	drawRect = CGRectMake(16.0f, 3.0f, 68.0f, 39.0f);
 	drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
 	drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
@@ -250,10 +250,10 @@ const CGFloat kMyViewHeight = 100.0f;
 	if ((minX <= maxX) && (minY <= maxY)) {
 		CGContextSaveGState(context);
 		effectBounds = CGRectMake(minX, minY - 1.0f, maxX - minX + 1.0f, maxY - minY + 1.0f);
-		effectBounds = CGRectInset(effectBounds, -(ABS(2.0f * cosf(-2.88f) * resolution) + 2.0f), -(ABS(2.0f * sinf(-2.88f) * resolution) + 2.0f));
+		effectBounds = CGRectInset(effectBounds, -(ABS(1.0f * cosf(-2.88f) * resolution) + 1.0f), -(ABS(1.0f * sinf(-2.88f) * resolution) + 1.0f));
 		effectBounds = CGRectIntegral(effectBounds);
 		color = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.5f];
-		CGContextSetShadowWithColor(context, CGSizeMake(2.0f * cosf(-2.88f) * resolution, 2.0f * sinf(-2.88f) * resolution - effectBounds.size.height), 2.0f, [color CGColor]);
+		CGContextSetShadowWithColor(context, CGSizeMake(1.0f * cosf(-2.88f) * resolution, 1.0f * sinf(-2.88f) * resolution - effectBounds.size.height), 1.0f, [color CGColor]);
 		bytesPerRow = roundf(effectBounds.size.width);
 		maskContext = CGBitmapContextCreate(NULL, roundf(effectBounds.size.width), roundf(effectBounds.size.height), 8, bytesPerRow, NULL, kCGImageAlphaOnly);
 		CGContextDrawImage(maskContext, CGRectMake(-effectBounds.origin.x, -effectBounds.origin.y, bounds.size.width, bounds.size.height), contextImage);
@@ -276,10 +276,8 @@ const CGFloat kMyViewHeight = 100.0f;
 	
 	CGContextEndTransparencyLayer(context);
 	
-	// strokeLeftOut
-	CGContextSetAlpha(context, 1.0f);
-	
 	// strokeTopTop
+	CGContextSetAlpha(context, 1.0f);
 	
 	stroke = 1.0f;
 	stroke *= resolution;
@@ -291,11 +289,11 @@ const CGFloat kMyViewHeight = 100.0f;
 	stroke /= resolution;
 	alignStroke = fmodf(0.5f * stroke * resolution, 1.0f);
 	path = CGPathCreateMutable();
-	point = CGPointMake(139.5f, 7.5f);
+	point = CGPointMake(83.5f, 3.5f);
 	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
 	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
 	CGPathMoveToPoint(path, NULL, point.x, point.y);
-	point = CGPointMake(9.0f, 7.0f);
+	point = CGPointMake(16.5f, 3.5f);
 	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
 	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
 	CGPathAddLineToPoint(path, NULL, point.x, point.y);
@@ -319,11 +317,11 @@ const CGFloat kMyViewHeight = 100.0f;
 	stroke /= resolution;
 	alignStroke = fmodf(0.5f * stroke * resolution, 1.0f);
 	path = CGPathCreateMutable();
-	point = CGPointMake(139.5f, 8.0f);
+	point = CGPointMake(83.5f, 4.5f);
 	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
 	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
 	CGPathMoveToPoint(path, NULL, point.x, point.y);
-	point = CGPointMake(8.5f, 8.5f);
+	point = CGPointMake(17.5f, 4.5f);
 	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
 	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
 	CGPathAddLineToPoint(path, NULL, point.x, point.y);
@@ -332,68 +330,8 @@ const CGFloat kMyViewHeight = 100.0f;
 	CGContextAddPath(context, path);
 	CGContextStrokePath(context);
 	CGPathRelease(path);
-	
-	// strokeTopTop
-	CGContextSetAlpha(context, 0.752f);
-	CGContextBeginTransparencyLayer(context, NULL);
-	
-	stroke = 1.0f;
-	stroke *= resolution;
-	if (stroke < 1.0f) {
-		stroke = ceilf(stroke);
-	} else {
-		stroke = roundf(stroke);
-	}
-	stroke /= resolution;
-	alignStroke = fmodf(0.5f * stroke * resolution, 1.0f);
-	path = CGPathCreateMutable();
-	point = CGPointMake(8.5f, 8.5f);
-	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
-	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
-	CGPathMoveToPoint(path, NULL, point.x, point.y);
-	point = CGPointMake(8.5f, 82.5f);
-	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
-	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
-	CGPathAddLineToPoint(path, NULL, point.x, point.y);
-	color = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
-	[color setStroke];
-	CGContextAddPath(context, path);
-	CGContextStrokePath(context);
-	CGPathRelease(path);
-	
-	CGContextEndTransparencyLayer(context);
-	
-	// strokeTopBtm
-	CGContextBeginTransparencyLayer(context, NULL);
-	
-	stroke = 1.0f;
-	stroke *= resolution;
-	if (stroke < 1.0f) {
-		stroke = ceilf(stroke);
-	} else {
-		stroke = roundf(stroke);
-	}
-	stroke /= resolution;
-	alignStroke = fmodf(0.5f * stroke * resolution, 1.0f);
-	path = CGPathCreateMutable();
-	point = CGPointMake(9.5f, 9.5f);
-	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
-	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
-	CGPathMoveToPoint(path, NULL, point.x, point.y);
-	point = CGPointMake(9.5f, 82.5f);
-	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
-	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
-	CGPathAddLineToPoint(path, NULL, point.x, point.y);
-	color = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.54f];
-	[color setStroke];
-	CGContextAddPath(context, path);
-	CGContextStrokePath(context);
-	CGPathRelease(path);
-	
-	CGContextEndTransparencyLayer(context);
 	
 	// text
-	CGContextSetAlpha(context, 1.0f);
 	
 	// Setup for Inner Shadow Effect
 	bytesPerRow = 4 * roundf(bounds.size.width);
@@ -409,16 +347,27 @@ const CGFloat kMyViewHeight = 100.0f;
 	
 	// Layer 2
 	
-	drawRect = CGRectMake(11.0f, 7.125f, 124.0f, 44.875f);
+	drawRect = CGRectMake(-12.0f, 2.0f, 124.0f, 44.875f);
 	drawRect.origin.x = roundf(resolution * drawRect.origin.x) / resolution;
 	drawRect.origin.y = roundf(resolution * drawRect.origin.y) / resolution;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
 	drawRect.size.height = roundf(resolution * drawRect.size.height) / resolution;
 	string = @"120000";
-	font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:36.0f];
+	font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0f];
 	color = [UIColor colorWithRed:0.384f green:0.533f blue:0.573f alpha:1.0f];
 	[color set];
 	[string drawInRect:drawRect withFont:font lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+	
+	drawRect = CGRectMake(-309.0f, -270.0f, 75.5f, 50.0f);
+	drawRect.origin.x = roundf(resolution * drawRect.origin.x) / resolution;
+	drawRect.origin.y = roundf(resolution * drawRect.origin.y) / resolution;
+	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
+	drawRect.size.height = roundf(resolution * drawRect.size.height) / resolution;
+	string = @"";
+	font = [UIFont fontWithName:@"Helvetica" size:12.0f];
+	color = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f];
+	[color set];
+	[string drawInRect:drawRect withFont:font];
 	
 	// Shadow Effect
 	CGContextEndTransparencyLayer(context);
@@ -447,15 +396,15 @@ const CGFloat kMyViewHeight = 100.0f;
 	UIGraphicsPopContext();
 	context = UIGraphicsGetCurrentContext();
 	CGContextDrawImage(context, imageBounds, contextImage);
-	CGContextSetAlpha(context, 0.436f);
+	CGContextSetAlpha(context, 0.7f);
 	CGContextBeginTransparencyLayer(context, NULL);
 	if ((minX <= maxX) && (minY <= maxY)) {
 		CGContextSaveGState(context);
 		effectBounds = CGRectMake(minX, minY - 1.0f, maxX - minX + 1.0f, maxY - minY + 1.0f);
-		effectBounds = CGRectInset(effectBounds, -(ABS(3.0f * cosf(1.571f) * resolution) + 3.0f), -(ABS(3.0f * sinf(1.571f) * resolution) + 3.0f));
+		effectBounds = CGRectInset(effectBounds, -(ABS(2.0f * cosf(1.571f) * resolution) + 0.0f), -(ABS(2.0f * sinf(1.571f) * resolution) + 0.0f));
 		effectBounds = CGRectIntegral(effectBounds);
 		color = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.5f];
-		CGContextSetShadowWithColor(context, CGSizeMake(3.0f * cosf(1.571f) * resolution, 3.0f * sinf(1.571f) * resolution - effectBounds.size.height), 3.0f, [color CGColor]);
+		CGContextSetShadowWithColor(context, CGSizeMake(2.0f * cosf(1.571f) * resolution, 2.0f * sinf(1.571f) * resolution - effectBounds.size.height), 0.0f, [color CGColor]);
 		bytesPerRow = roundf(effectBounds.size.width);
 		maskContext = CGBitmapContextCreate(NULL, roundf(effectBounds.size.width), roundf(effectBounds.size.height), 8, bytesPerRow, NULL, kCGImageAlphaOnly);
 		CGContextDrawImage(maskContext, CGRectMake(-effectBounds.origin.x, -effectBounds.origin.y, bounds.size.width, bounds.size.height), contextImage);
@@ -483,16 +432,87 @@ const CGFloat kMyViewHeight = 100.0f;
 	
 	// Layer 3
 	
-	drawRect = CGRectMake(21.0f, 49.0f, 108.0f, 51.0f);
+	drawRect = CGRectMake(-4.0f, 21.0f, 108.0f, 51.0f);
 	drawRect.origin.x = roundf(resolution * drawRect.origin.x) / resolution;
 	drawRect.origin.y = roundf(resolution * drawRect.origin.y) / resolution;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
 	drawRect.size.height = roundf(resolution * drawRect.size.height) / resolution;
 	string = @"Followers";
-	font = [UIFont fontWithName:@"HelveticaNeue" size:24.0f];
+	font = [UIFont fontWithName:@"HelveticaNeue" size:12.0f];
 	color = [UIColor colorWithRed:0.294f green:0.412f blue:0.443f alpha:1.0f];
 	[color set];
 	[string drawInRect:drawRect withFont:font lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+	
+	drawRect = CGRectMake(63.0f, -5.0f, 75.5f, 50.0f);
+	drawRect.origin.x = roundf(resolution * drawRect.origin.x) / resolution;
+	drawRect.origin.y = roundf(resolution * drawRect.origin.y) / resolution;
+	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
+	drawRect.size.height = roundf(resolution * drawRect.size.height) / resolution;
+	string = @"";
+	font = [UIFont fontWithName:@"Helvetica" size:12.0f];
+	color = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f];
+	[color set];
+	[string drawInRect:drawRect withFont:font];
+	
+	// strokSideOuter
+	CGContextSetAlpha(context, 0.5f);
+	CGContextBeginTransparencyLayer(context, NULL);
+	
+	stroke = 1.0f;
+	stroke *= resolution;
+	if (stroke < 1.0f) {
+		stroke = ceilf(stroke);
+	} else {
+		stroke = roundf(stroke);
+	}
+	stroke /= resolution;
+	alignStroke = fmodf(0.5f * stroke * resolution, 1.0f);
+	path = CGPathCreateMutable();
+	point = CGPointMake(16.5f, 4.5f);
+	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
+	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
+	CGPathMoveToPoint(path, NULL, point.x, point.y);
+	point = CGPointMake(17.0f, 40.0f);
+	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
+	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
+	CGPathAddLineToPoint(path, NULL, point.x, point.y);
+	color = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
+	[color setStroke];
+	CGContextAddPath(context, path);
+	CGContextStrokePath(context);
+	CGPathRelease(path);
+	
+	CGContextEndTransparencyLayer(context);
+	
+	// strokeSideInner
+	CGContextSetAlpha(context, 0.3f);
+	CGContextBeginTransparencyLayer(context, NULL);
+	
+	stroke = 1.0f;
+	stroke *= resolution;
+	if (stroke < 1.0f) {
+		stroke = ceilf(stroke);
+	} else {
+		stroke = roundf(stroke);
+	}
+	stroke /= resolution;
+	alignStroke = fmodf(0.5f * stroke * resolution, 1.0f);
+	path = CGPathCreateMutable();
+	point = CGPointMake(17.5f, 4.5f);
+	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
+	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
+	CGPathMoveToPoint(path, NULL, point.x, point.y);
+	point = CGPointMake(17.5f, 40.5f);
+	point.x = (roundf(resolution * point.x + alignStroke) - alignStroke) / resolution;
+	point.y = (roundf(resolution * point.y + alignStroke) - alignStroke) / resolution;
+	CGPathAddLineToPoint(path, NULL, point.x, point.y);
+	color = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
+	[color setStroke];
+	CGContextAddPath(context, path);
+	CGContextStrokePath(context);
+	CGPathRelease(path);
+	
+	CGContextEndTransparencyLayer(context);
 	
 	CGContextRestoreGState(context);
 	NSLog(@"Unregistered Copy of Opacity");
