@@ -60,7 +60,6 @@
     
     UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self addGestureRecognizer:tgr];
-    [tgr release];
     [self addTarget:self action:@selector(viewTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     

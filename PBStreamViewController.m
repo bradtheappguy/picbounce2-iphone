@@ -44,11 +44,23 @@
   [self.tableView reloadData];
   if (shouldShowProfileHeader) {
     NSDictionary *user = [self.responceData user];
+    self.navigationItem.title = [user objectForKey:@"screen_name"]; 
+                  
     NSString *name = [user objectForKey:@"display_name"];
-    BOOL followingMe = [[user objectForKey:@"follows_me"] boolValue];
-    BOOL following = [[user objectForKey:@"following"] boolValue];
+    BOOL followingMe = [(NSNumber *)[user objectForKey:@"follows_me"] boolValue];
+    BOOL following = [(NSNumber *)[user objectForKey:@"following"] boolValue];
     
-    self.nameLabel.text = name;
+    NSNumber *followingCount = [user objectForKey:@"following_count"];
+    NSNumber *followersCount = [user objectForKey:@"followers_count"];
+    NSNumber *photosCount = [user objectForKey:@"photo_count"];
+    
+    
+    
+    self.profileHeader.nameLabel.text = name;
+    [self.profileHeader.photoCountButton setTitle:[photosCount stringValue] forState:UIControlStateNormal];
+    [self.profileHeader.followersCountButton setTitle:[followersCount stringValue] forState:UIControlStateNormal];
+    [self.profileHeader.followingCountButton setTitle:[followingCount stringValue] forState:UIControlStateNormal];
+    
   }
   
 }
@@ -175,7 +187,9 @@
   
   headerTableViewCell.nameLabel.text = name;
   headerTableViewCell.locationLabel.text = lastLocation;
-  headerTableViewCell.timeLabel.text = [self.responceData timeLabelTextForPhotoAtIndex:section-1];
+  
+  headerTableViewCell.timeLabel.text = [self.responceData timeLabelTextForPhotoAtIndex:section];
+  
   if (![avatarURL isEqual:[NSNull null]]) {
      headerTableViewCell.avatarImage.imageURL = [NSURL URLWithString: avatarURL];
   }
@@ -289,20 +303,7 @@
 
 
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
-  //PBHeaderTableViewCell *view = (PBHeaderTableViewCell *)sender.view;
-  
-  //PBStreamViewController *new = [[PBStreamViewController alloc] init];
-  //new.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/%@/profile",API_BASE,view.nameLabel.text]];
-  
-  
-//  new.shouldShowProfileHeaderBeforeNetworkLoad = YES;
-//  new.shouldShowProfileHeader = YES;
-//  new.preloadedLocation = view.locationLabel.text;
-//  new.preloadedName = view.nameLabel.text;
-//  new.preloadedAvatarURL = view.avatarImage.imageURL;
-//  new.title = @"NAME";
- // [self.navigationController pushViewController:new animated:YES];
-  //[new release];
+
 }
 
 

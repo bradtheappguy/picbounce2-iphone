@@ -15,6 +15,8 @@
   UITabBarController *tabBarController;
   
   IBOutlet PBStreamViewController *feedViewController;
+  IBOutlet PBStreamViewController *popularViewController;
+  IBOutlet PBStreamViewController *liveViewController;
   IBOutlet PBStreamViewController *profileViewController;
   
   IBOutlet PBCameraViewController *cameraViewController;

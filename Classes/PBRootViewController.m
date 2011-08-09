@@ -18,7 +18,12 @@
 
 - (NSURL *) url {
   NSString *authToken = [[[UIApplication sharedApplication] delegate] authToken];
-  return authToken?[NSURL URLWithString:[NSString stringWithFormat:@"%@?auth_token=%@",self.baseURL,authToken]]:nil;
+  if (authToken) {
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@?auth_token=%@",self.baseURL,authToken]];
+  }
+  else {
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.baseURL]];
+  }
 }
 
 - (void)viewDidLoad {

@@ -12,6 +12,7 @@
 #import "FacebookSingleton.h"
 #import "HTNotifier.h"
 #import "CaptureSessionManager.h"
+
 @implementation PathBoxesAppDelegate
 
 @synthesize window;
@@ -48,6 +49,8 @@
   
   profileViewController.shouldShowProfileHeader = YES;
   profileViewController.baseURL = [NSString stringWithFormat:@"http://%@/users/me.json",API_BASE];
+  
+  popularViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/popular.json",API_BASE];
   
   
   
@@ -92,9 +95,9 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-  [[CaptureSessionManager sharedManager] addVideoInput];
-  [[CaptureSessionManager sharedManager] addVideoPreviewLayer];
-    [[[CaptureSessionManager sharedManager] captureSession] startRunning];
+  //[[CaptureSessionManager sharedManager] addVideoInput];
+  //[[CaptureSessionManager sharedManager] addVideoPreviewLayer];
+    //[[[CaptureSessionManager sharedManager] captureSession] startRunning];
   
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
@@ -111,9 +114,15 @@
 
 
 -(void) cameraButtonPressed:(id) sender {
-
-  [self.tabBarController presentModalViewController:cameraViewController animated:YES];
-//  self.tabBarController.selectedIndex = 1;
+  if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == NO) {
+    UIImagePickerController *photoLibraryPicker = [[UIImagePickerController alloc] init];
+    photoLibraryPicker.delegate = cameraViewController;
+    [self.tabBarController presentModalViewController:photoLibraryPicker animated:YES];
+    [photoLibraryPicker release];
+  }
+  else {
+    [self.tabBarController presentModalViewController:cameraViewController animated:YES];
+  }
 }
 
 

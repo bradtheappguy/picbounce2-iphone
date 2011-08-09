@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CaptureSessionManager.h"
 
-@interface PBCameraViewController : UIViewController {
+@interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
   UIButton *flashButton;
   UIButton *flipButton;
   UIButton *HDRButton;

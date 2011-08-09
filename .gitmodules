@@ -1,3 +1,6 @@
 [submodule "External/TTAttributedLabel"]
 	path = External/TTAttributedLabel
 	url = https://github.com/mattt/TTTAttributedLabel.git
+[submodule "External/asi-http-request"]
+	path = External/asi-http-request
+	url = https://github.com/pokeb/asi-http-request.git
