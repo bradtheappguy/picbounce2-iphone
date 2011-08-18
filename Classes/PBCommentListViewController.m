@@ -134,7 +134,6 @@
   
   CGRect keyboardEndFrame;
   
-  keyboardHeight = keyboardEndFrame.size.height;
   
   [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
   [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];

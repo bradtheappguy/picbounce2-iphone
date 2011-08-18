@@ -12,9 +12,10 @@
 @implementation PBAPIResponce
 
 -(id) initWithResponceData:(id)json_string {
-    if (self == [super init]) {
-        data = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
-        [data retain];
+    if (self = [super init]) {
+        SBJSON *parser = [[SBJSON alloc] init];
+        data = [[parser objectWithString:json_string error:nil] retain];
+      [parser release];
         if ([self validate:data]) {
           photos = [[data objectForKey:@"responce"] objectForKey:@"photos"];
           people = [[data objectForKey:@"responce"] objectForKey:@"people"];
@@ -36,9 +37,9 @@
 
 -(void) mergeNewResponceData:(id)json_string {
  // id _photos = [[NSMutableArray alloc] initWithArray:[self photos]];
+  SBJSON *parser = [[SBJSON alloc] init];
   
-  SBJSON *newData = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
-  [newData retain];
+  id newData = [parser objectWithString:json_string error:nil];
   if ([self validate:newData]) {
     NSMutableArray *newPhotos = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"responce"] objectForKey:@"photos"];
     NSMutableArray *newPeople = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"responce"] objectForKey:@"people"];
@@ -48,7 +49,7 @@
     url = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"responce"] objectForKey:@"url"];
     next = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"responce"] objectForKey:@"next"];
   }
-  
+  [parser release];
 }
 
 -(NSUInteger) followingCount {

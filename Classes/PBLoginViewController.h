@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBConnect.h"
 
-
-@interface PBLoginViewController : UIViewController {
+@interface PBLoginViewController : UIViewController <FBSessionDelegate> {
   UIScrollView *scrollView;
   
 }

@@ -1,4 +1,4 @@
-//
+  //
 //  main.m
 //  PathBoxes
 //
@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 int main(int argc, char *argv[]) {    
+  
+  /*Method drawRectCustomBackground = class_getInstanceMethod([UINavigationBar class], @selector(drawRectCustomBackground:));
+  Method drawRect = class_getInstanceMethod([UINavigationBar class], @selector(drawRect:));
+  method_exchangeImplementations(drawRect, drawRectCustomBackground);
+  */
+  
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     int retVal = UIApplicationMain(argc, argv, nil, nil);
     [pool release];

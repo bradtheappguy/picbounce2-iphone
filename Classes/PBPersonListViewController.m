@@ -33,7 +33,7 @@
 //  NSUInteger num = [responceData numberOfPeople];
 //  return num;
     if (sl == 1) {
-        return [Namelist count];
+        return [namelist count];
     }
     
        
@@ -94,7 +94,7 @@
 }
 
 -(void)ABcontacts{
-    Namelist = [[NSMutableArray alloc]init];
+    namelist = [[NSMutableArray alloc]init];
     emailList = [[NSMutableArray alloc]init];
     
     ABMutableMultiValueRef multiEmail;
@@ -107,10 +107,8 @@
      
     NSString *name;
     NSString *homeEmail;
-    //NSString *officeEmail;
-   // NSString *email;
-               
 
+               
     for( int i = 0 ; i < nPeople ; i++ )
     {
         
@@ -130,7 +128,7 @@
         
         
        
-        [Namelist addObject:name];
+        [namelist addObject:name];
         [emailList addObject:homeEmail];/// replace "homemail" by "email" to get multiple email             
             
         [homeEmail release];
@@ -142,12 +140,15 @@
         
         CFRelease(multiEmail);
         
-        CFRelease(ref);
+        
         
         NSLog(@"name = %@   email = %@", name, homeEmail);
 
         
     }
+  
+  CFRelease(addressBook);
+  CFRelease(allPeople);
       
   }
     

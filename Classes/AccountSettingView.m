@@ -9,7 +9,7 @@
 #import "AccountSettingView.h"
 #import "FBConnect.h"
 #import "FacebookSingleton.h"
-#import "TwitterView.h"
+#import "PBTwitterViewController.h"
 #import "PBAuthWebViewController.h"
 @implementation AccountSettingView
 
@@ -94,7 +94,7 @@
 
 - (void)login {
   
-  BOOL isLoggedIn;
+  //BOOL isLoggedIn;
   
 	if (_facebook == nil) {
 		_facebook = [FacebookSingleton sharedFacebook];
@@ -103,7 +103,7 @@
 		NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
 		
 		if (token != nil && exp != nil && [token length] > 2) {
-			isLoggedIn = YES;
+			//isLoggedIn = YES;
 			_facebook.accessToken = token;
             _facebook.expirationDate = [NSDate distantFuture];
 		} 
@@ -132,7 +132,7 @@
 		if (_delegate == nil)
 			_delegate = self;
 		
-		[_facebook requestWithGraphPath:@"me" andDelegate:self];
+		[_facebook requestWithGraphPath:@"me" andDelegate:_delegate];
 	}
 }
 
@@ -381,6 +381,9 @@
   
   UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
   [self presentModalViewController:navigationController animated:YES];
+  [navigationController release];
+  [viewController release];
+  [cancelButton release];
 }
 
 -(IBAction)twitterlogin:(id)sender{
@@ -401,25 +404,29 @@
 }
 
 
+-(NSString *) apiStringWithPath:(NSString *)path {
+  return [NSString stringWithFormat:@"http://%@%@",API_BASE,path];
+}
 
 -(void)twitterLogin {    
-    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Twitter", nil) forURLString:@"http://API_BASE/users/auth/twitter"];
+  [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Twitter", nil) forURLString:[self apiStringWithPath:@"/users/auth/twitter"]];
 }
+
 - (void) flickrButtonPressed:(id)sender {
-    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Flickr", nil) forURLString:@"http://API_BASE/users/auth/flickr"];
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Flickr", nil) forURLString:[self apiStringWithPath:@"/users/auth/flickr"]];
 }
+
 - (void) tumblrButtonPressed:(id)sender {
-    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Tumbler", nil) forURLString:@"http://API_BASE/users/auth/tumblr"];
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Tumbler", nil) forURLString:[self apiStringWithPath:@"/users/auth/tumblr"]];
 }
 
 - (void) posterousButtonPressed:(id)sender {
-    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Posterous", nil) forURLString:@"http://API_BASE/users/auth/posterous"];
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Posterous", nil) forURLString:[self apiStringWithPath:@"/users/auth/posterous"]];
 }
 
 - (void) myspaceButtonPressed:(id)sender {
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://API_BASE/users/auth/myspace"]];
-    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Myspace", nil) forURLString:@"http://API_BASE/users/auth/myspace"];
-    }
+    [self presentAuthenticationWebViewControllerWithTitle:NSLocalizedString(@"Myspace", nil) forURLString:[self apiStringWithPath:@"/users/auth/myspace"]];
+}
     
 -(IBAction)flickerlogin:(id)sender {
     

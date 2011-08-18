@@ -9,7 +9,7 @@
 #import "PBLoginViewController.h"
 #import "PBAuthWebViewController.h"
 #import "FacebookSingleton.h"
-#import "PathBoxesAppDelegate.h"
+#import "AppDelegate.h"
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
 @implementation PBLoginViewController
@@ -55,7 +55,7 @@
 
 #pragma mark Button Handeling
 -(IBAction) submitButtonPressed:(id)sender {
-  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"API_BASE/users/auth/picbounce"]];
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/users/auth/picbounce",API_BASE]]];
   [request setRequestCookies:nil];
   [request setUsername:emailTextField.text];
   [request setPassword:passwordTextField.text];
@@ -83,9 +83,9 @@
 
 -(IBAction) facebookButtonPressed:(id)sender {
   
-  FacebookSingleton *_facebook = nil;
+  Facebook *_facebook = nil;
   
-  BOOL isLoggedIn;
+  //BOOL isLoggedIn;
   
 	if (_facebook == nil) {
 		_facebook = [FacebookSingleton sharedFacebook];
@@ -94,7 +94,7 @@
 		NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
 		
 		if (token != nil && exp != nil && [token length] > 2) {
-			isLoggedIn = YES;
+			//isLoggedIn = YES;
 			_facebook.accessToken = token;
       _facebook.expirationDate = [NSDate distantFuture];
 		} 
@@ -116,6 +116,7 @@
     NSLog(@"No Twitter Account Found");
     ACAccount *newTwitterAccount = [[ACAccount alloc] initWithAccountType:accountType];
     [accountStore saveAccount:newTwitterAccount withCompletionHandler:nil];
+    [newTwitterAccount release];
   }
   else {
     
@@ -134,6 +135,7 @@
      }
      ];
   }
+  [accountStore release];
 }
 
 -(IBAction) twitterButtonPressed:(id)sender {
@@ -142,7 +144,7 @@
   //  return;
   //}
   PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
-  viewController.authenticationURLString = @"http://API_BASE/users/auth/twitter";
+  viewController.authenticationURLString = [NSString stringWithFormat:@"http://%@/users/auth/twitter", API_BASE];
   viewController.title = NSLocalizedString(@"Twitter", nil);
   viewController.webView.backgroundColor = [UIColor blueColor];
   UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
@@ -150,7 +152,9 @@
   
   UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
   [self presentModalViewController:navigationController animated:YES];
-  
+  [navigationController release];
+  [cancelButton release];
+  [viewController release];
 }
 
 
@@ -195,7 +199,7 @@
   self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
   [(UIScrollView *)self.view setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-80)];
   scrollView = (UIScrollView *)self.view;
-  [self.submitButton setTitleShadowOffset:CGSizeMake(0,  0)];
+  [self.submitButton.titleLabel setShadowOffset:CGSizeMake(0,0)];
   [self.submitButton setEnabled:NO];
   
   
@@ -205,18 +209,13 @@
 
 #pragma mark Facebbok Session Delegate
 - (void)fbDidLogin {
-  NSString *token = [[[FacebookSingleton sharedFacebook] accessToken] copy];
+  NSString *token = [[FacebookSingleton sharedFacebook] accessToken];
   NSDate *expirationDate = [[FacebookSingleton sharedFacebook] expirationDate];
   NSString *appID = @"221310351230872";
   
   NSTimeInterval time = [expirationDate timeIntervalSince1970];
-  PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
-//  NSString *s = [NSString stringWithFormat:@"http://API_BASE/users/auth/facebooksso?expires=%d &fb_access_token=%@&fb_app_id=%@",time,token,appID];
   
-  
-  
-
-  NSString *s = [NSString stringWithFormat:@"http://API_BASE/users/auth/facebooksso?fb_access_token=%@&fb_app_id=%@&expires=%d",token,appID,time];
+  NSString *s = [NSString stringWithFormat:@"http://%@/users/auth/facebooksso?fb_access_token=%@&fb_app_id=%@&expires=%d",API_BASE,token,appID,time];
   ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:s]];
   [request setRequestMethod:@"POST"];
   [request setDelegate:self];
@@ -224,9 +223,6 @@
   [request setWillRedirectSelector:@selector(request:willRedirectToURL:)];
   [request startAsynchronous];
   
-                             
-  
-  NSLog(@"FAcebook Token: %@",token);
 }
 
 -(void) picbounceTokenRequestDidFail:(id) sender {
@@ -242,7 +238,7 @@
   
   if (range.length > 0) {
     NSString *key = [urlString substringFromIndex:range.location+range.length+1];
-    [(PathBoxesAppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
+    [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
     [self dismissModalViewControllerAnimated:YES];
   }
@@ -251,7 +247,7 @@
 }
 
 -(void) requestDidFinish:(ASIHTTPRequest *)request{
-  NSLog(@""); 
+  //TODO
 }
 
 /**

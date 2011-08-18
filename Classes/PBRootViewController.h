@@ -15,10 +15,7 @@
 	//  Reloading should really be your tableviews model class
 	//  Putting it here for demo purposes 
 	BOOL _reloading;
-    NSMutableArray *data;
   
-  
-
   
   NSURL *loadMoreDataURL;
   
@@ -31,6 +28,7 @@
 - (NSURL *) url;
 - (void) reload;
 
+@property (nonatomic, retain) NSArray *data;
 @property (nonatomic, retain) PBAPIResponce *responceData;
 @property(nonatomic, retain)  NSString *baseURL;
 @property(assign,getter=isReloading) BOOL reloading;

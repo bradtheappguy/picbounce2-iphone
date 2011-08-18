@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   version = "1.3">
+   version = "1.8">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -46,7 +46,9 @@
       displayScale = "1.00"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug">
+      buildConfiguration = "Debug"
+      debugDocumentVersioning = "YES"
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -72,7 +74,8 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release">
+      buildConfiguration = "Release"
+      debugDocumentVersioning = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -89,5 +92,23 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "&#10;cd &quot;${ARCHIVE_PRODUCTS_PATH}&quot;&#10;env &gt; output&#10;cp -r Applications Payload&#10;ipaname=&quot;${TARGET_NAME}.$(date -u +%Y%m%d%H%M%S).ipa&quot;&#10;zip -r $ipaname Payload&#10;&#10;curl http://testflightapp.com/api/builds.json -F file=@$ipaname -F api_token=&apos;b27ff2b7eb8560989fca0eef4d5c0148_MzU4NTA&apos; -F team_token=&apos;ed2e71a0f60a28c76fb147f9429fedbb_MTA1OTAyMDExLTA4LTA5IDE4OjM4OjI4LjM0ODkzMA&apos; -F notes=&apos;This build was uploaded via the upload API&apos; -F distribution_lists=&apos;clixtr&apos; -notify=True &gt;&gt; output&#10;&#10;&#10;&#10;&#10;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
+                     BuildableName = "PicBounce2.app"
+                     BlueprintName = "PicBounce2"
+                     ReferencedContainer = "container:PicBounce2.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
    </ArchiveAction>
 </Scheme>

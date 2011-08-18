@@ -52,7 +52,7 @@
     UIView *avatar = [[UIView alloc] initWithFrame:CGRectMake(6, 5, 30, 30)];
     avatar.backgroundColor = [UIColor blueColor];
     [self addSubview:avatar];
-  
+  [avatar release];
 }
 
 - (void) grow {

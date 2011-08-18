@@ -11,13 +11,13 @@
 
 #import "PBRootViewController.h"
 #import "EGOImageView.h"
+#import "PBProfileHeaderView.h"
 
-@class PBProfileHeaderCell, PBHeaderTableViewCell, PBTableTitleTableViewCell, PBPhotoCell;
+@class PBHeaderTableViewCell, PBTableTitleTableViewCell, PBPhotoCell;
 
 @interface PBStreamViewController : PBRootViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UISegmentedControl *segmentedControl;
-  
-  IBOutlet PBProfileHeaderCell *headerCell;
+
   IBOutlet PBHeaderTableViewCell *headerTableViewCell;
   IBOutlet PBTableTitleTableViewCell *tableTitleTableViewCell;
   
@@ -45,13 +45,7 @@
   
 }
 
-
-
-
-
-
-
-@property (nonatomic, retain) IBOutlet UIView *profileHeader;
+@property (nonatomic, retain) IBOutlet PBProfileHeaderView *profileHeader;
 @property (nonatomic, retain) IBOutlet EGOImageView *avatarIcon;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *locationLabel;
