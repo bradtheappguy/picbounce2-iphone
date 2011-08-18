@@ -7,9 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CaptureSessionManager.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
+  
+  IBOutlet UIView *previewView;
+	IBOutlet UISegmentedControl *camerasControl;
+	AVCaptureVideoPreviewLayer *previewLayer;
+	AVCaptureVideoDataOutput *videoDataOutput;
+	BOOL detectFaces;
+	dispatch_queue_t videoDataOutputQueue;
+	AVCaptureStillImageOutput *stillImageOutput;
+	UIView *flashView;
+	UIImage *mustache;
+	BOOL isUsingFrontFacingCamera;
+	CIDetector *faceDetector;
+	CGFloat beginGestureScale;
+	CGFloat effectiveScale;
+  
+  
   UIButton *flashButton;
   UIButton *flipButton;
   UIButton *HDRButton;
@@ -24,7 +40,8 @@
   
   dispatch_queue_t queue;
   
-  
+  UIImageView *cameraStill;
+
   IBOutlet UIButton *facebookButton;
   IBOutlet UIButton *twitterButton;
   IBOutlet UIButton *tubmlerButton;
@@ -33,9 +50,12 @@
   IBOutlet UIButton *myspaceButton;
   
   IBOutlet UIScrollView *filterScrollView;
+  
+  IBOutlet UIView *cameraToolbar;
 }
 
 -(IBAction) cameraButtonPressed:(id)sender;
+-(IBAction) closeButtonPressed:(id)sender;
 -(IBAction) optionsButtonPressed:(id)sender;
 -(IBAction) cancelButtonPressed:(id)sender;
 -(IBAction) uploadButtonPressed:(id)sender;

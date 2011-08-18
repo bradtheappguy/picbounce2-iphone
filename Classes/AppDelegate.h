@@ -10,7 +10,7 @@
 #import "PBStreamViewController.h"
 #import "PBCameraViewController.h"
 
-@interface PathBoxesAppDelegate : NSObject <UIApplicationDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate> {
   UIWindow *window;
   UITabBarController *tabBarController;
   

@@ -9,7 +9,7 @@
 #import "AccountSettingView.h"
 #import "FBConnect.h"
 #import "FacebookSingleton.h"
-#import "TwitterView.h"
+#import "PBTwitterViewController.h"
 #import "PBAuthWebViewController.h"
 @implementation AccountSettingView
 
@@ -94,7 +94,7 @@
 
 - (void)login {
   
-  BOOL isLoggedIn;
+  //BOOL isLoggedIn;
   
 	if (_facebook == nil) {
 		_facebook = [FacebookSingleton sharedFacebook];
@@ -103,7 +103,7 @@
 		NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
 		
 		if (token != nil && exp != nil && [token length] > 2) {
-			isLoggedIn = YES;
+			//isLoggedIn = YES;
 			_facebook.accessToken = token;
             _facebook.expirationDate = [NSDate distantFuture];
 		} 
@@ -132,7 +132,7 @@
 		if (_delegate == nil)
 			_delegate = self;
 		
-		[_facebook requestWithGraphPath:@"me" andDelegate:self];
+		[_facebook requestWithGraphPath:@"me" andDelegate:_delegate];
 	}
 }
 
@@ -381,6 +381,9 @@
   
   UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
   [self presentModalViewController:navigationController animated:YES];
+  [navigationController release];
+  [viewController release];
+  [cancelButton release];
 }
 
 -(IBAction)twitterlogin:(id)sender{

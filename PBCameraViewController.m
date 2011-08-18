@@ -15,7 +15,16 @@
 #import "ASIFormDataRequest.h"
 #import "ASIS3ObjectRequest.h"
 #import <CommonCrypto/CommonDigest.h>
+#import <CoreImage/CoreImage.h>
+#import <ImageIO/ImageIO.h>
+#import <AssertMacros.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+
+//#import "CaptureSessionManager.h"
+#import "AppDelegate.h"
 #define PREVIEW_FRAME
+static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCaptureStillImageIsCapturingStillImageContext";
+static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 
 
 @implementation NSData(MD5)
@@ -42,7 +51,103 @@
 
 @implementation PBCameraViewController
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if ( context == AVCaptureStillImageIsCapturingStillImageContext ) {
+		BOOL isCapturingStillImage = [[change objectForKey:NSKeyValueChangeNewKey] boolValue];
+		
+		if ( isCapturingStillImage ) {
+			// Flash animation
+			flashView = [[UIView alloc] initWithFrame:[previewView frame]];
+			[flashView setBackgroundColor:[UIColor whiteColor]];
+			[flashView setAlpha:0.f];
+			[[[self view] window] addSubview:flashView];
+			
+			[UIView animateWithDuration:.4f
+                       animations:^{
+                         [flashView setAlpha:1.f];
+                       }
+			 ];
+		}
+		else {
+			[UIView animateWithDuration:.4f
+                       animations:^{
+                         [flashView setAlpha:0.f];
+                         cameraToolbar.center = CGPointMake(cameraToolbar.center.x - 320, cameraToolbar.center.y);
+                       }
+                       completion:^(BOOL finished){
+                         [flashView removeFromSuperview];
+                         [flashView release];
+                         flashView = nil;
+                       }
+			 ];
+		}
+	}
+}
+
+
+
+
+- (void)setupAVCapture
+{
+	NSError *error = nil;
+	
+	AVCaptureSession *session = [AVCaptureSession new];
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    [session setSessionPreset:AVCaptureSessionPreset640x480];
+	else
+    [session setSessionPreset:AVCaptureSessionPresetPhoto];
+	
+	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+	AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
+	require( error == nil, bail );
+	isUsingFrontFacingCamera = NO;
+	if ( [session canAddInput:deviceInput] )
+		[session addInput:deviceInput];
+	
+	stillImageOutput = [AVCaptureStillImageOutput new];
+	[stillImageOutput addObserver:self forKeyPath:@"capturingStillImage" options:NSKeyValueObservingOptionNew context:AVCaptureStillImageIsCapturingStillImageContext];
+	if ( [session canAddOutput:stillImageOutput] )
+		[session addOutput:stillImageOutput];
+	
+	videoDataOutput = [AVCaptureVideoDataOutput new];
+	
+	NSDictionary *rgbOutputSettings = [NSDictionary dictionaryWithObject:
+                                     [NSNumber numberWithInt:kCMPixelFormat_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey];
+	[videoDataOutput setVideoSettings:rgbOutputSettings];
+	[videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
+	videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
+	[videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
+	if ( [session canAddOutput:videoDataOutput] )
+		[session addOutput:videoDataOutput];
+	[[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:NO];
+	
+	effectiveScale = 1.0;
+	previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
+	[previewLayer setBackgroundColor:[[UIColor blackColor] CGColor]];
+	[previewLayer setVideoGravity:AVLayerVideoGravityResizeAspect];
+	CALayer *rootLayer = [previewView layer];
+	[rootLayer setMasksToBounds:YES];
+	[previewLayer setFrame:[rootLayer bounds]];
+	[rootLayer addSublayer:previewLayer];
+	[session startRunning];
+bail:
+	[session release];
+	if (error) {
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Failed with error %d", (int)[error code]]
+                                                        message:[error localizedDescription]
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"Dismiss" 
+                                              otherButtonTitles:nil];
+		[alertView show];
+		[alertView release];
+		[self teardownAVCapture];
+	}
+}
+
+
 -(void) viewDidLoad {
+  
   filterScrollView.contentSize = filterScrollView.bounds.size;
   filterScrollView.alwaysBounceHorizontal = YES;
   self.wantsFullScreenLayout = YES;
@@ -68,13 +173,16 @@
  // [self.view addSubview:HDRButton];
   
   queue = dispatch_queue_create("com.picbounce.internalqueue", NULL);
+  
+  [self setupAVCapture];
+  
 }
 
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
 
-  
+  /*
   UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
   if (UIDeviceOrientationIsLandscape(orientation)) {
     NSLog(@" ");
@@ -82,34 +190,50 @@
   else {
     NSLog(@" ");
   }
+   */
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
   [[self.tabBarController tabBar] setAlpha:0];
   
-  CALayer *previewLayer = [[CaptureSessionManager sharedManager] previewLayer];
-  //CGRect bounds = [previewLayer bounds];
+ 
+  
+  /*CGRect bounds = [previewLayer bounds];
   
   CGFloat width  = 320.0f;
   CGRect layerRect = CGRectMake(0, 0, width, 426);
   
-  if ([[[CaptureSessionManager sharedManager] captureSession] isRunning] == NO) {
-    [[[CaptureSessionManager sharedManager] captureSession] startRunning];  
-  }
-  [previewLayer setBounds:layerRect];
-  [previewLayer setPosition:CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect))];
-  [(id)previewLayer setVideoGravity:AVLayerVideoGravityResizeAspect];
-  [[self.view layer] insertSublayer:previewLayer atIndex:0];
-  
+  */
+}
+
+- (AVCaptureVideoOrientation)avOrientationForDeviceOrientation:(UIDeviceOrientation)deviceOrientation
+{
+	AVCaptureVideoOrientation result = deviceOrientation;
+	if ( deviceOrientation == UIDeviceOrientationLandscapeLeft )
+		result = AVCaptureVideoOrientationLandscapeRight;
+	else if ( deviceOrientation == UIDeviceOrientationLandscapeRight )
+		result = AVCaptureVideoOrientationLandscapeLeft;
+	return result;
 }
 
 -(IBAction) cameraButtonPressed:(id)sender {
-  [[CaptureSessionManager sharedManager] capturePhotoWithCompletionHandler:
-   ^(CMSampleBufferRef ref, NSError *error) {
-     dispatch_async(queue, ^(void) {
-       sleep(5);
-       NSLog(@"I took a photo.");  
-     });
-   }];
-  
+  // Find out the current orientation and tell the still image output.
+	AVCaptureConnection *stillImageConnection = [stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
+	UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
+	AVCaptureVideoOrientation avcaptureOrientation = [self avOrientationForDeviceOrientation:curDeviceOrientation];
+	[stillImageConnection setVideoOrientation:avcaptureOrientation];
+	[stillImageConnection setVideoScaleAndCropFactor:effectiveScale];
+	BOOL doingFaceDetection = detectFaces && (effectiveScale == 1.0);
+	if (doingFaceDetection)
+		[stillImageOutput setOutputSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCMPixelFormat_32BGRA] 
+                                                                    forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
+	else
+		[stillImageOutput setOutputSettings:[NSDictionary dictionaryWithObject:AVVideoCodecJPEG 
+                                                                    forKey:AVVideoCodecKey]]; 
+	
+	[stillImageOutput captureStillImageAsynchronouslyFromConnection:stillImageConnection
+                                                completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+                                                  if (error) {
+                                                  }
+                                                }];
 }
 
 -(void) cancelButtonPressed:(id)sender {
@@ -121,8 +245,6 @@
 }
 
 -(void) flipButtonPressed:(id)sender {
-  BOOL x = [[CaptureSessionManager sharedManager] flip];
-  x = x;
 }
 
 -(void) hdrButtonPressed:(id)sender {
@@ -178,7 +300,7 @@
  :filter_name => params[:filter_name]
  */
 -(void) uploadDidFinish:(ASIHTTPRequest *)request {
-  NSString *authToken = [[[UIApplication sharedApplication] delegate] authToken];
+  NSString *authToken = [(AppDelegate *) [[UIApplication sharedApplication] delegate] authToken];
   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/photos?auth_token=%@",API_BASE,authToken]];
   
 
@@ -191,6 +313,7 @@
   [postRequest setPostValue:@"2" forKey:@"filter_name"];
   [postRequest setPostValue:@"1" forKey:@"filter_version"];
   [postRequest startAsynchronous];
+  [postRequest release];
 }
 
 -(void) uploadDidFail:(ASIHTTPRequest *)request {
@@ -209,5 +332,20 @@ To upload a file
  
  
 */
+-(IBAction) closeButtonPressed:(id)sender {
+  [self dismissModalViewControllerAnimated:YES];
+}
 
+-(IBAction) uploadButtonPressed:(id)sender{}
+-(IBAction) retakeButtonPressed:(id)sender{
+  [UIView animateWithDuration:.4f
+                   animations:^{
+                     [flashView setAlpha:0.f];
+                     cameraToolbar.center = CGPointMake(cameraToolbar.center.x + 320, cameraToolbar.center.y);
+                   }
+                   completion:^(BOOL finished){
+
+                   }
+   ];
+}
 @end

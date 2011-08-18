@@ -62,8 +62,10 @@
 
 - (AVCaptureSession *)captureSession {
   if (!captureSession) {
-    [self setCaptureSession:[[AVCaptureSession alloc] init]];
+    AVCaptureSession *session = [[AVCaptureSession alloc] init];
+    [self setCaptureSession:session];
     [[self captureSession] setSessionPreset:AVCaptureSessionPresetPhoto];
+    [session release];
   }
   return captureSession;
 }
@@ -120,12 +122,12 @@ static CaptureSessionManager *sharedInstance = nil;
 - (void)capturePhotoWithCompletionHandler:(void (^)(CMSampleBufferRef imageDataSampleBuffer, NSError *error))handler {
   AVCaptureConnection *videoConnection = nil;
   for (AVCaptureConnection *connection in self.stillImageOutput.connections) {
-    for (AVCaptureInputPort *port in [connection inputPorts]) {
-      if ([[port mediaType] isEqual:AVMediaTypeVideo] ) {
-        videoConnection = connection;
-        break;
+      for (AVCaptureInputPort *port in [connection inputPorts]) {
+        if ([[port mediaType] isEqual:AVMediaTypeVideo] ) {
+          videoConnection = connection;
+          break;
+        }
       }
-    }
   }
   [stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:handler];
 }
@@ -154,8 +156,9 @@ static CaptureSessionManager *sharedInstance = nil;
   }
   [[self previewLayer] removeFromSuperlayer];
 
-[previewLayer release];
-[self.captureSession release];
+  self.previewLayer = nil;
+  
+  self.captureSession = nil;
   self.captureSession = nil;
   sharedInstance = nil;
 

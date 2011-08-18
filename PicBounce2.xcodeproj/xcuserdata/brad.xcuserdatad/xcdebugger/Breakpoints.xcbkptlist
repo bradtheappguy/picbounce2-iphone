@@ -21,11 +21,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PBLoginViewController.m"
-         timestampString = "334182103.35378"
+         timestampString = "334626810.602344"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "267"
-         endingLineNumber = "267"
+         startingLineNumber = "264"
+         endingLineNumber = "264"
          landmarkName = "-fbDidLogout"
          landmarkType = "5">
       </FileBreakpoint>
@@ -77,11 +77,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PBCameraViewController.m"
-         timestampString = "334549325.664384"
+         timestampString = "335320019.364213"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "197"
-         endingLineNumber = "197"
+         startingLineNumber = "320"
+         endingLineNumber = "320"
          landmarkName = "-uploadDidFail:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -91,11 +91,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PBCameraViewController.m"
-         timestampString = "334549315.364372"
+         timestampString = "335320019.364213"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "181"
-         endingLineNumber = "181"
+         startingLineNumber = "303"
+         endingLineNumber = "303"
          landmarkName = "-uploadDidFinish:"
          landmarkType = "5">
       </FileBreakpoint>

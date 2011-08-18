@@ -6,10 +6,10 @@
 //  Copyright 2011 Ampere Software Private Limited. All rights reserved.
 //
 
-#import "TwitterView.h"
+#import "PBTwitterViewController.h"
 
 
-@implementation TwitterView
+@implementation PBTwitterViewController
 
 @synthesize authenticationURL = _authenticationURL;
 @synthesize TwitWeb;

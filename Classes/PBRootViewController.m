@@ -2,7 +2,7 @@
 #import "EGORefreshTableHeaderView.h"
 #import "ASIDownloadCache.h"
 #import "MBProgressHUD.h"
-
+#import "AppDelegate.h"
 @interface PBRootViewController (Private)
 
 - (void)dataSourceDidFinishLoadingNewData;
@@ -12,12 +12,13 @@
 
 @implementation PBRootViewController
 
+@synthesize data = _data;
 @synthesize reloading = _reloading;
 @synthesize baseURL = _baseURL;
 @synthesize responceData = _responceData;
 
 - (NSURL *) url {
-  NSString *authToken = [[[UIApplication sharedApplication] delegate] authToken];
+  NSString *authToken = [(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken];
   if (authToken) {
     return [NSURL URLWithString:[NSString stringWithFormat:@"%@?auth_token=%@",self.baseURL,authToken]];
   }
@@ -38,7 +39,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
   self.navigationItem.title  = @" ";
-  if ([data count] < 1) {
+  if ([self.data count] < 1) {
     [self loadDataFromCacheIfAvailable];
   }  
 } 
@@ -74,13 +75,14 @@
 
 - (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) _request {
 	NSString *json_string = _request.responseString;
-  self.responceData = [[PBAPIResponce alloc] initWithResponceData:_request.responseString];
-  
+  PBAPIResponce *resp = [[PBAPIResponce alloc] initWithResponceData:_request.responseString];
+  self.responceData = resp;
+  [resp release];
 
-  NSArray *array = [[[SBJSON alloc] init] objectWithString:json_string error:nil];
-  
-  NSLog(@"%@",json_string);
-  data = [array retain];
+  SBJSON *parser = [[SBJSON alloc] init];
+  self.data = [parser objectWithString:json_string error:nil];
+  [parser release];
+
   
   loadMoreDataURL = nil;
 /* 
@@ -110,6 +112,7 @@
  // [a release];
   
 	[self dataSourceDidFinishLoadingNewData];
+  [errorHud release];
 }
 
 - (void)reloadTableViewDataSourceUsingCache:(BOOL)useCache {

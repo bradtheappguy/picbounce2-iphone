@@ -11,7 +11,7 @@
 
 
 
-@interface TwitterView : UIViewController<UIWebViewDelegate> {
+@interface PBTwitterViewController : UIViewController<UIWebViewDelegate> {
     UIWebView *TwitWeb;
      
     

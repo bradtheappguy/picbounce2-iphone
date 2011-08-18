@@ -6,14 +6,14 @@
 //  Copyright 2010 Clixtr. All rights reserved.
 //
 
-#import "PathBoxesAppDelegate.h"
+#import "AppDelegate.h"
 #import "PBExpandingPhotoView.h"
 #import "PBContainerView.h"
 #import "FacebookSingleton.h"
 #import "HTNotifier.h"
 #import "CaptureSessionManager.h"
 
-@implementation PathBoxesAppDelegate
+@implementation AppDelegate
 
 @synthesize window;
 @synthesize tabBarController;
@@ -95,13 +95,9 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-  //[[CaptureSessionManager sharedManager] addVideoInput];
-  //[[CaptureSessionManager sharedManager] addVideoPreviewLayer];
-    //[[[CaptureSessionManager sharedManager] captureSession] startRunning];
-  
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
+//  [[CaptureSessionManager sharedManager] addVideoInput];
+//  [[CaptureSessionManager sharedManager] addVideoPreviewLayer];
+//  [[[CaptureSessionManager sharedManager] captureSession] startRunning];
 }
 
 

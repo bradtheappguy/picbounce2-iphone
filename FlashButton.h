@@ -23,4 +23,8 @@
 }
 
 @property (readwrite) BOOL expanded;
+
++ (FlashButton *)button;
+- (void) expand;
+
 @end

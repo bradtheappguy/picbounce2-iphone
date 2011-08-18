@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ToggleButton : UIButton
+@interface PBToggleButton : UIButton
 
 @end

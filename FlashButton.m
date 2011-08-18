@@ -49,7 +49,7 @@
   UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
   [view addGestureRecognizer:tgr];
   [tgr release];
-  return view;
+  return [view autorelease];
 }
 
 
@@ -68,6 +68,7 @@
     flashIcon.center = CGPointMake(flashIcon.center.x+10, self.bounds.size.height/2);
     [self addSubview:flashIcon];
     [flashIcon addGestureRecognizer:tgr];
+    [tgr release];
     
     autoLabel = [self labelWithText:@"Auto"];
     onLabel = [self labelWithText:@"On"];
@@ -185,7 +186,7 @@
   [UIView setAnimationDuration:0.33];
   
   if (self.expanded) {
-    UIView *sendingView;
+    UIView *sendingView = nil;
     if ([sender respondsToSelector:@selector(view)]) {
       sendingView = [sender view];
     }

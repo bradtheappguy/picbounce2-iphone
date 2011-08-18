@@ -6,17 +6,15 @@
 //  Copyright 2011 Clixtr, Inc. All rights reserved.
 //
 
-#import "ToggleButton.h"
+#import "PBToggleButton.h"
 
-@implementation ToggleButton
+@implementation PBToggleButton
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         [self addTarget:self action:@selector(toggleSelectedState:) forControlEvents:UIControlEventTouchUpInside];
     }
-    
     return self;
 }
 

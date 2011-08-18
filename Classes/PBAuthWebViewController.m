@@ -7,7 +7,7 @@
 //
 
 #import "PBAuthWebViewController.h"
-#import "PathBoxesAppDelegate.h"
+#import "AppDelegate.h"
 
 @implementation PBAuthWebViewController
 
@@ -69,7 +69,7 @@
   
   if (range.length > 0) {
     NSString *key = [urlString substringFromIndex:range.location+range.length+1];
-    [(PathBoxesAppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
+    [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
     [self dismissModalViewControllerAnimated:YES];
     return NO;

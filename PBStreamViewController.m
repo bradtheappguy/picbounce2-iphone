@@ -11,7 +11,7 @@
 #import "PBCommentListViewController.h"
 #import "ProfileSettingView.h"
 #import "PBLoginViewController.h"
-#import "PathBoxesAppDelegate.h"
+#import "AppDelegate.h"
 #import "ASIDownloadCache.h"
 #import "PBPhotoCell.h"
 #import "PBHeaderTableViewCell.h"
@@ -47,8 +47,8 @@
     self.navigationItem.title = [user objectForKey:@"screen_name"]; 
                   
     NSString *name = [user objectForKey:@"display_name"];
-    BOOL followingMe = [(NSNumber *)[user objectForKey:@"follows_me"] boolValue];
-    BOOL following = [(NSNumber *)[user objectForKey:@"following"] boolValue];
+    //BOOL followingMe = [(NSNumber *)[user objectForKey:@"follows_me"] boolValue];
+    //BOOL following = [(NSNumber *)[user objectForKey:@"following"] boolValue];
     
     NSNumber *followingCount = [user objectForKey:@"following_count"];
     NSNumber *followersCount = [user objectForKey:@"followers_count"];
@@ -79,21 +79,23 @@
   [backButton release];
   //UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self //action:@selector(settingsButtonPressed:)];
   //self.navigationItem.rightBarButtonItem = settings; 
-  if ([(PathBoxesAppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
+  if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
     UIBarButtonItem *logoutButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
     self.navigationItem.rightBarButtonItem = logoutButton;
+    [logoutButton release];
     self.navigationItem.leftBarButtonItem = nil;
   }
   else {
     UIBarButtonItem *loginButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Login",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(loginButtonPressed:)];
     self.navigationItem.leftBarButtonItem = loginButton;
+    [loginButton release];
     self.navigationItem.rightBarButtonItem = nil;
   }
 
 }
 
 - (void) logoutButtonPressed:(id)sender {
-  [(PathBoxesAppDelegate *)[[UIApplication sharedApplication] delegate] setAuthToken:nil];
+  [(AppDelegate *)[[UIApplication sharedApplication] delegate] setAuthToken:nil];
   //self.url = nil;
   self.responceData = nil;
   [self loadDataFromCacheIfAvailable];
@@ -122,8 +124,6 @@
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self configureNavigationBar];
-  UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-  view.backgroundColor = [UIColor redColor];
   if (shouldShowProfileHeader) {
     self.tableView.tableHeaderView = self.profileHeader;
   }
@@ -169,7 +169,7 @@
     loadingMoreActivityIndicatiorView.center = CGPointMake( footerView.center.x ,  footerView.center.y - 10);
     [footerView addSubview:footerDecoration];
     [footerView addSubview:loadingMoreActivityIndicatiorView];
-  return footerView;
+  return [footerView autorelease];
 }
 
 
@@ -299,6 +299,7 @@
   PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
   vc.hidesBottomBarWhenPushed = YES;
   [self.navigationController pushViewController:vc animated:YES];
+  [vc release];
 }
 
 
@@ -366,6 +367,7 @@
   UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
   [self presentModalViewController:navigationController animated:YES];
   [navigationController release];
+  [loginViewController release];
 }
 
 
@@ -382,6 +384,7 @@
                                              destructiveButtonTitle:nil 
                                                   otherButtonTitles:@"Take Photo",@"Choose Photo",nil];
   [actionSheet showInView:self.tabBarController.view];
+  [actionSheet release];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -400,6 +403,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
   profileAvatarImageView.image = [info objectForKey:UIImagePickerControllerEditedImage];
 }
+
+-(IBAction)leaveCommentButtonPressed:(id)sender{}
 
 
 
