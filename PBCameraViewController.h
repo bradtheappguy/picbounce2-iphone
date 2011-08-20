@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import "FlashButton.h"
 
 @interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
   
@@ -17,16 +18,18 @@
 	AVCaptureVideoDataOutput *videoDataOutput;
 	BOOL detectFaces;
 	dispatch_queue_t videoDataOutputQueue;
+  AVCaptureSession *session;
 	AVCaptureStillImageOutput *stillImageOutput;
-	UIView *flashView;
+	UIImageView *flashView;
 	UIImage *mustache;
 	BOOL isUsingFrontFacingCamera;
 	CIDetector *faceDetector;
 	CGFloat beginGestureScale;
 	CGFloat effectiveScale;
+  AVCaptureDeviceInput *deviceInput;
   
   
-  UIButton *flashButton;
+  FlashButton *flashButton;
   UIButton *flipButton;
   UIButton *HDRButton;
   UIButton *filterButton;
@@ -52,6 +55,8 @@
   IBOutlet UIScrollView *filterScrollView;
   
   IBOutlet UIView *cameraToolbar;
+  
+  IBOutlet UIImageView *uploadPreviewImage;
 }
 
 -(IBAction) cameraButtonPressed:(id)sender;

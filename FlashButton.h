@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+  FlashButtonModeOff,
+  FlashButtonModeAuto,
+  FlashButtonModeOn,
+  FlashButtonModeTorch
+} FlashButtonMode;
+
 @interface FlashButton : UIButton {
   UIImageView *flashIcon;
   UIImageView *torchIcon;
@@ -23,6 +30,8 @@
 }
 
 @property (readwrite) BOOL expanded;
+@property (readwrite) FlashButtonMode mode;
+@property (nonatomic, assign) id delegate;
 
 + (FlashButton *)button;
 - (void) expand;
