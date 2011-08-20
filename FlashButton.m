@@ -20,7 +20,8 @@
 @implementation FlashButton
 
 @synthesize expanded;
-
+@synthesize delegate = _delegate;
+@synthesize mode = _mode;
 
 
 + (FlashButton *)button
@@ -28,6 +29,7 @@
   FlashButton *button = [[self alloc] initWithFrame:CGRectZero];
   UIImage *i =  [[UIImage imageNamed:@"bg_flash"] stretchableImageWithLeftCapWidth:16 topCapHeight:0];
   [button setBackgroundImage:i forState:UIControlStateNormal];
+   [button setAuto];
   return [button autorelease];
 }
 
@@ -106,6 +108,7 @@
 }
 
 -(void) setOn {
+  self.mode = FlashButtonModeOn;
   torchView.frame = CGRectMake(torchView.frame.origin.x - onView.frame.size.width - autoView.frame.size.width, torchView.frame.origin.y, 0, torchView.frame.size.height);
   
   onView.frame = CGRectMake(onView.frame.origin.x - autoView.frame.size.width, autoView.frame.origin.y, onLabel.frame.size.width + padding, onView.frame.size.height);
@@ -116,6 +119,8 @@
 }
 
 -(void) setOff {
+  
+  self.mode = FlashButtonModeOff;
   torchView.frame = CGRectMake(torchView.frame.origin.x - onView.frame.size.width - autoView.frame.size.width, torchView.frame.origin.y, 0, torchView.frame.size.height);
   offView.frame = CGRectMake(offView.frame.origin.x- autoLabel.frame.size.width - onLabel.frame.size.width, offView.frame.origin.y, offLabel.frame.size.width + padding, offView.frame.size.height);
   
@@ -126,6 +131,8 @@
 }
 
 -(void) setTorch {
+  
+  self.mode = FlashButtonModeTorch;
   CGFloat x = torchView.frame.origin.x - onView.frame.size.width - autoView.frame.size.width - offView.frame.size.width;
   torchView.frame = CGRectMake(x, torchView.frame.origin.y, torchIcon.frame.size.width+padding, torchView.frame.size.height);
   
@@ -139,6 +146,8 @@
 
 
 -(void) setAuto {
+  
+  self.mode = FlashButtonModeAuto;
   torchView.frame = CGRectMake(torchView.frame.origin.x - onView.frame.size.width - offView.frame.size.width, torchView.frame.origin.y, 0, torchView.frame.size.height);
   
   offView.frame = CGRectMake(offView.frame.origin.x- onLabel.frame.size.width, offView.frame.origin.y, 0, autoView.frame.size.height);
@@ -209,6 +218,7 @@
   }
   [UIView commitAnimations];
   self.expanded = !self.expanded;
+  [self.delegate performSelector:@selector(flashButtonValueDidChange:) withObject:self];
 }
 
 
