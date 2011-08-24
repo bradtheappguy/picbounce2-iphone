@@ -122,7 +122,7 @@
   
   self.mode = FlashButtonModeOff;
   torchView.frame = CGRectMake(torchView.frame.origin.x - onView.frame.size.width - autoView.frame.size.width, torchView.frame.origin.y, 0, torchView.frame.size.height);
-  offView.frame = CGRectMake(offView.frame.origin.x- autoLabel.frame.size.width - onLabel.frame.size.width, offView.frame.origin.y, offLabel.frame.size.width + padding, offView.frame.size.height);
+  offView.frame = CGRectMake(autoView.frame.origin.x, offView.frame.origin.y, offLabel.frame.size.width + padding, offView.frame.size.height);
   
   onView.frame = CGRectMake(onView.frame.origin.x - autoView.frame.size.width, autoView.frame.origin.y, 0, onView.frame.size.height);
   
@@ -216,8 +216,9 @@
   else {
     [self expand];
   }
-  [UIView commitAnimations];
+
   self.expanded = !self.expanded;
+    [UIView commitAnimations];
   [self.delegate performSelector:@selector(flashButtonValueDidChange:) withObject:self];
 }
 

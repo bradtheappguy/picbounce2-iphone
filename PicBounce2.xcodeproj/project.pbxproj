@@ -82,6 +82,9 @@
 		A273CC1C130AF9C2003FE8DA /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A273CC14130AF9C2003FE8DA /* EGOImageLoader.m */; };
 		A273CC1D130AF9C2003FE8DA /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A273CC16130AF9C2003FE8DA /* EGOImageLoadConnection.m */; };
 		A273CC1E130AF9C2003FE8DA /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A273CC19130AF9C2003FE8DA /* EGOImageView.m */; };
+		A28BF6141402E5DE00A5BF9E /* PBUploadingPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A28BF6131402E5DD00A5BF9E /* PBUploadingPhotoTableViewCell.m */; };
+		A28BF6161402E60300A5BF9E /* PBUploadingPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28BF6151402E60300A5BF9E /* PBUploadingPhotoTableViewCell.xib */; };
+		A28BF6191402EACD00A5BF9E /* PBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A28BF6181402EACD00A5BF9E /* PBPhoto.m */; };
 		A28DE346138B34D100B56C12 /* PBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DE344138B34D100B56C12 /* PBLoginViewController.m */; };
 		A28DE347138B34D100B56C12 /* PBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28DE345138B34D100B56C12 /* PBLoginViewController.xib */; };
 		A28E7B4513EB223E00C3AE55 /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A28E7B4313EB223E00C3AE55 /* CaptureSessionManager.m */; };
@@ -720,7 +723,7 @@
 		A2D9C32213AAE86D0091D5BB /* HTNotifier.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2D9C31213AAE86D0091D5BB /* HTNotifier.strings */; };
 		A2D9C32313AAE86D0091D5BB /* HTFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C31813AAE86D0091D5BB /* HTFunctions.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		A2D9C32413AAE86D0091D5BB /* HTNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C31A13AAE86D0091D5BB /* HTNotice.m */; };
-		A2D9C32513AAE86D0091D5BB /* HTNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C31C13AAE86D0091D5BB /* HTNotifier.m */; };
+		A2D9C32513AAE86D0091D5BB /* HTNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C31C13AAE86D0091D5BB /* HTNotifier.m */; settings = {COMPILER_FLAGS = "-Wno-distributed-object-modifiers"; }; };
 		A2E15821136A42D3003E96B9 /* FacebookSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E15820136A42D3003E96B9 /* FacebookSingleton.m */; };
 		A2E415F81343EE3F000D9CFA /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */; };
 		A2E415FA13441392000D9CFA /* PBCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2E415F913441392000D9CFA /* PBCommentCell.xib */; };
@@ -867,6 +870,11 @@
 		A273CC16130AF9C2003FE8DA /* EGOImageLoadConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoadConnection.m; sourceTree = "<group>"; };
 		A273CC18130AF9C2003FE8DA /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
 		A273CC19130AF9C2003FE8DA /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
+		A28BF6121402E5DD00A5BF9E /* PBUploadingPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBUploadingPhotoTableViewCell.h; sourceTree = "<group>"; };
+		A28BF6131402E5DD00A5BF9E /* PBUploadingPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBUploadingPhotoTableViewCell.m; sourceTree = "<group>"; };
+		A28BF6151402E60300A5BF9E /* PBUploadingPhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBUploadingPhotoTableViewCell.xib; sourceTree = "<group>"; };
+		A28BF6171402EACD00A5BF9E /* PBPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPhoto.h; sourceTree = "<group>"; };
+		A28BF6181402EACD00A5BF9E /* PBPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPhoto.m; sourceTree = "<group>"; };
 		A28DE343138B34D100B56C12 /* PBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBLoginViewController.h; sourceTree = "<group>"; };
 		A28DE344138B34D100B56C12 /* PBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBLoginViewController.m; sourceTree = "<group>"; };
 		A28DE345138B34D100B56C12 /* PBLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBLoginViewController.xib; sourceTree = "<group>"; };
@@ -1649,6 +1657,11 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A28BF6171402EACD00A5BF9E /* PBPhoto.h */,
+				A28BF6181402EACD00A5BF9E /* PBPhoto.m */,
+				A28BF6151402E60300A5BF9E /* PBUploadingPhotoTableViewCell.xib */,
+				A28BF6121402E5DD00A5BF9E /* PBUploadingPhotoTableViewCell.h */,
+				A28BF6131402E5DD00A5BF9E /* PBUploadingPhotoTableViewCell.m */,
 				A2C0592913FDEDFB001CD0BC /* CoreMedia.framework */,
 				A2C0469813FC9950001CD0BC /* PBCameraViewController.xib */,
 				A25CF02313FB6E4800AFF582 /* CoreVideo.framework */,
@@ -3550,6 +3563,7 @@
 				A2C0592213FDE4E4001CD0BC /* title@2x.png in Resources */,
 				A2C0592313FDE4E4001CD0BC /* Wrath.acorn in Resources */,
 				A2C0592413FDE4E4001CD0BC /* Wrath.png in Resources */,
+				A28BF6161402E60300A5BF9E /* PBUploadingPhotoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3675,6 +3689,8 @@
 				A2C04B3B13FCAFBB001CD0BC /* PBTabBar.m in Sources */,
 				A2C04B3C13FCAFBB001CD0BC /* PBTabBarController.m in Sources */,
 				A2627B4A13FF312F00B6E5C7 /* PBUploadQueue.m in Sources */,
+				A28BF6141402E5DE00A5BF9E /* PBUploadingPhotoTableViewCell.m in Sources */,
+				A28BF6191402EACD00A5BF9E /* PBPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,12 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PBPhoto.h"
 
 @interface PBUploadQueue : NSObject {
   NSMutableArray *images;
+
 }
+
+@property (readwrite) NSUInteger count;
+
 + (id)sharedQueue;
 -(void) uploadImage:(UIImage *)image;
 -(NSUInteger) count;
 -(id) photoAtIndex:(NSUInteger)index;
+
 @end
