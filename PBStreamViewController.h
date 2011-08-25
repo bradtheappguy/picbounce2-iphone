@@ -69,6 +69,8 @@
 @property (readwrite) BOOL shouldShowProfileHeader;
 @property (readwrite) BOOL shouldShowProfileHeaderBeforeNetworkLoad;
 @property (readwrite) BOOL shouldShowFollowingBar;
+@property (readwrite) BOOL shouldShowUplodingItems;
+
 
 -(IBAction) followButtonPressed:(id) sender;
 -(IBAction) bounceButtonPressed:(id) sender;

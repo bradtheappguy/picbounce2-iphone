@@ -9,6 +9,9 @@
 #import "PBUploadQueue.h"
 
 @implementation PBUploadQueue
+
+@synthesize count = _count;
+
 + (id)sharedQueue {
   static dispatch_once_t once;
   static PBUploadQueue *sharedQueue;
@@ -19,21 +22,21 @@
 -(id) init {
   if (self = [super init]) {
     images = [[NSMutableArray alloc] init];
+    self.count = 0;
   }
   return self;
 }
 
 -(void) uploadImage:(UIImage *)image {
-  NSObject *x = [[NSObject alloc] init];
+  PBPhoto *x = [[PBPhoto alloc] initWithImage:image];
   [images addObject:x];
+  self.count = images.count;
 }
 
--(NSUInteger) count {
-  return images.count;
-}
-
--(id) photoAtIndex:(NSUInteger)index {
+-(PBPhoto *) photoAtIndex:(NSUInteger)index {
   return [images objectAtIndex:index];
 }
+
+
 
 @end

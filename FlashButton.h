@@ -35,5 +35,6 @@ typedef enum {
 
 + (FlashButton *)button;
 - (void) expand;
+-(void) setAuto;
 
 @end

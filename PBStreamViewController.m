@@ -15,14 +15,17 @@
 #import "ASIDownloadCache.h"
 #import "PBPhotoCell.h"
 #import "PBHeaderTableViewCell.h"
-
+#import "PBUploadQueue.h"
 #import "PBStreamViewController.h"
+#import "PBUploadingPhotoTableViewCell.h"
 
 @implementation PBStreamViewController
 
 @synthesize shouldShowProfileHeader;
 @synthesize shouldShowProfileHeaderBeforeNetworkLoad;
 @synthesize shouldShowFollowingBar;
+@synthesize shouldShowUplodingItems;
+
 @synthesize segmentedControl;
 
 @synthesize preloadedAvatarURL;
@@ -38,6 +41,7 @@
 @synthesize followersCountLabel;
 @synthesize followingCountLabel;
 @synthesize badgesCountLabel;
+
 
 
 - (void) reload {
@@ -65,6 +69,9 @@
   
 }
 
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  [self reload];
+}
 
 -(void)xxx {
     [self dismissModalViewControllerAnimated:YES];
@@ -72,6 +79,11 @@
 }
 
 
+-(void) awakeFromNib {
+  if (self.shouldShowUplodingItems) {
+    [[PBUploadQueue sharedQueue] addObserver:self forKeyPath:@"count" options:NSKeyValueChangeSetting context:nil];
+  }
+}
 
 -(void) configureNavigationBar {
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
@@ -113,6 +125,9 @@
 #pragma mark View LifeCycle
 - (void) viewDidLoad {
   [super viewDidLoad];
+  
+
+  
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
   self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
@@ -123,6 +138,8 @@
 
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  
+  
   [self configureNavigationBar];
   if (shouldShowProfileHeader) {
     self.tableView.tableHeaderView = self.profileHeader;
@@ -132,9 +149,15 @@
 
 #pragma mark Table View Layout and Sizes
 
-//one section for each photo
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
-  return [[self.responceData photos] count];  // person + photos + load more
+  NSUInteger nUploading = [[PBUploadQueue sharedQueue] count]; 
+  NSUInteger nPhotos = [[self.responceData photos] count]; 
+  if (self.shouldShowUplodingItems) {
+    return nUploading + nPhotos;
+  }
+  else {
+    return nPhotos;
+  }
 }
 
 //one row for each photo
@@ -143,13 +166,33 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return 42;
+  if (self.shouldShowUplodingItems == NO) {
+    return 42;
+  }
+  else {
+    if (section >= [[PBUploadQueue sharedQueue] count]) {
+      return 42;
+    }  
+    else {
+      return 0;
+    }
+  }
 } 
 
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
+  if (self.shouldShowUplodingItems == NO) {
     return [PBPhotoCell height];
+  }
+  else {
+    if (indexPath.section >= [[PBUploadQueue sharedQueue] count]) {
+      return [PBPhotoCell height];
+    }  
+    else {
+      return 80;
+    }
+  }
 }
 
 
@@ -202,14 +245,15 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+
+- (UITableViewCell *)photoCellForRowAtIndexPath:(NSIndexPath *)indexPath {
   NSArray *arrayOfPhotos = [self.responceData photos];
   id photo = [arrayOfPhotos objectAtIndex:indexPath.section];
   NSString *caption = [photo objectForKey:@"caption"];
 
   NSString *uuid = [photo objectForKey:@"uuid"];
   NSString *twitter_avatar_url = [photo objectForKey:@"twitter_avatar_url"];
- 
   NSUInteger likeCount = [[photo objectForKey:@"likes_count"] intValue];
   NSUInteger bouncesCount = [[photo objectForKey:@"bounces_count"] intValue];
   NSUInteger commentsCount = [[photo objectForKey:@"comments_count"] intValue];
@@ -219,9 +263,7 @@
   if ([twitter_avatar_url isEqual:[NSNull null]]) {
     twitter_avatar_url = nil;
   }
-  
   static NSString *MyIdentifier = @"CELL";
-  
   PBPhotoCell *_cell = (PBPhotoCell *)[self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
   if (_cell == nil) {
     [[NSBundle mainBundle] loadNibNamed:@"PhotoCell" owner:self options:nil];
@@ -244,6 +286,28 @@
    else
    _cell.commentLabel.text = @"";
   return cell;
+}
+
+
+-(UITableViewCell *) uploadingCellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  PBUploadingPhotoTableViewCell *upcell = [[[NSBundle mainBundle] loadNibNamed:@"PBUploadingPhotoTableViewCell" owner:nil options:nil] lastObject];
+  PBPhoto *photo = [[PBUploadQueue sharedQueue] photoAtIndex:indexPath.section];
+  [upcell setPhoto:photo];
+  return upcell;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (self.shouldShowUplodingItems == NO) {
+    return [self photoCellForRowAtIndexPath:indexPath];
+  }
+  else {
+    if (indexPath.section >= [[PBUploadQueue sharedQueue] count]) {
+      return [self photoCellForRowAtIndexPath:indexPath];
+    }  
+    else {
+      return [self uploadingCellForRowAtIndexPath:indexPath];
+    }
+  }
 }
 
 

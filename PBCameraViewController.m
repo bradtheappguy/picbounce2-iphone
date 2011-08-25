@@ -12,9 +12,7 @@
 #import "PBCameraViewController.h"
 #import "FlashButton.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "ASIFormDataRequest.h"
-#import "ASIS3ObjectRequest.h"
-#import <CommonCrypto/CommonDigest.h>
+
 #import <CoreImage/CoreImage.h>
 #import <ImageIO/ImageIO.h>
 #import <AssertMacros.h>
@@ -30,25 +28,7 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 
 
 
-@implementation NSData(MD5)
 
-- (NSString*)MD5
-{
-  // Create byte array of unsigned chars
-  unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
-  
-  // Create 16 byte MD5 hash value, store in buffer
-  CC_MD5(self.bytes, self.length, md5Buffer);
-  
-  // Convert unsigned char buffer to NSString of hex values
-  NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-  for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) 
-    [output appendFormat:@"%02x",md5Buffer[i]];
-  
-  return output;
-}
-
-@end
 
 
 
@@ -137,7 +117,16 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 }
 
 
-
+- (void)teardownAVCapture
+{
+	[videoDataOutput release];
+	if (videoDataOutputQueue)
+		dispatch_release(videoDataOutputQueue);
+	[stillImageOutput removeObserver:self forKeyPath:@"isCapturingStillImage"];
+	[stillImageOutput release];
+	[previewLayer removeFromSuperlayer];
+	[previewLayer release];
+}
 
 - (void)setupAVCapture
 {
@@ -168,7 +157,7 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 	[videoDataOutput setVideoSettings:rgbOutputSettings];
 	[videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
 	videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
-	[videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
+	[videoDataOutput setSampleBufferDelegate:(id)self queue:videoDataOutputQueue];
 	if ( [session canAddOutput:videoDataOutput] )
 		[session addOutput:videoDataOutput];
  
@@ -284,7 +273,7 @@ bail:
   [self closeShutter];
   // Find out the current orientation and tell the still image output.
   AVCaptureConnection *stillImageConnection;
-  for (AVCaptureOutput *connection in stillImageOutput.connections) {
+  for (AVCaptureConnection *connection in stillImageOutput.connections) {
     stillImageConnection = connection;
     break;
   }
@@ -304,6 +293,7 @@ bail:
                                                   NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
                                                   UIImage *image = [[UIImage alloc] initWithData:jpegData];
                                                   uploadPreviewImage.image = image;
+                                                  [image release];
                                                   uploadPreviewImage.layer.masksToBounds = NO;
                                                   uploadPreviewImage.layer.cornerRadius = 0;
                                                   uploadPreviewImage.layer.shadowOffset = CGSizeMake(0, 0);
@@ -428,60 +418,9 @@ bail:
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
   UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-  
-  NSData *jpegData = UIImageJPEGRepresentation(image, 0.80);
-  
-  
-  NSString *key = [[jpegData MD5] stringByAppendingString:@".jpg"];
-  ASIS3ObjectRequest *req = [ASIS3ObjectRequest PUTRequestForData:jpegData withBucket:@"com.picbounce.incoming" key:key];
-  
-  [ASIS3Request setSharedSecretAccessKey:@"ylmKXiQObm8CS9OdnhV2Wq9mbrnm0m5LfdeJKvKY"];
-  [ASIS3Request setSharedAccessKey:@"AKIAIIZEL3OLHCBIZBBQ"];
-  [req setMimeType:@"image/jpeg"];
-  [req setDelegate:self];
-  [req setDidFinishSelector:@selector(uploadDidFinish:)];
-  [req setDidFailSelector:@selector(uploadDidFail:)];
-  [req startAsynchronous];
-  
-  NSLog(@"%@",req.responseString);
-  
 }
 
-/*
- create({:photo => params[:photo], 
- :code => code,
- :twitter_oauth_token =>  params[:twitter_oauth_token],
- :twitter_oauth_secret => params[:twitter_oauth_secret],
- :facebook_access_token => (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil),  #this split is there to fix a big in iPhone Client version 1.2
- :caption => params[:caption],
- :user_agent => request.user_agent,
- :device_type => params[:system_model],
- :os_version =>  params[:system_version],
- :device_id => params[:device_id],
- :ip_address => request.env['HTTP_X_REAL_IP'],
- :filter_version => params[:filter_version],
- :filter_name => params[:filter_name]
- */
--(void) uploadDidFinish:(ASIHTTPRequest *)request {
-  NSString *authToken = [(AppDelegate *) [[UIApplication sharedApplication] delegate] authToken];
-  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/photos?auth_token=%@",API_BASE,authToken]];
-  
-  
-  ASIFormDataRequest *postRequest = [[ASIFormDataRequest alloc] initWithURL:url];
-  [postRequest setRequestMethod:@"POST"];
-  [postRequest setPostValue:@"Caption" forKey:@"caption"];
-  [postRequest setPostValue:@"1" forKey:@"device_type"];
-  [postRequest setPostValue:@"3" forKey:@"os_version"];
-  [postRequest setPostValue:@"3" forKey:@"device_id"];
-  [postRequest setPostValue:@"2" forKey:@"filter_name"];
-  [postRequest setPostValue:@"1" forKey:@"filter_version"];
-  [postRequest startAsynchronous];
-  [postRequest release];
-}
 
--(void) uploadDidFail:(ASIHTTPRequest *)request {
-  NSLog(@" ");
-}
 
 
 
@@ -501,13 +440,25 @@ bail:
 
 -(IBAction) uploadButtonPressed:(id)sender{
   [[PBUploadQueue sharedQueue] uploadImage:uploadPreviewImage.image];
-  [self dismissViewControllerAnimated:YES 
-                           completion:^(void) {
-                             cameraToolbar.center = CGPointMake(cameraToolbar.center.x + 320, cameraToolbar.center.y);
-                             flipButton.alpha = 1;
-                             flashButton.alpha = 1;
   
-  }];  
+  if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]) {
+    [self dismissViewControllerAnimated:YES 
+                             completion:^(void) {
+                               cameraToolbar.center = CGPointMake(cameraToolbar.center.x + 320, cameraToolbar.center.y);
+                               flipButton.alpha = 1;
+                               flashButton.alpha = 1;
+                               
+                             }]; 
+  }
+    else {
+      [self dismissModalViewControllerAnimated:YES];
+      cameraToolbar.center = CGPointMake(cameraToolbar.center.x + 320, cameraToolbar.center.y);
+      flipButton.alpha = 1;
+      flashButton.alpha = 1;
+
+      
+    }
+ 
 }
 
 
