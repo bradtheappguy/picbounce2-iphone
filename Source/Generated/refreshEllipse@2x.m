@@ -9,8 +9,8 @@
 
 #import "image@2x.h"
 
-const CGFloat krefreshEllipseWidth = 46.0f;
-const CGFloat krefreshEllipseHeight = 46.0f;
+const CGFloat krefreshEllipseWidth = 100.0f;
+const CGFloat krefreshEllipseHeight = 100.0f;
 
 @implementation refreshEllipse
 
@@ -43,13 +43,13 @@ const CGFloat krefreshEllipseHeight = 46.0f;
 	CGRect imageBounds = CGRectMake(0.0f, 0.0f, krefreshEllipseWidth, krefreshEllipseHeight);
 	CGRect bounds = [self bounds];
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	UIColor *color;
-	CGFloat resolution;
 	size_t bytesPerRow;
 	CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
 	CGFloat alignStroke;
+	CGFloat resolution;
 	CGMutablePathRef path;
 	CGRect drawRect;
+	UIColor *color;
 	CGImageRef contextImage;
 	CGRect effectBounds;
 	unsigned char *pixels;
@@ -74,12 +74,6 @@ const CGFloat krefreshEllipseHeight = 46.0f;
 	CGContextTranslateCTM(context, bounds.origin.x, bounds.origin.y);
 	CGContextScaleCTM(context, (bounds.size.width / imageBounds.size.width), (bounds.size.height / imageBounds.size.height));
 	
-	// Setup for Shadow Effect
-	color = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f];
-	CGContextSaveGState(context);
-	CGContextSetShadowWithColor(context, CGSizeMake(0.0f * resolution, 0.0f * resolution), 2.708f * resolution, [color CGColor]);
-	CGContextBeginTransparencyLayer(context, NULL);
-	
 	// shadowOuter
 	
 	// Setup for Inner Shadow Effect
@@ -92,13 +86,13 @@ const CGFloat krefreshEllipseHeight = 46.0f;
 	
 	alignStroke = 0.0f;
 	path = CGPathCreateMutable();
-	drawRect = CGRectMake(0.0f, 0.0f, 46.0f, 46.0f);
+	drawRect = CGRectMake(4.0f, 4.0f, 92.0f, 92.0f);
 	drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
 	drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
 	drawRect.size.height = roundf(resolution * drawRect.size.height) / resolution;
 	CGPathAddEllipseInRect(path, NULL, drawRect);
-	color = [UIColor colorWithRed:0.89f green:0.859f blue:0.835f alpha:0.39f];
+	color = [UIColor colorWithRed:0.89f green:0.859f blue:0.835f alpha:0.46f];
 	[color setFill];
 	CGContextAddPath(context, path);
 	CGContextFillPath(context);
@@ -127,7 +121,7 @@ const CGFloat krefreshEllipseHeight = 46.0f;
 	UIGraphicsPopContext();
 	context = UIGraphicsGetCurrentContext();
 	CGContextDrawImage(context, imageBounds, contextImage);
-	CGContextSetAlpha(context, 0.061f);
+	CGContextSetAlpha(context, 0.335f);
 	CGContextBeginTransparencyLayer(context, NULL);
 	if ((minX <= maxX) && (minY <= maxY)) {
 		CGContextSaveGState(context);
@@ -158,12 +152,20 @@ const CGFloat krefreshEllipseHeight = 46.0f;
 	
 	CGContextEndTransparencyLayer(context);
 	
-	// Layer 1
+	// outerCircle
 	CGContextSetAlpha(context, 1.0f);
+	
+	// Setup for Shadow Effect
+	color = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f];
+	CGContextSaveGState(context);
+	CGContextSetShadowWithColor(context, CGSizeMake(0.0f * resolution, 0.0f * resolution), 2.708f * resolution, [color CGColor]);
+	CGContextBeginTransparencyLayer(context, NULL);
+	
+	// Layer 1
 	
 	alignStroke = 0.0f;
 	path = CGPathCreateMutable();
-	drawRect = CGRectMake(3.0f, 3.0f, 40.0f, 40.0f);
+	drawRect = CGRectMake(10.0f, 10.0f, 80.0f, 80.0f);
 	drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
 	drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
@@ -199,8 +201,6 @@ const CGFloat krefreshEllipseHeight = 46.0f;
 	CGContextEndTransparencyLayer(context);
 	CGContextRestoreGState(context);
 	
-	// outerCircle
-	
 	// iner
 	
 	// Setup for Inner Shadow Effect
@@ -221,7 +221,7 @@ const CGFloat krefreshEllipseHeight = 46.0f;
 	stroke /= resolution;
 	alignStroke = fmodf(0.5f * stroke * resolution, 1.0f);
 	path = CGPathCreateMutable();
-	drawRect = CGRectMake(5.0f, 5.0f, 36.0f, 36.0f);
+	drawRect = CGRectMake(14.0f, 14.0f, 72.0f, 72.0f);
 	drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
 	drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
