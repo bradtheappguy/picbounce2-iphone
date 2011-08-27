@@ -31,7 +31,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>22</string>
+	<string>24</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>

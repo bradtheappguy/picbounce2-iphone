@@ -27,6 +27,8 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "CircleView.h"
+
 
 typedef enum {
 	EGOOPullRefreshPulling = 0,
@@ -43,7 +45,7 @@ typedef enum {
 	EGOPullRefreshState _state;
 }
 
-
+@property(nonatomic,assign) CircleView *circle;
 @property(nonatomic,assign) EGOPullRefreshState state;
 
 - (void)setCurrentDate;

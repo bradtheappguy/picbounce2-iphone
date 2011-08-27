@@ -10,7 +10,7 @@
 #import "PBPhoto.h"
 
 @interface PBUploadingPhotoTableViewCell : UITableViewCell {
-  UIProgressView *progeressBar;
+  UIImageView *progeressBar;
   UIButton *retryButton;
   UIButton *deleteButton;
   UILabel *textLabel;
@@ -19,7 +19,7 @@
 
 
 @property (retain, nonatomic) IBOutlet UIImageView *imageView;
-@property (retain, nonatomic) IBOutlet UIProgressView *progeressBar;
+@property (retain, nonatomic) IBOutlet UIImageView *progeressBar;
 @property (retain, nonatomic) IBOutlet UIButton *retryButton;
 @property (retain, nonatomic) IBOutlet UIButton *deleteButton;
 @property (retain, nonatomic) IBOutlet UILabel *textLabel;

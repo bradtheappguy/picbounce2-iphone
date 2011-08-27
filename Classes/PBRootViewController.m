@@ -130,6 +130,7 @@
                                                 usingCache:[ASIDownloadCache sharedCache]
                                             andCachePolicy:cachePolicy];
   [request setTimeOutSeconds:60];
+  [request setUseCookiePersistence:NO];
   [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
   [request setDelegate:self];
   [request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
@@ -151,6 +152,7 @@
                                 usingCache:[ASIDownloadCache sharedCache]
                             andCachePolicy:ASIUseDefaultCachePolicy];
   [request setTimeOutSeconds:60];
+  [request setUseCookiePersistence:NO];
   [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
   [request setDelegate:self];
   [request setDidFinishSelector:@selector(doneLoadingMoreDataFromNetwork:)];
@@ -166,7 +168,16 @@
 		} else if (refreshHeaderView.state == EGOOPullRefreshNormal && scrollView.contentOffset.y < -65.0f && !_reloading) {
 			[refreshHeaderView setState:EGOOPullRefreshPulling];
 		}
-	}
+    if (scrollView.contentOffset.y < 0.0f) {
+      if (scrollView.contentOffset.y >= -65.0) {
+        [refreshHeaderView.circle setProgress:scrollView.contentOffset.y/-65.0];
+      }
+      else {
+        [refreshHeaderView.circle setProgress:1.0f];
+      }
+      
+    }
+  }
 }
 
 - (void) enterReloadMode {

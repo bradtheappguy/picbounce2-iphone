@@ -29,6 +29,7 @@
 
 -(void) uploadImage:(UIImage *)image {
   PBPhoto *x = [[PBPhoto alloc] initWithImage:image];
+  [x addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
   [images addObject:x];
   self.count = images.count;
 }
@@ -37,6 +38,19 @@
   return [images objectAtIndex:index];
 }
 
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  BOOL test = NO;
+  for (PBPhoto *photo in images) {
+    if (photo.uploadSucceded) {
+      test = YES;
+      [images removeObject:photo];
+      self.count = images.count;
+    }
+  }
+  if (test) {
+    NSLog(@"Complete@");
+  }
+}
 
 
 @end

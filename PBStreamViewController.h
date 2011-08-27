@@ -13,12 +13,12 @@
 #import "EGOImageView.h"
 #import "PBProfileHeaderView.h"
 
-@class PBHeaderTableViewCell, PBTableTitleTableViewCell, PBPhotoCell;
+@class PBPhotoHeaderView, PBTableTitleTableViewCell, PBPhotoCell;
 
 @interface PBStreamViewController : PBRootViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UISegmentedControl *segmentedControl;
 
-  IBOutlet PBHeaderTableViewCell *headerTableViewCell;
+  IBOutlet PBPhotoHeaderView *photoHeader;
   IBOutlet PBTableTitleTableViewCell *tableTitleTableViewCell;
   
   

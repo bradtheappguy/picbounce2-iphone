@@ -26,14 +26,13 @@
 
 #import "EGORefreshTableHeaderView.h"
 
-
-#define TEXT_COLOR	 [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0]
+#define TEXT_COLOR	 [UIColor colorWithRed:103.0/255.0 green:89.0/255.0 blue:77.0/255.0 alpha:1.0]
 #define BORDER_COLOR [UIColor redColor]
 
 
 @implementation EGORefreshTableHeaderView
 
-@synthesize state=_state;
+@synthesize state=_state, circle=_circle;
 
 
 - (id)initWithFrame:(CGRect)frame {
@@ -43,18 +42,22 @@
     
       self.backgroundColor = [UIColor clearColor];
 		
-		statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 48.0f, self.frame.size.width, 20.0f)];
+      self.circle = [[CircleView alloc] initWithFrame:CGRectMake(8, frame.size.height - 51, 50, 50)];
+      self.circle.clipsToBounds = NO;
+      self.circle.backgroundColor = [UIColor clearColor];
+      [self addSubview:self.circle];
+		statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(68, frame.size.height - 37.0f, self.frame.size.width-68, 20.0f)];
 		statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		statusLabel.font = [UIFont boldSystemFontOfSize:13.0f];
+    statusLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
 		statusLabel.textColor = TEXT_COLOR;
 		statusLabel.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
 		statusLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 		statusLabel.backgroundColor = [UIColor clearColor];
-		statusLabel.textAlignment = UITextAlignmentCenter;
+		statusLabel.textAlignment = UITextAlignmentLeft;
 		[self setState:EGOOPullRefreshNormal];
 		[self addSubview:statusLabel];
 		[statusLabel release];
-		
+      [statusLabel setBackgroundColor:[UIColor clearColor]];
 		
 		
 		activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -100,7 +103,7 @@
 	switch (aState) {
 		case EGOOPullRefreshPulling:
 			
-			statusLabel.text = @"release to refresh";
+			statusLabel.text = @"Release to refresh";
 			
 			break;
 		case EGOOPullRefreshNormal:
@@ -112,7 +115,7 @@
 				[CATransaction commit];
 			}
 			
-			statusLabel.text = @"pull down to refresh";
+			statusLabel.text = @"Pull down to refresh";
 			[activityView stopAnimating];
 			
 			break;
