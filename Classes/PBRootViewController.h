@@ -5,12 +5,12 @@
 #import "SBJSON.h"
 #import "PBAPIResponce.h"
 
-@class EGORefreshTableHeaderView;
+@class PBRefreshTableHeaderView;
 
 
 
 @interface PBRootViewController : UITableViewController {
-	EGORefreshTableHeaderView *refreshHeaderView;
+	PBRefreshTableHeaderView *refreshHeaderView;
 	
 	//  Reloading should really be your tableviews model class
 	//  Putting it here for demo purposes 

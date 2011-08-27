@@ -24,29 +24,32 @@
 //  THE SOFTWARE.
 //
 
-#import "EGORefreshTableHeaderView.h"
+#import "PBRefreshTableHeaderView.h"
 
 #define TEXT_COLOR	 [UIColor colorWithRed:103.0/255.0 green:89.0/255.0 blue:77.0/255.0 alpha:1.0]
 #define BORDER_COLOR [UIColor redColor]
 
 
-@implementation EGORefreshTableHeaderView
+@implementation PBRefreshTableHeaderView
 
-@synthesize state=_state, circle=_circle;
+@synthesize state = _state;
+@synthesize circle = _circle;
 
 
 - (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
+  if (self = [super initWithFrame:frame]) {
 		
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
-      self.backgroundColor = [UIColor clearColor];
-		
-      self.circle = [[CircleView alloc] initWithFrame:CGRectMake(8, frame.size.height - 51, 50, 50)];
-      self.circle.clipsToBounds = NO;
-      self.circle.backgroundColor = [UIColor clearColor];
-      [self addSubview:self.circle];
-		statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(68, frame.size.height - 37.0f, self.frame.size.width-68, 20.0f)];
+    self.backgroundColor = [UIColor clearColor];
+    
+    self.circle = [[CircleView alloc] initWithFrame:CGRectMake(8, frame.size.height - 55, 50, 50)];
+    self.circle.clipsToBounds = NO;
+    self.circle.backgroundColor = [UIColor clearColor];
+    
+    [self addSubview:self.circle];
+    
+		statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(68, frame.size.height - 41.0f, self.frame.size.width-68, 20.0f)];
 		statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     statusLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
 		statusLabel.textColor = TEXT_COLOR;
@@ -54,61 +57,35 @@
 		statusLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 		statusLabel.backgroundColor = [UIColor clearColor];
 		statusLabel.textAlignment = UITextAlignmentLeft;
-		[self setState:EGOOPullRefreshNormal];
+		[self setState:PBPullRefreshNormal];
 		[self addSubview:statusLabel];
 		[statusLabel release];
-      [statusLabel setBackgroundColor:[UIColor clearColor]];
+    [statusLabel setBackgroundColor:[UIColor clearColor]];
 		
 		
-		activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		activityView.frame = CGRectMake((frame.size.width/2)-10, frame.size.height - 38.0f, 20.0f, 20.0f);
-      activityView.center = statusLabel.center;
-      activityView.hidesWhenStopped = YES;
+    activityView = nil;//[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+		activityView.frame = CGRectMake(15+8, frame.size.height - 51 + 15, 20.0f, 20.0f);
+    activityView.hidesWhenStopped = YES;
 		[self addSubview:activityView];
 		[activityView release];
 		
-    }
-    return self;
+  }
+  return self;
 }
 
-/*- (void)drawRect:(CGRect)rect{
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	[BORDER_COLOR setStroke];
-  [BORDER_COLOR setFill];
-  
-  CGContextDrawPath(context,  kCGPathFillStroke);
-	[BORDER_COLOR setStroke];
-  CGContextBeginPath(context);
-	CGContextMoveToPoint(context, 0.0f, self.bounds.size.height - 1);
-	CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height - 1);
-	CGContextStrokePath(context);
-  CG
-}*/
 
-- (void)setCurrentDate {
-	
-  /*NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-	[formatter setAMSymbol:@"AM"];
-	[formatter setPMSymbol:@"PM"];
-	[formatter setDateFormat:@"MM/dd/yyyy hh:mm:a"];
-	lastUpdatedLabel.text = [NSString stringWithFormat:@"Last Updated: %@", [formatter stringFromDate:[NSDate date]]];
-	[[NSUserDefaults standardUserDefaults] setObject:lastUpdatedLabel.text forKey:@"EGORefreshTableView_LastRefresh"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	[formatter release];
-   */
-}
 
-- (void)setState:(EGOPullRefreshState)aState{
+- (void)setState:(PBPullRefreshState)aState{
 	
 	switch (aState) {
-		case EGOOPullRefreshPulling:
+		case PBPullRefreshPulling:
 			
 			statusLabel.text = @"Release to refresh";
 			
 			break;
-		case EGOOPullRefreshNormal:
+		case PBPullRefreshNormal:
 			
-			if (_state == EGOOPullRefreshPulling) {
+			if (_state == PBPullRefreshPulling) {
 				[CATransaction begin];
 				[CATransaction setAnimationDuration:.18];
 				arrowImage.transform = CATransform3DIdentity;
@@ -119,10 +96,11 @@
 			[activityView stopAnimating];
 			
 			break;
-		case EGOOPullRefreshLoading:
-
+		case PBPullRefreshLoading:
+      
 			[activityView startAnimating];
-      statusLabel.text = @"";
+      statusLabel.text = @"Loading...";
+      [self performSelector:@selector(animateCircle) withObject:nil afterDelay:0.05];
 			break;
 		default:
 			break;
@@ -131,12 +109,25 @@
 	_state = aState;
 }
 
+-(void) animateCircle {
+  CGFloat progress = self.circle.progress;
+  progress = progress + .020;
+  if (progress > 2) {
+    progress = 0;
+  }  
+  [self.circle setProgress:progress];
+  [self.circle setNeedsDisplay];
+  if (self.state == PBPullRefreshLoading) {
+    [self performSelector:@selector(animateCircle) withObject:nil afterDelay:0.05];
+  }
+}
+
 - (void)dealloc {
 	activityView = nil;
 	statusLabel = nil;
 	arrowImage = nil;
 	lastUpdatedLabel = nil;
-    [super dealloc];
+  [super dealloc];
 }
 
 

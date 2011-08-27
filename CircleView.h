@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CircleView : UIView
+@interface CircleView : UIView 
 {CGFloat _progess;}
 -(void) setProgress:(CGFloat)progress;
+@property (nonatomic, readwrite) CGFloat progress;
 @end

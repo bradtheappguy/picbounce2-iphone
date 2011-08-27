@@ -39,7 +39,7 @@
 		A205F9421314B556003756CA /* PBBadgeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A205F9401314B556003756CA /* PBBadgeCollectionViewController.m */; };
 		A205F9431314B556003756CA /* PBBadgeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */; };
 		A2222831133F075E00239E0F /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A222282F133F075E00239E0F /* MyView.m */; };
-		A227E36412FB38A600701013 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36312FB38A600701013 /* EGORefreshTableHeaderView.m */; };
+		A227E36412FB38A600701013 /* PBRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36312FB38A600701013 /* PBRefreshTableHeaderView.m */; };
 		A227E36712FB38B000701013 /* PBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36612FB38B000701013 /* PBRootViewController.m */; };
 		A227E37312FB38E300701013 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A227E37212FB38E300701013 /* QuartzCore.framework */; };
 		A22C149E1385B58F001ACB13 /* PBTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A22C149D1385B58F001ACB13 /* PBTwitterViewController.m */; };
@@ -551,8 +551,8 @@
 		A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBBadgeCollectionViewController.xib; sourceTree = "<group>"; };
 		A222282F133F075E00239E0F /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
 		A2222830133F075E00239E0F /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
-		A227E36212FB38A600701013 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		A227E36312FB38A600701013 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		A227E36212FB38A600701013 /* PBRefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PBRefreshTableHeaderView.h; sourceTree = "<group>"; };
+		A227E36312FB38A600701013 /* PBRefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBRefreshTableHeaderView.m; sourceTree = "<group>"; };
 		A227E36512FB38B000701013 /* PBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRootViewController.h; sourceTree = "<group>"; };
 		A227E36612FB38B000701013 /* PBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBRootViewController.m; sourceTree = "<group>"; };
 		A227E37212FB38E300701013 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1939,8 +1939,8 @@
 				A2E8EFDD13CCEA9400CB9B76 /* FlashButton.m */,
 				A259B42A13CFA1C000BEB6D3 /* PBToggleButton.h */,
 				A259B42B13CFA1C000BEB6D3 /* PBToggleButton.m */,
-				A227E36212FB38A600701013 /* EGORefreshTableHeaderView.h */,
-				A227E36312FB38A600701013 /* EGORefreshTableHeaderView.m */,
+				A227E36212FB38A600701013 /* PBRefreshTableHeaderView.h */,
+				A227E36312FB38A600701013 /* PBRefreshTableHeaderView.m */,
 			);
 			name = "UI Components";
 			sourceTree = "<group>";
@@ -2549,7 +2549,7 @@
 				A2425A0B1294A1F700EBC83A /* PBContainerView.m in Sources */,
 				A2BE3D64129DFC09003E8F44 /* PBNavigationBar.m in Sources */,
 				A2BE3E3C129E0E94003E8F44 /* PBTableViewCell.m in Sources */,
-				A227E36412FB38A600701013 /* EGORefreshTableHeaderView.m in Sources */,
+				A227E36412FB38A600701013 /* PBRefreshTableHeaderView.m in Sources */,
 				A227E36712FB38B000701013 /* PBRootViewController.m in Sources */,
 				A273CB2D130AF148003FE8DA /* NSObject+SBJSON.m in Sources */,
 				A273CB2E130AF148003FE8DA /* NSString+SBJSON.m in Sources */,

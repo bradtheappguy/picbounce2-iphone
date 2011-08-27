@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation CircleView
+@synthesize progress = _progess;
 
 const CGFloat krefreshEllipseWidth = 50.0f;
 const CGFloat krefreshEllipseHeight = 50.0f;
@@ -32,9 +33,9 @@ const CGFloat krefreshEllipseHeight = 50.0f;
 }
 
 -(void) setProgress:(CGFloat)progress {
-  if (progress > .999) {
-    progress = .999;
-  }
+  //if (progress > .999) {
+  //  progress = .999;
+  //}
   _progess = progress;
   [self setNeedsDisplay];
 }
@@ -69,7 +70,7 @@ const CGFloat krefreshEllipseHeight = 50.0f;
 	CGAffineTransform transform;
 	CGMutablePathRef tempPath;
 	CGRect pathBounds;
-	CGFloat stroke;
+
 	CGFloat locations[2];
 	resolution = 1;//0.5f * (bounds.size.width / imageBounds.size.width + bounds.size.height / imageBounds.size.height);
 	
@@ -203,57 +204,14 @@ const CGFloat krefreshEllipseHeight = 50.0f;
 	// Shadow Effect
 	CGContextEndTransparencyLayer(context);
 	CGContextRestoreGState(context);
-	
-	// iner
-	
-  
-  
-  /*
-  
-	// Setup for Inner Shadow Effect
-	bytesPerRow = 4 * roundf(bounds.size.width);
-	context = UIGraphicsGetCurrentContext();   //CGBitmapContextCreate(NULL, roundf(bounds.size.width), roundf(bounds.size.height), 8, bytesPerRow, space, kCGImageAlphaPremultipliedLast);
-	UIGraphicsPushContext(context);
-	//CGContextScaleCTM(context, (bounds.size.width / imageBounds.size.width), (bounds.size.height / imageBounds.size.height));
-	
-	// Layer 2
-	
-	stroke = 0.0f;
-	stroke *= resolution;
-	if (stroke < 1.0f) {
-		stroke = ceilf(stroke);
-	} else {
-		stroke = roundf(stroke);
-	}
-	stroke /= resolution;
-	alignStroke = fmodf(0.5f * stroke * resolution, 1.0f);
-	path = CGPathCreateMutable();
-	drawRect = CGRectMake(7.0f, 7.0f, 36.0f, 36.0f);
-	drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
-	drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;
-	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
-	drawRect.size.height = roundf(resolution * drawRect.size.height) / resolution;
-	CGPathAddEllipseInRect(path, NULL, drawRect);
-	color = [UIColor colorWithRed:0.404f green:0.349f blue:0.302f alpha:1.0f];
-	[color setFill];
-	CGContextAddPath(context, path);
-	CGContextFillPath(context);
-	color = [UIColor colorWithRed:0.89f green:0.859f blue:0.835f alpha:1.0f];
-	[color setStroke];
-	CGContextSetLineCap(context, kCGLineCapSquare);
-	CGContextAddPath(context, path);
-	CGContextStrokePath(context);
-	CGPathRelease(path);
-	
-*/
-  
-	NSLog(@"Unregistered Copy of Opacity");
+
 	CGColorSpaceRelease(space);
  
   
-  CGFloat width2 = 36;
-  CGFloat height2 = 36;
   
+  /* animation*/
+  CGFloat width2 = 36;
+
   
   CGContextSetLineWidth(context, 2.0);
   CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:103.0/255.0
@@ -264,28 +222,30 @@ const CGFloat krefreshEllipseHeight = 50.0f;
                                                             green:89.0/255.0 
                                                              blue:77.0/255.0 
                                                             alpha:1.0].CGColor);
-
+  
+  
+  
+  BOOL clockwise = NO;
+  CGFloat p = _progess;
+  if (p > 1) {
+    p = _progess - 1;
+    clockwise = YES;
+  }
+  
   CGContextMoveToPoint(context, 50/2, 50/2);
-  
-  /* Add an arc of a circle to the context's path, possibly preceded by a
-   straight line segment. `(x, y)' is the center of the arc; `radius' is its
-   radius; `startAngle' is the angle to the first endpoint of the arc;
-   `endAngle' is the angle to the second endpoint of the arc; and
-   `clockwise' is 1 if the arc is to be drawn clockwise, 0 otherwise.
-   `startAngle' and `endAngle' are measured in radians. */
-  
-  // CGContextAddArc(CGContextRef c, CGFloat x, CGFloat y,
-  //                              CGFloat radius, CGFloat startAngle, CGFloat endAngle, int clockwise)
-  CGContextAddArc(context, 25, 25, 
+  CGContextAddArc(context, 
+                  25, 
+                  25, 
                   width2/2, 
                    0 - M_PI/2,
-                   ((2*M_PI)*_progess) - M_PI/2,
-                  0);
-  //CGContextAddLineToPoint(context, 50/2, 50/2);
-
+                   ((2*M_PI)*p) - M_PI/2,
+                  clockwise);
   CGContextFillPath(context);
   CGContextStrokePath(context);
+ /* */
   
 }
+
+
 
 @end
