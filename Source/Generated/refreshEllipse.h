@@ -1,5 +1,5 @@
 //
-//	image@2x.h
+//	refreshClock.h
 //	New Image
 //
 //	Created by Ruth Martin on 8/26/11
@@ -9,9 +9,9 @@
 
 #import <UIKit/UIKit.h>
 
-extern const CGFloat krefreshEllipseWidth;
-extern const CGFloat krefreshEllipseHeight;
+extern const CGFloat kMyViewWidth;
+extern const CGFloat kMyViewHeight;
 
-@interface refreshEllipse : refreshBar
+@interface MyView : UIView
 
 @end

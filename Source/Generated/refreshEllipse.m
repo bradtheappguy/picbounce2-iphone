@@ -1,5 +1,5 @@
 //
-//	image@2x.m
+//	refreshClock.m
 //	New Image
 //
 //	Created by Ruth Martin on 8/26/11
@@ -7,12 +7,12 @@
 //	THIS CODE IS FOR EVALUATION ONLY. YOU MAY NOT USE IT FOR ANY OTHER PURPOSE UNLESS YOU PURCHASE A LICENSE FOR OPACITY.
 //
 
-#import "image@2x.h"
+#import "refreshClock.h"
 
-const CGFloat krefreshEllipseWidth = 100.0f;
-const CGFloat krefreshEllipseHeight = 100.0f;
+const CGFloat kMyViewWidth = 50.0f;
+const CGFloat kMyViewHeight = 50.0f;
 
-@implementation refreshEllipse
+@implementation MyView
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -35,12 +35,12 @@ const CGFloat krefreshEllipseHeight = 100.0f;
 
 - (CGSize)sizeThatFits:(CGSize)size
 {
-	return CGSizeMake(krefreshEllipseWidth, krefreshEllipseHeight);
+	return CGSizeMake(kMyViewWidth, kMyViewHeight);
 }
 
 - (void)drawRect:(CGRect)dirtyRect
 {
-	CGRect imageBounds = CGRectMake(0.0f, 0.0f, krefreshEllipseWidth, krefreshEllipseHeight);
+	CGRect imageBounds = CGRectMake(0.0f, 0.0f, kMyViewWidth, kMyViewHeight);
 	CGRect bounds = [self bounds];
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	size_t bytesPerRow;
@@ -86,7 +86,7 @@ const CGFloat krefreshEllipseHeight = 100.0f;
 	
 	alignStroke = 0.0f;
 	path = CGPathCreateMutable();
-	drawRect = CGRectMake(4.0f, 4.0f, 92.0f, 92.0f);
+	drawRect = CGRectMake(2.0f, 2.0f, 46.0f, 46.0f);
 	drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
 	drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
@@ -165,7 +165,7 @@ const CGFloat krefreshEllipseHeight = 100.0f;
 	
 	alignStroke = 0.0f;
 	path = CGPathCreateMutable();
-	drawRect = CGRectMake(10.0f, 10.0f, 80.0f, 80.0f);
+	drawRect = CGRectMake(5.0f, 5.0f, 40.0f, 40.0f);
 	drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
 	drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
@@ -203,12 +203,6 @@ const CGFloat krefreshEllipseHeight = 100.0f;
 	
 	// iner
 	
-	// Setup for Inner Shadow Effect
-	bytesPerRow = 4 * roundf(bounds.size.width);
-	context = CGBitmapContextCreate(NULL, roundf(bounds.size.width), roundf(bounds.size.height), 8, bytesPerRow, space, kCGImageAlphaPremultipliedLast);
-	UIGraphicsPushContext(context);
-	CGContextScaleCTM(context, (bounds.size.width / imageBounds.size.width), (bounds.size.height / imageBounds.size.height));
-	
 	// Layer 2
 	
 	stroke = 0.0f;
@@ -221,7 +215,7 @@ const CGFloat krefreshEllipseHeight = 100.0f;
 	stroke /= resolution;
 	alignStroke = fmodf(0.5f * stroke * resolution, 1.0f);
 	path = CGPathCreateMutable();
-	drawRect = CGRectMake(14.0f, 14.0f, 72.0f, 72.0f);
+	drawRect = CGRectMake(7.0f, 7.0f, 36.0f, 36.0f);
 	drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
 	drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
@@ -237,60 +231,6 @@ const CGFloat krefreshEllipseHeight = 100.0f;
 	CGContextAddPath(context, path);
 	CGContextStrokePath(context);
 	CGPathRelease(path);
-	
-	// Inner Shadow Effect
-	pixels = (unsigned char *)CGBitmapContextGetData(context);
-	width = roundf(bounds.size.width);
-	height = roundf(bounds.size.height);
-	minX = width;
-	maxX = -1.0f;
-	minY = height;
-	maxY = -1.0f;
-	for (NSInteger row = 0; row < height; row++) {
-		for (NSInteger column = 0; column < width; column++) {
-			if (pixels[4 * (width * row + column) + 3] > 0) {
-				minX = MIN(minX, (CGFloat)column);
-				maxX = MAX(maxX, (CGFloat)column);
-				minY = MIN(minY, (CGFloat)(height - row));
-				maxY = MAX(maxY, (CGFloat)(height - row));
-			}
-		}
-	}
-	contextImage = CGBitmapContextCreateImage(context);
-	CGContextRelease(context);
-	UIGraphicsPopContext();
-	context = UIGraphicsGetCurrentContext();
-	CGContextDrawImage(context, imageBounds, contextImage);
-	CGContextSetAlpha(context, 0.75f);
-	CGContextBeginTransparencyLayer(context, NULL);
-	if ((minX <= maxX) && (minY <= maxY)) {
-		CGContextSaveGState(context);
-		effectBounds = CGRectMake(minX, minY - 1.0f, maxX - minX + 1.0f, maxY - minY + 1.0f);
-		effectBounds = CGRectInset(effectBounds, -(ABS(0.0f * cosf(1.571f) * resolution) + 4.375f), -(ABS(0.0f * sinf(1.571f) * resolution) + 4.375f));
-		effectBounds = CGRectIntegral(effectBounds);
-		color = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f];
-		CGContextSetShadowWithColor(context, CGSizeMake(0.0f * cosf(1.571f) * resolution, 0.0f * sinf(1.571f) * resolution - effectBounds.size.height), 4.375f, [color CGColor]);
-		bytesPerRow = roundf(effectBounds.size.width);
-		maskContext = CGBitmapContextCreate(NULL, roundf(effectBounds.size.width), roundf(effectBounds.size.height), 8, bytesPerRow, NULL, kCGImageAlphaOnly);
-		CGContextDrawImage(maskContext, CGRectMake(-effectBounds.origin.x, -effectBounds.origin.y, bounds.size.width, bounds.size.height), contextImage);
-		maskImage = CGBitmapContextCreateImage(maskContext);
-		data = [NSData dataWithBytes:CGBitmapContextGetData(maskContext) length:bytesPerRow * roundf(effectBounds.size.height)];
-		provider = CGDataProviderCreateWithCFData((CFDataRef)data);
-		CGImageRelease(contextImage);
-		contextImage = CGImageMaskCreate(roundf(effectBounds.size.width), roundf(effectBounds.size.height), 8, 8, bytesPerRow, provider, NULL, 0);
-		CGDataProviderRelease(provider);
-		CGContextRelease(maskContext);
-		CGContextScaleCTM(context, (imageBounds.size.width / bounds.size.width), (imageBounds.size.height / bounds.size.height));
-		CGContextClipToMask(context, effectBounds, maskImage);
-		CGImageRelease(maskImage);
-		effectBounds.origin.y += effectBounds.size.height;
-		[[UIColor blackColor] setFill];
-		CGContextDrawImage(context, effectBounds, contextImage);
-		CGContextRestoreGState(context);
-	}
-	CGImageRelease(contextImage);
-	
-	CGContextEndTransparencyLayer(context);
 	
 	CGContextRestoreGState(context);
 	NSLog(@"Unregistered Copy of Opacity");
