@@ -1,5 +1,5 @@
 #import "PBRootViewController.h"
-#import "EGORefreshTableHeaderView.h"
+#import "PBRefreshTableHeaderView.h"
 #import "ASIDownloadCache.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 	if (refreshHeaderView == nil) {
-		refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, 320.0f, self.tableView.bounds.size.height)];
+		refreshHeaderView = [[PBRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, 320.0f, self.tableView.bounds.size.height)];
 		[self.tableView addSubview:refreshHeaderView];
 		self.tableView.showsVerticalScrollIndicator = YES;
 		[refreshHeaderView release];
@@ -130,6 +130,7 @@
                                                 usingCache:[ASIDownloadCache sharedCache]
                                             andCachePolicy:cachePolicy];
   [request setTimeOutSeconds:60];
+  [request setUseCookiePersistence:NO];
   [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
   [request setDelegate:self];
   [request setDidFinishSelector:@selector(doneLoadingTableViewDataFromNetwork:)];
@@ -151,6 +152,7 @@
                                 usingCache:[ASIDownloadCache sharedCache]
                             andCachePolicy:ASIUseDefaultCachePolicy];
   [request setTimeOutSeconds:60];
+  [request setUseCookiePersistence:NO];
   [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
   [request setDelegate:self];
   [request setDidFinishSelector:@selector(doneLoadingMoreDataFromNetwork:)];
@@ -161,18 +163,27 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
 	
 	if (scrollView.isDragging) {
-		if (refreshHeaderView.state == EGOOPullRefreshPulling && scrollView.contentOffset.y > -65.0f && scrollView.contentOffset.y < 0.0f && !_reloading) {
-			[refreshHeaderView setState:EGOOPullRefreshNormal];
-		} else if (refreshHeaderView.state == EGOOPullRefreshNormal && scrollView.contentOffset.y < -65.0f && !_reloading) {
-			[refreshHeaderView setState:EGOOPullRefreshPulling];
+		if (refreshHeaderView.state == PBPullRefreshPulling && scrollView.contentOffset.y > -65.0f && scrollView.contentOffset.y < 0.0f && !_reloading) {
+			[refreshHeaderView setState:PBPullRefreshNormal];
+		} else if (refreshHeaderView.state == PBPullRefreshNormal && scrollView.contentOffset.y < -65.0f && !_reloading) {
+			[refreshHeaderView setState:PBPullRefreshPulling];
 		}
-	}
+    if (scrollView.contentOffset.y < 0.0f) {
+      if (scrollView.contentOffset.y >= -65.0) {
+        [refreshHeaderView.circle setProgress:scrollView.contentOffset.y/-65.0];
+      }
+      else {
+        [refreshHeaderView.circle setProgress:1.0f];
+      }
+      
+    }
+  }
 }
 
 - (void) enterReloadMode {
   _reloading = YES;
   [self reloadTableViewDataSourceUsingCache:NO];
-  [refreshHeaderView setState:EGOOPullRefreshLoading];
+  [refreshHeaderView setState:PBPullRefreshLoading];
   [UIView beginAnimations:nil context:NULL];
   [UIView setAnimationDuration:0.2];
   self.tableView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
@@ -205,9 +216,7 @@
 	[UIView setAnimationDuration:.3];
 	[self.tableView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
 	[UIView commitAnimations];
-	
-	[refreshHeaderView setState:EGOOPullRefreshNormal];
-	[refreshHeaderView setCurrentDate];  //  should check if data reload was successful 
+	[refreshHeaderView setState:PBPullRefreshNormal];
 }
 
 #pragma mark -

@@ -12,6 +12,7 @@
 #import "FacebookSingleton.h"
 #import "HTNotifier.h"
 #import "CaptureSessionManager.h"
+#import "PBLoginViewController.h"
 
 @implementation AppDelegate
 
@@ -31,7 +32,6 @@
   if (!_authToken) {
     _authToken = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AUTH_TOKEN"] retain];
   }
-  
   return _authToken;
 }
 
@@ -68,6 +68,14 @@
     tabBarController.selectedIndex = 4;
   [window makeKeyAndVisible];
     
+  
+  if ([self authToken] == NO) {
+    PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    [self.tabBarController presentModalViewController:navigationController animated:YES];
+    [navigationController release];
+    [loginViewController release];
+  }
     return YES;
 }
 

@@ -16,6 +16,7 @@
 
 @property (readwrite) NSUInteger count;
 
+
 + (id)sharedQueue;
 -(void) uploadImage:(UIImage *)image;
 -(NSUInteger) count;

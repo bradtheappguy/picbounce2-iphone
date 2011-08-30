@@ -35,30 +35,56 @@
 -(void) setPhoto:(PBPhoto *)photo {
   _photo = [photo retain];
   [_photo addObserver:self forKeyPath:@"uploadFailed" options:NSKeyValueChangeSetting context:nil];
+  [_photo addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
+  [_photo addObserver:self forKeyPath:@"uploadProgress" options:NSKeyValueChangeSetting context:nil];
+  
   [self observeValueForKeyPath:nil ofObject:nil change:nil context:nil];
+  [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_1"]];
+  
   self.imageView.image = [_photo image];
 }
 
+-(void) success {
+  
+}
+
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  if ([keyPath isEqualToString:@"uploadProgress"]) {
+    NSLog(@"xxxx %f",_photo.uploadProgress);
+    if (_photo.uploadProgress >= 1.0) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_6"]];
+    else if (_photo.uploadProgress >= 0.75) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_5"]];
+    else if (_photo.uploadProgress >= 0.50) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_4"]];
+    else if (_photo.uploadProgress >= 0.25) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_3"]];
+    //[self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_2"]];
+          
+  }
+  
   if (_photo.uploadFailed) {
     self.retryButton.hidden = NO;
     self.deleteButton.hidden = NO;
     self.progeressBar.hidden = YES;
-    self.textLabel.text = @"Upload Failed";
+    self.textLabel.text = @"upload failed";
   }
   else {
     self.retryButton.hidden = YES;
     self.deleteButton.hidden = YES;
     if (_photo.uploadSucceded) {
-      self.textLabel.text = @"Uploaded";
-      self.progeressBar.hidden = YES;
+      self.textLabel.text = @"uploaded";
+      [self performSelector:@selector(hideProgressBar) withObject:nil afterDelay:0.25];
+      
     }
     else {
       self.textLabel.hidden = NO;
-      self.textLabel.text = @"Uploading";
+      self.textLabel.text = @"uploading";
       self.progeressBar.hidden = NO;
     }
   }
 
+
 }
+
+-(void) hidePreogessBar {
+  self.progeressBar.hidden = YES;
+}
+
 @end

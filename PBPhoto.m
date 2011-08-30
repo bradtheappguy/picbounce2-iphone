@@ -41,16 +41,18 @@
 @synthesize uploadSucceded;
 @synthesize uploadProgress;
 
-@synthesize image;
+@synthesize image = _image;
 
 -(id) initWithImage:(UIImage *)image {
   if (self = [super init]) {
-    [self performSelector:@selector(foo) withObject:nil afterDelay:4];
+    self.uploadProgress = 0;
+    [self performSelector:@selector(foo) withObject:nil afterDelay:1];
     self.uploading = YES;
     self.image = image;
   }
   return self;
 }
+ 
 
 -(void) foo {
   self.uploadFailed = YES;
@@ -58,22 +60,28 @@
   self.uploadSucceded = NO;
 }
 
--(void) bar {
-  self.uploadSucceded = YES;
-  self.uploadFailed = NO;
-  self.uploading = NO;
-  
+
+-(void)setProgress:(CGFloat)proge {
+  NSLog(@"--%f",proge);
+  if (proge >= 1.0) {
+    if (self.uploadProgress < 0.25) {
+       self.uploadProgress = 0.25;
+    }
+    else {
+      self.uploadProgress = 0.75;
+    }
+   
+  }
 }
+
+
 
 -(void) retry {
   NSData *jpegData = UIImageJPEGRepresentation(self.image, 0.80);
-  
-  
-  
   NSString *key = [[jpegData MD5] stringByAppendingString:@".jpg"];
-  
-  
   ASIS3ObjectRequest *req = [ASIS3ObjectRequest PUTRequestForData:jpegData withBucket:@"com.picbounce.incoming" key:key];
+  req.uploadProgressDelegate = self;
+  [req setShowAccurateProgress:YES];
   [ASIS3Request setSharedSecretAccessKey:@"ylmKXiQObm8CS9OdnhV2Wq9mbrnm0m5LfdeJKvKY"];
   [ASIS3Request setSharedAccessKey:@"AKIAIIZEL3OLHCBIZBBQ"];
   [req setAccessPolicy:@"public-read"];
@@ -93,7 +101,9 @@
 }
 
 -(void) uploadDidFail:(ASIHTTPRequest *)request {
-  NSLog(@" ");
+  self.uploadFailed = YES;
+  self.uploading = NO;
+  self.uploadSucceded = NO;
 }
 
 /*
@@ -112,16 +122,18 @@
  :filter_name => params[:filter_name]
  */
 -(void) uploadDidFinish:(ASIHTTPRequest *)request {
+  self.uploadProgress = 0.50f;
   if ([request responseStatusCode] != 200 || [[request responseHeaders] objectForKey:@"x-amz-id-2"] == nil) {
     [self uploadDidFail:request];
   }
   
-  
   NSString *authToken = [(AppDelegate *) [[UIApplication sharedApplication] delegate] authToken];
   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/photos?auth_token=%@",API_BASE,authToken]];
-  
-  
+  NSData *jpegData = UIImageJPEGRepresentation(self.image, 0.80);
+  NSString *key = [[jpegData MD5] stringByAppendingString:@".jpg"];
   ASIFormDataRequest *postRequest = [[ASIFormDataRequest alloc] initWithURL:url];
+  [postRequest setShowAccurateProgress:YES];
+  [postRequest setUploadProgressDelegate:self];
   [postRequest setRequestMethod:@"POST"];
   [postRequest setPostValue:@"Caption" forKey:@"caption"];
   [postRequest setPostValue:@"1" forKey:@"device_type"];
@@ -129,10 +141,18 @@
   [postRequest setPostValue:@"3" forKey:@"device_id"];
   [postRequest setPostValue:@"2" forKey:@"filter_name"];
   [postRequest setPostValue:@"1" forKey:@"filter_version"];
+  [postRequest setPostValue:key forKey:@"key"];
+  [postRequest setDelegate:self];
+  [postRequest setDidFinishSelector:@selector(uploadStep2DidFinish:)];
   [postRequest startAsynchronous];
   [postRequest release];
 }
 
-
+-(void) uploadStep2DidFinish:(id)sender {
+  self.uploadProgress = 1.0f;
+  self.uploadFailed = NO;
+  self.uploading = NO;
+  self.uploadSucceded = YES;
+}
 
 @end

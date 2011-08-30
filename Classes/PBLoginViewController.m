@@ -239,8 +239,11 @@
   if (range.length > 0) {
     NSString *key = [urlString substringFromIndex:range.location+range.length+1];
     [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
+    [request setDelegate:nil];
+    [request cancel];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
     [self dismissModalViewControllerAnimated:YES];
+    
   }
  
   [request redirectToURL:url];
