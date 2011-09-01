@@ -41,7 +41,7 @@ const CGFloat krefreshEllipseHeight = 50.0f;
 }
 
 
-
+ 
 - (void)drawRect:(CGRect)dirtyRect
 {
 	CGRect imageBounds = CGRectMake(0.0f, 0.0f, krefreshEllipseWidth, krefreshEllipseHeight);

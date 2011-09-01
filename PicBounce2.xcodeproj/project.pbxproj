@@ -2097,6 +2097,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PicBounce2" */;
 			buildPhases = (
+				A26982B7140F2DD400175A7A /* ShellScript */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
@@ -2556,6 +2557,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		A26982B7140F2DD400175A7A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"majorMinor=`/usr/libexec/PlistBuddy -c \\\"Print :CFBundleVersion\\\" \\\"${PROJECT_DIR}/${PROJECT_NAME}-Info.plist\\\"`\"\nmajorMinor=`/usr/libexec/PlistBuddy -c \"Print :CFBundleVersion\" \"${PROJECT_DIR}/${PROJECT_NAME}-Info.plist\"`\n\nbuild=`git log -1 --pretty=oneline --abbrev-commit | cut -d\" \" -f1`\necho $build\n\necho \"/usr/libexec/PlistBuddy -c \\\"Set :CFBundleVersion ${majorMinor}.${build}\\\" \\\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\\\"\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${majorMinor}.${build}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2737,6 +2751,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Brad Smith";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brad Smith";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PicBounce2_Prefix.pch;
@@ -2748,6 +2764,8 @@
 				INFOPLIST_FILE = "PicBounce2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = PicBounce2;
+				PROVISIONING_PROFILE = "ECE07ACB-D34D-4D84-B012-0C865560A7D3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ECE07ACB-D34D-4D84-B012-0C865560A7D3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -2823,7 +2841,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E5C562D-499F-4A8D-8814-2ECB305EE9DA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BA24EDD4-E477-42EB-8013-FD3550B17D6C";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2832,7 +2850,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Brad Smith";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brad Smith";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -2845,7 +2863,6 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PROVISIONING_PROFILE = "3059A058-C62D-41D0-849C-2C7CD375094B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3059A058-C62D-41D0-849C-2C7CD375094B";
 				SDKROOT = iphoneos;
 			};

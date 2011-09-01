@@ -104,9 +104,8 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-//  [[CaptureSessionManager sharedManager] addVideoInput];
-//  [[CaptureSessionManager sharedManager] addVideoPreviewLayer];
-//  [[[CaptureSessionManager sharedManager] captureSession] startRunning];
+  NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"APNS_DEVICE_TOKEN"];
+  NSLog(@"APNS Device Token: %@",deviceToken);
 }
 
 
@@ -135,8 +134,65 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
   return [[FacebookSingleton sharedFacebook] handleOpenURL:url];
 }
- 
 
+#pragma mark -
+#pragma mark Push Notification
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  NSString *storedDeviceToken = [[NSString alloc] initWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"APNS_DEVICE_TOKEN"] encoding:NSUTF8StringEncoding];
+  
+  NSString *newDeviceToken = [deviceToken description];
+  newDeviceToken = [newDeviceToken stringByReplacingOccurrencesOfString:@">" withString:@""];
+  newDeviceToken = [newDeviceToken stringByReplacingOccurrencesOfString:@"<" withString:@""];
+  
+  if (![storedDeviceToken isEqualToString:newDeviceToken]) {
+    
+    apnsToken = [newDeviceToken stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString *path = [NSString stringWithFormat:@"/users/me/device?apns_token=%@&auth_token=%@",apnsToken,self.authToken];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@%@",API_BASE,path];
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    [request setRequestMethod:@"POST"];
+    [request setDelegate:self];
+    [request setDidFinishSelector:@selector(xxx:)];
+    [request setDidFailSelector:@selector(yyy:)];
+    [request startAsynchronous];
+  }
+  
+  NSLog(@"APNS Device Token: %@",deviceToken);
+  
+}
+ 
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  
+}
+
+-(void) xxx:(ASIHTTPRequest *)request {
+  if ([request responseStatusCode] == 200) {
+    NSLog(@"worked");
+    [[NSUserDefaults standardUserDefaults] setObject:apnsToken forKey:@"APNS_DEVICE_TOKEN"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+  }
+  
+}
+
+-(void) yyy:(ASIHTTPRequest *)request {
+
+    NSLog(@"yyy");
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  NSDictionary *aps = [userInfo objectForKey:@"aps"];
+  NSUInteger badgeCount = [[aps objectForKey:@"badge"] intValue];
+  NSString *alertText = [aps objectForKey:@"alert"];
+  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeCount];
+  if (alertText) {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:alertText delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+  }
+}
 #pragma mark -
 #pragma mark Memory management
 

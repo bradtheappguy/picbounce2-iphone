@@ -70,8 +70,6 @@
     self.deleteButton.hidden = YES;
     if (_photo.uploadSucceded) {
       self.textLabel.text = @"uploaded";
-      [self performSelector:@selector(hideProgressBar) withObject:nil afterDelay:0.25];
-      
     }
     else {
       self.textLabel.hidden = NO;
