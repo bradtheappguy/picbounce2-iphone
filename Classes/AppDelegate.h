@@ -20,6 +20,8 @@
   IBOutlet PBStreamViewController *profileViewController;
   
   IBOutlet PBCameraViewController *cameraViewController;
+  
+  NSString *apnsToken;
 }
 
 @property (nonatomic, retain) IBOutlet NSString *authToken;

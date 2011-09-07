@@ -34,7 +34,7 @@
 - (NSUInteger) followingCount;
 - (NSUInteger) followersCount;
 - (NSURL *) followUserURLForUser;
--(NSURL *) followingURL;
+- (NSString *) followingURL;
 - (NSDictionary *) user;
 
 @end

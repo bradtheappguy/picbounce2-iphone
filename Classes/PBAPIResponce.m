@@ -162,7 +162,7 @@
 
 -(NSString *) usernameForPersonAtIndex:(NSUInteger) index {
   NSDictionary *person = [self personAtIndex:index];
-  id name =  [person objectForKey:@"twitter_screen_name"];
+  id name =  [person objectForKey:@"display_name"];
   if ([name isEqual:[NSNull null]]) {
     name = @"??";
   }
@@ -180,15 +180,9 @@
   return nil;
 }
 
--(NSURL *) followingURL {
-  id x = user;
-  if (x) { 
-    id y = [x objectForKey:@"following_url"]; 
-    if (y) {
-      return [NSURL URLWithString:y];
-    }
-  }
-  return nil;
+-(NSString *) followingURL {
+  NSString *urlString = [user objectForKey:@"follows_url"]; 
+  return urlString;
 }
     
 -(NSURL *)followUserURLForUser {

@@ -15,12 +15,10 @@
 
     NSMutableArray *namelist;
     NSMutableArray *emailList;
-    NSInteger sl;
   
   IBOutlet UITableViewCell *_cell; 
 
 }
 
-@property (nonatomic,readwrite) NSInteger sl;
-
+@property (nonatomic,readwrite) BOOL showiPhoneContacts;
 @end

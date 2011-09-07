@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "EGOImageView.h"
+#import "ASIHTTPRequest.h"
 
 @interface PBProfileHeaderView : UIView {
+  NSDictionary *_user;
+  ASIHTTPRequest *_followingRequest;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
@@ -17,9 +20,15 @@
 @property (nonatomic, retain) IBOutlet UIButton *photoCountButton;
 @property (nonatomic, retain) IBOutlet UIButton *followingCountButton;
 @property (nonatomic, retain) IBOutlet UIButton *followersCountButton;
+@property (nonatomic, retain) IBOutlet UIButton *followButton;
+@property (nonatomic, retain) IBOutlet UIButton *unfollowButton;
+@property (nonatomic, retain) IBOutlet UILabel *isFollowingYouLabel;
+
+-(void) setUser:(NSDictionary *)user;
 
 - (IBAction)photoCountButtonPressed:(id)sender;
 - (IBAction)followingCountButtonPressed:(id)sender;
 - (IBAction)followersCountButtonPressed:(id)sender;
-
+- (IBAction)followButtonPressed:(id)sender;
+- (IBAction)unfollowButtonPressed:(id)sender;
 @end

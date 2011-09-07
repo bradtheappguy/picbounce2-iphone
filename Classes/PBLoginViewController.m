@@ -241,9 +241,12 @@
     [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
     [request setDelegate:nil];
     [request cancel];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
-    [self dismissModalViewControllerAnimated:YES];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
+    
+    
+    [self dismissModalViewControllerAnimated:YES];
   }
  
   [request redirectToURL:url];
