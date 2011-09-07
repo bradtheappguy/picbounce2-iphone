@@ -468,6 +468,7 @@
 		A2C04B3B13FCAFBB001CD0BC /* PBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */; };
 		A2C04B3C13FCAFBB001CD0BC /* PBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3913FCAFBB001CD0BC /* PBTabBarController.m */; };
 		A2C0592A13FDEDFB001CD0BC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C0592913FDEDFB001CD0BC /* CoreMedia.framework */; };
+		A2CED4CA1416C5AB00400DF8 /* PBPersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */; };
 		A2D9C30413AAE7D20091D5BB /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2C613AAE7D20091D5BB /* DDXMLElementAdditions.m */; };
 		A2D9C30513AAE7D20091D5BB /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2C913AAE7D20091D5BB /* NSString+DDXML.m */; };
 		A2D9C30613AAE7D20091D5BB /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2CC13AAE7D20091D5BB /* DDXMLDocument.m */; };
@@ -1054,6 +1055,7 @@
 		A2C04B3813FCAFBB001CD0BC /* PBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTabBarController.h; sourceTree = SOURCE_ROOT; };
 		A2C04B3913FCAFBB001CD0BC /* PBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTabBarController.m; sourceTree = SOURCE_ROOT; };
 		A2C0592913FDEDFB001CD0BC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBPersonTableViewCell.xib; sourceTree = "<group>"; };
 		A2D9C2C513AAE7D20091D5BB /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		A2D9C2C613AAE7D20091D5BB /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		A2D9C2C813AAE7D20091D5BB /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -1640,6 +1642,7 @@
 		A2363F39133F117D00F76FFD /* Streams */ = {
 			isa = PBXGroup;
 			children = (
+				A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */,
 				A2F2663A1315C04B00F4E0A0 /* TableTitleTableViewCell.xib */,
 				A205F1101312E708003756CA /* PBStreamViewController.h */,
 				A205F1111312E708003756CA /* PBStreamViewController.m */,
@@ -2529,6 +2532,7 @@
 				A227AB57140C78BA00058A08 /* profileBrownBlue02Optimized1_05.png in Resources */,
 				A227AB58140C78BA00058A08 /* likers.png in Resources */,
 				A227AB59140C78BA00058A08 /* logo_feed@2x.png in Resources */,
+				A2CED4CA1416C5AB00400DF8 /* PBPersonTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,12 +19,12 @@
 
 - (NSURL *) url {
   NSString *authToken = [(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken];
-  if (authToken) {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"%@?auth_token=%@",self.baseURL,authToken]];
-  }
-  else {
+  //if (authToken) {
+  //  return [NSURL URLWithString:[NSString stringWithFormat:@"%@?auth_token=%@",self.baseURL,authToken]];
+  //}
+  //else {
     return [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.baseURL]];
-  }
+  //}
 }
 
 - (void)viewDidLoad {
@@ -123,12 +123,23 @@
     return;
   }
   
+  NSString *authToken = [(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken];
+  
   
   ASICachePolicy cachePolicy = useCache?ASIOnlyLoadIfNotCachedCachePolicy:ASIDoNotReadFromCacheCachePolicy;
 
   request = [ASIHTTPRequest requestWithURL:[self url]
                                                 usingCache:[ASIDownloadCache sharedCache]
                                             andCachePolicy:cachePolicy];
+  [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+  if (authToken) {
+    //THE 'X' IN THE PASSWORD IS NEEDED TO FORCE THE NETWORKING LIBRARY TO ADDD
+    //THE AUTH TOKEN.  THE SERVER SIDE, (DEVISE) IGNORES IT
+    [request setUsername:authToken];
+    [request setPassword:@"X"]; 
+  }
+  [request addRequestHeader:@"Accept" value:@"application/json"];
+  
   [request setTimeOutSeconds:60];
   [request setUseCookiePersistence:NO];
   [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];

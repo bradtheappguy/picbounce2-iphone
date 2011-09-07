@@ -17,7 +17,7 @@
 @synthesize locationLabel;
 @synthesize timeLabel;
 @synthesize clockIcon;
-
+@synthesize userID;
 
 -(void) layoutSubviews {
 	[super layoutSubviews];	

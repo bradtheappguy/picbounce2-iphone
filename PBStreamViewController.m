@@ -18,11 +18,13 @@
 #import "PBUploadQueue.h"
 #import "PBStreamViewController.h"
 #import "PBUploadingPhotoTableViewCell.h"
+#import "PBPersonListViewController.h"
 
 @implementation PBStreamViewController
 
 @synthesize shouldShowProfileHeader;
 @synthesize shouldShowProfileHeaderBeforeNetworkLoad;
+@synthesize profileHeaderWithFollowBar;
 @synthesize shouldShowFollowingBar;
 @synthesize shouldShowUplodingItems;
 
@@ -46,33 +48,19 @@
 
 - (void) reload {
   [self.tableView reloadData];
-  if (shouldShowProfileHeader) {
-    NSDictionary *user = [self.responceData user];
-    if (user) {
-      self.tableView.tableHeaderView = self.profileHeader;
-    }
-    else {
-      self.tableView.tableHeaderView = nil;
-    }
-    self.navigationItem.title = [user objectForKey:@"screen_name"]; 
-    
-    NSString *name = [user objectForKey:@"display_name"];
+  
+  NSDictionary *user = [self.responceData user];
+  self.navigationItem.title = [user objectForKey:@"screen_name"]; 
+  
+  if (user && shouldShowProfileHeader) {
+    self.tableView.tableHeaderView = shouldShowFollowingBar?self.profileHeaderWithFollowBar:self.profileHeader;
+    [self.profileHeader setUser:user];
+  }
+  else {
+    self.tableView.tableHeaderView = nil;
+  }    
     //BOOL followingMe = [(NSNumber *)[user objectForKey:@"follows_me"] boolValue];
     //BOOL following = [(NSNumber *)[user objectForKey:@"following"] boolValue];
-    
-    NSNumber *followingCount = [user objectForKey:@"following_count"];
-    NSNumber *followersCount = [user objectForKey:@"followers_count"];
-    NSNumber *photosCount = [user objectForKey:@"photo_count"];
-    
-    
-    
-    self.profileHeader.nameLabel.text = name;
-    [self.profileHeader.photoCountButton setTitle:[photosCount stringValue] forState:UIControlStateNormal];
-    [self.profileHeader.followersCountButton setTitle:[followersCount stringValue] forState:UIControlStateNormal];
-    [self.profileHeader.followingCountButton setTitle:[followingCount stringValue] forState:UIControlStateNormal];
-    
-  }
-  
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {  
@@ -238,10 +226,11 @@
   NSString *name = [user objectForKey:@"display_name"];
   NSString *lastLocation = [user objectForKey:@"last_location"];
   NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
+  NSString *userID = [user objectForKey:@"id"];
   
+  photoHeader.userID = userID;
   photoHeader.nameLabel.text = name;
   photoHeader.locationLabel.text = lastLocation;
-  
   photoHeader.timeLabel.text = [self.responceData timeLabelTextForPhotoAtIndex:section];
   
   if (![avatarURL isEqual:[NSNull null]]) {
@@ -380,23 +369,29 @@
 
 
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
-  
+  PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
+  PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
+  vc.baseURL = [NSString stringWithFormat:@"http://%@/users/%@.json?auth_token=%@",API_BASE,header.userID,[(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]];
+  vc.shouldShowFollowingBar = YES;
+  vc.shouldShowProfileHeader = YES;
+  vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 
 -(IBAction) photosButtonPressed {
   if (([self numberOfSectionsInTableView:self.tableView] > 1)) {
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
   }
 }
 
 -(IBAction) followingButtonPressed { 
   NSURL *followingURL = [self.responceData followingURL];
   if (followingURL) {
-    // PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
-    //vc.url = followingURL;
-    // [self.navigationController pushViewController:vc animated:YES];
-    // [vc release]; 
+    PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
+    vc.baseURL = followingURL;
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release]; 
   }
 }
 
@@ -423,16 +418,7 @@
 }
 
 
-//Follow 
--(IBAction) followButtonPressed:(UIButton *) sender {
-  
-  
-  ASIFormDataRequest *followRequest = [ASIFormDataRequest requestWithURL:[self.responceData followUserURLForUser]];
-  followRequest.requestMethod = @"POST";
-  [followRequest setPostValue:@"1" forKey:@"id"];
-  [followRequest startAsynchronous];
-  
-}
+
 
 -(IBAction) bounceButtonPressed:(id) sender {
 }
@@ -481,7 +467,6 @@
 }
 
 -(IBAction)leaveCommentButtonPressed:(id)sender{}
-
 
 
 @end

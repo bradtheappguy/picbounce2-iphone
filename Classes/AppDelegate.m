@@ -41,8 +41,7 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-  [HTNotifier startNotifierWithAPIKey:@"57b7289a9cad881773f2ebcc303ff2db"
-                      environmentName:HTNotifierDevelopmentEnvironment];
+  [HTNotifier startNotifierWithAPIKey:@"57b7289a9cad881773f2ebcc303ff2db" environmentName:HTNotifierDevelopmentEnvironment];
   feedViewController.baseURL = [NSString stringWithFormat:@"http://%@/users/me/feed.json",API_BASE];
   feedViewController.shouldShowUplodingItems = YES;
   feedViewController.shouldShowProfileHeader = NO;

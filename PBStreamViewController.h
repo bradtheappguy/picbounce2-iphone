@@ -46,6 +46,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet PBProfileHeaderView *profileHeader;
+@property (nonatomic, retain) IBOutlet UIView *profileHeaderWithFollowBar;
 @property (nonatomic, retain) IBOutlet EGOImageView *avatarIcon;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *locationLabel;

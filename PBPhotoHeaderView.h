@@ -15,6 +15,7 @@
   IBOutlet UILabel *locationLabel;
   IBOutlet UILabel *timeLabel;  
   IBOutlet UIImageView *clockIcon;  
+
 }
 
 @property (nonatomic, retain) IBOutlet EGOImageView *avatarImage;
@@ -22,5 +23,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *locationLabel;
 @property (nonatomic, retain) IBOutlet UILabel *timeLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *clockIcon;  
+@property (nonatomic, retain)  NSString *userID;  
+
+
 
 @end
