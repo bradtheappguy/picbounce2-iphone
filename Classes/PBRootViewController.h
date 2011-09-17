@@ -33,5 +33,5 @@
 @property (nonatomic, retain) PBAPIResponce *responceData;
 @property(nonatomic, retain)  NSString *baseURL;
 @property(assign,getter=isReloading) BOOL reloading;
-
+@property(readwrite) BOOL pullsToRefresh;
 @end

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>layers</key>
+	<array>
+		<dict>
+			<key>file</key>
+			<string>pinkGilr.png</string>
+			<key>offsetX</key>
+			<real>0.0</real>
+			<key>offsetY</key>
+			<real>0.0</real>
+			<key>type</key>
+			<string>image</string>
+		</dict>
+    
+    <dict>
+			<key>classname</key>
+			<string>CIColorControls</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputBrightness</key>
+				<real>0.43703703703703711</real>
+				<key>inputContrast</key>
+				<real>2.25</real>
+				<key>inputSaturation</key>
+				<real>0.88888888888888884</real>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIColorMatrix</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputAVector_CIVectorValue</key>
+				<string>[0 0 0 5.5]</string>
+				<key>inputBVector_CIVectorValue</key>
+				<string>[0 0 0.4 0]</string>
+				<key>inputBiasVector_CIVectorValue</key>
+				<string>[0 0 0 0]</string>
+				<key>inputGVector_CIVectorValue</key>
+				<string>[0 0.6 0 0]</string>
+				<key>inputRVector_CIVectorValue</key>
+				<string>[0.5 0 0 0]</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CISourceOverCompositing</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputImage</key>
+				<string>blackGradient2.png</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CISourceOverCompositing</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputImage</key>
+				<string>borderRoughInstagram.png</string>
+			</dict>
+		</dict>
+	</array>
+	<key>windowHeight</key>
+	<real>666</real>
+	<key>windowWidth</key>
+	<real>600</real>
+</dict>
+</plist>

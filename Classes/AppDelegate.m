@@ -64,7 +64,7 @@
   //[container addSubview:view2];
   
   [window addSubview:tabBarController.view];
-    tabBarController.selectedIndex = 4;
+    //tabBarController.selectedIndex = 4;
   [window makeKeyAndVisible];
     
   

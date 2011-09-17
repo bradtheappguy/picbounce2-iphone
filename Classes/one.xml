@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>layers</key>
+	<array>
+		<dict>
+			<key>file</key>
+			<string>girlAlone.png</string>
+			<key>offsetX</key>
+			<real>-15.640831758034039</real>
+			<key>offsetY</key>
+			<real>-15.640831758034039</real>
+			<key>type</key>
+			<string>image</string>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIColorMatrix</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputAVector_CIVectorValue</key>
+				<string>[0 0 0 1]</string>
+				<key>inputBVector_CIVectorValue</key>
+				<string>[0 0 1 0]</string>
+				<key>inputBiasVector_CIVectorValue</key>
+				<string>[0 0 0 0]</string>
+				<key>inputGVector_CIVectorValue</key>
+				<string>[0 1 1 0]</string>
+				<key>inputRVector_CIVectorValue</key>
+				<string>[1 1 0 0]</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIColorMatrix</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputAVector_CIVectorValue</key>
+				<string>[0 0 0 1]</string>
+				<key>inputBVector_CIVectorValue</key>
+				<string>[0 0.02 1 0]</string>
+				<key>inputBiasVector_CIVectorValue</key>
+				<string>[0 0 0 0]</string>
+				<key>inputGVector_CIVectorValue</key>
+				<string>[0 1 0 0]</string>
+				<key>inputRVector_CIVectorValue</key>
+				<string>[1 0 0 0.03]</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIHardLightBlendMode</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputImage</key>
+				<string>borderRoughInstagram.png</string>
+			</dict>
+		</dict>
+	</array>
+	<key>windowHeight</key>
+	<real>622</real>
+	<key>windowWidth</key>
+	<real>600</real>
+</dict>
+</plist>

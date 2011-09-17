@@ -10,8 +10,7 @@
 #import "EGOImageView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ASIFormDataRequest.h"
-
-
+#import "PBPersonTableViewCell.h"
 
 @implementation PBPersonListViewController
 @synthesize showiPhoneContacts = _showiPhoneContacts;
@@ -34,7 +33,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 52;
+  return 51;
 }
 
 
@@ -43,35 +42,26 @@
   
   static NSString *CellIdentifier = @"PersonCell";
   
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  PBPersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
     [[NSBundle mainBundle] loadNibNamed:@"PBPersonTableViewCell" owner:self options:nil];
-    cell = _cell;
+    cell = (PBPersonTableViewCell *)_cell;
     _cell = nil;
+    cell.backgroundColor = [UIColor whiteColor];
+    cell.contentView.backgroundColor = [UIColor whiteColor];
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = cell.contentView.bounds;
+    gradient.colors = [NSArray arrayWithObjects:
+                       (id)[[UIColor colorWithRed:248/255.0 green:237/255.0 blue:230/255.0 alpha:0.33] CGColor],
+                       (id)[[UIColor colorWithRed:227/255.0 green:212/255.0 blue:199/255.0 alpha:0.33] CGColor], 
+                       nil];
+    [cell.contentView.layer insertSublayer:gradient atIndex:0];
   }
   
-  NSDictionary *person = [namelist objectAtIndex:indexPath.row];
-   cell.textLabel.text = [self.responceData usernameForPersonAtIndex:indexPath.row];
-   cell.detailTextLabel.text = @"Lady Gaga";
-   cell.imageView.image = [UIImage imageNamed:@"btn_smiley.png"];
-   
-   EGOImageView *avatarImage = [[EGOImageView alloc] initWithFrame:CGRectMake(7, 52/2-40/2, 40, 40)];
-   
-   avatarImage.imageURL = [NSURL URLWithString:@"http://a0.twimg.com/profile_images/1236631904/DSC07560_-_C_pia_-_C_pia_normal.JPG"];
-   [cell.contentView addSubview:avatarImage];
-   [avatarImage release];
-   
-   UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-   button.frame = CGRectMake(243, 52/2-24/2, 70, 24);
-   
-   //UIImage *bg = [[UIImage imageNamed:@"bg_green_btn.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
-   
-   [button setBackgroundImage:[UIImage imageNamed:@"greenButton.png"] forState:UIControlStateNormal];
-   [button setTitle:@"Follow" forState:UIControlStateNormal];
-   [button addTarget:self action:@selector(followButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-   [cell.contentView addSubview:button];
-   
-      
+   cell.nameLabel.text = [self.responceData usernameForPersonAtIndex:indexPath.row];
+   cell.screenNameLabel.text = @"Lady Gaga";
+   cell.avatarImageView.imageURL = [NSURL URLWithString:@"http://a0.twimg.com/profile_images/1236631904/DSC07560_-_C_pia_-_C_pia_normal.JPG"];
+        
   return cell;
 }
 
@@ -114,6 +104,26 @@
     [self populateNamesFromAddressBook];
   }
   [super viewDidLoad];
+  UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
+  self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
+  self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+  self.tableView.separatorColor = [UIColor colorWithRed:203/255.0 green:186/255.0 blue:174/255.0 alpha:1];
+  UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+  [self.tableView setTableFooterView:footer];
+  [footer release];
+  searchBar.backgroundColor = [UIColor clearColor];
+  for (UIView *view in searchBar.subviews) {
+    if (![view isKindOfClass:[UITextField class]]) {
+      view.alpha = 0;
+    }
+  }
+  self.tableView.tableHeaderView = nil;
+  
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self reloadTableViewDataSourceUsingCache:NO];
 }
 
 #pragma mark -

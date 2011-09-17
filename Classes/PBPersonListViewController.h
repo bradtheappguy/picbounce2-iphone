@@ -18,6 +18,7 @@
   
   IBOutlet UITableViewCell *_cell; 
 
+  IBOutlet UISearchBar *searchBar;
 }
 
 @property (nonatomic,readwrite) BOOL showiPhoneContacts;

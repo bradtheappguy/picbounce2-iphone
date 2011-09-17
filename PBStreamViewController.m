@@ -355,6 +355,12 @@
 }
 
 
+-(void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self reloadTableViewDataSourceUsingCache:NO];
+}
+
+
 
 
 #pragma mark Buttons and Gesture Recoginizers
@@ -375,7 +381,9 @@
   vc.shouldShowFollowingBar = YES;
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
+  vc.pullsToRefresh = YES;
   [self.navigationController pushViewController:vc animated:YES];
+  [vc release];
 }
 
 
@@ -386,9 +394,10 @@
 }
 
 -(IBAction) followingButtonPressed { 
-  NSURL *followingURL = [self.responceData followingURL];
+  NSURL *followingURL =[NSURL URLWithString: [self.responceData followingURL] ];
   if (followingURL) {
     PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
+    vc.title = @"Following";
     vc.baseURL = followingURL;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release]; 

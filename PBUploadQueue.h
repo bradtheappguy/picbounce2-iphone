@@ -20,6 +20,6 @@
 + (id)sharedQueue;
 -(void) uploadImage:(UIImage *)image;
 -(NSUInteger) count;
--(id) photoAtIndex:(NSUInteger)index;
+-(PBPhoto *) photoAtIndex:(NSUInteger)index;
 
 @end

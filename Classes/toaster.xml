@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>layers</key>
+	<array>
+		<dict>
+			<key>file</key>
+			<string>cuteBlackBoyz.png</string>
+			<key>offsetX</key>
+			<real>-2</real>
+			<key>offsetY</key>
+			<real>-1</real>
+			<key>type</key>
+			<string>image</string>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIWhitePointAdjust</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputColor_CIColorValue</key>
+				<string>0.993074 1 0.964065 1</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIColorDodgeBlendMode</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputImage</key>
+				<string>metalTexture2.png</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIColorControls</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputBrightness</key>
+				<real>0.081481481481481488</real>
+				<key>inputContrast</key>
+				<real>1.3611111111111112</real>
+				<key>inputSaturation</key>
+				<real>1.0074074074074073</real>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIColorMatrix</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputAVector_CIVectorValue</key>
+				<string>[0 0 0 0.8]</string>
+				<key>inputBVector_CIVectorValue</key>
+				<string>[0 0 1 0]</string>
+				<key>inputBiasVector_CIVectorValue</key>
+				<string>[0 0 0 0.2]</string>
+				<key>inputGVector_CIVectorValue</key>
+				<string>[0 1.9 0.1 0]</string>
+				<key>inputRVector_CIVectorValue</key>
+				<string>[2.5 0 0 0]</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIGaussianGradient</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputCenter_CIVectorValue</key>
+				<string>[298 298 0 0]</string>
+				<key>inputColor0_CIColorValue</key>
+				<string>1 0.486057 0.453481 0.31</string>
+				<key>inputColor1_CIColorValue</key>
+				<string>0.0413275 0.0564797 0.214286 0.93</string>
+				<key>inputRadius</key>
+				<real>420.7407407407407</real>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CISourceOverCompositing</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputImage</key>
+				<string>filterBorderPlainWhite.png</string>
+			</dict>
+		</dict>
+	</array>
+	<key>windowHeight</key>
+	<real>622</real>
+	<key>windowWidth</key>
+	<real>600</real>
+</dict>
+</plist>

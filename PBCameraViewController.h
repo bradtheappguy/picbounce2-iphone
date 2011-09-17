@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "FlashButton.h"
 
+
 @interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
   
   IBOutlet UIView *previewView;
@@ -28,6 +29,7 @@
 	CGFloat effectiveScale;
   AVCaptureDeviceInput *deviceInput;
   
+  UIImage *unfilteredImage;
   
   FlashButton *flashButton;
   UIButton *flipButton;
@@ -59,6 +61,7 @@
   IBOutlet UIImageView *uploadPreviewImage;
 }
 
+@property (nonatomic, retain)  UIImage *unfilteredImage;
 -(IBAction) cameraButtonPressed:(id)sender;
 -(IBAction) closeButtonPressed:(id)sender;
 -(IBAction) optionsButtonPressed:(id)sender;

@@ -36,5 +36,5 @@
 - (NSURL *) followUserURLForUser;
 - (NSString *) followingURL;
 - (NSDictionary *) user;
-
+- (NSArray *) people;
 @end

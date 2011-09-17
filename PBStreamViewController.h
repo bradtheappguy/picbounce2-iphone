@@ -73,7 +73,7 @@
 @property (readwrite) BOOL shouldShowUplodingItems;
 
 
--(IBAction) followButtonPressed:(id) sender;
+//-(IBAction) followButtonPressed:(id) sender;
 -(IBAction) bounceButtonPressed:(id) sender;
 
 -(IBAction) photosButtonPressed;

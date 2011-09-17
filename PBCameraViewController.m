@@ -12,7 +12,7 @@
 #import "PBCameraViewController.h"
 #import "FlashButton.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-
+#import "PBFilteredImage.h"
 #import <CoreImage/CoreImage.h>
 #import <ImageIO/ImageIO.h>
 #import <AssertMacros.h>
@@ -22,6 +22,119 @@
 
 //#import "CaptureSessionManager.h"
 #import "AppDelegate.h"
+
+
+
+UIImage *scaleAndRotateImage(UIImage *image)
+{
+  int kMaxResolution = 900; // Or whatever
+  
+  CGImageRef imgRef = image.CGImage;
+  
+  CGFloat width = CGImageGetWidth(imgRef);
+  CGFloat height = CGImageGetHeight(imgRef);
+  
+  CGAffineTransform transform = CGAffineTransformIdentity;
+  CGRect bounds = CGRectMake(0, 0, width, height);
+  if (width > kMaxResolution || height > kMaxResolution) {
+    CGFloat ratio = width/height;
+    if (ratio > 1) {
+      bounds.size.width = kMaxResolution;
+      bounds.size.height = bounds.size.width / ratio;
+    }
+    else {
+      bounds.size.height = kMaxResolution;
+      bounds.size.width = bounds.size.height * ratio;
+    }
+  }
+  
+  CGFloat scaleRatio = bounds.size.width / width;
+  CGSize imageSize = CGSizeMake(CGImageGetWidth(imgRef), CGImageGetHeight(imgRef));
+  CGFloat boundHeight;
+  UIImageOrientation orient = image.imageOrientation;
+  switch(orient) {
+      
+    case UIImageOrientationUp: //EXIF = 1
+      transform = CGAffineTransformIdentity;
+      break;
+      
+    case UIImageOrientationUpMirrored: //EXIF = 2
+      transform = CGAffineTransformMakeTranslation(imageSize.width, 0.0);
+      transform = CGAffineTransformScale(transform, -1.0, 1.0);
+      break;
+      
+    case UIImageOrientationDown: //EXIF = 3
+      transform = CGAffineTransformMakeTranslation(imageSize.width, imageSize.height);
+      transform = CGAffineTransformRotate(transform, M_PI);
+      break;
+      
+    case UIImageOrientationDownMirrored: //EXIF = 4
+      transform = CGAffineTransformMakeTranslation(0.0, imageSize.height);
+      transform = CGAffineTransformScale(transform, 1.0, -1.0);
+      break;
+      
+    case UIImageOrientationLeftMirrored: //EXIF = 5
+      boundHeight = bounds.size.height;
+      bounds.size.height = bounds.size.width;
+      bounds.size.width = boundHeight;
+      transform = CGAffineTransformMakeTranslation(imageSize.height, imageSize.width);
+      transform = CGAffineTransformScale(transform, -1.0, 1.0);
+      transform = CGAffineTransformRotate(transform, 3.0 * M_PI / 2.0);
+      break;
+      
+    case UIImageOrientationLeft: //EXIF = 6
+      boundHeight = bounds.size.height;
+      bounds.size.height = bounds.size.width;
+      bounds.size.width = boundHeight;
+      transform = CGAffineTransformMakeTranslation(0.0, imageSize.width);
+      transform = CGAffineTransformRotate(transform, 3.0 * M_PI / 2.0);
+      break;
+      
+    case UIImageOrientationRightMirrored: //EXIF = 7
+      boundHeight = bounds.size.height;
+      bounds.size.height = bounds.size.width;
+      bounds.size.width = boundHeight;
+      transform = CGAffineTransformMakeScale(-1.0, 1.0);
+      transform = CGAffineTransformRotate(transform, M_PI / 2.0);
+      break;
+      
+    case UIImageOrientationRight: //EXIF = 8
+      boundHeight = bounds.size.height;
+      bounds.size.height = bounds.size.width;
+      bounds.size.width = boundHeight;
+      transform = CGAffineTransformMakeTranslation(imageSize.height, 0.0);
+      transform = CGAffineTransformRotate(transform, M_PI / 2.0);
+      break;
+      
+    default:
+      [NSException raise:NSInternalInconsistencyException format:@"Invalid image orientation"];
+      
+  }
+  
+  UIGraphicsBeginImageContext(bounds.size);
+  
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  
+  if (orient == UIImageOrientationRight || orient == UIImageOrientationLeft) {
+    CGContextScaleCTM(context, -scaleRatio, scaleRatio);
+    CGContextTranslateCTM(context, -height, 0);
+  }
+  else {
+    CGContextScaleCTM(context, scaleRatio, -scaleRatio);
+    CGContextTranslateCTM(context, 0, -height);
+  }
+  
+  CGContextConcatCTM(context, transform);
+  
+  CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, width, height), imgRef);
+  UIImage *imageCopy = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  return imageCopy;
+}
+
+
+
 #define PREVIEW_FRAME
 static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCaptureStillImageIsCapturingStillImageContext";
 static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
@@ -33,6 +146,31 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 
 
 @implementation PBCameraViewController
+
+@synthesize unfilteredImage;
+
+- (UIImage*) getSubImageFrom: (UIImage*) img WithRect: (CGRect) rect {
+  
+  UIGraphicsBeginImageContext(rect.size);
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  
+  // translated rectangle for drawing sub image 
+  CGRect drawRect = CGRectMake(-rect.origin.x, -rect.origin.y, img.size.width, img.size.height);
+  
+  // clip to the bounds of the image context
+  // not strictly necessary as it will get clipped anyway?
+  CGContextClipToRect(context, CGRectMake(0, 0, rect.size.width, rect.size.height));
+  
+  // draw image
+  [img drawInRect:drawRect];
+  
+  // grab image
+  UIImage* subImage = UIGraphicsGetImageFromCurrentImageContext();
+  
+  UIGraphicsEndImageContext();
+  
+  return subImage;
+}
 
 -(void) closeShutter {
   if (!flashView)
@@ -134,7 +272,7 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 	
 	session = [AVCaptureSession new];
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    [session setSessionPreset:AVCaptureSessionPreset640x480];
+    [session setSessionPreset:AVCaptureSessionPresetPhoto];
 	else
     [session setSessionPreset:AVCaptureSessionPresetPhoto];
 	
@@ -193,12 +331,41 @@ bail:
 	}
 }
 
+-(void) filterButtonPressed:(UIButton *)sender {
+  if (sender.tag == -1) {
+    uploadPreviewImage.image = unfilteredImage;
+  }
+  else {
+    NSString *filterName = [[PBFilteredImage availableFilters] objectAtIndex:sender.tag];
+    uploadPreviewImage.image = [PBFilteredImage filteredImageWithImage:unfilteredImage filter:filterName];
+  }
+}
 
--(void) viewDidLoad {
+-(void) configureFilterScrollView {
+  CGFloat x = 0;
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  [button addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  button.frame = CGRectMake(0, 0, 58, 58);
+  button.center = CGPointMake(((58/2) + 2), filterScrollView.frame.size.height/2);
+  button.tag = -1;
+[filterScrollView addSubview:button];
   
+  for (NSString *filterName in [PBFilteredImage availableFilters]) {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(0, 0, 58, 58);
+    button.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
+    button.tag = x;
+    x++;
+    [filterScrollView addSubview:button];
+  }
   filterScrollView.contentSize = filterScrollView.bounds.size;
   filterScrollView.alwaysBounceHorizontal = YES;
-  self.wantsFullScreenLayout = YES;
+}
+
+-(void) viewDidLoad {
+  [self configureFilterScrollView];
+    self.wantsFullScreenLayout = YES;
   [super viewDidLoad];
   [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
   self.view.frame = CGRectMake(0, 0, 320, 480);
@@ -281,7 +448,7 @@ bail:
 	UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
 	AVCaptureVideoOrientation avcaptureOrientation = [self avOrientationForDeviceOrientation:curDeviceOrientation];
 	[stillImageConnection setVideoOrientation:avcaptureOrientation];
-	[stillImageConnection setVideoScaleAndCropFactor:effectiveScale];
+	//[stillImageConnection setVideoScaleAndCropFactor:effectiveScale];
 
   [stillImageOutput setOutputSettings:[NSDictionary dictionaryWithObject:AVVideoCodecJPEG 
                                                                     forKey:AVVideoCodecKey]]; 
@@ -292,8 +459,17 @@ bail:
                                                   }
                                                   NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
                                                   UIImage *image = [[UIImage alloc] initWithData:jpegData];
-                                                  uploadPreviewImage.image = image;
+                                                  CGSize s1 = image.size;
+                                                  UIImage *scaledImage = scaleAndRotateImage(image);
+                                                  CGSize s2 = scaledImage.size;
                                                   [image release];
+                                                  
+                                                  UIImage *i3 = [UIImage imageWithCGImage: CGImageCreateWithImageInRect([scaledImage CGImage],CGRectMake(0, 0, 600, 600)) ];
+                                                  
+                                                  CGSize s3 = i3.size;
+                                                  self.unfilteredImage = i3;
+                                                  uploadPreviewImage.contentMode = UIViewContentModeScaleAspectFit;
+                                                  uploadPreviewImage.image = i3;
                                                   uploadPreviewImage.layer.masksToBounds = NO;
                                                   uploadPreviewImage.layer.cornerRadius = 0;
                                                   uploadPreviewImage.layer.shadowOffset = CGSizeMake(0, 0);

@@ -16,6 +16,7 @@
 @synthesize reloading = _reloading;
 @synthesize baseURL = _baseURL;
 @synthesize responceData = _responceData;
+@synthesize pullsToRefresh;
 
 - (NSURL *) url {
   NSString *authToken = [(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken];
@@ -29,12 +30,15 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-	if (refreshHeaderView == nil) {
-		refreshHeaderView = [[PBRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, 320.0f, self.tableView.bounds.size.height)];
-		[self.tableView addSubview:refreshHeaderView];
-		self.tableView.showsVerticalScrollIndicator = YES;
-		[refreshHeaderView release];
-	}
+  if (self.pullsToRefresh) {
+    if (refreshHeaderView == nil) {
+      refreshHeaderView = [[PBRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, 320.0f, self.tableView.bounds.size.height)];
+      [self.tableView addSubview:refreshHeaderView];
+      self.tableView.showsVerticalScrollIndicator = YES;
+      [refreshHeaderView release];
+    }
+  }
+
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -116,7 +120,6 @@
 }
 
 - (void)reloadTableViewDataSourceUsingCache:(BOOL)useCache {
-  NSLog(@"\n");
   if (!self.baseURL) {
     NSLog(@"Error: url not set");
     [self doneLoadingTableViewDataFromNetwork:nil];
@@ -129,7 +132,7 @@
   ASICachePolicy cachePolicy = useCache?ASIOnlyLoadIfNotCachedCachePolicy:ASIDoNotReadFromCacheCachePolicy;
 
   request = [ASIHTTPRequest requestWithURL:[self url]
-                                                usingCache:[ASIDownloadCache sharedCache]
+                                usingCache:useCache?[ASIDownloadCache sharedCache]:nil
                                             andCachePolicy:cachePolicy];
   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
   if (authToken) {
@@ -201,10 +204,12 @@
   [UIView commitAnimations];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (self.pullsToRefresh) {
 	if (scrollView.contentOffset.y <= - 65.0f && !_reloading) {
     [self enterReloadMode];
   }
+    }
 }
 
 

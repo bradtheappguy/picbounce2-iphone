@@ -17,6 +17,10 @@
 @synthesize textLabel;
 
 - (void)dealloc {
+  [_photo removeObserver:self forKeyPath:@"uploadFailed"];
+  [_photo removeObserver:self forKeyPath:@"uploadSucceded"];
+  [_photo removeObserver:self forKeyPath:@"uploadProgress"];
+  
   [imageView release];
   [progeressBar release];
   [retryButton release];
