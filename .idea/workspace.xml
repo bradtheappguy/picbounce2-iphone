@@ -2,34 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78075215-ba10-4f96-bca9-a476814708cb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/blackGradient.7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/blackGradient2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/borderRoughInstagram.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/cuteBlackBoys.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/filterBorderBlackBevel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/PBFilteredImage.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/PBFilteredImage.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/PBPersonTableViewCell.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/PBPersonTableViewCell.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/lomo.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/one.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/xpro.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ArtAssets/app.ipa" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app.ipa" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/External/hoptoad-ios" afterPath="$PROJECT_DIR$/External/hoptoad-ios" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PicBounce2.xcodeproj/project.xcworkspace/xcuserdata/brad.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/PicBounce2.xcodeproj/project.xcworkspace/xcuserdata/brad.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PicBounce2.xcodeproj/xcuserdata/brad.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist" afterPath="$PROJECT_DIR$/PicBounce2.xcodeproj/xcuserdata/brad.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/AppDelegate.m" afterPath="$PROJECT_DIR$/Classes/AppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/PBPersonListViewController.h" afterPath="$PROJECT_DIR$/Classes/PBPersonListViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/PBPersonListViewController.m" afterPath="$PROJECT_DIR$/Classes/PBPersonListViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/PBPersonListViewController.xib" afterPath="$PROJECT_DIR$/Classes/PBPersonListViewController.xib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/PBPersonTableViewCell.xib" afterPath="$PROJECT_DIR$/Classes/PBPersonTableViewCell.xib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/PBRootViewController.h" afterPath="$PROJECT_DIR$/Classes/PBRootViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/PBRootViewController.m" afterPath="$PROJECT_DIR$/Classes/PBRootViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainWindow.xib" afterPath="$PROJECT_DIR$/MainWindow.xib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PBCameraViewController.h" afterPath="$PROJECT_DIR$/PBCameraViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PBCameraViewController.m" afterPath="$PROJECT_DIR$/PBCameraViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PBCameraViewController.xib" afterPath="$PROJECT_DIR$/PBCameraViewController.xib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PBStreamViewController.m" afterPath="$PROJECT_DIR$/PBStreamViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PicBounce2.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/PicBounce2.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="picbounce2-iphone.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,19 +28,6 @@
   <component name="FavoritesManager">
     <favorites_list name="PicBounce2" />
   </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="PBButtonWithLabel.m" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Classes/PBButtonWithLabel.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="81" selection-start="571" selection-end="571" vertical-scroll-proportion="0.6167763">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
@@ -80,10 +45,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="512" />
-    <option name="y" value="263" />
-    <option name="width" value="1536" />
-    <option name="height" value="1052" />
+    <option name="y" value="22" />
+    <option name="width" value="1678" />
+    <option name="height" value="1024" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -111,6 +75,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="DirectoryView.Xcode" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -157,12 +122,15 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="DirectoryView.Xcode" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.lastSelected" value="preferences.lookFeel" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.PicBounce2 - Debug">
     <configuration default="false" name="PicBounce2 - Debug" type="AppleRunConfiguration" factoryName="Application" temporary="true" TARGET_NAME="PicBounce2" CONFIG_NAME="Debug" SDK_NAME="iphonesimulator4.3" ARCH_ID="Standard" DEVICE="IPHONE" DEBUGGER="GDB" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
@@ -201,32 +169,33 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="78075215-ba10-4f96-bca9-a476814708cb" name="Default" comment="" />
       <created>1316220338111</created>
       <updated>1316220338111</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="512" y="263" width="1536" height="1052" extended-state="0" />
+    <frame x="0" y="22" width="1678" height="1024" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32948583" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.67051417" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2496977" sideWeight="0.67051417" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32948583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -276,15 +245,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Classes/PBButtonWithLabel.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="81" selection-start="571" selection-end="571" vertical-scroll-proportion="0.6167763">
-          <folding />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>
 
