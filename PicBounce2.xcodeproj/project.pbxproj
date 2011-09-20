@@ -89,6 +89,12 @@
 		A27CAF2B142452D900ED7C1E /* filterBorderPlainWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = A27CAF28142452D900ED7C1E /* filterBorderPlainWhite.png */; };
 		A27CAF2C142452D900ED7C1E /* metalTexture2.png in Resources */ = {isa = PBXBuildFile; fileRef = A27CAF29142452D900ED7C1E /* metalTexture2.png */; };
 		A27CAF2D142452D900ED7C1E /* toaster.xml in Resources */ = {isa = PBXBuildFile; fileRef = A27CAF2A142452D900ED7C1E /* toaster.xml */; };
+		A28B572B14282D4500EBC105 /* earlybird.xml in Resources */ = {isa = PBXBuildFile; fileRef = A28B572A14282D4500EBC105 /* earlybird.xml */; };
+		A28B573114282D6800EBC105 /* filterBorderBeigeTextured.png in Resources */ = {isa = PBXBuildFile; fileRef = A28B572C14282D6800EBC105 /* filterBorderBeigeTextured.png */; };
+		A28B573214282D6800EBC105 /* redGradientOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = A28B572D14282D6800EBC105 /* redGradientOverlay.png */; };
+		A28B573314282D6800EBC105 /* redYellowGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = A28B572E14282D6800EBC105 /* redYellowGradient.png */; };
+		A28B573414282D6800EBC105 /* whiteOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = A28B572F14282D6800EBC105 /* whiteOverlay.png */; };
+		A28B573514282D6800EBC105 /* yellowOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = A28B573014282D6800EBC105 /* yellowOverlay.png */; };
 		A28BF6141402E5DE00A5BF9E /* PBUploadingPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A28BF6131402E5DD00A5BF9E /* PBUploadingPhotoTableViewCell.m */; };
 		A28BF6161402E60300A5BF9E /* PBUploadingPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28BF6151402E60300A5BF9E /* PBUploadingPhotoTableViewCell.xib */; };
 		A28BF6191402EACD00A5BF9E /* PBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A28BF6181402EACD00A5BF9E /* PBPhoto.m */; };
@@ -650,6 +656,12 @@
 		A27CAF28142452D900ED7C1E /* filterBorderPlainWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filterBorderPlainWhite.png; sourceTree = "<group>"; };
 		A27CAF29142452D900ED7C1E /* metalTexture2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metalTexture2.png; sourceTree = "<group>"; };
 		A27CAF2A142452D900ED7C1E /* toaster.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = toaster.xml; sourceTree = "<group>"; };
+		A28B572A14282D4500EBC105 /* earlybird.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = earlybird.xml; sourceTree = "<group>"; };
+		A28B572C14282D6800EBC105 /* filterBorderBeigeTextured.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filterBorderBeigeTextured.png; sourceTree = "<group>"; };
+		A28B572D14282D6800EBC105 /* redGradientOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redGradientOverlay.png; sourceTree = "<group>"; };
+		A28B572E14282D6800EBC105 /* redYellowGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redYellowGradient.png; sourceTree = "<group>"; };
+		A28B572F14282D6800EBC105 /* whiteOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteOverlay.png; sourceTree = "<group>"; };
+		A28B573014282D6800EBC105 /* yellowOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowOverlay.png; sourceTree = "<group>"; };
 		A28BF6121402E5DD00A5BF9E /* PBUploadingPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBUploadingPhotoTableViewCell.h; sourceTree = "<group>"; };
 		A28BF6131402E5DD00A5BF9E /* PBUploadingPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBUploadingPhotoTableViewCell.m; sourceTree = "<group>"; };
 		A28BF6151402E60300A5BF9E /* PBUploadingPhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBUploadingPhotoTableViewCell.xib; sourceTree = "<group>"; };
@@ -1752,6 +1764,12 @@
 		A2EE48BF1423F0E900853658 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				A28B572C14282D6800EBC105 /* filterBorderBeigeTextured.png */,
+				A28B572D14282D6800EBC105 /* redGradientOverlay.png */,
+				A28B572E14282D6800EBC105 /* redYellowGradient.png */,
+				A28B572F14282D6800EBC105 /* whiteOverlay.png */,
+				A28B573014282D6800EBC105 /* yellowOverlay.png */,
+				A28B572A14282D4500EBC105 /* earlybird.xml */,
 				A27CAF28142452D900ED7C1E /* filterBorderPlainWhite.png */,
 				A27CAF29142452D900ED7C1E /* metalTexture2.png */,
 				A27CAF2A142452D900ED7C1E /* toaster.xml */,
@@ -2575,6 +2593,12 @@
 				A27CAF2B142452D900ED7C1E /* filterBorderPlainWhite.png in Resources */,
 				A27CAF2C142452D900ED7C1E /* metalTexture2.png in Resources */,
 				A27CAF2D142452D900ED7C1E /* toaster.xml in Resources */,
+				A28B572B14282D4500EBC105 /* earlybird.xml in Resources */,
+				A28B573114282D6800EBC105 /* filterBorderBeigeTextured.png in Resources */,
+				A28B573214282D6800EBC105 /* redGradientOverlay.png in Resources */,
+				A28B573314282D6800EBC105 /* redYellowGradient.png in Resources */,
+				A28B573414282D6800EBC105 /* whiteOverlay.png in Resources */,
+				A28B573514282D6800EBC105 /* yellowOverlay.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

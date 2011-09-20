@@ -126,21 +126,24 @@
 #pragma mark View LifeCycle
 - (void) viewDidLoad {
   [super viewDidLoad];
-  
-  
-  
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
-  self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
-  UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
-  self.tableView.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
-  self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
   
+  if (!self.navigationItem.title) {
+    self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
+  }
+  
+  UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
+  self.tableView.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
+  self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
+  
+  self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
+
   [self configureNavigationBar];
   
 }

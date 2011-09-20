@@ -38,6 +38,10 @@
       [refreshHeaderView release];
     }
   }
+  UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+  view.backgroundColor = [UIColor redColor];
+  self.tableView.tableFooterView = view;
+  [view release];
 
 }
 
@@ -78,7 +82,11 @@
 }
 
 - (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) _request {
-	NSString *json_string = _request.responseString;
+	if ([_request responseStatusCode] >= 400) {
+    [self networkLoadDidFail:_request];
+    return;
+  }
+  NSString *json_string = _request.responseString;
   PBAPIResponce *resp = [[PBAPIResponce alloc] initWithResponceData:_request.responseString];
   self.responceData = resp;
   [resp release];
@@ -105,7 +113,10 @@
 }
 
 - (void)networkLoadDidFail:(ASIHTTPRequest *) request {  
-  MBProgressHUD *errorHud = [[MBProgressHUD alloc] initWithView:self.tableView];
+  if (!errorHud) {
+    errorHud = [[MBProgressHUD alloc] initWithView:self.tableView];
+    [errorHud retain];
+  }
   [self.view addSubview:errorHud];
   errorHud.labelText = @"Error";
   [errorHud showUsingAnimation:YES];
@@ -116,7 +127,6 @@
  // [a release];
   
 	[self dataSourceDidFinishLoadingNewData];
-  [errorHud release];
 }
 
 - (void)reloadTableViewDataSourceUsingCache:(BOOL)useCache {
