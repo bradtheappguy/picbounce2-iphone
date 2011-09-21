@@ -169,15 +169,9 @@
   return name;
 }
 
-- (NSURL *) followersURL {
-  id x = user;
-  if (x) { 
-    id y = [x objectForKey:@"followers_url"]; 
-    if (y) {
-      return [NSURL URLWithString:y];
-    }
-  }
-  return nil;
+- (NSString *) followersURL {
+  NSString *urlString = [user objectForKey:@"followed_by_url"]; 
+  return urlString;
 }
 
 -(NSString *) followingURL {

@@ -55,19 +55,7 @@
   
   popularViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/popular.json",API_BASE];
   
-  
-  
-  //PBContainerView *container = [[PBContainerView alloc] initWithFrame:window.frame];
-  //container.backgroundColor = [UIColor colorWithRed:0.945 green:0.933 blue:0.941 alpha:1.0];
-  //PBExpandingPhotoView *view1 = [[PBExpandingPhotoView alloc] initWithFrame:CGRectMake(0, 40, 320, 100)];
-  //PBExpandingPhotoView *view2 = [[PBExpandingPhotoView alloc] initWithFrame:CGRectMake(0, 100+40+40, 320, 100)]; 
-  // Override point for customization after application launch.
-  
-  //[container addSubview:view1];
-  //[container addSubview:view2];
-  
   [window addSubview:tabBarController.view];
-    //tabBarController.selectedIndex = 4;
   [window makeKeyAndVisible];
     
   

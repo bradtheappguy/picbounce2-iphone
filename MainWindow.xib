@@ -43,10 +43,12 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIWindow" id="380026005">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">1316</int>
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 480}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -66,12 +68,12 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
-				<object class="IBUINavigationController" key="IBUISelectedViewController" id="358968080">
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="1065068595">
-						<string key="IBUITitle">Profile</string>
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="50269176">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="971164243">
+						<string key="IBUITitle">Activity</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">btn_profile_n.png</string>
+							<string key="NSResourceName">btn_activity_n.png</string>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -83,7 +85,7 @@
 					</object>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					<bool key="IBUIHorizontal">NO</bool>
-					<object class="IBUINavigationBar" key="IBUINavigationBar" id="106248718">
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="1043276538">
 						<nil key="NSNextResponder"/>
 						<int key="NSvFlags">256</int>
 						<string key="NSFrameSize">{0, 0}</string>
@@ -93,16 +95,16 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<array class="NSMutableArray" key="IBUIViewControllers">
-						<object class="IBUIViewController" id="544601131">
-							<object class="IBUITabBarItem" key="IBUITabBarItem" id="647425556">
-								<string key="IBUITitle">Profile</string>
+						<object class="IBUIViewController" id="614441314">
+							<object class="IBUITabBarItem" key="IBUITabBarItem" id="1015597698">
+								<string key="IBUITitle">Live</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<object class="IBUINavigationItem" key="IBUINavigationItem" id="701068727">
-								<string key="IBUITitle">Profile</string>
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="406131344">
+								<string key="IBUITitle">Live</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<reference key="IBUIParentViewController" ref="358968080"/>
+							<reference key="IBUIParentViewController" ref="50269176"/>
 							<string key="IBUINibName">PBStreamViewController</string>
 							<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 								<int key="IBUIInterfaceOrientation">1</int>
@@ -256,12 +258,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIHorizontal">NO</bool>
 					</object>
-					<object class="IBUINavigationController" id="50269176">
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="971164243">
-							<string key="IBUITitle">Live</string>
+					<reference ref="50269176"/>
+					<object class="IBUINavigationController" id="358968080">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="1065068595">
+							<string key="IBUITitle">Profile</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">btn_activity_n.png</string>
+								<string key="NSResourceName">btn_profile_n.png</string>
 							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
@@ -273,7 +276,7 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIHorizontal">NO</bool>
-						<object class="IBUINavigationBar" key="IBUINavigationBar" id="1043276538">
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="106248718">
 							<nil key="NSNextResponder"/>
 							<int key="NSvFlags">256</int>
 							<string key="NSFrameSize">{0, 0}</string>
@@ -283,16 +286,16 @@
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 						<array class="NSMutableArray" key="IBUIViewControllers">
-							<object class="IBUIViewController" id="614441314">
-								<object class="IBUITabBarItem" key="IBUITabBarItem" id="1015597698">
-									<string key="IBUITitle">Live</string>
+							<object class="IBUIViewController" id="544601131">
+								<object class="IBUITabBarItem" key="IBUITabBarItem" id="647425556">
+									<string key="IBUITitle">Profile</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
-								<object class="IBUINavigationItem" key="IBUINavigationItem" id="406131344">
-									<string key="IBUITitle">Live</string>
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="701068727">
+									<string key="IBUITitle">Profile</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
-								<reference key="IBUIParentViewController" ref="50269176"/>
+								<reference key="IBUIParentViewController" ref="358968080"/>
 								<string key="IBUINibName">PBStreamViewController</string>
 								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 									<int key="IBUIInterfaceOrientation">1</int>
@@ -303,7 +306,6 @@
 							</object>
 						</array>
 					</object>
-					<reference ref="358968080"/>
 				</array>
 				<object class="IBUITabBar" key="IBUITabBar" id="516966388">
 					<reference key="NSNextResponder"/>
@@ -702,6 +704,11 @@
 						<array key="userDefinedRuntimeAttributes">
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.boolean</string>
+								<string key="keyPath">pullsToRefresh</string>
+								<boolean value="YES" key="value"/>
+							</object>
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.boolean</string>
 								<string key="keyPath">shouldShowUplodingItems</string>
 								<boolean value="YES" key="value"/>
 							</object>
@@ -732,6 +739,11 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.boolean</string>
 								<string key="keyPath">shouldShowUplodingItems</string>
+								<boolean value="YES" key="value"/>
+							</object>
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.boolean</string>
+								<string key="keyPath">pullsToRefresh</string>
 								<boolean value="YES" key="value"/>
 							</object>
 						</array>

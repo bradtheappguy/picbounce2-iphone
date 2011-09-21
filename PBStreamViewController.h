@@ -75,7 +75,7 @@
 
 //-(IBAction) followButtonPressed:(id) sender;
 -(IBAction) bounceButtonPressed:(id) sender;
-
+-(IBAction) loginButtonPressed:(id)sender;
 -(IBAction) photosButtonPressed;
 -(IBAction) followingButtonPressed;
 -(IBAction) followersButtonPressed;

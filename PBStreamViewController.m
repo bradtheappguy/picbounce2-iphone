@@ -116,6 +116,7 @@
   [self loadDataFromCacheIfAvailable];
   [self configureNavigationBar];
   [self.tableView reloadData];
+  [self loginButtonPressed:nil];
 }
 
 -(void) userDidLogin:(id)dender {
@@ -391,7 +392,7 @@
 
 
 -(IBAction) photosButtonPressed {
-  if (([self numberOfSectionsInTableView:self.tableView] > 1)) {
+  if (([self numberOfSectionsInTableView:self.tableView] > 0)) {
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
   }
 }
@@ -408,13 +409,14 @@
 }
 
 -(IBAction) followersButtonPressed {
-  //NSURL *followersURL = [responseData followersURL];
-  //if (followersURL) {
-  // PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
-  //vc.url = followersURL;
-  //[self.navigationController pushViewController:vc animated:YES];
-  //[vc release]; 
-  //}  
+  NSURL *followersURL = [self.responceData followersURL];
+  if (followersURL) {
+    PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
+    vc.title = @"Followers";
+    vc.baseURL = followersURL;
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
+  }  
 }
 
 -(IBAction) taggedPeopleButtonPressed:(id)sender {
