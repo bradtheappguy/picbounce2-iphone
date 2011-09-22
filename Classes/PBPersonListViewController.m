@@ -23,7 +23,6 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  // Return the number of sections.
   return 1;
 }
 
@@ -70,8 +69,6 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  //TODO
-  
   [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
@@ -152,7 +149,7 @@
 }
 
 - (void) reload {
-  namelist = [self.responceData people];
+  namelist = (NSArray *) [self.responceData people];
   [self.tableView reloadData];
 }
 

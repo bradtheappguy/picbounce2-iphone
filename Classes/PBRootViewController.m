@@ -222,6 +222,37 @@
     }
 }
 
+-(void) showLoadingIndicator {
+  if (loadingView) {
+    [loadingView removeFromSuperview];
+    loadingView = nil;
+  }
+  loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 108, 58)];
+  loadingView.layer.cornerRadius = 10;
+  loadingView.backgroundColor = [UIColor colorWithRed:144/255.0 green:124/255.0 blue:109/255.0 alpha:0.90];
+  
+  UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+  spinner.center = CGPointMake(108/2, 20);
+  [spinner startAnimating];
+
+  UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 35, 108, 15)];
+  loadingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+  loadingLabel.textColor = [UIColor colorWithRed:252/255.0 green:251/255.0 blue:251/255.0 alpha:1.0];
+  loadingLabel.textAlignment = UITextAlignmentCenter;
+  loadingLabel.text = @"Loading";
+  loadingLabel.backgroundColor = [UIColor clearColor];
+  
+  [loadingView addSubview:spinner];
+  [loadingView addSubview:loadingLabel];
+  loadingView.center = self.view.center;
+  [self.view  addSubview:loadingView];
+  
+}
+
+-(void) hideLoadingIndicator {
+  [loadingView removeFromSuperview];
+  loadingView = nil;
+}
 
 -(void) loadDataFromCacheIfAvailable {
   if (!self.url) {
@@ -232,7 +263,8 @@
     [self reloadTableViewDataSourceUsingCache:YES];
   }
   else {
-    [self enterReloadMode];      
+    [self showLoadingIndicator];
+    [self reloadTableViewDataSourceUsingCache:NO];     
   }
 }
 
@@ -241,6 +273,7 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:.3];
 	[self.tableView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
+  [self hideLoadingIndicator];
 	[UIView commitAnimations];
 	[refreshHeaderView setState:PBPullRefreshNormal];
 }
@@ -256,6 +289,7 @@
 }
 
 -(void) reload {
+   [self hideLoadingIndicator];
   [self.tableView reloadData];
 }
 @end

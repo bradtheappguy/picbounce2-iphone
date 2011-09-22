@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "EGOImageButton.h"
 #import "PBCommentListViewController.h"
+#import "PBHTTPRequest.h"
 
 //#define PhotoCellHeight 363
 
@@ -25,6 +26,7 @@
 @synthesize personCountLabel;
 @synthesize hashTagCountLabel;
 @synthesize likeCountLabel;
+@synthesize photo = _photo;
 
 -(void) awakeFromNib {
 
@@ -66,6 +68,44 @@
   return PhotoCellHeight;
 }
 
+-(void) setPhoto:(NSDictionary *)photo {
+  [_photo release];
+  _photo = [photo retain];
+ 
+  NSString *caption = [photo objectForKey:@"caption"];
+  
+  NSString *uuid = [photo objectForKey:@"uuid"];
+  NSString *twitter_avatar_url = [photo objectForKey:@"twitter_avatar_url"];
+  if ([twitter_avatar_url isEqual:[NSNull null]]) {
+    twitter_avatar_url = nil;
+  }
+  NSUInteger likeCount = [[photo objectForKey:@"likes_count"] intValue];
+  NSUInteger bouncesCount = [[photo objectForKey:@"bounces_count"] intValue];
+  NSUInteger commentsCount = [[photo objectForKey:@"comments_count"] intValue];
+  NSUInteger taggedPeopleCount = [[photo objectForKey:@"tagged_people_count"] intValue];
+  NSUInteger tagsCount = [[photo objectForKey:@"tags_count"] intValue];
+  
+  self.photoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://s3.amazonaws.com/com.clixtr.picbounce/photos/%@/big.jpg",uuid]];
+  
+  self.bounceCountLabel.text = [NSString stringWithFormat:@"%d",bouncesCount];
+  self.commentCountLabel.text = [NSString stringWithFormat:@"%d",commentsCount];
+  self.likeCountLabel.text = [NSString stringWithFormat:@"%d",likeCount];
+  self.personCountLabel.text = [NSString stringWithFormat:@"%d",taggedPeopleCount];
+  self.hashTagCountLabel.text = [NSString stringWithFormat:@"%d",tagsCount];
+  
+  
+  if (![caption isEqual:[NSNull null]])
+    self.commentLabel.text = caption;
+  else
+    self.commentLabel.text = @"";
+}
 
+-(IBAction) likeButtonPressed:(id) sender {
+  NSString *url = [NSString stringWithFormat:@"http://%@/photos/%@/like",API_BASE,[_photo objectForKey:@"uuid"]];
+  PBHTTPRequest *likeRequest = [PBHTTPRequest requestWithURL:[NSURL URLWithString:@"http://google.com"]];
+  likeRequest.requestMethod = @"POST";
+  [likeRequest startSynchronous];
+  NSLog(@"GO");
+}
 
 @end
