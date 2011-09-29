@@ -70,3 +70,5 @@
 -(IBAction) uploadButtonPressed:(id)sender;
 -(IBAction) retakeButtonPressed:(id)sender;
 @end
+
+UIImage *scaleAndRotateImage(UIImage *image);

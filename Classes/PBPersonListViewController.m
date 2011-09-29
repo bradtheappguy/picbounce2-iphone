@@ -11,6 +11,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ASIFormDataRequest.h"
 #import "PBPersonTableViewCell.h"
+#import "PBStreamViewController.h"
+#import "AppDelegate.h"
 
 @implementation PBPersonListViewController
 @synthesize showiPhoneContacts = _showiPhoneContacts;
@@ -57,8 +59,18 @@
     [cell.contentView.layer insertSublayer:gradient atIndex:0];
   }
   
-   cell.nameLabel.text = [self.responceData usernameForPersonAtIndex:indexPath.row];
-   cell.screenNameLabel.text = @"Lady Gaga";
+  NSDictionary *person = [self.responceData personAtIndex:indexPath.row];
+  NSString *screenName = [person objectForKey:@"screen_name"];
+  if ([screenName isEqualToString:@"user"]) {
+    cell.nameLabel.text = [self.responceData usernameForPersonAtIndex:indexPath.row];
+    cell.screenNameLabel.text = @"";
+  }
+  else {
+    cell.nameLabel.text = screenName;
+    cell.screenNameLabel.text = [self.responceData usernameForPersonAtIndex:indexPath.row];
+  }
+  
+  
    cell.avatarImageView.imageURL = [NSURL URLWithString:@"http://a0.twimg.com/profile_images/1236631904/DSC07560_-_C_pia_-_C_pia_normal.JPG"];
         
   return cell;
@@ -70,6 +82,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+  NSDictionary *user = [self.responceData personAtIndex:indexPath.row];
+  NSString *userID = [user objectForKey:@"id"];
+  PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
+  vc.baseURL = [NSString stringWithFormat:@"http://%@/users/%@.json?auth_token=%@",API_BASE,userID,[(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]];
+  vc.shouldShowFollowingBar = YES;
+  vc.shouldShowProfileHeader = YES;
+  vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
+  vc.pullsToRefresh = YES;
+  [self.navigationController pushViewController:vc animated:YES];
+  [vc release];
 }
 
 -(void)populateNamesFromAddressBook{
@@ -134,6 +156,7 @@
 }
 
 - (void)viewDidUnload {
+  [super viewDidUnload];
   // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
   // For example: self.myOutlet = nil;
 }
@@ -149,7 +172,7 @@
 }
 
 - (void) reload {
-  namelist = (NSArray *) [self.responceData people];
+  namelist = (NSMutableArray *) [self.responceData people];
   [self.tableView reloadData];
 }
 

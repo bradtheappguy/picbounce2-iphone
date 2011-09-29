@@ -20,6 +20,7 @@
 }
 
 - (BOOL) validate:(id)data;
+-(NSDictionary *) personAtIndex:(NSUInteger) index;
 - (NSDictionary *) photoAtIndex:(NSUInteger) index;
 - (NSMutableArray *) photos;
 - (NSUInteger) numberOfPeople;
@@ -28,7 +29,7 @@
 - (id) initWithResponceData:(id)json_string;
 - (NSURL *) loadMoreDataURL;
 - (NSString *) usernameForPersonAtIndex:(NSUInteger) index;
-- (NSURL *) followersURL;
+- (NSString *) followersURL;
 - (NSString *) lastLocation;
 - (NSString *) timeLabelTextForPhotoAtIndex:(NSUInteger)index;
 - (NSUInteger) followingCount;

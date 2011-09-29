@@ -7,7 +7,7 @@
 //
 
 #import "PicBounce.h"
-#import "PathBoxesAppDelegate.h"
+#import "PicBounce2AppDelegate.h"
 
 @implementation PicBounce
 

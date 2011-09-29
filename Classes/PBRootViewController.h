@@ -22,6 +22,7 @@
   ASIHTTPRequest *request;
 }
 
+- (void)networkLoadDidFail:(ASIHTTPRequest *) request;
 - (void)reloadTableViewDataSourceUsingCache:(BOOL)useCache;
 - (void) loadDataFromCacheIfAvailable;
 - (void) dataSourceDidFinishLoadingNewData;

@@ -16,17 +16,12 @@
 @synthesize reloading = _reloading;
 @synthesize baseURL = _baseURL;
 @synthesize responceData = _responceData;
-@synthesize pullsToRefresh;
+@synthesize pullsToRefresh = _pullsToRefresh;
 
 - (NSURL *) url {
-  NSString *authToken = [(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken];
-  //if (authToken) {
-  //  return [NSURL URLWithString:[NSString stringWithFormat:@"%@?auth_token=%@",self.baseURL,authToken]];
-  //}
-  //else {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.baseURL]];
-  //}
+  return [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.baseURL]];
 }
+
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -42,8 +37,9 @@
   view.backgroundColor = [UIColor redColor];
   self.tableView.tableFooterView = view;
   [view release];
-
+  
 }
+
 
 - (void) viewWillAppear:(BOOL)animated {
   self.navigationItem.title  = @" ";
@@ -52,15 +48,21 @@
   }  
 } 
 
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	// Release any cached data, images, etc that aren't in use.
+- (void) viewWillDisappear:(BOOL)animated {
+  [[ASIHTTPRequest sharedQueue] cancelAllOperations];
 }
+
+
+//Release
+- (void)didReceiveMemoryWarning {
+  [super didReceiveMemoryWarning];
+}
+
 
 - (void)viewDidUnload {
 	refreshHeaderView = nil;
 }
+
 
 -(BOOL) cachedDataAvailable {
   NSDictionary *headers = [[ASIDownloadCache sharedCache] cachedResponseHeadersForURL:[self url]];
@@ -74,12 +76,14 @@
   return YES;
 }
 
+
 - (void)doneLoadingMoreDataFromNetwork:(ASIHTTPRequest *) _request {  
   NSString *json_string = _request.responseString;
   NSLog(@"%@",json_string);
   [self.responceData mergeNewResponceData:json_string];
   [self reload];
 }
+
 
 - (void)doneLoadingTableViewDataFromNetwork:(ASIHTTPRequest *) _request {
 	if ([_request responseStatusCode] >= 400) {
@@ -90,22 +94,22 @@
   PBAPIResponce *resp = [[PBAPIResponce alloc] initWithResponceData:_request.responseString];
   self.responceData = resp;
   [resp release];
-
+  
   SBJSON *parser = [[SBJSON alloc] init];
   self.data = [parser objectWithString:json_string error:nil];
   [parser release];
-
+  
   
   loadMoreDataURL = nil;
-/* 
-  if ([[data class] isSubclassOfClass:[NSDictionary class]]) {
-    if ([data objectForKey:@"user"]) {
-      if ([[data objectForKey:@"user"] objectForKey:@"more_photos_url"]) {
-        loadMoreDataURL = [[data objectForKey:@"user"] objectForKey:@"more_photos_url"];
-      }
-    }
-  }
-*/ 
+  /* 
+   if ([[data class] isSubclassOfClass:[NSDictionary class]]) {
+   if ([data objectForKey:@"user"]) {
+   if ([[data objectForKey:@"user"] objectForKey:@"more_photos_url"]) {
+   loadMoreDataURL = [[data objectForKey:@"user"] objectForKey:@"more_photos_url"];
+   }
+   }
+   }
+   */ 
   
   [self reload];
   
@@ -122,9 +126,9 @@
   [errorHud showUsingAnimation:YES];
   
   [errorHud performSelector:@selector(hideUsingAnimation:) withObject:self afterDelay:2.0];
- // UIAlertView *a = [[UIAlertView alloc] initWithTitle:nil message:@"Error" delegate:nil cancelButtonTitle:@"k" otherButtonTitles:nil];
- // [a show];
- // [a release];
+  // UIAlertView *a = [[UIAlertView alloc] initWithTitle:nil message:@"Error" delegate:nil cancelButtonTitle:@"k" otherButtonTitles:nil];
+  // [a show];
+  // [a release];
   
 	[self dataSourceDidFinishLoadingNewData];
 }
@@ -140,10 +144,10 @@
   
   
   ASICachePolicy cachePolicy = useCache?ASIOnlyLoadIfNotCachedCachePolicy:ASIDoNotReadFromCacheCachePolicy;
-
+  
   request = [ASIHTTPRequest requestWithURL:[self url]
                                 usingCache:useCache?[ASIDownloadCache sharedCache]:nil
-                                            andCachePolicy:cachePolicy];
+                            andCachePolicy:cachePolicy];
   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
   if (authToken) {
     //THE 'X' IN THE PASSWORD IS NEEDED TO FORCE THE NETWORKING LIBRARY TO ADDD
@@ -215,11 +219,11 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (self.pullsToRefresh) {
-	if (scrollView.contentOffset.y <= - 65.0f && !_reloading) {
-    [self enterReloadMode];
-  }
+  if (self.pullsToRefresh) {
+    if (scrollView.contentOffset.y <= - 65.0f && !_reloading) {
+      [self enterReloadMode];
     }
+  }
 }
 
 -(void) showLoadingIndicator {
@@ -234,7 +238,7 @@
   UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
   spinner.center = CGPointMake(108/2, 20);
   [spinner startAnimating];
-
+  
   UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 35, 108, 15)];
   loadingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
   loadingLabel.textColor = [UIColor colorWithRed:252/255.0 green:251/255.0 blue:251/255.0 alpha:1.0];
@@ -243,7 +247,9 @@
   loadingLabel.backgroundColor = [UIColor clearColor];
   
   [loadingView addSubview:spinner];
+  [spinner release];
   [loadingView addSubview:loadingLabel];
+  [loadingLabel release];
   loadingView.center = self.view.center;
   [self.view  addSubview:loadingView];
   
@@ -282,14 +288,14 @@
 #pragma mark Dealloc
 
 - (void)dealloc {
- // [request cancel];
- // [request release];
+  // [request cancel];
+  // [request release];
 	refreshHeaderView = nil;
   [super dealloc];
 }
 
 -(void) reload {
-   [self hideLoadingIndicator];
+  [self hideLoadingIndicator];
   [self.tableView reloadData];
 }
 @end

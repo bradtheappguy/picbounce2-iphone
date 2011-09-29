@@ -1,6 +1,6 @@
 //
 //  ContainerView.h
-//  PathBoxes
+//  PicBounce2
 //
 //  Created by Brad Smith on 11/17/10.
 //  Copyright 2010 Clixtr. All rights reserved.

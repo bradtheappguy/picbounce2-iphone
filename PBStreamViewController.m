@@ -276,7 +276,7 @@
 
 -(UITableViewCell *) uploadingCellForRowAtIndexPath:(NSIndexPath *)indexPath {
   PBUploadingPhotoTableViewCell *upcell = [[[NSBundle mainBundle] loadNibNamed:@"PBUploadingPhotoTableViewCell" owner:nil options:nil] lastObject];
-  PBPhoto *photo = [[PBUploadQueue sharedQueue] photoAtIndex:indexPath.section];
+  NSDictionary *photo = [[PBUploadQueue sharedQueue] photoAtIndex:indexPath.section];
   [upcell setPhoto:photo];
   return upcell;
 }
@@ -380,7 +380,7 @@
 }
 
 -(IBAction) followingButtonPressed { 
-  NSURL *followingURL =[NSURL URLWithString: [self.responceData followingURL] ];
+  NSString *followingURL = [self.responceData followingURL];
   if (followingURL) {
     PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
     vc.title = @"Following";
@@ -391,7 +391,7 @@
 }
 
 -(IBAction) followersButtonPressed {
-  NSURL *followersURL = [self.responceData followersURL];
+  NSString *followersURL = [self.responceData followersURL];
   if (followersURL) {
     PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
     vc.title = @"Followers";

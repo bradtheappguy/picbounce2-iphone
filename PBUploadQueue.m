@@ -32,6 +32,7 @@
   [x addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
   [images addObject:x];
   self.count = images.count;
+  [x release];
 }
 
 -(PBPhoto *) photoAtIndex:(NSUInteger)index {

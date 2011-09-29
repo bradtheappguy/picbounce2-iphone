@@ -26,6 +26,6 @@
 
 - (IBAction)retryButtonPressed:(id)sender;
 - (IBAction)deleteButtonPressed:(id)sender;
--(void) setPhoto:(PBPhoto *)photo;
+- (void) setPhoto:(NSDictionary *)photo;
 
 @end
