@@ -62,6 +62,7 @@
 }
 
 @property (nonatomic, retain)  UIImage *unfilteredImage;
+-(IBAction) photoLibraryButtonPressed:(id)sender;
 -(IBAction) cameraButtonPressed:(id)sender;
 -(IBAction) closeButtonPressed:(id)sender;
 -(IBAction) optionsButtonPressed:(id)sender;

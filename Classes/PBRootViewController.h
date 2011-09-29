@@ -18,7 +18,7 @@
   
   MBProgressHUD *errorHud;
   NSURL *loadMoreDataURL;
-  
+  UIView *loadingView;
   ASIHTTPRequest *request;
 }
 

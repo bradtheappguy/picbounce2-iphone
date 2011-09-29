@@ -134,6 +134,7 @@
 		A2C04B3C13FCAFBB001CD0BC /* PBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3913FCAFBB001CD0BC /* PBTabBarController.m */; };
 		A2C0592A13FDEDFB001CD0BC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C0592913FDEDFB001CD0BC /* CoreMedia.framework */; };
 		A2CED4CA1416C5AB00400DF8 /* PBPersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */; };
+		A2D461BE142A8CA30037F87B /* PBHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D461BD142A8CA30037F87B /* PBHTTPRequest.m */; };
 		A2D9C30413AAE7D20091D5BB /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2C613AAE7D20091D5BB /* DDXMLElementAdditions.m */; };
 		A2D9C30513AAE7D20091D5BB /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2C913AAE7D20091D5BB /* NSString+DDXML.m */; };
 		A2D9C30613AAE7D20091D5BB /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2CC13AAE7D20091D5BB /* DDXMLDocument.m */; };
@@ -722,6 +723,8 @@
 		A2C04B3913FCAFBB001CD0BC /* PBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTabBarController.m; sourceTree = SOURCE_ROOT; };
 		A2C0592913FDEDFB001CD0BC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBPersonTableViewCell.xib; sourceTree = "<group>"; };
+		A2D461BC142A8CA30037F87B /* PBHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBHTTPRequest.h; path = Classes/PBHTTPRequest.h; sourceTree = "<group>"; };
+		A2D461BD142A8CA30037F87B /* PBHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBHTTPRequest.m; path = Classes/PBHTTPRequest.m; sourceTree = "<group>"; };
 		A2D9C2C513AAE7D20091D5BB /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		A2D9C2C613AAE7D20091D5BB /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		A2D9C2C813AAE7D20091D5BB /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -1184,6 +1187,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A2D461BC142A8CA30037F87B /* PBHTTPRequest.h */,
+				A2D461BD142A8CA30037F87B /* PBHTTPRequest.m */,
 				A247A3F014085C840068FDCA /* CircleView.h */,
 				A247A3F114085C840068FDCA /* CircleView.m */,
 				A28BF6171402EACD00A5BF9E /* PBPhoto.h */,
@@ -2678,6 +2683,7 @@
 				A247A3F214085C840068FDCA /* CircleView.m in Sources */,
 				A2626FE614197BB300F873B7 /* PBPersonTableViewCell.m in Sources */,
 				A2EE48C71423F0FB00853658 /* PBFilteredImage.m in Sources */,
+				A2D461BE142A8CA30037F87B /* PBHTTPRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

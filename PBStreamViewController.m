@@ -19,6 +19,7 @@
 #import "PBStreamViewController.h"
 #import "PBUploadingPhotoTableViewCell.h"
 #import "PBPersonListViewController.h"
+#import "PBHTTPRequest.h"
 
 @implementation PBStreamViewController
 
@@ -254,19 +255,9 @@
 - (UITableViewCell *)photoCellForRowAtIndex:(NSUInteger)index {
   NSArray *arrayOfPhotos = [self.responceData photos];
   id photo = [arrayOfPhotos objectAtIndex:index];
-  NSString *caption = [photo objectForKey:@"caption"];
+ 
   
-  NSString *uuid = [photo objectForKey:@"uuid"];
-  NSString *twitter_avatar_url = [photo objectForKey:@"twitter_avatar_url"];
-  NSUInteger likeCount = [[photo objectForKey:@"likes_count"] intValue];
-  NSUInteger bouncesCount = [[photo objectForKey:@"bounces_count"] intValue];
-  NSUInteger commentsCount = [[photo objectForKey:@"comments_count"] intValue];
-  NSUInteger taggedPeopleCount = [[photo objectForKey:@"tagged_people_count"] intValue];
-  NSUInteger tagsCount = [[photo objectForKey:@"tags_count"] intValue];
   
-  if ([twitter_avatar_url isEqual:[NSNull null]]) {
-    twitter_avatar_url = nil;
-  }
   static NSString *MyIdentifier = @"CELL";
   PBPhotoCell *_cell = (PBPhotoCell *)[self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
   if (_cell == nil) {
@@ -274,21 +265,11 @@
     _cell = cell;
     // self.tvCell = nil;
   }
+  [_cell setPhoto:photo];
+  
   _cell.tableViewController = self;
   
-  _cell.photoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://s3.amazonaws.com/com.clixtr.picbounce/photos/%@/big.jpg",uuid]];
-  
-  _cell.bounceCountLabel.text = [NSString stringWithFormat:@"%d",bouncesCount];
-  _cell.commentCountLabel.text = [NSString stringWithFormat:@"%d",commentsCount];
-  _cell.likeCountLabel.text = [NSString stringWithFormat:@"%d",likeCount];
-  _cell.personCountLabel.text = [NSString stringWithFormat:@"%d",taggedPeopleCount];
-  _cell.hashTagCountLabel.text = [NSString stringWithFormat:@"%d",tagsCount];
-  
-  
-  if (![caption isEqual:[NSNull null]])
-    _cell.commentLabel.text = caption;
-  else
-    _cell.commentLabel.text = @"";
+
   return cell;
 }
 
@@ -299,6 +280,7 @@
   [upcell setPhoto:photo];
   return upcell;
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   if (self.shouldShowUplodingItems == NO) {
@@ -434,8 +416,7 @@
 
 
 
--(IBAction) bounceButtonPressed:(id) sender {
-}
+
 
 
 -(IBAction) loginButtonPressed:(id)sender {

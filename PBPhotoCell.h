@@ -15,9 +15,11 @@
 
 + (CGFloat) height;
 -(void) addPhotoView:(UIView *)view ToFollowerScrollViewAtIndex:(NSUInteger) index;
+-(IBAction) likeButtonPressed:(id) sender;
 
 @property (nonatomic, assign) UITableViewController *tableViewController;
 
+@property (nonatomic, retain) NSDictionary *photo;
 
 @property (nonatomic, retain) IBOutlet UILabel *viewCountLabel;
 @property (nonatomic, retain) IBOutlet UILabel *bounceCountLabel;

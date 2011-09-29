@@ -593,7 +593,19 @@ bail:
 
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-  UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+  cameraToolbar.center = CGPointMake(cameraToolbar.center.x - 320, cameraToolbar.center.y);
+  flipButton.alpha = 0;
+  flashButton.alpha = 0;
+  
+  [self dismissModalViewControllerAnimated:YES];
+  [unfilteredImage release];
+  
+  unfilteredImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+  [unfilteredImage retain];
+  
+  uploadPreviewImage.image = unfilteredImage;
+  
 }
 
 
@@ -687,5 +699,12 @@ bail:
   else if (button.mode == FlashButtonModeTorch) {
     
   }
+}
+
+-(IBAction) photoLibraryButtonPressed:(id)sender {
+  UIImagePickerController *photoLibraryPicker = [[UIImagePickerController alloc] init];
+  photoLibraryPicker.delegate = self;
+  [self presentModalViewController:photoLibraryPicker animated:YES];
+  [photoLibraryPicker release];
 }
 @end
