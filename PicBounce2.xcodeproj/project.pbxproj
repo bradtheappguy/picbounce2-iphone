@@ -36,22 +36,16 @@
 		A205F41313145069003756CA /* PBPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A205F41213145069003756CA /* PBPhotoCell.m */; };
 		A205F92B1314B41E003756CA /* PBPersonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A205F9291314B41E003756CA /* PBPersonListViewController.m */; };
 		A205F92C1314B41E003756CA /* PBPersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A205F92A1314B41E003756CA /* PBPersonListViewController.xib */; };
-		A205F9421314B556003756CA /* PBBadgeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A205F9401314B556003756CA /* PBBadgeCollectionViewController.m */; };
-		A205F9431314B556003756CA /* PBBadgeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */; };
 		A2222831133F075E00239E0F /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A222282F133F075E00239E0F /* MyView.m */; };
 		A227E36412FB38A600701013 /* PBRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36312FB38A600701013 /* PBRefreshTableHeaderView.m */; };
 		A227E36712FB38B000701013 /* PBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36612FB38B000701013 /* PBRootViewController.m */; };
 		A227E37312FB38E300701013 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A227E37212FB38E300701013 /* QuartzCore.framework */; };
 		A22C149E1385B58F001ACB13 /* PBTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A22C149D1385B58F001ACB13 /* PBTwitterViewController.m */; };
 		A22C14A21385B5D3001ACB13 /* PBAuthWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A22C14A01385B5D3001ACB13 /* PBAuthWebViewController.m */; };
-		A22C14A31385B5D3001ACB13 /* PBAuthWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22C14A11385B5D3001ACB13 /* PBAuthWebViewController.xib */; };
 		A2317F8613908CA100761C47 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2317F8513908CA100761C47 /* Entitlements.plist */; };
 		A231BF961316F62800AE9F71 /* PBCommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A231BF941316F62800AE9F71 /* PBCommentListViewController.m */; };
-		A231BF971316F62800AE9F71 /* PBCommentListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A231BF951316F62800AE9F71 /* PBCommentListViewController.xib */; };
 		A23578F713270BB3008D31A2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A23578F613270BB3008D31A2 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		A23EDC3D13EB6074004C10CE /* PBProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A23EDC3C13EB6072004C10CE /* PBProfileHeaderView.m */; };
-		A24259D212949C2300EBC83A /* PBExpandingPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A24259D112949C2300EBC83A /* PBExpandingPhotoView.m */; };
-		A2425A0B1294A1F700EBC83A /* PBContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2425A0A1294A1F700EBC83A /* PBContainerView.m */; };
 		A247A3F214085C840068FDCA /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A247A3F114085C840068FDCA /* CircleView.m */; };
 		A251198B1406FB820093E023 /* PBIconLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A251198A1406FB820093E023 /* PBIconLabel.m */; };
 		A2512C93140731640093E023 /* PBButtonWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2512C92140731630093E023 /* PBButtonWithLabel.m */; };
@@ -127,7 +121,6 @@
 		A2988AE413F0BE420007E7F4 /* DONORS in Resources */ = {isa = PBXBuildFile; fileRef = A2988A5513F0BE410007E7F4 /* DONORS */; };
 		A2988AE613F0BE420007E7F4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A2988A5B13F0BE410007E7F4 /* Reachability.m */; };
 		A29A930B131DA68300DB6D46 /* PBAPIResponce.m in Sources */ = {isa = PBXBuildFile; fileRef = A29A930A131DA68300DB6D46 /* PBAPIResponce.m */; };
-		A29A9579131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = A29A9578131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m */; };
 		A2A0E6FC13C3BFC9002CC14F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A0E6FB13C3BFC9002CC14F /* AVFoundation.framework */; };
 		A2A0E6FF13C3C146002CC14F /* PBCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A0E6FE13C3C146002CC14F /* PBCameraViewController.m */; };
 		A2A0FE9713CC2ADC0058908D /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = A2A0FE3913CC2ADC0058908D /* README.markdown */; };
@@ -135,7 +128,6 @@
 		A2A0FEA413CC2ADC0058908D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A0FEA313CC2ADC0058908D /* CoreText.framework */; };
 		A2BE3D64129DFC09003E8F44 /* PBNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BE3D63129DFC09003E8F44 /* PBNavigationBar.m */; };
 		A2BE3DB9129E00EB003E8F44 /* PBStreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BE3DB7129E00EB003E8F44 /* PBStreamViewController.xib */; };
-		A2BE3E3C129E0E94003E8F44 /* PBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BE3E3B129E0E94003E8F44 /* PBTableViewCell.m */; };
 		A2C0469913FC9950001CD0BC /* PBCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C0469813FC9950001CD0BC /* PBCameraViewController.xib */; };
 		A2C04B3A13FCAFBB001CD0BC /* PBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3513FCAFBB001CD0BC /* PBNavigationController.m */; };
 		A2C04B3B13FCAFBB001CD0BC /* PBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */; };
@@ -152,9 +144,6 @@
 		A2D9C32313AAE86D0091D5BB /* HTFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C31813AAE86D0091D5BB /* HTFunctions.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		A2D9C32413AAE86D0091D5BB /* HTNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C31A13AAE86D0091D5BB /* HTNotice.m */; };
 		A2D9C32513AAE86D0091D5BB /* HTNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C31C13AAE86D0091D5BB /* HTNotifier.m */; settings = {COMPILER_FLAGS = "-Wno-distributed-object-modifiers"; }; };
-		A2E15821136A42D3003E96B9 /* FacebookSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E15820136A42D3003E96B9 /* FacebookSingleton.m */; };
-		A2E415F81343EE3F000D9CFA /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */; };
-		A2E415FA13441392000D9CFA /* PBCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2E415F913441392000D9CFA /* PBCommentCell.xib */; };
 		A2E69CDF13ABF1E8009B300E /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E69CDE13ABF1E8009B300E /* libicucore.dylib */; };
 		A2E8EFDE13CCEA9400CB9B76 /* FlashButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E8EFDD13CCEA9400CB9B76 /* FlashButton.m */; };
 		A2EC99CB13DA414200822659 /* PBFollowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EC99CA13DA414200822659 /* PBFollowButton.m */; };
@@ -572,11 +561,7 @@
 		A205F9281314B41E003756CA /* PBPersonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPersonListViewController.h; sourceTree = "<group>"; };
 		A205F9291314B41E003756CA /* PBPersonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPersonListViewController.m; sourceTree = "<group>"; };
 		A205F92A1314B41E003756CA /* PBPersonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBPersonListViewController.xib; sourceTree = "<group>"; };
-		A205F93F1314B556003756CA /* PBBadgeCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBadgeCollectionViewController.h; sourceTree = "<group>"; };
-		A205F9401314B556003756CA /* PBBadgeCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBBadgeCollectionViewController.m; sourceTree = "<group>"; };
-		A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBBadgeCollectionViewController.xib; sourceTree = "<group>"; };
 		A222282F133F075E00239E0F /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
-		A2222830133F075E00239E0F /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
 		A227E36212FB38A600701013 /* PBRefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRefreshTableHeaderView.h; sourceTree = "<group>"; };
 		A227E36312FB38A600701013 /* PBRefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBRefreshTableHeaderView.m; sourceTree = "<group>"; };
 		A227E36512FB38B000701013 /* PBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRootViewController.h; sourceTree = "<group>"; };
@@ -584,21 +569,13 @@
 		A227E37212FB38E300701013 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A22C149C1385B58F001ACB13 /* PBTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTwitterViewController.h; sourceTree = "<group>"; };
 		A22C149D1385B58F001ACB13 /* PBTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTwitterViewController.m; sourceTree = "<group>"; };
-		A22C149F1385B5D3001ACB13 /* PBAuthWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBAuthWebViewController.h; sourceTree = "<group>"; };
 		A22C14A01385B5D3001ACB13 /* PBAuthWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBAuthWebViewController.m; sourceTree = "<group>"; };
-		A22C14A11385B5D3001ACB13 /* PBAuthWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBAuthWebViewController.xib; sourceTree = "<group>"; };
 		A2317F8513908CA100761C47 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Entitlements.plist; path = ../Entitlements.plist; sourceTree = "<group>"; };
-		A231BF931316F62800AE9F71 /* PBCommentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBCommentListViewController.h; sourceTree = "<group>"; };
 		A231BF941316F62800AE9F71 /* PBCommentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBCommentListViewController.m; sourceTree = "<group>"; };
-		A231BF951316F62800AE9F71 /* PBCommentListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBCommentListViewController.xib; sourceTree = "<group>"; };
 		A23578F513270BB3008D31A2 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../MBProgressHUD.h; sourceTree = "<group>"; };
 		A23578F613270BB3008D31A2 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../MBProgressHUD.m; sourceTree = "<group>"; };
 		A23EDC3B13EB6071004C10CE /* PBProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBProfileHeaderView.h; sourceTree = "<group>"; };
 		A23EDC3C13EB6072004C10CE /* PBProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBProfileHeaderView.m; sourceTree = "<group>"; };
-		A24259D012949C2300EBC83A /* PBExpandingPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBExpandingPhotoView.h; sourceTree = "<group>"; };
-		A24259D112949C2300EBC83A /* PBExpandingPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBExpandingPhotoView.m; sourceTree = "<group>"; };
-		A2425A091294A1F700EBC83A /* PBContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBContainerView.h; sourceTree = "<group>"; };
-		A2425A0A1294A1F700EBC83A /* PBContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBContainerView.m; sourceTree = "<group>"; };
 		A247A3F014085C840068FDCA /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		A247A3F114085C840068FDCA /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		A25119891406FB820093E023 /* PBIconLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBIconLabel.h; sourceTree = "<group>"; };
@@ -727,8 +704,6 @@
 		A2988A5B13F0BE410007E7F4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A29A9309131DA68300DB6D46 /* PBAPIResponce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBAPIResponce.h; sourceTree = "<group>"; };
 		A29A930A131DA68300DB6D46 /* PBAPIResponce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBAPIResponce.m; sourceTree = "<group>"; };
-		A29A9577131F21E500DB6D46 /* NSDate+TimeFromNowFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeFromNowFormat.h"; sourceTree = "<group>"; };
-		A29A9578131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeFromNowFormat.m"; sourceTree = "<group>"; };
 		A2A0E6FB13C3BFC9002CC14F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A2A0E6FD13C3C146002CC14F /* PBCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBCameraViewController.h; path = ../PBCameraViewController.h; sourceTree = "<group>"; };
 		A2A0E6FE13C3C146002CC14F /* PBCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBCameraViewController.m; path = ../PBCameraViewController.m; sourceTree = "<group>"; };
@@ -736,11 +711,8 @@
 		A2A0FE3A13CC2ADC0058908D /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		A2A0FE3B13CC2ADC0058908D /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		A2A0FEA313CC2ADC0058908D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		A2BE3D62129DFC09003E8F44 /* PBNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBNavigationBar.h; sourceTree = "<group>"; };
 		A2BE3D63129DFC09003E8F44 /* PBNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBNavigationBar.m; sourceTree = "<group>"; };
 		A2BE3DB7129E00EB003E8F44 /* PBStreamViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBStreamViewController.xib; sourceTree = "<group>"; };
-		A2BE3E3A129E0E94003E8F44 /* PBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTableViewCell.h; sourceTree = "<group>"; };
-		A2BE3E3B129E0E94003E8F44 /* PBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTableViewCell.m; sourceTree = "<group>"; };
 		A2C0469813FC9950001CD0BC /* PBCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBCameraViewController.xib; sourceTree = "<group>"; };
 		A2C04B3413FCAFBB001CD0BC /* PBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBNavigationController.h; sourceTree = SOURCE_ROOT; };
 		A2C04B3513FCAFBB001CD0BC /* PBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBNavigationController.m; sourceTree = SOURCE_ROOT; };
@@ -779,11 +751,6 @@
 		A2D9C31F13AAE86D0091D5BB /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/HTNotifier.strings; sourceTree = "<group>"; };
 		A2D9C32013AAE86D0091D5BB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/HTNotifier.strings; sourceTree = "<group>"; };
 		A2D9C32113AAE86D0091D5BB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/HTNotifier.strings"; sourceTree = "<group>"; };
-		A2E1581F136A42D3003E96B9 /* FacebookSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookSingleton.h; sourceTree = "<group>"; };
-		A2E15820136A42D3003E96B9 /* FacebookSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookSingleton.m; sourceTree = "<group>"; };
-		A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
-		A2E415F71343EE3F000D9CFA /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
-		A2E415F913441392000D9CFA /* PBCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBCommentCell.xib; sourceTree = "<group>"; };
 		A2E69CDE13ABF1E8009B300E /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		A2E8EFDC13CCEA9400CB9B76 /* FlashButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlashButton.h; path = ../FlashButton.h; sourceTree = "<group>"; };
 		A2E8EFDD13CCEA9400CB9B76 /* FlashButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlashButton.m; path = ../FlashButton.m; sourceTree = "<group>"; };
@@ -1293,14 +1260,8 @@
 		A2363F38133F0E7E00F76FFD /* Comments */ = {
 			isa = PBXGroup;
 			children = (
-				A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */,
-				A2E415F71343EE3F000D9CFA /* HPTextViewInternal.h */,
 				A222282F133F075E00239E0F /* MyView.m */,
-				A2222830133F075E00239E0F /* MyView.h */,
-				A231BF931316F62800AE9F71 /* PBCommentListViewController.h */,
 				A231BF941316F62800AE9F71 /* PBCommentListViewController.m */,
-				A231BF951316F62800AE9F71 /* PBCommentListViewController.xib */,
-				A2E415F913441392000D9CFA /* PBCommentCell.xib */,
 			);
 			name = Comments;
 			sourceTree = "<group>";
@@ -1606,13 +1567,6 @@
 				A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */,
 				A2C04B3813FCAFBB001CD0BC /* PBTabBarController.h */,
 				A2C04B3913FCAFBB001CD0BC /* PBTabBarController.m */,
-				A2BE3E3A129E0E94003E8F44 /* PBTableViewCell.h */,
-				A2BE3E3B129E0E94003E8F44 /* PBTableViewCell.m */,
-				A24259D012949C2300EBC83A /* PBExpandingPhotoView.h */,
-				A24259D112949C2300EBC83A /* PBExpandingPhotoView.m */,
-				A2425A091294A1F700EBC83A /* PBContainerView.h */,
-				A2425A0A1294A1F700EBC83A /* PBContainerView.m */,
-				A2BE3D62129DFC09003E8F44 /* PBNavigationBar.h */,
 				A2BE3D63129DFC09003E8F44 /* PBNavigationBar.m */,
 				A2F2663D1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m */,
 				A2F2663E1315C07C00F4E0A0 /* PBTableTitleTableViewCell.h */,
@@ -1640,12 +1594,7 @@
 				A205F9281314B41E003756CA /* PBPersonListViewController.h */,
 				A205F9291314B41E003756CA /* PBPersonListViewController.m */,
 				A205F92A1314B41E003756CA /* PBPersonListViewController.xib */,
-				A205F93F1314B556003756CA /* PBBadgeCollectionViewController.h */,
-				A205F9401314B556003756CA /* PBBadgeCollectionViewController.m */,
-				A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */,
-				A22C149F1385B5D3001ACB13 /* PBAuthWebViewController.h */,
 				A22C14A01385B5D3001ACB13 /* PBAuthWebViewController.m */,
-				A22C14A11385B5D3001ACB13 /* PBAuthWebViewController.xib */,
 				A205F0BE1312C851003756CA /* PBFilterViewController.m */,
 				A205F0BF1312C851003756CA /* PBFilterViewController.h */,
 				A227E36512FB38B000701013 /* PBRootViewController.h */,
@@ -1662,8 +1611,6 @@
 			children = (
 				A29A9309131DA68300DB6D46 /* PBAPIResponce.h */,
 				A29A930A131DA68300DB6D46 /* PBAPIResponce.m */,
-				A2E1581F136A42D3003E96B9 /* FacebookSingleton.h */,
-				A2E15820136A42D3003E96B9 /* FacebookSingleton.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1678,8 +1625,6 @@
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* PicBounce2-Info.plist */,
-				A29A9577131F21E500DB6D46 /* NSDate+TimeFromNowFormat.h */,
-				A29A9578131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -2227,16 +2172,12 @@
 				A2BE3DB9129E00EB003E8F44 /* PBStreamViewController.xib in Resources */,
 				A205F22A13130CA2003756CA /* PBPhotoCell.xib in Resources */,
 				A205F92C1314B41E003756CA /* PBPersonListViewController.xib in Resources */,
-				A205F9431314B556003756CA /* PBBadgeCollectionViewController.xib in Resources */,
 				A2F2663B1315C04B00F4E0A0 /* TableTitleTableViewCell.xib in Resources */,
-				A231BF971316F62800AE9F71 /* PBCommentListViewController.xib in Resources */,
 				A26E721B133431C800BD737D /* PBPhotoHeaderView.xib in Resources */,
-				A2E415FA13441392000D9CFA /* PBCommentCell.xib in Resources */,
 				74A1CA38136810D600F63EF5 /* Eng.strings in Resources */,
 				74A1CA5313682C8E00F63EF5 /* FBDialog.bundle in Resources */,
 				74A1CAA6136858DD00F63EF5 /* FBConnect.bundle in Resources */,
 				A2A0FE9713CC2ADC0058908D /* README.markdown in Resources */,
-				A22C14A31385B5D3001ACB13 /* PBAuthWebViewController.xib in Resources */,
 				A28DE347138B34D100B56C12 /* PBLoginViewController.xib in Resources */,
 				A2317F8613908CA100761C47 /* Entitlements.plist in Resources */,
 				A2D9C32213AAE86D0091D5BB /* HTNotifier.strings in Resources */,
@@ -2649,10 +2590,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
-				A24259D212949C2300EBC83A /* PBExpandingPhotoView.m in Sources */,
-				A2425A0B1294A1F700EBC83A /* PBContainerView.m in Sources */,
 				A2BE3D64129DFC09003E8F44 /* PBNavigationBar.m in Sources */,
-				A2BE3E3C129E0E94003E8F44 /* PBTableViewCell.m in Sources */,
 				A227E36412FB38A600701013 /* PBRefreshTableHeaderView.m in Sources */,
 				A227E36712FB38B000701013 /* PBRootViewController.m in Sources */,
 				A273CB2D130AF148003FE8DA /* NSObject+SBJSON.m in Sources */,
@@ -2672,15 +2610,12 @@
 				A205F1121312E708003756CA /* PBStreamViewController.m in Sources */,
 				A205F41313145069003756CA /* PBPhotoCell.m in Sources */,
 				A205F92B1314B41E003756CA /* PBPersonListViewController.m in Sources */,
-				A205F9421314B556003756CA /* PBBadgeCollectionViewController.m in Sources */,
 				A2F2663F1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m in Sources */,
 				A231BF961316F62800AE9F71 /* PBCommentListViewController.m in Sources */,
 				A29A930B131DA68300DB6D46 /* PBAPIResponce.m in Sources */,
-				A29A9579131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m in Sources */,
 				A23578F713270BB3008D31A2 /* MBProgressHUD.m in Sources */,
 				A26E720D1334244E00BD737D /* PBPhotoHeaderView.m in Sources */,
 				A2222831133F075E00239E0F /* MyView.m in Sources */,
-				A2E415F81343EE3F000D9CFA /* HPTextViewInternal.m in Sources */,
 				7452D1AE135D916F0024C63C /* ProfileSettingView.m in Sources */,
 				7452D1C0135DB8220024C63C /* ProfileAboutView.m in Sources */,
 				74C514F3135EE3C800ED9844 /* AccountSettingView.m in Sources */,
@@ -2689,7 +2624,6 @@
 				74A1CA5913682CFF00F63EF5 /* FBLoginDialog.m in Sources */,
 				74A1CA5D13682D1100F63EF5 /* Facebook.m in Sources */,
 				74A1CA5F13682D1700F63EF5 /* FBRequest.m in Sources */,
-				A2E15821136A42D3003E96B9 /* FacebookSingleton.m in Sources */,
 				74AED8D1136E83A900CC6164 /* FriendListView.m in Sources */,
 				A2A0FE9813CC2ADC0058908D /* TTTAttributedLabel.m in Sources */,
 				A22C149E1385B58F001ACB13 /* PBTwitterViewController.m in Sources */,
