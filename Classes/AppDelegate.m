@@ -67,6 +67,7 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
     PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    navigationController.navigationBarHidden = YES;
     [self.tabBarController presentModalViewController:navigationController animated:YES];
     [navigationController release];
     [loginViewController release];

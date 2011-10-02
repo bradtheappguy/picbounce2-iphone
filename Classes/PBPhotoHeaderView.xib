@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">11B26</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1923</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
 		<string key="IBDocument.AppKitVersion">1138</string>
 		<string key="IBDocument.HIToolboxVersion">566.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">919</string>
+			<string key="NS.object.0">931</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -218,7 +218,6 @@
 						<string key="NSFrame">{{52, 25}, {9, 11}}</string>
 						<reference key="NSSuperview" ref="201613342"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:551</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -449,6 +448,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PBPhotoCell</string>
 					<string key="superclassName">UITableViewCell</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">likeButtonPressed:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">likeButtonPressed:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">likeButtonPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
@@ -610,12 +620,16 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>followButtonPressed:</string>
 							<string>followersCountButtonPressed:</string>
 							<string>followingCountButtonPressed:</string>
 							<string>photoCountButtonPressed:</string>
+							<string>unfollowButtonPressed:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -625,12 +639,18 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>followButtonPressed:</string>
 							<string>followersCountButtonPressed:</string>
 							<string>followingCountButtonPressed:</string>
 							<string>photoCountButtonPressed:</string>
+							<string>unfollowButtonPressed:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">followButtonPressed:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 							<object class="IBActionInfo">
 								<string key="name">followersCountButtonPressed:</string>
 								<string key="candidateClassName">id</string>
@@ -643,6 +663,10 @@
 								<string key="name">photoCountButtonPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
+							<object class="IBActionInfo">
+								<string key="name">unfollowButtonPressed:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
@@ -650,17 +674,23 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>avatarImageView</string>
+							<string>followButton</string>
 							<string>followersCountButton</string>
 							<string>followingCountButton</string>
+							<string>isFollowingYouLabel</string>
 							<string>nameLabel</string>
 							<string>photoCountButton</string>
+							<string>unfollowButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>EGOImageView</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
+							<string>UIButton</string>
 							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UIButton</string>
 							<string>UIButton</string>
 						</object>
 					</object>
@@ -669,16 +699,23 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>avatarImageView</string>
+							<string>followButton</string>
 							<string>followersCountButton</string>
 							<string>followingCountButton</string>
+							<string>isFollowingYouLabel</string>
 							<string>nameLabel</string>
 							<string>photoCountButton</string>
+							<string>unfollowButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">avatarImageView</string>
 								<string key="candidateClassName">EGOImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">followButton</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">followersCountButton</string>
@@ -689,11 +726,19 @@
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">isFollowingYouLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">nameLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">photoCountButton</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">unfollowButton</string>
 								<string key="candidateClassName">UIButton</string>
 							</object>
 						</object>
@@ -719,16 +764,14 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>badgesButtonPressed</string>
-							<string>bounceButtonPressed:</string>
-							<string>followButtonPressed:</string>
 							<string>followersButtonPressed</string>
 							<string>followingButtonPressed</string>
+							<string>loginButtonPressed:</string>
 							<string>photosButtonPressed</string>
 							<string>taggedPeopleButtonPressed:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -742,10 +785,9 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>badgesButtonPressed</string>
-							<string>bounceButtonPressed:</string>
-							<string>followButtonPressed:</string>
 							<string>followersButtonPressed</string>
 							<string>followingButtonPressed</string>
+							<string>loginButtonPressed:</string>
 							<string>photosButtonPressed</string>
 							<string>taggedPeopleButtonPressed:</string>
 						</object>
@@ -756,19 +798,15 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">bounceButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">followButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
 								<string key="name">followersButtonPressed</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">followingButtonPressed</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">loginButtonPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -798,6 +836,7 @@
 							<string>preloadedLocation</string>
 							<string>preloadedName</string>
 							<string>profileHeader</string>
+							<string>profileHeaderWithFollowBar</string>
 							<string>segmentedControl</string>
 							<string>setting</string>
 							<string>tableTitleTableViewCell</string>
@@ -817,6 +856,7 @@
 							<string>NSString</string>
 							<string>NSString</string>
 							<string>PBProfileHeaderView</string>
+							<string>UIView</string>
 							<string>UISegmentedControl</string>
 							<string>UIButton</string>
 							<string>PBTableTitleTableViewCell</string>
@@ -839,6 +879,7 @@
 							<string>preloadedLocation</string>
 							<string>preloadedName</string>
 							<string>profileHeader</string>
+							<string>profileHeaderWithFollowBar</string>
 							<string>segmentedControl</string>
 							<string>setting</string>
 							<string>tableTitleTableViewCell</string>
@@ -896,6 +937,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">profileHeader</string>
 								<string key="candidateClassName">PBProfileHeaderView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">profileHeaderWithFollowBar</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">segmentedControl</string>
@@ -964,6 +1009,6 @@
 				<string>{640, 86}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">919</string>
+		<string key="IBCocoaTouchPluginVersion">931</string>
 	</data>
 </archive>
