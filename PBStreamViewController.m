@@ -50,7 +50,7 @@
 - (void) reload {
   [self.tableView reloadData];
   
-  NSDictionary *user = [self.responceData user];
+  NSDictionary *user = [self.responseData user];
   self.navigationItem.title = [user objectForKey:@"screen_name"]; 
   
   if (user && shouldShowProfileHeader) {
@@ -109,7 +109,7 @@
 - (void) logoutButtonPressed:(id)sender {
   [(AppDelegate *)[[UIApplication sharedApplication] delegate] setAuthToken:nil];
   //self.url = nil;
-  self.responceData = nil;
+  self.responseData = nil;
   self.tableView.tableHeaderView = nil;
   [[ASIDownloadCache sharedCache] clearCachedResponsesForStoragePolicy:ASICacheForSessionDurationCacheStoragePolicy];
   [[ASIDownloadCache sharedCache] clearCachedResponsesForStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
@@ -155,7 +155,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
   NSUInteger nUploading = [[PBUploadQueue sharedQueue] count]; 
-  NSUInteger nPhotos = [[self.responceData photos] count]; 
+  NSUInteger nPhotos = [[self.responseData photos] count]; 
   if (self.shouldShowUplodingItems) {
     return nUploading + nPhotos;
   }
@@ -225,7 +225,7 @@
   [[NSBundle mainBundle] loadNibNamed:@"PBPhotoHeaderView" owner:self options:nil];
   
   
-  NSDictionary *photo = [self.responceData photoAtIndex:section];
+  NSDictionary *photo = [self.responseData photoAtIndex:section];
   NSDictionary *user = [photo objectForKey:@"user"];
   
   NSString *name = [user objectForKey:@"display_name"];
@@ -236,7 +236,7 @@
   photoHeader.userID = userID;
   photoHeader.nameLabel.text = name;
   photoHeader.locationLabel.text = lastLocation;
-  photoHeader.timeLabel.text = [self.responceData timeLabelTextForPhotoAtIndex:section];
+  photoHeader.timeLabel.text = [self.responseData timeLabelTextForPhotoAtIndex:section];
   
   if (![avatarURL isEqual:[NSNull null]]) {
     photoHeader.avatarImage.imageURL = [NSURL URLWithString: avatarURL];
@@ -253,9 +253,8 @@
 
 
 - (UITableViewCell *)photoCellForRowAtIndex:(NSUInteger)index {
-  NSArray *arrayOfPhotos = [self.responceData photos];
-  id photo = [arrayOfPhotos objectAtIndex:index];
- 
+  id photo = [self.responseData photoAtIndex:index];
+  
   
   
   static NSString *MyIdentifier = @"CELL";
@@ -380,7 +379,7 @@
 }
 
 -(IBAction) followingButtonPressed { 
-  NSString *followingURL = [self.responceData followingURL];
+  NSString *followingURL = [self.responseData followingURL];
   if (followingURL) {
     PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
     vc.title = @"Following";
@@ -391,7 +390,7 @@
 }
 
 -(IBAction) followersButtonPressed {
-  NSString *followersURL = [self.responceData followersURL];
+  NSString *followersURL = [self.responseData followersURL];
   if (followersURL) {
     PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
     vc.title = @"Followers";

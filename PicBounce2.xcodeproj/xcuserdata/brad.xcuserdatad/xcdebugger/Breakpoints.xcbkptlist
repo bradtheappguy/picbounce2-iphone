@@ -79,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PBCameraViewController.m"
-         timestampString = "337905715.752701"
+         timestampString = "339637805.097937"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "160"
-         endingLineNumber = "160"
+         startingLineNumber = "161"
+         endingLineNumber = "161"
          landmarkName = "-getSubImageFrom:WithRect:"
          landmarkType = "5">
       </FileBreakpoint>

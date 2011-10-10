@@ -23,6 +23,7 @@
 //#import "CaptureSessionManager.h"
 #import "AppDelegate.h"
 
+#import "AFFeatherController.h"
 
 
 UIImage *scaleAndRotateImage(UIImage *image)
@@ -598,7 +599,11 @@ bail:
   flipButton.alpha = 0;
   flashButton.alpha = 0;
   
-  [self dismissModalViewControllerAnimated:YES];
+  [self.tabBarController setSelectedIndex:2];
+  //[//picker dismissModalViewControllerAnimated:YES];
+  
+  
+ // [self.tabBarController dismissModalViewControllerAnimated:YES];
   [unfilteredImage release];
   
   unfilteredImage = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -606,6 +611,9 @@ bail:
   
   uploadPreviewImage.image = unfilteredImage;
   
+  AFFeatherController *fvc = [[AFFeatherController alloc] initWithImage:unfilteredImage];
+  [picker presentModalViewController:fvc animated:NO];
+  [fvc release];
 }
 
 

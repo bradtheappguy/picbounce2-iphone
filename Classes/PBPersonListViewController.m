@@ -3,8 +3,7 @@
 //  PicBounce2
 //
 //  Created by BradSmith on 2/22/11.
-//  Copyright 2011 Clixtr. All rights reserved.
-//
+//  Copyright 2011 Clixtr. All rights reserve
 
 #import "PBPersonListViewController.h"
 #import "EGOImageView.h"
@@ -59,15 +58,15 @@
     [cell.contentView.layer insertSublayer:gradient atIndex:0];
   }
   
-  NSDictionary *person = [self.responceData personAtIndex:indexPath.row];
+  NSDictionary *person = [self.responseData personAtIndex:indexPath.row];
   NSString *screenName = [person objectForKey:@"screen_name"];
   if ([screenName isEqualToString:@"user"]) {
-    cell.nameLabel.text = [self.responceData usernameForPersonAtIndex:indexPath.row];
+    cell.nameLabel.text = [self.responseData usernameForPersonAtIndex:indexPath.row];
     cell.screenNameLabel.text = @"";
   }
   else {
     cell.nameLabel.text = screenName;
-    cell.screenNameLabel.text = [self.responceData usernameForPersonAtIndex:indexPath.row];
+    cell.screenNameLabel.text = [self.responseData usernameForPersonAtIndex:indexPath.row];
   }
   
   
@@ -82,10 +81,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-  NSDictionary *user = [self.responceData personAtIndex:indexPath.row];
-  NSString *userID = [user objectForKey:@"id"];
+  NSDictionary *user = [self.responseData personAtIndex:indexPath.row];
+  NSString *profileURL = [user objectForKey:@"profile_url"];
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
-  vc.baseURL = [NSString stringWithFormat:@"http://%@/users/%@.json?auth_token=%@",API_BASE,userID,[(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]];
+  vc.baseURL = profileURL;
   vc.shouldShowFollowingBar = YES;
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
@@ -172,7 +171,7 @@
 }
 
 - (void) reload {
-  namelist = (NSMutableArray *) [self.responceData people];
+  namelist = (NSMutableArray *) [self.responseData people];
   [self.tableView reloadData];
 }
 

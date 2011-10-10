@@ -50,7 +50,6 @@
 		A2317F8613908CA100761C47 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2317F8513908CA100761C47 /* Entitlements.plist */; };
 		A231BF961316F62800AE9F71 /* PBCommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A231BF941316F62800AE9F71 /* PBCommentListViewController.m */; };
 		A231BF971316F62800AE9F71 /* PBCommentListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A231BF951316F62800AE9F71 /* PBCommentListViewController.xib */; };
-		A23578F713270BB3008D31A2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A23578F613270BB3008D31A2 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		A23EDC3D13EB6074004C10CE /* PBProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A23EDC3C13EB6072004C10CE /* PBProfileHeaderView.m */; };
 		A24259D212949C2300EBC83A /* PBExpandingPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A24259D112949C2300EBC83A /* PBExpandingPhotoView.m */; };
 		A2425A0B1294A1F700EBC83A /* PBContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2425A0A1294A1F700EBC83A /* PBContainerView.m */; };
@@ -103,6 +102,9 @@
 		A28DE346138B34D100B56C12 /* PBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DE344138B34D100B56C12 /* PBLoginViewController.m */; };
 		A28DE347138B34D100B56C12 /* PBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28DE345138B34D100B56C12 /* PBLoginViewController.xib */; };
 		A28E7B4513EB223E00C3AE55 /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A28E7B4313EB223E00C3AE55 /* CaptureSessionManager.m */; };
+		A29506B6143E7493002E07DD /* libAviarySDK-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A29506B2143E7493002E07DD /* libAviarySDK-universal.a */; };
+		A29506B7143E7493002E07DD /* AviarySDK-Core.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A29506B4143E7493002E07DD /* AviarySDK-Core.bundle */; };
+		A29506B8143E7493002E07DD /* AviarySDK-Plugins.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A29506B5143E7493002E07DD /* AviarySDK-Plugins.bundle */; };
 		A29889D513F0ADC70007E7F4 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29889D413F0ADC70007E7F4 /* AssetsLibrary.framework */; };
 		A2988ABF13F0BE420007E7F4 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A2988A0413F0BE410007E7F4 /* ASIAuthenticationDialog.m */; };
 		A2988AC013F0BE420007E7F4 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = A2988A0713F0BE410007E7F4 /* ASIDataCompressor.m */; };
@@ -128,7 +130,7 @@
 		A2988AD413F0BE420007E7F4 /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A2988A3613F0BE410007E7F4 /* ASIS3ServiceRequest.m */; };
 		A2988AE413F0BE420007E7F4 /* DONORS in Resources */ = {isa = PBXBuildFile; fileRef = A2988A5513F0BE410007E7F4 /* DONORS */; };
 		A2988AE613F0BE420007E7F4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A2988A5B13F0BE410007E7F4 /* Reachability.m */; };
-		A29A930B131DA68300DB6D46 /* PBAPIResponce.m in Sources */ = {isa = PBXBuildFile; fileRef = A29A930A131DA68300DB6D46 /* PBAPIResponce.m */; };
+		A29A930B131DA68300DB6D46 /* PBAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A29A930A131DA68300DB6D46 /* PBAPIResponse.m */; };
 		A29A9579131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = A29A9578131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m */; };
 		A2A0E6FC13C3BFC9002CC14F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A0E6FB13C3BFC9002CC14F /* AVFoundation.framework */; };
 		A2A0E6FF13C3C146002CC14F /* PBCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A0E6FE13C3C146002CC14F /* PBCameraViewController.m */; };
@@ -677,6 +679,11 @@
 		A28DE345138B34D100B56C12 /* PBLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBLoginViewController.xib; sourceTree = "<group>"; };
 		A28E7B4313EB223E00C3AE55 /* CaptureSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureSessionManager.m; sourceTree = "<group>"; };
 		A28E7B4413EB223E00C3AE55 /* CaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
+		A29506B0143E7493002E07DD /* AFFeatherConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFFeatherConstants.h; sourceTree = "<group>"; };
+		A29506B1143E7493002E07DD /* AFFeatherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFFeatherController.h; sourceTree = "<group>"; };
+		A29506B2143E7493002E07DD /* libAviarySDK-universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libAviarySDK-universal.a"; sourceTree = "<group>"; };
+		A29506B4143E7493002E07DD /* AviarySDK-Core.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "AviarySDK-Core.bundle"; sourceTree = "<group>"; };
+		A29506B5143E7493002E07DD /* AviarySDK-Plugins.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "AviarySDK-Plugins.bundle"; sourceTree = "<group>"; };
 		A29889D413F0ADC70007E7F4 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		A2988A0313F0BE410007E7F4 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		A2988A0413F0BE410007E7F4 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -730,8 +737,8 @@
 		A2988A5513F0BE410007E7F4 /* DONORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DONORS; sourceTree = "<group>"; };
 		A2988A5A13F0BE410007E7F4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A2988A5B13F0BE410007E7F4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		A29A9309131DA68300DB6D46 /* PBAPIResponce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBAPIResponce.h; sourceTree = "<group>"; };
-		A29A930A131DA68300DB6D46 /* PBAPIResponce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBAPIResponce.m; sourceTree = "<group>"; };
+		A29A9309131DA68300DB6D46 /* PBAPIResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBAPIResponse.h; sourceTree = "<group>"; };
+		A29A930A131DA68300DB6D46 /* PBAPIResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBAPIResponse.m; sourceTree = "<group>"; };
 		A29A9577131F21E500DB6D46 /* NSDate+TimeFromNowFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeFromNowFormat.h"; sourceTree = "<group>"; };
 		A29A9578131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeFromNowFormat.m"; sourceTree = "<group>"; };
 		A2A0E6FB13C3BFC9002CC14F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1178,6 +1185,7 @@
 				74F7A4FE13605C3B005D2F98 /* MessageUI.framework in Frameworks */,
 				74AED8DE136EAB0B00CC6164 /* AddressBook.framework in Frameworks */,
 				74AED8DF136EAB0B00CC6164 /* AddressBookUI.framework in Frameworks */,
+				A29506B6143E7493002E07DD /* libAviarySDK-universal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1466,6 +1474,34 @@
 			name = "Account Management";
 			sourceTree = "<group>";
 		};
+		A29506AE143E7493002E07DD /* AviarySDK */ = {
+			isa = PBXGroup;
+			children = (
+				A29506AF143E7493002E07DD /* Headers */,
+				A29506B2143E7493002E07DD /* libAviarySDK-universal.a */,
+				A29506B3143E7493002E07DD /* Resources */,
+			);
+			path = AviarySDK;
+			sourceTree = "<group>";
+		};
+		A29506AF143E7493002E07DD /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A29506B0143E7493002E07DD /* AFFeatherConstants.h */,
+				A29506B1143E7493002E07DD /* AFFeatherController.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		A29506B3143E7493002E07DD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A29506B4143E7493002E07DD /* AviarySDK-Core.bundle */,
+				A29506B5143E7493002E07DD /* AviarySDK-Plugins.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		A29889D613F0BE400007E7F4 /* asi-http-request */ = {
 			isa = PBXGroup;
 			children = (
@@ -1586,6 +1622,7 @@
 		A2A0FDB213CC2ADC0058908D /* External */ = {
 			isa = PBXGroup;
 			children = (
+				A29506AE143E7493002E07DD /* AviarySDK */,
 				A20B59EC1433FA8500FC39D1 /* MBProgress */,
 				A273CC0B130AF9C2003FE8DA /* EGOImageLoading */,
 				A273CB1F130AF148003FE8DA /* JSON */,
@@ -1685,8 +1722,8 @@
 				A2627B4913FF312F00B6E5C7 /* PBUploadQueue.m */,
 				A28BF6171402EACD00A5BF9E /* PBPhoto.h */,
 				A28BF6181402EACD00A5BF9E /* PBPhoto.m */,
-				A29A9309131DA68300DB6D46 /* PBAPIResponce.h */,
-				A29A930A131DA68300DB6D46 /* PBAPIResponce.m */,
+				A29A9309131DA68300DB6D46 /* PBAPIResponse.h */,
+				A29A930A131DA68300DB6D46 /* PBAPIResponse.m */,
 				A2E1581F136A42D3003E96B9 /* FacebookSingleton.h */,
 				A2E15820136A42D3003E96B9 /* FacebookSingleton.m */,
 			);
@@ -2629,6 +2666,8 @@
 				A28B573514282D6800EBC105 /* yellowOverlay.png in Resources */,
 				A20B5A061434565A00FC39D1 /* _designRefLaunchTemporary2.png in Resources */,
 				A20B5A071434565A00FC39D1 /* logo_by_me@2x.png in Resources */,
+				A29506B7143E7493002E07DD /* AviarySDK-Core.bundle in Resources */,
+				A29506B8143E7493002E07DD /* AviarySDK-Plugins.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2705,9 +2744,8 @@
 				A205F9421314B556003756CA /* PBBadgeCollectionViewController.m in Sources */,
 				A2F2663F1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m in Sources */,
 				A231BF961316F62800AE9F71 /* PBCommentListViewController.m in Sources */,
-				A29A930B131DA68300DB6D46 /* PBAPIResponce.m in Sources */,
+				A29A930B131DA68300DB6D46 /* PBAPIResponse.m in Sources */,
 				A29A9579131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m in Sources */,
-				A23578F713270BB3008D31A2 /* MBProgressHUD.m in Sources */,
 				A26E720D1334244E00BD737D /* PBPhotoHeaderView.m in Sources */,
 				A2222831133F075E00239E0F /* MyView.m in Sources */,
 				A2E415F81343EE3F000D9CFA /* HPTextViewInternal.m in Sources */,
@@ -2842,6 +2880,10 @@
 				);
 				INFOPLIST_FILE = "PicBounce2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/AviarySDK\"",
+				);
 				PRODUCT_NAME = PicBounce2;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
 				SDKROOT = iphoneos;
@@ -2868,6 +2910,10 @@
 				);
 				INFOPLIST_FILE = "PicBounce2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/AviarySDK\"",
+				);
 				PRODUCT_NAME = PicBounce2;
 				PROVISIONING_PROFILE = "ECE07ACB-D34D-4D84-B012-0C865560A7D3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";

@@ -15,7 +15,7 @@
 @synthesize data = _data;
 @synthesize reloading = _reloading;
 @synthesize baseURL = _baseURL;
-@synthesize responceData = _responceData;
+@synthesize responseData = _responseData;
 @synthesize pullsToRefresh = _pullsToRefresh;
 
 - (NSURL *) url {
@@ -80,7 +80,7 @@
 - (void)doneLoadingMoreDataFromNetwork:(ASIHTTPRequest *) _request {  
   NSString *json_string = _request.responseString;
   NSLog(@"%@",json_string);
-  [self.responceData mergeNewResponceData:json_string];
+  [self.responseData mergeNewresponseData:json_string];
   [self reload];
 }
 
@@ -91,8 +91,8 @@
     return;
   }
   NSString *json_string = _request.responseString;
-  PBAPIResponce *resp = [[PBAPIResponce alloc] initWithResponceData:_request.responseString];
-  self.responceData = resp;
+  PBAPIresponse *resp = [[PBAPIresponse alloc] initWithresponseData:_request.responseString];
+  self.responseData = resp;
   [resp release];
   
   SBJSON *parser = [[SBJSON alloc] init];
@@ -189,7 +189,9 @@
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
-	
+	loadingView.center = CGPointMake(self.view.center.x, self.view.center.y + scrollView.contentOffset.y);
+
+  
 	if (scrollView.isDragging) {
 		if (refreshHeaderView.state == PBPullRefreshPulling && scrollView.contentOffset.y > -65.0f && scrollView.contentOffset.y < 0.0f && !_reloading) {
 			[refreshHeaderView setState:PBPullRefreshNormal];
@@ -217,6 +219,8 @@
   self.tableView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
   [UIView commitAnimations];
 }
+
+
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
   if (self.pullsToRefresh) {

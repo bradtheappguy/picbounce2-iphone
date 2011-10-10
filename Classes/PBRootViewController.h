@@ -3,7 +3,7 @@
 
 #import "ASIHTTPRequest.h"
 #import "SBJSON.h"
-#import "PBAPIResponce.h"
+#import "PBAPIResponse.h"
 
 @class PBRefreshTableHeaderView, MBProgressHUD;
 
@@ -31,7 +31,7 @@
 - (void) reload;
 
 @property (nonatomic, retain) NSArray *data;
-@property (nonatomic, retain) PBAPIResponce *responceData;
+@property (nonatomic, retain) PBAPIresponse *responseData;
 @property(nonatomic, retain)  NSString *baseURL;
 @property(assign,getter=isReloading) BOOL reloading;
 @property(readwrite) BOOL pullsToRefresh;
