@@ -152,7 +152,6 @@
 		A2D9C30613AAE7D20091D5BB /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2CC13AAE7D20091D5BB /* DDXMLDocument.m */; };
 		A2D9C30713AAE7D20091D5BB /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2CE13AAE7D20091D5BB /* DDXMLElement.m */; };
 		A2D9C30813AAE7D20091D5BB /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2D013AAE7D20091D5BB /* DDXMLNode.m */; };
-		A2D9C30A13AAE7D20091D5BB /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2D613AAE7D20091D5BB /* RegexKitLite.m */; };
 		A2D9C32213AAE86D0091D5BB /* HTNotifier.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2D9C31213AAE86D0091D5BB /* HTNotifier.strings */; };
 		A2D9C32313AAE86D0091D5BB /* HTFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C31813AAE86D0091D5BB /* HTFunctions.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		A2D9C32413AAE86D0091D5BB /* HTNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C31A13AAE86D0091D5BB /* HTNotice.m */; };
@@ -776,8 +775,6 @@
 		A2D9C2CF13AAE7D20091D5BB /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
 		A2D9C2D013AAE7D20091D5BB /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
 		A2D9C2D213AAE7D20091D5BB /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
-		A2D9C2D513AAE7D20091D5BB /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
-		A2D9C2D613AAE7D20091D5BB /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		A2D9C31313AAE86D0091D5BB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/HTNotifier.strings; sourceTree = "<group>"; };
 		A2D9C31413AAE86D0091D5BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/HTNotifier.strings; sourceTree = "<group>"; };
 		A2D9C31513AAE86D0091D5BB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/HTNotifier.strings; sourceTree = "<group>"; };
@@ -1751,7 +1748,6 @@
 			children = (
 				A2D9C31113AAE86D0091D5BB /* hoptoadnotifier */,
 				A2D9C2C313AAE7D20091D5BB /* kissxml */,
-				A2D9C2D413AAE7D20091D5BB /* regexkitlite */,
 			);
 			path = "hoptoad-ios";
 			sourceTree = "<group>";
@@ -1797,15 +1793,6 @@
 				A2D9C2D213AAE7D20091D5BB /* DDXMLPrivate.h */,
 			);
 			path = Private;
-			sourceTree = "<group>";
-		};
-		A2D9C2D413AAE7D20091D5BB /* regexkitlite */ = {
-			isa = PBXGroup;
-			children = (
-				A2D9C2D513AAE7D20091D5BB /* RegexKitLite.h */,
-				A2D9C2D613AAE7D20091D5BB /* RegexKitLite.m */,
-			);
-			path = regexkitlite;
 			sourceTree = "<group>";
 		};
 		A2D9C31113AAE86D0091D5BB /* hoptoadnotifier */ = {
@@ -2768,7 +2755,6 @@
 				A2D9C30613AAE7D20091D5BB /* DDXMLDocument.m in Sources */,
 				A2D9C30713AAE7D20091D5BB /* DDXMLElement.m in Sources */,
 				A2D9C30813AAE7D20091D5BB /* DDXMLNode.m in Sources */,
-				A2D9C30A13AAE7D20091D5BB /* RegexKitLite.m in Sources */,
 				A2D9C32313AAE86D0091D5BB /* HTFunctions.m in Sources */,
 				A2D9C32413AAE86D0091D5BB /* HTNotice.m in Sources */,
 				A2D9C32513AAE86D0091D5BB /* HTNotifier.m in Sources */,
