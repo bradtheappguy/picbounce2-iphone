@@ -6,4 +6,4 @@
 	url = https://github.com/pokeb/asi-http-request.git
 [submodule "External/hoptoad-ios"]
 	path = External/hoptoad-ios
-	url = https://github.com/thoughtbot/hoptoad_notifier.git
+	url = https://github.com/guicocoa/hoptoad-ios.git
