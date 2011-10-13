@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
-		<int key="IBDocument.SystemTarget">1072</int>
+		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">11B26</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
 		<string key="IBDocument.AppKitVersion">1138</string>
@@ -52,7 +52,6 @@
 								<string key="NSFrame">{{19, 156}, {283, 47}}</string>
 								<reference key="NSSuperview" ref="336751269"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -65,7 +64,7 @@
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<reference key="IBUISelectedTitleColor" ref="681069676"/>
-								<object class="NSColor" key="IBUINormalTitleColor" id="954692564">
+								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEAA</bytes>
 								</object>
@@ -77,7 +76,7 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
 								</object>
-								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="804789593">
+								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">btn_twitter_logIn_s@2x.png</string>
 								</object>
@@ -85,54 +84,17 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">btn_twitter_logIn_n@2x.png</string>
 								</object>
-								<object class="IBUIFontDescription" key="IBUIFontDescription" id="305687804">
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">HelveticaNeue-Bold</string>
 									<string key="family">Helvetica Neue</string>
 									<int key="traits">2</int>
 									<double key="pointSize">15</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="62311887">
+								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">HelveticaNeue-Bold</string>
 									<double key="NSSize">15</double>
 									<int key="NSfFlags">16</int>
 								</object>
-							</object>
-							<object class="IBUIButton" id="116608959">
-								<reference key="NSNextResponder" ref="336751269"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{19, 89}, {283, 47}}</string>
-								<reference key="NSSuperview" ref="336751269"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="277993021"/>
-								<bool key="IBUIOpaque">NO</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIContentHorizontalAlignment">0</int>
-								<int key="IBUIContentVerticalAlignment">0</int>
-								<bool key="IBUIReversesTitleShadowWhenHighlighted">YES</bool>
-								<string key="IBUITitleShadowOffset">{0, -1}</string>
-								<string key="IBUINormalTitle">Sign in with Facebook</string>
-								<reference key="IBUIHighlightedTitleColor" ref="681069676"/>
-								<reference key="IBUISelectedTitleColor" ref="681069676"/>
-								<reference key="IBUINormalTitleColor" ref="954692564"/>
-								<object class="NSColor" key="IBUISelectedTitleShadowColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
-								</object>
-								<object class="NSColor" key="IBUINormalTitleShadowColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
-								</object>
-								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">btn_fb_logIn_s@2x.png</string>
-								</object>
-								<reference key="IBUISelectedBackgroundImage" ref="804789593"/>
-								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">btn_fb_logIn_n@2x.png</string>
-								</object>
-								<reference key="IBUIFontDescription" ref="305687804"/>
-								<reference key="IBUIFont" ref="62311887"/>
 							</object>
 							<object class="IBUIImageView" id="261402139">
 								<reference key="NSNextResponder" ref="336751269"/>
@@ -140,7 +102,7 @@
 								<string key="NSFrame">{{0, 9}, {320, 44}}</string>
 								<reference key="NSSuperview" ref="336751269"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="116608959"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -211,15 +173,6 @@
 					</object>
 					<int key="connectionID">48</int>
 				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">facebookButtonPressed:</string>
-						<reference key="source" ref="116608959"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">56</int>
-				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -260,14 +213,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="261402139"/>
 							<reference ref="277993021"/>
-							<reference ref="116608959"/>
 						</object>
 						<reference key="parent" ref="53516180"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">51</int>
-						<reference key="object" ref="116608959"/>
-						<reference key="parent" ref="336751269"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">37</int>
@@ -299,8 +246,6 @@
 					<string>37.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>39.IBPluginDependency</string>
 					<string>42.IBPluginDependency</string>
-					<string>51.IBPluginDependency</string>
-					<string>51.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>65.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
@@ -314,8 +259,6 @@
 					<real value="0.0"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<real value="0.0"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
@@ -428,7 +371,7 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1072" key="NS.object.0"/>
+			<real value="1280" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
@@ -441,8 +384,6 @@
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>bg_logInH@2x.png</string>
-				<string>btn_fb_logIn_n@2x.png</string>
-				<string>btn_fb_logIn_s@2x.png</string>
 				<string>btn_twitter_logIn_n@2x.png</string>
 				<string>btn_twitter_logIn_s@2x.png</string>
 				<string>logo_by_me@2x.png</string>
@@ -450,8 +391,6 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{640, 88}</string>
-				<string>{588, 116}</string>
-				<string>{588, 116}</string>
 				<string>{588, 116}</string>
 				<string>{588, 116}</string>
 				<string>{146, 50}</string>
