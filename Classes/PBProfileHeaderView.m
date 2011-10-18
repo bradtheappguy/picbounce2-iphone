@@ -83,7 +83,7 @@
   NSString *name = [user objectForKey:@"display_name"];
   NSNumber *followingCount = [user objectForKey:@"following_count"];
   NSNumber *followersCount = [user objectForKey:@"followers_count"];
-  NSNumber *photosCount = [user objectForKey:@"photo_count"];
+  NSNumber *photosCount = [user objectForKey:@"post_count"];
   BOOL followsMe = [[user objectForKey:@"follows_me"] boolValue];
   if (followsMe) {
     self.isFollowingYouLabel.text = [NSString stringWithFormat:@"%@ is following you",name];

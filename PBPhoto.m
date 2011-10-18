@@ -128,7 +128,7 @@
   }
   
   NSString *authToken = [(AppDelegate *) [[UIApplication sharedApplication] delegate] authToken];
-  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/photos?auth_token=%@",API_BASE,authToken]];
+  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/posts?auth_token=%@",API_BASE,authToken]];
   NSData *jpegData = UIImageJPEGRepresentation(self.image, 0.80);
   NSString *key = [[jpegData MD5] stringByAppendingString:@".jpg"];
   ASIFormDataRequest *postRequest = [[ASIFormDataRequest alloc] initWithURL:url];

@@ -155,7 +155,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
   NSUInteger nUploading = [[PBUploadQueue sharedQueue] count]; 
-  NSUInteger nPhotos = [[self.responseData photos] count]; 
+  NSUInteger nPhotos = [[self.responseData posts] count]; 
   if (self.shouldShowUplodingItems) {
     return nUploading + nPhotos;
   }

@@ -17,7 +17,7 @@
         data = [[parser objectWithString:json_string error:nil] retain];
       [parser release];
         if ([self validate:data]) {
-          photos = [[data objectForKey:@"response"] objectForKey:@"photos"];
+          posts = [[data objectForKey:@"response"] objectForKey:@"posts"];
           people = [[data objectForKey:@"response"] objectForKey:@"people"];
           user = [[data objectForKey:@"response"] objectForKey:@"user"];
           url = [[data objectForKey:@"response"] objectForKey:@"url"];
@@ -41,9 +41,9 @@
   
   id newData = [parser objectWithString:json_string error:nil];
   if ([self validate:newData]) {
-    NSMutableArray *newPhotos = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"response"] objectForKey:@"photos"];
+    NSMutableArray *newPosts = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"response"] objectForKey:@"posts"];
     NSMutableArray *newPeople = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"response"] objectForKey:@"people"];
-    [photos addObjectsFromArray:newPhotos];
+    [posts addObjectsFromArray:newPosts];
     [people addObjectsFromArray:newPeople];
     user = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"response"] objectForKey:@"user"];
     url = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"response"] objectForKey:@"url"];
@@ -100,18 +100,18 @@
   return @"X";
 }
 
--(NSMutableArray *) photos {
- if (!photos) {
+-(NSMutableArray *) posts {
+ if (!posts) {
    if ([data isKindOfClass:[NSDictionary class]]) {
      if ([data objectForKey:@"user"]) {
-       photos = [[[data objectForKey:@"user"] objectForKey:@"photos"] retain];
+       posts = [[[data objectForKey:@"user"] objectForKey:@"posts"] retain];
      }
      else {
-      photos = [[data objectForKey:@"photos"] retain];
+      posts = [[data objectForKey:@"posts"] retain];
     }     
    }
  }
-  return photos;
+  return posts;
 }
 
 
@@ -125,7 +125,7 @@
 
 
 -(NSUInteger) numberOfPhotos {
-  return [[self photos] count];
+  return [[self posts] count];
 }
 
 -(NSUInteger) numberOfPeople {
@@ -140,11 +140,11 @@
 }
 
 - (NSDictionary *) photoAtIndex:(NSUInteger) index {
-  NSArray *arrayOfPhotos = [self photos];
+  NSArray *arrayOfPhotos = [self posts];
   if ([arrayOfPhotos count] > index) {
     id photo = [arrayOfPhotos objectAtIndex:index];
-    if (([photo objectForKey:@"photo"]) && ([photo objectForKey:@"photo"] != [NSNull null])) {
-      photo = [photo objectForKey:@"photo"];
+    if (([photo objectForKey:@"post"]) && ([photo objectForKey:@"post"] != [NSNull null])) {
+      photo = [photo objectForKey:@"post"];
     }
     return photo;
   }

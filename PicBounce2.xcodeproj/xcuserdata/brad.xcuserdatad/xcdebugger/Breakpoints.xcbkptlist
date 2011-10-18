@@ -92,13 +92,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "PBPhotoCell.m"
-         timestampString = "338344976.598089"
+         filePath = "Classes/PBLoginViewController.m"
+         timestampString = "340655485.089427"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "105"
-         endingLineNumber = "105"
-         landmarkName = "-likeButtonPressed:"
+         startingLineNumber = "249"
+         endingLineNumber = "249"
+         landmarkName = "-request:willRedirectToURL:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

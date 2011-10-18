@@ -224,7 +224,7 @@
 -(void) setDatum:(NSMutableDictionary *)dictionary {
   [datum release];
   datum = [dictionary retain];
-  NSDictionary *photo = [dictionary objectForKey:@"photo"];
+  NSDictionary *photo = [dictionary objectForKey:@"post"];
   NSString *uuid = [photo objectForKey:@"uuid"];
   if (!pictureView.imageURL)
       

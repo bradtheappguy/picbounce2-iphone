@@ -13,7 +13,7 @@
   id data;
   
   NSDictionary *user;
-  NSMutableArray *photos;
+  NSMutableArray *posts;
   NSMutableArray *people;
   NSString *url;
   NSString *next;
@@ -22,7 +22,7 @@
 - (BOOL) validate:(id)data;
 -(NSDictionary *) personAtIndex:(NSUInteger) index;
 - (NSDictionary *) photoAtIndex:(NSUInteger) index;
-- (NSMutableArray *) photos;
+- (NSMutableArray *) posts;
 - (NSUInteger) numberOfPeople;
 - (NSUInteger) numberOfPhotos;
 - (void) mergeNewresponseData:(id)json_string;
