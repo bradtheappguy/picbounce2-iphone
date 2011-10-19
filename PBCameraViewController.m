@@ -594,26 +594,18 @@ bail:
 
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
   cameraToolbar.center = CGPointMake(cameraToolbar.center.x - 320, cameraToolbar.center.y);
   flipButton.alpha = 0;
   flashButton.alpha = 0;
   
-  [self.tabBarController setSelectedIndex:2];
-  //[//picker dismissModalViewControllerAnimated:YES];
-  
-  
- // [self.tabBarController dismissModalViewControllerAnimated:YES];
+  [self dismissModalViewControllerAnimated:YES];
   [unfilteredImage release];
   
   unfilteredImage = [info objectForKey:UIImagePickerControllerOriginalImage];
   [unfilteredImage retain];
   
   uploadPreviewImage.image = unfilteredImage;
-  
-  AFFeatherController *fvc = [[AFFeatherController alloc] initWithImage:unfilteredImage];
-  [picker presentModalViewController:fvc animated:NO];
-  [fvc release];
 }
 
 

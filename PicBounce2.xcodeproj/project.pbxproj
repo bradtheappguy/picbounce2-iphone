@@ -2885,7 +2885,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Brad Smith";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brad Smith (YY7FN8LFBY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brad Smith";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PicBounce2_Prefix.pch;
@@ -2902,7 +2902,7 @@
 				);
 				PRODUCT_NAME = PicBounce2;
 				PROVISIONING_PROFILE = "ECE07ACB-D34D-4D84-B012-0C865560A7D3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8539DB93-A84A-4240-833A-1B97FEA32F80";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
