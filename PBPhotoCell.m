@@ -101,8 +101,8 @@
 }
 
 -(IBAction) likeButtonPressed:(id) sender {
-  NSString *url = [NSString stringWithFormat:@"http://%@/photos/%@/like",API_BASE,[_photo objectForKey:@"uuid"]];
-  PBHTTPRequest *likeRequest = [PBHTTPRequest requestWithURL:[NSURL URLWithString:@"http://google.com"]];
+  NSString *url = [NSString stringWithFormat:@"http://%@/posts/%@/like",API_BASE,[_photo objectForKey:@"uuid"]];
+  PBHTTPRequest *likeRequest = [PBHTTPRequest requestWithURL:[NSURL URLWithString:url]];
   likeRequest.requestMethod = @"POST";
   [likeRequest startSynchronous];
   NSLog(@"GO");

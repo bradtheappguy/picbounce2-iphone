@@ -13,8 +13,8 @@
 @synthesize label = _label;
 
 -(void) dealloc {
-  [super dealloc];
   self.label = nil;
+  [super dealloc];
 }
 
 -(void) setHighlighted:(BOOL)highlighted {

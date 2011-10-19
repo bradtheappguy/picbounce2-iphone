@@ -1,0 +1,41 @@
+//
+//  PBAPIresponse.h
+//  PicBounce2
+//
+//  Created by BradSmith on 3/1/11.
+//  Copyright 2011 Clixtr. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+
+@interface PBAPIresponse : NSObject {
+  id data;
+  
+  NSDictionary *user;
+  NSMutableArray *posts;
+  NSMutableArray *people;
+  NSString *url;
+  NSString *next;
+}
+
+- (BOOL) validate:(id)data;
+-(NSDictionary *) personAtIndex:(NSUInteger) index;
+- (NSDictionary *) photoAtIndex:(NSUInteger) index;
+- (NSMutableArray *) posts;
+- (NSUInteger) numberOfPeople;
+- (NSUInteger) numberOfPhotos;
+- (void) mergeNewresponseData:(id)json_string;
+- (id) initWithresponseData:(id)json_string;
+- (NSURL *) loadMoreDataURL;
+- (NSString *) usernameForPersonAtIndex:(NSUInteger) index;
+- (NSString *) followersURL;
+- (NSString *) lastLocation;
+- (NSString *) timeLabelTextForPhotoAtIndex:(NSUInteger)index;
+- (NSUInteger) followingCount;
+- (NSUInteger) followersCount;
+- (NSURL *) followUserURLForUser;
+- (NSString *) followingURL;
+- (NSDictionary *) user;
+- (NSArray *) people;
+@end

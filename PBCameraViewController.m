@@ -23,6 +23,7 @@
 //#import "CaptureSessionManager.h"
 #import "AppDelegate.h"
 
+#import "AFFeatherController.h"
 
 
 UIImage *scaleAndRotateImage(UIImage *image)
@@ -439,7 +440,7 @@ bail:
 -(IBAction) cameraButtonPressed:(id)sender {
   [self closeShutter];
   // Find out the current orientation and tell the still image output.
-  AVCaptureConnection *stillImageConnection;
+  AVCaptureConnection *stillImageConnection = nil;
   for (AVCaptureConnection *connection in stillImageOutput.connections) {
     stillImageConnection = connection;
     break;
@@ -448,8 +449,7 @@ bail:
 	UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
 	AVCaptureVideoOrientation avcaptureOrientation = [self avOrientationForDeviceOrientation:curDeviceOrientation];
 	[stillImageConnection setVideoOrientation:avcaptureOrientation];
-	//[stillImageConnection setVideoScaleAndCropFactor:effectiveScale];
-
+	
   [stillImageOutput setOutputSettings:[NSDictionary dictionaryWithObject:AVVideoCodecJPEG 
                                                                     forKey:AVVideoCodecKey]]; 
 	
@@ -459,15 +459,16 @@ bail:
                                                   }
                                                   NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
                                                   UIImage *image = [[UIImage alloc] initWithData:jpegData];
-                                                  CGSize s1 = image.size;
+                                                  
                                                   UIImage *scaledImage = scaleAndRotateImage(image);
-                                                  CGSize s2 = scaledImage.size;
+                                                  
                                                   [image release];
+                                                  CGImageRef scaledCGImage = CGImageCreateWithImageInRect([scaledImage CGImage],CGRectMake(0, 0, 600, 600));
+                                                  UIImage *i3 = [UIImage imageWithCGImage:scaledCGImage];
+                                                  CGImageRelease(scaledCGImage);
                                                   
-                                                  UIImage *i3 = [UIImage imageWithCGImage: CGImageCreateWithImageInRect([scaledImage CGImage],CGRectMake(0, 0, 600, 600)) ];
-                                                  
-                                                  CGSize s3 = i3.size;
                                                   self.unfilteredImage = i3;
+                                                 
                                                   uploadPreviewImage.contentMode = UIViewContentModeScaleAspectFit;
                                                   uploadPreviewImage.image = i3;
                                                   uploadPreviewImage.layer.masksToBounds = NO;
@@ -526,20 +527,20 @@ bail:
 
 
 -(void) flipButtonPressed:(id)sender {
-  BOOL success = NO;
+
   
   if ([[AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo] count] > 1) {
-    NSError *error;
+    NSError *error = nil;
 
     AVCaptureDeviceInput *newVideoInput;
  
     AVCaptureDevicePosition position = [[deviceInput device] position];
-    BOOL mirror;
+    BOOL mirror = NO;
     if (position == AVCaptureDevicePositionBack) {
-      newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self frontFacingCamera] error:&error];
+      newVideoInput = [[[AVCaptureDeviceInput alloc] initWithDevice:[self frontFacingCamera] error:&error] autorelease];
     
     } else if (position == AVCaptureDevicePositionFront) {
-      newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self backFacingCamera] error:&error];
+      newVideoInput = [[[AVCaptureDeviceInput alloc] initWithDevice:[self backFacingCamera] error:&error] autorelease];
 
     } else {
       goto bail;
@@ -565,7 +566,7 @@ bail:
         [session addInput:newVideoInput];
       }
       [session commitConfiguration];
-      success = YES;
+      
     } else if (error) {
       NSLog(@"Error");
     }
@@ -593,7 +594,7 @@ bail:
 
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
   cameraToolbar.center = CGPointMake(cameraToolbar.center.x - 320, cameraToolbar.center.y);
   flipButton.alpha = 0;
   flashButton.alpha = 0;
@@ -605,7 +606,6 @@ bail:
   [unfilteredImage retain];
   
   uploadPreviewImage.image = unfilteredImage;
-  
 }
 
 

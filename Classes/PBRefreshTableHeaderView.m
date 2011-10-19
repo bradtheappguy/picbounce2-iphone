@@ -43,11 +43,13 @@
     
     self.backgroundColor = [UIColor clearColor];
     
-    self.circle = [[CircleView alloc] initWithFrame:CGRectMake(8, frame.size.height - 55, 50, 50)];
+    CircleView *circle = [[CircleView alloc] initWithFrame:CGRectMake(8, frame.size.height - 55, 50, 50)];
+    self.circle = circle;
+    [circle release];
     self.circle.clipsToBounds = NO;
     self.circle.backgroundColor = [UIColor clearColor];
-    
     [self addSubview:self.circle];
+
     
 		statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(68, frame.size.height - 41.0f, self.frame.size.width-68, 20.0f)];
 		statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -63,7 +65,7 @@
     [statusLabel setBackgroundColor:[UIColor clearColor]];
 		
 		
-    activityView = nil;//[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityView = nil;
 		activityView.frame = CGRectMake(15+8, frame.size.height - 51 + 15, 20.0f, 20.0f);
     activityView.hidesWhenStopped = YES;
 		[self addSubview:activityView];
@@ -75,7 +77,7 @@
 
 
 
-- (void)setState:(PBPullRefreshState)aState{
+- (void)setState:(PBPullRefreshState)aState {
 	
 	switch (aState) {
 		case PBPullRefreshPulling:

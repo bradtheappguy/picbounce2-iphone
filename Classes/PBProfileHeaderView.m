@@ -9,6 +9,8 @@
 #import "PBProfileHeaderView.h"
 #import "ASIHTTPRequest.h"
 #import "AppDelegate.h"
+#import "PBHTTPRequest.h"
+
 @implementation PBProfileHeaderView
 @synthesize nameLabel = _nameLabel;
 @synthesize avatarImageView = _avatarImageView;
@@ -20,10 +22,10 @@
 @synthesize isFollowingYouLabel = _isFollowingYouLabel;
 
 - (void)dealloc {
-[_unfollowButton release];
-[_followingRequest cancel];
-[_followingRequest release];
-[_followButton release];
+  [_unfollowButton release];
+  [_followingRequest cancel];
+  [_followingRequest release];
+  [_followButton release];
   [_photoCountButton release];
   [_followingCountButton release];
   [_followersCountButton release];
@@ -42,15 +44,14 @@
 
 - (IBAction)followButtonPressed:(id)sender {
   NSString *userID = [_user objectForKey:@"id"];
-  NSString *authToken = [(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken];
-  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/followings.json?user_id=%@&auth_token=%@",API_BASE,userID,authToken]];
+  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/followings.json?user_id=%@",API_BASE,userID]];
   
   if (_followingRequest) {
     [_followingRequest cancel];
     [_followingRequest release];
     _followingRequest = nil;
   }
-  _followingRequest = [[ASIHTTPRequest alloc] initWithURL:url];
+  _followingRequest = [[PBHTTPRequest requestWithURL:url] retain];
   _followingRequest.requestMethod = @"POST";
   _followingRequest.delegate = self;
   [_followingRequest setDidFailSelector:@selector(followingRequestDidFail:)];
@@ -82,7 +83,7 @@
   NSString *name = [user objectForKey:@"display_name"];
   NSNumber *followingCount = [user objectForKey:@"following_count"];
   NSNumber *followersCount = [user objectForKey:@"followers_count"];
-  NSNumber *photosCount = [user objectForKey:@"photo_count"];
+  NSNumber *photosCount = [user objectForKey:@"post_count"];
   BOOL followsMe = [[user objectForKey:@"follows_me"] boolValue];
   if (followsMe) {
     self.isFollowingYouLabel.text = [NSString stringWithFormat:@"%@ is following you",name];

@@ -1,6 +1,6 @@
 //
-//  PathBoxesAppDelegate.m
-//  PathBoxes
+//  PicBounce2AppDelegate.m
+//  PicBounce2
 //
 //  Created by Brad Smith on 11/17/10.
 //  Copyright 2010 Clixtr. All rights reserved.
@@ -16,32 +16,37 @@
 
 @implementation AppDelegate
 
-@synthesize window;
-@synthesize tabBarController;
+static NSString *kAuthTokenPersistanceKey = @"AUTH_TOKEN";
+static NSString *kAPNSPersistanceKey = @"APNS_DEVICE_TOKEN"; 
+static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
+
+
+@synthesize window = _window;
+@synthesize tabBarController = _tabBarController;
 @synthesize authToken = _authToken;
 
 
 -(void) setAuthToken:(NSString *)authToken {
-  [[NSUserDefaults standardUserDefaults] setObject:authToken forKey:@"AUTH_TOKEN"];
+  [[NSUserDefaults standardUserDefaults] setObject:authToken forKey:kAuthTokenPersistanceKey];
   [[NSUserDefaults standardUserDefaults] synchronize];
   _authToken = authToken;
   [_authToken retain];
 }
 
+
 -(NSString *) authToken {
   if (!_authToken) {
-    _authToken = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AUTH_TOKEN"] retain];
+    _authToken = [[[NSUserDefaults standardUserDefaults] objectForKey:kAuthTokenPersistanceKey] retain];
   }
   return _authToken;
 }
-
 
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-  [HTNotifier startNotifierWithAPIKey:@"57b7289a9cad881773f2ebcc303ff2db" environmentName:HTNotifierDevelopmentEnvironment];
+  [HTNotifier startNotifierWithAPIKey:hopToadAPIKey environmentName:HTNotifierDevelopmentEnvironment];
   [feedViewController viewDidLoad];
   [profileViewController viewDidLoad];
   
@@ -55,46 +60,36 @@
   
   popularViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/popular.json",API_BASE];
   
-  [window addSubview:tabBarController.view];
-  [window makeKeyAndVisible];
+  [self.window addSubview:self.tabBarController.view];
+  [self.window makeKeyAndVisible];
     
-  
-  if ([self authToken] == NO) {
+  if ([self authToken] == nil) {
     PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
+    
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    navigationController.navigationBarHidden = YES;
     [self.tabBarController presentModalViewController:navigationController animated:YES];
     [navigationController release];
     [loginViewController release];
   }
-    return YES;
+  return YES;
 }
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    /*
-     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-     */
 }
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-     If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
-     */
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    /*
-     Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
-     */
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-  NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"APNS_DEVICE_TOKEN"];
+  NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:kAPNSPersistanceKey];
   NSLog(@"APNS Device Token: %@",deviceToken);
 }
 
@@ -128,47 +123,42 @@
 #pragma mark -
 #pragma mark Push Notification
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  NSString *storedDeviceToken = [[NSString alloc] initWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"APNS_DEVICE_TOKEN"] encoding:NSUTF8StringEncoding];
+  NSString *storedDeviceToken = [[NSString alloc] initWithData:[[NSUserDefaults standardUserDefaults] objectForKey:kAPNSPersistanceKey] encoding:NSUTF8StringEncoding];
   
   NSString *newDeviceToken = [deviceToken description];
   newDeviceToken = [newDeviceToken stringByReplacingOccurrencesOfString:@">" withString:@""];
   newDeviceToken = [newDeviceToken stringByReplacingOccurrencesOfString:@"<" withString:@""];
   
   if (![storedDeviceToken isEqualToString:newDeviceToken]) {
-    
     apnsToken = [newDeviceToken stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
     NSString *path = [NSString stringWithFormat:@"/users/me/device?apns_token=%@&auth_token=%@",apnsToken,self.authToken];
     NSString *urlString = [NSString stringWithFormat:@"http://%@%@",API_BASE,path];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
     [request setRequestMethod:@"POST"];
     [request setDelegate:self];
-    [request setDidFinishSelector:@selector(xxx:)];
-    [request setDidFailSelector:@selector(yyy:)];
+    [request setDidFinishSelector:@selector(saveAPNSTokenRequestDidFinish:)];
+    [request setDidFailSelector:@selector(saveAPNSTokenRequestDidFail:)];
     [request startAsynchronous];
   }
-  
+  [storedDeviceToken release];
   NSLog(@"APNS Device Token: %@",deviceToken);
-  
 }
  
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
   
 }
 
--(void) xxx:(ASIHTTPRequest *)request {
+-(void) saveAPNSTokenRequestDidFinish:(ASIHTTPRequest *)request {
   if ([request responseStatusCode] == 200) {
-    NSLog(@"worked");
     [[NSUserDefaults standardUserDefaults] setObject:apnsToken forKey:@"APNS_DEVICE_TOKEN"];
     [[NSUserDefaults standardUserDefaults] synchronize];
   }
-  
 }
 
--(void) yyy:(ASIHTTPRequest *)request {
 
-    NSLog(@"yyy");
+-(void) saveAPNSTokenRequestDidFail:(ASIHTTPRequest *)request {
+  NSLog(@"Saving APNS Token Failed");
 }
 
 
@@ -186,16 +176,10 @@
 #pragma mark -
 #pragma mark Memory management
 
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    /*
-     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
-     */
-}
-
-
 - (void)dealloc {
-    [window release];
-    [super dealloc];
+  self.tabBarController = nil;
+  self.window = nil;
+  [super dealloc];
 }
 
 

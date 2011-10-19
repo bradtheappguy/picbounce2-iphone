@@ -18,8 +18,8 @@ typedef enum {
 	PBPullRefreshState _state;
 }
 
-@property(nonatomic,assign) CircleView *circle;
-@property(nonatomic,assign) PBPullRefreshState state;
+@property(nonatomic, retain) CircleView *circle;
+@property(nonatomic, readwrite) PBPullRefreshState state;
 
 - (void)setState:(PBPullRefreshState)aState;
 

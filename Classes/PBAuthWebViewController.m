@@ -70,8 +70,8 @@
   if (range.length > 0) {
     NSString *key = [urlString substringFromIndex:range.location+range.length+1];
     [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
     [self dismissModalViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
     return NO;
   }
   

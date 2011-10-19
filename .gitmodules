@@ -4,3 +4,6 @@
 [submodule "External/asi-http-request"]
 	path = External/asi-http-request
 	url = https://github.com/pokeb/asi-http-request.git
+[submodule "External/hoptoad-ios"]
+	path = External/hoptoad-ios
+	url = https://github.com/guicocoa/hoptoad-ios.git

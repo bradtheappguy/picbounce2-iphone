@@ -1,6 +1,6 @@
 //
 //  BSNavigationBar.m
-//  PathBoxes
+//  PicBounce2
 //
 //  Created by Brad Smith on 11/24/10.
 //  Copyright 2010 Clixtr. All rights reserved.

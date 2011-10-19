@@ -36,20 +36,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "PBCameraViewController.m"
-         timestampString = "337907033.096805"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "552"
-         endingLineNumber = "552"
-         landmarkName = "-flipButtonPressed:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "Classes/CaptureSessionManager.m"
          timestampString = "337904602.888324"
          startingColumnNumber = "9223372036854775807"
@@ -78,20 +64,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "PBCameraViewController.m"
-         timestampString = "337907033.096805"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "548"
-         endingLineNumber = "548"
-         landmarkName = "-flipButtonPressed:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "Classes/CaptureSessionManager.m"
          timestampString = "337904759.851434"
          startingColumnNumber = "9223372036854775807"
@@ -107,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PBCameraViewController.m"
-         timestampString = "337905715.752701"
+         timestampString = "339637805.097937"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "160"
-         endingLineNumber = "160"
+         startingLineNumber = "161"
+         endingLineNumber = "161"
          landmarkName = "-getSubImageFrom:WithRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -120,13 +92,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "PBPhotoCell.m"
-         timestampString = "338344976.598089"
+         filePath = "Classes/PBLoginViewController.m"
+         timestampString = "340655485.089427"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "105"
-         endingLineNumber = "105"
-         landmarkName = "-likeButtonPressed:"
+         startingLineNumber = "249"
+         endingLineNumber = "249"
+         landmarkName = "-request:willRedirectToURL:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
