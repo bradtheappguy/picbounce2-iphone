@@ -55,9 +55,9 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
   [HTNotifier startNotifierWithAPIKey:hopToadAPIKey environmentName:HTNotifierDevelopmentEnvironment];
-  [feedViewController viewDidLoad];
-  [profileViewController viewDidLoad];
+
   
   feedViewController.baseURL = [NSString stringWithFormat:@"http://%@/users/me/feed.json",API_BASE];
   feedViewController.shouldShowUplodingItems = YES;
@@ -185,5 +185,8 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   [super dealloc];
 }
 
+-(void) userDidLogin:(id)dender {
+  [self.tabBarController dismissModalViewControllerAnimated:YES];
+}
 
 @end
