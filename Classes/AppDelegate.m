@@ -41,6 +41,15 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   return _authToken;
 }
 
+-(void) presentLoginViewController {
+  PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
+  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+  navigationController.navigationBarHidden = YES;
+  [self.tabBarController presentModalViewController:navigationController animated:YES];
+  [navigationController release];
+  [loginViewController release];
+}
+
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -64,13 +73,7 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   [self.window makeKeyAndVisible];
     
   if ([self authToken] == nil) {
-    PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
-    
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-    navigationController.navigationBarHidden = YES;
-    [self.tabBarController presentModalViewController:navigationController animated:YES];
-    [navigationController release];
-    [loginViewController release];
+    [self presentLoginViewController];
   }
   return YES;
 }

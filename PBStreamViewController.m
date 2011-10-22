@@ -419,11 +419,7 @@
 
 
 -(IBAction) loginButtonPressed:(id)sender {
-  PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-  [self presentModalViewController:navigationController animated:YES];
-  [navigationController release];
-  [loginViewController release];
+  [(AppDelegate *)[[UIApplication sharedApplication] delegate] presentLoginViewController];
 }
 
 
