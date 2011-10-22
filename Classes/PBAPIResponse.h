@@ -31,7 +31,6 @@
 - (NSString *) usernameForPersonAtIndex:(NSUInteger) index;
 - (NSString *) followersURL;
 - (NSString *) lastLocation;
-- (NSString *) timeLabelTextForPhotoAtIndex:(NSUInteger)index;
 - (NSUInteger) followingCount;
 - (NSUInteger) followersCount;
 - (NSURL *) followUserURLForUser;

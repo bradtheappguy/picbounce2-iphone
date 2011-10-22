@@ -6,18 +6,19 @@
 //
 
 #import "PBPhotoHeaderView.h"
+#import "NSString+CuteTime.h"
 
 #define kSpacingBetweenClockIconAndTimeLabel 5
 #define kSpacingBetweenNameLabelAndLocationLabel 3
 
 @implementation PBPhotoHeaderView
 
-@synthesize avatarImage;
-@synthesize nameLabel;
-@synthesize locationLabel;
-@synthesize timeLabel;
-@synthesize clockIcon;
-@synthesize userID;
+@synthesize avatarImage = _avatarImage;
+@synthesize nameLabel = _nameLabel;
+@synthesize viewCountLabel = _viewCountLabel;
+@synthesize timeLabel = _timeLabel;
+@synthesize clockIcon = _clockIcon;
+@synthesize userID = _userID;
 
 -(void) layoutSubviews {
 	[super layoutSubviews];	
@@ -34,12 +35,27 @@
 //*/
 }
 
+-(void) setPhoto:(NSDictionary *)photo {
+  NSDictionary *user = [photo objectForKey:@"user"];
+  NSString *name = [user objectForKey:@"display_name"];
+  NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
+  NSString *userID = [user objectForKey:@"id"];
+  
+  self.userID = userID;
+  self.nameLabel.text = name;
+  self.viewCountLabel.text = @"666 views";
+  self.timeLabel.text =[(NSNumber *)[photo objectForKey:@"created"] cuteTimeString];
+  
+  if (![avatarURL isEqual:[NSNull null]]) {
+    self.avatarImage.imageURL = [NSURL URLWithString: avatarURL];
+  }
+}
 
 
 -(void) dealloc {
   self.avatarImage = nil;
   self.nameLabel = nil;
-  self.locationLabel = nil;
+  self.viewCountLabel = nil;
   self.timeLabel = nil;
   self.clockIcon = nil;
   [super dealloc];

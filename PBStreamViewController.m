@@ -222,26 +222,11 @@
 
 //Photo Header
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-  [[NSBundle mainBundle] loadNibNamed:@"PBPhotoHeaderView" owner:self options:nil];
-  
-  
   NSDictionary *photo = [self.responseData photoAtIndex:section];
-  NSDictionary *user = [photo objectForKey:@"user"];
   
-  NSString *name = [user objectForKey:@"display_name"];
-  NSString *lastLocation = [user objectForKey:@"last_location"];
-  NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
-  NSString *userID = [user objectForKey:@"id"];
   
-  photoHeader.userID = userID;
-  photoHeader.nameLabel.text = name;
-  photoHeader.locationLabel.text = lastLocation;
-  photoHeader.timeLabel.text = [self.responseData timeLabelTextForPhotoAtIndex:section];
-  
-  if (![avatarURL isEqual:[NSNull null]]) {
-    photoHeader.avatarImage.imageURL = [NSURL URLWithString: avatarURL];
-  }
-  
+  [[NSBundle mainBundle] loadNibNamed:@"PBPhotoHeaderView" owner:self options:nil];
+  [photoHeader setPhoto:photo];
   
   UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(personHeaderViewWasTapped:)];
   [photoHeader addGestureRecognizer:tapRecognizer];

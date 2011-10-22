@@ -492,6 +492,7 @@
 		A296D20F1453648A00175D1B /* title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A296D08A1453648900175D1B /* title@2x.png */; };
 		A296D2101453648A00175D1B /* Wrath.acorn in Resources */ = {isa = PBXBuildFile; fileRef = A296D08B1453648900175D1B /* Wrath.acorn */; };
 		A296D2111453648A00175D1B /* Wrath.png in Resources */ = {isa = PBXBuildFile; fileRef = A296D08C1453648900175D1B /* Wrath.png */; };
+		A296D2141453822500175D1B /* NSString+CuteTime.m in Sources */ = {isa = PBXBuildFile; fileRef = A296D2131453822500175D1B /* NSString+CuteTime.m */; };
 		A29889D513F0ADC70007E7F4 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29889D413F0ADC70007E7F4 /* AssetsLibrary.framework */; };
 		A2988ABF13F0BE420007E7F4 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A2988A0413F0BE410007E7F4 /* ASIAuthenticationDialog.m */; };
 		A2988AC013F0BE420007E7F4 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = A2988A0713F0BE410007E7F4 /* ASIDataCompressor.m */; };
@@ -1119,6 +1120,8 @@
 		A296D08A1453648900175D1B /* title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title@2x.png"; sourceTree = "<group>"; };
 		A296D08B1453648900175D1B /* Wrath.acorn */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wrath.acorn; sourceTree = "<group>"; };
 		A296D08C1453648900175D1B /* Wrath.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wrath.png; sourceTree = "<group>"; };
+		A296D2121453822500175D1B /* NSString+CuteTime.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSString+CuteTime.h"; sourceTree = "<group>"; };
+		A296D2131453822500175D1B /* NSString+CuteTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CuteTime.m"; sourceTree = "<group>"; };
 		A29889D413F0ADC70007E7F4 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		A2988A0313F0BE410007E7F4 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		A2988A0413F0BE410007E7F4 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -2313,6 +2316,8 @@
 				8D1107310486CEB800E47090 /* PicBounce2-Info.plist */,
 				A29A9577131F21E500DB6D46 /* NSDate+TimeFromNowFormat.h */,
 				A29A9578131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m */,
+				A296D2121453822500175D1B /* NSString+CuteTime.h */,
+				A296D2131453822500175D1B /* NSString+CuteTime.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -3066,6 +3071,7 @@
 				A2626FE614197BB300F873B7 /* PBPersonTableViewCell.m in Sources */,
 				A2EE48C71423F0FB00853658 /* PBFilteredImage.m in Sources */,
 				A2D461BE142A8CA30037F87B /* PBHTTPRequest.m in Sources */,
+				A296D2141453822500175D1B /* NSString+CuteTime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
