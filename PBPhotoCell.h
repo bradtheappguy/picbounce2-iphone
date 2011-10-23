@@ -13,11 +13,11 @@
   UITableViewController *tableViewController;
 }
 
-+ (CGFloat) height;
--(void) addPhotoView:(UIView *)view ToFollowerScrollViewAtIndex:(NSUInteger) index;
++ (CGFloat) heightWithPhoto:(NSDictionary *)photo;
+- (void) addPhotoView:(UIView *)view ToFollowerScrollViewAtIndex:(NSUInteger) index;
 
--(IBAction)commentButtonPressed:(id)sender;
--(IBAction)actionButtonPressed:(id)sender;
+- (IBAction)commentButtonPressed:(id)sender;
+- (IBAction)actionButtonPressed:(id)sender;
 
 @property (nonatomic, assign) UITableViewController *tableViewController;
 

@@ -46,6 +46,17 @@
 @synthesize badgesCountLabel;
 
 
+-(void) showEmptyState {
+  UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+  emptyView.backgroundColor = [UIColor redColor];
+  [self.view addSubview:emptyView];
+  self.tableView.scrollEnabled = NO;
+}
+
+
+-(void) hideEmptyState {
+  self.tableView.scrollEnabled = YES;
+}
 
 - (void) reload {
   [self.tableView reloadData];
@@ -60,8 +71,13 @@
   else {
     self.tableView.tableHeaderView = nil;
   }    
-    //BOOL followingMe = [(NSNumber *)[user objectForKey:@"follows_me"] boolValue];
-    //BOOL following = [(NSNumber *)[user objectForKey:@"following"] boolValue];
+
+  if ([self numberOfSectionsInTableView:self.tableView] == 0) {
+    [self showEmptyState];
+  }
+  else {
+    [self hideEmptyState];
+  }
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {  
@@ -187,11 +203,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (self.shouldShowUplodingItems == NO) {
-    return [PBPhotoCell height];
+    return [PBPhotoCell heightWithPhoto:nil];
   }
   else {
     if (indexPath.section >= [[PBUploadQueue sharedQueue] count]) {
-      return [PBPhotoCell height];
+      return [PBPhotoCell heightWithPhoto:nil];
     }  
     else {
       return 65;

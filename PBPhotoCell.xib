@@ -96,7 +96,7 @@
 											<int key="traits">2</int>
 											<double key="pointSize">13</double>
 										</object>
-										<object class="NSFont" key="IBUIFont" id="213334125">
+										<object class="NSFont" key="IBUIFont" id="44356648">
 											<string key="NSName">HelveticaNeue-Bold</string>
 											<double key="NSSize">13</double>
 											<int key="NSfFlags">16</int>
@@ -193,13 +193,13 @@
 											<string key="NSResourceName">btn_comment_n.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="931310831"/>
-										<reference key="IBUIFont" ref="213334125"/>
+										<reference key="IBUIFont" ref="44356648"/>
 									</object>
 								</object>
 								<string key="NSFrameSize">{320, 385}</string>
 								<reference key="NSSuperview" ref="794438720"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="526598128"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC45ODQzMTM3MjU1IDAuOTcyNTQ5MDE5NiAwLjk2ODYyNzQ1MQA</bytes>
@@ -445,7 +445,7 @@
 					<real value="2"/>
 					<string>PBPhotoCell</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>EGOImageView</string>
+					<string>PBPhotoView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
@@ -681,6 +681,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/PBPhotoHeaderView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">PBPhotoView</string>
+					<string key="superclassName">EGOImageView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/PBPhotoView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

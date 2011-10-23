@@ -28,6 +28,11 @@
 @synthesize likeCountLabel;
 @synthesize photo = _photo;
 
+
++(CGFloat) heightWithPhoto:(NSDictionary *)photo {
+  return PhotoCellHeight;
+}
+
 -(void) awakeFromNib {
 
  for (int c=0; c<30; c++) {
@@ -63,10 +68,6 @@
   [super dealloc];
 }
 
-
-+ (CGFloat) height {
-  return PhotoCellHeight;
-}
 
 -(void) setPhoto:(NSDictionary *)photo {
   [_photo release];
