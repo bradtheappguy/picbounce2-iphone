@@ -335,15 +335,6 @@
 
 #pragma mark Buttons and Gesture Recoginizers
 
-
--(IBAction) commentButtonPressed:(UIButton *) sender {
-  PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
-  vc.hidesBottomBarWhenPushed = YES;
-  [self.navigationController pushViewController:vc animated:YES];
-  [vc release];
-}
-
-
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
   PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];

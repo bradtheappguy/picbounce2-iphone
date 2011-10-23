@@ -100,12 +100,25 @@
     self.commentLabel.text = @"";
 }
 
--(IBAction) likeButtonPressed:(id) sender {
-  NSString *url = [NSString stringWithFormat:@"http://%@/posts/%@/like",API_BASE,[_photo objectForKey:@"uuid"]];
-  PBHTTPRequest *likeRequest = [PBHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-  likeRequest.requestMethod = @"POST";
-  [likeRequest startSynchronous];
-  NSLog(@"GO");
+
+
+-(IBAction)commentButtonPressed:(id)sender {
+  PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
+  vc.hidesBottomBarWhenPushed = YES;
+  [tableViewController.navigationController pushViewController:vc animated:YES];
+  [vc release];
 }
+
+-(IBAction)actionButtonPressed:(id)sender {
+  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Flag Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Flag Post", nil];
+  actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+  [actionSheet showFromTabBar:tableViewController.tabBarController.tabBar];
+  [actionSheet release];
+  
+}
+
+#pragma mark UIACtionSheetDelegate 
+- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{} // before animation and hiding view
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{}  // after animation
 
 @end

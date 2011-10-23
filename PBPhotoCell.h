@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "EGOImageView.h"
 
-@interface PBPhotoCell : UITableViewCell {
+@interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate> {
   UITableViewController *tableViewController;
 }
 
 + (CGFloat) height;
 -(void) addPhotoView:(UIView *)view ToFollowerScrollViewAtIndex:(NSUInteger) index;
--(IBAction) likeButtonPressed:(id) sender;
+
+-(IBAction)commentButtonPressed:(id)sender;
+-(IBAction)actionButtonPressed:(id)sender;
 
 @property (nonatomic, assign) UITableViewController *tableViewController;
 
