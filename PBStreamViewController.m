@@ -101,9 +101,9 @@
 }
 
 -(void) configureNavigationBar {
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
-  self.navigationItem.backBarButtonItem = backButton;
-  [backButton release];
+//  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+//  self.navigationItem.backBarButtonItem = backButton;
+//  [backButton release];
   //UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self //action:@selector(settingsButtonPressed:)];
   //self.navigationItem.rightBarButtonItem = settings; 
   if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {

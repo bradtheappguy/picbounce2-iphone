@@ -7,7 +7,7 @@
 //
 
 #import "PBCommentListViewController.h"
-
+#import "PBCommentCell.h"
 
 @implementation PBCommentListViewController
 
@@ -53,27 +53,46 @@
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 130;
+  return 70;
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
      
-  
-  
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-      cell = [[[NSBundle mainBundle] loadNibNamed:@"PBCommentCell" owner:self options:nil] objectAtIndex:0];
+    static NSString *CellIdentifier = @"MyMessageCell";
+    PBCommentCell *customCell = (PBCommentCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (customCell == nil) {
+        
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PBCommentCell" owner:nil options:nil];
+        
+        for(id currentObject in topLevelObjects)
+            {
+            if([currentObject isKindOfClass:[UITableViewCell class]])
+                {
+                customCell = (PBCommentCell *) currentObject;
+                customCell.selectionStyle = UITableViewCellSelectionStyleNone;
+                break;
+                }
+            }
     }
-    
+    if (indexPath.row %2 == 0) {
+   
+    [customCell.a_FollowButton setBackgroundImage:[UIImage imageNamed:@"btn_following_s@2x.png"] forState:UIControlStateNormal];
+        [customCell.a_FollowButton setTitle:@"Following" forState:UIControlStateNormal];
+        [customCell.a_FollowButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    }
+//    CGSize size = [[chatMessageDictionary objectForKey:@"Message"] sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(246, 9999) lineBreakMode:0];
+//    NSLog(@"%f   %f",size.width, size.height);
+//    
+//    NSInteger numOfLines = size.height / 12;
+//    if (numOfLines == 1) {
+//        customCell.middleImageView.frame = CGRectMake(customCell.middleImageView.frame.origin.x, customCell.middleImageView.frame.origin.y, customCell.middleImageView.frame.size.width, 15);
+//    }
+//    else {
+//        customCell.middleImageView.frame = CGRectMake(customCell.middleImageView.frame.origin.x, customCell.middleImageView.frame.origin.y, customCell.middleImageView.frame.size.width, 12*(numOfLines));
+//    }
 
-  else {
-  }
-
-  
-    return cell;
+    return customCell;
 }
 
 

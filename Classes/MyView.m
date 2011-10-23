@@ -39,6 +39,7 @@
   textView = [[HPTextViewInternal alloc] initWithFrame:CGRectMake(0, -4, 265, 36)];
   textView.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
   textView.font = [UIFont systemFontOfSize:16];
+    textView.returnKeyType = UIReturnKeySend;
   textView.scrollIndicatorInsets = UIEdgeInsetsMake(3, 0, 5, 0);
   textView.backgroundColor = [UIColor clearColor];
   textView.delegate = self;
@@ -72,6 +73,7 @@
   CGFloat height = textView.contentSize.height;
   if ([textView.text length] < 2) {
     height = 36;
+      
   }
   if (textView.contentSize.height < 36) {
     height = 36;
@@ -83,8 +85,8 @@
     textViewClipp.clipsToBounds = NO;
   }
   
-  if (textView.contentSize.height >= 216-20) {
-    height = 216-20;
+  if (textView.contentSize.height >= 100) {
+    height = 100;
     textView.scrollEnabled = YES;
   }
   else {
