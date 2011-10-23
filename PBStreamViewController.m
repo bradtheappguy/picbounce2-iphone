@@ -46,6 +46,17 @@
 @synthesize badgesCountLabel;
 
 
+-(void) showEmptyState {
+  UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+  emptyView.backgroundColor = [UIColor redColor];
+  [self.view addSubview:emptyView];
+  self.tableView.scrollEnabled = NO;
+}
+
+
+-(void) hideEmptyState {
+  self.tableView.scrollEnabled = YES;
+}
 
 - (void) reload {
   [self.tableView reloadData];
@@ -60,8 +71,13 @@
   else {
     self.tableView.tableHeaderView = nil;
   }    
-    //BOOL followingMe = [(NSNumber *)[user objectForKey:@"follows_me"] boolValue];
-    //BOOL following = [(NSNumber *)[user objectForKey:@"following"] boolValue];
+
+  if ([self numberOfSectionsInTableView:self.tableView] == 0) {
+    [self showEmptyState];
+  }
+  else {
+    [self hideEmptyState];
+  }
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {  
@@ -74,7 +90,6 @@
 }
 
 -(void)xxx {
-  [self dismissModalViewControllerAnimated:YES];
   [self loadDataFromCacheIfAvailable];
 }
 
@@ -187,11 +202,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (self.shouldShowUplodingItems == NO) {
-    return [PBPhotoCell height];
+    return [PBPhotoCell heightWithPhoto:nil];
   }
   else {
     if (indexPath.section >= [[PBUploadQueue sharedQueue] count]) {
-      return [PBPhotoCell height];
+      return [PBPhotoCell heightWithPhoto:nil];
     }  
     else {
       return 65;
@@ -222,26 +237,11 @@
 
 //Photo Header
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-  [[NSBundle mainBundle] loadNibNamed:@"PBPhotoHeaderView" owner:self options:nil];
-  
-  
   NSDictionary *photo = [self.responseData photoAtIndex:section];
-  NSDictionary *user = [photo objectForKey:@"user"];
   
-  NSString *name = [user objectForKey:@"display_name"];
-  NSString *lastLocation = [user objectForKey:@"last_location"];
-  NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
-  NSString *userID = [user objectForKey:@"id"];
   
-  photoHeader.userID = userID;
-  photoHeader.nameLabel.text = name;
-  photoHeader.locationLabel.text = lastLocation;
-  photoHeader.timeLabel.text = [self.responseData timeLabelTextForPhotoAtIndex:section];
-  
-  if (![avatarURL isEqual:[NSNull null]]) {
-    photoHeader.avatarImage.imageURL = [NSURL URLWithString: avatarURL];
-  }
-  
+  [[NSBundle mainBundle] loadNibNamed:@"PBPhotoHeaderView" owner:self options:nil];
+  [photoHeader setPhoto:photo];
   
   UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(personHeaderViewWasTapped:)];
   [photoHeader addGestureRecognizer:tapRecognizer];
@@ -350,15 +350,6 @@
 
 #pragma mark Buttons and Gesture Recoginizers
 
-
--(IBAction) commentButtonPressed:(UIButton *) sender {
-  PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
-  vc.hidesBottomBarWhenPushed = YES;
-  [self.navigationController pushViewController:vc animated:YES];
-  [vc release];
-}
-
-
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
   PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
@@ -419,11 +410,7 @@
 
 
 -(IBAction) loginButtonPressed:(id)sender {
-  PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-  [self presentModalViewController:navigationController animated:YES];
-  [navigationController release];
-  [loginViewController release];
+  [(AppDelegate *)[[UIApplication sharedApplication] delegate] presentLoginViewController];
 }
 
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PBStreamViewController.h"
 #import "PBCameraViewController.h"
+#import "PBLoginViewController.h"
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
 
@@ -19,11 +20,15 @@
   IBOutlet PBStreamViewController *liveViewController;
   IBOutlet PBStreamViewController *profileViewController;
   IBOutlet PBCameraViewController *cameraViewController;
+  
+  PBLoginViewController *loginViewController;
 }
 
 @property (nonatomic, retain) IBOutlet NSString *authToken;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+
+-(void) presentLoginViewController;
 
 @end
 

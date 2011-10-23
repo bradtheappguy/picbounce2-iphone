@@ -25,23 +25,24 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+}
+
+
+- (void) viewWillAppear:(BOOL)animated {
   if (self.pullsToRefresh) {
-    if (refreshHeaderView == nil) {
+    if (!refreshHeaderView) {
       refreshHeaderView = [[PBRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, 320.0f, self.tableView.bounds.size.height)];
       [self.tableView addSubview:refreshHeaderView];
       self.tableView.showsVerticalScrollIndicator = YES;
       [refreshHeaderView release];
     }
   }
-  UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
-  view.backgroundColor = [UIColor redColor];
-  self.tableView.tableFooterView = view;
-  [view release];
-  
-}
-
-
-- (void) viewWillAppear:(BOOL)animated {
+  if (!self.tableView.tableFooterView) {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+    view.backgroundColor = [UIColor redColor];
+    self.tableView.tableFooterView = view;
+    [view release];
+  }
   self.navigationItem.title  = @" ";
   if ([self.data count] < 1) {
     [self loadDataFromCacheIfAvailable];

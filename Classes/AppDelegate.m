@@ -41,14 +41,20 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   return _authToken;
 }
 
+-(void) presentLoginViewController {
+  loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
+  [self.tabBarController presentModalViewController:loginViewController animated:YES];
+  [loginViewController release];
+}
+
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
   [HTNotifier startNotifierWithAPIKey:hopToadAPIKey environmentName:HTNotifierDevelopmentEnvironment];
-  [feedViewController viewDidLoad];
-  [profileViewController viewDidLoad];
+
   
   feedViewController.baseURL = [NSString stringWithFormat:@"http://%@/users/me/feed.json",API_BASE];
   feedViewController.shouldShowUplodingItems = YES;
@@ -64,13 +70,7 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   [self.window makeKeyAndVisible];
     
   if ([self authToken] == nil) {
-    PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
-    
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-    navigationController.navigationBarHidden = YES;
-    [self.tabBarController presentModalViewController:navigationController animated:YES];
-    [navigationController release];
-    [loginViewController release];
+    [self presentLoginViewController];
   }
   return YES;
 }
@@ -182,5 +182,13 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   [super dealloc];
 }
 
+-(void) xxx {
+   [self.tabBarController dismissModalViewControllerAnimated:YES];
+}
+
+-(void) userDidLogin:(id)dender {
+  [loginViewController dismissModalViewControllerAnimated:YES];
+  [self performSelector:@selector(xxx) withObject:nil afterDelay:0.5];
+}
 
 @end
