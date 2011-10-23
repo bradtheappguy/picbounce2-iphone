@@ -42,11 +42,8 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
 }
 
 -(void) presentLoginViewController {
-  PBLoginViewController *loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-  navigationController.navigationBarHidden = YES;
-  [self.tabBarController presentModalViewController:navigationController animated:YES];
-  [navigationController release];
+  loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
+  [self.tabBarController presentModalViewController:loginViewController animated:YES];
   [loginViewController release];
 }
 
@@ -185,8 +182,13 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   [super dealloc];
 }
 
+-(void) xxx {
+   [self.tabBarController dismissModalViewControllerAnimated:YES];
+}
+
 -(void) userDidLogin:(id)dender {
-  [self.tabBarController dismissModalViewControllerAnimated:YES];
+  [loginViewController dismissModalViewControllerAnimated:YES];
+  [self performSelector:@selector(xxx) withObject:nil afterDelay:0.5];
 }
 
 @end

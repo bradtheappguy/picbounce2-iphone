@@ -233,23 +233,7 @@
 }
 
 -(void) request:(ASIHTTPRequest *)request willRedirectToURL:(NSURL *)url {
-  NSString *urlString = [url absoluteString];
-  NSRange range = [urlString rangeOfString:@"picbounce?auth_token"];
-  
-  if (range.length > 0) {
-    NSString *key = [urlString substringFromIndex:range.location+range.length+1];
-    [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
-    [request setDelegate:nil];
-    [request cancel];
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
-    
-    
-    [self dismissModalViewControllerAnimated:YES];
-  }
- 
-  [request redirectToURL:url];
+
 }
 
 -(void) requestDidFinish:(ASIHTTPRequest *)request{

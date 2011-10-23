@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PBStreamViewController.m"
-         timestampString = "341037528.801124"
+         timestampString = "341089799.123378"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
+         startingLineNumber = "202"
+         endingLineNumber = "202"
          landmarkName = "@implementation PBStreamViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -85,6 +85,20 @@
          startingLineNumber = "161"
          endingLineNumber = "161"
          landmarkName = "-getSubImageFrom:WithRect:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "PBStreamViewController.m"
+         timestampString = "341089799.123378"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "139"
+         endingLineNumber = "139"
+         landmarkName = "-userDidLogin:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

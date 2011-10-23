@@ -90,7 +90,6 @@
 }
 
 -(void)xxx {
-  [self dismissModalViewControllerAnimated:YES];
   [self loadDataFromCacheIfAvailable];
 }
 
