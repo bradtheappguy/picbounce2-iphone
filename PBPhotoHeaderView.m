@@ -37,6 +37,7 @@
 
 -(void) setPhoto:(NSDictionary *)photo {
   NSDictionary *user = [photo objectForKey:@"user"];
+    
   NSString *name = [user objectForKey:@"display_name"];
   NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
   NSString *userID = [user objectForKey:@"id"];

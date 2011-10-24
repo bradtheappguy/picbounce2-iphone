@@ -20,6 +20,7 @@
 #import "PBUploadingPhotoTableViewCell.h"
 #import "PBPersonListViewController.h"
 #import "PBHTTPRequest.h"
+#import "NewPostViewController.h"
 
 @implementation PBStreamViewController
 
@@ -106,11 +107,18 @@
 //  [backButton release];
   //UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self //action:@selector(settingsButtonPressed:)];
   //self.navigationItem.rightBarButtonItem = settings; 
+    
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
+    [rightBarButtonItem setImage:[UIImage imageNamed:@"bg_navbar@2x.png"]];
+        //[rightBarButtonItem setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_navbar@2x.png"]]];
+    self.navigationItem.leftBarButtonItem = rightBarButtonItem;
+    [rightBarButtonItem release];
+    
   if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
     UIBarButtonItem *logoutButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
     self.navigationItem.rightBarButtonItem = logoutButton;
     [logoutButton release];
-    self.navigationItem.leftBarButtonItem = nil;
+          //self.navigationItem.leftBarButtonItem = nil;
   }
   else {
     UIBarButtonItem *loginButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Login",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(loginButtonPressed:)];
@@ -119,6 +127,13 @@
     self.navigationItem.rightBarButtonItem = nil;
   }
   
+}
+#pragma mark Open Create Post View
+- (void)createPost {
+    NewPostViewController *a_NewPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
+    a_NewPostViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:a_NewPostViewController animated:YES];
+    [a_NewPostViewController release];
 }
 
 - (void) logoutButtonPressed:(id)sender {
@@ -151,7 +166,8 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
   
   if (!self.navigationItem.title) {
-    self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
+      NSLog(@"%@", NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE"));
+      self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
   }
   
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
@@ -159,7 +175,7 @@
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
   
-  self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
+        //self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
 
   [self configureNavigationBar];
   
