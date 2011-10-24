@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MyView.h"
+#import "PBRootViewController.h"
 
-@interface PBCommentListViewController : UIViewController {
+@interface PBCommentListViewController :UITableViewController {
   
   IBOutlet MyView *myView;
   

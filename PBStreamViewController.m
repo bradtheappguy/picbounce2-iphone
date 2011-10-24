@@ -47,8 +47,9 @@
 
 
 -(void) showEmptyState {
-  UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+  UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
   emptyView.backgroundColor = [UIColor redColor];
+  emptyView.image = [UIImage imageNamed:@""];
   [self.view addSubview:emptyView];
   self.tableView.scrollEnabled = NO;
 }

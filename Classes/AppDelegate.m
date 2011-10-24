@@ -62,9 +62,13 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   
   
   profileViewController.shouldShowProfileHeader = YES;
+<<<<<<< HEAD
   profileViewController.baseURL = [NSString stringWithFormat:@"http://%@/users/me.json",API_BASE];
+=======
+  profileViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/users/me/posts",API_BASE];
+>>>>>>> Pointing app to new API on bigfrosy
   
-  popularViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/popular.json",API_BASE];
+  popularViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/popular",API_BASE];
   
   [self.window addSubview:self.tabBarController.view];
   [self.window makeKeyAndVisible];

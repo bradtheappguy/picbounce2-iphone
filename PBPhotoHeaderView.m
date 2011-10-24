@@ -37,13 +37,26 @@
 
 -(void) setPhoto:(NSDictionary *)photo {
   NSDictionary *user = [photo objectForKey:@"user"];
+<<<<<<< HEAD
   NSString *name = [user objectForKey:@"display_name"];
   NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
+=======
+  NSString *name = [user objectForKey:@"name"];
+  NSString *screenname = [user objectForKeyNotNull:@"screen_name"];
+
+  NSString *avatarURL = [user objectForKey:@"avatar"];
+>>>>>>> Pointing app to new API on bigfrosy
   NSString *userID = [user objectForKey:@"id"];
   
   self.userID = userID;
+<<<<<<< HEAD
   self.nameLabel.text = name;
   self.viewCountLabel.text = @"666 views";
+=======
+  self.nameLabel.text = screenname?screenname:(name?name:@"");
+  self.viewCountLabel.text = [NSString stringWithFormat:@"%@ %@",
+  [viewCount stringValue],NSLocalizedString(@"Views", nil)];
+>>>>>>> Pointing app to new API on bigfrosy
   self.timeLabel.text =[(NSNumber *)[photo objectForKey:@"created"] cuteTimeString];
   
   if (![avatarURL isEqual:[NSNull null]]) {
