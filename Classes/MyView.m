@@ -23,20 +23,20 @@
     
 - (void) awakeFromNib {
   numberOfLines = 1;
-  UIImage * bgImage = [[UIImage imageNamed:@"bg.png"] stretchableImageWithLeftCapWidth:200 topCapHeight:22];
+  UIImage * bgImage = [[UIImage imageNamed:@"bg_commentBar.png"] stretchableImageWithLeftCapWidth:200 topCapHeight:22];
   self.image = bgImage;
   [self setContentMode:UIViewContentModeScaleToFill];
   self.clipsToBounds = YES;
   self.userInteractionEnabled = YES;
  
   
-  textViewClipp = [[UIView alloc] initWithFrame:CGRectMake(48, 8, 265, 26)];
+  textViewClipp = [[UIView alloc] initWithFrame:CGRectMake(8, 8, 300, 26)];
   textViewClipp.backgroundColor = [UIColor clearColor];
   textViewClipp.alpha = 1;
   
   [self addSubview:textViewClipp];
   
-  textView = [[HPTextViewInternal alloc] initWithFrame:CGRectMake(0, -4, 265, 36)];
+  textView = [[HPTextViewInternal alloc] initWithFrame:CGRectMake(0, -4, 300, 36)];
   textView.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
   textView.font = [UIFont systemFontOfSize:16];
     textView.returnKeyType = UIReturnKeySend;
@@ -50,10 +50,10 @@
     
     //add the avatar
     
-    UIView *avatar = [[UIView alloc] initWithFrame:CGRectMake(6, 5, 30, 30)];
-    avatar.backgroundColor = [UIColor blueColor];
-    [self addSubview:avatar];
-  [avatar release];
+//    UIView *avatar = [[UIView alloc] initWithFrame:CGRectMake(6, 5, 30, 30)];
+//    avatar.backgroundColor = [UIColor blueColor];
+//    [self addSubview:avatar];
+//  [avatar release];
 }
 
 - (void) grow {

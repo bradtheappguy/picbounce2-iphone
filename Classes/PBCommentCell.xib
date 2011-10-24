@@ -53,7 +53,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">comment_bar_bg.png</string>
+									<string key="NSResourceName">bg_commentCell.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="925145335">
@@ -68,7 +68,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">icon.png</string>
+									<string key="NSResourceName">icon_avatar.png</string>
 								</object>
 							</object>
 							<object class="IBUILabel" id="849422529">
@@ -351,9 +351,9 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="bg_commentCell.png">{320, 72}</string>
 			<string key="btn_follow_s@2x.png">{152, 62}</string>
-			<string key="comment_bar_bg.png">{320, 44}</string>
-			<string key="icon.png">{57, 57}</string>
+			<string key="icon_avatar.png">{39, 39}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
