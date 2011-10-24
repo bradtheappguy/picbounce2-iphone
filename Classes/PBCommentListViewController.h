@@ -10,7 +10,7 @@
 #import "MyView.h"
 #import "PBRootViewController.h"
 
-@interface PBCommentListViewController :UITableViewController {
+@interface PBCommentListViewController :UIViewController {
   
   IBOutlet MyView *myView;
   

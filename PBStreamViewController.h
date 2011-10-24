@@ -81,7 +81,7 @@
 -(IBAction) followersButtonPressed;
 -(IBAction) badgesButtonPressed;
 -(IBAction) taggedPeopleButtonPressed:(id)sender;
-
+-(BOOL) moreDataAvailable;
 
 - (UIView *) footerViewForTable:(UITableView *)tableView;
 @end

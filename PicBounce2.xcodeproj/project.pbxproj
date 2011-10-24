@@ -542,6 +542,7 @@
 		A2CED4CA1416C5AB00400DF8 /* PBPersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */; };
 		A2D461BE142A8CA30037F87B /* PBHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D461BD142A8CA30037F87B /* PBHTTPRequest.m */; };
 		A2D4843A1453CAC6001B6426 /* PBPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D484391453CAC6001B6426 /* PBPhotoView.m */; };
+		A2D4844614554254001B6426 /* NSDictionary+NotNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D4844514554254001B6426 /* NSDictionary+NotNull.m */; };
 		A2D9C30413AAE7D20091D5BB /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2C613AAE7D20091D5BB /* DDXMLElementAdditions.m */; };
 		A2D9C30513AAE7D20091D5BB /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2C913AAE7D20091D5BB /* NSString+DDXML.m */; };
 		A2D9C30613AAE7D20091D5BB /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2CC13AAE7D20091D5BB /* DDXMLDocument.m */; };
@@ -1217,6 +1218,8 @@
 		A2D461BD142A8CA30037F87B /* PBHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBHTTPRequest.m; sourceTree = "<group>"; };
 		A2D484381453CAC6001B6426 /* PBPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPhotoView.h; sourceTree = "<group>"; };
 		A2D484391453CAC6001B6426 /* PBPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPhotoView.m; sourceTree = "<group>"; };
+		A2D4844414554254001B6426 /* NSDictionary+NotNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NotNull.h"; sourceTree = "<group>"; };
+		A2D4844514554254001B6426 /* NSDictionary+NotNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NotNull.m"; sourceTree = "<group>"; };
 		A2D9C2C513AAE7D20091D5BB /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		A2D9C2C613AAE7D20091D5BB /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		A2D9C2C813AAE7D20091D5BB /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -2340,6 +2343,8 @@
 				A29A9578131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m */,
 				A296D2121453822500175D1B /* NSString+CuteTime.h */,
 				A296D2131453822500175D1B /* NSString+CuteTime.m */,
+				A2D4844414554254001B6426 /* NSDictionary+NotNull.h */,
+				A2D4844514554254001B6426 /* NSDictionary+NotNull.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -3100,6 +3105,7 @@
 				A296D2141453822500175D1B /* NSString+CuteTime.m in Sources */,
 				A2D4843A1453CAC6001B6426 /* PBPhotoView.m in Sources */,
 				557080101454BA5C00183395 /* PBCommentCell.m in Sources */,
+				A2D4844614554254001B6426 /* NSDictionary+NotNull.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

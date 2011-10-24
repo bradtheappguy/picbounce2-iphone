@@ -98,7 +98,7 @@
 }
 
 
--(NSUInteger) numberOfPhotos {
+-(NSUInteger) numberOfPosts {
   return [[self posts] count];
 }
 

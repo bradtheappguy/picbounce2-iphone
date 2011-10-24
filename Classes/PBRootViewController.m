@@ -173,7 +173,7 @@
   NSLog(@"Loading More: %@",loadMoreDataURL);
   if (!loadMoreDataURL) {
     NSLog(@"Error: load more url not set");
-    [self doneLoadingTableViewDataFromNetwork:nil];
+    //[self doneLoadingTableViewDataFromNetwork:nil];
     return;
   }
   

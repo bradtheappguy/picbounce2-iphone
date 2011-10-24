@@ -10,6 +10,7 @@
 #import "EGOImageButton.h"
 #import "PBCommentListViewController.h"
 #import "PBHTTPRequest.h"
+#import "NSDictionary+NotNull.h"
 
 //#define PhotoCellHeight 363
 
@@ -75,7 +76,7 @@
  
   NSString *caption = [photo objectForKey:@"caption"];
   
-  NSString *uuid = [photo objectForKey:@"uuid"];
+  NSString *photoID = [photo objectForKey:@"id"];
   NSString *twitter_avatar_url = [photo objectForKey:@"twitter_avatar_url"];
   if ([twitter_avatar_url isEqual:[NSNull null]]) {
     twitter_avatar_url = nil;
@@ -85,8 +86,9 @@
   NSUInteger commentsCount = [[photo objectForKey:@"comments_count"] intValue];
   NSUInteger taggedPeopleCount = [[photo objectForKey:@"tagged_people_count"] intValue];
   NSUInteger tagsCount = [[photo objectForKey:@"tags_count"] intValue];
-  
-  self.photoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://s3.amazonaws.com/com.clixtr.picbounce/photos/%@/big.jpg",uuid]];
+  NSString *mediaURL = [photo objectForKeyNotNull:@"media_url"];
+
+  self.photoImageView.imageURL = [NSURL URLWithString:mediaURL];
   
   self.bounceCountLabel.text = [NSString stringWithFormat:@"%d",bouncesCount];
   self.commentCountLabel.text = [NSString stringWithFormat:@"%d",commentsCount];

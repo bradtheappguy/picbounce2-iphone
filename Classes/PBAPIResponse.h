@@ -24,7 +24,7 @@
 - (NSDictionary *) photoAtIndex:(NSUInteger) index;
 - (NSMutableArray *) posts;
 - (NSUInteger) numberOfPeople;
-- (NSUInteger) numberOfPhotos;
+- (NSUInteger) numberOfPosts;
 - (void) mergeNewresponseData:(id)json_string;
 - (id) initWithresponseData:(id)json_string;
 - (NSURL *) loadMoreDataURL;

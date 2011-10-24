@@ -48,6 +48,7 @@
 
 -(void) showEmptyState {
   UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+  emptyView.tag = 12;
   emptyView.backgroundColor = [UIColor redColor];
   emptyView.image = [UIImage imageNamed:@""];
   [self.view addSubview:emptyView];
@@ -56,6 +57,7 @@
 
 
 -(void) hideEmptyState {
+  [[self.view viewWithTag:12] removeFromSuperview];
   self.tableView.scrollEnabled = YES;
 }
 
@@ -172,12 +174,15 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
   NSUInteger nUploading = [[PBUploadQueue sharedQueue] count]; 
   NSUInteger nPhotos = [[self.responseData posts] count]; 
+  
+  NSUInteger nSections = nPhotos;
   if (self.shouldShowUplodingItems) {
-    return nUploading + nPhotos;
+    nSections += nUploading;
   }
-  else {
-    return nPhotos;
+  if ([self moreDataAvailable]) {
+    nSections += 1;
   }
+  return nSections;
 }
 
 //one row for each photo
@@ -250,12 +255,25 @@
   return photoHeader;
 }
 
+-(UITableViewCell *)loadMoreCell {
+  UITableViewCell *loadMoreCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LOADMORECELL"];
+  loadMoreCell.selectionStyle = UITableViewCellSelectionStyleNone;
+  UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+  [[loadMoreCell contentView] addSubview:spinner];
+  [spinner startAnimating];
+  spinner.center = loadMoreCell.center;
+  [spinner release];
+  return loadMoreCell;
+}
 
 
 
 - (UITableViewCell *)photoCellForRowAtIndex:(NSUInteger)index {
   id photo = [self.responseData photoAtIndex:index];
   
+  if (!photo) {
+    return [self loadMoreCell];
+  }
   
   
   static NSString *MyIdentifier = @"CELL";
@@ -301,16 +319,12 @@
 
 #pragma mark Data
 -(BOOL) moreDataAvailable {
-  /*if ([responseData loadMoreDataURL]) {
-   footerDecoration.hidden = YES;
-   [loadingMoreActivityIndicatiorView startAnimating];
-   return YES; 
+  if ([self.responseData loadMoreDataURL]) {
+    return YES; 
    }
    else {
-   [loadingMoreActivityIndicatiorView stopAnimating];
-   footerDecoration.hidden = NO;
-   return NO;
-   }*/return NO;
+     return NO;
+   }
 }
 
 -(void) loadMoreData {
@@ -331,11 +345,11 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.section == [self numberOfSectionsInTableView:tableView] - 1) {
     if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1) {
-      //if ([data count] > 0) {
-      //if ([self moreDataAvailable]) {
-      //[self loadMoreData];
-      //}
-      //}
+      if ([self.responseData numberOfPosts] > 0) {
+        if ([self moreDataAvailable]) {
+          [self loadMoreData];
+        }
+      }
     }
   }
 }
