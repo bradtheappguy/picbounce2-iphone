@@ -98,35 +98,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "274"
          endingLineNumber = "274"
-         landmarkName = "-photoCellForRowAtIndex:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "PBStreamViewController.m"
-         timestampString = "341140086.347583"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
-         landmarkName = "-reload"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "PBStreamViewController.m"
-         timestampString = "341140087.418603"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
-         landmarkName = "-reload"
+         landmarkName = "-loadMoreCell"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

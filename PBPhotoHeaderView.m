@@ -38,12 +38,11 @@
 
 -(void) setPhoto:(NSDictionary *)photo {
   NSDictionary *user = [photo objectForKey:@"user"];
-
   NSString *name = [user objectForKey:@"name"];
   NSString *screenname = [user objectForKeyNotNull:@"screen_name"];
 
   NSString *avatarURL = [user objectForKey:@"avatar"];
-
+    
   NSString *userID = [user objectForKey:@"id"];
   
   self.userID = userID;

@@ -19,6 +19,10 @@
 		554270B11454E69F00B8648A /* bg_commentCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 554270AD1454E69F00B8648A /* bg_commentCell@2x.png */; };
 		557080101454BA5C00183395 /* PBCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5570800F1454BA5B00183395 /* PBCommentCell.m */; };
 		557080151454C23B00183395 /* PBCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 557080141454C23A00183395 /* PBCommentCell.xib */; };
+		55EF00E614558E830027FFA8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF00E414558E830027FFA8 /* FeedViewController.m */; };
+		55EF00E714558E830027FFA8 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EF00E514558E830027FFA8 /* FeedViewController.xib */; };
+		55EF00ED145592DF0027FFA8 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF00EB145592DF0027FFA8 /* NewPostViewController.m */; };
+		55EF00EE145592DF0027FFA8 /* NewPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EF00EC145592DF0027FFA8 /* NewPostViewController.xib */; };
 		7452D1AE135D916F0024C63C /* ProfileSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452D1AD135D916F0024C63C /* ProfileSettingView.m */; };
 		7452D1C0135DB8220024C63C /* ProfileAboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452D1BF135DB8220024C63C /* ProfileAboutView.m */; };
 		74A1CA38136810D600F63EF5 /* Eng.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74A1CA37136810D600F63EF5 /* Eng.strings */; };
@@ -106,6 +110,7 @@
 		A28DE346138B34D100B56C12 /* PBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DE344138B34D100B56C12 /* PBLoginViewController.m */; };
 		A28DE347138B34D100B56C12 /* PBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28DE345138B34D100B56C12 /* PBLoginViewController.xib */; };
 		A28E7B4513EB223E00C3AE55 /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A28E7B4313EB223E00C3AE55 /* CaptureSessionManager.m */; };
+		A29493BE1455E4A70000D6C8 /* NSDictionary+NotNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A29493BD1455E4A70000D6C8 /* NSDictionary+NotNull.m */; };
 		A29506B6143E7493002E07DD /* libAviarySDK-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A29506B2143E7493002E07DD /* libAviarySDK-universal.a */; };
 		A29506B7143E7493002E07DD /* AviarySDK-Core.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A29506B4143E7493002E07DD /* AviarySDK-Core.bundle */; };
 		A29506B8143E7493002E07DD /* AviarySDK-Plugins.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A29506B5143E7493002E07DD /* AviarySDK-Plugins.bundle */; };
@@ -542,7 +547,6 @@
 		A2CED4CA1416C5AB00400DF8 /* PBPersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */; };
 		A2D461BE142A8CA30037F87B /* PBHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D461BD142A8CA30037F87B /* PBHTTPRequest.m */; };
 		A2D4843A1453CAC6001B6426 /* PBPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D484391453CAC6001B6426 /* PBPhotoView.m */; };
-		A2D4844614554254001B6426 /* NSDictionary+NotNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D4844514554254001B6426 /* NSDictionary+NotNull.m */; };
 		A2D9C30413AAE7D20091D5BB /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2C613AAE7D20091D5BB /* DDXMLElementAdditions.m */; };
 		A2D9C30513AAE7D20091D5BB /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2C913AAE7D20091D5BB /* NSString+DDXML.m */; };
 		A2D9C30613AAE7D20091D5BB /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9C2CC13AAE7D20091D5BB /* DDXMLDocument.m */; };
@@ -599,6 +603,12 @@
 		5570800E1454BA5900183395 /* PBCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBCommentCell.h; sourceTree = "<group>"; };
 		5570800F1454BA5B00183395 /* PBCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBCommentCell.m; sourceTree = "<group>"; };
 		557080141454C23A00183395 /* PBCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBCommentCell.xib; sourceTree = "<group>"; };
+		55EF00E314558E830027FFA8 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		55EF00E414558E830027FFA8 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		55EF00E514558E830027FFA8 /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
+		55EF00EA145592DF0027FFA8 /* NewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostViewController.h; sourceTree = "<group>"; };
+		55EF00EB145592DF0027FFA8 /* NewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostViewController.m; sourceTree = "<group>"; };
+		55EF00EC145592DF0027FFA8 /* NewPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPostViewController.xib; sourceTree = "<group>"; };
 		7452D1AC135D916F0024C63C /* ProfileSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSettingView.h; sourceTree = "<group>"; };
 		7452D1AD135D916F0024C63C /* ProfileSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSettingView.m; sourceTree = "<group>"; };
 		7452D1BE135DB8210024C63C /* ProfileAboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAboutView.h; sourceTree = "<group>"; };
@@ -740,6 +750,8 @@
 		A28DE345138B34D100B56C12 /* PBLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBLoginViewController.xib; sourceTree = "<group>"; };
 		A28E7B4313EB223E00C3AE55 /* CaptureSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureSessionManager.m; sourceTree = "<group>"; };
 		A28E7B4413EB223E00C3AE55 /* CaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
+		A29493BC1455E4A70000D6C8 /* NSDictionary+NotNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NotNull.h"; sourceTree = "<group>"; };
+		A29493BD1455E4A70000D6C8 /* NSDictionary+NotNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NotNull.m"; sourceTree = "<group>"; };
 		A29506B0143E7493002E07DD /* AFFeatherConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFFeatherConstants.h; sourceTree = "<group>"; };
 		A29506B1143E7493002E07DD /* AFFeatherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFFeatherController.h; sourceTree = "<group>"; };
 		A29506B2143E7493002E07DD /* libAviarySDK-universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libAviarySDK-universal.a"; sourceTree = "<group>"; };
@@ -1218,8 +1230,6 @@
 		A2D461BD142A8CA30037F87B /* PBHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBHTTPRequest.m; sourceTree = "<group>"; };
 		A2D484381453CAC6001B6426 /* PBPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPhotoView.h; sourceTree = "<group>"; };
 		A2D484391453CAC6001B6426 /* PBPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPhotoView.m; sourceTree = "<group>"; };
-		A2D4844414554254001B6426 /* NSDictionary+NotNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NotNull.h"; sourceTree = "<group>"; };
-		A2D4844514554254001B6426 /* NSDictionary+NotNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NotNull.m"; sourceTree = "<group>"; };
 		A2D9C2C513AAE7D20091D5BB /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		A2D9C2C613AAE7D20091D5BB /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		A2D9C2C813AAE7D20091D5BB /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -1320,12 +1330,13 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				55A9176A145580D3009C1C14 /* APP DELEGATE */,
+				55A9176B14558123009C1C14 /* TabBar Controller */,
 				A20B59EB1433FA4500FC39D1 /* Networking */,
 				A2C34BC413F3B97800EC0E9B /* Util */,
 				A2C34BC313F3B94E00EC0E9B /* Model */,
 				A2C34BC213F3B91B00EC0E9B /* View Controllers */,
 				A2C34BC113F3B8F900EC0E9B /* UI Components */,
-				A2A0E6F713C3BE30002CC14F /* Camera */,
 			);
 			name = Source;
 			path = Classes;
@@ -1379,6 +1390,120 @@
 				A273CAA9130AED68003FE8DA /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55A9176414557FAE009C1C14 /* PBPhotoCell */ = {
+			isa = PBXGroup;
+			children = (
+				A205F41113145069003756CA /* PBPhotoCell.h */,
+				A205F41213145069003756CA /* PBPhotoCell.m */,
+				A205F22913130CA2003756CA /* PBPhotoCell.xib */,
+			);
+			name = PBPhotoCell;
+			sourceTree = "<group>";
+		};
+		55A9176614557FD3009C1C14 /* PBPhoto HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				A26E720B1334243800BD737D /* PBPhotoHeaderView.h */,
+				A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */,
+				A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */,
+			);
+			name = "PBPhoto HeaderView";
+			sourceTree = "<group>";
+		};
+		55A9176714558024009C1C14 /* PB Person List ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A205F9281314B41E003756CA /* PBPersonListViewController.h */,
+				A205F9291314B41E003756CA /* PBPersonListViewController.m */,
+				A205F92A1314B41E003756CA /* PBPersonListViewController.xib */,
+			);
+			name = "PB Person List ViewController";
+			sourceTree = "<group>";
+		};
+		55A917681455805C009C1C14 /* PB Badge Collection ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A205F93F1314B556003756CA /* PBBadgeCollectionViewController.h */,
+				A205F9401314B556003756CA /* PBBadgeCollectionViewController.m */,
+				A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */,
+			);
+			name = "PB Badge Collection ViewController";
+			sourceTree = "<group>";
+		};
+		55A9176914558083009C1C14 /* PB Auth WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A22C149F1385B5D3001ACB13 /* PBAuthWebViewController.h */,
+				A22C14A01385B5D3001ACB13 /* PBAuthWebViewController.m */,
+				A22C14A11385B5D3001ACB13 /* PBAuthWebViewController.xib */,
+			);
+			name = "PB Auth WebViewController";
+			sourceTree = "<group>";
+		};
+		55A9176A145580D3009C1C14 /* APP DELEGATE */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* AppDelegate.h */,
+				1D3623250D0F684500981E51 /* AppDelegate.m */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+			);
+			name = "APP DELEGATE";
+			sourceTree = "<group>";
+		};
+		55A9176B14558123009C1C14 /* TabBar Controller */ = {
+			isa = PBXGroup;
+			children = (
+				55A9176E14558174009C1C14 /* Profile TabBar */,
+				55A9176D1455813E009C1C14 /* Capture TabBar */,
+				55A9176C14558135009C1C14 /* Feed TabBar */,
+			);
+			name = "TabBar Controller";
+			sourceTree = "<group>";
+		};
+		55A9176C14558135009C1C14 /* Feed TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				55EF00E9145592BB0027FFA8 /* Post View Controller */,
+				55EF00E8145592A50027FFA8 /* Feed View Controller */,
+			);
+			name = "Feed TabBar";
+			sourceTree = "<group>";
+		};
+		55A9176D1455813E009C1C14 /* Capture TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				A2A0E6F713C3BE30002CC14F /* Camera */,
+			);
+			name = "Capture TabBar";
+			sourceTree = "<group>";
+		};
+		55A9176E14558174009C1C14 /* Profile TabBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Profile TabBar";
+			sourceTree = "<group>";
+		};
+		55EF00E8145592A50027FFA8 /* Feed View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				55EF00E314558E830027FFA8 /* FeedViewController.h */,
+				55EF00E414558E830027FFA8 /* FeedViewController.m */,
+				55EF00E514558E830027FFA8 /* FeedViewController.xib */,
+			);
+			name = "Feed View Controller";
+			sourceTree = "<group>";
+		};
+		55EF00E9145592BB0027FFA8 /* Post View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				55EF00EA145592DF0027FFA8 /* NewPostViewController.h */,
+				55EF00EB145592DF0027FFA8 /* NewPostViewController.m */,
+				55EF00EC145592DF0027FFA8 /* NewPostViewController.xib */,
+			);
+			name = "Post View Controller";
 			sourceTree = "<group>";
 		};
 		74A1CA361368109C00F63EF5 /* Localization */ = {
@@ -1446,20 +1571,16 @@
 		A2363F39133F117D00F76FFD /* Streams */ = {
 			isa = PBXGroup;
 			children = (
-				A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */,
+				55A9176614557FD3009C1C14 /* PBPhoto HeaderView */,
+				55A9176414557FAE009C1C14 /* PBPhotoCell */,
 				A2F2663A1315C04B00F4E0A0 /* TableTitleTableViewCell.xib */,
 				A205F1101312E708003756CA /* PBStreamViewController.h */,
 				A205F1111312E708003756CA /* PBStreamViewController.m */,
-				A205F41113145069003756CA /* PBPhotoCell.h */,
-				A205F41213145069003756CA /* PBPhotoCell.m */,
-				A205F22913130CA2003756CA /* PBPhotoCell.xib */,
+				A2BE3DB7129E00EB003E8F44 /* PBStreamViewController.xib */,
 				A205F0B81312C7FC003756CA /* PBFeedViewController.h */,
 				A205F0B91312C7FC003756CA /* PBFeedViewController.m */,
 				A205F0BB1312C837003756CA /* PBExploreViewController.h */,
 				A205F0BC1312C837003756CA /* PBExploreViewController.m */,
-				A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */,
-				A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */,
-				A26E720B1334243800BD737D /* PBPhotoHeaderView.h */,
 				7452D1AC135D916F0024C63C /* ProfileSettingView.h */,
 				7452D1AD135D916F0024C63C /* ProfileSettingView.m */,
 				7452D1BE135DB8210024C63C /* ProfileAboutView.h */,
@@ -1472,6 +1593,7 @@
 				74AED8D0136E83A900CC6164 /* FriendListView.m */,
 				A2626FE414197BB300F873B7 /* PBPersonTableViewCell.h */,
 				A2626FE514197BB300F873B7 /* PBPersonTableViewCell.m */,
+				A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */,
 			);
 			name = Streams;
 			sourceTree = "<group>";
@@ -2289,18 +2411,11 @@
 		A2C34BC213F3B91B00EC0E9B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A2BE3DB7129E00EB003E8F44 /* PBStreamViewController.xib */,
+				55A9176914558083009C1C14 /* PB Auth WebViewController */,
+				55A917681455805C009C1C14 /* PB Badge Collection ViewController */,
+				55A9176714558024009C1C14 /* PB Person List ViewController */,
 				A22C149C1385B58F001ACB13 /* PBTwitterViewController.h */,
 				A22C149D1385B58F001ACB13 /* PBTwitterViewController.m */,
-				A205F9281314B41E003756CA /* PBPersonListViewController.h */,
-				A205F9291314B41E003756CA /* PBPersonListViewController.m */,
-				A205F92A1314B41E003756CA /* PBPersonListViewController.xib */,
-				A205F93F1314B556003756CA /* PBBadgeCollectionViewController.h */,
-				A205F9401314B556003756CA /* PBBadgeCollectionViewController.m */,
-				A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */,
-				A22C149F1385B5D3001ACB13 /* PBAuthWebViewController.h */,
-				A22C14A01385B5D3001ACB13 /* PBAuthWebViewController.m */,
-				A22C14A11385B5D3001ACB13 /* PBAuthWebViewController.xib */,
 				A205F0BF1312C851003756CA /* PBFilterViewController.h */,
 				A205F0BE1312C851003756CA /* PBFilterViewController.m */,
 				A227E36512FB38B000701013 /* PBRootViewController.h */,
@@ -2332,19 +2447,16 @@
 		A2C34BC413F3B97800EC0E9B /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A29493BC1455E4A70000D6C8 /* NSDictionary+NotNull.h */,
+				A29493BD1455E4A70000D6C8 /* NSDictionary+NotNull.m */,
 				A2317F8513908CA100761C47 /* Entitlements.plist */,
 				32CA4F630368D1EE00C91783 /* PicBounce2_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				1D3623240D0F684500981E51 /* AppDelegate.h */,
-				1D3623250D0F684500981E51 /* AppDelegate.m */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* PicBounce2-Info.plist */,
 				A29A9577131F21E500DB6D46 /* NSDate+TimeFromNowFormat.h */,
 				A29A9578131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m */,
 				A296D2121453822500175D1B /* NSString+CuteTime.h */,
 				A296D2131453822500175D1B /* NSString+CuteTime.m */,
-				A2D4844414554254001B6426 /* NSDictionary+NotNull.h */,
-				A2D4844514554254001B6426 /* NSDictionary+NotNull.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -2958,6 +3070,8 @@
 				554270AF1454E69F00B8648A /* bg_commentBar@2x.png in Resources */,
 				554270B01454E69F00B8648A /* bg_commentCell.png in Resources */,
 				554270B11454E69F00B8648A /* bg_commentCell@2x.png in Resources */,
+				55EF00E714558E830027FFA8 /* FeedViewController.xib in Resources */,
+				55EF00EE145592DF0027FFA8 /* NewPostViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3105,7 +3219,9 @@
 				A296D2141453822500175D1B /* NSString+CuteTime.m in Sources */,
 				A2D4843A1453CAC6001B6426 /* PBPhotoView.m in Sources */,
 				557080101454BA5C00183395 /* PBCommentCell.m in Sources */,
-				A2D4844614554254001B6426 /* NSDictionary+NotNull.m in Sources */,
+				55EF00E614558E830027FFA8 /* FeedViewController.m in Sources */,
+				55EF00ED145592DF0027FFA8 /* NewPostViewController.m in Sources */,
+				A29493BE1455E4A70000D6C8 /* NSDictionary+NotNull.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
