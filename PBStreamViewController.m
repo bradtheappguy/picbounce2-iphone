@@ -161,6 +161,8 @@
 #pragma mark View LifeCycle
 - (void) viewDidLoad {
   [super viewDidLoad];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoadingIndicator11) name:@"ShowLoadingView" object:nil];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoadingIndicator11) name:@"HideLoadingView" object:nil];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -300,7 +302,7 @@
     // self.tvCell = nil;
   }
   [_cell setPhoto:photo];
-  
+    
   _cell.tableViewController = self;
   
 
@@ -480,5 +482,38 @@
 
 -(IBAction)leaveCommentButtonPressed:(id)sender{}
 
-
+-(void) showLoadingIndicator11 {
+    if (loadingView) {
+        [loadingView removeFromSuperview];
+        loadingView = nil;
+    }
+    loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 108, 58)];
+    loadingView.layer.cornerRadius = 10;
+    loadingView.backgroundColor = [UIColor colorWithRed:144/255.0 green:124/255.0 blue:109/255.0 alpha:0.90];
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    spinner.center = CGPointMake(108/2, 20);
+    [spinner startAnimating];
+    
+    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 35, 108, 15)];
+    loadingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+    loadingLabel.textColor = [UIColor colorWithRed:252/255.0 green:251/255.0 blue:251/255.0 alpha:1.0];
+    loadingLabel.textAlignment = UITextAlignmentCenter;
+    loadingLabel.text = @"Loading";
+    loadingLabel.backgroundColor = [UIColor clearColor];
+    
+    [loadingView addSubview:spinner];
+    [spinner release];
+    [loadingView addSubview:loadingLabel];
+    [loadingLabel release];
+    loadingView.center = self.view.center;
+    [self.view  addSubview:loadingView];
+    
+}
+- (void)hideLoadingIndicator11 {
+    if (loadingView) {
+        [loadingView removeFromSuperview];
+        loadingView = nil;
+    }
+}
 @end

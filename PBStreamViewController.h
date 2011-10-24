@@ -42,7 +42,7 @@
   UIButton *activeLeaveCommentButton;
   
   UIImageView *profileAvatarImageView;
-  
+    
 }
 
 @property (nonatomic, retain) IBOutlet PBProfileHeaderView *profileHeader;

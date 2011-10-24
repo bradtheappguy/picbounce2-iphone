@@ -8,9 +8,11 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "EGOImageView.h"
-
+#import "ASIHTTPRequest.h"
 @interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate> {
   UITableViewController *tableViewController;
+
+    ASIHTTPRequest *_followingRequest;
 }
 
 + (CGFloat) heightWithPhoto:(NSDictionary *)photo;

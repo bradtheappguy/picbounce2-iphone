@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "EGOImageView.h"
 @interface PBCommentCell : UITableViewCell {
-    UIImageView *a_CommentPersonImageView;
+    EGOImageView *a_CommentPersonImageView;
     UIImageView *a_CommentCellBackGroundImageView;
     UILabel *a_CommentUserNameLabel;
     UILabel *a_CommentLabel;
     UIButton *a_FollowButton;
     
 }
-@property (nonatomic, retain) IBOutlet UIImageView *a_CommentPersonImageView;
+@property (nonatomic, retain) IBOutlet EGOImageView *a_CommentPersonImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *a_CommentCellBackGroundImageView;
 @property (nonatomic, retain) IBOutlet UILabel *a_CommentUserNameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *a_CommentLabel;

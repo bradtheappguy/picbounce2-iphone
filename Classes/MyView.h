@@ -12,7 +12,7 @@
 @interface MyView : UIImageView <UITextViewDelegate>{
   NSUInteger numberOfLines;
   
-  UITextView *textView;
+  UITextView *a_CommentTextView;
   
   CGFloat textHeight;
   UIView *textViewClipp;
@@ -21,4 +21,5 @@
 }
 
 @property (nonatomic, retain) UIScrollView *scrollView;
+@property (nonatomic, retain) UITextView *a_CommentTextView;
 @end

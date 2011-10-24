@@ -17,12 +17,12 @@
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-   a_CommentUserNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
-    a_CommentUserNameLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
-        //color:  77/255.0  65/255.0 56/255.0
-    
-    a_CommentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-     a_CommentLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
+//   a_CommentUserNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
+//    a_CommentUserNameLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
+//        //color:  77/255.0  65/255.0 56/255.0
+//    
+//    a_CommentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
+//     a_CommentLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
         //color:  77/255.0  65/255.0 56/255.0
     
     return  self;

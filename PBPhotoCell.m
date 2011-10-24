@@ -11,7 +11,7 @@
 #import "PBCommentListViewController.h"
 #import "PBHTTPRequest.h"
 #import "NSDictionary+NotNull.h"
-
+#import "NSString+SBJSON.h"
 //#define PhotoCellHeight 363
 
 #define PhotoCellHeight 385
@@ -74,20 +74,22 @@
   [_photo release];
   _photo = [photo retain];
  
+        NSLog(@"%@",photo);
   NSString *caption = [photo objectForKey:@"caption"];
   
   NSString *photoID = [photo objectForKey:@"id"];
-  NSString *twitter_avatar_url = [photo objectForKey:@"twitter_avatar_url"];
+  NSString *twitter_avatar_url = [photo objectForKey:@"avatar"];
   if ([twitter_avatar_url isEqual:[NSNull null]]) {
     twitter_avatar_url = nil;
   }
+    
   NSUInteger likeCount = [[photo objectForKey:@"likes_count"] intValue];
   NSUInteger bouncesCount = [[photo objectForKey:@"bounces_count"] intValue];
   NSUInteger commentsCount = [[photo objectForKey:@"comments_count"] intValue];
   NSUInteger taggedPeopleCount = [[photo objectForKey:@"tagged_people_count"] intValue];
   NSUInteger tagsCount = [[photo objectForKey:@"tags_count"] intValue];
   NSString *mediaURL = [photo objectForKeyNotNull:@"media_url"];
-
+    [leaveCommentButton setAccessibilityHint:[photo objectForKeyNotNull:@"id"]];
   self.photoImageView.imageURL = [NSURL URLWithString:mediaURL];
   
   self.bounceCountLabel.text = [NSString stringWithFormat:@"%d",bouncesCount];
@@ -106,11 +108,45 @@
 
 
 -(IBAction)commentButtonPressed:(id)sender {
-  PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
-  vc.hidesBottomBarWhenPushed = YES;
-  [tableViewController.navigationController pushViewController:vc animated:YES];
-  [vc release];
+    UIButton *button = sender;
+    NSString *userID = button.accessibilityHint;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowLoadingView" object:nil userInfo:nil];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments",API_BASE,userID]];
+    
+    if (_followingRequest) {
+        [_followingRequest cancel];
+        [_followingRequest release];
+        _followingRequest = nil;
+    }
+    _followingRequest = [[PBHTTPRequest requestWithURL:url] retain];
+    _followingRequest.requestMethod = @"GET";
+    _followingRequest.delegate = self;
+    [_followingRequest setDidFailSelector:@selector(followingRequestDidFail:)];
+    [_followingRequest setDidFinishSelector:@selector(followingRequestDidFinish:)];
+    [_followingRequest startAsynchronous];
+    
+
 }
+-(void) followingRequestDidFail:(ASIHTTPRequest *)followingRequest {
+    
+}
+
+-(void) followingRequestDidFinish:(ASIHTTPRequest *)followingRequest {
+    if (followingRequest.responseStatusCode == 200) {
+            // NSLog(@"%@",followingRequest.responseString);
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[followingRequest.responseString JSONValue]];
+            // NSLog(@"%@",[[[dict valueForKey:@"response"] valueForKey:@"post"] valueForKey:@"id"]  );
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HideLoadingView" object:nil userInfo:nil];
+        PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
+        vc.a_IDString = [[[dict valueForKey:@"response"] valueForKey:@"post"] valueForKey:@"id"];
+        vc.a_CommentsArray = [[[dict valueForKey:@"response"] valueForKey:@"comments"] valueForKey:@"items"];
+        vc.hidesBottomBarWhenPushed = YES;
+        [tableViewController.navigationController pushViewController:vc animated:YES];
+        [vc release];
+    }
+    
+}
+
 
 -(IBAction)actionButtonPressed:(id)sender {
   UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Flag Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Flag Post", nil];
