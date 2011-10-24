@@ -111,6 +111,7 @@
 		A28DE347138B34D100B56C12 /* PBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28DE345138B34D100B56C12 /* PBLoginViewController.xib */; };
 		A28E7B4513EB223E00C3AE55 /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A28E7B4313EB223E00C3AE55 /* CaptureSessionManager.m */; };
 		A29493BE1455E4A70000D6C8 /* NSDictionary+NotNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A29493BD1455E4A70000D6C8 /* NSDictionary+NotNull.m */; };
+		A29493C41456262E0000D6C8 /* PBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A23578F613270BB3008D31A2 /* PBProgressHUD.m */; };
 		A29506B6143E7493002E07DD /* libAviarySDK-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A29506B2143E7493002E07DD /* libAviarySDK-universal.a */; };
 		A29506B7143E7493002E07DD /* AviarySDK-Core.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A29506B4143E7493002E07DD /* AviarySDK-Core.bundle */; };
 		A29506B8143E7493002E07DD /* AviarySDK-Plugins.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A29506B5143E7493002E07DD /* AviarySDK-Plugins.bundle */; };
@@ -669,8 +670,8 @@
 		A231BF931316F62800AE9F71 /* PBCommentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBCommentListViewController.h; sourceTree = "<group>"; };
 		A231BF941316F62800AE9F71 /* PBCommentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBCommentListViewController.m; sourceTree = "<group>"; };
 		A231BF951316F62800AE9F71 /* PBCommentListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBCommentListViewController.xib; sourceTree = "<group>"; };
-		A23578F513270BB3008D31A2 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../MBProgressHUD.h; sourceTree = "<group>"; };
-		A23578F613270BB3008D31A2 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../MBProgressHUD.m; sourceTree = "<group>"; };
+		A23578F513270BB3008D31A2 /* PBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBProgressHUD.h; path = ../PBProgressHUD.h; sourceTree = "<group>"; };
+		A23578F613270BB3008D31A2 /* PBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBProgressHUD.m; path = ../PBProgressHUD.m; sourceTree = "<group>"; };
 		A23EDC3B13EB6071004C10CE /* PBProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBProfileHeaderView.h; sourceTree = "<group>"; };
 		A23EDC3C13EB6072004C10CE /* PBProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBProfileHeaderView.m; sourceTree = "<group>"; };
 		A24259D012949C2300EBC83A /* PBExpandingPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBExpandingPhotoView.h; sourceTree = "<group>"; };
@@ -1545,8 +1546,8 @@
 		A20B59EC1433FA8500FC39D1 /* MBProgress */ = {
 			isa = PBXGroup;
 			children = (
-				A23578F513270BB3008D31A2 /* MBProgressHUD.h */,
-				A23578F613270BB3008D31A2 /* MBProgressHUD.m */,
+				A23578F513270BB3008D31A2 /* PBProgressHUD.h */,
+				A23578F613270BB3008D31A2 /* PBProgressHUD.m */,
 			);
 			name = MBProgress;
 			sourceTree = "<group>";
@@ -3222,6 +3223,7 @@
 				55EF00E614558E830027FFA8 /* FeedViewController.m in Sources */,
 				55EF00ED145592DF0027FFA8 /* NewPostViewController.m in Sources */,
 				A29493BE1455E4A70000D6C8 /* NSDictionary+NotNull.m in Sources */,
+				A29493C41456262E0000D6C8 /* PBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3276,8 +3278,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sualeh Iqbal (94T9XK6885)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sualeh Iqbal (94T9XK6885)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brad Smith (YY7FN8LFBY)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3295,8 +3297,7 @@
 					"\"$(SRCROOT)/External/AviarySDK\"",
 				);
 				PRODUCT_NAME = PicBounce2;
-				PROVISIONING_PROFILE = "0EDD0719-ED7B-453C-B1EF-F0280BAB2B51";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0EDD0719-ED7B-453C-B1EF-F0280BAB2B51";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7 i386";
@@ -3309,8 +3310,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sualeh Iqbal (94T9XK6885)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sualeh Iqbal (94T9XK6885)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brad Smith";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PicBounce2_Prefix.pch;
@@ -3326,8 +3327,7 @@
 					"\"$(SRCROOT)/External/AviarySDK\"",
 				);
 				PRODUCT_NAME = PicBounce2;
-				PROVISIONING_PROFILE = "0EDD0719-ED7B-453C-B1EF-F0280BAB2B51";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0EDD0719-ED7B-453C-B1EF-F0280BAB2B51";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8539DB93-A84A-4240-833A-1B97FEA32F80";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -3403,7 +3403,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "411626CC-CFF4-4A2B-8FD1-C7BE357AC292";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3413,7 +3413,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brad Smith";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brad Smith (YY7FN8LFBY)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -3425,7 +3425,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3059A058-C62D-41D0-849C-2C7CD375094B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

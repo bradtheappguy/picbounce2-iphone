@@ -69,7 +69,7 @@
     
     [self.view addSubview:TwitWeb];
     
-    progressbar = [[MBProgressHUD alloc] initWithView:self.view];
+    progressbar = [[PBProgressHUD alloc] initWithView:self.view];
     
     [TwitWeb addSubview:progressbar];
     

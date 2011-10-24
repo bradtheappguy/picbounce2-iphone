@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
+#import "PBProgressHUD.h"
 
 @interface PBAuthWebViewController : UIViewController <UIWebViewDelegate> {
     
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, retain) IBOutlet PBProgressHUD *progressView;
 
 @property (nonatomic, retain) NSString *authenticationURLString;
 

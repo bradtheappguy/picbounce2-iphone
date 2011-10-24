@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
+#import "PBProgressHUD.h"
 
 
 
@@ -18,7 +18,7 @@
     NSString *urladdress;
     
         
-    MBProgressHUD *progressbar;
+    PBProgressHUD *progressbar;
 
     
 }
