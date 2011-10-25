@@ -113,11 +113,10 @@
     [scrollingWheel startAnimating]; 
     progressbar.labelText = NSLocalizedString(@"Loading...", nil) ;
     [progressbar showUsingAnimation:YES];
-    
-    
-
-
 }
+
+
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView { 
     
     [scrollingWheel stopAnimating];

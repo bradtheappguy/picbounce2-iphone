@@ -58,7 +58,7 @@
 }
 
 -(NSUInteger) followersCount {
-  id x = [[data objectForKey:@"user"] objectForKey:@"followers_count"]; 
+  id x = [[data objectForKey:@"user"] objectForKey:@"follower_count"]; 
   return [x intValue];
 }
 

@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PBFollowButton : UIButton
+typedef enum {
+  PBFollowButtonModeFollowing,
+  PBFollowButtonModeNotFollowing,
+  PBFollowButtonModeSpinning
+} PBFollowButtonMode;
 
+@interface PBFollowButton : UIButton {
+  PBFollowButtonMode _mode;
+}
+
+
+
+@property (nonatomic, retain) NSDictionary *user;
 @end

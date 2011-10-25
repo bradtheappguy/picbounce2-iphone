@@ -10,6 +10,7 @@
 #import "MyView.h"
 #import "PBRootViewController.h"
 #import "ASIHTTPRequest.h"
+#import "PBProgressHUD.h"
 
 @interface PBCommentListViewController :UIViewController {
   
@@ -19,11 +20,19 @@
   
   CGFloat keyboardHeight;
     
-NSMutableArray *a_CommentsArray;
-  ASIHTTPRequest *_followingRequest;
+  NSMutableArray *comments;
+  
 }
-@property (nonatomic, retain) NSMutableArray *a_CommentsArray;
-@property (nonatomic, retain) NSString *a_IDString;
+
+@property (nonatomic, retain) NSURL *url;
+@property (nonatomic, retain) NSMutableArray *uploadedComments;
+@property (nonatomic, retain) NSMutableArray *comments;
+
+@property (nonatomic, retain) NSString *postID;
+@property (nonatomic, retain) PBProgressHUD *progressHUD;
+@property (nonatomic, retain) ASIHTTPRequest *postCommentRequest;
+@property (nonatomic, retain) ASIHTTPRequest *getCommentsRequest;
+
 - (void) moveViewsForKeyboard:(NSNotification*)aNotification up: (BOOL) up;
 - (void) downViewsForKeyboard:(NSNotification*)aNotification down: (BOOL) up;
 @end

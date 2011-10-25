@@ -10,9 +10,17 @@
 #import "PBCommentCell.h"
 #import "PBHTTPRequest.h"
 #import "NSString+SBJSON.h"
+
 @implementation PBCommentListViewController
-@synthesize a_CommentsArray;
-@synthesize a_IDString;
+@synthesize url = _url;
+@synthesize uploadedComments;
+@synthesize comments;
+
+@synthesize postID;
+@synthesize progressHUD = _progressHUD;
+@synthesize postCommentRequest;
+@synthesize getCommentsRequest;
+
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -20,24 +28,42 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.view.backgroundColor = [UIColor lightGrayColor];
-  //  tableView.separatorStyle    = UITableViewCellSeparatorStyleSingleLine;
-  //    tableView.separatorStyle    = UITableViewCellSeparatorStyleSingleLineEtched;
+  self.view.backgroundColor = [UIColor redColor];
+
     tableView.separatorStyle    = UITableViewCellSeparatorStyleNone;
+  PBProgressHUD *hud =  [[PBProgressHUD alloc] initWithView:self.view];
+  hud.labelText = @"Loading...";
+  self.progressHUD = hud;
+  
+  [hud release];
+  [self.view addSubview:self.progressHUD];
 }
 
 
 
 - (void)viewDidAppear:(BOOL)animated {
  // [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:24 inSection:0] atScrollPosition://UITableViewScrollPositionTop animated:YES];
+  [self.progressHUD showUsingAnimation:YES];
+  self.getCommentsRequest = [PBHTTPRequest requestWithURL:self.url];
+  self.getCommentsRequest.requestMethod = @"GET";
+  self.getCommentsRequest.delegate = self;
+  [self.getCommentsRequest setDidFailSelector:@selector(getCommentsRequestDidFail:)];
+  [self.getCommentsRequest setDidFinishSelector:@selector(getCommentsRequestDidFinish:)];
+  [self.getCommentsRequest startAsynchronous];
+
 }
 
 
 
 - (void)viewWillAppear:(BOOL)animated {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)  name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)  name:UIKeyboardWillHideNotification object:nil];
-    
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)  name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+  [self.getCommentsRequest setDelegate:nil];
+  [self.getCommentsRequest cancel];
+  self.getCommentsRequest = nil; 
 }
 
 
@@ -46,18 +72,21 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [a_CommentsArray count];
+  if (section == 0) {
+    return [self.uploadedComments count];
+  }  
+  return [comments count];
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[[a_CommentsArray objectAtIndex:indexPath.row] valueForKey:@"item"]];
-    CGSize size = [[dict valueForKey:@"caption"] sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:12] constrainedToSize:CGSizeMake(166, 9999) lineBreakMode:UILineBreakModeWordWrap];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[[comments objectAtIndex:indexPath.row] valueForKey:@"item"]];
+    CGSize size = [[dict valueForKey:@"text"] sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:12] constrainedToSize:CGSizeMake(166, 9999) lineBreakMode:UILineBreakModeWordWrap];
     if (size.height > 30) {
         NSInteger numOfLines = size.height / 12;
         
@@ -85,43 +114,17 @@
                 }
             }
     }
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[[a_CommentsArray objectAtIndex:indexPath.row] valueForKey:@"item"]];
-    NSLog(@"%@",dict);
-    if (indexPath.row %2 == 0) {
-   
-    [customCell.a_FollowButton setBackgroundImage:[UIImage imageNamed:@"btn_following_s@2x.png"] forState:UIControlStateNormal];
-        [customCell.a_FollowButton setTitle:@"Following" forState:UIControlStateNormal];
-        [customCell.a_FollowButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    }
-    
-   customCell.a_CommentUserNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
-   customCell.a_CommentUserNameLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
-        //color:  77/255.0  65/255.0 56/255.0
-    customCell.a_CommentUserNameLabel.text =  [[dict valueForKey:@"user"] valueForKey:@"screen_name"];
-    
-    
-    
-    CGSize size = [[dict valueForKey:@"caption"] sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:12] constrainedToSize:CGSizeMake(166, 9999) lineBreakMode:UILineBreakModeWordWrap];
-    NSLog(@"%f   %f",size.width, size.height);
-    
-    NSInteger numOfLines = size.height / 12;
-    if (numOfLines == 1) {
-        customCell.a_CommentLabel.frame = CGRectMake(customCell.a_CommentLabel.frame.origin.x, customCell.a_CommentLabel.frame.origin.y, customCell.a_CommentLabel.frame.size.width, 15);
-    }
-    else {
-        customCell.a_CommentLabel.frame = CGRectMake(customCell.a_CommentLabel.frame.origin.x, customCell.a_CommentLabel.frame.origin.y, customCell.a_CommentLabel.frame.size.width, 12*(numOfLines));
-    }
-    if (size.height > 30) {
-        customCell.a_CommentCellBackGroundImageView.frame = CGRectMake(customCell.a_CommentCellBackGroundImageView.frame.origin.x, customCell.a_CommentCellBackGroundImageView.frame.origin.y, customCell.a_CommentCellBackGroundImageView.frame.size.width, customCell.a_CommentCellBackGroundImageView.frame.size.height + (12*(numOfLines) - 30));
-    }
-    customCell.a_CommentLabel.numberOfLines = numOfLines;
-   customCell.a_CommentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-   customCell.a_CommentLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
-    
-    customCell.a_CommentPersonImageView.imageURL = [NSURL URLWithString:[[dict valueForKey:@"user"] valueForKey:@"avatar"]];
-    customCell.a_CommentLabel.text = [dict valueForKey:@"caption"];
-    dict = nil;
-    return customCell;
+  NSMutableDictionary *user;
+  if (indexPath.section == 1) {
+    user  = [[comments objectAtIndex:indexPath.row] valueForKey:@"item"];
+  }
+  else {
+    user = [[self.uploadedComments objectAtIndex:indexPath.row] valueForKey:@"item"];
+  }
+ 
+  [customCell setUser:user];
+
+  return customCell;
 }
 
 
@@ -142,8 +145,8 @@
 
 
 - (void)dealloc {
-    [a_CommentsArray release];
-    [a_IDString release];
+    [comments release];
+    [postID release];
     [super dealloc];
 }
 
@@ -154,78 +157,41 @@
  [self moveViewsForKeyboard:notification up:YES];
 }
 
-- (void)keyboardDidShow:(NSNotification *)notification {
-}
-
-
-- (void) textFieldDidBeginEditing:(UITextField *)f {
-  
-}
-
-- (void) textFieldDidEndEditing:(UITextField *)f {
-  
-}
 
 - (void)keyboardWillHide:(NSNotification *)notification {
     [self downViewsForKeyboard:notification down:YES];
 }
+
 - (void) downViewsForKeyboard:(NSNotification*)aNotification down: (BOOL) up {
     NSDictionary* userInfo = [aNotification userInfo];
     
-        // Get animation info from userInfo
     NSTimeInterval animationDuration;
     UIViewAnimationCurve animationCurve;
-    
     CGRect keyboardEndFrame;
-    
     
     [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
     [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
-    
-    
     [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
     
-    
-        // Animate up or down
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:animationDuration];
     [UIView setAnimationCurve:animationCurve];
-    
-    
-    CGRect keyboardFrame = [self.view convertRect:keyboardEndFrame toView:nil];
-    
     myView.center = CGPointMake(myView.center.x, myView.center.y + 216);   
-    tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height, 0);
-    tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height, 0);
-    /*  CGPoint newOffset = tableView.contentOffset;
-     newOffset.y += 216-50 * (up? 1 : -1);
-     [tableView setContentOffset:newOffset animated:YES];
-     
-     tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 216-50, 0);
-     tableView.contentInset = UIEdgeInsetsMake(0, 0, 216-50, 0);
-     */
+    tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [UIView commitAnimations];
     [self performSelector:@selector(postComment) withObject:nil afterDelay:0.01];
 }
 
 - (void) moveViewsForKeyboard:(NSNotification*)aNotification up: (BOOL) up{
-  
-  
-  //CGPoint co = tableView.contentOffset;  //4078
-  
   NSDictionary* userInfo = [aNotification userInfo];
   
   // Get animation info from userInfo
   NSTimeInterval animationDuration;
   UIViewAnimationCurve animationCurve;
-  
   CGRect keyboardEndFrame;
-  
-  
   [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
   [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
-  
-  
   [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
   
   
@@ -233,54 +199,72 @@
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:animationDuration];
   [UIView setAnimationCurve:animationCurve];
-  
-  
-  CGRect keyboardFrame = [self.view convertRect:keyboardEndFrame toView:nil];
+
   
   myView.center = CGPointMake(myView.center.x, myView.center.y - 216);   
-  tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height, 0);
-  tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height, 0);
-  /*  CGPoint newOffset = tableView.contentOffset;
-   newOffset.y += 216-50 * (up? 1 : -1);
-   [tableView setContentOffset:newOffset animated:YES];
-   
-   tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 216-50, 0);
-   tableView.contentInset = UIEdgeInsetsMake(0, 0, 216-50, 0);
-   */
+  tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardEndFrame.size.height, 0);
+  tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardEndFrame.size.height, 0);
+
   [UIView commitAnimations];
   
 }
 - (void)postComment {
-        //posts/[id]/comments?caption=I%20AM%A%20Test%20Comment
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments?caption=%@",API_BASE,a_IDString,[myView.a_CommentTextView.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+
+  NSString *textToPost = myView.a_CommentTextView.text;
+  
+  NSDictionary *user = [NSDictionary dictionaryWithObjectsAndKeys:@"http://bigfrosty.heroku.com/images/empty_avatar_large.png",@"avatar",
+                        @"my name",@"screen_name",nil];
+  NSDictionary *item = [NSDictionary dictionaryWithObjectsAndKeys:textToPost,@"text", user, @"user",nil];
+  
+  NSDictionary *newComment = [NSDictionary dictionaryWithObject:item
+                                                         forKey:@"item"];
+  self.uploadedComments = [[NSMutableArray alloc] initWithObjects:newComment, nil];
+  [tableView reloadData];
+  
+  
+  
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments?caption=%@",API_BASE,self.postID,[textToPost stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     
-    if (_followingRequest) {
-        [_followingRequest cancel];
-        [_followingRequest release];
-        _followingRequest = nil;
+    if (self.postCommentRequest) {
+        [self.postCommentRequest cancel];
+        self.postCommentRequest = nil;
     }
-    _followingRequest = [[PBHTTPRequest requestWithURL:url] retain];
-    _followingRequest.requestMethod = @"POST";
-    _followingRequest.delegate = self;
-    [_followingRequest setDidFailSelector:@selector(followingRequestDidFail:)];
-    [_followingRequest setDidFinishSelector:@selector(followingRequestDidFinish:)];
-    [_followingRequest startAsynchronous];
-    
-    
+    self.postCommentRequest = [[PBHTTPRequest requestWithURL:url] retain];
+    self.postCommentRequest.requestMethod = @"POST";
+    self.postCommentRequest.delegate = self;
+    [self.postCommentRequest setDidFailSelector:@selector(postCommentRequestDidFail:)];
+    [self.postCommentRequest setDidFinishSelector:@selector(postCommentRequestDidFinish:)];
+    [self.postCommentRequest startAsynchronous];
 }
--(void) followingRequestDidFail:(ASIHTTPRequest *)followingRequest {
+
+#pragma mark Networking Callbacks
+-(void) postCommentRequestDidFail:(ASIHTTPRequest *)followingRequest {
     
 }
 
--(void) followingRequestDidFinish:(ASIHTTPRequest *)followingRequest {
+-(void) postCommentRequestDidFinish:(ASIHTTPRequest *)followingRequest {
     if (followingRequest.responseStatusCode == 200) {
-            // NSLog(@"%@",followingRequest.responseString);
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[followingRequest.responseString JSONValue]];
             NSLog(@"%@",[[[dict valueForKey:@"response"] valueForKey:@"comments"] valueForKey:@"items"] );
        
         
     }
     myView.a_CommentTextView.text = @"";
+}
+
+-(void) getCommentsRequestDidFail:(ASIHTTPRequest *)followingRequest {
+  
+}
+
+-(void) getCommentsRequestDidFinish:(ASIHTTPRequest *)followingRequest {
+  if (followingRequest.responseStatusCode == 200) {
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[followingRequest.responseString JSONValue]];
+    self.postID = [[[dict valueForKey:@"response"] valueForKey:@"post"] valueForKey:@"id"];
+    self.comments = [[[dict valueForKey:@"response"] valueForKey:@"comments"] valueForKey:@"items"];
+    [self.progressHUD hide:YES];
+    [tableView reloadData];
+  }
+  self.getCommentsRequest = nil;
 }
 
 
