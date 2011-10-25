@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
+#import "PBProgressHUD.h"
 
 
 @interface AboutWebView : UIViewController<UIWebViewDelegate> {
@@ -19,7 +19,7 @@
     NSString *urlAddress;
     
     UIView *progressView;
-    MBProgressHUD *progressbar;
+    PBProgressHUD *progressbar;
     UIActivityIndicatorView *scrollingWheel;
 }
 @property(nonatomic,retain) UIWebView *PicBounceWeb;

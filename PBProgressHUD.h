@@ -33,16 +33,16 @@
  */
 typedef enum {
     /** Progress is shown using an UIActivityIndicatorView. This is the default. */
-    MBProgressHUDModeIndeterminate,
+    PBProgressHUDModeIndeterminate,
     /** Progress is shown using a MBRoundProgressView. */
-	MBProgressHUDModeDeterminate,
-} MBProgressHUDMode;
+	PBProgressHUDModeDeterminate,
+} PBProgressHUDMode;
 
 
 /**
  * Defines callback methods for MBProgressHUD delegates.
  */
-@protocol MBProgressHUDDelegate <NSObject>
+@protocol PBProgressHUDDelegate <NSObject>
 
 @required
 /** 
@@ -56,7 +56,7 @@ typedef enum {
 /**
  * A progress view for showing definite progress by filling up a circle (similar to the indicator for building in xcode).
  */
-@interface MBRoundProgressView : UIProgressView {
+@interface PBRoundProgressView : UIProgressView {
 
 }
 
@@ -82,9 +82,9 @@ typedef enum {
  *   UIActivityIndicatorView.
  * - If also the detailsLabelText property is set then another label is placed below the first label.
  */
-@interface MBProgressHUD : UIView {
+@interface PBProgressHUD : UIView {
 	
-	MBProgressHUDMode mode;
+	PBProgressHUDMode mode;
 
 	SEL methodForExecution;
 	id targetForExecution;
@@ -110,7 +110,7 @@ typedef enum {
 
 	float progress;
 
-	id<MBProgressHUDDelegate> delegate;
+	id<PBProgressHUDDelegate> delegate;
 	NSString *labelText;
 	NSString *detailsLabelText;
 	float opacity;
@@ -142,14 +142,14 @@ typedef enum {
  * MBProgressHUD operation mode. Switches between indeterminate (MBProgressHUDModeIndeterminate) and determinate
  * progress (MBProgressHUDModeDeterminate). The default is MBProgressHUDModeIndeterminate.
  */
-@property (assign) MBProgressHUDMode mode;
+@property (assign) PBProgressHUDMode mode;
 
 /** 
  * The HUD delegate object. If set the delegate will receive hudWasHidden callbacks when the HUD was hidden. The
  * delegate should conform to the MBProgressHUDDelegate protocol and implement the hudWasHidden method. The delegate
  * object will not be retained.
  */
-@property (assign) id<MBProgressHUDDelegate> delegate;
+@property (assign) id<PBProgressHUDDelegate> delegate;
 
 /** 
  * An optional short message to be displayed below the activity indicator. The HUD is automatically resized to fit

@@ -37,13 +37,13 @@
 }
 
 -(void) setPhoto:(NSDictionary *)photo {
-  NSDictionary *user = [photo objectForKey:@"user"];
-  NSString *name = [user objectForKey:@"name"];
+  NSDictionary *user = [photo objectForKeyNotNull:@"user"];
+  NSString *name = [user objectForKeyNotNull:@"name"];
   NSString *screenname = [user objectForKeyNotNull:@"screen_name"];
 
-  NSString *avatarURL = [user objectForKey:@"avatar"];
+  NSString *avatarURL = [user objectForKeyNotNull:@"avatar"];
     
-  NSString *userID = [user objectForKey:@"id"];
+  NSString *userID = [user objectForKeyNotNull:@"id"];
   
   self.userID = userID;
 
@@ -54,7 +54,7 @@
   self.viewCountLabel.text = [NSString stringWithFormat:@"%@ %@",
   [viewCount stringValue],NSLocalizedString(@"Views", nil)];
 
-  self.timeLabel.text =[(NSNumber *)[photo objectForKey:@"created"] cuteTimeString];
+  self.timeLabel.text =[(NSNumber *)[photo objectForKeyNotNull:@"created"] cuteTimeString];
   
   if (![avatarURL isEqual:[NSNull null]]) {
     self.avatarImage.imageURL = [NSURL URLWithString: avatarURL];

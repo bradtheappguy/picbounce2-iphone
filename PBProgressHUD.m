@@ -1,12 +1,12 @@
 //
-// MBProgressHUD.m
+// PBProgressHUD.m
 // Version 0.32
 // Created by Matej Bukovinski on 04.01.10.
 //
 
-#import "MBProgressHUD.h"
+#import "PBProgressHUD.h"
 
-@interface MBProgressHUD ()
+@interface PBProgressHUD ()
 
 - (void)hideUsingAnimation:(BOOL)animated;
 - (void)showUsingAnimation:(BOOL)animated;
@@ -36,7 +36,7 @@
 @end
 
 
-@implementation MBProgressHUD
+@implementation PBProgressHUD
 
 #pragma mark -
 #pragma mark Accessors
@@ -66,7 +66,7 @@
 
 @synthesize showStarted;
 
-- (void)setMode:(MBProgressHUDMode)newMode {
+- (void)setMode:(PBProgressHUDMode)newMode {
     // Dont change mode if it wasn't actually changed to prevent flickering
     if (mode && (mode == newMode)) {
         return;
@@ -95,7 +95,7 @@
     progress = newProgress;
 
     // Update display ony if showing the determinate progress view
-    if (mode == MBProgressHUDModeDeterminate) {
+    if (mode == PBProgressHUDModeDeterminate) {
         [self performSelectorOnMainThread:@selector(updateProgress) withObject:nil waitUntilDone:NO];
         [self performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:NO];
     }
@@ -119,7 +119,7 @@
 }
 
 - (void)updateProgress {
-    [(MBRoundProgressView *)indicator setProgress:progress];
+    [(PBRoundProgressView *)indicator setProgress:progress];
 }
 
 - (void)updateIndicators {
@@ -129,27 +129,28 @@
 
 	self.indicator = nil;
 	
-    if (mode == MBProgressHUDModeDeterminate) {
-        indicator = [[MBRoundProgressView alloc] initWithDefaultSize];
+    if (mode == PBProgressHUDModeDeterminate) {
+        indicator = [[PBRoundProgressView alloc] initWithDefaultSize];
     }
     else {
         indicator = [[UIActivityIndicatorView alloc]
-            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         [(UIActivityIndicatorView *)indicator startAnimating];
     }
 
-   // [self addSubview:indicator];
+    [self addSubview:indicator];
 }
 
 #pragma mark -
 #pragma mark Constants
 
 #define MARGIN 20.0
-#define PADDING 4.0
+#define PADDING 10.0
 
-#define LABELFONTSIZE 22.0
-#define LABELDETAILSFONTSIZE 16.0
-
+#define LABELFONT @"HelveticaNeue-Bold"
+#define LABELFONTSIZE 15.0
+#define LABELDETAILSFONTSIZE 13.0
+#define LABELTEXTCOLOR [UIColor colorWithRed:252/255.0 green:251/255.0 blue:251/255.0 alpha:1.0]
 #define PI 3.14159265358979323846
 
 #pragma mark -
@@ -162,8 +163,8 @@
 - (id)initWithView:(UIView *)view {
 	// Let's check if the view is nil (this is a common error when using the windw initializer above)
 	if (!view) {
-		[NSException raise:@"MBProgressHUDViewIsNillException" 
-					format:@"The view used in the MBProgressHUD initializer is nil."];
+		[NSException raise:@"PBProgressHUDViewIsNillException" 
+					format:@"The view used in the PBProgressHUD initializer is nil."];
 	}
 	return [self initWithFrame:view.bounds];
 }
@@ -171,12 +172,12 @@
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         // Set default values for properties
-        self.mode = MBProgressHUDModeIndeterminate;
+        self.mode = PBProgressHUDModeIndeterminate;
         self.labelText = nil;
         self.detailsLabelText = nil;
         self.opacity = 0.9;
-        self.labelFont = [UIFont boldSystemFontOfSize:LABELFONTSIZE];
-        self.detailsLabelFont = [UIFont boldSystemFontOfSize:LABELDETAILSFONTSIZE];
+        self.labelFont = [UIFont fontWithName:LABELFONT size:LABELFONTSIZE];
+        self.detailsLabelFont = [UIFont fontWithName:LABELFONT size:LABELDETAILSFONTSIZE];
         self.xOffset = 0.0;
         self.yOffset = 0.0;
 		self.graceTime = 0.0;
@@ -222,9 +223,9 @@
 
     // Compute HUD dimensions based on indicator size (add margin to HUD border)
     CGRect indFrame = indicator.bounds;
-    self.width = indFrame.size.width + 2 * MARGIN;
+    
     self.height = indFrame.size.height + 2 * MARGIN;
-
+    self.width = (indFrame.size.width + 2 * MARGIN) * 2;
     // Position the indicator
     indFrame.origin.x = floor((frame.size.width - indFrame.size.width) / 2) + self.xOffset;
     indFrame.origin.y = floor((frame.size.height - indFrame.size.height) / 2) + self.yOffset;
@@ -251,7 +252,7 @@
         label.textAlignment = UITextAlignmentCenter;
         label.opaque = NO;
         label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor whiteColor];
+        label.textColor = LABELTEXTCOLOR;
         label.text = self.labelText;
 
         // Update HUD size
@@ -410,7 +411,7 @@
     // If delegate was set make the callback
     self.alpha = 0.0;
     
-    if(delegate != nil && [delegate conformsToProtocol:@protocol(MBProgressHUDDelegate)]) {
+    if(delegate != nil && [delegate conformsToProtocol:@protocol(PBProgressHUDDelegate)]) {
       if([delegate respondsToSelector:@selector(hudWasHidden)]) {
         [delegate performSelector:@selector(hudWasHidden)];
       }
@@ -479,8 +480,8 @@
     float radius = 10.0f;
 
     CGContextBeginPath(context);
-    CGContextSetGrayFillColor(context, 0.0, self.opacity);
-    CGContextMoveToPoint(context, CGRectGetMinX(rect) + radius, CGRectGetMinY(rect));
+  CGContextSetRGBFillColor(context, 144/255.0, 124/255.0, 109/255.0, 0.90);
+     CGContextMoveToPoint(context, CGRectGetMinX(rect) + radius, CGRectGetMinY(rect));
     CGContextAddArc(context, CGRectGetMaxX(rect) - radius, CGRectGetMinY(rect) + radius, radius, 3 * M_PI / 2, 0, 0);
     CGContextAddArc(context, CGRectGetMaxX(rect) - radius, CGRectGetMaxY(rect) - radius, radius, 0, M_PI / 2, 0);
     CGContextAddArc(context, CGRectGetMinX(rect) + radius, CGRectGetMaxY(rect) - radius, radius, M_PI / 2, M_PI, 0);
@@ -492,7 +493,7 @@
 @end
 
 
-@implementation MBRoundProgressView
+@implementation PBRoundProgressView
 
 - (id)initWithDefaultSize {
     return [super initWithFrame:CGRectMake(0.0f, 0.0f, 37.0f, 37.0f)];

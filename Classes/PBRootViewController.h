@@ -5,7 +5,7 @@
 #import "SBJSON.h"
 #import "PBAPIResponse.h"
 
-@class PBRefreshTableHeaderView, MBProgressHUD;
+@class PBRefreshTableHeaderView, PBProgressHUD;
 
 
 
@@ -16,7 +16,7 @@
 	//  Putting it here for demo purposes 
 	BOOL _reloading;
   
-  MBProgressHUD *errorHud;
+  PBProgressHUD *errorHud;
   NSURL *loadMoreDataURL;
   UIView *loadingView;
   ASIHTTPRequest *request;

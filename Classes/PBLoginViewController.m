@@ -80,6 +80,29 @@
   }
 }
 
+- (IBAction)tosButtonPressed:(id)sender {
+  PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
+  viewController.authenticationURLString = [NSString stringWithFormat:@"http://%@%@",API_BASE,@"/appsupport/iphone/tos.html"];
+  viewController.title = @"Via.me";
+  
+  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  viewController.navigationItem.rightBarButtonItem = cancelButton;
+  
+  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+  [self presentModalViewController:navigationController animated:YES];
+  [navigationController release];
+  [viewController release];
+  [cancelButton release];
+/*
+  
+  UIViewController *tosWebViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tosWebViewController];
+  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  tosWebViewController.navigationItem.leftBarButtonItem = cancelButton;
+  [self presentModalViewController:navigationController animated:YES];
+  [tosWebViewController release];
+  [navigationController release];*/
+}
 
 -(IBAction) facebookButtonPressed:(id)sender {
   

@@ -62,7 +62,7 @@
     PicBounceWeb = [[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)]autorelease];
     PicBounceWeb.delegate = self;
     PicBounceWeb.scalesPageToFit = YES;
-    progressbar = [[MBProgressHUD alloc] initWithView:self.view];
+    progressbar = [[PBProgressHUD alloc] initWithView:self.view];
     
    
     [progressView addSubview:scrollingWheel];
