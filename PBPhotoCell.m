@@ -74,18 +74,18 @@
   [_photo release];
   _photo = [photo retain];
  
-  NSString *caption = [photo objectForKey:@"caption"];
+  NSString *caption = [photo objectForKeyNotNull:@"caption"];
   
-  NSString *photoID = [photo objectForKey:@"id"];
-  NSString *twitter_avatar_url = [photo objectForKey:@"twitter_avatar_url"];
+  NSString *photoID = [photo objectForKeyNotNull:@"id"];
+  NSString *twitter_avatar_url = [photo objectForKeyNotNull:@"twitter_avatar_url"];
   if ([twitter_avatar_url isEqual:[NSNull null]]) {
     twitter_avatar_url = nil;
   }
-  NSUInteger likeCount = [[photo objectForKey:@"likes_count"] intValue];
-  NSUInteger bouncesCount = [[photo objectForKey:@"bounces_count"] intValue];
-  NSUInteger commentsCount = [[photo objectForKey:@"comments_count"] intValue];
-  NSUInteger taggedPeopleCount = [[photo objectForKey:@"tagged_people_count"] intValue];
-  NSUInteger tagsCount = [[photo objectForKey:@"tags_count"] intValue];
+  NSUInteger likeCount = [[photo objectForKeyNotNull:@"likes_count"] intValue];
+  NSUInteger bouncesCount = [[photo objectForKeyNotNull:@"bounces_count"] intValue];
+  NSUInteger commentsCount = [[photo objectForKeyNotNull:@"comments_count"] intValue];
+  NSUInteger taggedPeopleCount = [[photo objectForKeyNotNull:@"tagged_people_count"] intValue];
+  NSUInteger tagsCount = [[photo objectForKeyNotNull:@"tags_count"] intValue];
   NSString *mediaURL = [photo objectForKeyNotNull:@"media_url"];
 
   self.photoImageView.imageURL = [NSURL URLWithString:mediaURL];
