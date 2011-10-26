@@ -19,6 +19,15 @@
 		554270B11454E69F00B8648A /* bg_commentCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 554270AD1454E69F00B8648A /* bg_commentCell@2x.png */; };
 		557080101454BA5C00183395 /* PBCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5570800F1454BA5B00183395 /* PBCommentCell.m */; };
 		557080151454C23B00183395 /* PBCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 557080141454C23A00183395 /* PBCommentCell.xib */; };
+		5589FCDA14575EF400775DEE /* PBSharingOptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FCD814575EF400775DEE /* PBSharingOptionViewController.m */; };
+		5589FCDB14575EF400775DEE /* PBSharingOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5589FCD914575EF400775DEE /* PBSharingOptionViewController.xib */; };
+		5589FCE01457621200775DEE /* PBSharingOptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FCDE1457621200775DEE /* PBSharingOptionCell.m */; };
+		5589FCE11457621200775DEE /* PBSharingOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5589FCDF1457621200775DEE /* PBSharingOptionCell.xib */; };
+		5589FCE7145762DC00775DEE /* Checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FCE6145762DB00775DEE /* Checkbox.m */; };
+		5589FCEA1457632A00775DEE /* check_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5589FCE81457632900775DEE /* check_yes.png */; };
+		5589FCEB1457632A00775DEE /* check_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 5589FCE91457632900775DEE /* check_no.png */; };
+		5589FD19145790F900775DEE /* TwitterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FD18145790F900775DEE /* TwitterButton.m */; };
+		5589FD1C1457915300775DEE /* FacebookButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FD1B1457915300775DEE /* FacebookButton.m */; };
 		55EF00E614558E830027FFA8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF00E414558E830027FFA8 /* FeedViewController.m */; };
 		55EF00E714558E830027FFA8 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EF00E514558E830027FFA8 /* FeedViewController.xib */; };
 		55EF00ED145592DF0027FFA8 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF00EB145592DF0027FFA8 /* NewPostViewController.m */; };
@@ -604,6 +613,20 @@
 		5570800E1454BA5900183395 /* PBCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBCommentCell.h; sourceTree = "<group>"; };
 		5570800F1454BA5B00183395 /* PBCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBCommentCell.m; sourceTree = "<group>"; };
 		557080141454C23A00183395 /* PBCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBCommentCell.xib; sourceTree = "<group>"; };
+		5589FCD714575EF400775DEE /* PBSharingOptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBSharingOptionViewController.h; sourceTree = "<group>"; };
+		5589FCD814575EF400775DEE /* PBSharingOptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBSharingOptionViewController.m; sourceTree = "<group>"; };
+		5589FCD914575EF400775DEE /* PBSharingOptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBSharingOptionViewController.xib; sourceTree = "<group>"; };
+		5589FCDD1457621200775DEE /* PBSharingOptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBSharingOptionCell.h; sourceTree = "<group>"; };
+		5589FCDE1457621200775DEE /* PBSharingOptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBSharingOptionCell.m; sourceTree = "<group>"; };
+		5589FCDF1457621200775DEE /* PBSharingOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBSharingOptionCell.xib; sourceTree = "<group>"; };
+		5589FCE5145762DB00775DEE /* Checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkbox.h; sourceTree = "<group>"; };
+		5589FCE6145762DB00775DEE /* Checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkbox.m; sourceTree = "<group>"; };
+		5589FCE81457632900775DEE /* check_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_yes.png; sourceTree = "<group>"; };
+		5589FCE91457632900775DEE /* check_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_no.png; sourceTree = "<group>"; };
+		5589FD17145790F900775DEE /* TwitterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterButton.h; sourceTree = "<group>"; };
+		5589FD18145790F900775DEE /* TwitterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterButton.m; sourceTree = "<group>"; };
+		5589FD1A1457915300775DEE /* FacebookButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookButton.h; sourceTree = "<group>"; };
+		5589FD1B1457915300775DEE /* FacebookButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookButton.m; sourceTree = "<group>"; };
 		55EF00E314558E830027FFA8 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		55EF00E414558E830027FFA8 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		55EF00E514558E830027FFA8 /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
@@ -1393,6 +1416,70 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5589FCD614575EBE00775DEE /* PB Sharing Options ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5589FCD714575EF400775DEE /* PBSharingOptionViewController.h */,
+				5589FCD814575EF400775DEE /* PBSharingOptionViewController.m */,
+				5589FCD914575EF400775DEE /* PBSharingOptionViewController.xib */,
+			);
+			name = "PB Sharing Options ViewController";
+			sourceTree = "<group>";
+		};
+		5589FCDC145761E000775DEE /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				5589FCDD1457621200775DEE /* PBSharingOptionCell.h */,
+				5589FCDE1457621200775DEE /* PBSharingOptionCell.m */,
+				5589FCDF1457621200775DEE /* PBSharingOptionCell.xib */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		5589FCEF14576FB100775DEE /* Increase Text Box */ = {
+			isa = PBXGroup;
+			children = (
+				A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */,
+				A2E415F71343EE3F000D9CFA /* HPTextViewInternal.h */,
+				A222282F133F075E00239E0F /* MyView.m */,
+				A2222830133F075E00239E0F /* MyView.h */,
+			);
+			name = "Increase Text Box";
+			sourceTree = "<group>";
+		};
+		5589FCF014576FD500775DEE /* PB Comment Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5570800E1454BA5900183395 /* PBCommentCell.h */,
+				5570800F1454BA5B00183395 /* PBCommentCell.m */,
+				557080141454C23A00183395 /* PBCommentCell.xib */,
+			);
+			name = "PB Comment Cell";
+			sourceTree = "<group>";
+		};
+		5589FCF114576FF100775DEE /* PB Comment List View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A231BF931316F62800AE9F71 /* PBCommentListViewController.h */,
+				A231BF941316F62800AE9F71 /* PBCommentListViewController.m */,
+				A231BF951316F62800AE9F71 /* PBCommentListViewController.xib */,
+			);
+			name = "PB Comment List View Controller";
+			sourceTree = "<group>";
+		};
+		5589FD16145790A700775DEE /* ButtonClasss */ = {
+			isa = PBXGroup;
+			children = (
+				5589FCE5145762DB00775DEE /* Checkbox.h */,
+				5589FCE6145762DB00775DEE /* Checkbox.m */,
+				5589FD17145790F900775DEE /* TwitterButton.h */,
+				5589FD18145790F900775DEE /* TwitterButton.m */,
+				5589FD1A1457915300775DEE /* FacebookButton.h */,
+				5589FD1B1457915300775DEE /* FacebookButton.m */,
+			);
+			name = ButtonClasss;
+			sourceTree = "<group>";
+		};
 		55A9176414557FAE009C1C14 /* PBPhotoCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1466,6 +1553,9 @@
 		55A9176C14558135009C1C14 /* Feed TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				5589FD16145790A700775DEE /* ButtonClasss */,
+				5589FCDC145761E000775DEE /* New Group */,
+				5589FCD614575EBE00775DEE /* PB Sharing Options ViewController */,
 				55EF00E9145592BB0027FFA8 /* Post View Controller */,
 				55EF00E8145592A50027FFA8 /* Feed View Controller */,
 			);
@@ -1555,16 +1645,9 @@
 		A2363F38133F0E7E00F76FFD /* Comments */ = {
 			isa = PBXGroup;
 			children = (
-				A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */,
-				A2E415F71343EE3F000D9CFA /* HPTextViewInternal.h */,
-				A222282F133F075E00239E0F /* MyView.m */,
-				A2222830133F075E00239E0F /* MyView.h */,
-				A231BF931316F62800AE9F71 /* PBCommentListViewController.h */,
-				A231BF941316F62800AE9F71 /* PBCommentListViewController.m */,
-				A231BF951316F62800AE9F71 /* PBCommentListViewController.xib */,
-				5570800E1454BA5900183395 /* PBCommentCell.h */,
-				5570800F1454BA5B00183395 /* PBCommentCell.m */,
-				557080141454C23A00183395 /* PBCommentCell.xib */,
+				5589FCF114576FF100775DEE /* PB Comment List View Controller */,
+				5589FCF014576FD500775DEE /* PB Comment Cell */,
+				5589FCEF14576FB100775DEE /* Increase Text Box */,
 			);
 			name = Comments;
 			sourceTree = "<group>";
@@ -1625,6 +1708,8 @@
 		A25CEAB3134FF46600CD33D9 /* PicBounce2 */ = {
 			isa = PBXGroup;
 			children = (
+				5589FCE81457632900775DEE /* check_yes.png */,
+				5589FCE91457632900775DEE /* check_no.png */,
 				A296CEFD1453648900175D1B /* ArtAssets */,
 				A2EE48BF1423F0E900853658 /* Filters */,
 				74A1CA361368109C00F63EF5 /* Localization */,
@@ -3073,6 +3158,10 @@
 				554270B11454E69F00B8648A /* bg_commentCell@2x.png in Resources */,
 				55EF00E714558E830027FFA8 /* FeedViewController.xib in Resources */,
 				55EF00EE145592DF0027FFA8 /* NewPostViewController.xib in Resources */,
+				5589FCDB14575EF400775DEE /* PBSharingOptionViewController.xib in Resources */,
+				5589FCE11457621200775DEE /* PBSharingOptionCell.xib in Resources */,
+				5589FCEA1457632A00775DEE /* check_yes.png in Resources */,
+				5589FCEB1457632A00775DEE /* check_no.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3224,6 +3313,11 @@
 				55EF00ED145592DF0027FFA8 /* NewPostViewController.m in Sources */,
 				A29493BE1455E4A70000D6C8 /* NSDictionary+NotNull.m in Sources */,
 				A29493C41456262E0000D6C8 /* PBProgressHUD.m in Sources */,
+				5589FCDA14575EF400775DEE /* PBSharingOptionViewController.m in Sources */,
+				5589FCE01457621200775DEE /* PBSharingOptionCell.m in Sources */,
+				5589FCE7145762DC00775DEE /* Checkbox.m in Sources */,
+				5589FD19145790F900775DEE /* TwitterButton.m in Sources */,
+				5589FD1C1457915300775DEE /* FacebookButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBConnect.h"
 
-@interface NewPostViewController : UIViewController {
+@interface NewPostViewController : UIViewController < UITextViewDelegate, FBSessionDelegate, FBDialogDelegate >{
     IBOutlet UITextView *a_PostTextView;
+    Facebook *_facebook;
 }
+- (IBAction)facebookButtonClicked:(id)sender;
+- (IBAction)twitterButtonClicked:(id)sender;
+- (IBAction)optionButtonClicked:(id)sender;
 @end
