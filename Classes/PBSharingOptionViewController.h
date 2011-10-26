@@ -14,6 +14,7 @@
     UITableView *tableView;
     NSMutableArray *a_OptionArray;
     Facebook *facebook;
+    BOOL isTwitterLogut;
 }
 @property (nonatomic, retain) PBProgressHUD *progressHUD;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

@@ -10,6 +10,7 @@
 #import "PBSharingOptionCell.h"
 #import "PBCheckbox.h"
 #import "FacebookSingleton.h"
+#import "AppDelegate.h"
 
 #define kIndent 50
 #define kOffset(val) 5
@@ -46,7 +47,7 @@
 
 
 
--(void) loadPagesFromFacebook {
+- (void) loadPagesFromFacebook {
   NSString *path = @"/fql?q=select%20page_id,%20type,%20name,%20page_url,pic_small%20from%20page%20where%20page_id%20in%20(%20select%20page_id,type%20from%20page_admin%20where%20uid=me()%20and%20type!%3d'APPLICATION')";
   
   [ [FacebookSingleton sharedFacebook] requestWithGraphPath:path andDelegate:self];
@@ -70,12 +71,32 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
         // Return the number of sections.
-    return 1;
+    return 4;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
         // Return the number of rows in the section.
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+        case 2:
+            return 0;
+            break;
+
+        case 3:
+            return [_facebookPages count];
+            break;
+        case 1:
+            return 1;
+            break;
+
+
+            
+        default:
+            break;
+    }
     return 10;//[a_OptionArray count];
 }
 
@@ -107,22 +128,34 @@
         //  dict = nil;
     
     
-    if (indexPath.row == 0) {
-        [customCell.a_StatusButton setTitle:@"Login" forState:UIControlStateNormal];
+    if (indexPath.section == 0) {
+        
+        facebook = [FacebookSingleton sharedFacebook];
+        if ([facebook isSessionValid]) {
+            [customCell.a_StatusButton setTitle:@"Logout" forState:UIControlStateNormal];
+        }
+        else {
+            [customCell.a_StatusButton setTitle:@"Login" forState:UIControlStateNormal];
+        }
         [customCell.a_TitleLabel setText:@"Facebook"];
         [customCell.a_StatusButton setTag:indexPath.row];
         [customCell.a_StatusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
-    }else if (indexPath.row == 1) {
-        [customCell.a_StatusButton setTitle:@"Logout" forState:UIControlStateNormal];
+    }else if (indexPath.section == 1) {
+        AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+        if ([appDelegate authToken] == nil) {
+        [customCell.a_StatusButton setTitle:@"Login" forState:UIControlStateNormal];
+        }else {
+            [customCell.a_StatusButton setTitle:@"Logout" forState:UIControlStateNormal];  
+        }
         [customCell.a_TitleLabel setText:@"Twitter"];
         [customCell.a_StatusButton setTag:indexPath.row];
         [customCell.a_StatusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
-    }else {
+    }else if (indexPath.section == 3) {
         [customCell.a_StatusButton setHidden:YES];
         [customCell.a_TitleLabel setText:@""];
         
         PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5))];
-        [EWCheckbox setText:@"Market Edition"];
+        [EWCheckbox setText:[[_facebookPages objectAtIndex:indexPath.row] valueForKey:@"name"]];
         [EWCheckbox setTag:indexPath.row];
         EWCheckbox.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];
         [EWCheckbox addTarget:self action:@selector(ewTouched:) forControlEvents:UIControlEventTouchUpInside];
@@ -136,12 +169,27 @@
 }
 - (void)loginlogoutButton:(UIButton *)sender {
     if (sender.tag == 0) {
+        isTwitterLogut = NO;
         facebook = [FacebookSingleton sharedFacebook];
         if ([facebook isSessionValid]) {
           [facebook logout:self];
+            facebook.accessToken = nil;
+            facebook.expirationDate = nil;
+            [sender setTitle:@"Login" forState:UIControlStateNormal];
       } 
         else {
           [facebook authorize:[NSArray arrayWithObject: @"publish_stream,offline_access,manage_pages"] delegate:self];
+            [sender setTitle:@"Logout" forState:UIControlStateNormal];
+        }
+    }else if (sender.tag == 1) {
+        isTwitterLogut = YES;
+        AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+        if ([appDelegate authToken] == nil) {
+            [appDelegate presentLoginViewController];
+            [sender setTitle:@"Logout" forState:UIControlStateNormal];
+        }else {
+            appDelegate.authToken = nil;
+            [sender setTitle:@"Login" forState:UIControlStateNormal];
         }
     }
   
@@ -180,6 +228,12 @@
 #pragma mark Facebook Delegate
 
 - (void)fbDidLogin {
+    NSString *token = [[FacebookSingleton sharedFacebook] accessToken];
+    NSDate *expirationDate = [[FacebookSingleton sharedFacebook] expirationDate];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:token forKey:@"FBAccessTokenKey"];
+    [defaults setObject:expirationDate forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
   [self loadPagesFromFacebook];
 }
 
@@ -239,6 +293,7 @@
   
   id x  = [result objectForKey:@"data"];
   self.facebookPages = x;
+  [tableView reloadData];
   
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Avnish Here is facebook data" message:[x description] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
   [alert show];
