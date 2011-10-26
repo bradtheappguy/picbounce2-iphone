@@ -10,9 +10,27 @@
 #import "NSDictionary+NotNull.h"
 #import "PBSharedUser.h"
 
+@interface PBFollowButton (private)
+-(void) setMode:(PBFollowButtonMode)mode;
+-(void) showUnfollowConfimationActionSheet;
+-(void) performRequestToSetFollowing:(BOOL)follow;
+-(void) buttonPressed;
+-(void) actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex;
+-(void) followRequestDidFinish:(PBHTTPRequest *)request;
+-(void) followRequestDidFail:(PBHTTPRequest *)request;
+-(void) unfollowRequestDidFinish:(PBHTTPRequest *)request;
+-(void) unfollowRequestDidFail:(PBHTTPRequest *)request;
+-(void) userWasFollowed:(NSNotification *)sender;
+-(void) userWasUnfollowed:(NSNotification *)sender;
+@end
+
 @implementation PBFollowButton
 
 @synthesize user= _user;
+@synthesize viewController = _viewController;
+
+#pragma mark -
+#pragma mark lifececle
 -(void) awakeFromNib {
   [self addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
   spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -22,6 +40,35 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWasFollowed:) name:@"USER_WAS_FOLLOWED" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWasUnfollowed:) name:@"USER_WAS_UNFOLLOWED" object:nil];
 }
+
+
+-(void) dealloc {
+  [_followingRequest setDelegate:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"USER_WAS_FOLLOWED" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"USER_WAS_UNFOLLOWED" object:nil];
+  [super dealloc];
+}
+
+
+-(void) setUser:(NSDictionary *)user {
+  [_user release];
+  _user = [user retain];
+  
+  NSNumber *userID = [user objectForKeyNotNull:@"id"];
+  NSString *myUserID = [PBSharedUser userID];
+  if ([[userID stringValue] isEqualToString:myUserID]) {
+    self.hidden = YES;
+    return;
+  }
+
+  if ([[user objectForKeyNotNull:@"is_following"] boolValue]) {
+    [self setMode:PBFollowButtonModeFollowing];
+  }
+  else {
+    [self setMode:PBFollowButtonModeNotFollowing];
+  }
+}
+
 
 -(void) setMode:(PBFollowButtonMode)mode {
   _mode = mode;
@@ -45,75 +92,77 @@
   }
 }
 
--(void) setUser:(NSDictionary *)user {
-  [_user release];
-  _user = [user retain];
-  
-  NSNumber *userID = [user objectForKeyNotNull:@"id"];
-  NSString *myUserID = [PBSharedUser userID];
-  if ([[userID stringValue] isEqualToString:myUserID]) {
-    self.hidden = YES;
-    return;
+
+- (void) showUnfollowConfimationActionSheet {
+  UIActionSheet *actionSheet =[[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Unfollow" otherButtonTitles:nil];
+  UIView *view = [self.viewController view];
+  [actionSheet showInView:view];
+  [actionSheet release];
+}
+
+
+-(void) performRequestToSetFollowing:(BOOL)follow {
+  NSString *screenName = [[self.user objectForKeyNotNull:@"user"] objectForKey:@"screen_name"];
+  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/%@/followers",API_BASE,screenName]];
+  if (_followingRequest) {
+    [_followingRequest cancel];
+    [_followingRequest release];
+    _followingRequest = nil;
   }
-  
-  
-  
-  if ([[user objectForKeyNotNull:@"is_following"] boolValue]) {
-    [self setMode:PBFollowButtonModeFollowing];
+  _followingRequest = [[PBHTTPRequest requestWithURL:url] retain];
+  _followingRequest.delegate = self;
+  if (follow) {
+    _followingRequest.requestMethod = @"POST";
+    [_followingRequest setDidFailSelector:@selector(followRequestDidFail:)];
+    [_followingRequest setDidFinishSelector:@selector(followRequestDidFinish:)];
   }
   else {
-    [self setMode:PBFollowButtonModeNotFollowing];
+    _followingRequest.requestMethod = @"DELETE";
+    [_followingRequest setDidFailSelector:@selector(unfollowRequestDidFail:)];
+    [_followingRequest setDidFinishSelector:@selector(unfollowRequestDidFinish:)];
   }
+  [self setMode:PBFollowButtonModeSpinning];
+  [_followingRequest startAsynchronous];
 }
+
 
 -(void) buttonPressed {
   if (_mode == PBFollowButtonModeSpinning) {
     return;
   }
-  else {
-  
-    
-    //NSString *userID = [[self.user objectForKeyNotNull:@"user"] objectForKey:@"id"];
-    NSString *screenName = [[self.user objectForKeyNotNull:@"user"] objectForKey:@"screen_name"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/%@/followers",API_BASE,screenName]];
-    
-    if (_followingRequest) {
-      [_followingRequest cancel];
-      [_followingRequest release];
-      _followingRequest = nil;
-    }
-    _followingRequest = [[PBHTTPRequest requestWithURL:url] retain];
-    _followingRequest.delegate = self;
-    if (_mode == PBFollowButtonModeFollowing) {  
-      _followingRequest.requestMethod = @"DELETE";
-      [_followingRequest setDidFailSelector:@selector(unfollowRequestDidFail:)];
-      [_followingRequest setDidFinishSelector:@selector(unfollowRequestDidFinish:)];
-    }
-    else {
-      _followingRequest.requestMethod = @"POST";
-      [_followingRequest setDidFailSelector:@selector(followRequestDidFail:)];
-      [_followingRequest setDidFinishSelector:@selector(followRequestDidFinish:)];
-    }
-    
-[self setMode:PBFollowButtonModeSpinning];
-    [_followingRequest startAsynchronous];
-
+  if (_mode == PBFollowButtonModeFollowing) {  
+     [self showUnfollowConfimationActionSheet];      
   }
-
+  if (_mode == PBFollowButtonModeNotFollowing) {
+      [self performRequestToSetFollowing:NO];
+  }
 }
 
--(void) dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"USER_WAS_FOLLOWED" object:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"USER_WAS_UNFOLLOWED" object:nil];
-  [super dealloc];
+-(void) showErrorHUD {
+  
 }
+
+#pragma mark -
+#pragma mark UIActionSheetDelegate
+
+-(void) actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex {
+  if ([actionSheet destructiveButtonIndex] == buttonIndex) {
+    [self performRequestToSetFollowing:NO];
+  }
+}
+
+
+#pragma mark -
+#pragma mark Network Callbacks
 
 -(void) followRequestDidFinish:(PBHTTPRequest *)request {
   NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.user forKey:@"user"];
   [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_WAS_FOLLOWED" object:[self.user objectForKey:@"id"] userInfo:userInfo];
 }
 
+
 -(void) followRequestDidFail:(PBHTTPRequest *)request {
+  [self showErrorHUD];
   [self setMode:PBFollowButtonModeNotFollowing];
 }
 
@@ -123,10 +172,15 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_WAS_UNFOLLOWED" object:[self.user objectForKey:@"id"] userInfo:userInfo];
 }
 
+
 -(void) unfollowRequestDidFail:(PBHTTPRequest *)request {
-   [self setMode:PBFollowButtonModeFollowing];
+  [self showErrorHUD];
+  [self setMode:PBFollowButtonModeFollowing];
 }
 
+
+#pragma mark -
+#pragma mark - Async Listeners 
 -(void) userWasFollowed:(NSNotification *)sender {
   NSDictionary *userData = [sender userInfo];
   NSString *thisUserID = [[self.user objectForKey:@"id"] stringValue];
@@ -135,6 +189,7 @@
     [self setMode:PBFollowButtonModeFollowing];
   }
 }
+
 
 -(void) userWasUnfollowed:(NSNotification *)sender {
   NSDictionary *userData = [sender userInfo];

@@ -15,13 +15,14 @@ typedef enum {
   PBFollowButtonModeSpinning
 } PBFollowButtonMode;
 
-@interface PBFollowButton : UIButton {
+@interface PBFollowButton : UIButton <UIActionSheetDelegate>{
+  @private
   PBFollowButtonMode _mode;
   PBHTTPRequest *_followingRequest;
   UIActivityIndicatorView *spinner;
 }
 
-
-
 @property (nonatomic, retain) NSDictionary *user;
+@property (nonatomic, assign) UIViewController *viewController;
+
 @end

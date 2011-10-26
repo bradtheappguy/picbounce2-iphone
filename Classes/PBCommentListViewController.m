@@ -102,7 +102,7 @@
     static NSString *CellIdentifier = @"MyMessageCell";
     PBCommentCell *customCell = (PBCommentCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (customCell == nil) {
-        
+      
         NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PBCommentCell" owner:nil options:nil];
         
         for(id currentObject in topLevelObjects)
@@ -122,7 +122,7 @@
   else {
     comment = [[self.uploadedComments objectAtIndex:indexPath.row] valueForKey:@"item"];
   }
- 
+  [customCell setViewController:self];
   [customCell setComment:comment];
 
   return customCell;

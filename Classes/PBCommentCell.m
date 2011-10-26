@@ -15,10 +15,12 @@
 @synthesize a_CommentUserNameLabel;
 @synthesize a_CommentLabel;
 @synthesize a_FollowButton;
+@synthesize viewController = _viewController;
 
 
 -(void) setComment:(NSDictionary *)comment {
   NSDictionary *user = [comment objectForKeyNotNull:@"user"];
+  self.a_FollowButton.viewController = self.viewController;
   [self.a_FollowButton setUser:user];
     
   self.a_CommentUserNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
