@@ -33,7 +33,8 @@
  */
 typedef enum {
     /** Progress is shown using an UIActivityIndicatorView. This is the default. */
-    PBProgressHUDModeIndeterminate,
+  PBProgressHUDModeError,  
+  PBProgressHUDModeIndeterminate,
     /** Progress is shown using a MBRoundProgressView. */
 	PBProgressHUDModeDeterminate,
 } PBProgressHUDMode;

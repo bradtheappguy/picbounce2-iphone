@@ -23,7 +23,7 @@
 		5589FCDB14575EF400775DEE /* PBSharingOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5589FCD914575EF400775DEE /* PBSharingOptionViewController.xib */; };
 		5589FCE01457621200775DEE /* PBSharingOptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FCDE1457621200775DEE /* PBSharingOptionCell.m */; };
 		5589FCE11457621200775DEE /* PBSharingOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5589FCDF1457621200775DEE /* PBSharingOptionCell.xib */; };
-		5589FCE7145762DC00775DEE /* Checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FCE6145762DB00775DEE /* Checkbox.m */; };
+		5589FCE7145762DC00775DEE /* PBCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FCE6145762DB00775DEE /* PBCheckbox.m */; };
 		5589FCEA1457632A00775DEE /* check_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5589FCE81457632900775DEE /* check_yes.png */; };
 		5589FCEB1457632A00775DEE /* check_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 5589FCE91457632900775DEE /* check_no.png */; };
 		5589FD19145790F900775DEE /* TwitterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FD18145790F900775DEE /* TwitterButton.m */; };
@@ -121,6 +121,7 @@
 		A28E7B4513EB223E00C3AE55 /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A28E7B4313EB223E00C3AE55 /* CaptureSessionManager.m */; };
 		A29493BE1455E4A70000D6C8 /* NSDictionary+NotNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A29493BD1455E4A70000D6C8 /* NSDictionary+NotNull.m */; };
 		A29493C41456262E0000D6C8 /* PBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A23578F613270BB3008D31A2 /* PBProgressHUD.m */; };
+		A29493D91457CED30000D6C8 /* PBSharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A29493D81457CED30000D6C8 /* PBSharedUser.m */; };
 		A29506B6143E7493002E07DD /* libAviarySDK-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A29506B2143E7493002E07DD /* libAviarySDK-universal.a */; };
 		A29506B7143E7493002E07DD /* AviarySDK-Core.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A29506B4143E7493002E07DD /* AviarySDK-Core.bundle */; };
 		A29506B8143E7493002E07DD /* AviarySDK-Plugins.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A29506B5143E7493002E07DD /* AviarySDK-Plugins.bundle */; };
@@ -619,8 +620,8 @@
 		5589FCDD1457621200775DEE /* PBSharingOptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBSharingOptionCell.h; sourceTree = "<group>"; };
 		5589FCDE1457621200775DEE /* PBSharingOptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBSharingOptionCell.m; sourceTree = "<group>"; };
 		5589FCDF1457621200775DEE /* PBSharingOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBSharingOptionCell.xib; sourceTree = "<group>"; };
-		5589FCE5145762DB00775DEE /* Checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkbox.h; sourceTree = "<group>"; };
-		5589FCE6145762DB00775DEE /* Checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkbox.m; sourceTree = "<group>"; };
+		5589FCE5145762DB00775DEE /* PBCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBCheckbox.h; sourceTree = "<group>"; };
+		5589FCE6145762DB00775DEE /* PBCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBCheckbox.m; sourceTree = "<group>"; };
 		5589FCE81457632900775DEE /* check_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_yes.png; sourceTree = "<group>"; };
 		5589FCE91457632900775DEE /* check_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_no.png; sourceTree = "<group>"; };
 		5589FD17145790F900775DEE /* TwitterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterButton.h; sourceTree = "<group>"; };
@@ -776,6 +777,8 @@
 		A28E7B4413EB223E00C3AE55 /* CaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
 		A29493BC1455E4A70000D6C8 /* NSDictionary+NotNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NotNull.h"; sourceTree = "<group>"; };
 		A29493BD1455E4A70000D6C8 /* NSDictionary+NotNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NotNull.m"; sourceTree = "<group>"; };
+		A29493D71457CED20000D6C8 /* PBSharedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBSharedUser.h; sourceTree = "<group>"; };
+		A29493D81457CED30000D6C8 /* PBSharedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBSharedUser.m; sourceTree = "<group>"; };
 		A29506B0143E7493002E07DD /* AFFeatherConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFFeatherConstants.h; sourceTree = "<group>"; };
 		A29506B1143E7493002E07DD /* AFFeatherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFFeatherController.h; sourceTree = "<group>"; };
 		A29506B2143E7493002E07DD /* libAviarySDK-universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libAviarySDK-universal.a"; sourceTree = "<group>"; };
@@ -1470,8 +1473,8 @@
 		5589FD16145790A700775DEE /* ButtonClasss */ = {
 			isa = PBXGroup;
 			children = (
-				5589FCE5145762DB00775DEE /* Checkbox.h */,
-				5589FCE6145762DB00775DEE /* Checkbox.m */,
+				5589FCE5145762DB00775DEE /* PBCheckbox.h */,
+				5589FCE6145762DB00775DEE /* PBCheckbox.m */,
 				5589FD17145790F900775DEE /* TwitterButton.h */,
 				5589FD18145790F900775DEE /* TwitterButton.m */,
 				5589FD1A1457915300775DEE /* FacebookButton.h */,
@@ -2526,6 +2529,8 @@
 				A29A930A131DA68300DB6D46 /* PBAPIResponse.m */,
 				A2E1581F136A42D3003E96B9 /* FacebookSingleton.h */,
 				A2E15820136A42D3003E96B9 /* FacebookSingleton.m */,
+				A29493D71457CED20000D6C8 /* PBSharedUser.h */,
+				A29493D81457CED30000D6C8 /* PBSharedUser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3315,9 +3320,10 @@
 				A29493C41456262E0000D6C8 /* PBProgressHUD.m in Sources */,
 				5589FCDA14575EF400775DEE /* PBSharingOptionViewController.m in Sources */,
 				5589FCE01457621200775DEE /* PBSharingOptionCell.m in Sources */,
-				5589FCE7145762DC00775DEE /* Checkbox.m in Sources */,
+				5589FCE7145762DC00775DEE /* PBCheckbox.m in Sources */,
 				5589FD19145790F900775DEE /* TwitterButton.m in Sources */,
 				5589FD1C1457915300775DEE /* FacebookButton.m in Sources */,
+				A29493D91457CED30000D6C8 /* PBSharedUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

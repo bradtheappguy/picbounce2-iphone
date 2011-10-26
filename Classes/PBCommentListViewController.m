@@ -10,6 +10,7 @@
 #import "PBCommentCell.h"
 #import "PBHTTPRequest.h"
 #import "NSString+SBJSON.h"
+#import "NSDictionary+NotNull.h"
 
 @implementation PBCommentListViewController
 @synthesize url = _url;
@@ -86,7 +87,7 @@
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[[comments objectAtIndex:indexPath.row] valueForKey:@"item"]];
-    CGSize size = [[dict valueForKey:@"text"] sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:12] constrainedToSize:CGSizeMake(166, 9999) lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [[dict objectForKeyNotNull:@"text"] sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:12] constrainedToSize:CGSizeMake(166, 9999) lineBreakMode:UILineBreakModeWordWrap];
     if (size.height > 30) {
         NSInteger numOfLines = size.height / 12;
         
@@ -114,15 +115,15 @@
                 }
             }
     }
-  NSMutableDictionary *user;
+  NSMutableDictionary *comment;
   if (indexPath.section == 1) {
-    user  = [[comments objectAtIndex:indexPath.row] valueForKey:@"item"];
+    comment  = [[comments objectAtIndex:indexPath.row] valueForKey:@"item"];
   }
   else {
-    user = [[self.uploadedComments objectAtIndex:indexPath.row] valueForKey:@"item"];
+    comment = [[self.uploadedComments objectAtIndex:indexPath.row] valueForKey:@"item"];
   }
  
-  [customCell setUser:user];
+  [customCell setComment:comment];
 
   return customCell;
 }
@@ -223,7 +224,7 @@
   
   
   
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments?caption=%@",API_BASE,self.postID,[textToPost stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments?text=%@",API_BASE,self.postID,[textToPost stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     
     if (self.postCommentRequest) {
         [self.postCommentRequest cancel];
@@ -253,7 +254,14 @@
 }
 
 -(void) getCommentsRequestDidFail:(ASIHTTPRequest *)followingRequest {
-  
+  [self.progressHUD hide:YES];
+  PBProgressHUD *errorHud = [[PBProgressHUD alloc] initWithView:self.view];
+  errorHud.mode = PBProgressHUDModeError;
+  [errorHud retain];
+  [self.view addSubview:errorHud];
+  errorHud.labelText = @"Error";
+  [errorHud showUsingAnimation:YES];
+  [errorHud performSelector:@selector(hideUsingAnimation:) withObject:self afterDelay:2.0];
 }
 
 -(void) getCommentsRequestDidFinish:(ASIHTTPRequest *)followingRequest {
@@ -263,6 +271,9 @@
     self.comments = [[[dict valueForKey:@"response"] valueForKey:@"comments"] valueForKey:@"items"];
     [self.progressHUD hide:YES];
     [tableView reloadData];
+  }
+  else {
+    [self getCommentsRequestDidFail:followingRequest];
   }
   self.getCommentsRequest = nil;
 }

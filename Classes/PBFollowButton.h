@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PBHTTPRequest.h"
 
 typedef enum {
   PBFollowButtonModeFollowing,
@@ -16,6 +17,8 @@ typedef enum {
 
 @interface PBFollowButton : UIButton {
   PBFollowButtonMode _mode;
+  PBHTTPRequest *_followingRequest;
+  UIActivityIndicatorView *spinner;
 }
 
 

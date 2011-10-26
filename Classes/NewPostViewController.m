@@ -88,8 +88,12 @@
 
 - (IBAction)optionButtonClicked:(id)sender {
         
+  PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
+  [self.navigationController pushViewController:vc animated:YES];
+  [vc release];
+
     
-    
+/*    
 	if (_facebook == nil) {
 		_facebook = [FacebookSingleton sharedFacebook];
 		_facebook.sessionDelegate = self;
@@ -102,14 +106,12 @@
             _facebook.expirationDate = [NSDate distantFuture];
 		} 
         
-		[_facebook retain];
-	}
-	
+		[_facebook retain];aqa	
         //if no session is available login
     
 	[_facebook authorize:[NSArray arrayWithObject: @"publish_stream"] delegate:self];
     
-    
+  */  
     
     
 }
@@ -229,10 +231,7 @@
             // NSLog(@"%@",followingRequest.responseString);
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[followingRequest.responseString JSONValue]];
             NSLog(@"%@",[[[dict valueForKey:@"response"] valueForKey:@"post"] valueForKey:@"id"]  );
-        PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
-        [vc release];
-}
+    }
     
 }
 

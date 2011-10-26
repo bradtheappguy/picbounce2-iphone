@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
-@interface Checkbox : UIButton {
-	BOOL selected;
-	UILabel *label;
+@interface PBCheckbox : UIButton {
+
 }
 
-@property BOOL selected;
+@property (nonatomic, readwrite) BOOL selected;
 @property (nonatomic, retain) UILabel *label;
+
 - (void) setText:(NSString *)text;
 - (id)initWithPosition:(CGPoint)position;
 

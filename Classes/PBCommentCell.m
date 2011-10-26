@@ -7,6 +7,7 @@
 //
 
 #import "PBCommentCell.h"
+#import "NSDictionary+NotNull.h"
 
 @implementation PBCommentCell
 @synthesize a_CommentPersonImageView;
@@ -16,16 +17,17 @@
 @synthesize a_FollowButton;
 
 
--(void) setUser:(NSDictionary *)user {
+-(void) setComment:(NSDictionary *)comment {
+  NSDictionary *user = [comment objectForKeyNotNull:@"user"];
   [self.a_FollowButton setUser:user];
     
   self.a_CommentUserNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
   self.a_CommentUserNameLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
-  self.a_CommentUserNameLabel.text =  [[user valueForKey:@"user"] valueForKey:@"screen_name"];
+  self.a_CommentUserNameLabel.text =  [user valueForKey:@"screen_name"];
   
   
   
-  CGSize size = [[user valueForKey:@"text"] sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:12] constrainedToSize:CGSizeMake(166, 9999) lineBreakMode:UILineBreakModeWordWrap];
+  CGSize size = [[comment objectForKeyNotNull:@"text"] sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:12] constrainedToSize:CGSizeMake(166, 9999) lineBreakMode:UILineBreakModeWordWrap];
   NSLog(@"%f   %f",size.width, size.height);
   
   NSInteger numOfLines = size.height / 12;
@@ -42,8 +44,8 @@
   self.a_CommentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
   self.a_CommentLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
   
-  self.a_CommentPersonImageView.imageURL = [NSURL URLWithString:[[user valueForKey:@"user"] valueForKey:@"avatar"]];
-  self.a_CommentLabel.text = [user valueForKey:@"text"];
+  self.a_CommentPersonImageView.imageURL = [NSURL URLWithString:[user objectForKeyNotNull:@"avatar"]];
+  self.a_CommentLabel.text = [comment objectForKeyNotNull:@"text"];
 
 }
 

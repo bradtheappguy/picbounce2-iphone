@@ -8,7 +8,7 @@
 
 #import "PBAuthWebViewController.h"
 #import "AppDelegate.h"
-
+#import "PBSharedUser.h"
 @implementation PBAuthWebViewController
 
 @synthesize webView = _webView;
@@ -74,9 +74,18 @@
   NSRange range = [urlString rangeOfString:@"picbounce?auth_token"];
   
   if (range.length > 0) {
-    NSString *key = [urlString substringFromIndex:range.location+range.length+1];
+    NSRegularExpression *pattern = [NSRegularExpression regularExpressionWithPattern:@"picbounce\\?auth_token=(([a-z]|\\d)+)" options:NSRegularExpressionCaseInsensitive error:nil];
+    NSRange patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
+    NSString *key = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
     [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
-
+    
+    pattern = [NSRegularExpression regularExpressionWithPattern:@"user_id=(\\d+)" options:NSRegularExpressionCaseInsensitive error:nil];
+    patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
+    NSString *userID = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
+    [PBSharedUser setUserID:userID];
+    [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
+    
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
 
     return NO;

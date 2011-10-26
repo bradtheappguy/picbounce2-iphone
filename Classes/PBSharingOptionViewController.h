@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Facebook.h"
-
+#import "PBProgressHUD.h"
 @interface PBSharingOptionViewController : UIViewController < UITableViewDataSource, UITableViewDelegate, FBSessionDelegate > {
     
-    UITableView *a_OptionsTableView;
+    UITableView *tableView;
     NSMutableArray *a_OptionArray;
     Facebook *facebook;
 }
-@property (nonatomic, retain) IBOutlet UITableView *a_OptionsTableView;
+@property (nonatomic, retain) PBProgressHUD *progressHUD;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *a_OptionArray;
+@property (nonatomic, retain) NSMutableArray *facebookPages;
 @end

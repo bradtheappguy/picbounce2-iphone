@@ -137,6 +137,10 @@
             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         [(UIActivityIndicatorView *)indicator startAnimating];
     }
+  if (mode == PBProgressHUDModeError) {
+    indicator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 33, 33)];
+    indicator.backgroundColor = [UIColor redColor];
+  }
 
     [self addSubview:indicator];
 }
