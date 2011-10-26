@@ -28,6 +28,7 @@
 		5589FCEB1457632A00775DEE /* check_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 5589FCE91457632900775DEE /* check_no.png */; };
 		5589FD19145790F900775DEE /* TwitterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FD18145790F900775DEE /* TwitterButton.m */; };
 		5589FD1C1457915300775DEE /* FacebookButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FD1B1457915300775DEE /* FacebookButton.m */; };
+		55A5F47D14589772000BEB7F /* btn_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 55A5F47C14589772000BEB7F /* btn_check.png */; };
 		55EF00E614558E830027FFA8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF00E414558E830027FFA8 /* FeedViewController.m */; };
 		55EF00E714558E830027FFA8 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EF00E514558E830027FFA8 /* FeedViewController.xib */; };
 		55EF00ED145592DF0027FFA8 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF00EB145592DF0027FFA8 /* NewPostViewController.m */; };
@@ -628,6 +629,7 @@
 		5589FD18145790F900775DEE /* TwitterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterButton.m; sourceTree = "<group>"; };
 		5589FD1A1457915300775DEE /* FacebookButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookButton.h; sourceTree = "<group>"; };
 		5589FD1B1457915300775DEE /* FacebookButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookButton.m; sourceTree = "<group>"; };
+		55A5F47C14589772000BEB7F /* btn_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_check.png; path = brownAssets/btn_check.png; sourceTree = "<group>"; };
 		55EF00E314558E830027FFA8 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		55EF00E414558E830027FFA8 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		55EF00E514558E830027FFA8 /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
@@ -1834,6 +1836,7 @@
 		A296CEFD1453648900175D1B /* ArtAssets */ = {
 			isa = PBXGroup;
 			children = (
+				55A5F47C14589772000BEB7F /* btn_check.png */,
 				A296CEFE1453648900175D1B /* _designref.png */,
 				A296CEFF1453648900175D1B /* _profileBrownBlue02.png */,
 				A296CF001453648900175D1B /* avatar@2x.png */,
@@ -3167,6 +3170,7 @@
 				5589FCE11457621200775DEE /* PBSharingOptionCell.xib in Resources */,
 				5589FCEA1457632A00775DEE /* check_yes.png in Resources */,
 				5589FCEB1457632A00775DEE /* check_no.png in Resources */,
+				55A5F47D14589772000BEB7F /* btn_check.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3378,8 +3382,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brad Smith (YY7FN8LFBY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3397,7 +3401,8 @@
 					"\"$(SRCROOT)/External/AviarySDK\"",
 				);
 				PRODUCT_NAME = PicBounce2;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7 i386";
@@ -3410,8 +3415,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brad Smith";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PicBounce2_Prefix.pch;
@@ -3427,7 +3432,8 @@
 					"\"$(SRCROOT)/External/AviarySDK\"",
 				);
 				PRODUCT_NAME = PicBounce2;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8539DB93-A84A-4240-833A-1B97FEA32F80";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -3492,7 +3498,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brad Smith (YY7FN8LFBY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -3503,7 +3510,8 @@
 					"-all_load",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3512,8 +3520,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brad Smith (YY7FN8LFBY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -3525,7 +3533,8 @@
 					"-all_load",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

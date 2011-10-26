@@ -10,6 +10,7 @@
 
 @interface PBPhotoView : EGOImageView {
   UIActivityIndicatorView *spinner;
+    UIImageView *progressBarImageView;
 }
 
 @end

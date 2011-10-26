@@ -41,6 +41,7 @@
   
   [hud release];
   [self.view addSubview:self.progressHUD];
+    
 
 }
 
@@ -138,7 +139,7 @@
             [customCell.a_StatusButton setTitle:@"Login" forState:UIControlStateNormal];
         }
         [customCell.a_TitleLabel setText:@"Facebook"];
-        [customCell.a_StatusButton setTag:indexPath.row];
+        [customCell.a_StatusButton setTag:indexPath.section];
         [customCell.a_StatusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
     }else if (indexPath.section == 1) {
         AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
@@ -148,7 +149,7 @@
             [customCell.a_StatusButton setTitle:@"Logout" forState:UIControlStateNormal];  
         }
         [customCell.a_TitleLabel setText:@"Twitter"];
-        [customCell.a_StatusButton setTag:indexPath.row];
+        [customCell.a_StatusButton setTag:indexPath.section];
         [customCell.a_StatusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
     }else if (indexPath.section == 3) {
         [customCell.a_StatusButton setHidden:YES];
@@ -170,14 +171,18 @@
 - (void)loginlogoutButton:(UIButton *)sender {
     if (sender.tag == 0) {
         isTwitterLogut = NO;
-        facebook = [FacebookSingleton sharedFacebook];
+        
         if ([facebook isSessionValid]) {
-          [facebook logout:self];
+          
+            
+            [facebook logout:self];
             facebook.accessToken = nil;
             facebook.expirationDate = nil;
+            facebook = nil;
             [sender setTitle:@"Login" forState:UIControlStateNormal];
       } 
         else {
+            facebook = [FacebookSingleton sharedFacebook];
           [facebook authorize:[NSArray arrayWithObject: @"publish_stream,offline_access,manage_pages"] delegate:self];
             [sender setTitle:@"Logout" forState:UIControlStateNormal];
         }
@@ -295,9 +300,9 @@
   self.facebookPages = x;
   [tableView reloadData];
   
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Avnish Here is facebook data" message:[x description] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-  [alert show];
-  [alert release];
+//  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Avnish Here is facebook data" message:[x description] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+//  [alert show];
+//  [alert release];
 }
 
 /**

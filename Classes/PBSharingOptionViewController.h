@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Facebook.h"
+#import "FBConnect.h"
 #import "PBProgressHUD.h"
 @interface PBSharingOptionViewController : UIViewController < UITableViewDataSource, UITableViewDelegate, FBSessionDelegate > {
     

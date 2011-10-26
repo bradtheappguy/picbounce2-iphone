@@ -18,7 +18,7 @@
   if ((self = [super initWithFrame:frame])) {
     // Initialization code
 		[self setBackgroundImage:[[UIImage imageNamed:@"btn_check_n@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"btn_check_s@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
+		[self setBackgroundImage:[[UIImage imageNamed:@"btn_check.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
 		[self addTarget:self action:@selector(touched:) forControlEvents:UIControlEventTouchUpInside];
 		self.selected = NO;
 		
@@ -41,12 +41,12 @@
 -(void)setSelected:(BOOL)isSelected {
 	_selected = isSelected;
 	if (self.selected) {
-		[self setBackgroundImage:[[UIImage imageNamed:@"btn_check_s@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
+		[self setBackgroundImage:[[UIImage imageNamed:@"btn_check.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
 		[self setBackgroundImage:[[UIImage imageNamed:@"btn_check_n@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];		
 	}
 	else {
 		[self setBackgroundImage:[[UIImage imageNamed:@"btn_check_n@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"btn_check_s@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
+		[self setBackgroundImage:[[UIImage imageNamed:@"btn_check.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
 	}
 }
 
