@@ -1431,14 +1431,14 @@
 			name = "PB Sharing Options ViewController";
 			sourceTree = "<group>";
 		};
-		5589FCDC145761E000775DEE /* New Group */ = {
+		5589FCDC145761E000775DEE /* PBSharing Option Cell */ = {
 			isa = PBXGroup;
 			children = (
 				5589FCDD1457621200775DEE /* PBSharingOptionCell.h */,
 				5589FCDE1457621200775DEE /* PBSharingOptionCell.m */,
 				5589FCDF1457621200775DEE /* PBSharingOptionCell.xib */,
 			);
-			name = "New Group";
+			name = "PBSharing Option Cell";
 			sourceTree = "<group>";
 		};
 		5589FCEF14576FB100775DEE /* Increase Text Box */ = {
@@ -1559,7 +1559,7 @@
 			isa = PBXGroup;
 			children = (
 				5589FD16145790A700775DEE /* ButtonClasss */,
-				5589FCDC145761E000775DEE /* New Group */,
+				5589FCDC145761E000775DEE /* PBSharing Option Cell */,
 				5589FCD614575EBE00775DEE /* PB Sharing Options ViewController */,
 				55EF00E9145592BB0027FFA8 /* Post View Controller */,
 				55EF00E8145592A50027FFA8 /* Feed View Controller */,

@@ -14,7 +14,7 @@
 @synthesize label = _label;
 
 - (id)initWithPosition:(CGPoint)position {
-	CGRect frame = CGRectMake(270, position.y, 24, 27);
+	CGRect frame = CGRectMake(260, position.y, 24, 27);
   if ((self = [super initWithFrame:frame])) {
     // Initialization code
 		[self setBackgroundImage:[[UIImage imageNamed:@"btn_check_n@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
@@ -22,10 +22,10 @@
 		[self addTarget:self action:@selector(touched:) forControlEvents:UIControlEventTouchUpInside];
 		self.selected = NO;
 		
-		self.label = [[UILabel alloc] initWithFrame:CGRectMake(-100, 0.0, 150, 28.0)];
-    self.label.font = [UIFont systemFontOfSize:13];
+		self.label = [[UILabel alloc] initWithFrame:CGRectMake(-140, 0.0, 150, 28.0)];
+    self.label.font = [UIFont systemFontOfSize:15];
 		self.label.backgroundColor = [UIColor clearColor];
-		self.label.textColor = [UIColor blackColor];
+		self.label.textColor = [UIColor lightGrayColor];
 		[self addSubview:self.label];
   }
   return self;

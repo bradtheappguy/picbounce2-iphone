@@ -20,4 +20,6 @@
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *a_OptionArray;
 @property (nonatomic, retain) NSMutableArray *facebookPages;
+
+- (void)makeSizeOfTable;
 @end
