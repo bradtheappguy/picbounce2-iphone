@@ -120,6 +120,10 @@
 		A28DE346138B34D100B56C12 /* PBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DE344138B34D100B56C12 /* PBLoginViewController.m */; };
 		A28DE347138B34D100B56C12 /* PBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28DE345138B34D100B56C12 /* PBLoginViewController.xib */; };
 		A28E7B4513EB223E00C3AE55 /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A28E7B4313EB223E00C3AE55 /* CaptureSessionManager.m */; };
+		A2938C5F145B5467006C0076 /* bg_sharingCheckbox_on.png in Resources */ = {isa = PBXBuildFile; fileRef = A2938C5B145B5467006C0076 /* bg_sharingCheckbox_on.png */; };
+		A2938C60145B5467006C0076 /* bg_sharingCheckbox_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2938C5C145B5467006C0076 /* bg_sharingCheckbox_on@2x.png */; };
+		A2938C61145B5467006C0076 /* bg_sharingCheckbox_off.png in Resources */ = {isa = PBXBuildFile; fileRef = A2938C5D145B5467006C0076 /* bg_sharingCheckbox_off.png */; };
+		A2938C62145B5467006C0076 /* bg_sharingCheckbox_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2938C5E145B5467006C0076 /* bg_sharingCheckbox_off@2x.png */; };
 		A29493BE1455E4A70000D6C8 /* NSDictionary+NotNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A29493BD1455E4A70000D6C8 /* NSDictionary+NotNull.m */; };
 		A29493C41456262E0000D6C8 /* PBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A23578F613270BB3008D31A2 /* PBProgressHUD.m */; };
 		A29493D91457CED30000D6C8 /* PBSharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A29493D81457CED30000D6C8 /* PBSharedUser.m */; };
@@ -777,6 +781,10 @@
 		A28DE345138B34D100B56C12 /* PBLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBLoginViewController.xib; sourceTree = "<group>"; };
 		A28E7B4313EB223E00C3AE55 /* CaptureSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureSessionManager.m; sourceTree = "<group>"; };
 		A28E7B4413EB223E00C3AE55 /* CaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
+		A2938C5B145B5467006C0076 /* bg_sharingCheckbox_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_sharingCheckbox_on.png; sourceTree = "<group>"; };
+		A2938C5C145B5467006C0076 /* bg_sharingCheckbox_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_sharingCheckbox_on@2x.png"; sourceTree = "<group>"; };
+		A2938C5D145B5467006C0076 /* bg_sharingCheckbox_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_sharingCheckbox_off.png; sourceTree = "<group>"; };
+		A2938C5E145B5467006C0076 /* bg_sharingCheckbox_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_sharingCheckbox_off@2x.png"; sourceTree = "<group>"; };
 		A29493BC1455E4A70000D6C8 /* NSDictionary+NotNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NotNull.h"; sourceTree = "<group>"; };
 		A29493BD1455E4A70000D6C8 /* NSDictionary+NotNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NotNull.m"; sourceTree = "<group>"; };
 		A29493D71457CED20000D6C8 /* PBSharedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBSharedUser.h; sourceTree = "<group>"; };
@@ -2032,6 +2040,10 @@
 		A296CF431453648900175D1B /* brownAssets */ = {
 			isa = PBXGroup;
 			children = (
+				A2938C5B145B5467006C0076 /* bg_sharingCheckbox_on.png */,
+				A2938C5C145B5467006C0076 /* bg_sharingCheckbox_on@2x.png */,
+				A2938C5D145B5467006C0076 /* bg_sharingCheckbox_off.png */,
+				A2938C5E145B5467006C0076 /* bg_sharingCheckbox_off@2x.png */,
 				554270AA1454E69F00B8648A /* bg_commentBar.png */,
 				554270AB1454E69F00B8648A /* bg_commentBar@2x.png */,
 				554270AC1454E69F00B8648A /* bg_commentCell.png */,
@@ -3171,6 +3183,10 @@
 				5589FCEA1457632A00775DEE /* check_yes.png in Resources */,
 				5589FCEB1457632A00775DEE /* check_no.png in Resources */,
 				55A5F47D14589772000BEB7F /* btn_check.png in Resources */,
+				A2938C5F145B5467006C0076 /* bg_sharingCheckbox_on.png in Resources */,
+				A2938C60145B5467006C0076 /* bg_sharingCheckbox_on@2x.png in Resources */,
+				A2938C61145B5467006C0076 /* bg_sharingCheckbox_off.png in Resources */,
+				A2938C62145B5467006C0076 /* bg_sharingCheckbox_off@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

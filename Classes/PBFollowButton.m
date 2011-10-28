@@ -9,6 +9,7 @@
 #import "PBFollowButton.h"
 #import "NSDictionary+NotNull.h"
 #import "PBSharedUser.h"
+#import "PBProgressHUD.h"
 
 @interface PBFollowButton (private)
 -(void) setMode:(PBFollowButtonMode)mode;
@@ -102,7 +103,7 @@
 
 
 -(void) performRequestToSetFollowing:(BOOL)follow {
-  NSString *screenName = [[self.user objectForKeyNotNull:@"user"] objectForKey:@"screen_name"];
+  NSString *screenName = [self.user objectForKeyNotNull:@"screen_name"];
   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/%@/followers",API_BASE,screenName]];
   if (_followingRequest) {
     [_followingRequest cancel];
@@ -134,11 +135,20 @@
      [self showUnfollowConfimationActionSheet];      
   }
   if (_mode == PBFollowButtonModeNotFollowing) {
-      [self performRequestToSetFollowing:NO];
+      [self performRequestToSetFollowing:YES];
   }
 }
 
+
+
+
 -(void) showErrorHUD {
+  PBProgressHUD *errorHud = [[PBProgressHUD alloc] initWithView:[self.viewController view]];
+  errorHud.mode = PBProgressHUDModeError;
+  [[self.viewController view] addSubview:errorHud];
+  [errorHud showUsingAnimation:YES];
+  [errorHud release];
+  //[errorHud dismissAfterDelay:0.66];
   
 }
 

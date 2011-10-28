@@ -119,6 +119,8 @@ typedef enum {
 	UIFont *detailsLabelFont;
 
     BOOL isFinished;
+  
+  NSTimer *dismissTimer;
 }
 
 /** 

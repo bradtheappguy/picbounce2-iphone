@@ -208,15 +208,19 @@
 }
 
 - (void)dealloc {
-    [indicator release];
-    [label release];
-    [detailsLabel release];
-    [labelText release];
-    [detailsLabelText release];
+  if (dismissTimer) {
+    [dismissTimer invalidate];
+    dismissTimer = nil;
+  }
+  [indicator release];
+  [label release];
+  [detailsLabel release];
+  [labelText release];
+  [detailsLabelText release];
 	[graceTimer release];
 	[minShowTimer release];
 	[showStarted release];
-    [super dealloc];
+  [super dealloc];
 }
 
 #pragma mark -
@@ -346,6 +350,10 @@
 }
 
 - (void)hide:(BOOL)animated {
+  if (dismissTimer) {
+    [dismissTimer invalidate];
+    dismissTimer = nil;
+  }
 	useAnimation = animated;
 	
 	// If the minShow time is set, calculate how long the hud was shown,
@@ -494,6 +502,10 @@
     CGContextFillPath(context);
 }
 
+-(void) dismissAfterDelay:(NSTimeInterval)delay {
+  dismissTimer = [NSTimer timerWithTimeInterval:delay target:self selector:@selector(hide:) userInfo:nil repeats:NO];
+}
+
 @end
 
 
@@ -526,5 +538,6 @@
     CGContextClosePath(context);
     CGContextFillPath(context);
 }
+
 
 @end
