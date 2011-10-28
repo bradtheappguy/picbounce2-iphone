@@ -45,10 +45,16 @@
     [hud release];
     
     tableView.layer.cornerRadius = 5.0f;
-    tableView.layer.borderWidth = 0.7f;
-    tableView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    [self makeSizeOfTable];
+        tableView.layer.borderWidth = 1.5f;
+        tableView.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+    tableView.layer.shadowColor = [[UIColor blueColor] CGColor];
+    [tableView.layer setShadowOffset:CGSizeMake(40, -10)];
     
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    tableView.separatorColor = [UIColor lightGrayColor];
+    [self makeSizeOfTable];
+    UIImage *backgroundPattern = [UIImage imageNamed:@"bg_sharing_settings@2x.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
     [self.view addSubview:self.progressHUD];
     UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backBarButtonItemClicked)];
     self.navigationItem.backBarButtonItem = backBarButtonItem;
