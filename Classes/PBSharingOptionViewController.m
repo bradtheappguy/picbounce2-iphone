@@ -53,7 +53,7 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     tableView.separatorColor = [UIColor lightGrayColor];
     [self makeSizeOfTable];
-    UIImage *backgroundPattern = [UIImage imageNamed:@"bg_sharing_settings@2x.png"];
+    UIImage *backgroundPattern = [UIImage imageNamed:@"bg_sharing_settings.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
     [self.view addSubview:self.progressHUD];
     UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backBarButtonItemClicked)];
