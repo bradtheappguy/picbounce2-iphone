@@ -1,7 +1,7 @@
 #import "PBRootViewController.h"
 #import "PBRefreshTableHeaderView.h"
 #import "ASIDownloadCache.h"
-#import "MBProgressHUD.h"
+#import "PBProgressHUD.h"
 #import "AppDelegate.h"
 @interface PBRootViewController (Private)
 
@@ -119,7 +119,7 @@
 
 - (void)networkLoadDidFail:(ASIHTTPRequest *) request {  
   if (!errorHud) {
-    errorHud = [[MBProgressHUD alloc] initWithView:self.tableView];
+    errorHud = [[PBProgressHUD alloc] initWithView:self.tableView];
     [errorHud retain];
   }
   [self.view addSubview:errorHud];
@@ -173,7 +173,7 @@
   NSLog(@"Loading More: %@",loadMoreDataURL);
   if (!loadMoreDataURL) {
     NSLog(@"Error: load more url not set");
-    [self doneLoadingTableViewDataFromNetwork:nil];
+    //[self doneLoadingTableViewDataFromNetwork:nil];
     return;
   }
   
@@ -248,7 +248,7 @@
   loadingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
   loadingLabel.textColor = [UIColor colorWithRed:252/255.0 green:251/255.0 blue:251/255.0 alpha:1.0];
   loadingLabel.textAlignment = UITextAlignmentCenter;
-  loadingLabel.text = @"Loading";
+  loadingLabel.text = @"Loading...";
   loadingLabel.backgroundColor = [UIColor clearColor];
   
   [loadingView addSubview:spinner];

@@ -135,7 +135,7 @@
   [postRequest setShowAccurateProgress:YES];
   [postRequest setUploadProgressDelegate:self];
   [postRequest setRequestMethod:@"POST"];
-  [postRequest setPostValue:@"Caption" forKey:@"caption"];
+  [postRequest setPostValue:@"Caption" forKey:@"text"];
   [postRequest setPostValue:@"1" forKey:@"device_type"];
   [postRequest setPostValue:@"3" forKey:@"os_version"];
   [postRequest setPostValue:@"3" forKey:@"device_id"];

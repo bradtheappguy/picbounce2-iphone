@@ -12,7 +12,7 @@
 @implementation MyView
 
 @synthesize scrollView;
-
+@synthesize a_CommentTextView;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -23,36 +23,37 @@
     
 - (void) awakeFromNib {
   numberOfLines = 1;
-  UIImage * bgImage = [[UIImage imageNamed:@"bg.png"] stretchableImageWithLeftCapWidth:200 topCapHeight:22];
+  UIImage * bgImage = [[UIImage imageNamed:@"bg_commentBar.png"] stretchableImageWithLeftCapWidth:200 topCapHeight:22];
   self.image = bgImage;
   [self setContentMode:UIViewContentModeScaleToFill];
   self.clipsToBounds = YES;
   self.userInteractionEnabled = YES;
  
   
-  textViewClipp = [[UIView alloc] initWithFrame:CGRectMake(48, 8, 265, 26)];
+  textViewClipp = [[UIView alloc] initWithFrame:CGRectMake(8, 8, 300, 26)];
   textViewClipp.backgroundColor = [UIColor clearColor];
   textViewClipp.alpha = 1;
   
   [self addSubview:textViewClipp];
   
-  textView = [[HPTextViewInternal alloc] initWithFrame:CGRectMake(0, -4, 265, 36)];
-  textView.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
-  textView.font = [UIFont systemFontOfSize:16];
-  textView.scrollIndicatorInsets = UIEdgeInsetsMake(3, 0, 5, 0);
-  textView.backgroundColor = [UIColor clearColor];
-  textView.delegate = self;
-  textView.alpha = 1;
-  textHeight = textView.contentSize.height;
-      textView.scrollEnabled = NO;
-  [textViewClipp addSubview:textView];
+  a_CommentTextView = [[HPTextViewInternal alloc] initWithFrame:CGRectMake(0, -4, 300, 36)];
+  a_CommentTextView.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
+  a_CommentTextView.font = [UIFont systemFontOfSize:16];
+    a_CommentTextView.returnKeyType = UIReturnKeySend;
+  a_CommentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(3, 0, 5, 0);
+  a_CommentTextView.backgroundColor = [UIColor clearColor];
+  a_CommentTextView.delegate = self;
+  a_CommentTextView.alpha = 1;
+  textHeight = a_CommentTextView.contentSize.height;
+      a_CommentTextView.scrollEnabled = NO;
+  [textViewClipp addSubview:a_CommentTextView];
     
     //add the avatar
     
-    UIView *avatar = [[UIView alloc] initWithFrame:CGRectMake(6, 5, 30, 30)];
-    avatar.backgroundColor = [UIColor blueColor];
-    [self addSubview:avatar];
-  [avatar release];
+//    UIView *avatar = [[UIView alloc] initWithFrame:CGRectMake(6, 5, 30, 30)];
+//    avatar.backgroundColor = [UIColor blueColor];
+//    [self addSubview:avatar];
+//  [avatar release];
 }
 
 - (void) grow {
@@ -69,26 +70,27 @@
 
 - (void)textViewDidChange:(UITextView *)aTtextView
 {
-  CGFloat height = textView.contentSize.height;
-  if ([textView.text length] < 2) {
+  CGFloat height = a_CommentTextView.contentSize.height;
+  if ([a_CommentTextView.text length] < 2) {
+    height = 36;
+      
+  }
+  if (a_CommentTextView.contentSize.height < 36) {
     height = 36;
   }
-  if (textView.contentSize.height < 36) {
-    height = 36;
-  }
-  if (textView.contentSize.height > 36) {
+  if (a_CommentTextView.contentSize.height > 36) {
     textViewClipp.clipsToBounds = YES;
   }
   else {
     textViewClipp.clipsToBounds = NO;
   }
   
-  if (textView.contentSize.height >= 216-20) {
-    height = 216-20;
-    textView.scrollEnabled = YES;
+  if (a_CommentTextView.contentSize.height >= 100) {
+    height = 100;
+    a_CommentTextView.scrollEnabled = YES;
   }
   else {
-    textView.scrollEnabled = NO;
+    a_CommentTextView.scrollEnabled = NO;
   }
   if (height != textHeight) {
     CGFloat diff = textHeight - height;
@@ -101,11 +103,11 @@
     frame.size.height -= diff;
     self.frame = frame;
     
-    textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, textView.frame.size.width, textView.frame.size.height - diff);
+    a_CommentTextView.frame = CGRectMake(a_CommentTextView.frame.origin.x, a_CommentTextView.frame.origin.y, a_CommentTextView.frame.size.width, a_CommentTextView.frame.size.height - diff);
     
     textViewClipp.frame = CGRectMake(textViewClipp.frame.origin.x, textViewClipp.frame.origin.y, textViewClipp.frame.size.width, textViewClipp.frame.size.height - diff);
     
-    [textView scrollRectToVisible:CGRectMake(0,0,1,1) animated:NO];
+    [a_CommentTextView scrollRectToVisible:CGRectMake(0,0,1,1) animated:NO];
     scrollView.contentInset = UIEdgeInsetsMake(0, 0, scrollView.contentInset.bottom - diff, 0);
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, scrollView.scrollIndicatorInsets.bottom - diff, 0);
     [UIView commitAnimations]; 
@@ -113,6 +115,19 @@
 
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {  
+    BOOL shouldChangeText = YES;  
+    
+    if ([text isEqualToString:@"\n"]) {  
+            // Find the next entry field  
+        
+            
+        [a_CommentTextView resignFirstResponder];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PostComment" object:nil userInfo:nil];
+        shouldChangeText = NO;  
+    }  
+    return shouldChangeText;  
+}
 /*
  
  1  100         40
@@ -160,6 +175,7 @@
 - (void)dealloc
 {
     [super dealloc];
+    [a_CommentTextView release];
 }
 
 @end

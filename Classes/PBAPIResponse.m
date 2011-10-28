@@ -17,11 +17,11 @@
         data = [[parser objectWithString:json_string error:nil] retain];
       [parser release];
         if ([self validate:data]) {
-          posts = [[data objectForKey:@"response"] objectForKey:@"posts"];
+          posts = [[[data objectForKey:@"response"] objectForKey:@"posts"] objectForKeyNotNull:@"items"];
           people = [[data objectForKey:@"response"] objectForKey:@"people"];
           user = [[data objectForKey:@"response"] objectForKey:@"user"];
-          url = [[data objectForKey:@"response"] objectForKey:@"url"];
-          next = [[data objectForKey:@"response"] objectForKey:@"next"];
+          //url = [[data objectForKey:@"response"] objectForKey:@"url"];
+          next = [[[data objectForKey:@"response"] objectForKey:@"posts"] objectForKey:@"next"];
         }
     }
     return self;
@@ -58,7 +58,7 @@
 }
 
 -(NSUInteger) followersCount {
-  id x = [[data objectForKey:@"user"] objectForKey:@"followers_count"]; 
+  id x = [[data objectForKey:@"user"] objectForKey:@"follower_count"]; 
   return [x intValue];
 }
 
@@ -98,7 +98,7 @@
 }
 
 
--(NSUInteger) numberOfPhotos {
+-(NSUInteger) numberOfPosts {
   return [[self posts] count];
 }
 
@@ -117,9 +117,7 @@
   NSArray *arrayOfPhotos = [self posts];
   if ([arrayOfPhotos count] > index) {
     id photo = [arrayOfPhotos objectAtIndex:index];
-    if (([photo objectForKey:@"post"]) && ([photo objectForKey:@"post"] != [NSNull null])) {
-      photo = [photo objectForKey:@"post"];
-    }
+    photo = [photo objectForKeyNotNull:@"item"];
     return photo;
   }
   else {

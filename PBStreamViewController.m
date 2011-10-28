@@ -20,6 +20,7 @@
 #import "PBUploadingPhotoTableViewCell.h"
 #import "PBPersonListViewController.h"
 #import "PBHTTPRequest.h"
+#import "NewPostViewController.h"
 
 @implementation PBStreamViewController
 
@@ -47,14 +48,17 @@
 
 
 -(void) showEmptyState {
-  UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+  UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+  emptyView.tag = 12;
   emptyView.backgroundColor = [UIColor redColor];
+  emptyView.image = [UIImage imageNamed:@""];
   [self.view addSubview:emptyView];
   self.tableView.scrollEnabled = NO;
 }
 
 
 -(void) hideEmptyState {
+  [[self.view viewWithTag:12] removeFromSuperview];
   self.tableView.scrollEnabled = YES;
 }
 
@@ -101,16 +105,23 @@
 }
 
 -(void) configureNavigationBar {
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
-  self.navigationItem.backBarButtonItem = backButton;
-  [backButton release];
+//  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+//  self.navigationItem.backBarButtonItem = backButton;
+//  [backButton release];
   //UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self //action:@selector(settingsButtonPressed:)];
   //self.navigationItem.rightBarButtonItem = settings; 
+    
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
+    [rightBarButtonItem setImage:[UIImage imageNamed:@"bg_navbar@2x.png"]];
+        //[rightBarButtonItem setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_navbar@2x.png"]]];
+    self.navigationItem.leftBarButtonItem = rightBarButtonItem;
+    [rightBarButtonItem release];
+    
   if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
     UIBarButtonItem *logoutButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
     self.navigationItem.rightBarButtonItem = logoutButton;
     [logoutButton release];
-    self.navigationItem.leftBarButtonItem = nil;
+          //self.navigationItem.leftBarButtonItem = nil;
   }
   else {
     UIBarButtonItem *loginButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Login",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(loginButtonPressed:)];
@@ -119,6 +130,13 @@
     self.navigationItem.rightBarButtonItem = nil;
   }
   
+}
+#pragma mark Open Create Post View
+- (void)createPost {
+    NewPostViewController *a_NewPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
+    a_NewPostViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:a_NewPostViewController animated:YES];
+    [a_NewPostViewController release];
 }
 
 - (void) logoutButtonPressed:(id)sender {
@@ -143,6 +161,8 @@
 #pragma mark View LifeCycle
 - (void) viewDidLoad {
   [super viewDidLoad];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoadingIndicator11) name:@"ShowLoadingView" object:nil];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoadingIndicator11) name:@"HideLoadingView" object:nil];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -151,7 +171,8 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
   
   if (!self.navigationItem.title) {
-    self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
+      NSLog(@"%@", NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE"));
+      self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
   }
   
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
@@ -159,7 +180,7 @@
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
   
-  self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
+        //self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
 
   [self configureNavigationBar];
   
@@ -171,12 +192,15 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
   NSUInteger nUploading = [[PBUploadQueue sharedQueue] count]; 
   NSUInteger nPhotos = [[self.responseData posts] count]; 
+  
+  NSUInteger nSections = nPhotos;
   if (self.shouldShowUplodingItems) {
-    return nUploading + nPhotos;
+    nSections += nUploading;
   }
-  else {
-    return nPhotos;
+  if ([self moreDataAvailable]) {
+    nSections += 1;
   }
+  return nSections;
 }
 
 //one row for each photo
@@ -249,12 +273,25 @@
   return photoHeader;
 }
 
+-(UITableViewCell *)loadMoreCell {
+  UITableViewCell *loadMoreCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LOADMORECELL"];
+  loadMoreCell.selectionStyle = UITableViewCellSelectionStyleNone;
+  UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+  [[loadMoreCell contentView] addSubview:spinner];
+  [spinner startAnimating];
+  spinner.center = loadMoreCell.center;
+  [spinner release];
+  return loadMoreCell;
+}
 
 
 
 - (UITableViewCell *)photoCellForRowAtIndex:(NSUInteger)index {
   id photo = [self.responseData photoAtIndex:index];
   
+  if (!photo) {
+    return [self loadMoreCell];
+  }
   
   
   static NSString *MyIdentifier = @"CELL";
@@ -265,7 +302,7 @@
     // self.tvCell = nil;
   }
   [_cell setPhoto:photo];
-  
+    
   _cell.tableViewController = self;
   
 
@@ -300,16 +337,12 @@
 
 #pragma mark Data
 -(BOOL) moreDataAvailable {
-  /*if ([responseData loadMoreDataURL]) {
-   footerDecoration.hidden = YES;
-   [loadingMoreActivityIndicatiorView startAnimating];
-   return YES; 
+  if ([self.responseData loadMoreDataURL]) {
+    return YES; 
    }
    else {
-   [loadingMoreActivityIndicatiorView stopAnimating];
-   footerDecoration.hidden = NO;
-   return NO;
-   }*/return NO;
+     return NO;
+   }
 }
 
 -(void) loadMoreData {
@@ -330,11 +363,11 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.section == [self numberOfSectionsInTableView:tableView] - 1) {
     if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1) {
-      //if ([data count] > 0) {
-      //if ([self moreDataAvailable]) {
-      //[self loadMoreData];
-      //}
-      //}
+      if ([self.responseData numberOfPosts] > 0) {
+        if ([self moreDataAvailable]) {
+          [self loadMoreData];
+        }
+      }
     }
   }
 }
@@ -449,5 +482,38 @@
 
 -(IBAction)leaveCommentButtonPressed:(id)sender{}
 
-
+-(void) showLoadingIndicator11 {
+    if (loadingView) {
+        [loadingView removeFromSuperview];
+        loadingView = nil;
+    }
+    loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 108, 58)];
+    loadingView.layer.cornerRadius = 10;
+    loadingView.backgroundColor = [UIColor colorWithRed:144/255.0 green:124/255.0 blue:109/255.0 alpha:0.90];
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    spinner.center = CGPointMake(108/2, 20);
+    [spinner startAnimating];
+    
+    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 35, 108, 15)];
+    loadingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+    loadingLabel.textColor = [UIColor colorWithRed:252/255.0 green:251/255.0 blue:251/255.0 alpha:1.0];
+    loadingLabel.textAlignment = UITextAlignmentCenter;
+    loadingLabel.text = @"Loading";
+    loadingLabel.backgroundColor = [UIColor clearColor];
+    
+    [loadingView addSubview:spinner];
+    [spinner release];
+    [loadingView addSubview:loadingLabel];
+    [loadingLabel release];
+    loadingView.center = self.view.center;
+    [self.view  addSubview:loadingView];
+    
+}
+- (void)hideLoadingIndicator11 {
+    if (loadingView) {
+        [loadingView removeFromSuperview];
+        loadingView = nil;
+    }
+}
 @end

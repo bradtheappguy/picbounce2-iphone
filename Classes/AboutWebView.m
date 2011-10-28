@@ -62,7 +62,7 @@
     PicBounceWeb = [[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)]autorelease];
     PicBounceWeb.delegate = self;
     PicBounceWeb.scalesPageToFit = YES;
-    progressbar = [[MBProgressHUD alloc] initWithView:self.view];
+    progressbar = [[PBProgressHUD alloc] initWithView:self.view];
     
    
     [progressView addSubview:scrollingWheel];
@@ -113,11 +113,10 @@
     [scrollingWheel startAnimating]; 
     progressbar.labelText = NSLocalizedString(@"Loading...", nil) ;
     [progressbar showUsingAnimation:YES];
-    
-    
-
-
 }
+
+
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView { 
     
     [scrollingWheel stopAnimating];

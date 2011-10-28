@@ -7,7 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PBHTTPRequest.h"
 
-@interface PBFollowButton : UIButton
+typedef enum {
+  PBFollowButtonModeFollowing,
+  PBFollowButtonModeNotFollowing,
+  PBFollowButtonModeSpinning
+} PBFollowButtonMode;
+
+@interface PBFollowButton : UIButton <UIActionSheetDelegate>{
+  @private
+  PBFollowButtonMode _mode;
+  PBHTTPRequest *_followingRequest;
+  UIActivityIndicatorView *spinner;
+}
+
+@property (nonatomic, retain) NSDictionary *user;
+@property (nonatomic, assign) UIViewController *viewController;
 
 @end

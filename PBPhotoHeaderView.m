@@ -7,6 +7,7 @@
 
 #import "PBPhotoHeaderView.h"
 #import "NSString+CuteTime.h"
+#import "NSDictionary+NotNull.h"
 
 #define kSpacingBetweenClockIconAndTimeLabel 5
 #define kSpacingBetweenNameLabelAndLocationLabel 3
@@ -36,15 +37,24 @@
 }
 
 -(void) setPhoto:(NSDictionary *)photo {
-  NSDictionary *user = [photo objectForKey:@"user"];
-  NSString *name = [user objectForKey:@"display_name"];
-  NSString *avatarURL = [photo objectForKey:@"twitter_avatar_url"];
-  NSString *userID = [user objectForKey:@"id"];
+  NSDictionary *user = [photo objectForKeyNotNull:@"user"];
+  NSString *name = [user objectForKeyNotNull:@"name"];
+  NSString *screenname = [user objectForKeyNotNull:@"screen_name"];
+
+  NSString *avatarURL = [user objectForKeyNotNull:@"avatar"];
+    
+  NSString *userID = [user objectForKeyNotNull:@"id"];
   
   self.userID = userID;
+
   self.nameLabel.text = name;
-  self.viewCountLabel.text = @"666 views";
-  self.timeLabel.text =[(NSNumber *)[photo objectForKey:@"created"] cuteTimeString];
+
+  NSString *viewCount = [photo objectForKeyNotNull:@"view_count"];
+  self.nameLabel.text = screenname?screenname:(name?name:@"");
+  self.viewCountLabel.text = [NSString stringWithFormat:@"%@ %@",
+  [viewCount stringValue],NSLocalizedString(@"Views", nil)];
+
+  self.timeLabel.text =[(NSNumber *)[photo objectForKeyNotNull:@"created"] cuteTimeString];
   
   if (![avatarURL isEqual:[NSNull null]]) {
     self.avatarImage.imageURL = [NSURL URLWithString: avatarURL];

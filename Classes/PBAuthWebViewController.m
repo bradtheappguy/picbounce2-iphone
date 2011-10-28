@@ -8,11 +8,11 @@
 
 #import "PBAuthWebViewController.h"
 #import "AppDelegate.h"
-
+#import "PBSharedUser.h"
 @implementation PBAuthWebViewController
 
 @synthesize webView = _webView;
-@synthesize activityIndicatorView = _activityIndicatorView;
+@synthesize progressView = _progressView;
 @synthesize authenticationURLString = _authenticationURLString;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -25,7 +25,7 @@
 
 - (void)dealloc {
   self.webView = nil;
-  self.activityIndicatorView = nil;
+  self.progressView = nil;
   self.authenticationURLString = nil;
   [super dealloc];
 }
@@ -41,7 +41,13 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // Do any additional setup after loading the view from its nib.
+  UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
+  self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
+  self.webView.backgroundColor = self.view.backgroundColor;
+  self.webView.alpha = 0;
+  
+  self.progressView = [[PBProgressHUD alloc] initWithView:self.view];
+  self.progressView.labelText = @"Loading...";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -49,7 +55,7 @@
 }
 
 - (void)viewDidUnload {
-  self.activityIndicatorView = nil;
+  self.progressView = nil;
   self.webView = nil;
   [super viewDidUnload];
   // Release any retained subviews of the main view.
@@ -68,9 +74,18 @@
   NSRange range = [urlString rangeOfString:@"picbounce?auth_token"];
   
   if (range.length > 0) {
-    NSString *key = [urlString substringFromIndex:range.location+range.length+1];
+    NSRegularExpression *pattern = [NSRegularExpression regularExpressionWithPattern:@"picbounce\\?auth_token=(([a-z]|\\d)+)" options:NSRegularExpressionCaseInsensitive error:nil];
+    NSRange patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
+    NSString *key = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
     [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
-
+    
+    pattern = [NSRegularExpression regularExpressionWithPattern:@"user_id=(\\d+)" options:NSRegularExpressionCaseInsensitive error:nil];
+    patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
+    NSString *userID = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
+    [PBSharedUser setUserID:userID];
+    [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
+    
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
 
     return NO;
@@ -79,10 +94,20 @@
   return YES;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    [self.activityIndicatorView setHidden:NO];
+  [self.view addSubview:self.progressView];
+  [self.progressView showUsingAnimation:YES];
 }
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-  [self.activityIndicatorView setHidden:YES];
+  [self.progressView hide:YES];
+  [UIView animateWithDuration:0.33 
+                        delay:0.33 
+                      options:UIViewAnimationOptionTransitionNone 
+                   animations:^(void) {
+                     self.webView.alpha = 1;
+                   }    
+                   completion:nil];
+  
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   
