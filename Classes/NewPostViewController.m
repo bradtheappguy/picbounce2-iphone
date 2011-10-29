@@ -20,7 +20,7 @@
 #import "TwitterButton.h"
 #import "FacebookButton.h"
 #import "PBUploadQueue.h"
-
+#import "PBNavigationBar.h"
 @implementation NewPostViewController
 @synthesize isCaptionView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,7 +55,7 @@
         frame.size.height += 50;
         a_PostTextView.frame = frame;
     }else {
-    FacebookButton *a_FacebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(117, 164)];
+    FacebookButton *a_FacebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(117, 164+44)];
     [a_FacebookButton setText:@"Market Edition"];
     
     a_FacebookButton.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];
@@ -64,7 +64,7 @@
     [self.view bringSubviewToFront:a_FacebookButton];
     [a_FacebookButton release];
    
-    TwitterButton *a_TwitterButton = [[TwitterButton alloc] initWithPosition:CGPointMake(79, 164)];
+    TwitterButton *a_TwitterButton = [[TwitterButton alloc] initWithPosition:CGPointMake(79, 164+44)];
     
    
     a_TwitterButton.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];
@@ -74,9 +74,11 @@
     [a_TwitterButton release];
     
     }
-    
-    
-    
+        //[Utilities customizeNavigationController:self.navigationController];
+   
+        //[Utilities customizeNavigationBar:navBar];
+    [self.navigationController setNavigationBarHidden:YES];
+   
     [a_PostTextView becomeFirstResponder];
         //https://graph.facebook.com/fql?q=select%20page_id,%20type,%20name,%20page_url,pic_small%20from%20page%20where%20page_id%20in%20%28%20select%20page_id,type%20from%20page_admin%20where%20uid=me%28%29%20and%20type=%27WEBSITE%27%29?access_token=ACCESS_TOKEN_FROM_FACEBOOK
 }
@@ -86,6 +88,11 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+#pragma mark -
+#pragma mark CustomNavigationBar Methods
+- (IBAction)dismissModalViewControllerAnimated {
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -21,6 +21,7 @@
 @synthesize progressHUD = _progressHUD;
 @synthesize postCommentRequest;
 @synthesize getCommentsRequest;
+@synthesize customNavigationBar;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -29,7 +30,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.view.backgroundColor = [UIColor redColor];
+        //self.view.backgroundColor = [UIColor redColor];
 
     tableView.separatorStyle    = UITableViewCellSeparatorStyleNone;
   PBProgressHUD *hud =  [[PBProgressHUD alloc] initWithView:self.view];
@@ -38,6 +39,16 @@
   
   [hud release];
   [self.view addSubview:self.progressHUD];
+    
+    
+    [Utilities customizeNavigationBar:self.navigationController.navigationBar];
+	
+	UINavigationItem *previousItem;
+	
+    previousItem = [[[UINavigationItem alloc] initWithTitle:@"Back"] autorelease];
+
+	self.navigationController.title = @"Comments";
+	[self.navigationController.navigationBar setItems:[NSArray arrayWithObjects:previousItem, nil]];
 }
 
 

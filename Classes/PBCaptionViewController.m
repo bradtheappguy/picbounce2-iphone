@@ -109,6 +109,11 @@
     
     
 }
+#pragma mark -
+#pragma mark CustomNavigationBar Methods
+- (IBAction)dismissModalViewControllerAnimated {
+	[self dismissModalViewControllerAnimated:YES];
+}
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {  
     BOOL shouldChangeText = YES;  

@@ -5,9 +5,17 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
+#import "Utilities.h"
+#import "UIColor+ExtraColorSpecifications.h"
 #endif
 
 
 
 #define API_BASE @"bigfrosty.heroku.com"
 //#define API_BASE @"localhost:3000"
+#define kNavBarImageTag 6183746
+
+    //colors
+#define kNavBarColor		[UIColor colorWithRedInt:205 greenInt:205 blueInt:205 alphaInt:255];
+#define kBrownTextColor		[UIColor colorWithRedInt:96 greenInt:68 blueInt:42 alphaInt:255];
+#define kBlueTextColor		[UIColor colorWithRedInt:4 greenInt:95 blueInt:180 alphaInt:255];

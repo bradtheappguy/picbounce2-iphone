@@ -305,7 +305,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="254482557"/>
 								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">btn_caption_n@2x.png</string>
+									<string key="NSResourceName">btn_comment_bubble.png</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="293106102"/>
 								<reference key="IBUIFont" ref="836090960"/>
@@ -1242,10 +1242,10 @@
 				<string>bg_sharing@2x.png</string>
 				<string>btn_bg_capture_upload_n@2x.png</string>
 				<string>btn_camRoll_n.png</string>
-				<string>btn_caption_n@2x.png</string>
 				<string>btn_capture_cancel_n.png</string>
 				<string>btn_capture_n.png</string>
 				<string>btn_capture_s.png</string>
+				<string>btn_comment_bubble.png</string>
 				<string>btn_facebook_n.png</string>
 				<string>btn_facebook_s.png</string>
 				<string>btn_flickr_n.png</string>
@@ -1269,10 +1269,10 @@
 				<string>{640, 72}</string>
 				<string>{202, 80}</string>
 				<string>{42, 30}</string>
-				<string>{120, 68}</string>
 				<string>{42, 30}</string>
 				<string>{29, 23}</string>
 				<string>{16, 16}</string>
+				<string>{86, 86}</string>
 				<string>{10, 16}</string>
 				<string>{26, 26}</string>
 				<string>{18, 10}</string>

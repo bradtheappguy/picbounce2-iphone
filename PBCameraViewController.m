@@ -506,7 +506,7 @@ bail:
     PBCaptionViewController *a_NewPostViewController = [[PBCaptionViewController alloc] initWithNibName:@"PBCaptionViewController" bundle:nil];
    
     a_NewPostViewController.hidesBottomBarWhenPushed = YES;
-    a_NewPostViewController.isCaptionView = YES;
+        //a_NewPostViewController.isCaptionView = YES;
    
     [self presentModalViewController:a_NewPostViewController animated:YES];
         //[self.navigationController pushViewController:a_NewPostViewController animated:YES];

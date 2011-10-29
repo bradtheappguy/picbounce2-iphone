@@ -23,7 +23,7 @@
 #import "NewPostViewController.h"
 #import "NSDictionary+NotNull.h"
 #import "PBNavigationController.h"
-
+#import "PBNavigationBar.h"
 @implementation PBStreamViewController
 
 @synthesize shouldShowProfileHeader;
@@ -117,8 +117,28 @@
   //UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self //action:@selector(settingsButtonPressed:)];
   //self.navigationItem.rightBarButtonItem = settings; 
     
+//    [self.navigationController setNavigationBarHidden:YES];
+//    
+//    [Utilities customizeNavigationBar:customNavigationBar];
+//    UINavigationItem *previousItem;
+//	
+//    previousItem = [[[UINavigationItem alloc] init] autorelease];
+//    previousItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost) ];
+//	
+//	UINavigationItem *currentItem = [[[UINavigationItem alloc] initWithTitle:@"brad"] autorelease];
+//	
+//    UINavigationItem *lastItem = [[[UINavigationItem alloc] init] autorelease];
+//    if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
+//    lastItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
+//    }else {
+//           lastItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithTitle:NSLocalizedString(@"Login",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(loginButtonPressed:)]; 
+//        }
+//	
+//    [customNavigationBar setItems:[NSArray arrayWithObjects:previousItem, currentItem, lastItem,nil]];
+//    
+ [Utilities customizeNavigationController:self.navigationController];
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
-    [rightBarButtonItem setImage:[UIImage imageNamed:@"bg_navbar@2x.png"]];
+        //[rightBarButtonItem setImage:[UIImage imageNamed:@"bg_navbar@2x.png"]];
         //[rightBarButtonItem setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_navbar@2x.png"]]];
     self.navigationItem.leftBarButtonItem = rightBarButtonItem;
     [rightBarButtonItem release];
@@ -142,6 +162,8 @@
     NewPostViewController *newPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
     newPostViewController.hidesBottomBarWhenPushed = YES;
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController];
+    
+        
   UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
   newPostViewController.navigationItem.leftBarButtonItem = cancelButton;
   newPostViewController.navigationItem.title = @"New Post";
@@ -175,6 +197,7 @@
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoadingIndicator11) name:@"ShowLoadingView" object:nil];
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoadingIndicator11) name:@"HideLoadingView" object:nil];
   [self.profileHeader.followButton setViewController:self];
+  
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -194,8 +217,7 @@
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
   
         //self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
-
-  [self configureNavigationBar];
+    [self configureNavigationBar];
   
 }
 

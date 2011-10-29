@@ -89,6 +89,11 @@
 }
 
 
+#pragma mark -
+#pragma mark CustomNavigationBar Methods
+- (IBAction)dismissModalViewControllerAnimated {
+	[self.navigationController popViewControllerAnimated:YES];
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
         // Return YES for supported orientations
@@ -281,9 +286,9 @@
     NSInteger height = 150 + ( [_facebookPages count] * 50 ) ; //Increase or Decrease Size of TableView
     
     if (height > 396) {
-        tableView.frame = CGRectMake(10, 10, 300, 396);
+        tableView.frame = CGRectMake(10, 54, 300, 396);
     }else {
-        tableView.frame = CGRectMake(10, 10, 300, height); 
+        tableView.frame = CGRectMake(10, 54, 300, height); 
     }
     [tableView reloadData];
 }
