@@ -34,6 +34,8 @@
 		55EF00ED145592DF0027FFA8 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF00EB145592DF0027FFA8 /* NewPostViewController.m */; };
 		55EF00EE145592DF0027FFA8 /* NewPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EF00EC145592DF0027FFA8 /* NewPostViewController.xib */; };
 		55F8CB31145B710E007A9441 /* bg_sharing_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55F8CB30145B710E007A9441 /* bg_sharing_settings@2x.png */; };
+		55F8CB41145B94DB007A9441 /* PBCaptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F8CB3F145B94DB007A9441 /* PBCaptionViewController.m */; };
+		55F8CB42145B94DB007A9441 /* PBCaptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F8CB40145B94DB007A9441 /* PBCaptionViewController.xib */; };
 		7452D1AE135D916F0024C63C /* ProfileSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452D1AD135D916F0024C63C /* ProfileSettingView.m */; };
 		7452D1C0135DB8220024C63C /* ProfileAboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452D1BF135DB8220024C63C /* ProfileAboutView.m */; };
 		74A1CA38136810D600F63EF5 /* Eng.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74A1CA37136810D600F63EF5 /* Eng.strings */; };
@@ -642,6 +644,9 @@
 		55EF00EB145592DF0027FFA8 /* NewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostViewController.m; sourceTree = "<group>"; };
 		55EF00EC145592DF0027FFA8 /* NewPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPostViewController.xib; sourceTree = "<group>"; };
 		55F8CB30145B710E007A9441 /* bg_sharing_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_sharing_settings@2x.png"; path = "brownAssets/capture/bg_sharing_settings@2x.png"; sourceTree = "<group>"; };
+		55F8CB3E145B94DA007A9441 /* PBCaptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBCaptionViewController.h; sourceTree = "<group>"; };
+		55F8CB3F145B94DB007A9441 /* PBCaptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBCaptionViewController.m; sourceTree = "<group>"; };
+		55F8CB40145B94DB007A9441 /* PBCaptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBCaptionViewController.xib; sourceTree = "<group>"; };
 		7452D1AC135D916F0024C63C /* ProfileSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSettingView.h; sourceTree = "<group>"; };
 		7452D1AD135D916F0024C63C /* ProfileSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSettingView.m; sourceTree = "<group>"; };
 		7452D1BE135DB8210024C63C /* ProfileAboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAboutView.h; sourceTree = "<group>"; };
@@ -1581,6 +1586,9 @@
 			isa = PBXGroup;
 			children = (
 				A2A0E6F713C3BE30002CC14F /* Camera */,
+				55F8CB3E145B94DA007A9441 /* PBCaptionViewController.h */,
+				55F8CB3F145B94DB007A9441 /* PBCaptionViewController.m */,
+				55F8CB40145B94DB007A9441 /* PBCaptionViewController.xib */,
 			);
 			name = "Capture TabBar";
 			sourceTree = "<group>";
@@ -3191,6 +3199,7 @@
 				A2938C61145B5467006C0076 /* bg_sharingCheckbox_off.png in Resources */,
 				A2938C62145B5467006C0076 /* bg_sharingCheckbox_off@2x.png in Resources */,
 				55F8CB31145B710E007A9441 /* bg_sharing_settings@2x.png in Resources */,
+				55F8CB42145B94DB007A9441 /* PBCaptionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3348,6 +3357,7 @@
 				5589FD19145790F900775DEE /* TwitterButton.m in Sources */,
 				5589FD1C1457915300775DEE /* FacebookButton.m in Sources */,
 				A29493D91457CED30000D6C8 /* PBSharedUser.m in Sources */,
+				55F8CB41145B94DB007A9441 /* PBCaptionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
