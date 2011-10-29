@@ -154,8 +154,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "239"
          endingLineNumber = "239"
-         landmarkName = "-followingRequestDidFinish:"
-         landmarkType = "5">
+         landmarkName = "@implementation NewPostViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -168,8 +168,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "235"
          endingLineNumber = "235"
-         landmarkName = "-followingRequestDidFail:"
-         landmarkType = "5">
+         landmarkName = "@implementation NewPostViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"

@@ -22,7 +22,7 @@
 #import "PBUploadQueue.h"
 
 @implementation NewPostViewController
-
+@synthesize isCaptionView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,6 +48,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+   
+    if (isCaptionView) {
+        optionButtonView.hidden = YES;
+        CGRect frame = a_PostTextView.frame;
+        frame.size.height += 50;
+        a_PostTextView.frame = frame;
+    }else {
     FacebookButton *a_FacebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(117, 164)];
     [a_FacebookButton setText:@"Market Edition"];
     
@@ -66,7 +73,7 @@
     [self.view bringSubviewToFront:a_TwitterButton];
     [a_TwitterButton release];
     
-    
+    }
     
     
     
@@ -168,36 +175,7 @@
 //    [viewController release];
   
 }
--(void) twitterFramework {
-    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    NSArray *twitterAccounts =  [accountStore accountsWithAccountType:accountType];
-    if ([twitterAccounts count] < 1) {
-        NSLog(@"No Twitter Account Found");
-        ACAccount *newTwitterAccount = [[ACAccount alloc] initWithAccountType:accountType];
-        [accountStore saveAccount:newTwitterAccount withCompletionHandler:nil];
-        [newTwitterAccount release];
-    }
-    else {
-        
-        [accountStore requestAccessToAccountsWithType:accountType
-                                withCompletionHandler:^(BOOL granted, NSError *error)
-         {
-         if (granted) {
-             NSLog(@"GRANTED");
-         }
-         else {
-             NSLog(@"Not Granted");
-         }
-         if (error) {
-             NSLog(@"Error: %@",[error description]);
-         }
-         }
-         ];
-    }
-    [accountStore release];
-}
+
 
 #pragma mark New Post Upload to Server 
 - (void)postOnServer {
@@ -206,6 +184,7 @@
   [self dismissModalViewControllerAnimated:YES];
  
 }
+
 
 
 
