@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "EGOImageView.h"
 #import "ASIHTTPRequest.h"
-@interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate> {
+#import "TTTAttributedLabel.h"
+
+@interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate, TTTAttributedLabelDelegate> {
   UITableViewController *tableViewController;
 
     ASIHTTPRequest *_followingRequest;
@@ -38,6 +40,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *likeCountLabel;
 
 @property (nonatomic, retain) IBOutlet UIButton *leaveCommentButton;
+@property (retain, nonatomic) IBOutlet id commentPreview;
 
 
 @end

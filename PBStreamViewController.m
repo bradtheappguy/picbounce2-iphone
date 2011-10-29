@@ -70,8 +70,10 @@
   [self.tableView reloadData];
   
   NSDictionary *user = [self.responseData user];
-  self.navigationItem.title = [user objectForKey:@"screen_name"]; 
-  
+  NSString *name = [user objectForKeyNotNull:@"screen_name"]; 
+  if (name) {
+    self.navigationItem.title = name;
+  }
   if (user && shouldShowProfileHeader) {
     self.tableView.tableHeaderView = shouldShowFollowingBar?self.profileHeaderWithFollowBar:self.profileHeader;
     [self.profileHeader setUser:user];
@@ -398,6 +400,7 @@
   PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
  
+  [self pushNewStreamViewControllerWithUserID:header.userID];
   
   vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,header.userID];
   vc.shouldShowFollowingBar = YES;

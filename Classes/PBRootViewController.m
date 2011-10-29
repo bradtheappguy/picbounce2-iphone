@@ -43,7 +43,10 @@
     self.tableView.tableFooterView = view;
     [view release];
   }
-  self.navigationItem.title  = @" ";
+  if (!self.navigationItem.title) {
+     self.navigationItem.title  = @" ";
+  }
+ 
   if ([self.data count] < 1) {
     [self loadDataFromCacheIfAvailable];
   }  
