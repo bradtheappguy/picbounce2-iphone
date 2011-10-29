@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PBPhoto.h"
+#import "PBPost.h"
 
 @interface PBUploadQueue : NSObject {
   NSMutableArray *images;
@@ -19,7 +19,8 @@
 
 + (id)sharedQueue;
 -(void) uploadImage:(UIImage *)image;
+-(void) uploadText:(NSString *)text;
 -(NSUInteger) count;
--(PBPhoto *) photoAtIndex:(NSUInteger)index;
+-(PBPost *) photoAtIndex:(NSUInteger)index;
 
 @end

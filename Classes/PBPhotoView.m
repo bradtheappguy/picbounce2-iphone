@@ -7,27 +7,25 @@
 //
 
 #import "PBPhotoView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation PBPhotoView
 
 -(void) awakeFromNib {
-  self.backgroundColor = [UIColor clearColor];
-//  spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//  spinner.center = self.center;
-//  spinner.hidden = YES;
-//  [self addSubview:spinner];
-
+  self.backgroundColor = [UIColor colorWithRed:241/255.0 green:233/255.0 blue:227/255.0 alpha:1];
     progressBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 13, 180, 17)];
     progressBarImageView.center = self.center;
     [self addSubview:progressBarImageView];
     [self bringSubviewToFront:progressBarImageView];
     progressBarImageView.hidden = YES;
+  progressBarImageView.backgroundColor = [UIColor redColor];
     progressBarImageView.image = [UIImage imageNamed:@"bg_pb@2x.png"];
+  self.layer.borderColor = [UIColor colorWithRed:169/255.0 green:164/255.0 blue:154/255.0 alpha:1].CGColor;
+  self.layer.borderWidth = 1;
     
     
     
-    
-}
+} 
 
 
 - (void)setImageURL:(NSURL *)aURL {
@@ -42,7 +40,8 @@
                                               [UIImage imageNamed:@"bg_pb_6@2x.png"],
                                               nil];
       progressBarImageView.animationDuration = 2;
-  progressBarImageView.animationRepeatCount = 999;
+    progressBarImageView.animationRepeatCount = 1;
+
       [progressBarImageView startAnimating];
  progressBarImageView.hidden = NO;
 

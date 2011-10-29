@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 Clixtr, Inc. All rights reserved.
 //
 
-#import "PBUploadingPhotoTableViewCell.h"
+#import "PBUploadingTableViewCell.h"
 
-@implementation PBUploadingPhotoTableViewCell
+@implementation PBUploadingTableViewCell
 
 @synthesize imageView;
 @synthesize progeressBar;
@@ -36,7 +36,7 @@
 - (IBAction)deleteButtonPressed:(id)sender {
 }
 
--(void) setPhoto:(PBPhoto *)photo {
+-(void) setPhoto:(PBPost *)photo {
   _photo = [photo retain];
   [_photo addObserver:self forKeyPath:@"uploadFailed" options:NSKeyValueChangeSetting context:nil];
   [_photo addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];

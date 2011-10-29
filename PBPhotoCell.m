@@ -87,8 +87,12 @@
     NSUInteger taggedPeopleCount = [[photo objectForKey:@"tagged_people_count"] intValue];
     NSUInteger tagsCount = [[photo objectForKey:@"tags_count"] intValue];
     NSString *mediaURL = [photo objectForKeyNotNull:@"media_url"];
+    NSString *mediaType  = [photo objectForKeyNotNull:@"media_type"];
 
+  if ([mediaType isEqualToString:@"photo"]) {
     self.photoImageView.imageURL = [NSURL URLWithString:mediaURL];
+  }
+    
     
     self.bounceCountLabel.text = [NSString stringWithFormat:@"%d",bouncesCount];
     self.commentCountLabel.text = [NSString stringWithFormat:@"%d",commentsCount];

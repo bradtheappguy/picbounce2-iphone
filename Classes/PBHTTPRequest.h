@@ -13,6 +13,10 @@
 
 #import "ASIHTTPRequest.h"
 
+@class ASIFormDataRequest;
+
 @interface PBHTTPRequest : ASIHTTPRequest
+
++(ASIFormDataRequest *)  formDataRequestWithURL:(NSURL *)URL;
 
 @end

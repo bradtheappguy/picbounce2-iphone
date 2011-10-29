@@ -17,10 +17,12 @@
 #import "PBPhotoHeaderView.h"
 #import "PBUploadQueue.h"
 #import "PBStreamViewController.h"
-#import "PBUploadingPhotoTableViewCell.h"
+#import "PBUploadingTableViewCell.h"
 #import "PBPersonListViewController.h"
 #import "PBHTTPRequest.h"
 #import "NewPostViewController.h"
+#import "NSDictionary+NotNull.h"
+#import "PBNavigationController.h"
 
 @implementation PBStreamViewController
 
@@ -48,6 +50,8 @@
 
 
 -(void) showEmptyState {
+  return;
+  
   UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
   emptyView.tag = 12;
   emptyView.backgroundColor = [UIColor redColor];
@@ -133,10 +137,15 @@
 }
 #pragma mark Open Create Post View
 - (void)createPost {
-    NewPostViewController *a_NewPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
-    a_NewPostViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:a_NewPostViewController animated:YES];
-    [a_NewPostViewController release];
+    NewPostViewController *newPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
+    newPostViewController.hidesBottomBarWhenPushed = YES;
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController];
+  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  newPostViewController.navigationItem.leftBarButtonItem = cancelButton;
+  newPostViewController.navigationItem.title = @"New Post";
+  [cancelButton release];
+  [self presentModalViewController:navigationController animated:YES];
+    [newPostViewController release];
 }
 
 - (void) logoutButtonPressed:(id)sender {
@@ -163,6 +172,7 @@
   [super viewDidLoad];
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoadingIndicator11) name:@"ShowLoadingView" object:nil];
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoadingIndicator11) name:@"HideLoadingView" object:nil];
+  [self.profileHeader.followButton setViewController:self];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -177,6 +187,7 @@
   
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
+  self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
   
@@ -311,7 +322,7 @@
 
 
 -(UITableViewCell *) uploadingCellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  PBUploadingPhotoTableViewCell *upcell = [[[NSBundle mainBundle] loadNibNamed:@"PBUploadingPhotoTableViewCell" owner:nil options:nil] lastObject];
+  PBUploadingTableViewCell *upcell = [[[NSBundle mainBundle] loadNibNamed:@"PBUploadingTableViewCell" owner:nil options:nil] lastObject];
   NSDictionary *photo = [[PBUploadQueue sharedQueue] photoAtIndex:indexPath.section];
   [upcell setPhoto:photo];
   return upcell;
@@ -386,12 +397,16 @@
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
   PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
-  vc.baseURL = [NSString stringWithFormat:@"http://%@/users/%@.json?auth_token=%@",API_BASE,header.userID,[(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]];
+ 
+  
+  vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,header.userID];
   vc.shouldShowFollowingBar = YES;
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
   vc.pullsToRefresh = YES;
   [self.navigationController pushViewController:vc animated:YES];
+  vc.navigationItem.title = [[header.photo objectForKey:@"user"] objectForKeyNotNull:@"screen_name"];
+  
   [vc release];
 }
 
@@ -449,7 +464,7 @@
 
 -(IBAction) settingsButtonPressed:(id)sender{
   ProfileSettingView *profile1 = [[[ProfileSettingView alloc]initWithNibName:nil bundle:nil]autorelease];
-  UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:profile1] autorelease];
+  PBNavigationController *navController = [[[PBNavigationController alloc] initWithRootViewController:profile1] autorelease];
   [self presentModalViewController:navController animated:YES];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "NewPostViewController.h"
+#import "AppDelegate.h"
 #import "PBSharingOptionViewController.h"
 #import "PBAuthWebViewController.h"
 #import "FacebookSingleton.h"
@@ -15,9 +16,11 @@
 #import <Twitter/Twitter.h>
 #import "SBJSON.h"
 #import "NSString+SBJSON.h"
-
+#import "ASIFormDataRequest.h"
 #import "TwitterButton.h"
 #import "FacebookButton.h"
+#import "PBUploadQueue.h"
+
 @implementation NewPostViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -120,7 +123,6 @@
     BOOL shouldChangeText = YES;  
     
     if ([text isEqualToString:@"\n"]) {  
-            // Find the next entry field 
         [self performSelector:@selector(postOnServer) withObject:nil afterDelay:0.01];
         shouldChangeText = NO;  
     }  
@@ -199,8 +201,15 @@
 
 #pragma mark New Post Upload to Server 
 - (void)postOnServer {
-    
+  [[PBUploadQueue sharedQueue] uploadText:a_PostTextView.text];
+  [[(AppDelegate *)[[UIApplication sharedApplication] delegate] tabBarController] setSelectedIndex:2];
+  [self dismissModalViewControllerAnimated:YES];
+ 
 }
+
+
+
+
 #pragma mark Facebbok Session Delegate
 - (void)fbDidLogin {
     
@@ -227,12 +236,12 @@
 }
 
 -(void) followingRequestDidFinish:(ASIHTTPRequest *)followingRequest {
-    if (followingRequest.responseStatusCode == 200) {
-            // NSLog(@"%@",followingRequest.responseString);
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[followingRequest.responseString JSONValue]];
-            NSLog(@"%@",[[[dict valueForKey:@"response"] valueForKey:@"post"] valueForKey:@"id"]  );
-    }
-    
+  
+  
+  
+  
+  
+  
 }
 
 //    SBJSON *jsonWriter = [[SBJSON new] autorelease];
