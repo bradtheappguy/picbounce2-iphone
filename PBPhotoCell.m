@@ -64,7 +64,7 @@
     if (!text) {
       text = @"";
     }
-    [attString addAttribute:(NSString *)kCTFontAttributeName value:(id)boldFont range:NSMakeRange(pos, [name length]-1)];
+    [attString addAttribute:(NSString *)kCTFontAttributeName value:(id)boldFont range:NSMakeRange(pos, [name length])];
     pos  += [name length] + [text length] + 2;
   }
   return attString;
@@ -153,15 +153,30 @@
   OHAttributedLabel *label = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
   label.linkColor = [UIColor blueColor];
   label.backgroundColor = [UIColor clearColor];
-  
+  int pos = 0;
   self.commentPreview = label;
   [self addSubview:self.commentPreview];
   label.font = [UIFont systemFontOfSize:14];
   label.textColor = [UIColor darkGrayColor];
   label.lineBreakMode = UILineBreakModeWordWrap;
   label.numberOfLines = 0;
+  label.delegate = self;
   [label setAttributedText:attString];
-  [label addCustomLink:[NSURL URLWithString:@"1"] inRange:NSMakeRange(0, 5)];
+  
+  for (NSDictionary *c in comments) {
+    NSString *name = [[[c objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"user"] objectForKeyNotNull:@"name"];
+    NSString *userID = [[[[c objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"user"] objectForKeyNotNull:@"id"] stringValue];
+    
+    NSString *text = [[c objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"text"];
+    if (!text) {
+      text = @"";
+    }
+    [label addCustomLink:[NSURL URLWithString:userID] inRange:NSMakeRange(pos, [name length])];
+    pos += [name length] + 1 + [text length] + 1;
+  }
+  
+  
+
   
   //CGFloat height = 100.0f;
   CGSize size = [label sizeThatFits:CGSizeMake(300, 1000)];
@@ -200,10 +215,14 @@
                                             self.commentCountLabel.frame.origin.y, 
                                             commentCountLabelSize.width, 
                                             self.commentCountLabel.frame.size.height);
-  self.commentCountIcon.frame = CGRectMake(self.commentCountLabel.frame.origin.x+self.commentCountLabel.frame.size.width, 
+  self.commentCountIcon.frame = CGRectMake(self.commentCountLabel.frame.origin.x+self.commentCountLabel.frame.size.width+3, 
                                            self.commentCountIcon.frame.origin.y,
                                            self.commentCountIcon.frame.size.width, 
                                            self.commentCountIcon.frame.size.height);
+  self.leaveCommentButton.frame = CGRectMake(self.commentCountIcon.frame.origin.x+self.commentCountIcon.frame.size.width+6, 
+                                             self.leaveCommentButton.frame.origin.y, 
+                                             self.leaveCommentButton.frame.size.width, 
+                                             self.leaveCommentButton.frame.size.height);
   
   self.captionLabel.numberOfLines = 0;
   self.captionLabel.lineBreakMode = UILineBreakModeWordWrap;
@@ -257,12 +276,8 @@
 
 #pragma mark OHAtt
 -(BOOL)attributedLabel:(OHAttributedLabel*)attributedLabel shouldFollowLink:(NSTextCheckingResult*)linkInfo {
-  NSUInteger index = [[[linkInfo URL] absoluteString] intValue];
-  NSDictionary *comment = [[self.photo objectForKeyNotNull:@"comments"] objectAtIndex:index];
-  
-  NSString *userID = [[[comment objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"user"] objectForKeyNotNull:@"id"];
-  
-  
+  NSString *userID = [[linkInfo URL] absoluteString];
+
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
   vc.navigationItem.title = @"xxx";
   vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,userID];
