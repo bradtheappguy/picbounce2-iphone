@@ -82,6 +82,6 @@
 -(IBAction) badgesButtonPressed;
 -(IBAction) taggedPeopleButtonPressed:(id)sender;
 -(BOOL) moreDataAvailable;
-
+-(void) configureNavigationBar;
 - (UIView *) footerViewForTable:(UITableView *)tableView;
 @end

@@ -91,6 +91,7 @@
   else {
     [self hideEmptyState];
   }
+  [self configureNavigationBar];
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {  
@@ -117,7 +118,7 @@
  [Utilities customizeNavigationController:self.navigationController];
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
 
-    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    //self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     [leftBarButtonItem release];
     
   if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
@@ -132,6 +133,21 @@
     [loginButton release];
     self.navigationItem.rightBarButtonItem = nil;
   }
+  
+  //self.navigationItem.title = @"FOOBAR";
+  //self.title = @"BATFIZ";
+  
+  UILabel *test = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 175, 45)];
+  test.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin;
+  test.font = [UIFont systemFontOfSize:24];
+  test.textColor = [UIColor whiteColor];
+  test.backgroundColor = [UIColor clearColor];
+  test.shadowColor = [UIColor colorWithRedInt:1 greenInt:1 blueInt:0 alphaInt:1];
+  test.shadowOffset = CGSizeMake(0, 1);
+  test.layer.shadowOpacity = 1.0;
+  test.text = self.navigationItem.title;
+  test.textAlignment = UITextAlignmentCenter;
+  self.navigationItem.titleView = test;
   
 }
 #pragma mark Open Create Post View
@@ -398,6 +414,7 @@
 -(void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   [self reloadTableViewDataSourceUsingCache:NO];
+  [self configureNavigationBar];
 }
 
 

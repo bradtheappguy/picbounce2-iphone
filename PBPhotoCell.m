@@ -79,9 +79,7 @@
   label.textColor = [UIColor darkGrayColor];
   label.lineBreakMode = UILineBreakModeWordWrap;
   label.numberOfLines = 0;
-  [label setAttributedText:attString];
-  [label addCustomLink:[NSURL URLWithString:@"1"] inRange:NSMakeRange(0, 5)];
-  
+  [label setAttributedText:attString];  
   //CGFloat height = 100.0f;
   CGSize size = [label sizeThatFits:CGSizeMake(300, 1000)];
   return CGSizeMake(300, size.height+10);
@@ -163,16 +161,18 @@
   label.delegate = self;
   [label setAttributedText:attString];
   
+  int count = 0;
   for (NSDictionary *c in comments) {
     NSString *name = [[[c objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"user"] objectForKeyNotNull:@"name"];
-    NSString *userID = [[[[c objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"user"] objectForKeyNotNull:@"id"] stringValue];
+    
     
     NSString *text = [[c objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"text"];
     if (!text) {
       text = @"";
     }
-    [label addCustomLink:[NSURL URLWithString:userID] inRange:NSMakeRange(pos, [name length])];
+    [label addCustomLink:[NSURL URLWithString:[NSString stringWithFormat:@"%d",count]] inRange:NSMakeRange(pos, [name length])];
     pos += [name length] + 1 + [text length] + 1;
+    count++;
   }
   
   
@@ -276,18 +276,22 @@
 
 #pragma mark OHAtt
 -(BOOL)attributedLabel:(OHAttributedLabel*)attributedLabel shouldFollowLink:(NSTextCheckingResult*)linkInfo {
-  NSString *userID = [[linkInfo URL] absoluteString];
-
+  NSUInteger index = [[[linkInfo URL] absoluteString] intValue];
+  NSDictionary *comment = [[self.photo objectForKeyNotNull:@"comments"] objectAtIndex:index];
+  
+  NSString *userID = [[[comment objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"user"] objectForKeyNotNull:@"id"];
+  
+  
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
-  vc.navigationItem.title = @"xxx";
   vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,userID];
   vc.shouldShowFollowingBar = YES;
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
   vc.pullsToRefresh = YES;
   [self.tableViewController.navigationController pushViewController:vc animated:YES];
-  // vc.navigationItem.title = [user objectForKeyNotNull:@"screen_name"];
-  
+  NSString *title = [[[comment objectForKeyNotNull:@"comment"] objectForKey:@"user"] objectForKeyNotNull:@"screen_name"];
+                      //vc.title = title;
+  vc.navigationItem.title = title;
   [vc release];
   
   return NO;
