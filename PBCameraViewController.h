@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "FlashButton.h"
+#import "ModalDismissDelegate.h"
+#import "FacebookButton.h"
 
 
-@interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
+@interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, ModalDismissDelegate> {
   
   IBOutlet UIView *previewView;
 	IBOutlet UISegmentedControl *camerasControl;
@@ -49,10 +51,6 @@
 
   IBOutlet UIButton *facebookButton;
   IBOutlet UIButton *twitterButton;
-  IBOutlet UIButton *tubmlerButton;
-  IBOutlet UIButton *flickrButton;
-  IBOutlet UIButton *posteriousButton;
-  IBOutlet UIButton *myspaceButton;
   
   IBOutlet UIScrollView *filterScrollView;
   
@@ -69,7 +67,9 @@
 -(IBAction) cancelButtonPressed:(id)sender;
 -(IBAction) uploadButtonPressed:(id)sender;
 -(IBAction) retakeButtonPressed:(id)sender;
-- (IBAction)captionButtonPressed:(id)sender;
+-(IBAction) captionButtonPressed:(id)sender;
+-(IBAction) facebookButtonClicked:(id)sender;
+-(IBAction) twitterButtonClicked:(id)sender;
 @end
 
 UIImage *scaleAndRotateImage(UIImage *image);

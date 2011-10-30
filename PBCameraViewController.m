@@ -24,6 +24,8 @@
 #import "AppDelegate.h"
 #import "PBCaptionViewController.h"
 #import "AFFeatherController.h"
+#import "PBSharingOptionViewController.h"
+#import "PBProgressHUD.h"
 
 
 UIImage *scaleAndRotateImage(UIImage *image)
@@ -344,22 +346,65 @@ bail:
 
 -(void) configureFilterScrollView {
   CGFloat x = 0;
-  UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+  [button1 setBackgroundImage:[UIImage imageNamed:@"btn_original_n@2x"] forState:UIControlStateNormal];
+  [button1 setBackgroundImage:[UIImage imageNamed:@"btn_original_s@2x"] forState:UIControlStateSelected];
+  [button1 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  button1.frame = CGRectMake(0, 0, 58, 58);
+  button1.center = CGPointMake(((58/2) + 2), filterScrollView.frame.size.height/2);
+  button1.tag = -1;
+  [filterScrollView addSubview:button1];
+
+  UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+  [button2 setBackgroundImage:[UIImage imageNamed:@"btn_toronto_n@2x"] forState:UIControlStateNormal];
+  [button2 setBackgroundImage:[UIImage imageNamed:@"btn_toronto_s@2x"] forState:UIControlStateSelected];
+  [button2 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  button2.frame = CGRectMake(0, 0, 58, 58);
+  button2.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
+  button2.tag = x++;
+  [filterScrollView addSubview:button2];
+
+  UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+  [button3 setBackgroundImage:[UIImage imageNamed:@"btn_stockholm_n@2x"] forState:UIControlStateNormal];
+  [button3 setBackgroundImage:[UIImage imageNamed:@"btn_stockholm_s@2x"] forState:UIControlStateSelected];
+  [button3 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  button3.frame = CGRectMake(0, 0, 58, 58);
+  button3.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
+  button3.tag = x++;
+  [filterScrollView addSubview:button3];
+  
+  UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
+  [button4 setBackgroundImage:[UIImage imageNamed:@"btn_chicago_n@2x"] forState:UIControlStateNormal];
+  [button4 setBackgroundImage:[UIImage imageNamed:@"btn_chicago_s@2x"] forState:UIControlStateSelected];
+  [button4 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  button4.frame = CGRectMake(0, 0, 58, 58);
+  button4.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
+  button4.tag = x++;
+  [filterScrollView addSubview:button4];
+  
+  UIButton *button5 = [UIButton buttonWithType:UIButtonTypeCustom];
+  [button5 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_n@2x"] forState:UIControlStateNormal];
+  [button5 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_s@2x"] forState:UIControlStateSelected];
+  [button5 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  button5.frame = CGRectMake(0, 0, 58, 58);
+  button5.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
+  button5.tag = x++;
+  [filterScrollView addSubview:button5];
+  
+/*
+  for (NSString *filterName in [PBFilteredImage availableFilters]) {
+  //UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+  [button setBackgroundImage:[UIImage imageNamed:@"btn_original_n@2x"] forState:UIControlStateNormal];
+  [button setBackgroundImage:[UIImage imageNamed:@"btn_original_s@2x"] forState:UIControlStateSelected];
   [button addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   button.frame = CGRectMake(0, 0, 58, 58);
-  button.center = CGPointMake(((58/2) + 2), filterScrollView.frame.size.height/2);
-  button.tag = -1;
-[filterScrollView addSubview:button];
-  
-  for (NSString *filterName in [PBFilteredImage availableFilters]) {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    button.frame = CGRectMake(0, 0, 58, 58);
-    button.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
-    button.tag = x;
-    x++;
-    [filterScrollView addSubview:button];
+  button.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
+  button.tag = x;
+  x++;
+  [filterScrollView addSubview:button];
   }
+*/
   filterScrollView.contentSize = filterScrollView.bounds.size;
   filterScrollView.alwaysBounceHorizontal = YES;
 }
@@ -390,7 +435,10 @@ bail:
   // [self.view addSubview:HDRButton];
   
   queue = dispatch_queue_create("com.picbounce.internalqueue", NULL);
-  
+
+  facebookButton.selected = NO;
+  twitterButton.selected = NO;
+
   [self setupAVCapture];
   
 }
@@ -494,6 +542,20 @@ bail:
                                                 }];
 }
 
+-(void) facebookButtonClicked:(id)sender {
+  if (facebookButton.selected == NO)
+    facebookButton.selected = YES;
+  else
+    facebookButton.selected = NO;
+}
+
+-(void) twitterButtonClicked:(id)sender {
+  if (twitterButton.selected == NO)
+    twitterButton.selected = YES;
+  else
+    twitterButton.selected = NO;
+}
+
 -(void) cancelButtonPressed:(id)sender {
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
   [self dismissModalViewControllerAnimated:YES];
@@ -503,14 +565,20 @@ bail:
   
 }
 - (IBAction)captionButtonPressed:(id)sender {
-    PBCaptionViewController *a_NewPostViewController = [[PBCaptionViewController alloc] initWithNibName:@"PBCaptionViewController" bundle:nil];
-   
-    a_NewPostViewController.hidesBottomBarWhenPushed = YES;
-        //a_NewPostViewController.isCaptionView = YES;
-   
-    [self presentModalViewController:a_NewPostViewController animated:YES];
-        //[self.navigationController pushViewController:a_NewPostViewController animated:YES];
-    [a_NewPostViewController release];
+  PBCaptionViewController *a_NewPostViewController = [[PBCaptionViewController alloc] initWithNibName:@"PBCaptionViewController" bundle:nil];
+
+  a_NewPostViewController.hidesBottomBarWhenPushed = YES;
+      //a_NewPostViewController.isCaptionView = YES;
+
+  a_NewPostViewController.delegate = self;
+
+  [self presentModalViewController:a_NewPostViewController animated:YES];
+      //[self.navigationController pushViewController:a_NewPostViewController animated:YES];
+  [a_NewPostViewController release];
+}
+
+- (void)didDismissModalView {
+  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position
@@ -591,9 +659,11 @@ bail:
 }
 
 -(void) optionsButtonPressed:(id)sender {
-  UIViewController *viewCOntroller = [[UIViewController alloc] init];
-  [self.navigationController pushViewController:viewCOntroller animated:YES];
-  [viewCOntroller release];
+  PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
+  //[self.navigationController pushViewController:vc animated:YES];
+  vc.delegate = self;
+  [self presentModalViewController:vc animated:YES];
+  [vc release];
 }
 
 -(void) dealloc {

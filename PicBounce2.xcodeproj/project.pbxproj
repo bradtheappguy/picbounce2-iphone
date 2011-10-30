@@ -599,6 +599,7 @@
 		A2F2663F1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F2663D1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m */; };
 		A2F513C813ABF786000FD084 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F513C713ABF786000FD084 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A2F513CA13ABF83D000FD084 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F513C913ABF83D000FD084 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D1212B80145E139100370D89 /* btn_tweet_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1212B7F145E139000370D89 /* btn_tweet_n@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1344,6 +1345,8 @@
 		A2F2663E1315C07C00F4E0A0 /* PBTableTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBTableTitleTableViewCell.h; path = ../PBTableTitleTableViewCell.h; sourceTree = "<group>"; };
 		A2F513C713ABF786000FD084 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		A2F513C913ABF83D000FD084 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		D1212B7D145E03A700370D89 /* ModalDismissDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalDismissDelegate.h; sourceTree = "<group>"; };
+		D1212B7F145E139000370D89 /* btn_tweet_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_tweet_n@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2180,6 +2183,7 @@
 		A296CF431453648900175D1B /* brownAssets */ = {
 			isa = PBXGroup;
 			children = (
+				D1212B7F145E139000370D89 /* btn_tweet_n@2x.png */,
 				A2938C5B145B5467006C0076 /* bg_sharingCheckbox_on.png */,
 				A2938C5C145B5467006C0076 /* bg_sharingCheckbox_on@2x.png */,
 				A2938C5D145B5467006C0076 /* bg_sharingCheckbox_off.png */,
@@ -2579,6 +2583,7 @@
 				A2C0469813FC9950001CD0BC /* PBCameraViewController.xib */,
 				A2A0E6FD13C3C146002CC14F /* PBCameraViewController.h */,
 				A2A0E6FE13C3C146002CC14F /* PBCameraViewController.m */,
+				D1212B7D145E03A700370D89 /* ModalDismissDelegate.h */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -3263,6 +3268,7 @@
 				55F8CB42145B94DB007A9441 /* PBCaptionViewController.xib in Resources */,
 				A2058F61145C8A79004A8E87 /* HTNotifier.strings in Resources */,
 				A2058F88145C8AC3004A8E87 /* PBUploadingTableViewCell.xib in Resources */,
+				D1212B80145E139100370D89 /* btn_tweet_n@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3482,8 +3488,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brad Smith (YY7FN8LFBY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brad Smith (YY7FN8LFBY)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3501,8 +3507,8 @@
 					"\"$(SRCROOT)/External/AviarySDK\"",
 				);
 				PRODUCT_NAME = PicBounce2;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7 i386";
@@ -3515,8 +3521,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Brad Smith";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brad Smith";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PicBounce2_Prefix.pch;
@@ -3532,8 +3538,8 @@
 					"\"$(SRCROOT)/External/AviarySDK\"",
 				);
 				PRODUCT_NAME = PicBounce2;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "16885754-5FDF-44D7-900B-A6981126A53C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "16885754-5FDF-44D7-900B-A6981126A53C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
