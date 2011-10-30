@@ -7,6 +7,7 @@
 //
 
 #import "NewPostViewController.h"
+#import "AppDelegate.h"
 #import "PBSharingOptionViewController.h"
 #import "PBAuthWebViewController.h"
 #import "FacebookSingleton.h"
@@ -15,11 +16,13 @@
 #import <Twitter/Twitter.h>
 #import "SBJSON.h"
 #import "NSString+SBJSON.h"
-
+#import "ASIFormDataRequest.h"
 #import "TwitterButton.h"
 #import "FacebookButton.h"
+#import "PBUploadQueue.h"
+#import "PBNavigationBar.h"
 @implementation NewPostViewController
-
+@synthesize isCaptionView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -45,7 +48,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    FacebookButton *a_FacebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(117, 164)];
+   
+    if (isCaptionView) {
+        optionButtonView.hidden = YES;
+        CGRect frame = a_PostTextView.frame;
+        frame.size.height += 50;
+        a_PostTextView.frame = frame;
+    }else {
+    FacebookButton *a_FacebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(117, 164+44)];
     [a_FacebookButton setText:@"Market Edition"];
     
     a_FacebookButton.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];
@@ -54,7 +64,7 @@
     [self.view bringSubviewToFront:a_FacebookButton];
     [a_FacebookButton release];
    
-    TwitterButton *a_TwitterButton = [[TwitterButton alloc] initWithPosition:CGPointMake(79, 164)];
+    TwitterButton *a_TwitterButton = [[TwitterButton alloc] initWithPosition:CGPointMake(79, 164+44)];
     
    
     a_TwitterButton.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];
@@ -63,10 +73,12 @@
     [self.view bringSubviewToFront:a_TwitterButton];
     [a_TwitterButton release];
     
-    
-    
-    
-    
+    }
+        //[Utilities customizeNavigationController:self.navigationController];
+   
+        //[Utilities customizeNavigationBar:navBar];
+    [self.navigationController setNavigationBarHidden:YES];
+   
     [a_PostTextView becomeFirstResponder];
         //https://graph.facebook.com/fql?q=select%20page_id,%20type,%20name,%20page_url,pic_small%20from%20page%20where%20page_id%20in%20%28%20select%20page_id,type%20from%20page_admin%20where%20uid=me%28%29%20and%20type=%27WEBSITE%27%29?access_token=ACCESS_TOKEN_FROM_FACEBOOK
 }
@@ -76,6 +88,11 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+#pragma mark -
+#pragma mark CustomNavigationBar Methods
+- (IBAction)dismissModalViewControllerAnimated {
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -120,7 +137,6 @@
     BOOL shouldChangeText = YES;  
     
     if ([text isEqualToString:@"\n"]) {  
-            // Find the next entry field 
         [self performSelector:@selector(postOnServer) withObject:nil afterDelay:0.01];
         shouldChangeText = NO;  
     }  
@@ -166,41 +182,20 @@
 //    [viewController release];
   
 }
--(void) twitterFramework {
-    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    NSArray *twitterAccounts =  [accountStore accountsWithAccountType:accountType];
-    if ([twitterAccounts count] < 1) {
-        NSLog(@"No Twitter Account Found");
-        ACAccount *newTwitterAccount = [[ACAccount alloc] initWithAccountType:accountType];
-        [accountStore saveAccount:newTwitterAccount withCompletionHandler:nil];
-        [newTwitterAccount release];
-    }
-    else {
-        
-        [accountStore requestAccessToAccountsWithType:accountType
-                                withCompletionHandler:^(BOOL granted, NSError *error)
-         {
-         if (granted) {
-             NSLog(@"GRANTED");
-         }
-         else {
-             NSLog(@"Not Granted");
-         }
-         if (error) {
-             NSLog(@"Error: %@",[error description]);
-         }
-         }
-         ];
-    }
-    [accountStore release];
-}
+
 
 #pragma mark New Post Upload to Server 
 - (void)postOnServer {
-    
+  [[PBUploadQueue sharedQueue] uploadText:a_PostTextView.text];
+  [[(AppDelegate *)[[UIApplication sharedApplication] delegate] tabBarController] setSelectedIndex:2];
+  [self dismissModalViewControllerAnimated:YES];
+ 
 }
+
+
+
+
+
 #pragma mark Facebbok Session Delegate
 - (void)fbDidLogin {
     
@@ -227,12 +222,12 @@
 }
 
 -(void) followingRequestDidFinish:(ASIHTTPRequest *)followingRequest {
-    if (followingRequest.responseStatusCode == 200) {
-            // NSLog(@"%@",followingRequest.responseString);
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[followingRequest.responseString JSONValue]];
-            NSLog(@"%@",[[[dict valueForKey:@"response"] valueForKey:@"post"] valueForKey:@"id"]  );
-    }
-    
+  
+  
+  
+  
+  
+  
 }
 
 //    SBJSON *jsonWriter = [[SBJSON new] autorelease];

@@ -25,6 +25,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *clockIcon;  
 @property (nonatomic, retain)  NSString *userID;  
 
+@property (nonatomic, retain)  NSDictionary *photo;  
 
 
 @end

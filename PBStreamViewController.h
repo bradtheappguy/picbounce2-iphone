@@ -42,7 +42,7 @@
   UIButton *activeLeaveCommentButton;
   
   UIImageView *profileAvatarImageView;
-    
+    UINavigationBar *customNavigationBar;
 }
 
 @property (nonatomic, retain) IBOutlet PBProfileHeaderView *profileHeader;
@@ -82,6 +82,6 @@
 -(IBAction) badgesButtonPressed;
 -(IBAction) taggedPeopleButtonPressed:(id)sender;
 -(BOOL) moreDataAvailable;
-
+-(void) configureNavigationBar;
 - (UIView *) footerViewForTable:(UITableView *)tableView;
 @end

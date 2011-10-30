@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">11B26</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
-		<string key="IBDocument.AppKitVersion">1138</string>
-		<string key="IBDocument.HIToolboxVersion">566.00</string>
+		<string key="IBDocument.SystemVersion">11C74</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
+		<string key="IBDocument.AppKitVersion">1138.23</string>
+		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">931</string>
+			<string key="NS.object.0">933</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -82,7 +82,7 @@
 								<string key="NSFrame">{{320, 27}, {320, 345}}</string>
 								<reference key="NSSuperview" ref="583715344"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="39924240"/>
+								<reference key="NSNextKeyView" ref="582026950"/>
 								<string key="NSReuseIdentifierKey">_NS:366</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
@@ -97,7 +97,7 @@
 								<string key="NSFrame">{{330, 59}, {300, 300}}</string>
 								<reference key="NSSuperview" ref="583715344"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="660616963"/>
+								<reference key="NSNextKeyView" ref="58668111"/>
 								<string key="NSReuseIdentifierKey">_NS:366</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
@@ -112,7 +112,7 @@
 								<string key="NSFrame">{{0, 426}, {320, 54}}</string>
 								<reference key="NSSuperview" ref="583715344"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="561306257"/>
+								<reference key="NSNextKeyView" ref="867248337"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">4</int>
@@ -129,7 +129,7 @@
 								<string key="NSFrame">{{320, 20}, {320, 31}}</string>
 								<reference key="NSSuperview" ref="583715344"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="582026950"/>
+								<reference key="NSNextKeyView" ref="154346907"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -291,6 +291,7 @@
 								<string key="NSFrame">{{570, 436}, {60, 34}}</string>
 								<reference key="NSSuperview" ref="583715344"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:186</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -304,7 +305,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="254482557"/>
 								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">btn_caption_n@2x.png</string>
+									<string key="NSResourceName">btn_comment_bubble.png</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="293106102"/>
 								<reference key="IBUIFont" ref="836090960"/>
@@ -450,7 +451,7 @@
 								<string key="NSFrame">{{320, 367}, {320, 59}}</string>
 								<reference key="NSSuperview" ref="583715344"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="346595277"/>
+								<reference key="NSNextKeyView" ref="660616963"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -522,7 +523,7 @@
 								<string key="NSFrame">{{555, 24}, {75, 21}}</string>
 								<reference key="NSSuperview" ref="583715344"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="867248337"/>
+								<reference key="NSNextKeyView" ref="39924240"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -560,7 +561,7 @@
 								<string key="NSFrame">{{320, 368}, {320, 58}}</string>
 								<reference key="NSSuperview" ref="583715344"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="58668111"/>
+								<reference key="NSNextKeyView" ref="346595277"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEgMAA</bytes>
@@ -573,7 +574,7 @@
 						<string key="NSFrameSize">{640, 480}</string>
 						<reference key="NSSuperview" ref="755192075"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="154346907"/>
+						<reference key="NSNextKeyView" ref="561306257"/>
 						<string key="NSReuseIdentifierKey">_NS:49</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -737,12 +738,12 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">retakeButtonPressed:</string>
+						<string key="label">captionButtonPressed:</string>
 						<reference key="source" ref="889096740"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">100</int>
+					<int key="connectionID">102</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1031,7 +1032,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">101</int>
+			<int key="maxID">102</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1045,6 +1046,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>cameraButtonPressed:</string>
 							<string>cancelButtonPressed:</string>
+							<string>captionButtonPressed:</string>
 							<string>closeButtonPressed:</string>
 							<string>optionsButtonPressed:</string>
 							<string>photoLibraryButtonPressed:</string>
@@ -1053,6 +1055,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1068,6 +1071,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>cameraButtonPressed:</string>
 							<string>cancelButtonPressed:</string>
+							<string>captionButtonPressed:</string>
 							<string>closeButtonPressed:</string>
 							<string>optionsButtonPressed:</string>
 							<string>photoLibraryButtonPressed:</string>
@@ -1082,6 +1086,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">cancelButtonPressed:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">captionButtonPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -1234,10 +1242,10 @@
 				<string>bg_sharing@2x.png</string>
 				<string>btn_bg_capture_upload_n@2x.png</string>
 				<string>btn_camRoll_n.png</string>
-				<string>btn_caption_n@2x.png</string>
 				<string>btn_capture_cancel_n.png</string>
 				<string>btn_capture_n.png</string>
 				<string>btn_capture_s.png</string>
+				<string>btn_comment_bubble.png</string>
 				<string>btn_facebook_n.png</string>
 				<string>btn_facebook_s.png</string>
 				<string>btn_flickr_n.png</string>
@@ -1261,10 +1269,10 @@
 				<string>{640, 72}</string>
 				<string>{202, 80}</string>
 				<string>{42, 30}</string>
-				<string>{120, 68}</string>
 				<string>{42, 30}</string>
 				<string>{29, 23}</string>
 				<string>{16, 16}</string>
+				<string>{86, 86}</string>
 				<string>{10, 16}</string>
 				<string>{26, 26}</string>
 				<string>{18, 10}</string>
@@ -1281,6 +1289,6 @@
 				<string>{26, 26}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">931</string>
+		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
 </archive>

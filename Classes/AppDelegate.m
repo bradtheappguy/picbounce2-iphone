@@ -10,7 +10,7 @@
 #import "PBExpandingPhotoView.h"
 #import "PBContainerView.h"
 #import "FacebookSingleton.h"
-#import "HTNotifier.h"
+#import "ABNotifier.h"
 #import "CaptureSessionManager.h"
 #import "PBLoginViewController.h"
 
@@ -53,9 +53,8 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
-  [HTNotifier startNotifierWithAPIKey:hopToadAPIKey environmentName:HTNotifierDevelopmentEnvironment];
-
   
+  [ABNotifier startNotifierWithAPIKey:hopToadAPIKey environmentName:ABNotifierDevelopmentEnvironment useSSL:YES delegate:nil];
   feedViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/users/me/feed.json",API_BASE];
   feedViewController.shouldShowUplodingItems = YES;
   feedViewController.shouldShowProfileHeader = NO;

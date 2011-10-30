@@ -14,7 +14,7 @@
 @synthesize label = _label;
 
 - (id)initWithPosition:(CGPoint)position {
-	CGRect frame = CGRectMake(260, position.y+2, 28, 28);
+	CGRect frame = CGRectMake(260, position.y+5, 20, 20);
   if ((self = [super initWithFrame:frame])) {
     // Initialization code
 		[self setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_off.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];

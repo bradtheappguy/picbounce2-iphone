@@ -17,11 +17,13 @@
 #import "PBPhotoHeaderView.h"
 #import "PBUploadQueue.h"
 #import "PBStreamViewController.h"
-#import "PBUploadingPhotoTableViewCell.h"
+#import "PBUploadingTableViewCell.h"
 #import "PBPersonListViewController.h"
 #import "PBHTTPRequest.h"
 #import "NewPostViewController.h"
-
+#import "NSDictionary+NotNull.h"
+#import "PBNavigationController.h"
+#import "PBNavigationBar.h"
 @implementation PBStreamViewController
 
 @synthesize shouldShowProfileHeader;
@@ -48,6 +50,8 @@
 
 
 -(void) showEmptyState {
+  return;
+  
   UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
   emptyView.tag = 12;
   emptyView.backgroundColor = [UIColor redColor];
@@ -66,14 +70,19 @@
   [self.tableView reloadData];
   
   NSDictionary *user = [self.responseData user];
-  self.navigationItem.title = [user objectForKey:@"screen_name"]; 
-  
+  NSString *name = [user objectForKeyNotNull:@"screen_name"]; 
+  if (name) {
+    self.navigationItem.title = name;
+  }
   if (user && shouldShowProfileHeader) {
     self.tableView.tableHeaderView = shouldShowFollowingBar?self.profileHeaderWithFollowBar:self.profileHeader;
     [self.profileHeader setUser:user];
   }
   else {
-    self.tableView.tableHeaderView = nil;
+    UIView *transparentHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
+    transparentHeader.backgroundColor = [UIColor clearColor];
+    self.tableView.tableHeaderView = transparentHeader;
+    [transparentHeader release];
   }    
 
   if ([self numberOfSectionsInTableView:self.tableView] == 0) {
@@ -82,6 +91,7 @@
   else {
     [self hideEmptyState];
   }
+  [self configureNavigationBar];
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {  
@@ -105,17 +115,11 @@
 }
 
 -(void) configureNavigationBar {
-//  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
-//  self.navigationItem.backBarButtonItem = backButton;
-//  [backButton release];
-  //UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self //action:@selector(settingsButtonPressed:)];
-  //self.navigationItem.rightBarButtonItem = settings; 
-    
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
-    [rightBarButtonItem setImage:[UIImage imageNamed:@"bg_navbar@2x.png"]];
-        //[rightBarButtonItem setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_navbar@2x.png"]]];
-    self.navigationItem.leftBarButtonItem = rightBarButtonItem;
-    [rightBarButtonItem release];
+ [Utilities customizeNavigationController:self.navigationController];
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
+
+    //self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    [leftBarButtonItem release];
     
   if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
     UIBarButtonItem *logoutButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
@@ -130,13 +134,35 @@
     self.navigationItem.rightBarButtonItem = nil;
   }
   
+  //self.navigationItem.title = @"FOOBAR";
+  //self.title = @"BATFIZ";
+  
+  UILabel *test = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 175, 45)];
+  test.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin;
+  test.font = [UIFont systemFontOfSize:24];
+  test.textColor = [UIColor whiteColor];
+  test.backgroundColor = [UIColor clearColor];
+  test.shadowColor = [UIColor colorWithRedInt:1 greenInt:1 blueInt:0 alphaInt:1];
+  test.shadowOffset = CGSizeMake(0, 1);
+  test.layer.shadowOpacity = 1.0;
+  test.text = self.navigationItem.title;
+  test.textAlignment = UITextAlignmentCenter;
+  self.navigationItem.titleView = test;
+  
 }
 #pragma mark Open Create Post View
 - (void)createPost {
-    NewPostViewController *a_NewPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
-    a_NewPostViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:a_NewPostViewController animated:YES];
-    [a_NewPostViewController release];
+    NewPostViewController *newPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
+    newPostViewController.hidesBottomBarWhenPushed = YES;
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController];
+    
+        
+  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  newPostViewController.navigationItem.leftBarButtonItem = cancelButton;
+  newPostViewController.navigationItem.title = @"New Post";
+  [cancelButton release];
+  [self presentModalViewController:navigationController animated:YES];
+    [newPostViewController release];
 }
 
 - (void) logoutButtonPressed:(id)sender {
@@ -163,6 +189,8 @@
   [super viewDidLoad];
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoadingIndicator11) name:@"ShowLoadingView" object:nil];
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoadingIndicator11) name:@"HideLoadingView" object:nil];
+  [self.profileHeader.followButton setViewController:self];
+  
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -177,12 +205,12 @@
   
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
+  self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
   
         //self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
-
-  [self configureNavigationBar];
+    [self configureNavigationBar];
   
 }
 
@@ -221,16 +249,26 @@
     }
   }
 } 
-
+/*
+ if (self.shouldShowUplodingItems == NO) {
+ return [self photoCellForRowAtIndex:indexPath.section];
+ }
+ else {
+ NSUInteger count = [[PBUploadQueue sharedQueue] count];
+ if (indexPath.section >= count) {
+ return [self photoCellForRowAtIndex:indexPath.section - count];
+ }  
+ */
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (self.shouldShowUplodingItems == NO) {
-    return [PBPhotoCell heightWithPhoto:nil];
+    return [PBPhotoCell heightWithPhoto:[self.responseData photoAtIndex:indexPath.section]];
   }
   else {
-    if (indexPath.section >= [[PBUploadQueue sharedQueue] count]) {
-      return [PBPhotoCell heightWithPhoto:nil];
+    NSUInteger count = [[PBUploadQueue sharedQueue] count];
+    if (indexPath.section >= count) {
+      return [PBPhotoCell heightWithPhoto:[self.responseData photoAtIndex:indexPath.section - count]];
     }  
     else {
       return 65;
@@ -311,7 +349,7 @@
 
 
 -(UITableViewCell *) uploadingCellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  PBUploadingPhotoTableViewCell *upcell = [[[NSBundle mainBundle] loadNibNamed:@"PBUploadingPhotoTableViewCell" owner:nil options:nil] lastObject];
+  PBUploadingTableViewCell *upcell = [[[NSBundle mainBundle] loadNibNamed:@"PBUploadingTableViewCell" owner:nil options:nil] lastObject];
   NSDictionary *photo = [[PBUploadQueue sharedQueue] photoAtIndex:indexPath.section];
   [upcell setPhoto:photo];
   return upcell;
@@ -376,23 +414,30 @@
 -(void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   [self reloadTableViewDataSourceUsingCache:NO];
+  [self configureNavigationBar];
 }
 
 
-
-
-#pragma mark Buttons and Gesture Recoginizers
-
--(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
-  PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
+-(void) pushNewStreamViewControllerWithUserID:(NSString *)userID screenName:(NSString*)screenName {
+  
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
-  vc.baseURL = [NSString stringWithFormat:@"http://%@/users/%@.json?auth_token=%@",API_BASE,header.userID,[(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]];
+  vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,userID];
   vc.shouldShowFollowingBar = YES;
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
   vc.pullsToRefresh = YES;
   [self.navigationController pushViewController:vc animated:YES];
+  vc.navigationItem.title = screenName;
+  
   [vc release];
+}
+
+#pragma mark Buttons and Gesture Recoginizers
+
+-(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
+  PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
+  NSString *screenName = [[header.photo objectForKey:@"user"] objectForKeyNotNull:@"screen_name"];
+  [self pushNewStreamViewControllerWithUserID:header.userID screenName:screenName];
 }
 
 
@@ -449,7 +494,7 @@
 
 -(IBAction) settingsButtonPressed:(id)sender{
   ProfileSettingView *profile1 = [[[ProfileSettingView alloc]initWithNibName:nil bundle:nil]autorelease];
-  UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:profile1] autorelease];
+  PBNavigationController *navController = [[[PBNavigationController alloc] initWithRootViewController:profile1] autorelease];
   [self presentModalViewController:navController animated:YES];
 }
 

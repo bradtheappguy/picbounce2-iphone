@@ -1,8 +1,8 @@
 //
-//  NewPostViewController.h
+//  PBCaptionViewController.h
 //  PicBounce2
 //
-//  Created by Avnish Chuchra on 24/10/11.
+//  Created by Avnish Chuchra on 29/10/11.
 //  Copyright (c) 2011 Clixtr, Inc. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import "FBConnect.h"
 #import "PBNavigationBar.h"
 
-@interface NewPostViewController : UIViewController < UITextViewDelegate, FBSessionDelegate, FBDialogDelegate >{
+@interface PBCaptionViewController : UIViewController < UITextViewDelegate, FBSessionDelegate, FBDialogDelegate >{
     IBOutlet UITextView *a_PostTextView;
     Facebook *_facebook;
     IBOutlet UIView *optionButtonView;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PBPhoto : NSObject
+@interface PBPost : NSObject
 
 @property (readwrite) BOOL uploadFailed;
 @property (readwrite) BOOL uploading;
@@ -16,8 +16,11 @@
 @property (readwrite) CGFloat uploadProgress;
 
 @property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) NSString *text;
 
 -(id) initWithImage:(UIImage *)image;
+-(id) initWithText:(NSString *)text;
 -(void) retry;
+-(void) startUpload;
 
 @end

@@ -28,20 +28,28 @@
 }
 
 -(void) uploadImage:(UIImage *)image {
-  PBPhoto *x = [[PBPhoto alloc] initWithImage:image];
+  PBPost *x = [[PBPost alloc] initWithImage:image];
   [x addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
   [images addObject:x];
   self.count = images.count;
   [x release];
 }
 
--(PBPhoto *) photoAtIndex:(NSUInteger)index {
+-(void) uploadText:(NSString *)text {
+  PBPost *x = [[PBPost alloc] initWithText:text];
+  [x addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
+  [images addObject:x];
+  self.count = images.count;
+  [x release];
+}
+
+-(PBPost *) photoAtIndex:(NSUInteger)index {
   return [images objectAtIndex:index];
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
   BOOL test = NO;
-  for (PBPhoto *photo in images) {
+  for (PBPost *photo in images) {
     if (photo.uploadSucceded) {
       test = YES;
       [images removeObject:photo];

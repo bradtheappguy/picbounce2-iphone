@@ -19,10 +19,10 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <QuartzCore/QuartzCore.h>
 #import "PBUploadQueue.h"
-
+#import "NewPostViewController.h"
 //#import "CaptureSessionManager.h"
 #import "AppDelegate.h"
-
+#import "PBCaptionViewController.h"
 #import "AFFeatherController.h"
 
 
@@ -502,7 +502,16 @@ bail:
 -(void) flashButtonPressed:(id)sender {
   
 }
-
+- (IBAction)captionButtonPressed:(id)sender {
+    PBCaptionViewController *a_NewPostViewController = [[PBCaptionViewController alloc] initWithNibName:@"PBCaptionViewController" bundle:nil];
+   
+    a_NewPostViewController.hidesBottomBarWhenPushed = YES;
+        //a_NewPostViewController.isCaptionView = YES;
+   
+    [self presentModalViewController:a_NewPostViewController animated:YES];
+        //[self.navigationController pushViewController:a_NewPostViewController animated:YES];
+    [a_NewPostViewController release];
+}
 
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position
 {

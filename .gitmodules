@@ -7,3 +7,9 @@
 [submodule "External/hoptoad-ios"]
 	path = External/hoptoad-ios
 	url = https://github.com/guicocoa/hoptoad-ios.git
+[submodule "OHAttributedLabel"]
+	path = OHAttributedLabel
+	url = https://github.com/AliSoftware/OHAttributedLabel.git
+[submodule "External/OHAttributedLabel"]
+	path = External/OHAttributedLabel
+	url = https://github.com/AliSoftware/OHAttributedLabel.git

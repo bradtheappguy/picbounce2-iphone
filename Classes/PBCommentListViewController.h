@@ -27,7 +27,7 @@
 @property (nonatomic, retain) NSURL *url;
 @property (nonatomic, retain) NSMutableArray *uploadedComments;
 @property (nonatomic, retain) NSMutableArray *comments;
-
+@property (nonatomic, retain) IBOutlet UINavigationBar *customNavigationBar;
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic, retain) PBProgressHUD *progressHUD;
 @property (nonatomic, retain) ASIHTTPRequest *postCommentRequest;

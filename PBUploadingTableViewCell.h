@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PBPhoto.h"
+#import "PBPost.h"
 
-@interface PBUploadingPhotoTableViewCell : UITableViewCell {
+@interface PBUploadingTableViewCell : UITableViewCell {
   UIImageView *progeressBar;
   UIButton *retryButton;
   UIButton *deleteButton;
   UILabel *textLabel;
-  PBPhoto *_photo;
+  PBPost *_photo;
 }
 
 

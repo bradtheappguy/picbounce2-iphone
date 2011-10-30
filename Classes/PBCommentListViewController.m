@@ -21,6 +21,7 @@
 @synthesize progressHUD = _progressHUD;
 @synthesize postCommentRequest;
 @synthesize getCommentsRequest;
+@synthesize customNavigationBar;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -29,7 +30,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.view.backgroundColor = [UIColor redColor];
+        //self.view.backgroundColor = [UIColor redColor];
 
     tableView.separatorStyle    = UITableViewCellSeparatorStyleNone;
   PBProgressHUD *hud =  [[PBProgressHUD alloc] initWithView:self.view];
@@ -38,6 +39,18 @@
   
   [hud release];
   [self.view addSubview:self.progressHUD];
+    
+    
+    [Utilities customizeNavigationBar:self.navigationController.navigationBar];
+	
+	UINavigationItem *previousItem;
+	
+    previousItem = [[[UINavigationItem alloc] initWithTitle:@"Back"] autorelease];
+
+	self.navigationController.title = @"Comments";
+	//[self.navigationController.navigationBar setItems:[NSArray arrayWithObjects:previousItem, nil]];
+  
+  
 }
 
 
@@ -57,11 +70,16 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)  name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postComment) name:@"PostComment" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)  name:UIKeyboardWillShowNotification object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)  name:UIKeyboardWillHideNotification object:nil];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PostComment" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+  
   [self.getCommentsRequest setDelegate:nil];
   [self.getCommentsRequest cancel];
   self.getCommentsRequest = nil; 
@@ -146,6 +164,7 @@
 
 
 - (void)dealloc {
+ 
     [comments release];
     [postID release];
     [super dealloc];
@@ -181,7 +200,6 @@
     tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [UIView commitAnimations];
-    [self performSelector:@selector(postComment) withObject:nil afterDelay:0.01];
 }
 
 - (void) moveViewsForKeyboard:(NSNotification*)aNotification up: (BOOL) up{
@@ -220,7 +238,7 @@
   NSDictionary *newComment = [NSDictionary dictionaryWithObject:item
                                                          forKey:@"item"];
   self.uploadedComments = [[NSMutableArray alloc] initWithObjects:newComment, nil];
-  [tableView reloadData];
+  
   
   
   
@@ -232,10 +250,11 @@
     }
     self.postCommentRequest = [[PBHTTPRequest requestWithURL:url] retain];
     self.postCommentRequest.requestMethod = @"POST";
-    self.postCommentRequest.delegate = self;
+    self.postCommentRequest.delegate = nil;
     [self.postCommentRequest setDidFailSelector:@selector(postCommentRequestDidFail:)];
     [self.postCommentRequest setDidFinishSelector:@selector(postCommentRequestDidFinish:)];
     [self.postCommentRequest startAsynchronous];
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark Networking Callbacks

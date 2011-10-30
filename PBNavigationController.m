@@ -6,7 +6,14 @@
 //
 
 #import "PBNavigationController.h"
+#import "PBNavigationBar.h"
 
 @implementation PBNavigationController
 
+-(id) initWithRootViewController:(UIViewController *) vc {
+  if (self = [super initWithRootViewController:vc]) {
+    
+  }
+  return self;
+}
 @end

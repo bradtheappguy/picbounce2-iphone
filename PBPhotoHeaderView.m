@@ -20,6 +20,7 @@
 @synthesize timeLabel = _timeLabel;
 @synthesize clockIcon = _clockIcon;
 @synthesize userID = _userID;
+@synthesize photo = _photo;
 
 -(void) layoutSubviews {
 	[super layoutSubviews];	
@@ -37,6 +38,7 @@
 }
 
 -(void) setPhoto:(NSDictionary *)photo {
+  _photo = photo;
   NSDictionary *user = [photo objectForKeyNotNull:@"user"];
   NSString *name = [user objectForKeyNotNull:@"name"];
   NSString *screenname = [user objectForKeyNotNull:@"screen_name"];

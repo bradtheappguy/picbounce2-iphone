@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "EGOImageView.h"
 #import "ASIHTTPRequest.h"
-@interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate> {
+#import "OHAttributedLabel.h"
+
+
+@interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate, OHAttributedLabelDelegate> {
   UITableViewController *tableViewController;
 
     ASIHTTPRequest *_followingRequest;
@@ -22,22 +25,21 @@
 - (IBAction)actionButtonPressed:(id)sender;
 
 @property (nonatomic, assign) UITableViewController *tableViewController;
+@property (retain, nonatomic) IBOutlet UIView *actionBar;
 
 @property (nonatomic, retain) NSDictionary *photo; 
 
-@property (nonatomic, retain) IBOutlet UILabel *viewCountLabel;
-@property (nonatomic, retain) IBOutlet UILabel *bounceCountLabel;
-@property (nonatomic, retain) IBOutlet UIButton *bounceButton;
+
 @property (nonatomic, retain)IBOutlet  EGOImageView  *photoImageView;
 
-@property (nonatomic, retain) IBOutlet UILabel *commentLabel;
+@property (nonatomic, retain) IBOutlet UILabel *captionLabel;
 @property (nonatomic, retain) IBOutlet UILabel *commentCountLabel;
 
-@property (nonatomic, retain) IBOutlet UILabel *personCountLabel;
-@property (nonatomic, retain) IBOutlet UILabel *hashTagCountLabel;
-@property (nonatomic, retain) IBOutlet UILabel *likeCountLabel;
+@property (retain, nonatomic) IBOutlet UIImageView *commentCountIcon;
+
 
 @property (nonatomic, retain) IBOutlet UIButton *leaveCommentButton;
+@property (retain, nonatomic) IBOutlet id commentPreview;
 
 
 @end

@@ -20,6 +20,7 @@
 @synthesize followButton = _followButton;
 @synthesize unfollowButton = _unfollowButton;
 @synthesize isFollowingYouLabel = _isFollowingYouLabel;
+@synthesize user = _user;
 
 - (void)dealloc {
   [_unfollowButton release];
@@ -84,6 +85,10 @@
   NSNumber *followingCount = [user objectForKey:@"following_count"];
   NSNumber *followersCount = [user objectForKey:@"follower_count"];
   NSNumber *photosCount = [user objectForKey:@"post_count"];
+  
+  [self.followButton setUser:user];
+  
+  
   BOOL followsMe = [[user objectForKey:@"follows_me"] boolValue];
   if (followsMe) {
     self.isFollowingYouLabel.text = [NSString stringWithFormat:@"%@ is following you",name];
@@ -93,15 +98,7 @@
   }
   
   BOOL following = [[user objectForKey:@"following"] boolValue];
-  if (following) {
-    self.followButton.hidden = YES;
-    self.unfollowButton.hidden = NO;
-  }	
-  else {
-    self.followButton.hidden = NO;
-    self.unfollowButton.hidden = YES;
-  }
-  
+   
   self.nameLabel.text = name;
   [self.photoCountButton setTitle:[photosCount stringValue] forState:UIControlStateNormal];
   [self.followersCountButton setTitle:[followersCount stringValue] forState:UIControlStateNormal];
