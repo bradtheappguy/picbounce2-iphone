@@ -10,6 +10,7 @@
 #import "FBConnect.h"
 #import "PBProgressHUD.h"
 #import "PBNavigationBar.h"
+#import "ModalDismissDelegate.h"
 
 
 @interface PBSharingOptionViewController : UIViewController < UITableViewDataSource, UITableViewDelegate, FBSessionDelegate ,FBRequestDelegate > {
@@ -19,11 +20,13 @@
     Facebook *facebook;
     BOOL isTwitterLogut;
     IBOutlet PBNavigationBar *navBar;
+    id<ModalDismissDelegate> delegate;
 }
 @property (nonatomic, retain) PBProgressHUD *progressHUD;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *a_OptionArray;
 @property (nonatomic, retain) NSMutableArray *facebookPages;
+@property (nonatomic, assign) id<ModalDismissDelegate> delegate;
 - (IBAction)dismissModalViewControllerAnimated;
 - (void)makeSizeOfTable;
 @end

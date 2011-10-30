@@ -22,6 +22,7 @@
 @synthesize a_OptionArray;
 @synthesize progressHUD = _progressHUD;
 @synthesize facebookPages = _facebookPages;
+@synthesize delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -92,7 +93,9 @@
 #pragma mark -
 #pragma mark CustomNavigationBar Methods
 - (IBAction)dismissModalViewControllerAnimated {
-	[self.navigationController popViewControllerAnimated:YES];
+//	[self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
+    [delegate didDismissModalView];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
