@@ -69,6 +69,7 @@
 		A2058F87145C8AC3004A8E87 /* PBUploadingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2058F85145C8AC3004A8E87 /* PBUploadingTableViewCell.m */; };
 		A2058F88145C8AC3004A8E87 /* PBUploadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2058F86145C8AC3004A8E87 /* PBUploadingTableViewCell.xib */; };
 		A2058F8B145C8AD4004A8E87 /* PBPost.m in Sources */ = {isa = PBXBuildFile; fileRef = A2058F8A145C8AD4004A8E87 /* PBPost.m */; };
+		A2058F9A145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A2058F99145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.m */; };
 		A205F0BA1312C7FC003756CA /* PBFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A205F0B91312C7FC003756CA /* PBFeedViewController.m */; };
 		A205F0BD1312C837003756CA /* PBExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A205F0BC1312C837003756CA /* PBExploreViewController.m */; };
 		A205F0C01312C851003756CA /* PBFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A205F0BE1312C851003756CA /* PBFilterViewController.m */; };
@@ -723,6 +724,8 @@
 		A2058F86145C8AC3004A8E87 /* PBUploadingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBUploadingTableViewCell.xib; sourceTree = "<group>"; };
 		A2058F89145C8AD4004A8E87 /* PBPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPost.h; sourceTree = "<group>"; };
 		A2058F8A145C8AD4004A8E87 /* PBPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPost.m; sourceTree = "<group>"; };
+		A2058F98145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBLoadMoreTablewViewFooter.h; sourceTree = "<group>"; };
+		A2058F99145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBLoadMoreTablewViewFooter.m; sourceTree = "<group>"; };
 		A205F0B81312C7FC003756CA /* PBFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBFeedViewController.h; path = ../PBFeedViewController.h; sourceTree = "<group>"; };
 		A205F0B91312C7FC003756CA /* PBFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBFeedViewController.m; path = ../PBFeedViewController.m; sourceTree = "<group>"; };
 		A205F0BB1312C837003756CA /* PBExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBExploreViewController.h; path = ../PBExploreViewController.h; sourceTree = "<group>"; };
@@ -2645,6 +2648,8 @@
 				A227E36312FB38A600701013 /* PBRefreshTableHeaderView.m */,
 				A2D484381453CAC6001B6426 /* PBPhotoView.h */,
 				A2D484391453CAC6001B6426 /* PBPhotoView.m */,
+				A2058F98145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.h */,
+				A2058F99145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.m */,
 			);
 			name = "UI Components";
 			sourceTree = "<group>";
@@ -3422,6 +3427,7 @@
 				552DCD1D145C98100093FBE2 /* UIColor+ExtraColorSpecifications.m in Sources */,
 				552DCD1E145C98100093FBE2 /* UINavigationBar+BackgroundImage.m in Sources */,
 				552DCD1F145C98100093FBE2 /* Utilities.m in Sources */,
+				A2058F9A145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,8 +8,11 @@
 
 #import "PBAPIResponse.h"
 #import "SBJSON.h"
+#import "NSDictionary+NotNull.h"
 
 @implementation PBAPIresponse
+
+@synthesize next = _next;
 
 -(id) initWithresponseData:(id)json_string {
     if (self = [super init]) {
@@ -17,11 +20,17 @@
         data = [[parser objectWithString:json_string error:nil] retain];
       [parser release];
         if ([self validate:data]) {
-          posts = [[[data objectForKey:@"response"] objectForKey:@"posts"] objectForKeyNotNull:@"items"];
-          people = [[data objectForKey:@"response"] objectForKey:@"people"];
-          user = [[data objectForKey:@"response"] objectForKey:@"user"];
+          NSDictionary *response = [data objectForKeyNotNull:@"response"];
+          posts = [[response objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"items"];
+          people = [response objectForKeyNotNull:@"people"];
+          user = [response objectForKeyNotNull:@"user"];
           //url = [[data objectForKey:@"response"] objectForKey:@"url"];
-          next = [[[data objectForKey:@"response"] objectForKey:@"posts"] objectForKey:@"next"];
+          if ([posts count] > 0) {
+            _next = [[[response objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"next"] retain];
+          }
+          else {
+            _next = nil;
+          }
         }
     }
     return self;
@@ -41,34 +50,40 @@
   
   id newData = [parser objectWithString:json_string error:nil];
   if ([self validate:newData]) {
-    NSMutableArray *newPosts = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"response"] objectForKey:@"posts"];
-    NSMutableArray *newPeople = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"response"] objectForKey:@"people"];
+    NSMutableArray *newPosts = [[(NSDictionary *) [(NSDictionary *) newData objectForKeyNotNull:@"response"] objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"items"];;
+    NSMutableArray *newPeople = [[(NSDictionary *) [(NSDictionary *) newData objectForKeyNotNull:@"response"] objectForKeyNotNull:@"people"] objectForKeyNotNull:@"items"];;
     [posts addObjectsFromArray:newPosts];
     [people addObjectsFromArray:newPeople];
-    user = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"response"] objectForKey:@"user"];
-    url = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"response"] objectForKey:@"url"];
-    next = [(NSDictionary *) [(NSDictionary *) newData objectForKey:@"response"] objectForKey:@"next"];
+    user = [[(NSDictionary *) [(NSDictionary *) newData objectForKeyNotNull:@"response"] objectForKeyNotNull:@"user"] retain];
+    url = [[(NSDictionary *) [[(NSDictionary *) newData objectForKeyNotNull:@"response"] objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"url"] retain];
+    if ([newPosts count] > 0) {
+       _next = [[(NSDictionary *) [[(NSDictionary *) newData objectForKeyNotNull:@"response"] objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"next"] retain];
+    }
+    else {
+      _next = nil;
+    }
+   
   }
   [parser release];
 }
 
 -(NSUInteger) followingCount {
-  id x = [[data objectForKey:@"user"] objectForKey:@"following_count"]; 
+  id x = [[data objectForKeyNotNull:@"user"] objectForKeyNotNull:@"following_count"]; 
   return [x intValue];
 }
 
 -(NSUInteger) followersCount {
-  id x = [[data objectForKey:@"user"] objectForKey:@"follower_count"]; 
+  id x = [[data objectForKeyNotNull:@"user"] objectForKeyNotNull:@"follower_count"]; 
   return [x intValue];
 }
 
 -(NSUInteger) badgesCount {
-  id x = [[data objectForKey:@"user"] objectForKey:@"badges_count"]; 
+  id x = [[data objectForKeyNotNull:@"user"] objectForKeyNotNull:@"badges_count"]; 
   return [x intValue];
 }
 
 -(NSString *) lastLocation {
-  id x = [[data objectForKey:@"user"] objectForKey:@"last_location"]; 
+  id x = [[data objectForKeyNotNull:@"user"] objectForKeyNotNull:@"last_location"]; 
   return x?x:@"";
 }
 
@@ -78,10 +93,10 @@
  if (!posts) {
    if ([data isKindOfClass:[NSDictionary class]]) {
      if ([data objectForKey:@"user"]) {
-       posts = [[[data objectForKey:@"user"] objectForKey:@"posts"] retain];
+       posts = [[[data objectForKeyNotNull:@"user"] objectForKeyNotNull:@"posts"] retain];
      }
      else {
-      posts = [[data objectForKey:@"posts"] retain];
+      posts = [[data objectForKeyNotNull:@"posts"] retain];
     }     
    }
  }
@@ -92,7 +107,7 @@
 -(NSArray *) people {
   if (!people) {
     NSDictionary *response = [data objectForKey:@"response"];
-    people = [[response objectForKey:@"users"] retain]; //TODD
+    people = [[response objectForKeyNotNull:@"users"] retain]; //TODD
   }
   return people;
 }
@@ -110,7 +125,7 @@
 
 
 -(NSURL *) loadMoreDataURL {
-  return [NSURL URLWithString:next];
+  return [NSURL URLWithString:_next];
 }
 
 - (NSDictionary *) photoAtIndex:(NSUInteger) index {
@@ -130,7 +145,7 @@
   NSArray *arrayOfUsers = [self people];
   if ([arrayOfUsers count] >= index) {
     NSDictionary *person = [arrayOfUsers objectAtIndex:index];
-    return [person objectForKey:@"user"];
+    return [person objectForKeyNotNull:@"user"];
   }
   else {
     return nil;
@@ -140,20 +155,17 @@
 
 -(NSString *) usernameForPersonAtIndex:(NSUInteger) index {
   NSDictionary *person = [self personAtIndex:index];
-  id name =  [person objectForKey:@"display_name"];
-  if ([name isEqual:[NSNull null]]) {
-    name = @"??";
-  }
+  id name =  [person objectForKeyNotNull:@"display_name"];
   return name;
 }
 
 - (NSString *) followersURL {
-  NSString *urlString = [user objectForKey:@"followed_by_url"]; 
+  NSString *urlString = [user objectForKeyNotNull:@"followed_by_url"]; 
   return urlString;
 }
 
 -(NSString *) followingURL {
-  NSString *urlString = [user objectForKey:@"follows_url"]; 
+  NSString *urlString = [user objectForKeyNotNull:@"follows_url"]; 
   return urlString;
 }
     
@@ -164,4 +176,6 @@
 - (NSDictionary *) user {
   return user;
 }
+
+
 @end

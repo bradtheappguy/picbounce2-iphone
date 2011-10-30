@@ -92,6 +92,15 @@
     [self hideEmptyState];
   }
   [self configureNavigationBar];
+  
+  if ([self.responseData loadMoreDataURL]) {
+    [footerView setBottomReachedIndicatorHidden:YES];
+    [footerView startLoadingAnimation];
+  }
+  else {
+    [footerView setBottomReachedIndicatorHidden:NO];
+    [footerView stopLoadingAnimation];
+  }
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {  
@@ -225,9 +234,6 @@
   if (self.shouldShowUplodingItems) {
     nSections += nUploading;
   }
-  if ([self moreDataAvailable]) {
-    nSections += 1;
-  }
   return nSections;
 }
 
@@ -279,21 +285,11 @@
 
 #pragma mark Cells and Headers
 //Load more 
-- (UIView *) footerViewForTable:(UITableView *)tableView {
-  UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
-  footerView.backgroundColor = [UIColor clearColor];
-  loadingMoreActivityIndicatiorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-  loadingMoreActivityIndicatiorView.frame = CGRectMake(0, 0, 20, 20);
-  loadingMoreActivityIndicatiorView.hidesWhenStopped = YES;
-  [loadingMoreActivityIndicatiorView stopAnimating];
-  footerDecoration = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hr_end.png"]] autorelease]; 
-  footerDecoration.hidden = YES;
-  footerDecoration.contentMode = UIViewContentModeTop;
-  footerDecoration.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 40);
-  loadingMoreActivityIndicatiorView.center = CGPointMake( footerView.center.x ,  footerView.center.y - 10);
-  [footerView addSubview:footerDecoration];
-  [footerView addSubview:loadingMoreActivityIndicatiorView];
-  return [footerView autorelease];
+- (PBLoadMoreTablewViewFooter *) footerViewForTable:(UITableView *)tableView {
+  if (!footerView) {
+    footerView = [[PBLoadMoreTablewViewFooter alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 70)];
+  }
+  return footerView;
 }
 
 
@@ -384,16 +380,13 @@
 }
 
 -(void) loadMoreData {
-  footerDecoration.hidden = YES;
-  [loadingMoreActivityIndicatiorView startAnimating];
-  //loadMoreDataURL = [responseData loadMoreDataURL];
+  [footerView startLoadingAnimation];
+  [footerView setBottomReachedIndicatorHidden:YES];
   [self loadMoreFromNetwork];
-  //[self performSelector:@selector(moreDataDidLoad) withObject:nil afterDelay:8.0];
 }
 
 -(void) moreDataDidLoad {
-  [loadingMoreActivityIndicatiorView stopAnimating];
-  footerDecoration.hidden = NO;
+
 }
 
 
