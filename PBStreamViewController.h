@@ -7,11 +7,11 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-
-
+#import "PBProfileHeaderView.h"
+#import "PBLoginViewController.h"
 #import "PBRootViewController.h"
 #import "EGOImageView.h"
-#import "PBProfileHeaderView.h"
+#import "PBLoadMoreTablewViewFooter.h"
 
 @class PBPhotoHeaderView, PBTableTitleTableViewCell, PBPhotoCell;
 
@@ -27,9 +27,7 @@
   BOOL shouldShowProfileHeader;
   BOOL shouldShowProfileHeaderBeforeNetworkLoad;
   BOOL shouldShowFollowingBar;
-  
-  UIActivityIndicatorView *loadingMoreActivityIndicatiorView;
-  UIImageView *footerDecoration;
+
   
   IBOutlet NSURL *preloadedAvatarURL;
   IBOutlet NSString *preloadedLocation;
@@ -43,6 +41,7 @@
   
   UIImageView *profileAvatarImageView;
     UINavigationBar *customNavigationBar;
+  PBLoadMoreTablewViewFooter *footerView;
 }
 
 @property (nonatomic, retain) IBOutlet PBProfileHeaderView *profileHeader;
