@@ -79,7 +79,10 @@
     [self.profileHeader setUser:user];
   }
   else {
-    self.tableView.tableHeaderView = nil;
+    UIView *transparentHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
+    transparentHeader.backgroundColor = [UIColor clearColor];
+    self.tableView.tableHeaderView = transparentHeader;
+    [transparentHeader release];
   }    
 
   if ([self numberOfSectionsInTableView:self.tableView] == 0) {
@@ -111,37 +114,11 @@
 }
 
 -(void) configureNavigationBar {
-//  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
-//  self.navigationItem.backBarButtonItem = backButton;
-//  [backButton release];
-  //UIBarButtonItem *settings  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings",nil) style:UIBarButtonItemStyleBordered target:self //action:@selector(settingsButtonPressed:)];
-  //self.navigationItem.rightBarButtonItem = settings; 
-    
-//    [self.navigationController setNavigationBarHidden:YES];
-//    
-//    [Utilities customizeNavigationBar:customNavigationBar];
-//    UINavigationItem *previousItem;
-//	
-//    previousItem = [[[UINavigationItem alloc] init] autorelease];
-//    previousItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost) ];
-//	
-//	UINavigationItem *currentItem = [[[UINavigationItem alloc] initWithTitle:@"brad"] autorelease];
-//	
-//    UINavigationItem *lastItem = [[[UINavigationItem alloc] init] autorelease];
-//    if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
-//    lastItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
-//    }else {
-//           lastItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithTitle:NSLocalizedString(@"Login",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(loginButtonPressed:)]; 
-//        }
-//	
-//    [customNavigationBar setItems:[NSArray arrayWithObjects:previousItem, currentItem, lastItem,nil]];
-//    
  [Utilities customizeNavigationController:self.navigationController];
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
-        //[rightBarButtonItem setImage:[UIImage imageNamed:@"bg_navbar@2x.png"]];
-        //[rightBarButtonItem setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_navbar@2x.png"]]];
-    self.navigationItem.leftBarButtonItem = rightBarButtonItem;
-    [rightBarButtonItem release];
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
+
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    [leftBarButtonItem release];
     
   if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
     UIBarButtonItem *logoutButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
@@ -256,16 +233,26 @@
     }
   }
 } 
-
+/*
+ if (self.shouldShowUplodingItems == NO) {
+ return [self photoCellForRowAtIndex:indexPath.section];
+ }
+ else {
+ NSUInteger count = [[PBUploadQueue sharedQueue] count];
+ if (indexPath.section >= count) {
+ return [self photoCellForRowAtIndex:indexPath.section - count];
+ }  
+ */
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
   if (self.shouldShowUplodingItems == NO) {
-    return [PBPhotoCell heightWithPhoto:nil];
+    return [PBPhotoCell heightWithPhoto:[self.responseData photoAtIndex:indexPath.section]];
   }
   else {
-    if (indexPath.section >= [[PBUploadQueue sharedQueue] count]) {
-      return [PBPhotoCell heightWithPhoto:nil];
+    NSUInteger count = [[PBUploadQueue sharedQueue] count];
+    if (indexPath.section >= count) {
+      return [PBPhotoCell heightWithPhoto:[self.responseData photoAtIndex:indexPath.section - count]];
     }  
     else {
       return 65;
@@ -414,25 +401,26 @@
 }
 
 
-
-
-#pragma mark Buttons and Gesture Recoginizers
-
--(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
-  PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
-  PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
- 
-  [self pushNewStreamViewControllerWithUserID:header.userID];
+-(void) pushNewStreamViewControllerWithUserID:(NSString *)userID screenName:(NSString*)screenName {
   
-  vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,header.userID];
+  PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
+  vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,userID];
   vc.shouldShowFollowingBar = YES;
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
   vc.pullsToRefresh = YES;
   [self.navigationController pushViewController:vc animated:YES];
-  vc.navigationItem.title = [[header.photo objectForKey:@"user"] objectForKeyNotNull:@"screen_name"];
+  vc.navigationItem.title = screenName;
   
   [vc release];
+}
+
+#pragma mark Buttons and Gesture Recoginizers
+
+-(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
+  PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
+  NSString *screenName = [[header.photo objectForKey:@"user"] objectForKeyNotNull:@"screen_name"];
+  [self pushNewStreamViewControllerWithUserID:header.userID screenName:screenName];
 }
 
 

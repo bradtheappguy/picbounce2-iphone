@@ -16,6 +16,6 @@
 #define kNavBarImageTag 6183746
 
     //colors
-#define kNavBarColor		[UIColor colorWithRedInt:205 greenInt:205 blueInt:205 alphaInt:255];
+#define kNavBarColor		[UIColor brownColor];
 #define kBrownTextColor		[UIColor colorWithRedInt:96 greenInt:68 blueInt:42 alphaInt:255];
 #define kBlueTextColor		[UIColor colorWithRedInt:4 greenInt:95 blueInt:180 alphaInt:255];
