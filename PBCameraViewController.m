@@ -26,7 +26,6 @@
 #import "AFFeatherController.h"
 #import "PBSharingOptionViewController.h"
 #import "PBProgressHUD.h"
-#import "FacebookSingleton.h"
 #import "ASIDownloadCache.h"
 #import "PBSharedUser.h"
 
@@ -444,8 +443,6 @@ bail:
   
   queue = dispatch_queue_create("com.picbounce.internalqueue", NULL);
 
-  facebook = [FacebookSingleton sharedFacebook];
-
   [self setupAVCapture];
   
 }
@@ -843,78 +840,6 @@ bail:
   photoLibraryPicker.delegate = self;
   [self presentModalViewController:photoLibraryPicker animated:YES];
   [photoLibraryPicker release];
-}
-
-#pragma mark Facebook Delegate
-
-- (void)fbDidLogin {
-  NSString *token = [[FacebookSingleton sharedFacebook] accessToken];
-  NSDate *expirationDate = [[FacebookSingleton sharedFacebook] expirationDate];
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  [defaults setObject:token forKey:@"FBAccessTokenKey"];
-  [defaults setObject:expirationDate forKey:@"FBExpirationDateKey"];
-  [defaults synchronize];
-  facebookButton.selected = YES;
-}
-
-
-- (void)fbDidNotLogin:(BOOL)cancelled {
-  
-}
-
-
-- (void)fbDidLogout {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  if ([defaults objectForKey:@"FBAccessTokenKey"]) {
-    [defaults removeObjectForKey:@"FBAccessTokenKey"];
-    [defaults removeObjectForKey:@"FBExpirationDateKey"];
-    [defaults synchronize];
-    
-    // Nil out the session variables to prevent
-    // the app from thinking there is a valid session
-    if (nil != [facebook accessToken]) {
-      facebook.accessToken = nil;
-    }
-    if (nil != [facebook expirationDate]) {
-      facebook.expirationDate = nil;
-    }
-  }
-  facebookButton.selected = NO;
-}
-
-- (void)requestLoading:(FBRequest *)request {
-}
-
-/**
- * Called when the server responds and begins to send back data.
- */
-- (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response {
-}
-
-/**
- * Called when an error prevents the request from completing successfully.
- */
-- (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
-  
-}
-
-/**
- * Called when a request returns and its response has been parsed into
- * an object.
- *
- * The resulting object may be a dictionary, an array, a string, or a number,
- * depending on thee format of the API response.
- */
-- (void)request:(FBRequest *)request didLoad:(id)result {
-}
-
-/**
- * Called when a request returns a response.
- *
- * The result object is the raw response from the server of type NSData
- */
-- (void)request:(FBRequest *)request didLoadRawResponse:(NSData *)data {
-  
 }
 
 @end
