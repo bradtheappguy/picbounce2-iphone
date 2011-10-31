@@ -11,6 +11,7 @@
 #import "FlashButton.h"
 #import "ModalDismissDelegate.h"
 #import "FacebookButton.h"
+#import "FBConnect.h"
 
 
 @interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, ModalDismissDelegate> {
@@ -51,7 +52,9 @@
 
   IBOutlet UIButton *facebookButton;
   IBOutlet UIButton *twitterButton;
-  
+
+  Facebook *facebook;
+
   IBOutlet UIScrollView *filterScrollView;
   
   IBOutlet UIView *cameraToolbar;
@@ -70,6 +73,9 @@
 -(IBAction) captionButtonPressed:(id)sender;
 -(IBAction) facebookButtonClicked:(id)sender;
 -(IBAction) twitterButtonClicked:(id)sender;
+
+- (BOOL) hasFlash;
+
 @end
 
 UIImage *scaleAndRotateImage(UIImage *image);

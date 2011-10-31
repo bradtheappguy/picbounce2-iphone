@@ -82,7 +82,7 @@
 								<string key="NSFrame">{{320, 27}, {320, 345}}</string>
 								<reference key="NSSuperview" ref="583715344"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="358368676"/>
+								<reference key="NSNextKeyView" ref="440897970"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC44MDM5MjE1Njg2IDAuODAzOTIxNTY4NiAwLjgwMzkyMTU2ODYAA</bytes>
@@ -273,7 +273,7 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="254482557"/>
-								<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="31486532">
+								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">btn_retake_n@2x.png</string>
 								</object>
@@ -299,16 +299,15 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzE0IDAuMzA5ODAzOTIxNiAwLjUyMTU2ODYyNzUAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="254482557"/>
-								<object class="NSCustomResource" key="IBUINormalImage">
+								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">btn_tweet_n@2x.png</string>
+									<string key="NSResourceName">btn_caption_n@2x.png</string>
 								</object>
-								<reference key="IBUINormalBackgroundImage" ref="31486532"/>
-								<object class="IBUIFontDescription" key="IBUIFontDescription" id="418881253">
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="765509817">
 									<int key="type">2</int>
 									<int key="size">2</int>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="886360678">
+								<object class="NSFont" key="IBUIFont" id="3915583">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">18</double>
 									<int key="NSfFlags">16</int>
@@ -361,8 +360,8 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">btn_twitter_n.png</string>
 								</object>
-								<reference key="IBUIFontDescription" ref="418881253"/>
-								<reference key="IBUIFont" ref="886360678"/>
+								<reference key="IBUIFontDescription" ref="765509817"/>
+								<reference key="IBUIFont" ref="3915583"/>
 							</object>
 							<object class="IBUIImageView" id="58668111">
 								<reference key="NSNextResponder" ref="583715344"/>
@@ -405,8 +404,8 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">btn_facebook_n.png</string>
 								</object>
-								<reference key="IBUIFontDescription" ref="418881253"/>
-								<reference key="IBUIFont" ref="886360678"/>
+								<reference key="IBUIFontDescription" ref="765509817"/>
+								<reference key="IBUIFont" ref="3915583"/>
 							</object>
 							<object class="IBUIButton" id="812952549">
 								<reference key="NSNextResponder" ref="583715344"/>
@@ -461,7 +460,7 @@
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<object class="IBUILabel" id="358368676">
+							<object class="IBUILabel" id="440897970">
 								<reference key="NSNextResponder" ref="583715344"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{330, 24}, {54, 21}}</string>
@@ -719,7 +718,7 @@
 							<reference ref="39924240"/>
 							<reference ref="154346907"/>
 							<reference ref="22243062"/>
-							<reference ref="358368676"/>
+							<reference ref="440897970"/>
 							<reference ref="582026950"/>
 							<reference ref="889096740"/>
 						</object>
@@ -813,7 +812,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">107</int>
-						<reference key="object" ref="358368676"/>
+						<reference key="object" ref="440897970"/>
 						<reference key="parent" ref="583715344"/>
 					</object>
 				</object>
@@ -1087,6 +1086,7 @@
 				<string>bg_sharing@2x.png</string>
 				<string>btn_bg_capture_upload_n@2x.png</string>
 				<string>btn_camRoll_n.png</string>
+				<string>btn_caption_n@2x.png</string>
 				<string>btn_capture_cancel_n.png</string>
 				<string>btn_capture_n.png</string>
 				<string>btn_capture_s.png</string>
@@ -1094,7 +1094,6 @@
 				<string>btn_facebook_s.png</string>
 				<string>btn_options_n.png</string>
 				<string>btn_retake_n@2x.png</string>
-				<string>btn_tweet_n@2x.png</string>
 				<string>btn_twitter_n.png</string>
 				<string>btn_twitter_s.png</string>
 			</object>
@@ -1106,6 +1105,7 @@
 				<string>{640, 72}</string>
 				<string>{202, 80}</string>
 				<string>{42, 30}</string>
+				<string>{120, 68}</string>
 				<string>{42, 30}</string>
 				<string>{29, 23}</string>
 				<string>{16, 16}</string>
@@ -1113,7 +1113,6 @@
 				<string>{26, 26}</string>
 				<string>{75, 21}</string>
 				<string>{120, 68}</string>
-				<string>{60, 61}</string>
 				<string>{20, 16}</string>
 				<string>{26, 26}</string>
 			</object>
