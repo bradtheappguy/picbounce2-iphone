@@ -18,7 +18,7 @@
     [self addSubview:progressBarImageView];
     [self bringSubviewToFront:progressBarImageView];
     progressBarImageView.hidden = YES;
-  progressBarImageView.backgroundColor = [UIColor redColor];
+  progressBarImageView.backgroundColor = [UIColor clearColor];
     progressBarImageView.image = [UIImage imageNamed:@"bg_pb@2x.png"];
   self.layer.borderColor = [UIColor colorWithRed:169/255.0 green:164/255.0 blue:154/255.0 alpha:1].CGColor;
   self.layer.borderWidth = 1;
