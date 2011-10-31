@@ -41,9 +41,18 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   return _authToken;
 }
 
--(void) presentLoginViewController {
-  loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
-  [self.tabBarController presentModalViewController:loginViewController animated:YES];
+-(void) presentLoginViewController:(BOOL)useCameraViewController {
+  loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];
+  if (useCameraViewController == YES)
+  {
+    [cameraViewController presentModalViewController:loginViewController animated:YES];
+    usingCameraView = YES;
+  }
+  else
+  {
+    [self.tabBarController presentModalViewController:loginViewController animated:YES];
+    usingCameraView = NO;
+  }
   [loginViewController release];
 }
 
@@ -70,7 +79,7 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   [self.window makeKeyAndVisible];
     
   if ([self authToken] == nil) {
-    [self presentLoginViewController];
+    [self presentLoginViewController:NO];
   }
   return YES;
 }
@@ -183,7 +192,10 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
 }
 
 -(void) xxx {
-   [self.tabBarController dismissModalViewControllerAnimated:YES];
+  if (usingCameraView == YES)
+    [cameraViewController dismissModalViewControllerAnimated:YES];
+  else
+    [self.tabBarController dismissModalViewControllerAnimated:YES];
 }
 
 -(void) userDidLogin:(id)dender {

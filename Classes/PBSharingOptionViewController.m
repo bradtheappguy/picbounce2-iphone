@@ -275,7 +275,7 @@
         isTwitterLogut = YES;
         AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
         if ([appDelegate authToken] == nil) {
-            [appDelegate presentLoginViewController];
+          [appDelegate presentLoginViewController:YES];
             [sender setTitle:@"Logout" forState:UIControlStateNormal];
         }else {
             appDelegate.authToken = nil;
@@ -284,6 +284,7 @@
     }
     
 }
+
 #pragma Table view Height
 - (void)makeSizeOfTable {
     NSInteger height = 150 + ( [_facebookPages count] * 50 ) ; //Increase or Decrease Size of TableView

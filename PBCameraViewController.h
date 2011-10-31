@@ -14,7 +14,7 @@
 #import "FBConnect.h"
 
 
-@interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, ModalDismissDelegate> {
+@interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, ModalDismissDelegate, FBSessionDelegate> {
   
   IBOutlet UIView *previewView;
 	IBOutlet UISegmentedControl *camerasControl;

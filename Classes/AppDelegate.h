@@ -22,13 +22,15 @@
   IBOutlet PBCameraViewController *cameraViewController;
   
   PBLoginViewController *loginViewController;
+
+  BOOL usingCameraView;
 }
 
 @property (nonatomic, retain) IBOutlet NSString *authToken;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
--(void) presentLoginViewController;
+-(void) presentLoginViewController:(BOOL)useCameraViewController;
 
 @end
 

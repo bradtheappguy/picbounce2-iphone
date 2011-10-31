@@ -481,7 +481,7 @@
 
 
 -(IBAction) loginButtonPressed:(id)sender {
-  [(AppDelegate *)[[UIApplication sharedApplication] delegate] presentLoginViewController];
+  [(AppDelegate *)[[UIApplication sharedApplication] delegate] presentLoginViewController:NO];
 }
 
 

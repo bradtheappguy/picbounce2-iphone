@@ -286,7 +286,6 @@
 								<string key="NSFrame">{{570, 436}, {60, 34}}</string>
 								<reference key="NSSuperview" ref="583715344"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUIContentMode">1</int>
 								<string key="IBUIContentStretch">{{0, 0}, {0, 0}}</string>
