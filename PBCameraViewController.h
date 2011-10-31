@@ -14,7 +14,7 @@
 #import "FBConnect.h"
 
 
-@interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, ModalDismissDelegate, FBSessionDelegate> {
+@interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, ModalDismissDelegate> {
   
   IBOutlet UIView *previewView;
 	IBOutlet UISegmentedControl *camerasControl;
@@ -52,8 +52,6 @@
 
   IBOutlet UIButton *facebookButton;
   IBOutlet UIButton *twitterButton;
-
-  Facebook *facebook;
 
   IBOutlet UIScrollView *filterScrollView;
   
