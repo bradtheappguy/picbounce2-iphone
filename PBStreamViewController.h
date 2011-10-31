@@ -17,7 +17,7 @@
 
 @interface PBStreamViewController : PBRootViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UISegmentedControl *segmentedControl;
-
+  
   IBOutlet PBPhotoHeaderView *photoHeader;
   IBOutlet PBTableTitleTableViewCell *tableTitleTableViewCell;
   
@@ -27,20 +27,20 @@
   BOOL shouldShowProfileHeader;
   BOOL shouldShowProfileHeaderBeforeNetworkLoad;
   BOOL shouldShowFollowingBar;
-
   
-  IBOutlet NSURL *preloadedAvatarURL;
-  IBOutlet NSString *preloadedLocation;
-  IBOutlet NSString *preloadedName;
   
-   IBOutlet UIButton *setting;  
+  NSURL *preloadedAvatarURL;
+  NSString *preloadedLocation;
+  NSString *preloadedName;
+  
+  UIButton *setting;  
   
   UITextView *commentTextField;
   
   UIButton *activeLeaveCommentButton;
   
   UIImageView *profileAvatarImageView;
-    UINavigationBar *customNavigationBar;
+  UINavigationBar *customNavigationBar;
   PBLoadMoreTablewViewFooter *footerView;
 }
 

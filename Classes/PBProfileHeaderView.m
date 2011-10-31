@@ -96,8 +96,6 @@
   else {
     self.isFollowingYouLabel.text = [NSString stringWithFormat:@"%@ is not following you",name];
   }
-  
-  BOOL following = [[user objectForKey:@"following"] boolValue];
    
   self.nameLabel.text = name;
   [self.photoCountButton setTitle:[photosCount stringValue] forState:UIControlStateNormal];
