@@ -127,10 +127,10 @@
  [Utilities customizeNavigationController:self.navigationController];
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
 
-    //self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    self.navigationItem.rightBarButtonItem = leftBarButtonItem;
     [leftBarButtonItem release];
     
-  if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
+/*  if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
     UIBarButtonItem *logoutButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
     self.navigationItem.rightBarButtonItem = logoutButton;
     [logoutButton release];
@@ -141,7 +141,7 @@
     self.navigationItem.leftBarButtonItem = loginButton;
     [loginButton release];
     self.navigationItem.rightBarButtonItem = nil;
-  }
+  }*/
   
   //self.navigationItem.title = @"FOOBAR";
   //self.title = @"BATFIZ";
