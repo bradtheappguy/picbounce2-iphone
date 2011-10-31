@@ -246,7 +246,7 @@
     [[_facebookPages objectAtIndex:sender.tag] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"Selected"];
 }
 - (void)loginlogoutButton:(UIButton *)sender {
-    if (sender.tag == 0) {
+    if (sender.tag == 1) {
         isTwitterLogut = NO;
         
         if ([facebook isSessionValid]) {
@@ -264,13 +264,13 @@
             [facebook authorize:[NSArray arrayWithObject: @"publish_stream,offline_access,manage_pages"] delegate:self];
             [sender setTitle:@"Logout" forState:UIControlStateNormal];
         }
-    }else if (sender.tag == 1) {
+    }else if (sender.tag == 0) {
         isTwitterLogut = YES;
         AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
         if ([appDelegate authToken] == nil) {
           [appDelegate setCurrentController:self];
-          [appDelegate presentLoginViewController:NO];
-            [sender setTitle:@"Logout" forState:UIControlStateNormal];
+          [appDelegate presentLoginViewController:YES];
+          [sender setTitle:@"Logout" forState:UIControlStateNormal];
         }else {
             appDelegate.authToken = nil;
             [sender setTitle:@"Login" forState:UIControlStateNormal];
