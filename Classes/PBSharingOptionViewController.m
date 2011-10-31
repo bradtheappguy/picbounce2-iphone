@@ -106,34 +106,27 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-        // Return the number of sections.
-    return 4;
+  // Return the number of sections.
+  //return 2; // if not fb  
+  return 3; // if fb and net loaded (fb pages)
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-        // Return the number of rows in the section.
-    switch (section) {
-        case 0:
-            return 1;
-            break;
-        case 2:
-            return 1;
-            break;
-            
-        case 3:
-            return [_facebookPages count];
-            break;
-        case 1:
-            return 1;
-            break;
-            
-            
-            
-        default:
-            break;
+  // Return the number of rows in the section.
+  switch (section) {
+    case 0:
+      return 1;
+    case 1:
+      return 1;
+    case 2:
+      return 1;
+    case 3:
+      return [_facebookPages count];
+    default:
+      break;
     }
-    return 10;//[a_OptionArray count];
+  return 10;//[a_OptionArray count];
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -160,29 +153,27 @@
                 }
             }
     }
-        //NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[[a_CommentsArray objectAtIndex:indexPath.row] valueForKey:@"item"]];
-        //  dict = nil;
-    
     
     if (indexPath.section == 0) {
         
-        facebook = [FacebookSingleton sharedFacebook];
-        if ([facebook isSessionValid]) {
-            [customCell.a_StatusButton setTitle:@"Logout" forState:UIControlStateNormal];
+        AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+        if ([appDelegate authToken] == nil) {
+          [customCell.a_StatusButton setTitle:@"Login" forState:UIControlStateNormal];
+        }else {
+          [customCell.a_StatusButton setTitle:@"Logout" forState:UIControlStateNormal];  
         }
-        else {
-            [customCell.a_StatusButton setTitle:@"Login" forState:UIControlStateNormal];
-        }
+
         [customCell.contentView setBackgroundColor:[UIColor colorWithRed:208.0f/255.0f green:205.0f/255.0f blue:205.0f/255.0f alpha:1.0f]];
         [customCell.a_TitleLabel setText:@"Twitter"];
         [customCell.a_StatusButton setTag:indexPath.section];
         [customCell.a_StatusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
     }else if (indexPath.section == 1) {
-        AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-        if ([appDelegate authToken] == nil) {
-            [customCell.a_StatusButton setTitle:@"Login" forState:UIControlStateNormal];
-        }else {
-            [customCell.a_StatusButton setTitle:@"Logout" forState:UIControlStateNormal];  
+        facebook = [FacebookSingleton sharedFacebook];
+        if ([facebook isSessionValid]) {
+          [customCell.a_StatusButton setTitle:@"Logout" forState:UIControlStateNormal];
+        }
+        else {
+          [customCell.a_StatusButton setTitle:@"Login" forState:UIControlStateNormal];
         }
         [customCell.contentView setBackgroundColor:[UIColor colorWithRed:239.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1.0f]];
         [customCell.a_TitleLabel setText:@"Facebook"];
@@ -216,7 +207,8 @@
         [EWCheckbox addTarget:self action:@selector(ewTouched:) forControlEvents:UIControlEventTouchUpInside];
         [customCell.contentView addSubview:EWCheckbox];
         [EWCheckbox release];
-    }else if (indexPath.section == 2) {
+    }
+     else if (indexPath.section == 2) {
         [customCell.a_StatusButton setHidden:YES];
         if (indexPath.row == 0) {
             [customCell.a_TitleLabel setText:@"  Wall"];  
@@ -245,6 +237,7 @@
         [customCell.contentView addSubview:EWCheckbox];
         [EWCheckbox release];
     }
+
     return customCell;
 }
 - (void)ewTouched:(UIButton *)sender {
