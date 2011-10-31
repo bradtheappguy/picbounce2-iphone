@@ -26,6 +26,7 @@
 #import "AFFeatherController.h"
 #import "PBSharingOptionViewController.h"
 #import "PBProgressHUD.h"
+#import "FacebookSingleton.h"
 
 
 UIImage *scaleAndRotateImage(UIImage *image)
@@ -421,12 +422,17 @@ bail:
   [flipButton addTarget:self action:@selector(flipButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   flipButton.frame = CGRectMake(320-71-5, 5, 71, 37);
   [self.view addSubview:flipButton];
+
+  if ([self hasFlash] == YES)
+  {
+    flashButton = [FlashButton button];
+    flashButton.delegate = self;
+    [flashButton addTarget:self action:@selector(flashButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:flashButton];
+  }
+  else
+    flashButton = nil;
   
-  flashButton = [FlashButton button];
-  flashButton.delegate = self;
-  [flashButton addTarget:self action:@selector(flashButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-  
-  [self.view addSubview:flashButton];
   
   HDRButton = [UIButton buttonWithType:UIButtonTypeCustom];
   [HDRButton setBackgroundImage:[UIImage imageNamed:@"btn_hdr_n"] forState:UIControlStateNormal];
@@ -436,8 +442,17 @@ bail:
   
   queue = dispatch_queue_create("com.picbounce.internalqueue", NULL);
 
-  facebookButton.selected = NO;
-  twitterButton.selected = NO;
+  facebook = [FacebookSingleton sharedFacebook];
+  if ([facebook isSessionValid])
+    facebookButton.selected = YES;
+  else
+    facebookButton.selected = NO;
+
+  AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+  if ([appDelegate authToken] == nil)
+    twitterButton.selected = NO;
+  else
+    twitterButton.selected = YES;
 
   [self setupAVCapture];
   
