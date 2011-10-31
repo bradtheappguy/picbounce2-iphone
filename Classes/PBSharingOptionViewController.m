@@ -174,7 +174,7 @@
             [customCell.a_StatusButton setTitle:@"Login" forState:UIControlStateNormal];
         }
         [customCell.contentView setBackgroundColor:[UIColor colorWithRed:208.0f/255.0f green:205.0f/255.0f blue:205.0f/255.0f alpha:1.0f]];
-        [customCell.a_TitleLabel setText:@"Facebook"];
+        [customCell.a_TitleLabel setText:@"Twitter"];
         [customCell.a_StatusButton setTag:indexPath.section];
         [customCell.a_StatusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
     }else if (indexPath.section == 1) {
@@ -185,7 +185,7 @@
             [customCell.a_StatusButton setTitle:@"Logout" forState:UIControlStateNormal];  
         }
         [customCell.contentView setBackgroundColor:[UIColor colorWithRed:239.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1.0f]];
-        [customCell.a_TitleLabel setText:@"Twitter"];
+        [customCell.a_TitleLabel setText:@"Facebook"];
         [customCell.a_StatusButton setTag:indexPath.section];
         [customCell.a_StatusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
     }else if (indexPath.section == 3) {
@@ -275,7 +275,8 @@
         isTwitterLogut = YES;
         AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
         if ([appDelegate authToken] == nil) {
-          [appDelegate presentLoginViewController:YES];
+          [appDelegate setCurrentController:self];
+          [appDelegate presentLoginViewController:NO];
             [sender setTitle:@"Logout" forState:UIControlStateNormal];
         }else {
             appDelegate.authToken = nil;

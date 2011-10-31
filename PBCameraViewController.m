@@ -567,32 +567,22 @@ bail:
 -(void) facebookButtonClicked:(id)sender {
   if ([PBSharedUser shouldCrosspostToFB] == YES) {
     [PBSharedUser setShouldCrosspostToFB:NO];
+    facebookButton.selected = NO;
   }
   else {
     [PBSharedUser setShouldCrosspostToFB:YES];
-  }
-/*
-  if ([facebook isSessionValid]) {
-    [facebook logout:self];
-    facebook.accessToken = nil;
-    facebook.expirationDate = nil;
-    facebook = nil;
-    facebookButton.selected = NO;
-  } 
-  else {
-    facebook = [FacebookSingleton sharedFacebook];
-    [facebook authorize:[NSArray arrayWithObject: @"publish_stream,offline_access,manage_pages"] delegate:self];
     facebookButton.selected = YES;
   }
-*/
 }
 
 -(void) twitterButtonClicked:(id)sender {
   if ([PBSharedUser shouldCrosspostToTW] == YES) {
     [PBSharedUser setShouldCrosspostToTW:NO];
+    twitterButton.selected = NO;
   }
   else {
     [PBSharedUser setShouldCrosspostToTW:YES];
+    twitterButton.selected = YES;
   }
 /*
   AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
