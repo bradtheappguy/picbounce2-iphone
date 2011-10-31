@@ -600,6 +600,7 @@
 		A2F513C813ABF786000FD084 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F513C713ABF786000FD084 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A2F513CA13ABF83D000FD084 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F513C913ABF83D000FD084 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D1212B80145E139100370D89 /* btn_tweet_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1212B7F145E139000370D89 /* btn_tweet_n@2x.png */; };
+		D1212B86145E1B8C00370D89 /* btn_caption_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1212B85145E1B8C00370D89 /* btn_caption_n@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1347,6 +1348,7 @@
 		A2F513C913ABF83D000FD084 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		D1212B7D145E03A700370D89 /* ModalDismissDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalDismissDelegate.h; sourceTree = "<group>"; };
 		D1212B7F145E139000370D89 /* btn_tweet_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_tweet_n@2x.png"; sourceTree = "<group>"; };
+		D1212B85145E1B8C00370D89 /* btn_caption_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_caption_n@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2290,6 +2292,7 @@
 		A296CF9D1453648900175D1B /* capture */ = {
 			isa = PBXGroup;
 			children = (
+				D1212B85145E1B8C00370D89 /* btn_caption_n@2x.png */,
 				A296CF9E1453648900175D1B /* 1editOptions.png */,
 				A296CF9F1453648900175D1B /* _designRefCapture.png */,
 				A296CFA01453648900175D1B /* _designRefCommentSharing.png */,
@@ -3269,6 +3272,7 @@
 				A2058F61145C8A79004A8E87 /* HTNotifier.strings in Resources */,
 				A2058F88145C8AC3004A8E87 /* PBUploadingTableViewCell.xib in Resources */,
 				D1212B80145E139100370D89 /* btn_tweet_n@2x.png in Resources */,
+				D1212B86145E1B8C00370D89 /* btn_caption_n@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
