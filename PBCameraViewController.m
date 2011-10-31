@@ -28,6 +28,7 @@
 #import "PBProgressHUD.h"
 #import "FacebookSingleton.h"
 #import "ASIDownloadCache.h"
+#import "PBSharedUser.h"
 
 
 UIImage *scaleAndRotateImage(UIImage *image)
@@ -456,16 +457,19 @@ bail:
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
-  if ([facebook isSessionValid])
+  if ([PBSharedUser shouldCrosspostToFB] == YES) {
     facebookButton.selected = YES;
-  else
+  }
+  else {
     facebookButton.selected = NO;
+  }
   
-  AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-  if ([appDelegate authToken] == nil)
-    twitterButton.selected = NO;
-  else
+  if ([PBSharedUser shouldCrosspostToTW] == YES) {
     twitterButton.selected = YES;
+  }
+  else {
+    twitterButton.selected = NO;
+  }
   
   /*
    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
@@ -564,6 +568,13 @@ bail:
 }
 
 -(void) facebookButtonClicked:(id)sender {
+  if ([PBSharedUser shouldCrosspostToFB] == YES) {
+    [PBSharedUser setShouldCrosspostToFB:NO];
+  }
+  else {
+    [PBSharedUser setShouldCrosspostToFB:YES];
+  }
+/*
   if ([facebook isSessionValid]) {
     [facebook logout:self];
     facebook.accessToken = nil;
@@ -576,9 +587,17 @@ bail:
     [facebook authorize:[NSArray arrayWithObject: @"publish_stream,offline_access,manage_pages"] delegate:self];
     facebookButton.selected = YES;
   }
+*/
 }
 
 -(void) twitterButtonClicked:(id)sender {
+  if ([PBSharedUser shouldCrosspostToTW] == YES) {
+    [PBSharedUser setShouldCrosspostToTW:NO];
+  }
+  else {
+    [PBSharedUser setShouldCrosspostToTW:YES];
+  }
+/*
   AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
   if ([appDelegate authToken] == nil) {
     [appDelegate presentLoginViewController:YES];
@@ -591,6 +610,7 @@ bail:
     appDelegate.authToken = nil;
     twitterButton.selected = NO;
   }
+*/
 }
 
 -(void) cancelButtonPressed:(id)sender {

@@ -11,4 +11,11 @@
 @interface PBSharedUser : NSObject
 + (NSString *) userID;
 + (void) setUserID:(NSString *)userID;
+
++ (BOOL) shouldCrosspostToFB;
++ (void) setShouldCrosspostToFB:(BOOL)should;
+
++ (BOOL) shouldCrosspostToTW;
++ (void) setShouldCrosspostToTW:(BOOL)should;
+
 @end
