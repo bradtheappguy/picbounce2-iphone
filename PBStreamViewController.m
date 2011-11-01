@@ -48,22 +48,57 @@
 @synthesize followingCountLabel;
 @synthesize badgesCountLabel;
 
-
+- (UIView *)createDefaultView {
+   
+    UIView *a_EmptyStateView; 
+    if (self.tabBarController.selectedIndex == 2) {
+        a_EmptyStateView = [[UIView alloc] initWithFrame:CGRectMake(0,_profileHeader.frame.size.height , self.view.bounds.size.width, self.view.bounds.size.height)];
+    }else
+    a_EmptyStateView = [[UIView alloc] initWithFrame:self.view.bounds];
+    a_EmptyStateView.tag = -37;
+    a_EmptyStateView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:a_EmptyStateView];
+    self.tableView.scrollEnabled = NO;
+    
+    UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    emptyView.tag = 12;
+    emptyView.backgroundColor = [UIColor clearColor];
+    emptyView.image = [UIImage imageNamed:@"placeholder_image@2x.png"];
+    [a_EmptyStateView addSubview:emptyView];
+    [emptyView release];
+    
+    
+    UILabel *a_DefaultViewNameLabel = [[UILabel alloc]initWithFrame: CGRectMake(26, 67, 268, 32)];
+    a_DefaultViewNameLabel.text = [NSString stringWithFormat:@"Welcome, %@",self.navigationItem.title];
+    a_DefaultViewNameLabel.backgroundColor = [UIColor clearColor];
+    a_DefaultViewNameLabel.textAlignment = UITextAlignmentCenter;
+    a_DefaultViewNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:26];
+    [a_EmptyStateView addSubview:a_DefaultViewNameLabel];
+    [a_DefaultViewNameLabel release];
+    
+    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(93, 247, 135, 58)];
+    a_DefaultViewNameLabel1.numberOfLines = 2;
+    a_DefaultViewNameLabel1.text = @"Snap a photo   to start sharing!";
+    a_DefaultViewNameLabel1.backgroundColor = [UIColor clearColor];
+    a_DefaultViewNameLabel1.textAlignment = UITextAlignmentCenter;
+    a_DefaultViewNameLabel1.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+    [a_EmptyStateView addSubview:a_DefaultViewNameLabel1];
+    [a_DefaultViewNameLabel1 release];
+    return [a_EmptyStateView autorelease];
+}
 -(void) showEmptyState {
-  return;
-  
-  UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-  emptyView.tag = 12;
-  emptyView.backgroundColor = [UIColor redColor];
-  emptyView.image = [UIImage imageNamed:@""];
-  [self.view addSubview:emptyView];
-  self.tableView.scrollEnabled = NO;
+
+    [self.tableView addSubview:[self createDefaultView]];
+    self.tableView.scrollEnabled = NO;
 }
 
 
 -(void) hideEmptyState {
-  [[self.view viewWithTag:12] removeFromSuperview];
-  self.tableView.scrollEnabled = YES;
+       
+    [[self.view viewWithTag:-37] removeFromSuperview];
+    // [self.tableView addSubview:[self createDefaultView]];
+    
+    self.tableView.scrollEnabled = YES;
 }
 
 - (void) reload {

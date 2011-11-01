@@ -42,6 +42,8 @@
   UIImageView *profileAvatarImageView;
   UINavigationBar *customNavigationBar;
   PBLoadMoreTablewViewFooter *footerView;
+    
+    IBOutlet UIView *a_DefaultView;
 }
 
 @property (nonatomic, retain) IBOutlet PBProfileHeaderView *profileHeader;
