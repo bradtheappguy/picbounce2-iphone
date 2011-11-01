@@ -43,6 +43,7 @@
 				<string key="NSFrame">{{0, 20}, {320, 411}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="741675772">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -191,7 +192,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">bg_profileheader@2x.png</string>
+									<string key="NSResourceName">bg_profileheader.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="532615470">
@@ -406,6 +407,7 @@
 						<string key="NSFrame">{{240, 88}, {72, 37}}</string>
 						<reference key="NSSuperview" ref="173284354"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:209</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -1467,7 +1469,7 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>avatar_holder.png</string>
 				<string>bg_avatar_profile@2x.png</string>
-				<string>bg_profileheader@2x.png</string>
+				<string>bg_profileheader.png</string>
 				<string>btn_profile_score_n.png</string>
 				<string>placeholder_image@2x.png</string>
 			</object>
@@ -1475,7 +1477,7 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{100, 100}</string>
 				<string>{112, 114}</string>
-				<string>{640, 162}</string>
+				<string>{16, 16}</string>
 				<string>{16, 16}</string>
 				<string>{660, 660}</string>
 			</object>
