@@ -188,6 +188,7 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEgMAA</bytes>
 								</object>
+								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -262,9 +263,8 @@
 								<reference key="NSSuperview" ref="35415930"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="891647083"/>
-								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<bool key="IBUIEnabled">NO</bool>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<double key="IBUIContentEdgeInsets.top">-15</double>
@@ -306,8 +306,8 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="683154811"/>
 								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<bool key="IBUIEnabled">NO</bool>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<double key="IBUIContentEdgeInsets.top">-15</double>
@@ -1477,8 +1477,8 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{100, 100}</string>
 				<string>{112, 114}</string>
-				<string>{16, 16}</string>
-				<string>{16, 16}</string>
+				<string>{320, 81}</string>
+				<string>{68, 41}</string>
 				<string>{660, 660}</string>
 			</object>
 		</object>
