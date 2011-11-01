@@ -81,7 +81,7 @@
 
 -(void) setUser:(NSDictionary *)user {
   _user = user;
-  NSString *name = [user objectForKey:@"display_name"];
+  NSString *name = [user objectForKey:@"name"];
   NSNumber *followingCount = [user objectForKey:@"following_count"];
   NSNumber *followersCount = [user objectForKey:@"follower_count"];
   NSNumber *photosCount = [user objectForKey:@"post_count"];

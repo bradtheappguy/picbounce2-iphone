@@ -120,7 +120,7 @@
 						<string key="NSFrame">{{53, 21}, {248, 21}}</string>
 						<reference key="NSSuperview" ref="201613342"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="18104591"/>
+						<reference key="NSNextKeyView" ref="104266852"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="115379723">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -156,7 +156,7 @@
 						<string key="NSFrame">{{50, 4}, {117, 21}}</string>
 						<reference key="NSSuperview" ref="201613342"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="999968042"/>
+						<reference key="NSNextKeyView" ref="18104591"/>
 						<reference key="IBUIBackgroundColor" ref="115379723"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -209,7 +209,7 @@
 						<string key="NSFrame">{{160, 6}, {13, 14}}</string>
 						<reference key="NSSuperview" ref="201613342"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="104266852"/>
+						<reference key="NSNextKeyView" ref="999968042"/>
 						<string key="NSReuseIdentifierKey">_NS:551</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -838,6 +838,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>a_DefaultView</string>
 							<string>avatarIcon</string>
 							<string>badgesCountLabel</string>
 							<string>cell</string>
@@ -858,6 +859,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIView</string>
 							<string>EGOImageView</string>
 							<string>UILabel</string>
 							<string>PBPhotoCell</string>
@@ -881,6 +883,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>a_DefaultView</string>
 							<string>avatarIcon</string>
 							<string>badgesCountLabel</string>
 							<string>cell</string>
@@ -901,6 +904,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">a_DefaultView</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">avatarIcon</string>
 								<string key="candidateClassName">EGOImageView</string>

@@ -155,7 +155,7 @@
 
 -(NSString *) usernameForPersonAtIndex:(NSUInteger) index {
   NSDictionary *person = [self personAtIndex:index];
-  id name =  [person objectForKeyNotNull:@"display_name"];
+  id name =  [person objectForKeyNotNull:@"name"];
   return name;
 }
 
