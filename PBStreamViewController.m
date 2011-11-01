@@ -62,8 +62,9 @@
     
     UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     emptyView.tag = 12;
-    emptyView.backgroundColor = [UIColor clearColor];
-    emptyView.image = [UIImage imageNamed:@"placeholder_image@2x.png"];
+  emptyView.backgroundColor = [UIColor colorWithRed:240/255.0 green:237/255.0 blue:235/255.05 alpha:1];
+    emptyView.image = [UIImage imageNamed:@"ico_feed_empty.png"];
+  emptyView.contentMode = UIViewContentModeCenter;
     [a_EmptyStateView addSubview:emptyView];
     [emptyView release];
     

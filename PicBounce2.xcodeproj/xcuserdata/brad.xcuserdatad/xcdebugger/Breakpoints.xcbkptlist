@@ -196,8 +196,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "32"
          endingLineNumber = "32"
-         landmarkName = "-flagPhotoRequestDidFail:"
-         landmarkType = "5">
+         landmarkName = "@implementation PBAPI"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"

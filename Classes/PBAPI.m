@@ -28,7 +28,7 @@
   [request startAsynchronous];
 }
 
--(void) flagPhotx`  oRequestDidFail:(ASIHTTPRequest *)request {
+-(void) flagPhotoRequestDidFail:(ASIHTTPRequest *)request {
     NSLog(@" ");
 }
 
