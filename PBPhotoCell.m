@@ -13,6 +13,7 @@
 #import "NSDictionary+NotNull.h"
 #import "NSString+SBJSON.h"
 #import "PBStreamViewController.h"
+#import "PBAPI.h"
 
 //#define PhotoCellHeight 363
 //#define PhotoCellHeight 385
@@ -50,7 +51,7 @@
     pos  += [name length];
     [comment appendString:@" "];
     pos++;
-    [comment appendString:text];
+    [comment appendString:text];    
     [comment appendString:@"\n"];
     pos += [text length] + 1;
   }
@@ -271,12 +272,16 @@
   actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
   [actionSheet showFromTabBar:tableViewController.tabBarController.tabBar];
   [actionSheet release];
-  
 }
 
 #pragma mark UIACtionSheetDelegate 
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{} // before animation and hiding view
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{}  // after animation
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+  if (buttonIndex == 0) {
+    NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+    [[PBAPI sharedAPI] flagPhotoWithID:photoID];
+  }
+}  // after animation
 
 #pragma mark OHAtt
 -(BOOL)attributedLabel:(OHAttributedLabel*)attributedLabel shouldFollowLink:(NSTextCheckingResult*)linkInfo {

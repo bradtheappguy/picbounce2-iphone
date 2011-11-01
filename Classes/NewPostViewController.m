@@ -64,7 +64,7 @@
     [self.view bringSubviewToFront:a_FacebookButton];
     [a_FacebookButton release];
    
-    TwitterButton *a_TwitterButton = [[TwitterButton alloc] initWithPosition:CGPointMake(79, 164+44)];
+    a_TwitterButton = [[TwitterButton alloc] initWithPosition:CGPointMake(79, 164+44)];
     
    
     a_TwitterButton.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];
@@ -186,10 +186,11 @@
 
 #pragma mark New Post Upload to Server 
 - (void)postOnServer {
-  [[PBUploadQueue sharedQueue] uploadText:a_PostTextView.text];
+  [[PBUploadQueue sharedQueue] uploadText:a_PostTextView.text 
+                     crossPostingToTwitter:a_TwitterButton.selected 
+                    crossPostingToFacebook:NO];
   [[(AppDelegate *)[[UIApplication sharedApplication] delegate] tabBarController] setSelectedIndex:2];
   [self dismissModalViewControllerAnimated:YES];
- 
 }
 
 

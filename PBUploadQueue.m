@@ -7,6 +7,7 @@
 //
 
 #import "PBUploadQueue.h"
+#import "PBPost.h"
 
 @implementation PBUploadQueue
 
@@ -35,8 +36,14 @@
   [x release];
 }
 
--(void) uploadText:(NSString *)text {
+-(void) uploadText:(NSString *)text 
+crossPostingToTwitter:(BOOL)shouldCrossPostToTwitter
+crossPostingToFacebook:(BOOL)shouldCrossPostToFacebook {
+  
   PBPost *x = [[PBPost alloc] initWithText:text];
+  x.shouldCrossPostToTwitter = shouldCrossPostToTwitter;
+  x.shouldCrossPostToFacebook = shouldCrossPostToFacebook;
+  
   [x addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
   [images addObject:x];
   self.count = images.count;

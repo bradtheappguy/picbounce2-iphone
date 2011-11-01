@@ -42,6 +42,9 @@
 @synthesize uploadSucceded;
 @synthesize uploadProgress;
 
+@synthesize shouldCrossPostToTwitter;
+@synthesize shouldCrossPostToFacebook;
+
 @synthesize image = _image;
 @synthesize text = _text;
 
@@ -82,6 +85,12 @@
     [postRequest setPostValue:@"photo" forKey:@"media_type"];
     [postRequest setPostValue:originURL forKey:@"origin_url"];
   }
+  if (self.shouldCrossPostToTwitter) {
+    [postRequest setPostValue:@"1" forKey:@"twitter_crosspost"];
+  }
+  if (self.shouldCrossPostToFacebook) {
+    [postRequest setPostValue:@"1" forKey:@"facebook_crosspost"];
+  }
   if (self.text) {
     [postRequest setPostValue:self.text forKey:@"text"];
   }
@@ -113,7 +122,9 @@
   }
 }
 
-
+-(void) startUpload {
+  [self retry];
+}
 
 -(void) retry {
   if (self.image) {
