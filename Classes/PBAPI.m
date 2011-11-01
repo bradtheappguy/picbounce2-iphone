@@ -19,21 +19,26 @@
 
 
 -(void) flagPhotoWithID:(NSString *)photoID {
-  NSString *urlString = [NSString stringWithFormat:@"http://%@/posts/%@/flags",API_BASE,photoID];
+  NSString *urlString = [NSString stringWithFormat:@"http://%@/api/posts/%@/flags",API_BASE,photoID];
   PBHTTPRequest *request = [[PBHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
   [request setRequestMethod:@"POST"];
   [request setDelegate:self];
-  [request setDidFinishSelector:@selector(flagPhotoRequestDidFail:)];
-  [request setDidFailSelector:@selector(flagPhotoRequestDidFinish:)];
+  [request setDidFinishSelector:@selector(flagPhotoRequestDidFinish:)];
+  [request setDidFailSelector:@selector(flagPhotoRequestDidFail:)];
   [request startAsynchronous];
 }
 
 -(void) flagPhotoRequestDidFail:(ASIHTTPRequest *)request {
-    NSLog(@" ");
+  NSLog(@"Failed");
 }
 
 - (void) flagPhotoRequestDidFinish:(ASIHTTPRequest *)request {
-  NSLog(@" ");
+  if ([request responseStatusCode] != 201) {
+    [self flagPhotoRequestDidFail:request];
+  }
+  else {
+    NSLog(@"Flagged");
+  }
 }
 
 -(void) deletePhotoWithID:(NSString *)photoID {
