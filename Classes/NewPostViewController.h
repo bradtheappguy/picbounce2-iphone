@@ -9,16 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
 #import "PBNavigationBar.h"
+#import "TwitterButton.h"
 
 @interface NewPostViewController : UIViewController < UITextViewDelegate, FBSessionDelegate, FBDialogDelegate >{
     IBOutlet UITextView *a_PostTextView;
     Facebook *_facebook;
     IBOutlet UIView *optionButtonView;
     IBOutlet PBNavigationBar *navBar;
+  TwitterButton *a_TwitterButton;
 }
+
 @property (nonatomic, assign) BOOL isCaptionView;
-- (IBAction)facebookButtonClicked:(id)sender;
-- (IBAction)twitterButtonClicked:(id)sender;
 - (IBAction)optionButtonClicked:(id)sender;
 - (IBAction)dismissModalViewControllerAnimated;
 @end

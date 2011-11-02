@@ -120,62 +120,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/PBFollowButton.m"
-         timestampString = "341433849.372599"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "205"
-         endingLineNumber = "205"
-         landmarkName = "-userWasUnfollowed:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/PBFollowButton.m"
-         timestampString = "341433849.372599"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "209"
-         endingLineNumber = "209"
-         landmarkName = "-userWasUnfollowed:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/NewPostViewController.m"
-         timestampString = "341557938.832684"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "239"
-         endingLineNumber = "239"
-         landmarkName = "@implementation NewPostViewController"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/NewPostViewController.m"
-         timestampString = "341557938.832684"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "235"
-         endingLineNumber = "235"
-         landmarkName = "@implementation NewPostViewController"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "PBPhoto.m"
          timestampString = "341553434.386791"
          startingColumnNumber = "9223372036854775807"
@@ -183,20 +127,6 @@
          startingLineNumber = "135"
          endingLineNumber = "135"
          landmarkName = "-uploadDidFinish:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/PBRootViewController.m"
-         timestampString = "341576140.443638"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "175"
-         endingLineNumber = "175"
-         landmarkName = "-loadMoreFromNetwork"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -218,13 +148,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/PBCommentListViewController.m"
-         timestampString = "341632557.34022"
+         filePath = "Classes/PBPost.m"
+         timestampString = "341790655.358072"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "262"
-         endingLineNumber = "262"
-         landmarkName = "-postCommentRequestDidFail:"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
+         landmarkName = "-postToServer"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -232,13 +162,27 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/PBCommentListViewController.m"
-         timestampString = "341632557.34022"
+         filePath = "Classes/PBAPI.m"
+         timestampString = "341873054.715561"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "267"
-         endingLineNumber = "267"
-         landmarkName = "-postCommentRequestDidFinish:"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
+         landmarkName = "-addDelegate:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBAPI.m"
+         timestampString = "341873054.715561"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "36"
+         endingLineNumber = "36"
+         landmarkName = "-flagPhotoWithID:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

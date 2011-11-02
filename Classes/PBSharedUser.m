@@ -18,4 +18,20 @@
   [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"USER_ID"];
 }
 
++ (BOOL) shouldCrosspostToFB {
+  return [[NSUserDefaults standardUserDefaults] boolForKey:@"CROSSPOST_FB"];
+}
+
++ (void) setShouldCrosspostToFB:(BOOL)should {
+  [[NSUserDefaults standardUserDefaults] setBool:should forKey:@"CROSSPOST_FB"];
+}
+
++ (BOOL) shouldCrosspostToTW {
+  return [[NSUserDefaults standardUserDefaults] boolForKey:@"CROSSPOST_TW"];
+}
+
++ (void) setShouldCrosspostToTW:(BOOL)should {
+  [[NSUserDefaults standardUserDefaults] setBool:should forKey:@"CROSSPOST_TW"];
+}
+
 @end

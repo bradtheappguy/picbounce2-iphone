@@ -19,7 +19,9 @@
 
 + (id)sharedQueue;
 -(void) uploadImage:(UIImage *)image;
--(void) uploadText:(NSString *)text;
+-(void) uploadText:(NSString *)text 
+crossPostingToTwitter:(BOOL)shouldCrossPostToTwitter
+crossPostingToFacebook:(BOOL)shouldCrossPostToFacebook;
 -(NSUInteger) count;
 -(PBPost *) photoAtIndex:(NSUInteger)index;
 

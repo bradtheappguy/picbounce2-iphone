@@ -11,6 +11,7 @@
 #import "PBHTTPRequest.h"
 #import "NSString+SBJSON.h"
 #import "NSDictionary+NotNull.h"
+#import "PBAPI.h"
 
 @implementation PBCommentListViewController
 @synthesize url = _url;
@@ -21,7 +22,6 @@
 @synthesize progressHUD = _progressHUD;
 @synthesize postCommentRequest;
 @synthesize getCommentsRequest;
-@synthesize customNavigationBar;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -49,8 +49,8 @@
 
 	self.navigationController.title = @"Comments";
 	//[self.navigationController.navigationBar setItems:[NSArray arrayWithObjects:previousItem, nil]];
-  
-  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWasFollowedNotificationReceived:) name:PBAPIUserWasFollowedNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWasUnfollowedNotificationReceived:) name:PBAPIUserWasUnfollowedNotification object:nil];  
 }
 
 
@@ -296,6 +296,24 @@
   }
   self.getCommentsRequest = nil;
 }
+
+#pragma mark -
+#pragma mark
+
+ 
+-(void) userWasFollowedNotificationReceived:(NSNotification *)notification {
+  NSDictionary *userInfo = [notification userInfo];
+  NSString *senderUserID = [[[userInfo objectForKey:@"user"] objectForKey:@"id"] stringValue];
+  for (NSDictionary *comment in self.comments) {
+    NSLog(@"comment %@",comment);
+  }
+}
+ 
+-(void) userWasunFollowedNotificationReceived:(NSNotification *)notification {
+  NSDictionary *user = [notification userInfo];
+  NSLog(@" %@",user);
+}
+
 
 
 

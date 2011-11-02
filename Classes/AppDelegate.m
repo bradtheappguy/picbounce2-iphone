@@ -24,7 +24,7 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
 @synthesize authToken = _authToken;
-
+@synthesize currentController = _currentController;
 
 -(void) setAuthToken:(NSString *)authToken {
   [[NSUserDefaults standardUserDefaults] setObject:authToken forKey:kAuthTokenPersistanceKey];
@@ -41,9 +41,28 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   return _authToken;
 }
 
--(void) presentLoginViewController {
-  loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];  
-  [self.tabBarController presentModalViewController:loginViewController animated:YES];
+-(void) setCurrentViewController:(UIViewController *)currentController {
+  _currentController = currentController;
+  [_currentController retain];
+}
+
+
+-(UIViewController *) currentViewController {
+  return _currentController;
+}
+
+-(void) presentLoginViewController:(BOOL)useCameraViewController {
+  loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];
+  if (useCameraViewController == YES)
+  {
+   [self.currentController presentModalViewController:loginViewController animated:YES];
+    usingCameraView = YES;
+  }
+  else
+  {
+    [self.tabBarController presentModalViewController:loginViewController animated:YES];
+    usingCameraView = NO;
+  }
   [loginViewController release];
 }
 
@@ -70,7 +89,8 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   [self.window makeKeyAndVisible];
     
   if ([self authToken] == nil) {
-    [self presentLoginViewController];
+    [self setCurrentController:self];
+    [self presentLoginViewController:NO];
   }
   return YES;
 }
@@ -183,7 +203,10 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
 }
 
 -(void) xxx {
-   [self.tabBarController dismissModalViewControllerAnimated:YES];
+  if (usingCameraView == YES)
+   [self.currentController dismissModalViewControllerAnimated:YES];
+  else
+    [self.tabBarController dismissModalViewControllerAnimated:YES];
 }
 
 -(void) userDidLogin:(id)dender {

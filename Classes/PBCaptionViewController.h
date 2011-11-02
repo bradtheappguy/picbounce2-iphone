@@ -9,14 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
 #import "PBNavigationBar.h"
+#import "ModalDismissDelegate.h"
+
 
 @interface PBCaptionViewController : UIViewController < UITextViewDelegate, FBSessionDelegate, FBDialogDelegate >{
-    IBOutlet UITextView *a_PostTextView;
-    Facebook *_facebook;
-    IBOutlet UIView *optionButtonView;
-    IBOutlet PBNavigationBar *navBar;
+  IBOutlet UITextView *a_PostTextView;
+  Facebook *_facebook;
+  IBOutlet UIView *optionButtonView;
+  IBOutlet PBNavigationBar *navBar;
+  id<ModalDismissDelegate> delegate;
+  
 }
 @property (nonatomic, assign) BOOL isCaptionView;
+@property (nonatomic, assign) id<ModalDismissDelegate> delegate;
 - (IBAction)facebookButtonClicked:(id)sender;
 - (IBAction)twitterButtonClicked:(id)sender;
 - (IBAction)optionButtonClicked:(id)sender;

@@ -48,22 +48,61 @@
 @synthesize followingCountLabel;
 @synthesize badgesCountLabel;
 
-
+- (UIView *)createDefaultView {
+   
+    UIView *a_EmptyStateView; 
+    if (self.tabBarController.selectedIndex == 2) {
+        a_EmptyStateView = [[UIView alloc] initWithFrame:CGRectMake(0,_profileHeader.frame.size.height +5, self.view.bounds.size.width, self.view.bounds.size.height)];
+    }else
+    a_EmptyStateView = [[UIView alloc] initWithFrame:CGRectMake(0,5 , self.view.bounds.size.width, self.view.bounds.size.height)];
+    a_EmptyStateView.tag = -37;
+    a_EmptyStateView.layer.masksToBounds = YES;
+    a_EmptyStateView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:a_EmptyStateView];
+    self.tableView.scrollEnabled = NO;
+    
+    UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    emptyView.tag = 12;
+  emptyView.backgroundColor = [UIColor colorWithRed:240/255.0 green:237/255.0 blue:235/255.05 alpha:1];
+    emptyView.image = [UIImage imageNamed:@"ico_feed_empty.png"];
+  emptyView.contentMode = UIViewContentModeCenter;
+    [a_EmptyStateView addSubview:emptyView];
+    [emptyView release];
+    
+    
+    UILabel *a_DefaultViewNameLabel = [[UILabel alloc]initWithFrame: CGRectMake(26, 77, 268, 32)];
+    a_DefaultViewNameLabel.text = [NSString stringWithFormat:@"Welcome, %@",self.navigationItem.title];
+    a_DefaultViewNameLabel.backgroundColor = [UIColor clearColor];
+    a_DefaultViewNameLabel.textAlignment = UITextAlignmentCenter;
+    a_DefaultViewNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:26];
+    a_DefaultViewNameLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
+    [a_EmptyStateView addSubview:a_DefaultViewNameLabel];
+    [a_DefaultViewNameLabel release];
+    
+    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(93, 247, 135, 58)];
+    a_DefaultViewNameLabel1.numberOfLines = 2;
+    a_DefaultViewNameLabel1.text = @"Snap a photo   to start sharing!";
+    a_DefaultViewNameLabel1.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
+    a_DefaultViewNameLabel1.backgroundColor = [UIColor clearColor];
+    a_DefaultViewNameLabel1.textAlignment = UITextAlignmentCenter;
+    a_DefaultViewNameLabel1.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+    [a_EmptyStateView addSubview:a_DefaultViewNameLabel1];
+    [a_DefaultViewNameLabel1 release];
+    return [a_EmptyStateView autorelease];
+}
 -(void) showEmptyState {
-  return;
-  
-  UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-  emptyView.tag = 12;
-  emptyView.backgroundColor = [UIColor redColor];
-  emptyView.image = [UIImage imageNamed:@""];
-  [self.view addSubview:emptyView];
-  self.tableView.scrollEnabled = NO;
+
+    [self.tableView addSubview:[self createDefaultView]]; 
+    self.tableView.scrollEnabled = NO;
 }
 
 
 -(void) hideEmptyState {
-  [[self.view viewWithTag:12] removeFromSuperview];
-  self.tableView.scrollEnabled = YES;
+       
+        [[self.view viewWithTag:-37] removeFromSuperview];
+        //[self.tableView addSubview:[self createDefaultView]];
+    
+    self.tableView.scrollEnabled = YES;
 }
 
 - (void) reload {
@@ -92,6 +131,15 @@
     [self hideEmptyState];
   }
   [self configureNavigationBar];
+  
+  if ([self.responseData loadMoreDataURL]) {
+    [footerView setBottomReachedIndicatorHidden:YES];
+    [footerView startLoadingAnimation];
+  }
+  else {
+    [footerView setBottomReachedIndicatorHidden:NO];
+    [footerView stopLoadingAnimation];
+  }
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {  
@@ -118,10 +166,10 @@
  [Utilities customizeNavigationController:self.navigationController];
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
 
-    //self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    self.navigationItem.rightBarButtonItem = leftBarButtonItem;
     [leftBarButtonItem release];
     
-  if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
+/*  if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
     UIBarButtonItem *logoutButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
     self.navigationItem.rightBarButtonItem = logoutButton;
     [logoutButton release];
@@ -132,7 +180,7 @@
     self.navigationItem.leftBarButtonItem = loginButton;
     [loginButton release];
     self.navigationItem.rightBarButtonItem = nil;
-  }
+  }*/
   
   //self.navigationItem.title = @"FOOBAR";
   //self.title = @"BATFIZ";
@@ -225,9 +273,6 @@
   if (self.shouldShowUplodingItems) {
     nSections += nUploading;
   }
-  if ([self moreDataAvailable]) {
-    nSections += 1;
-  }
   return nSections;
 }
 
@@ -279,21 +324,11 @@
 
 #pragma mark Cells and Headers
 //Load more 
-- (UIView *) footerViewForTable:(UITableView *)tableView {
-  UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
-  footerView.backgroundColor = [UIColor clearColor];
-  loadingMoreActivityIndicatiorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-  loadingMoreActivityIndicatiorView.frame = CGRectMake(0, 0, 20, 20);
-  loadingMoreActivityIndicatiorView.hidesWhenStopped = YES;
-  [loadingMoreActivityIndicatiorView stopAnimating];
-  footerDecoration = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hr_end.png"]] autorelease]; 
-  footerDecoration.hidden = YES;
-  footerDecoration.contentMode = UIViewContentModeTop;
-  footerDecoration.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 40);
-  loadingMoreActivityIndicatiorView.center = CGPointMake( footerView.center.x ,  footerView.center.y - 10);
-  [footerView addSubview:footerDecoration];
-  [footerView addSubview:loadingMoreActivityIndicatiorView];
-  return [footerView autorelease];
+- (PBLoadMoreTablewViewFooter *) footerViewForTable:(UITableView *)tableView {
+  if (!footerView) {
+    footerView = [[PBLoadMoreTablewViewFooter alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 70)];
+  }
+  return footerView;
 }
 
 
@@ -384,16 +419,13 @@
 }
 
 -(void) loadMoreData {
-  footerDecoration.hidden = YES;
-  [loadingMoreActivityIndicatiorView startAnimating];
-  //loadMoreDataURL = [responseData loadMoreDataURL];
+  [footerView startLoadingAnimation];
+  [footerView setBottomReachedIndicatorHidden:YES];
   [self loadMoreFromNetwork];
-  //[self performSelector:@selector(moreDataDidLoad) withObject:nil afterDelay:8.0];
 }
 
 -(void) moreDataDidLoad {
-  [loadingMoreActivityIndicatiorView stopAnimating];
-  footerDecoration.hidden = NO;
+
 }
 
 
@@ -447,17 +479,6 @@
   }
 }
 
--(IBAction) followingButtonPressed { 
-  NSString *followingURL = [self.responseData followingURL];
-  if (followingURL) {
-    PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
-    vc.title = @"Following";
-    vc.baseURL = followingURL;
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release]; 
-  }
-}
-
 -(IBAction) followersButtonPressed {
   NSString *followersURL = [self.responseData followersURL];
   if (followersURL) {
@@ -488,7 +509,8 @@
 
 
 -(IBAction) loginButtonPressed:(id)sender {
-  [(AppDelegate *)[[UIApplication sharedApplication] delegate] presentLoginViewController];
+  [(AppDelegate *)[[UIApplication sharedApplication] delegate] setCurrentController:self];
+  [(AppDelegate *)[[UIApplication sharedApplication] delegate] presentLoginViewController:NO];
 }
 
 

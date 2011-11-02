@@ -104,7 +104,9 @@
   [parser release];
   
   
-  loadMoreDataURL = nil;
+  
+  loadMoreDataURL = [NSURL URLWithString: [[[(NSDictionary *)self.data objectForKey:@"response"] objectForKey:@"posts"] objectForKey:@"next"]];
+  [loadMoreDataURL retain];
   /* 
    if ([[data class] isSubclassOfClass:[NSDictionary class]]) {
    if ([data objectForKey:@"user"]) {
@@ -173,12 +175,15 @@
 
 - (void)loadMoreFromNetwork {
   NSLog(@"\n");
+  loadMoreDataURL = [self.responseData loadMoreDataURL];
   NSLog(@"Loading More: %@",loadMoreDataURL);
   if (!loadMoreDataURL) {
     NSLog(@"Error: load more url not set");
     //[self doneLoadingTableViewDataFromNetwork:nil];
     return;
   }
+  
+  
   
   request = [ASIHTTPRequest requestWithURL:loadMoreDataURL
                                 usingCache:[ASIDownloadCache sharedCache]

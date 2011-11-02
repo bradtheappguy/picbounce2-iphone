@@ -10,6 +10,7 @@
 #import "NSDictionary+NotNull.h"
 #import "PBSharedUser.h"
 #import "PBProgressHUD.h"
+#import "PBAPI.h"
 
 @interface PBFollowButton (private)
 -(void) setMode:(PBFollowButtonMode)mode;
@@ -38,15 +39,14 @@
   spinner.hidesWhenStopped = YES;
   spinner.center = self.center;
   [spinner stopAnimating];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWasFollowed:) name:@"USER_WAS_FOLLOWED" object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWasUnfollowed:) name:@"USER_WAS_UNFOLLOWED" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWasFollowed:) name:PBAPIUserWasFollowedNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWasUnfollowed:) name:PBAPIUserWasUnfollowedNotification object:nil];
 }
-
 
 -(void) dealloc {
   [_followingRequest setDelegate:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"USER_WAS_FOLLOWED" object:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"USER_WAS_UNFOLLOWED" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:PBAPIUserWasFollowedNotification object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:PBAPIUserWasUnfollowedNotification object:nil];
   [super dealloc];
 }
 
@@ -96,8 +96,7 @@
 
 - (void) showUnfollowConfimationActionSheet {
   UIActionSheet *actionSheet =[[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Unfollow" otherButtonTitles:nil];
-  UIView *view = [self.viewController view];
-  [actionSheet showInView:view];
+  [actionSheet showFromTabBar:self.viewController.tabBarController.tabBar];
   [actionSheet release];
 }
 
@@ -167,7 +166,7 @@
 
 -(void) followRequestDidFinish:(PBHTTPRequest *)request {
   NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.user forKey:@"user"];
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_WAS_FOLLOWED" object:[self.user objectForKey:@"id"] userInfo:userInfo];
+  [[NSNotificationCenter defaultCenter] postNotificationName:PBAPIUserWasFollowedNotification object:[self.user objectForKey:@"id"] userInfo:userInfo];
 }
 
 
@@ -179,7 +178,7 @@
 
 -(void) unfollowRequestDidFinish:(PBHTTPRequest *)request {
   NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.user forKey:@"user"];
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_WAS_UNFOLLOWED" object:[self.user objectForKey:@"id"] userInfo:userInfo];
+  [[NSNotificationCenter defaultCenter] postNotificationName:PBAPIUserWasUnfollowedNotification object:[self.user objectForKey:@"id"] userInfo:userInfo];
 }
 
 

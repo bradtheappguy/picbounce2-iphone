@@ -15,6 +15,9 @@
 @property (readwrite) BOOL uploadSucceded;
 @property (readwrite) CGFloat uploadProgress;
 
+@property (readwrite) BOOL shouldCrossPostToTwitter;
+@property (readwrite) BOOL shouldCrossPostToFacebook;
+
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) NSString *text;
 

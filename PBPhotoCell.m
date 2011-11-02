@@ -13,6 +13,7 @@
 #import "NSDictionary+NotNull.h"
 #import "NSString+SBJSON.h"
 #import "PBStreamViewController.h"
+#import "PBAPI.h"
 
 //#define PhotoCellHeight 363
 //#define PhotoCellHeight 385
@@ -50,7 +51,7 @@
     pos  += [name length];
     [comment appendString:@" "];
     pos++;
-    [comment appendString:text];
+    [comment appendString:text];    
     [comment appendString:@"\n"];
     pos += [text length] + 1;
   }
@@ -74,11 +75,12 @@
 +(CGSize) sizeForCommentViewWithComments:(NSArray *)comments {
   NSAttributedString *attString = [PBPhotoCell attributedStringForComments:comments withString:nil];
   OHAttributedLabel *label = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
-  label.linkColor = [UIColor blueColor];
+  label.linkColor = [UIColor blackColor];
   label.font = [UIFont systemFontOfSize:14];
   label.textColor = [UIColor darkGrayColor];
   label.lineBreakMode = UILineBreakModeWordWrap;
   label.numberOfLines = 0;
+  label.underlineLinks = NO;
   [label setAttributedText:attString];  
   //CGFloat height = 100.0f;
   CGSize size = [label sizeThatFits:CGSizeMake(300, 1000)];
@@ -149,7 +151,7 @@
 -(void) setComments:(NSArray *)comments {
   NSMutableAttributedString *attString = [PBPhotoCell attributedStringForComments:comments withString:nil];
   OHAttributedLabel *label = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
-  label.linkColor = [UIColor blueColor];
+  label.linkColor = [UIColor blackColor];
   label.backgroundColor = [UIColor clearColor];
   int pos = 0;
   self.commentPreview = label;
@@ -158,6 +160,7 @@
   label.textColor = [UIColor darkGrayColor];
   label.lineBreakMode = UILineBreakModeWordWrap;
   label.numberOfLines = 0;
+  label.underlineLinks = NO;
   label.delegate = self;
   [label setAttributedText:attString];
   
@@ -207,8 +210,6 @@
     self.photoImageView.imageURL = [NSURL URLWithString:mediaURL];
   }
   
-  commentsCount = 1000;
-  
   self.commentCountLabel.text = [NSString stringWithFormat:@"%d",commentsCount];
   CGSize commentCountLabelSize = [self.commentCountLabel.text sizeWithFont:self.commentCountLabel.font];
   self.commentCountLabel.frame = CGRectMake(self.commentCountLabel.frame.origin.x, 
@@ -227,6 +228,10 @@
   self.captionLabel.numberOfLines = 0;
   self.captionLabel.lineBreakMode = UILineBreakModeWordWrap;
   self.captionLabel.text = caption;
+  CGSize captionSize = [PBPhotoCell sizeForCaptionWithString:caption];
+  self.captionLabel.frame = CGRectMake(self.captionLabel.frame.origin.x,
+                                       self.captionLabel.frame.origin.y, 
+                                       captionSize.width, captionSize.height);
   
   if ([mediaType isEqualToString:@"photo"]) {
     self.photoImageView.frame = CGRectMake(10, self.captionLabel.frame.size.height, 300, 300);
@@ -267,12 +272,16 @@
   actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
   [actionSheet showFromTabBar:tableViewController.tabBarController.tabBar];
   [actionSheet release];
-  
 }
 
 #pragma mark UIACtionSheetDelegate 
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{} // before animation and hiding view
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{}  // after animation
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+  if (buttonIndex == 0) {
+    NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+    [[PBAPI sharedAPI] flagPhotoWithID:photoID];
+  }
+}  // after animation
 
 #pragma mark OHAtt
 -(BOOL)attributedLabel:(OHAttributedLabel*)attributedLabel shouldFollowLink:(NSTextCheckingResult*)linkInfo {

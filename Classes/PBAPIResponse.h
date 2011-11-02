@@ -16,8 +16,10 @@
   NSMutableArray *posts;
   NSMutableArray *people;
   NSString *url;
-  NSString *next;
+
 }
+
+@property (nonatomic, retain)   NSString *next;
 
 - (BOOL) validate:(id)data;
 -(NSDictionary *) personAtIndex:(NSUInteger) index;
@@ -37,4 +39,5 @@
 - (NSString *) followingURL;
 - (NSDictionary *) user;
 - (NSArray *) people;
+
 @end

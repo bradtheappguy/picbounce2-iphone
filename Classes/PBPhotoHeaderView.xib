@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">11C74</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
 		<string key="IBDocument.AppKitVersion">1138.23</string>
 		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">931</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -61,7 +61,7 @@
 					<object class="IBUILabel" id="104266852">
 						<reference key="NSNextResponder" ref="201613342"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{226, 4}, {74, 23}}</string>
+						<string key="NSFrame">{{237, 4}, {74, 23}}</string>
 						<reference key="NSSuperview" ref="201613342"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="711562993"/>
@@ -130,7 +130,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Las Vegas, NV</string>
+						<string key="IBUIText">1000 Views</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4yIDAuMiAwLjIAA</bytes>
@@ -191,7 +191,7 @@
 					<object class="IBUIImageView" id="711562993">
 						<reference key="NSNextResponder" ref="201613342"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{302, 11}, {10, 12}}</string>
+						<string key="NSFrame">{{237, 10}, {10, 12}}</string>
 						<reference key="NSSuperview" ref="201613342"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -206,7 +206,7 @@
 					<object class="IBUIImageView" id="18104591">
 						<reference key="NSNextResponder" ref="201613342"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{167, 10}, {9, 11}}</string>
+						<string key="NSFrame">{{160, 6}, {13, 14}}</string>
 						<reference key="NSSuperview" ref="201613342"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="999968042"/>
@@ -215,7 +215,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">ico_place.png</string>
+							<string key="NSResourceName">ico_verified@2x.png</string>
 						</object>
 					</object>
 				</object>
@@ -284,6 +284,14 @@
 						<reference key="destination" ref="999968042"/>
 					</object>
 					<int key="connectionID">59</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">verifiedIcon</string>
+						<reference key="source" ref="201613342"/>
+						<reference key="destination" ref="18104591"/>
+					</object>
+					<int key="connectionID">60</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -424,7 +432,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">59</int>
+			<int key="maxID">60</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -435,6 +443,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/EGOImageView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">PBFollowButton</string>
+					<string key="superclassName">UIButton</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/PBFollowButton.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -476,87 +492,66 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>bounceButton</string>
-							<string>bounceCountLabel</string>
+							<string>actionBar</string>
+							<string>captionLabel</string>
+							<string>commentCountIcon</string>
 							<string>commentCountLabel</string>
-							<string>commentLabel</string>
-							<string>hashTagCountLabel</string>
+							<string>commentPreview</string>
 							<string>leaveCommentButton</string>
-							<string>likeCountLabel</string>
-							<string>personCountLabel</string>
 							<string>photoImageView</string>
-							<string>viewCountLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIView</string>
+							<string>UILabel</string>
+							<string>UIImageView</string>
+							<string>UILabel</string>
+							<string>id</string>
 							<string>UIButton</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UIButton</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
 							<string>EGOImageView</string>
-							<string>UILabel</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>bounceButton</string>
-							<string>bounceCountLabel</string>
+							<string>actionBar</string>
+							<string>captionLabel</string>
+							<string>commentCountIcon</string>
 							<string>commentCountLabel</string>
-							<string>commentLabel</string>
-							<string>hashTagCountLabel</string>
+							<string>commentPreview</string>
 							<string>leaveCommentButton</string>
-							<string>likeCountLabel</string>
-							<string>personCountLabel</string>
 							<string>photoImageView</string>
-							<string>viewCountLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">bounceButton</string>
-								<string key="candidateClassName">UIButton</string>
+								<string key="name">actionBar</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">bounceCountLabel</string>
+								<string key="name">captionLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">commentCountIcon</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">commentCountLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">commentLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">hashTagCountLabel</string>
-								<string key="candidateClassName">UILabel</string>
+								<string key="name">commentPreview</string>
+								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">leaveCommentButton</string>
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">likeCountLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">personCountLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">photoImageView</string>
 								<string key="candidateClassName">EGOImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">viewCountLabel</string>
-								<string key="candidateClassName">UILabel</string>
 							</object>
 						</object>
 					</object>
@@ -576,6 +571,7 @@
 							<string>clockIcon</string>
 							<string>nameLabel</string>
 							<string>timeLabel</string>
+							<string>verifiedIcon</string>
 							<string>viewCountLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -584,6 +580,7 @@
 							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 						</object>
 					</object>
@@ -595,6 +592,7 @@
 							<string>clockIcon</string>
 							<string>nameLabel</string>
 							<string>timeLabel</string>
+							<string>verifiedIcon</string>
 							<string>viewCountLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -614,6 +612,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">timeLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">verifiedIcon</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">viewCountLabel</string>
@@ -698,7 +700,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>EGOImageView</string>
-							<string>UIButton</string>
+							<string>PBFollowButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UILabel</string>
@@ -728,7 +730,7 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">followButton</string>
-								<string key="candidateClassName">UIButton</string>
+								<string key="candidateClassName">PBFollowButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">followersCountButton</string>
@@ -836,6 +838,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>a_DefaultView</string>
 							<string>avatarIcon</string>
 							<string>badgesCountLabel</string>
 							<string>cell</string>
@@ -856,6 +859,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIView</string>
 							<string>EGOImageView</string>
 							<string>UILabel</string>
 							<string>PBPhotoCell</string>
@@ -879,6 +883,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>a_DefaultView</string>
 							<string>avatarIcon</string>
 							<string>badgesCountLabel</string>
 							<string>cell</string>
@@ -899,6 +904,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">a_DefaultView</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">avatarIcon</string>
 								<string key="candidateClassName">EGOImageView</string>
@@ -1009,19 +1018,19 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>avatar_holder.png</string>
 				<string>avatar_pHeader_stroke@2x.png</string>
-				<string>ico_place.png</string>
 				<string>ico_time@2x.png</string>
+				<string>ico_verified@2x.png</string>
 				<string>photo_header_bg@2x.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{100, 100}</string>
 				<string>{68, 70}</string>
-				<string>{16, 16}</string>
 				<string>{22, 24}</string>
+				<string>{26, 28}</string>
 				<string>{640, 86}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">931</string>
 	</data>
 </archive>

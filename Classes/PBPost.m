@@ -11,6 +11,7 @@
 #import "ASIS3ObjectRequest.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "AppDelegate.h"
+#import "PBHTTPRequest.h"
 
 @implementation NSData(MD5)
 
@@ -41,6 +42,9 @@
 @synthesize uploadSucceded;
 @synthesize uploadProgress;
 
+@synthesize shouldCrossPostToTwitter;
+@synthesize shouldCrossPostToFacebook;
+
 @synthesize image = _image;
 @synthesize text = _text;
 
@@ -67,8 +71,8 @@
  
 -(void) postToServer {
   NSString *authToken = [(AppDelegate *) [[UIApplication sharedApplication] delegate] authToken];
-  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts?auth_token=%@",API_BASE,authToken]];
-  ASIFormDataRequest *postRequest = [[ASIFormDataRequest alloc] initWithURL:url];
+  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts",API_BASE,authToken]];
+  ASIFormDataRequest *postRequest = [PBHTTPRequest formDataRequestWithURL:url];
   [postRequest setShowAccurateProgress:YES];
   [postRequest setUploadProgressDelegate:self];
   [postRequest setRequestMethod:@"POST"];
@@ -77,8 +81,15 @@
   if (self.image) {
     NSData *jpegData = UIImageJPEGRepresentation(self.image, 0.80);
     NSString *key = [jpegData MD5];
+    NSString *originURL = [NSString stringWithFormat:@"http://com.picbounce.incoming.s3.amazonaws.com/photos/%@.jpg",key];
     [postRequest setPostValue:@"photo" forKey:@"media_type"];
-    [postRequest setPostValue:key forKey:@"uuid"];
+    [postRequest setPostValue:originURL forKey:@"origin_url"];
+  }
+  if (self.shouldCrossPostToTwitter) {
+    [postRequest setPostValue:@"1" forKey:@"twitter_crosspost"];
+  }
+  if (self.shouldCrossPostToFacebook) {
+    [postRequest setPostValue:@"1" forKey:@"facebook_crosspost"];
   }
   if (self.text) {
     [postRequest setPostValue:self.text forKey:@"text"];
@@ -87,7 +98,6 @@
   [postRequest setDelegate:self];
   [postRequest setDidFinishSelector:@selector(uploadStep2DidFinish:)];
   [postRequest startAsynchronous];
-  [postRequest release];
 }
 
 
@@ -112,7 +122,9 @@
   }
 }
 
-
+-(void) startUpload {
+  [self retry];
+}
 
 -(void) retry {
   if (self.image) {
@@ -161,11 +173,16 @@
   [self postToServer];
 }
 
--(void) uploadStep2DidFinish:(id)sender {
-  self.uploadProgress = 1.0f;
-  self.uploadFailed = NO;
-  self.uploading = NO;
-  self.uploadSucceded = YES;
+-(void) uploadStep2DidFinish:(ASIHTTPRequest *)request {
+  if (!([request responseStatusCode] == 200 || [request responseStatusCode] == 201)) {
+    [self uploadDidFail:request];
+  }
+  else {
+    self.uploadProgress = 1.0f;
+    self.uploadFailed = NO;
+    self.uploading = NO;
+    self.uploadSucceded = YES;
+  }
 }
 
 -(void) dealloc {

@@ -41,6 +41,13 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  NSHTTPCookie *cookie;
+  NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+  for (cookie in [storage cookies]) {
+    [storage deleteCookie:cookie];
+  }
+  
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
   self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
   self.webView.backgroundColor = self.view.backgroundColor;

@@ -21,6 +21,7 @@
 #import "FacebookButton.h"
 @implementation PBCaptionViewController
 @synthesize isCaptionView;
+@synthesize delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -62,6 +63,7 @@
 
 - (IBAction)backBarButtonItemClicked {
     [self dismissModalViewControllerAnimated:YES];
+    [delegate didDismissModalView];
 }
 
 
@@ -113,6 +115,7 @@
 #pragma mark CustomNavigationBar Methods
 - (IBAction)dismissModalViewControllerAnimated {
 	[self dismissModalViewControllerAnimated:YES];
+  [delegate didDismissModalView];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {  

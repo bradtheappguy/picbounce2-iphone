@@ -7,17 +7,17 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-
-
+#import "PBProfileHeaderView.h"
+#import "PBLoginViewController.h"
 #import "PBRootViewController.h"
 #import "EGOImageView.h"
-#import "PBProfileHeaderView.h"
+#import "PBLoadMoreTablewViewFooter.h"
 
 @class PBPhotoHeaderView, PBTableTitleTableViewCell, PBPhotoCell;
 
 @interface PBStreamViewController : PBRootViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate> {
   IBOutlet UISegmentedControl *segmentedControl;
-
+  
   IBOutlet PBPhotoHeaderView *photoHeader;
   IBOutlet PBTableTitleTableViewCell *tableTitleTableViewCell;
   
@@ -28,21 +28,22 @@
   BOOL shouldShowProfileHeaderBeforeNetworkLoad;
   BOOL shouldShowFollowingBar;
   
-  UIActivityIndicatorView *loadingMoreActivityIndicatiorView;
-  UIImageView *footerDecoration;
   
-  IBOutlet NSURL *preloadedAvatarURL;
-  IBOutlet NSString *preloadedLocation;
-  IBOutlet NSString *preloadedName;
+  NSURL *preloadedAvatarURL;
+  NSString *preloadedLocation;
+  NSString *preloadedName;
   
-   IBOutlet UIButton *setting;  
+  UIButton *setting;  
   
   UITextView *commentTextField;
   
   UIButton *activeLeaveCommentButton;
   
   UIImageView *profileAvatarImageView;
-    UINavigationBar *customNavigationBar;
+  UINavigationBar *customNavigationBar;
+  PBLoadMoreTablewViewFooter *footerView;
+    
+    IBOutlet UIView *a_DefaultView;
 }
 
 @property (nonatomic, retain) IBOutlet PBProfileHeaderView *profileHeader;
@@ -77,7 +78,6 @@
 
 -(IBAction) loginButtonPressed:(id)sender;
 -(IBAction) photosButtonPressed;
--(IBAction) followingButtonPressed;
 -(IBAction) followersButtonPressed;
 -(IBAction) badgesButtonPressed;
 -(IBAction) taggedPeopleButtonPressed:(id)sender;
