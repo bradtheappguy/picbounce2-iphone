@@ -14,7 +14,6 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		552DCD1D145C98100093FBE2 /* UIColor+ExtraColorSpecifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 552DCD18145C98100093FBE2 /* UIColor+ExtraColorSpecifications.m */; };
-		552DCD1E145C98100093FBE2 /* UINavigationBar+BackgroundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 552DCD1A145C98100093FBE2 /* UINavigationBar+BackgroundImage.m */; };
 		552DCD1F145C98100093FBE2 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 552DCD1C145C98100093FBE2 /* Utilities.m */; };
 		557080101454BA5C00183395 /* PBCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5570800F1454BA5B00183395 /* PBCommentCell.m */; };
 		557080151454C23B00183395 /* PBCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 557080141454C23A00183395 /* PBCommentCell.xib */; };
@@ -614,6 +613,7 @@
 		A2620D091460F1AE00E5F0FE /* Wrath.acorn in Resources */ = {isa = PBXBuildFile; fileRef = A2620AFB1460F1AD00E5F0FE /* Wrath.acorn */; };
 		A2620D0A1460F1AE00E5F0FE /* Wrath.png in Resources */ = {isa = PBXBuildFile; fileRef = A2620AFC1460F1AD00E5F0FE /* Wrath.png */; };
 		A2620D0C1460FA0100E5F0FE /* btn_camera_h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2620D0B1460FA0100E5F0FE /* btn_camera_h@2x.png */; };
+		A2620D0F14611EBC00E5F0FE /* PBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2620D0E14611EBC00E5F0FE /* PBNavigationController.m */; };
 		A2626FE614197BB300F873B7 /* PBPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2626FE514197BB300F873B7 /* PBPersonTableViewCell.m */; };
 		A2627B4A13FF312F00B6E5C7 /* PBUploadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A2627B4913FF312F00B6E5C7 /* PBUploadQueue.m */; };
 		A26E720D1334244E00BD737D /* PBPhotoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */; };
@@ -689,7 +689,6 @@
 		A2BE3DB9129E00EB003E8F44 /* PBStreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BE3DB7129E00EB003E8F44 /* PBStreamViewController.xib */; };
 		A2BE3E3C129E0E94003E8F44 /* PBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BE3E3B129E0E94003E8F44 /* PBTableViewCell.m */; };
 		A2C0469913FC9950001CD0BC /* PBCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C0469813FC9950001CD0BC /* PBCameraViewController.xib */; };
-		A2C04B3A13FCAFBB001CD0BC /* PBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3513FCAFBB001CD0BC /* PBNavigationController.m */; };
 		A2C04B3B13FCAFBB001CD0BC /* PBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */; };
 		A2C04B3C13FCAFBB001CD0BC /* PBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3913FCAFBB001CD0BC /* PBTabBarController.m */; };
 		A2C0592A13FDEDFB001CD0BC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C0592913FDEDFB001CD0BC /* CoreMedia.framework */; };
@@ -739,8 +738,6 @@
 		32CA4F630368D1EE00C91783 /* PicBounce2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PicBounce2_Prefix.pch; path = ../PicBounce2_Prefix.pch; sourceTree = "<group>"; };
 		552DCD17145C98100093FBE2 /* UIColor+ExtraColorSpecifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ExtraColorSpecifications.h"; sourceTree = "<group>"; };
 		552DCD18145C98100093FBE2 /* UIColor+ExtraColorSpecifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ExtraColorSpecifications.m"; sourceTree = "<group>"; };
-		552DCD19145C98100093FBE2 /* UINavigationBar+BackgroundImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+BackgroundImage.h"; sourceTree = "<group>"; };
-		552DCD1A145C98100093FBE2 /* UINavigationBar+BackgroundImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+BackgroundImage.m"; sourceTree = "<group>"; };
 		552DCD1B145C98100093FBE2 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		552DCD1C145C98100093FBE2 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		5570800E1454BA5900183395 /* PBCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBCommentCell.h; sourceTree = "<group>"; };
@@ -1409,6 +1406,8 @@
 		A2620AFB1460F1AD00E5F0FE /* Wrath.acorn */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wrath.acorn; sourceTree = "<group>"; };
 		A2620AFC1460F1AD00E5F0FE /* Wrath.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wrath.png; sourceTree = "<group>"; };
 		A2620D0B1460FA0100E5F0FE /* btn_camera_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_camera_h@2x.png"; sourceTree = "<group>"; };
+		A2620D0D14611EBB00E5F0FE /* PBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBNavigationController.h; sourceTree = "<group>"; };
+		A2620D0E14611EBC00E5F0FE /* PBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBNavigationController.m; sourceTree = "<group>"; };
 		A2626FE414197BB300F873B7 /* PBPersonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPersonTableViewCell.h; sourceTree = "<group>"; };
 		A2626FE514197BB300F873B7 /* PBPersonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPersonTableViewCell.m; sourceTree = "<group>"; };
 		A2627B4813FF312F00B6E5C7 /* PBUploadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBUploadQueue.h; path = ../PBUploadQueue.h; sourceTree = "<group>"; };
@@ -1539,8 +1538,6 @@
 		A2BE3E3A129E0E94003E8F44 /* PBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTableViewCell.h; sourceTree = "<group>"; };
 		A2BE3E3B129E0E94003E8F44 /* PBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTableViewCell.m; sourceTree = "<group>"; };
 		A2C0469813FC9950001CD0BC /* PBCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PBCameraViewController.xib; path = ../PBCameraViewController.xib; sourceTree = "<group>"; };
-		A2C04B3413FCAFBB001CD0BC /* PBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBNavigationController.h; sourceTree = SOURCE_ROOT; };
-		A2C04B3513FCAFBB001CD0BC /* PBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBNavigationController.m; sourceTree = SOURCE_ROOT; };
 		A2C04B3613FCAFBB001CD0BC /* PBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTabBar.h; sourceTree = SOURCE_ROOT; };
 		A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTabBar.m; sourceTree = SOURCE_ROOT; };
 		A2C04B3813FCAFBB001CD0BC /* PBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTabBarController.h; sourceTree = SOURCE_ROOT; };
@@ -1695,10 +1692,10 @@
 			children = (
 				552DCD17145C98100093FBE2 /* UIColor+ExtraColorSpecifications.h */,
 				552DCD18145C98100093FBE2 /* UIColor+ExtraColorSpecifications.m */,
-				552DCD19145C98100093FBE2 /* UINavigationBar+BackgroundImage.h */,
-				552DCD1A145C98100093FBE2 /* UINavigationBar+BackgroundImage.m */,
 				552DCD1B145C98100093FBE2 /* Utilities.h */,
 				552DCD1C145C98100093FBE2 /* Utilities.m */,
+				A2620D0D14611EBB00E5F0FE /* PBNavigationController.h */,
+				A2620D0E14611EBC00E5F0FE /* PBNavigationController.m */,
 			);
 			name = "Custom Nav Bar";
 			sourceTree = "<group>";
@@ -2970,8 +2967,6 @@
 				A2512C92140731630093E023 /* PBButtonWithLabel.m */,
 				A247A3F014085C840068FDCA /* CircleView.h */,
 				A247A3F114085C840068FDCA /* CircleView.m */,
-				A2C04B3413FCAFBB001CD0BC /* PBNavigationController.h */,
-				A2C04B3513FCAFBB001CD0BC /* PBNavigationController.m */,
 				A2C04B3613FCAFBB001CD0BC /* PBTabBar.h */,
 				A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */,
 				A2C04B3813FCAFBB001CD0BC /* PBTabBarController.h */,
@@ -3854,7 +3849,6 @@
 				A2988AD313F0BE420007E7F4 /* ASIS3Request.m in Sources */,
 				A2988AD413F0BE420007E7F4 /* ASIS3ServiceRequest.m in Sources */,
 				A2988AE613F0BE420007E7F4 /* Reachability.m in Sources */,
-				A2C04B3A13FCAFBB001CD0BC /* PBNavigationController.m in Sources */,
 				A2C04B3B13FCAFBB001CD0BC /* PBTabBar.m in Sources */,
 				A2C04B3C13FCAFBB001CD0BC /* PBTabBarController.m in Sources */,
 				A2627B4A13FF312F00B6E5C7 /* PBUploadQueue.m in Sources */,
@@ -3892,10 +3886,10 @@
 				A2058F87145C8AC3004A8E87 /* PBUploadingTableViewCell.m in Sources */,
 				A2058F8B145C8AD4004A8E87 /* PBPost.m in Sources */,
 				552DCD1D145C98100093FBE2 /* UIColor+ExtraColorSpecifications.m in Sources */,
-				552DCD1E145C98100093FBE2 /* UINavigationBar+BackgroundImage.m in Sources */,
 				552DCD1F145C98100093FBE2 /* Utilities.m in Sources */,
 				A2058F9A145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.m in Sources */,
 				A2E830EF145F5C0D002493DC /* PBAPI.m in Sources */,
+				A2620D0F14611EBC00E5F0FE /* PBNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

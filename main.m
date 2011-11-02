@@ -10,10 +10,7 @@
 
 int main(int argc, char *argv[]) {    
   
-  /*Method drawRectCustomBackground = class_getInstanceMethod([UINavigationBar class], @selector(drawRectCustomBackground:));
-   Method drawRect = class_getInstanceMethod([UINavigationBar class], @selector(drawRect:));
-   method_exchangeImplementations(drawRect, drawRectCustomBackground);
-   */
+   
     [Utilities swizzleSelector:@selector(insertSubview:atIndex:)
 					   ofClass:[UINavigationBar class]
 				  withSelector:@selector(biInsertSubview:atIndex:)];

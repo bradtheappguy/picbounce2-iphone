@@ -9,11 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface Utilities : NSObject
-{
-}
 
-+ (void)customizeNavigationController:(UINavigationController *)navController;
-+ (void)customizeNavigationBar:(UINavigationBar *)navBar;
 + (void)swizzleSelector:(SEL)orig ofClass:(Class)c withSelector:(SEL)new;
 
 @end

@@ -61,4 +61,8 @@
     progressBarImageView.hidden = YES;
 }
 
+-(void) layoutSubviews {
+  progressBarImageView.center = self.center;
+}
+
 @end

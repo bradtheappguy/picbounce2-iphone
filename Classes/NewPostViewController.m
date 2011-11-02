@@ -74,13 +74,9 @@
     [a_TwitterButton release];
     
     }
-        //[Utilities customizeNavigationController:self.navigationController];
-   
-        //[Utilities customizeNavigationBar:navBar];
-    [self.navigationController setNavigationBarHidden:YES];
+
    
     [a_PostTextView becomeFirstResponder];
-        //https://graph.facebook.com/fql?q=select%20page_id,%20type,%20name,%20page_url,pic_small%20from%20page%20where%20page_id%20in%20%28%20select%20page_id,type%20from%20page_admin%20where%20uid=me%28%29%20and%20type=%27WEBSITE%27%29?access_token=ACCESS_TOKEN_FROM_FACEBOOK
 }
 
 - (void)viewDidUnload

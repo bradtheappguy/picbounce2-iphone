@@ -51,7 +51,7 @@ static  NSString *selectedIndex = @"selectedIndex";
   UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
   button.adjustsImageWhenHighlighted = NO;
   [button setBackgroundImage:[UIImage imageNamed:normalImageName] forState:UIControlStateNormal];
-  [button setBackgroundImage:[UIImage imageNamed:normalImageName] forState:UIControlStateHighlighted];
+  //[button setBackgroundImage:[UIImage imageNamed:normalImageName] forState:UIControlStateHighlighted];
   [button setBackgroundImage:[UIImage imageNamed:selectedImageNamed] forState:UIControlStateSelected];
   button.frame = CGRectMake((self.bounds.size.width/kNumberOfTabs*index), 
                             0-2,
@@ -67,9 +67,16 @@ static  NSString *selectedIndex = @"selectedIndex";
 }
 
 -(void) setSelectedButton:(UIButton *)button {
+  if (selectedButton == button) {
+    return;
+  }
   [selectedButton setSelected:NO];
+  [[selectedButton viewWithTag:1] setAlpha:0.25];
+  [selectedButton setBackgroundImage:[selectedButton backgroundImageForState:UIControlStateNormal] forState:UIControlStateHighlighted];
   selectedButton = button;
   [selectedButton setSelected:YES];
+  [[selectedButton viewWithTag:1] setAlpha:1.0];
+  [selectedButton setBackgroundImage:[selectedButton backgroundImageForState:UIControlStateSelected] forState:UIControlStateHighlighted];
 }
 
 
@@ -84,11 +91,23 @@ static  NSString *selectedIndex = @"selectedIndex";
   }
 }
 
+-(UILabel *)labelForButtonWithTitle:(NSString *)title {
+  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(33, feedTabButton.bounds.size.height-15, 61, 10)];
+  label.backgroundColor = [UIColor clearColor];
+  label.text = title;
+  label.alpha = 0.25;
+  label.font = [UIFont boldSystemFontOfSize:10];
+  label.textColor = kNavBarTitleTextColor
+  label.textAlignment = UITextAlignmentCenter;
+  label.tag = 1;
+  return [label autorelease];
+}
 
 -(void) customize {
   self.clipsToBounds = NO;
   if (!feedTabButton) {
     feedTabButton = [self buttonForIndex:0 withNormalImageNamed:@"btn_feed_n" selectedImageNamed:@"btn_feed_s"];
+    [feedTabButton addSubview:[self labelForButtonWithTitle:@"Feed"]];
   }
   [self addSubview:feedTabButton];
   if (!cameraButton) {
@@ -98,6 +117,9 @@ static  NSString *selectedIndex = @"selectedIndex";
   [self addSubview:cameraButton];
   if (!profileTabButton) {
     profileTabButton = [self buttonForIndex:2 withNormalImageNamed:@"btn_profile_n" selectedImageNamed:@"btn_profile_s"];
+    UILabel *l = [self labelForButtonWithTitle:@"Profile"];
+    [profileTabButton addSubview:l];
+    l.center = CGPointMake(l.center.x-23, l.center.y);
   }
   [self addSubview:profileTabButton];
   if (!selectedButton) {
@@ -118,13 +140,16 @@ static  NSString *selectedIndex = @"selectedIndex";
   }
 }
 
+
 -(void) buttonWasLongPressed:(UIGestureRecognizer *)longPressGestureRecoginer {
   [self buttonWasPressed:(UIButton *)longPressGestureRecoginer.view];
 }
 
+
 -(void) layoutSubviews {
   [self customize];
 }
+
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
   if ([keyPath isEqualToString:selectedIndex]) {
