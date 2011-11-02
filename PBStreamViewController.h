@@ -78,7 +78,6 @@
 
 -(IBAction) loginButtonPressed:(id)sender;
 -(IBAction) photosButtonPressed;
--(IBAction) followingButtonPressed;
 -(IBAction) followersButtonPressed;
 -(IBAction) badgesButtonPressed;
 -(IBAction) taggedPeopleButtonPressed:(id)sender;

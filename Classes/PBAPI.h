@@ -8,8 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PBAPI : NSObject
+extern NSString *const PBAPIUserWasFollowedNotification;
+extern NSString *const PBAPIUserWasUnfollowedNotification;
+
+
+@interface PBAPI : NSObject {
+  NSMutableArray *_delegates;
+}
+
 + (PBAPI *)sharedAPI;
 -(void) flagPhotoWithID:(NSString *)photoID;
 -(void) deletePhotoWithID:(NSString *)photoID;
+
+
+-(void) addDelegate:(id) delegate;
+-(void) removeDelegate:(id) delegate;
+
 @end

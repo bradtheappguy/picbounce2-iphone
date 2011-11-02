@@ -43,6 +43,7 @@
 				<string key="NSFrame">{{0, 20}, {320, 411}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="741675772">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -62,7 +63,7 @@
 				<float key="IBUISectionFooterHeight">22</float>
 			</object>
 			<object class="IBUIView" id="994916943">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -71,6 +72,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 367}</string>
 						<reference key="NSSuperview" ref="994916943"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="318842016"/>
 						<string key="NSReuseIdentifierKey">_NS:567</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="618064314">
@@ -89,6 +91,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{26, 67}, {268, 32}}</string>
 						<reference key="NSSuperview" ref="994916943"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="447583272"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -130,6 +133,8 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{93, 247}, {135, 58}}</string>
 						<reference key="NSSuperview" ref="994916943"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -160,6 +165,8 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 367}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1062805013"/>
 				<string key="NSReuseIdentifierKey">_NS:196</string>
 				<reference key="IBUIBackgroundColor" ref="618064314"/>
@@ -187,11 +194,12 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEgMAA</bytes>
 								</object>
+								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">bg_profileheader@2x.png</string>
+									<string key="NSResourceName">bg_profileheader.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="532615470">
@@ -228,7 +236,7 @@
 								<string key="NSFrame">{{83, 0}, {246, 36}}</string>
 								<reference key="NSSuperview" ref="35415930"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="755721970"/>
+								<reference key="NSNextKeyView" ref="971594798"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -261,9 +269,8 @@
 								<reference key="NSSuperview" ref="35415930"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="891647083"/>
-								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<bool key="IBUIEnabled">NO</bool>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<double key="IBUIContentEdgeInsets.top">-15</double>
@@ -305,8 +312,8 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="683154811"/>
 								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<bool key="IBUIEnabled">NO</bool>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<double key="IBUIContentEdgeInsets.top">-15</double>
@@ -386,6 +393,21 @@
 								<reference key="IBUIFontDescription" ref="328119072"/>
 								<reference key="IBUIFont" ref="130756856"/>
 							</object>
+							<object class="IBUIImageView" id="971594798">
+								<reference key="NSNextResponder" ref="35415930"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{287, 11}, {13, 14}}</string>
+								<reference key="NSSuperview" ref="35415930"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="755721970"/>
+								<string key="NSReuseIdentifierKey">_NS:567</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">ico_verified.png</string>
+								</object>
+							</object>
 						</object>
 						<string key="NSFrameSize">{320, 80}</string>
 						<reference key="NSSuperview" ref="173284354"/>
@@ -394,7 +416,7 @@
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MSAwAA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace" id="608470389">
+							<object class="NSColorSpace" key="NSCustomColorSpace">
 								<int key="NSID">2</int>
 							</object>
 						</object>
@@ -406,6 +428,7 @@
 						<string key="NSFrame">{{240, 88}, {72, 37}}</string>
 						<reference key="NSSuperview" ref="173284354"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:209</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -432,7 +455,7 @@
 					<object class="IBUILabel" id="545553850">
 						<reference key="NSNextResponder" ref="173284354"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 95}, {135, 21}}</string>
+						<string key="NSFrame">{{10, 95}, {230, 21}}</string>
 						<reference key="NSSuperview" ref="173284354"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="235365052"/>
@@ -466,11 +489,7 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="35415930"/>
 				<string key="NSReuseIdentifierKey">_NS:180</string>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
-					<reference key="NSCustomColorSpace" ref="608470389"/>
-				</object>
+				<reference key="IBUIBackgroundColor" ref="618064314"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</object>
@@ -582,13 +601,12 @@
 					<int key="connectionID">69</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">photoCountButtonPressed:</string>
-						<reference key="source" ref="485804595"/>
-						<reference key="destination" ref="35415930"/>
-						<int key="IBEventType">7</int>
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">verifiedIconImageView</string>
+						<reference key="source" ref="35415930"/>
+						<reference key="destination" ref="971594798"/>
 					</object>
-					<int key="connectionID">47</int>
+					<int key="connectionID">81</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -608,15 +626,6 @@
 					<int key="connectionID">72</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">followersCountButtonPressed:</string>
-						<reference key="source" ref="891647083"/>
-						<reference key="destination" ref="35415930"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">49</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">label</string>
 						<reference key="source" ref="891647083"/>
@@ -632,15 +641,6 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">70</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">followButtonPressed:</string>
-						<reference key="source" ref="235365052"/>
-						<reference key="destination" ref="35415930"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">63</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -694,6 +694,7 @@
 							<reference ref="188330037"/>
 							<reference ref="683154811"/>
 							<reference ref="755721970"/>
+							<reference ref="971594798"/>
 						</object>
 						<reference key="parent" ref="173284354"/>
 					</object>
@@ -779,6 +780,11 @@
 						<reference key="object" ref="447583272"/>
 						<reference key="parent" ref="994916943"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">80</int>
+						<reference key="object" ref="971594798"/>
+						<reference key="parent" ref="35415930"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -815,6 +821,7 @@
 					<string>76.IBPluginDependency</string>
 					<string>77.IBPluginDependency</string>
 					<string>78.IBPluginDependency</string>
+					<string>80.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -848,6 +855,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -862,7 +870,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">79</int>
+			<int key="maxID">81</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1080,59 +1088,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PBProfileHeaderView</string>
 					<string key="superclassName">UIView</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>followButtonPressed:</string>
-							<string>followersCountButtonPressed:</string>
-							<string>followingCountButtonPressed:</string>
-							<string>photoCountButtonPressed:</string>
-							<string>unfollowButtonPressed:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>followButtonPressed:</string>
-							<string>followersCountButtonPressed:</string>
-							<string>followingCountButtonPressed:</string>
-							<string>photoCountButtonPressed:</string>
-							<string>unfollowButtonPressed:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">followButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">followersCountButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">followingCountButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">photoCountButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">unfollowButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
@@ -1140,22 +1095,20 @@
 							<string>avatarImageView</string>
 							<string>followButton</string>
 							<string>followersCountButton</string>
-							<string>followingCountButton</string>
 							<string>isFollowingYouLabel</string>
 							<string>nameLabel</string>
 							<string>photoCountButton</string>
-							<string>unfollowButton</string>
+							<string>verifiedIconImageView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>EGOImageView</string>
 							<string>PBFollowButton</string>
 							<string>UIButton</string>
-							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
-							<string>UIButton</string>
+							<string>UIImageView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1165,11 +1118,10 @@
 							<string>avatarImageView</string>
 							<string>followButton</string>
 							<string>followersCountButton</string>
-							<string>followingCountButton</string>
 							<string>isFollowingYouLabel</string>
 							<string>nameLabel</string>
 							<string>photoCountButton</string>
-							<string>unfollowButton</string>
+							<string>verifiedIconImageView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1186,10 +1138,6 @@
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">followingCountButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">isFollowingYouLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
@@ -1202,8 +1150,8 @@
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">unfollowButton</string>
-								<string key="candidateClassName">UIButton</string>
+								<string key="name">verifiedIconImageView</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 						</object>
 					</object>
@@ -1229,14 +1177,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>badgesButtonPressed</string>
 							<string>followersButtonPressed</string>
-							<string>followingButtonPressed</string>
 							<string>loginButtonPressed:</string>
 							<string>photosButtonPressed</string>
 							<string>taggedPeopleButtonPressed:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1250,7 +1196,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>badgesButtonPressed</string>
 							<string>followersButtonPressed</string>
-							<string>followingButtonPressed</string>
 							<string>loginButtonPressed:</string>
 							<string>photosButtonPressed</string>
 							<string>taggedPeopleButtonPressed:</string>
@@ -1263,10 +1208,6 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">followersButtonPressed</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">followingButtonPressed</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -1467,16 +1408,18 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>avatar_holder.png</string>
 				<string>bg_avatar_profile@2x.png</string>
-				<string>bg_profileheader@2x.png</string>
+				<string>bg_profileheader.png</string>
 				<string>btn_profile_score_n.png</string>
+				<string>ico_verified.png</string>
 				<string>placeholder_image@2x.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{100, 100}</string>
 				<string>{112, 114}</string>
-				<string>{640, 162}</string>
-				<string>{16, 16}</string>
+				<string>{320, 81}</string>
+				<string>{68, 41}</string>
+				<string>{13, 14}</string>
 				<string>{660, 660}</string>
 			</object>
 		</object>

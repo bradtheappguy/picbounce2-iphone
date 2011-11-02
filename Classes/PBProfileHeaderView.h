@@ -16,20 +16,14 @@
   ASIHTTPRequest *_followingRequest;
 }
 
+@property (nonatomic, retain) NSDictionary *user;
+
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet EGOImageView *avatarImageView;
 @property (nonatomic, retain) IBOutlet UIButton *photoCountButton;
-@property (nonatomic, retain) IBOutlet UIButton *followingCountButton;
 @property (nonatomic, retain) IBOutlet UIButton *followersCountButton;
 @property (nonatomic, retain) IBOutlet PBFollowButton *followButton;
-@property (nonatomic, retain) IBOutlet UIButton *unfollowButton;
 @property (nonatomic, retain) IBOutlet UILabel *isFollowingYouLabel;
+@property (nonatomic, retain) IBOutlet UIImageView *verifiedIconImageView;
 
-@property (nonatomic, retain) NSDictionary *user;
-
-- (IBAction)photoCountButtonPressed:(id)sender;
-- (IBAction)followingCountButtonPressed:(id)sender;
-- (IBAction)followersCountButtonPressed:(id)sender;
-- (IBAction)followButtonPressed:(id)sender;
-- (IBAction)unfollowButtonPressed:(id)sender;
 @end

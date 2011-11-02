@@ -32,6 +32,7 @@
 @property (nonatomic) BOOL usingCameraView;
 
 -(void) presentLoginViewController:(BOOL)useCameraViewController;
+-(void) cameraButtonPressed:(id) sender;
 
 @end
 
