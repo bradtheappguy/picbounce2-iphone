@@ -92,7 +92,7 @@
 }
 -(void) showEmptyState {
 
-    [self.tableView addSubview:[self createDefaultView]];
+    [self.tableView addSubview:[self createDefaultView]]; 
     self.tableView.scrollEnabled = NO;
 }
 
@@ -476,17 +476,6 @@
 -(IBAction) photosButtonPressed {
   if (([self numberOfSectionsInTableView:self.tableView] > 0)) {
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-  }
-}
-
--(IBAction) followingButtonPressed { 
-  NSString *followingURL = [self.responseData followingURL];
-  if (followingURL) {
-    PBPersonListViewController *vc = [[PBPersonListViewController alloc] initWithNibName:@"PBPersonListViewController" bundle:nil];
-    vc.title = @"Following";
-    vc.baseURL = followingURL;
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release]; 
   }
 }
 

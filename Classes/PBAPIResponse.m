@@ -6,6 +6,7 @@
 //  Copyright 2011 Clixtr. All rights reserved.
 //
 
+#import "PBAPI.h"
 #import "PBAPIResponse.h"
 #import "SBJSON.h"
 #import "NSDictionary+NotNull.h"

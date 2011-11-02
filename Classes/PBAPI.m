@@ -8,6 +8,10 @@
 
 #import "PBAPI.h"
 #import "PBHTTPRequest.h"
+
+NSString *const PBAPIUserWasFollowedNotification = @"PBAPIUserWasFollowedNotification";
+NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNotification";
+
 @implementation PBAPI
 
 + (PBAPI *)sharedAPI {
@@ -16,6 +20,16 @@
   dispatch_once(&pred, ^{ api = [[self alloc] init]; });
   return api;
 }
+
+-(id) init {
+  if (self = [super init]) {
+    _delegates = [[NSMutableArray alloc] init];
+  }
+  return self;
+}
+
+#pragma mark Follow User
+
 
 #pragma mark Flag Photo
 -(void) flagPhotoWithID:(NSString *)photoID {
@@ -64,6 +78,15 @@
   else {
     NSLog(@"Flagged");
   }
+}
+
+#pragma mark Delegate Management
+-(void) addDelegate:(id) delegate {
+  [_delegates addObject:delegate];
+}
+
+-(void) removeDelegate:(id) delegate {
+  [_delegates removeObject:delegate];
 }
 
 @end
