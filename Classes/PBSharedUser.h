@@ -18,4 +18,20 @@
 + (BOOL) shouldCrosspostToTW;
 + (void) setShouldCrosspostToTW:(BOOL)should;
 
++ (NSDate *) facebookExpirationDate;
++ (void) setFacebookExpirationDate:(NSDate *)date;
++ (void) removeFacebookExpirationDate;
+
++ (NSString *) facebookAccessToken;
++ (void) setFacebookAccessToken:(NSString *)token;
++ (void) removeFacebookAccessToken;
+
++ (NSMutableArray *) facebookPages;
++ (void) setFacebookPages:(NSMutableArray *)token;
++ (void) removeFacebookPages;
+
++ (NSMutableDictionary *) facebookWall;
++ (void) setFacebookWall:(NSMutableDictionary *)wall;
++ (void) removeFacebookWall;
+
 @end
