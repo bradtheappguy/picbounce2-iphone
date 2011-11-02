@@ -196,7 +196,7 @@
       [customCell.titleLabel setText:@""];
     }
 
-    PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5))];
+    PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
     [EWCheckbox setText:[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"name"]];
     [EWCheckbox setTag:indexPath.row-3];
     if ([[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] == nil) {
@@ -218,7 +218,7 @@
     [customCell.statusButton setHidden:YES];
     [customCell.titleLabel setText:@"  My Wall"];  
 
-    PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5))];
+    PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
     [EWCheckbox setTag:indexPath.row];
     if (facebookWall == nil) {
       facebookWall = [NSDictionary dictionaryWithObjectsAndKeys: @"0", @"Selected", nil];

@@ -17,6 +17,6 @@
 @property (nonatomic, retain) UILabel *label;
 
 - (void) setText:(NSString *)text;
-- (id)initWithPosition:(CGPoint)position;
+- (id)initWithPosition:(CGPoint)position withFontName:(NSString *)fontName withFontSize:(NSInteger)size;
 
 @end

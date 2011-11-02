@@ -13,7 +13,7 @@
 @synthesize selected = _selected;
 @synthesize label = _label;
 
-- (id)initWithPosition:(CGPoint)position {
+- (id)initWithPosition:(CGPoint)position withFontName:(NSString *)fontName withFontSize:(NSInteger)size {
 	CGRect frame = CGRectMake(260, position.y+5, 20, 20);
   if ((self = [super initWithFrame:frame])) {
     // Initialization code
@@ -22,8 +22,8 @@
 		[self addTarget:self action:@selector(touched:) forControlEvents:UIControlEventTouchUpInside];
 		self.selected = NO;
 		
-		self.label = [[UILabel alloc] initWithFrame:CGRectMake(-160, 2.0, 150, 28.0)];
-    self.label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
+		self.label = [[UILabel alloc] initWithFrame:CGRectMake(-160, 0.0, 150, 28.0)];
+    self.label.font = [UIFont fontWithName:fontName size:size];
 		self.label.backgroundColor = [UIColor clearColor];
 		self.label.textColor = [UIColor colorWithRed:102.0/255.0 green:102.0/255.0 blue:102.0/255.0 alpha:1.0];
 		[self addSubview:self.label];
