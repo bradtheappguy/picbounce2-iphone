@@ -36,6 +36,7 @@ typedef enum {
 @property (nonatomic, assign) id<ModalDismissDelegate> delegate;
 
 - (IBAction)dismissModalViewControllerAnimated;
-- (void)calculateSizeOfTable;
+
+- (void) loadPagesFromFacebook;
 
 @end

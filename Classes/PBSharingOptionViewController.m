@@ -34,6 +34,19 @@
   return self;
 }
 
+#pragma mark - Memory Management
+
+- (void)didReceiveMemoryWarning {
+  
+  [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc {
+  
+  [tableView release];
+  [super dealloc];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
@@ -48,7 +61,7 @@
 
   tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   tableView.separatorColor = [UIColor lightGrayColor];
-  [self calculateSizeOfTable];
+  [tableView reloadData];
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_sharing_settings.png"];
   self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
   [self.view addSubview:self.progressHUD];
@@ -57,25 +70,10 @@
   [backBarButtonItem release];    
 }
 
-
-- (void)backBarButtonItemClicked {
-
-  NSMutableArray *array = [[NSMutableArray alloc] init];
-  for (int i = 0; i < [facebookPages count]; i++) {
-    if ([[[facebookPages objectAtIndex:i] valueForKey:@"Selected"] isEqualToString:@"1"]) {
-      [array addObject:[facebookPages objectAtIndex:i]]; 
-    }
-  }
-
-  [PBSharedUser setFacebookPages:array];
-  [PBSharedUser setFacebookWall:facebookWall];
-}
-
-- (void) loadPagesFromFacebook {
-
-  NSString *path = @"/fql?q=select%20page_id,%20type,%20name,%20page_url,pic_small%20from%20page%20where%20page_id%20in%20(%20select%20page_id,type%20from%20page_admin%20where%20uid=me()%20and%20type!%3d'APPLICATION')";
+- (void)viewDidUnload {
   
-  [[FacebookSingleton sharedFacebook] requestWithGraphPath:path andDelegate:self];
+  [super viewDidUnload];
+  self.tableView = nil;
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -85,9 +83,29 @@
   }
 }
 
+- (void) loadPagesFromFacebook {
+  
+  NSString *path = @"/fql?q=select%20page_id,%20type,%20name,%20page_url,pic_small%20from%20page%20where%20page_id%20in%20(%20select%20page_id,type%20from%20page_admin%20where%20uid=me()%20and%20type!%3d'APPLICATION')";
+  
+  [[FacebookSingleton sharedFacebook] requestWithGraphPath:path andDelegate:self];
+}
+
+- (void)backBarButtonItemClicked {
+  
+  NSMutableArray *array = [[NSMutableArray alloc] init];
+  for (int i = 0; i < [facebookPages count]; i++) {
+    if ([[[facebookPages objectAtIndex:i] valueForKey:@"Selected"] isEqualToString:@"1"]) {
+      [array addObject:[facebookPages objectAtIndex:i]]; 
+    }
+  }
+  
+  [PBSharedUser setFacebookPages:array];
+  [PBSharedUser setFacebookWall:facebookWall];
+}
 
 #pragma mark -
 #pragma mark CustomNavigationBar Methods
+
 - (IBAction)dismissModalViewControllerAnimated {
   
   //[self.navigationController popViewControllerAnimated:YES];
@@ -104,33 +122,20 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  
-  // Return the number of sections.
-  if ([facebookPages count] > 0)
-    return [facebookPages count]  + 3;
-  else
-    return 3;
+
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   
-  // Return the number of rows in the section.
-  switch (section) {
-    case kTwitterLoginCell:
-      return 1;
-    case kFaceBookLoginCell:
-      return 1;
-    case kFacebookWallCell:
-      if ([[FacebookSingleton sharedFacebook] isSessionValid])
-        return 1;
-      else
-        return 0;
-    case kFacebookPagesCell:
-      return [facebookPages count];
-    default:
-      break;
-  }
-  return 10;//[optionArray count];
+  NSInteger rows = 2;
+  if ([[FacebookSingleton sharedFacebook] isSessionValid])
+    rows++;
+
+  if ([facebookPages count] > 0)
+    rows += [facebookPages count];
+
+  return rows;
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -158,50 +163,50 @@
     }
   }
 
-  if (indexPath.section == kTwitterLoginCell) {
+  if (indexPath.row == kTwitterLoginCell) {
       
-      AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-      if ([appDelegate authToken] == nil) {
-        [customCell.statusButton setTitle:@"Login" forState:UIControlStateNormal];
-      }else {
-        [customCell.statusButton setTitle:@"Logout" forState:UIControlStateNormal];  
-      }
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    if ([appDelegate authToken] == nil) {
+      [customCell.statusButton setTitle:@"Login" forState:UIControlStateNormal];
+    }else {
+      [customCell.statusButton setTitle:@"Logout" forState:UIControlStateNormal];  
+    }
 
-      [customCell.contentView setBackgroundColor:[UIColor colorWithRed:208.0f/255.0f green:205.0f/255.0f blue:205.0f/255.0f alpha:1.0f]];
-      [customCell.titleLabel setText:@"Twitter"];
-      [customCell.statusButton setTag:indexPath.section];
-      [customCell.statusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
-  } else if (indexPath.section == kFaceBookLoginCell) {
-    
-      if ([[FacebookSingleton sharedFacebook] isSessionValid]) {
-        [customCell.statusButton setTitle:@"Logout" forState:UIControlStateNormal];
-      }
-      else {
-        [customCell.statusButton setTitle:@"Login" forState:UIControlStateNormal];
-      }
-      [customCell.contentView setBackgroundColor:[UIColor colorWithRed:239.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1.0f]];
-      [customCell.titleLabel setText:@"Facebook"];
-      [customCell.statusButton setTag:indexPath.section];
-      [customCell.statusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
-  } else if (indexPath.section == kFacebookPagesCell) {
+    [customCell.contentView setBackgroundColor:[UIColor colorWithRed:208.0f/255.0f green:205.0f/255.0f blue:205.0f/255.0f alpha:1.0f]];
+    [customCell.titleLabel setText:@"Twitter"];
+    [customCell.statusButton setTag:indexPath.row];
+    [customCell.statusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
+  } else if (indexPath.row == kFaceBookLoginCell) {
+  
+    if ([[FacebookSingleton sharedFacebook] isSessionValid]) {
+      [customCell.statusButton setTitle:@"Logout" forState:UIControlStateNormal];
+    }
+    else {
+      [customCell.statusButton setTitle:@"Login" forState:UIControlStateNormal];
+    }
+    [customCell.contentView setBackgroundColor:[UIColor colorWithRed:239.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1.0f]];
+    [customCell.titleLabel setText:@"Facebook"];
+    [customCell.statusButton setTag:indexPath.row];
+    [customCell.statusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
+  } else if (indexPath.row >= kFacebookPagesCell) {
 
     [customCell.statusButton setHidden:YES];
-    if (indexPath.row == 0) {
+    if (indexPath.row == 3) {
       [customCell.titleLabel setText:@"  Pages"];  
     }else {
       [customCell.titleLabel setText:@""];
     }
 
     PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5))];
-    [EWCheckbox setText:[[facebookPages objectAtIndex:indexPath.row] valueForKey:@"name"]];
-    [EWCheckbox setTag:indexPath.row];
-    if ([[facebookPages objectAtIndex:indexPath.row] valueForKey:@"Selected"] == nil) {
-      [[facebookPages objectAtIndex:indexPath.row] setObject:@"0" forKey:@"Selected"];
+    [EWCheckbox setText:[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"name"]];
+    [EWCheckbox setTag:indexPath.row-3];
+    if ([[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] == nil) {
+      [[facebookPages objectAtIndex:indexPath.row-3] setObject:@"0" forKey:@"Selected"];
       EWCheckbox.selected = NO;
     } else {
-      if ([[[facebookPages objectAtIndex:indexPath.row] valueForKey:@"Selected"] isEqualToString:@"1"]) {
+      if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] isEqualToString:@"1"]) {
         EWCheckbox.selected = YES;
-      } else if ([[[facebookPages objectAtIndex:indexPath.row] valueForKey:@"Selected"] isEqualToString:@"0"]) {
+      } else if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] isEqualToString:@"0"]) {
         EWCheckbox.selected = NO;
       }
     }
@@ -209,7 +214,7 @@
     [EWCheckbox addTarget:self action:@selector(fbPageTouched:) forControlEvents:UIControlEventTouchUpInside];
     [customCell.contentView addSubview:EWCheckbox];
     [EWCheckbox release];
-  } else if (indexPath.section == kFacebookWallCell) {
+  } else if (indexPath.row == kFacebookWallCell) {
 
     [customCell.statusButton setHidden:YES];
     [customCell.titleLabel setText:@"  My Wall"];  
@@ -249,9 +254,9 @@
 
 - (void)fbWallTouched:(UIButton *)sender {
   
-  int i = [[[facebookWall objectAtIndex:0] valueForKey:@"Selected"] intValue];
+  int i = [[facebookWall valueForKey:@"Selected"] intValue];
   i = !i;
-  [[facebookPages objectAtIndex:0] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"Selected"];
+  [facebookWall setObject:[NSString stringWithFormat:@"%d",i] forKey:@"Selected"];
 }
 
 - (void)loginlogoutButton:(UIButton *)sender {
@@ -266,7 +271,7 @@
         facebook = nil;
         [facebookPages removeAllObjects];
         [sender setTitle:@"Login" forState:UIControlStateNormal];
-        [self calculateSizeOfTable];
+        [tableView reloadData];
       } 
       else {
         [facebook authorize:[NSArray arrayWithObject: @"publish_stream,offline_access,manage_pages"] delegate:self];
@@ -289,53 +294,11 @@
   }
 }
 
-#pragma Table view Height
-
-- (void)calculateSizeOfTable {
-  
-  NSInteger height = 100;
-
-  if ([[FacebookSingleton sharedFacebook] isSessionValid])
-    height = 150;
-
-  if ([facebookPages count] > 0)
-    height += ([facebookPages count] * 50);
-
-  if (height > 396) {
-    tableView.frame = CGRectMake(10, 54, 300, 396);
-  }else {
-    tableView.frame = CGRectMake(10, 54, 300, height); 
-  }
-
-  [tableView reloadData];
-}
-
 #pragma mark -
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
-}
-
-
-#pragma mark -
-#pragma mark View Delegates
-
-- (void)viewDidUnload {
-  
-  [super viewDidUnload];
-  self.tableView = nil;
-}
-
-- (void)didReceiveMemoryWarning {
-  
-  [super didReceiveMemoryWarning];
-}
-
-- (void)dealloc {
-  
-  [tableView release];
-  [super dealloc];
 }
 
 #pragma mark Facebook Delegate
@@ -406,7 +369,7 @@
   [self.progressHUD hide:YES];
   id x  = [result objectForKey:@"data"];
   self.facebookPages = x;
-  [self calculateSizeOfTable];
+  [tableView reloadData];
 }
 
 /**
