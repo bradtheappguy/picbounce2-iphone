@@ -6,27 +6,130 @@
 //
 
 #import "PBTabBar.h"
+#import "AppDelegate.h"
+
+static const NSUInteger kNumberOfTabs = 3;
+static  NSString *selectedIndex = @"selectedIndex";
 
 @implementation PBTabBar
 
--(void) addCustomBackground {
-  if (!cameraButton){
-    cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *up = [UIImage imageNamed:@"btn_camera_s.png"];
-    cameraButton.frame = CGRectMake((self.bounds.size.width/2) - (up.size.width/2), 
-                                    self.bounds.origin.y-(up.size.height - self.frame.size.height), 
-                                    up.size.width, 
-                                    up.size.height);
-    [cameraButton setImage:up forState:UIControlStateNormal];
-    [cameraButton setImage:[UIImage imageNamed:@"btn_camera_n.png"] forState:UIControlStateHighlighted];
-    [cameraButton addTarget:[[UIApplication sharedApplication] delegate] action:@selector(cameraButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:cameraButton];
+-(UITabBarController *) tabBarController {
+  UITabBarController *tabBarController = (UITabBarController *)self.delegate;
+  return tabBarController;
+}
+
+-(void) registerObservers {
+  [[self tabBarController] addObserver:self forKeyPath:selectedIndex options:NSKeyValueChangeSetting context:nil];
+}
+
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+  if (self = [super initWithCoder:aDecoder]) {
+    [self registerObservers];
+  }
+  return self;
+}
+
+-(id) initWithFrame:(CGRect)frame {
+  if (self = [super initWithFrame:frame]) {
+    [self registerObservers];
+  }
+  return self;
+}
+
+-(void) dealloc {
+  [[self tabBarController] removeObserver:self forKeyPath:selectedIndex];
+  [feedTabButton release];
+  [cameraButton release];
+  [profileTabButton release];
+  [super dealloc];
+}
+
+-(UIButton *)buttonForIndex:(NSUInteger)index 
+       withNormalImageNamed:(NSString *)normalImageName 
+         selectedImageNamed:(NSString *)selectedImageNamed {
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+  button.adjustsImageWhenHighlighted = NO;
+  [button setBackgroundImage:[UIImage imageNamed:normalImageName] forState:UIControlStateNormal];
+  [button setBackgroundImage:[UIImage imageNamed:normalImageName] forState:UIControlStateHighlighted];
+  [button setBackgroundImage:[UIImage imageNamed:selectedImageNamed] forState:UIControlStateSelected];
+  button.frame = CGRectMake((self.bounds.size.width/kNumberOfTabs*index), 
+                            0-2,
+                            self.bounds.size.width/kNumberOfTabs,
+                            self.bounds.size.height+2);
+  [button addTarget:self action:@selector(buttonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
+  UIGestureRecognizer *longTouchRecognier = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonWasLongPressed:)];
+  [button addGestureRecognizer:longTouchRecognier];
+  [longTouchRecognier release];
+  
+  button.tag = index;
+  return button;
+}
+
+-(void) setSelectedButton:(UIButton *)button {
+  [selectedButton setSelected:NO];
+  selectedButton = button;
+  [selectedButton setSelected:YES];
+}
+
+
+-(void) updateSelectedButton {
+  UITabBarController *tabBarController = (UITabBarController *)self.delegate;
+  NSUInteger index = tabBarController.selectedIndex;
+  if (index == 0) {
+    [self setSelectedButton:feedTabButton];
+  }
+  if (index == 1) {
+    [self setSelectedButton:profileTabButton];
   }
 }
 
--(void) layoutSubviews {
-  [self addCustomBackground];
+
+-(void) customize {
+  self.clipsToBounds = NO;
+  if (!feedTabButton) {
+    feedTabButton = [self buttonForIndex:0 withNormalImageNamed:@"btn_feed_n" selectedImageNamed:@"btn_feed_s"];
+  }
+  [self addSubview:feedTabButton];
+  if (!cameraButton) {
+    cameraButton = [self buttonForIndex:1 withNormalImageNamed:@"btn_camera_n" selectedImageNamed:@"btn_camera_s"];
+    [cameraButton setBackgroundImage:[UIImage imageNamed:@"btn_camera_h"] forState:UIControlStateHighlighted];
+  }
+  [self addSubview:cameraButton];
+  if (!profileTabButton) {
+    profileTabButton = [self buttonForIndex:2 withNormalImageNamed:@"btn_profile_n" selectedImageNamed:@"btn_profile_s"];
+  }
+  [self addSubview:profileTabButton];
+  if (!selectedButton) {
+    [self updateSelectedButton];
+  }
 }
 
+
+
+-(void) buttonWasPressed:(UIButton *)sender {
+  UITabBarController *tabBarController = (UITabBarController *)self.delegate;
+  if (sender == cameraButton) {
+    [(AppDelegate *)[[UIApplication sharedApplication] delegate] cameraButtonPressed:sender];
+  }
+  else  {
+    [self setSelectedButton:sender];
+    [tabBarController setSelectedIndex:sender.tag];
+  }
+}
+
+-(void) buttonWasLongPressed:(UIGestureRecognizer *)longPressGestureRecoginer {
+  [self buttonWasPressed:(UIButton *)longPressGestureRecoginer.view];
+}
+
+-(void) layoutSubviews {
+  [self customize];
+}
+
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  if ([keyPath isEqualToString:selectedIndex]) {
+    [self updateSelectedButton];
+  }
+}
 
 @end

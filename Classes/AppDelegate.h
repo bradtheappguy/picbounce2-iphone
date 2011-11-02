@@ -32,6 +32,7 @@
 @property (nonatomic, retain) IBOutlet UIViewController *currentController;
 
 -(void) presentLoginViewController:(BOOL)useCameraViewController;
+-(void) cameraButtonPressed:(id) sender;
 
 @end
 

@@ -134,6 +134,7 @@
 						<string key="NSFrame">{{93, 247}, {135, 58}}</string>
 						<reference key="NSSuperview" ref="994916943"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -235,7 +236,7 @@
 								<string key="NSFrame">{{83, 0}, {246, 36}}</string>
 								<reference key="NSSuperview" ref="35415930"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="305287686"/>
+								<reference key="NSNextKeyView" ref="971594798"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -392,7 +393,7 @@
 								<reference key="IBUIFontDescription" ref="328119072"/>
 								<reference key="IBUIFont" ref="130756856"/>
 							</object>
-							<object class="IBUIImageView" id="305287686">
+							<object class="IBUIImageView" id="971594798">
 								<reference key="NSNextResponder" ref="35415930"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{287, 11}, {13, 14}}</string>
@@ -603,7 +604,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">verifiedIconImageView</string>
 						<reference key="source" ref="35415930"/>
-						<reference key="destination" ref="305287686"/>
+						<reference key="destination" ref="971594798"/>
 					</object>
 					<int key="connectionID">81</int>
 				</object>
@@ -693,7 +694,7 @@
 							<reference ref="188330037"/>
 							<reference ref="683154811"/>
 							<reference ref="755721970"/>
-							<reference ref="305287686"/>
+							<reference ref="971594798"/>
 						</object>
 						<reference key="parent" ref="173284354"/>
 					</object>
@@ -781,7 +782,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">80</int>
-						<reference key="object" ref="305287686"/>
+						<reference key="object" ref="971594798"/>
 						<reference key="parent" ref="35415930"/>
 					</object>
 				</object>
