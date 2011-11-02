@@ -84,7 +84,7 @@
 }
 
 + (NSMutableDictionary *) facebookWall {
-  return [[NSUserDefaults standardUserDefaults] objectForKey:@"FBSelectedWallArray"];
+  return [[[NSUserDefaults standardUserDefaults] objectForKey:@"FBSelectedWallArray"] retain];
 }
 
 + (void) setFacebookWall:(NSMutableDictionary *)wall {

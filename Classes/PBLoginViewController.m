@@ -12,6 +12,8 @@
 #import "AppDelegate.h"
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
+#import "PBNavigationController.h"
+
 @implementation PBLoginViewController
 
 @synthesize emailTextField;
@@ -88,7 +90,7 @@
   UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
   viewController.navigationItem.rightBarButtonItem = cancelButton;
   
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:viewController];
   [self presentModalViewController:navigationController animated:YES];
   [navigationController release];
   [viewController release];
@@ -173,7 +175,7 @@
   UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
   viewController.navigationItem.rightBarButtonItem = cancelButton;
   
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:viewController];
   [self presentModalViewController:navigationController animated:YES];
   [navigationController release];
   [cancelButton release];

@@ -57,7 +57,7 @@
   self.progressHUD = hud;
   [hud release];
 
-  facebookWall = [PBSharedUser facebookWall];
+  self.facebookWall = [PBSharedUser facebookWall];
 
   tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   tableView.separatorColor = [UIColor lightGrayColor];
@@ -221,9 +221,9 @@
     PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
     [EWCheckbox setTag:indexPath.row];
     if (facebookWall == nil) {
-      facebookWall = [NSDictionary dictionaryWithObjectsAndKeys: @"0", @"Selected", nil];
+      self.facebookWall = [[NSMutableDictionary alloc] initWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys: @"0", @"Selected", nil]];
     }
-
+ 
     if ([facebookWall valueForKey:@"Selected"] == nil) {
       [facebookWall setObject:@"0" forKey:@"Selected"];
       EWCheckbox.selected = NO;
@@ -253,9 +253,9 @@
 
 - (void)fbWallTouched:(UIButton *)sender {
   
-  int i = [[facebookWall valueForKey:@"Selected"] intValue];
+  int i = [[self.facebookWall valueForKey:@"Selected"] intValue];
   i = !i;
-  [facebookWall setObject:[NSString stringWithFormat:@"%d",i] forKey:@"Selected"];
+  [self.facebookWall setObject:[NSString stringWithFormat:@"%d",i] forKey:@"Selected"];
 }
 
 - (void)loginlogoutButton:(UIButton *)sender {

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
 #import "PBProgressHUD.h"
-#import "PBNavigationBar.h"
 #import "ModalDismissDelegate.h"
 
 typedef enum {
@@ -25,7 +24,6 @@ typedef enum {
   UITableView *tableView;
   UIButton *currStatusButtons;
   BOOL isTwitterLogut;
-  IBOutlet PBNavigationBar *navBar;
   id<ModalDismissDelegate> delegate;
 }
 

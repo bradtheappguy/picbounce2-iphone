@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 @interface UINavigationBar (BackgroundImage)
+
 - (void)biInsertSubview:(UIView *)view atIndex:(NSInteger)index;
 - (void)biSendSubviewToBack:(UIView *)view;
+
 @end
 
 
 @interface PBNavigationController : UINavigationController <UINavigationControllerDelegate>
+
+@property (readwrite, nonatomic) NSUInteger style;
+
+- (id)initWithRootViewController:(UIViewController *)rootViewController style:(NSUInteger)style;
 
 @end

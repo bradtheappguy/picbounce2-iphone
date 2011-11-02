@@ -28,7 +28,7 @@
 #import "PBProgressHUD.h"
 #import "ASIDownloadCache.h"
 #import "PBSharedUser.h"
-
+#import "PBNavigationController.h"
 
 UIImage *scaleAndRotateImage(UIImage *image)
 {
@@ -610,6 +610,20 @@ bail:
 }
 
 - (IBAction)captionButtonPressed:(id)sender {
+  NewPostViewController *newPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
+  newPostViewController.isCaptionView = YES;
+  newPostViewController.hidesBottomBarWhenPushed = YES;
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
+  
+  
+  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  newPostViewController.navigationItem.leftBarButtonItem = cancelButton;
+  newPostViewController.navigationItem.title = @"New Post";
+  [cancelButton release];
+  [self presentModalViewController:navigationController animated:YES];
+  [newPostViewController release];
+  
+  return;
   PBCaptionViewController *a_NewPostViewController = [[PBCaptionViewController alloc] initWithNibName:@"PBCaptionViewController" bundle:nil];
 
   a_NewPostViewController.hidesBottomBarWhenPushed = YES;
@@ -703,12 +717,16 @@ bail:
   
 }
 
--(void) optionsButtonPressed:(id)sender {
+- (IBAction)optionsButtonPressed:(id)sender {
   PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
-  //[self.navigationController pushViewController:vc animated:YES];
+  PBNavigationController *nav = [[PBNavigationController alloc] initWithRootViewController:vc style:1];
+  UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  vc.navigationItem.leftBarButtonItem = cancel;
   vc.delegate = self;
-  [self presentModalViewController:vc animated:YES];
+  [cancel release];
+  [self presentModalViewController:nav animated:YES];
   [vc release];
+  [nav release];
 }
 
 -(void) dealloc {

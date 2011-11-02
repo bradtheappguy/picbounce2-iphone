@@ -22,7 +22,6 @@
 #import "PBHTTPRequest.h"
 #import "NewPostViewController.h"
 #import "NSDictionary+NotNull.h"
-#import "PBNavigationBar.h"
 #import "PBNavigationController.h"
 
 @implementation PBStreamViewController
@@ -187,8 +186,7 @@
 - (void)createPost {
     NewPostViewController *newPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
     newPostViewController.hidesBottomBarWhenPushed = YES;
-    PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController];
-    
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
         
   UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
   newPostViewController.navigationItem.leftBarButtonItem = cancelButton;
