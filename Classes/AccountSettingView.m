@@ -11,6 +11,8 @@
 #import "FacebookSingleton.h"
 #import "PBTwitterViewController.h"
 #import "PBAuthWebViewController.h"
+#import "PBSharedUser.h"
+
 @implementation AccountSettingView
 
 @synthesize fbbutton;
@@ -99,32 +101,32 @@
 	if (_facebook == nil) {
 		_facebook = [FacebookSingleton sharedFacebook];
 		_facebook.sessionDelegate = self;
-		NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"access_token"];
-		NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
+		NSString *token = [PBSharedUser facebookAccessToken];
+		NSDate *exp = [PBSharedUser facebookExpirationDate];
 		
 		if (token != nil && exp != nil && [token length] > 2) {
 			//isLoggedIn = YES;
 			_facebook.accessToken = token;
-            _facebook.expirationDate = [NSDate distantFuture];
+      _facebook.expirationDate = [NSDate distantFuture];
 		} 
-				
+
 		[_facebook retain];
 	}
-	
+
   //if no session is available login
 	[_facebook authorize:_permissions delegate:self];
 }
 
 
-- (void)logout {  
-  [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"access_token"];
-	[[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"exp_date"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+- (void)logout {
+  
+  [PBSharedUser removeFacebookAccessToken];
+  [PBSharedUser removeFacebookExpirationDate];
   [_facebook logout:self];
 }
 
 
-- (void) getFBRequestWithGraphPath:(NSString*) _path andDelegate:(id) _delegate{
+- (void) getFBRequestWithGraphPath:(NSString*) _path andDelegate:(id) _delegate {
   
   if (_path != nil) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];

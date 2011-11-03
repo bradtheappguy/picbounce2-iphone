@@ -19,6 +19,7 @@
 #define kOffset(val) 10
 
 @implementation PBSharingOptionViewController
+
 @synthesize tableView;
 @synthesize progressHUD;
 @synthesize facebookPages;
@@ -64,9 +65,6 @@
   [tableView reloadData];
   [tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_sharing_settings.png"]]];
   [self.view addSubview:self.progressHUD];
-  UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backBarButtonItemClicked)];
-  self.navigationItem.backBarButtonItem = backBarButtonItem;
-  [backBarButtonItem release];    
 }
 
 - (void)viewDidUnload {
@@ -82,14 +80,7 @@
   }
 }
 
-- (void) loadPagesFromFacebook {
-  
-  NSString *path = @"/fql?q=select%20page_id,%20type,%20name,%20page_url,pic_small%20from%20page%20where%20page_id%20in%20(%20select%20page_id,type%20from%20page_admin%20where%20uid=me()%20and%20type!%3d'APPLICATION')";
-  
-  [[FacebookSingleton sharedFacebook] requestWithGraphPath:path andDelegate:self];
-}
-
-- (void)backBarButtonItemClicked {
+- (void)viewDidDisappear:(BOOL)animated {
   
   NSMutableArray *array = [[NSMutableArray alloc] init];
   for (int i = 0; i < [facebookPages count]; i++) {
@@ -102,14 +93,11 @@
   [PBSharedUser setFacebookWall:facebookWall];
 }
 
-#pragma mark -
-#pragma mark CustomNavigationBar Methods
-
-- (IBAction)dismissModalViewControllerAnimated {
+- (void) loadPagesFromFacebook {
   
-  //[self.navigationController popViewControllerAnimated:YES];
-  [self dismissModalViewControllerAnimated:YES];
-  [delegate didDismissModalView];
+  NSString *path = @"/fql?q=select%20page_id,%20type,%20name,%20page_url,pic_small%20from%20page%20where%20page_id%20in%20(%20select%20page_id,type%20from%20page_admin%20where%20uid=me()%20and%20type!%3d'APPLICATION')";
+  
+  [[FacebookSingleton sharedFacebook] requestWithGraphPath:path andDelegate:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

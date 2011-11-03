@@ -87,32 +87,11 @@
     PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
-    
-    
-    /*    
-     if (_facebook == nil) {
-     _facebook = [FacebookSingleton sharedFacebook];
-     _facebook.sessionDelegate = self;
-     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"access_token"];
-     NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
-     
-     if (token != nil && exp != nil && [token length] > 2) {
-     //isLoggedIn = YES;
-     _facebook.accessToken = token;
-     _facebook.expirationDate = [NSDate distantFuture];
-     } 
-     
-     [_facebook retain];aqa	
-     //if no session is available login
-     
-     [_facebook authorize:[NSArray arrayWithObject: @"publish_stream"] delegate:self];
-     
-     */  
-    
-    
 }
+
 #pragma mark -
 #pragma mark CustomNavigationBar Methods
+
 - (IBAction)dismissModalViewControllerAnimated {
 	[self dismissModalViewControllerAnimated:YES];
   [delegate didDismissModalView];

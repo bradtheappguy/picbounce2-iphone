@@ -13,6 +13,7 @@
 #import "ABNotifier.h"
 #import "CaptureSessionManager.h"
 #import "PBLoginViewController.h"
+#import "PBSharedUser.h"
 
 @implementation AppDelegate
 
@@ -92,6 +93,21 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   if ([self authToken] == nil) {
     [self presentLoginViewController:NO];
   }
+
+  // Set up facebook session if expiry date not expired
+  Facebook *_facebook = [FacebookSingleton sharedFacebook];
+	if (_facebook != nil) {
+		NSString *token = [PBSharedUser facebookAccessToken];
+		NSDate *exp = [PBSharedUser facebookExpirationDate];
+    
+		if (token != nil && exp != nil && [token length] > 2) {
+			_facebook.accessToken = token;
+      _facebook.expirationDate = [NSDate distantFuture];
+		} 
+    
+		[_facebook retain];
+	}
+  
   return YES;
 }
 

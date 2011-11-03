@@ -300,7 +300,7 @@
  
 -(void) userWasFollowedNotificationReceived:(NSNotification *)notification {
   NSDictionary *userInfo = [notification userInfo];
-  NSString *senderUserID = [[[userInfo objectForKey:@"user"] objectForKey:@"id"] stringValue];
+  //NSString *senderUserID = [[[userInfo objectForKey:@"user"] objectForKey:@"id"] stringValue];
   for (NSDictionary *comment in self.comments) {
     NSLog(@"comment %@",comment);
   }
