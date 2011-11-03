@@ -42,6 +42,11 @@ static const NSUInteger kPaddingBetweenNameLabelAndVerifiedIcon = 3;
   NSString *name = [user objectForKeyNotNull:@"name"];
   NSNumber *followersCount = [user objectForKeyNotNull:@"follower_count"];
   NSNumber *photosCount = [user objectForKeyNotNull:@"post_count"];
+
+  NSString *avatarURL = [user objectForKeyNotNull:@"avatar"];
+  if (![avatarURL isEqual:[NSNull null]]) {
+    self.avatarImageView.imageURL = [NSURL URLWithString: avatarURL];
+  }
   
   BOOL verified = [[user objectForKeyNotNull:@"verified"] boolValue];
   self.verifiedIconImageView.hidden = !verified;
