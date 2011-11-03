@@ -39,9 +39,6 @@
   
   [hud release];
   [self.view addSubview:self.progressHUD];
-    
-    
-    [Utilities customizeNavigationBar:self.navigationController.navigationBar];
 	
 	UINavigationItem *previousItem;
 	

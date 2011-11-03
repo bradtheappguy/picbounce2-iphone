@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
-#import "PBNavigationBar.h"
 #import "ModalDismissDelegate.h"
 
 
@@ -16,7 +15,6 @@
   IBOutlet UITextView *a_PostTextView;
   Facebook *_facebook;
   IBOutlet UIView *optionButtonView;
-  IBOutlet PBNavigationBar *navBar;
   id<ModalDismissDelegate> delegate;
   
 }

@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface PBSharingOptionCell : UITableViewCell {
-    UILabel *a_TitleLabel;
-    UIButton *a_StatusButton;
+    UILabel *titleLabel;
+    UIButton *statusButton;
 }
-@property (nonatomic, retain) IBOutlet UILabel *a_TitleLabel;
-@property (nonatomic, retain) IBOutlet UIButton *a_StatusButton;
+@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
+@property (nonatomic, retain) IBOutlet UIButton *statusButton;
 @end

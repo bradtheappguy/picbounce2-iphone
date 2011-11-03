@@ -34,4 +34,69 @@
   [[NSUserDefaults standardUserDefaults] setBool:should forKey:@"CROSSPOST_TW"];
 }
 
++ (NSDate *) facebookExpirationDate {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:@"FBExpirationDateKey"];
+}
+
++ (void) setFacebookExpirationDate:(NSDate *)date {
+  [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"FBExpirationDateKey"];
+}
+
++ (void) removeFacebookExpirationDate {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  if ([defaults objectForKey:@"FBExpirationDateKey"]) {
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+  }
+}
+
++ (NSString *) facebookAccessToken {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:@"FBAccessTokenKey"];
+}
+
++ (void) setFacebookAccessToken:(NSString *)token {
+  [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"FBAccessTokenKey"];
+}
+
++ (void) removeFacebookAccessToken {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  if ([defaults objectForKey:@"FBAccessTokenKey"]) {
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults synchronize];
+  }
+}
+
+
++ (NSMutableArray *) facebookPages {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:@"FBSelectedPagesArray"];
+}
+
++ (void) setFacebookPages:(NSMutableArray *)token {
+  [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"FBSelectedPagesArray"];
+}
+
++ (void) removeFacebookPages {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  if ([defaults objectForKey:@"FBSelectedPagesArray"]) {
+    [defaults removeObjectForKey:@"FBSelectedPagesArray"];
+    [defaults synchronize];
+  }
+}
+
++ (NSMutableDictionary *) facebookWall {
+  return [[[NSUserDefaults standardUserDefaults] objectForKey:@"FBSelectedWallArray"] retain];
+}
+
++ (void) setFacebookWall:(NSMutableDictionary *)wall {
+  [[NSUserDefaults standardUserDefaults] setObject:wall forKey:@"FBSelectedWallArray"];
+}
+
++ (void) removeFacebookWall {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  if ([defaults objectForKey:@"FBSelectedWallArray"]) {
+    [defaults removeObjectForKey:@"FBSelectedWallArray"];
+    [defaults synchronize];
+  }  
+}
+
 @end

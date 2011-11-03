@@ -23,7 +23,7 @@
 #import "NewPostViewController.h"
 #import "NSDictionary+NotNull.h"
 #import "PBNavigationController.h"
-#import "PBNavigationBar.h"
+
 @implementation PBStreamViewController
 
 @synthesize shouldShowProfileHeader;
@@ -163,47 +163,30 @@
 }
 
 -(void) configureNavigationBar {
- [Utilities customizeNavigationController:self.navigationController];
-    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
-
-    self.navigationItem.rightBarButtonItem = leftBarButtonItem;
-    [leftBarButtonItem release];
-    
-/*  if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] authToken]) {
-    UIBarButtonItem *logoutButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed:)];
-    self.navigationItem.rightBarButtonItem = logoutButton;
-    [logoutButton release];
-          //self.navigationItem.leftBarButtonItem = nil;
+  UILabel *l = (UILabel *)self.navigationItem.titleView;
+  if ([l.text isEqualToString:self.navigationItem.title] == NO) {
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = UITextAlignmentCenter;
+    label.textColor = kNavBarTitleTextColor
+    self.navigationItem.titleView = label;
+    label.text = self.navigationItem.title;
+    [label sizeToFit];
   }
-  else {
-    UIBarButtonItem *loginButton  = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Login",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(loginButtonPressed:)];
-    self.navigationItem.leftBarButtonItem = loginButton;
-    [loginButton release];
-    self.navigationItem.rightBarButtonItem = nil;
-  }*/
+   
   
-  //self.navigationItem.title = @"FOOBAR";
-  //self.title = @"BATFIZ";
-  
-  UILabel *test = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 175, 45)];
-  test.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin;
-  test.font = [UIFont systemFontOfSize:24];
-  test.textColor = [UIColor whiteColor];
-  test.backgroundColor = [UIColor clearColor];
-  test.shadowColor = [UIColor colorWithRedInt:1 greenInt:1 blueInt:0 alphaInt:1];
-  test.shadowOffset = CGSizeMake(0, 1);
-  test.layer.shadowOpacity = 1.0;
-  test.text = self.navigationItem.title;
-  test.textAlignment = UITextAlignmentCenter;
-  self.navigationItem.titleView = test;
-  
+  UIBarButtonItem *createPostButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
+  self.navigationItem.rightBarButtonItem = createPostButton;
+  [createPostButton release];
 }
+
 #pragma mark Open Create Post View
 - (void)createPost {
     NewPostViewController *newPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
     newPostViewController.hidesBottomBarWhenPushed = YES;
-  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController];
-    
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
         
   UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
   newPostViewController.navigationItem.leftBarButtonItem = cancelButton;
@@ -446,7 +429,7 @@
 -(void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   [self reloadTableViewDataSourceUsingCache:NO];
-  [self configureNavigationBar];
+  //[self configureNavigationBar];
 }
 
 
@@ -458,9 +441,8 @@
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
   vc.pullsToRefresh = YES;
-  [self.navigationController pushViewController:vc animated:YES];
   vc.navigationItem.title = screenName;
-  
+  [self.navigationController pushViewController:vc animated:YES];
   [vc release];
 }
 
@@ -516,7 +498,7 @@
 
 -(IBAction) settingsButtonPressed:(id)sender{
   ProfileSettingView *profile1 = [[[ProfileSettingView alloc]initWithNibName:nil bundle:nil]autorelease];
-  PBNavigationController *navController = [[[PBNavigationController alloc] initWithRootViewController:profile1] autorelease];
+  UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:profile1] autorelease];
   [self presentModalViewController:navController animated:YES];
 }
 

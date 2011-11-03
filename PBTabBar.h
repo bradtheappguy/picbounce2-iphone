@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface PBTabBar : UITabBar {
- // UIImageView *backgroundView;
+  UIButton *feedTabButton;
+  UIButton *profileTabButton;
   UIButton *cameraButton;
+  
+  UIButton *selectedButton;
 }
 
 @end

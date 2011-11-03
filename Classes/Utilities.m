@@ -10,31 +10,6 @@
 
 @implementation Utilities
 
-+ (void) customizeNavigationController:(UINavigationController *)navController {
-    UINavigationBar *navBar = [navController navigationBar];
-    navBar.tintColor = kNavBarColor;
-	
-    UIImageView *imageView = (UIImageView *)[navBar viewWithTag:kNavBarImageTag];
-    if (imageView == nil) {
-        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbar.png"]];
-        [imageView setTag:kNavBarImageTag];
-        [navBar insertSubview:imageView atIndex:0];
-        [imageView release];
-    }
-}
-
-+ (void) customizeNavigationBar:(UINavigationBar *)navBar {
-    navBar.tintColor = kNavBarColor;
-	
-    UIImageView *imageView = (UIImageView *)[navBar viewWithTag:kNavBarImageTag];
-    if (imageView == nil) {
-        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbar.png"]];
-        [imageView setTag:kNavBarImageTag];
-        [navBar insertSubview:imageView atIndex:0];
-        [imageView release];
-    }
-}
-
 + (void)swizzleSelector:(SEL)orig ofClass:(Class)c withSelector:(SEL)new; {
     Method origMethod = class_getInstanceMethod(c, orig);
     Method newMethod = class_getInstanceMethod(c, new);
