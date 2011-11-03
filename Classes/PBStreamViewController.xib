@@ -63,7 +63,7 @@
 				<float key="IBUISectionFooterHeight">22</float>
 			</object>
 			<object class="IBUIView" id="994916943">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -72,6 +72,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 367}</string>
 						<reference key="NSSuperview" ref="994916943"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="318842016"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="618064314">
 							<int key="NSColorSpace">3</int>
@@ -89,6 +90,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{26, 67}, {268, 32}}</string>
 						<reference key="NSSuperview" ref="994916943"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="447583272"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -129,6 +131,8 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{93, 247}, {135, 58}}</string>
 						<reference key="NSSuperview" ref="994916943"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -158,6 +162,8 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 367}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1062805013"/>
 				<reference key="IBUIBackgroundColor" ref="618064314"/>
 				<int key="IBUITag">-37</int>
@@ -364,7 +370,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Photos</string>
+								<string key="IBUIText">Posts</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4yMTU2ODYyNzQ1IDAuNDIzNTI5NDExOCAwLjQ0MzEzNzI1NDkAA</bytes>
