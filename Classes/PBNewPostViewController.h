@@ -10,11 +10,11 @@
 #import "FBConnect.h"
 #import "TwitterButton.h"
 
-@interface NewPostViewController : UIViewController < UITextViewDelegate, FBSessionDelegate, FBDialogDelegate >{
-    IBOutlet UITextView *a_PostTextView;
-    Facebook *_facebook;
-    IBOutlet UIView *optionButtonView;
-  TwitterButton *a_TwitterButton;
+@interface PBNewPostViewController : UIViewController < UITextViewDelegate, FBSessionDelegate, FBDialogDelegate >{
+  IBOutlet UITextView *postTextView;
+  Facebook *_facebook;
+  IBOutlet UIView *optionButtonView;
+  TwitterButton *twitterButton;
 }
 
 @property (nonatomic, assign) BOOL isCaptionView;

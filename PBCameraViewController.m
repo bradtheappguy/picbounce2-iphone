@@ -19,7 +19,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <QuartzCore/QuartzCore.h>
 #import "PBUploadQueue.h"
-#import "NewPostViewController.h"
+#import "PBNewPostViewController.h"
 //#import "CaptureSessionManager.h"
 #import "AppDelegate.h"
 #import "PBCaptionViewController.h"
@@ -609,7 +609,7 @@ bail:
 }
 
 - (IBAction)captionButtonPressed:(id)sender {
-  NewPostViewController *newPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
+  PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
   newPostViewController.isCaptionView = YES;
   newPostViewController.hidesBottomBarWhenPushed = YES;
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];

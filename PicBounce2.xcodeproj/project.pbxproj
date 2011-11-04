@@ -26,8 +26,7 @@
 		5589FD1C1457915300775DEE /* FacebookButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5589FD1B1457915300775DEE /* FacebookButton.m */; };
 		55EF00E614558E830027FFA8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF00E414558E830027FFA8 /* FeedViewController.m */; };
 		55EF00E714558E830027FFA8 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EF00E514558E830027FFA8 /* FeedViewController.xib */; };
-		55EF00ED145592DF0027FFA8 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF00EB145592DF0027FFA8 /* NewPostViewController.m */; };
-		55EF00EE145592DF0027FFA8 /* NewPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EF00EC145592DF0027FFA8 /* NewPostViewController.xib */; };
+		55EF00ED145592DF0027FFA8 /* PBNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF00EB145592DF0027FFA8 /* PBNewPostViewController.m */; };
 		55F8CB41145B94DB007A9441 /* PBCaptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F8CB3F145B94DB007A9441 /* PBCaptionViewController.m */; };
 		55F8CB42145B94DB007A9441 /* PBCaptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F8CB40145B94DB007A9441 /* PBCaptionViewController.xib */; };
 		7452D1AE135D916F0024C63C /* ProfileSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7452D1AD135D916F0024C63C /* ProfileSettingView.m */; };
@@ -95,6 +94,7 @@
 		A25CEA42134FDE0000CD33D9 /* PicBounce2_Tests.h in Resources */ = {isa = PBXBuildFile; fileRef = A25CEA41134FDE0000CD33D9 /* PicBounce2_Tests.h */; };
 		A25CEA44134FDE0000CD33D9 /* PicBounce2_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CEA43134FDE0000CD33D9 /* PicBounce2_Tests.m */; };
 		A25CEA4B134FDE6200CD33D9 /* PicBounce.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CEA4A134FDE6200CD33D9 /* PicBounce.m */; };
+		A25CEA801464A1F500FC75AD /* PBNewPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A25CEA7F1464A1F500FC75AD /* PBNewPostViewController.xib */; };
 		A25CF01E13FB619900AFF582 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25CF01D13FB619900AFF582 /* CoreImage.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A25CF02413FB6E4800AFF582 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25CF02313FB6E4800AFF582 /* CoreVideo.framework */; };
 		A2620AFD1460F1AD00E5F0FE /* _designref.png in Resources */ = {isa = PBXBuildFile; fileRef = A26208E51460F1AC00E5F0FE /* _designref.png */; };
@@ -756,9 +756,8 @@
 		55EF00E314558E830027FFA8 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		55EF00E414558E830027FFA8 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		55EF00E514558E830027FFA8 /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
-		55EF00EA145592DF0027FFA8 /* NewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostViewController.h; sourceTree = "<group>"; };
-		55EF00EB145592DF0027FFA8 /* NewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostViewController.m; sourceTree = "<group>"; };
-		55EF00EC145592DF0027FFA8 /* NewPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPostViewController.xib; sourceTree = "<group>"; };
+		55EF00EA145592DF0027FFA8 /* PBNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBNewPostViewController.h; sourceTree = "<group>"; };
+		55EF00EB145592DF0027FFA8 /* PBNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBNewPostViewController.m; sourceTree = "<group>"; };
 		55F8CB3E145B94DA007A9441 /* PBCaptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBCaptionViewController.h; sourceTree = "<group>"; };
 		55F8CB3F145B94DB007A9441 /* PBCaptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBCaptionViewController.m; sourceTree = "<group>"; };
 		55F8CB40145B94DB007A9441 /* PBCaptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBCaptionViewController.xib; sourceTree = "<group>"; };
@@ -886,6 +885,7 @@
 		A25CEA43134FDE0000CD33D9 /* PicBounce2_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PicBounce2_Tests.m; sourceTree = "<group>"; };
 		A25CEA49134FDE6200CD33D9 /* PicBounce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PicBounce.h; path = ../PicBounce.h; sourceTree = "<group>"; };
 		A25CEA4A134FDE6200CD33D9 /* PicBounce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PicBounce.m; path = ../PicBounce.m; sourceTree = "<group>"; };
+		A25CEA7F1464A1F500FC75AD /* PBNewPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBNewPostViewController.xib; sourceTree = "<group>"; };
 		A25CF01D13FB619900AFF582 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		A25CF02313FB6E4800AFF582 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		A26208E51460F1AC00E5F0FE /* _designref.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _designref.png; sourceTree = "<group>"; };
@@ -1872,9 +1872,9 @@
 		55EF00E9145592BB0027FFA8 /* Post View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				55EF00EA145592DF0027FFA8 /* NewPostViewController.h */,
-				55EF00EB145592DF0027FFA8 /* NewPostViewController.m */,
-				55EF00EC145592DF0027FFA8 /* NewPostViewController.xib */,
+				A25CEA7F1464A1F500FC75AD /* PBNewPostViewController.xib */,
+				55EF00EA145592DF0027FFA8 /* PBNewPostViewController.h */,
+				55EF00EB145592DF0027FFA8 /* PBNewPostViewController.m */,
 			);
 			name = "Post View Controller";
 			sourceTree = "<group>";
@@ -3195,7 +3195,6 @@
 				A29506B8143E7493002E07DD /* AviarySDK-Plugins.bundle in Resources */,
 				557080151454C23B00183395 /* PBCommentCell.xib in Resources */,
 				55EF00E714558E830027FFA8 /* FeedViewController.xib in Resources */,
-				55EF00EE145592DF0027FFA8 /* NewPostViewController.xib in Resources */,
 				5589FCDB14575EF400775DEE /* PBSharingOptionViewController.xib in Resources */,
 				5589FCE11457621200775DEE /* PBSharingOptionCell.xib in Resources */,
 				55F8CB42145B94DB007A9441 /* PBCaptionViewController.xib in Resources */,
@@ -3716,6 +3715,7 @@
 				A2620D091460F1AE00E5F0FE /* Wrath.acorn in Resources */,
 				A2620D0A1460F1AE00E5F0FE /* Wrath.png in Resources */,
 				A2620D0C1460FA0100E5F0FE /* btn_camera_h@2x.png in Resources */,
+				A25CEA801464A1F500FC75AD /* PBNewPostViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3852,7 +3852,7 @@
 				A2D4843A1453CAC6001B6426 /* PBPhotoView.m in Sources */,
 				557080101454BA5C00183395 /* PBCommentCell.m in Sources */,
 				55EF00E614558E830027FFA8 /* FeedViewController.m in Sources */,
-				55EF00ED145592DF0027FFA8 /* NewPostViewController.m in Sources */,
+				55EF00ED145592DF0027FFA8 /* PBNewPostViewController.m in Sources */,
 				A29493BE1455E4A70000D6C8 /* NSDictionary+NotNull.m in Sources */,
 				A29493C41456262E0000D6C8 /* PBProgressHUD.m in Sources */,
 				5589FCDA14575EF400775DEE /* PBSharingOptionViewController.m in Sources */,

@@ -19,7 +19,7 @@
 #import "PBUploadingTableViewCell.h"
 #import "PBPersonListViewController.h"
 #import "PBHTTPRequest.h"
-#import "NewPostViewController.h"
+#import "PBNewPostViewController.h"
 #import "NSDictionary+NotNull.h"
 #import "PBNavigationController.h"
 
@@ -212,7 +212,7 @@
 
 #pragma mark Open Create Post View
 - (void)createPost {
-    NewPostViewController *newPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
+    PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"PBNewPostViewController" bundle:nil];
     newPostViewController.hidesBottomBarWhenPushed = YES;
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
         

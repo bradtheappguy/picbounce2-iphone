@@ -18,7 +18,7 @@
 -(id) initWithresponseData:(id)json_string {
     if (self = [super init]) {
         SBJSON *parser = [[SBJSON alloc] init];
-        data = [[parser objectWithString:json_string error:nil] retain];
+        data = [[parser objectWithString:json_string error:nil] mutableCopy];
       [parser release];
         if ([self validate:data]) {
           NSDictionary *response = [data objectForKeyNotNull:@"response"];
@@ -49,7 +49,7 @@
  // id _photos = [[NSMutableArray alloc] initWithArray:[self photos]];
   SBJSON *parser = [[SBJSON alloc] init];
   
-  id newData = [parser objectWithString:json_string error:nil];
+  id newData = [[parser objectWithString:json_string error:nil] mutableCopy];
   if ([self validate:newData]) {
     NSMutableArray *newPosts = [[(NSDictionary *) [(NSDictionary *) newData objectForKeyNotNull:@"response"] objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"items"];;
     NSMutableArray *newPeople = [[(NSDictionary *) [(NSDictionary *) newData objectForKeyNotNull:@"response"] objectForKeyNotNull:@"people"] objectForKeyNotNull:@"items"];;
