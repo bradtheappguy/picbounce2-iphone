@@ -7,7 +7,6 @@
 
 #import "ASIFormDataRequest.h"
 #import <QuartzCore/QuartzCore.h>
-#define CELL_PADDING 15
 #import "PBCommentListViewController.h"
 #import "ProfileSettingView.h"
 #import "PBLoginViewController.h"
@@ -23,6 +22,10 @@
 #import "NewPostViewController.h"
 #import "NSDictionary+NotNull.h"
 #import "PBNavigationController.h"
+
+#define CELL_PADDING 15
+#define TABBAR_PROFILE_INDEX 2
+#define TABBAR_FEED_INDEX 0
 
 @implementation PBStreamViewController
 
@@ -51,7 +54,9 @@
 - (UIView *)createDefaultView {
    
   UIView *a_EmptyStateView; 
-  if (self.tabBarController.selectedIndex == 2) {
+  int idx = self.tabBarController.selectedIndex;
+  NSLog(@"index = %d", idx);
+  if (self.tabBarController.selectedIndex == TABBAR_PROFILE_INDEX) {
     a_EmptyStateView = [[UIView alloc] initWithFrame:CGRectMake(0,_profileHeader.frame.size.height +5, self.view.bounds.size.width, self.view.bounds.size.height)];
   } else {
     a_EmptyStateView = [[UIView alloc] initWithFrame:CGRectMake(0,5 , self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -67,29 +72,49 @@
   emptyView.backgroundColor = [UIColor colorWithRed:240/255.0 green:237/255.0 blue:235/255.05 alpha:1];
   emptyView.image = [UIImage imageNamed:@"ico_feed_empty.png"];
   emptyView.contentMode = UIViewContentModeCenter;
-  CGFloat newYPos = emptyView.frame.origin.y - 12.5f;
-  emptyView.frame = CGRectMake(emptyView.frame.origin.x, newYPos, emptyView.frame.size.width, emptyView.frame.size.height);
+  if (self.tabBarController.selectedIndex == TABBAR_FEED_INDEX) {
+    CGFloat newYPos = emptyView.frame.origin.y - 12.5f;
+    emptyView.frame = CGRectMake(emptyView.frame.origin.x, newYPos, emptyView.frame.size.width, emptyView.frame.size.height);
+  }  else {
+    CGFloat newYPos = emptyView.frame.origin.y - 40.5f;
+    emptyView.frame = CGRectMake(emptyView.frame.origin.x, newYPos, emptyView.frame.size.width, emptyView.frame.size.height);
+  }
   [a_EmptyStateView addSubview:emptyView];
   [emptyView release];
 
-  UILabel *a_DefaultViewNameLabel = [[UILabel alloc]initWithFrame: CGRectMake(26, 64.5, 268, 32)];
-  a_DefaultViewNameLabel.text = [NSString stringWithFormat:@"Welcome, %@",self.navigationItem.title];
-  a_DefaultViewNameLabel.backgroundColor = [UIColor clearColor];
-  a_DefaultViewNameLabel.textAlignment = UITextAlignmentCenter;
-  a_DefaultViewNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:26];
-  a_DefaultViewNameLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
-  [a_EmptyStateView addSubview:a_DefaultViewNameLabel];
-  [a_DefaultViewNameLabel release];
+  if (self.tabBarController.selectedIndex == TABBAR_FEED_INDEX) {
+    UILabel *a_DefaultViewNameLabel = [[UILabel alloc]initWithFrame: CGRectMake(26, 64.5, 268, 32)];
+    a_DefaultViewNameLabel.text = [NSString stringWithFormat:@"Welcome, %@",self.navigationItem.title];
+    a_DefaultViewNameLabel.backgroundColor = [UIColor clearColor];
+    a_DefaultViewNameLabel.textAlignment = UITextAlignmentCenter;
+    a_DefaultViewNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:26];
+    a_DefaultViewNameLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
+    [a_EmptyStateView addSubview:a_DefaultViewNameLabel];
+    [a_DefaultViewNameLabel release];
+  }
 
-  UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(93, 228, 135, 58)];
-  a_DefaultViewNameLabel1.numberOfLines = 2;
-  a_DefaultViewNameLabel1.text = @"Snap a photo   to start sharing!";
-  a_DefaultViewNameLabel1.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
-  a_DefaultViewNameLabel1.backgroundColor = [UIColor clearColor];
-  a_DefaultViewNameLabel1.textAlignment = UITextAlignmentCenter;
-  a_DefaultViewNameLabel1.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
-  [a_EmptyStateView addSubview:a_DefaultViewNameLabel1];
-  [a_DefaultViewNameLabel1 release];
+  if (self.tabBarController.selectedIndex == TABBAR_FEED_INDEX) {
+    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(93, 228, 135, 58)];
+    a_DefaultViewNameLabel1.numberOfLines = 2;
+    a_DefaultViewNameLabel1.text = @"Snap a photo\nto start sharing!";
+    a_DefaultViewNameLabel1.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
+    a_DefaultViewNameLabel1.backgroundColor = [UIColor clearColor];
+    a_DefaultViewNameLabel1.textAlignment = UITextAlignmentCenter;
+    a_DefaultViewNameLabel1.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+    [a_EmptyStateView addSubview:a_DefaultViewNameLabel1];
+    [a_DefaultViewNameLabel1 release];
+  } else {
+    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(52, 195, 195, 58)];
+    a_DefaultViewNameLabel1.numberOfLines = 2;
+    a_DefaultViewNameLabel1.text = [NSString stringWithFormat:@"%@, Snap\na photo to start sharing!",self.navigationItem.title];
+    a_DefaultViewNameLabel1.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
+    a_DefaultViewNameLabel1.backgroundColor = [UIColor clearColor];
+    a_DefaultViewNameLabel1.textAlignment = UITextAlignmentCenter;
+    a_DefaultViewNameLabel1.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+    [a_EmptyStateView addSubview:a_DefaultViewNameLabel1];
+    [a_DefaultViewNameLabel1 release];
+  }
+
   return [a_EmptyStateView autorelease];
 }
 
