@@ -16,6 +16,7 @@
 @synthesize next = _next;
 
 -(id) initWithresponseData:(id)json_string {
+
   if (self = [super init]) {
     SBJSON *parser = [[SBJSON alloc] init];
     if (data != nil)
@@ -40,35 +41,23 @@
   return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
+
   [super dealloc];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.flagged" object:nil];
 }  
 
-- (void) receiveFlaggedNotification:(NSNotification *) notification
-{
+- (void) receiveFlaggedNotification:(NSNotification *) notification {
+  
   NSString *flagPhotoID = [notification object];
   NSArray *arrayOfPhotos = [self posts];
-  for (id photo in arrayOfPhotos)
-  {
+  for (id photo in arrayOfPhotos) {
     id actualPhoto = [photo objectForKeyNotNull:@"item"];
     NSString *photoID = [actualPhoto objectForKeyNotNull:@"id"];
-    if ([flagPhotoID isEqualToString:photoID])
-    {
-      NSLog(@"PBAPIResponse: %@ == %@", flagPhotoID, photoID);
+    if ([flagPhotoID isEqualToString:photoID]) {
       [photo setValue:[NSNumber numberWithBool:YES] forKey:@"deleted"];
-      BOOL del = [[photo objectForKeyNotNull:@"deleted"] boolValue];
-      NSLog(@"flagged = %d", del);
     }  
   }
-/*
- if ([arrayOfPhotos count] > 0) {
- id photo = [arrayOfPhotos objectAtIndex:index];
- photo = [photo objectForKeyNotNull:@"item"];
- return photo;
- }
-*/
 }
 
 -(BOOL) validate:(id)_data {

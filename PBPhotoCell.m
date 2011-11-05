@@ -117,20 +117,17 @@
   return heoght;
 }
 
--(void) receiveFlaggedNotification:(NSNotification *) notification
-{
+-(void) receiveFlaggedNotification:(NSNotification *) notification {
+
   NSString *flagPhotoID = [notification object];
   NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
-  if ([flagPhotoID isEqualToString:photoID])
-  {
-    NSLog(@"PBPhotoCell: %@ == %@", flagPhotoID, photoID);
+  if ([flagPhotoID isEqualToString:photoID]) {
     [self.photo setValue:[NSNumber numberWithBool:YES] forKey:@"deleted"];
-    BOOL del = [[self.photo objectForKeyNotNull:@"deleted"] boolValue];
-    NSLog(@"flagged = %d", del);
   }
 }
 
 -(void) awakeFromNib {
+
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveFlaggedNotification:) name:@"com.viame.flagged" object:nil];
   for (int c=0; c<30; c++) {
     UIView *view = [[EGOImageButton alloc] initWithPlaceholderImage:nil];
