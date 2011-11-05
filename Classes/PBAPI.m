@@ -14,6 +14,9 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
 
 @implementation PBAPI
 
+@synthesize flaggedPhotoID;
+
+
 + (PBAPI *)sharedAPI {
   static dispatch_once_t pred;
   static PBAPI *api = nil;
@@ -28,11 +31,45 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
   return self;
 }
 
+- (void)dealloc
+{
+  [super dealloc];
+}  
+
 #pragma mark Follow User
 
-
 #pragma mark Flag Photo
+-(void) unflagPhotoWithID:(NSString *)photoID {
+  flaggedPhotoID = photoID;
+  NSString *urlString = [NSString stringWithFormat:@"http://%@/api/posts/%@/flags",API_BASE,photoID];
+  PBHTTPRequest *request = [[PBHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+  [request setRequestMethod:@"DELETE"];
+  [request setDelegate:self];
+  [request setDidFinishSelector:@selector(unflagPhotoRequestDidFinish:)];
+  [request setDidFailSelector:@selector(unflagPhotoRequestDidFail:)];
+  [request startAsynchronous];
+}
+
+
+-(void) unflagPhotoRequestDidFail:(ASIHTTPRequest *)request {
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"We were unable to unflag this photo at this time." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+}
+
+
+- (void) unflagPhotoRequestDidFinish:(ASIHTTPRequest *)request {
+  if ([request responseStatusCode] != 205) {
+    [self unflagPhotoRequestDidFail:request];
+  }
+  else {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.viame.unflagged" object:flaggedPhotoID];
+  }
+}
+
+
 -(void) flagPhotoWithID:(NSString *)photoID {
+  flaggedPhotoID = photoID;
   NSString *urlString = [NSString stringWithFormat:@"http://%@/api/posts/%@/flags",API_BASE,photoID];
   PBHTTPRequest *request = [[PBHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
   [request setRequestMethod:@"POST"];
@@ -43,7 +80,9 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
 }
 
 -(void) flagPhotoRequestDidFail:(ASIHTTPRequest *)request {
-  NSLog(@"Failed");
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"We were unable flag this photo at this time." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [alert show];
+  [alert release];
 }
 
 - (void) flagPhotoRequestDidFinish:(ASIHTTPRequest *)request {
@@ -52,12 +91,14 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
   }
   else {
     NSLog(@"Flagged");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.viame.flagged" object:flaggedPhotoID];
   }
 }
 
 
 #pragma mark Delete Photo
 -(void) deletePhotoWithID:(NSString *)photoID {
+  flaggedPhotoID = photoID;
   NSString *urlString = [NSString stringWithFormat:@"http://%@/api/posts/%@",API_BASE,photoID];
   PBHTTPRequest *request = [[PBHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
   [request setRequestMethod:@"DELETE"];
@@ -76,7 +117,7 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
     [self flagPhotoRequestDidFail:request];
   }
   else {
-    NSLog(@"Flagged");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.viame.flagged" object:flaggedPhotoID];
   }
 }
 

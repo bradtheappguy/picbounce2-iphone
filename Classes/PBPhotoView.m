@@ -39,7 +39,7 @@
                                               [UIImage imageNamed:@"bg_pb_5@2x.png"],
                                               [UIImage imageNamed:@"bg_pb_6@2x.png"],
                                               nil];
-      progressBarImageView.animationDuration = 2;
+      progressBarImageView.animationDuration = 4;
     progressBarImageView.animationRepeatCount = 1;
 
       [progressBarImageView startAnimating];

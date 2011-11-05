@@ -21,6 +21,7 @@
 
 
 @implementation PBPhotoCell
+
 @synthesize tableViewController;
 @synthesize actionBar;
 @synthesize photoImageView;
@@ -109,15 +110,35 @@
     photoHeight = 0;
   }
   
-  NSDictionary *comments = [photo objectForKeyNotNull:@"comments"];
+  NSArray *comments = [photo objectForKeyNotNull:@"comments"];
   CGFloat commentsSize = [PBPhotoCell sizeForCommentViewWithComments:comments].height;
   
   CGFloat heoght = captionHeight + photoHeight + 35 + commentsSize + 20;
   return heoght;
 }
 
+-(void) receiveFlaggedNotification:(NSNotification *) notification {
+
+  NSString *flagPhotoID = [notification object];
+  NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+  if ([flagPhotoID isEqualToString:photoID]) {
+    flaggedView.backgroundColor = [UIColor redColor];
+  }
+}
+
+-(void) receiveUnflaggedNotification:(NSNotification *) notification {
+  
+  NSString *flagPhotoID = [notification object];
+  NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+  if ([flagPhotoID isEqualToString:photoID]) {
+    flaggedView.backgroundColor = [UIColor greenColor];
+  }
+}
 
 -(void) awakeFromNib {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveFlaggedNotification:) name:@"com.viame.flagged" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUnflaggedNotification:) name:@"com.viame.unflagged" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveDeletedNotification:) name:@"com.viame.deleted" object:nil];
   for (int c=0; c<30; c++) {
     UIView *view = [[EGOImageButton alloc] initWithPlaceholderImage:nil];
     view.frame = CGRectMake(0, 0, 20, 20);
@@ -129,11 +150,15 @@
 
 
 -(void) addPhotoView:(UIView *)view ToFollowerScrollViewAtIndex:(NSUInteger) index {
+  
   view.frame = CGRectMake(index * 25, 0, 20, 20);
 }
 
 
 -(void) dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.flagged" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.unflagged" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.deleted" object:nil];
   self.photoImageView = nil;
   self.captionLabel = nil;
   self.commentCountLabel = nil;
@@ -147,9 +172,9 @@
 }
 
 
-
 -(void) setComments:(NSArray *)comments {
-  NSMutableAttributedString *attString = [PBPhotoCell attributedStringForComments:comments withString:nil];
+  
+  NSAttributedString *attString = [PBPhotoCell attributedStringForComments:comments withString:nil];
   OHAttributedLabel *label = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
   label.linkColor = [UIColor blackColor];
   label.backgroundColor = [UIColor clearColor];
@@ -178,20 +203,13 @@
     count++;
   }
   
-  
-
-  
   //CGFloat height = 100.0f;
   CGSize size = [label sizeThatFits:CGSizeMake(300, 1000)];
   label.frame = CGRectMake(10, self.captionLabel.frame.size.height+self.photoImageView.frame.size.height+self.actionBar.frame.size.height, 300, size.height+10);
 }
 
-
-
-
-
-
 -(void) setPhoto:(NSDictionary *)photo {
+  
   self.captionLabel.backgroundColor = [UIColor clearColor];
   self.actionBar.backgroundColor = [UIColor clearColor];
   self.contentView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
@@ -206,6 +224,7 @@
   NSString *mediaURL = [photo objectForKeyNotNull:@"media_url"];
   NSString *mediaType  = [photo objectForKeyNotNull:@"media_type"];
   
+  BOOL flagged = [[photo objectForKeyNotNull:@"flagged"] boolValue];
   if ([mediaType isEqualToString:@"photo"]) {
     self.photoImageView.imageURL = [NSURL URLWithString:mediaURL];
   }
@@ -244,10 +263,17 @@
   
   NSArray *comments = [photo objectForKeyNotNull:@"comments"];
   [self setComments:comments];
+  
+  flaggedView = [[UILabel alloc] initWithFrame:CGRectMake(25, 25, 100, 25)];
+  [(UILabel *)flaggedView setText:[NSString stringWithFormat:@"%u",photo]];
+  flaggedView.backgroundColor = [UIColor redColor];
+  [self.contentView addSubview:flaggedView];
+  flaggedView.backgroundColor = flagged?[UIColor redColor]:[UIColor greenColor];
 }
 
 
 -(IBAction)commentButtonPressed:(UIButton *)sender {
+  
   NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
   
   
@@ -268,18 +294,30 @@
 
 
 -(IBAction)actionButtonPressed:(id)sender {
-  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Flag Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Flag Post", nil];
+  UIActionSheet *actionSheet;
+  if ([[self.photo objectForKey:@"flagged"] boolValue]) {
+      actionSheet = [[UIActionSheet alloc] initWithTitle:@"Remove Flag" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Remove Flag", nil];
+  }
+  else {
+    actionSheet = [[UIActionSheet alloc] initWithTitle:@"Flag Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Flag Post", nil];
+  }
   actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
   [actionSheet showFromTabBar:tableViewController.tabBarController.tabBar];
   [actionSheet release];
 }
+
 
 #pragma mark UIACtionSheetDelegate 
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{} // before animation and hiding view
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
   if (buttonIndex == 0) {
     NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
-    [[PBAPI sharedAPI] flagPhotoWithID:photoID];
+    if ([[self.photo objectForKey:@"flagged"] boolValue]) {
+      [[PBAPI sharedAPI] unflagPhotoWithID:photoID];
+    }
+    else {
+      [[PBAPI sharedAPI] flagPhotoWithID:photoID];
+    }
   }
 }  // after animation
 

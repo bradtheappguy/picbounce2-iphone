@@ -16,6 +16,8 @@ extern NSString *const PBAPIUserWasUnfollowedNotification;
   NSMutableArray *_delegates;
 }
 
+@property (nonatomic, retain) NSString *flaggedPhotoID;
+
 + (PBAPI *)sharedAPI;
 -(void) flagPhotoWithID:(NSString *)photoID;
 -(void) deletePhotoWithID:(NSString *)photoID;

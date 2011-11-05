@@ -15,6 +15,7 @@
 @interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate, OHAttributedLabelDelegate> {
   UITableViewController *tableViewController;
 
+  UIView *flaggedView;
     ASIHTTPRequest *_followingRequest;
 }
 
@@ -41,5 +42,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *leaveCommentButton;
 @property (retain, nonatomic) IBOutlet id commentPreview;
 
+
+-(void) receiveFlaggedNotification:(NSNotification *) notification;
 
 @end
