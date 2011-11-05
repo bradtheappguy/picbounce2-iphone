@@ -40,4 +40,6 @@
 - (NSDictionary *) user;
 - (NSArray *) people;
 
+- (void) receiveFlaggedNotification:(NSNotification *) notification;
+
 @end

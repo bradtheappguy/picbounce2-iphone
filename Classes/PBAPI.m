@@ -14,6 +14,9 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
 
 @implementation PBAPI
 
+@synthesize flaggedPhotoID;
+
+
 + (PBAPI *)sharedAPI {
   static dispatch_once_t pred;
   static PBAPI *api = nil;
@@ -28,11 +31,16 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
   return self;
 }
 
-#pragma mark Follow User
+- (void)dealloc
+{
+  [super dealloc];
+}  
 
+#pragma mark Follow User
 
 #pragma mark Flag Photo
 -(void) flagPhotoWithID:(NSString *)photoID {
+  flaggedPhotoID = photoID;
   NSString *urlString = [NSString stringWithFormat:@"http://%@/api/posts/%@/flags",API_BASE,photoID];
   PBHTTPRequest *request = [[PBHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
   [request setRequestMethod:@"POST"];
@@ -52,12 +60,14 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
   }
   else {
     NSLog(@"Flagged");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.viame.flagged" object:flaggedPhotoID];
   }
 }
 
 
 #pragma mark Delete Photo
 -(void) deletePhotoWithID:(NSString *)photoID {
+  flaggedPhotoID = photoID;
   NSString *urlString = [NSString stringWithFormat:@"http://%@/api/posts/%@",API_BASE,photoID];
   PBHTTPRequest *request = [[PBHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
   [request setRequestMethod:@"DELETE"];
@@ -77,6 +87,7 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
   }
   else {
     NSLog(@"Flagged");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.viame.flagged" object:flaggedPhotoID];
   }
 }
 

@@ -42,4 +42,6 @@
 @property (retain, nonatomic) IBOutlet id commentPreview;
 
 
+-(void) receiveFlaggedNotification:(NSNotification *) notification;
+
 @end
