@@ -41,6 +41,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *leaveCommentButton;
 @property (retain, nonatomic) IBOutlet UIView *commentPreview;
 
+@property (retain, nonatomic) IBOutlet UIButton *actionButton;
 
 -(void) receiveFlaggedNotification:(NSNotification *) notification;
 

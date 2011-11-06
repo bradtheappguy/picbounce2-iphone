@@ -37,6 +37,8 @@
 }
 
 -(void) setPhoto:(PBPost *)photo {
+  self.retryButton.hidden = YES;
+  self.deleteButton.hidden = YES;
   _photo = [photo retain];
   [_photo addObserver:self forKeyPath:@"uploadFailed" options:NSKeyValueChangeSetting context:nil];
   [_photo addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];

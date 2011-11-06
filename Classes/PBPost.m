@@ -51,7 +51,6 @@
 -(id) initWithImage:(UIImage *)image {
   if (self = [super init]) {
     self.uploadProgress = 0;
-    [self performSelector:@selector(foo) withObject:nil afterDelay:1];
     self.uploading = YES;
     self.image = image;
   }
@@ -61,7 +60,6 @@
 -(id) initWithText:(NSString *)text {
   if (self = [super init]) {
     self.uploadProgress = 0;
-    [self performSelector:@selector(foo) withObject:nil afterDelay:1];
     self.uploading = YES;
     self.text = text;
   }
@@ -100,13 +98,6 @@
   [postRequest startAsynchronous];
 }
 
-
-
--(void) foo {
-  self.uploadFailed = YES;
-  self.uploading = NO;
-  self.uploadSucceded = NO;
-}
 
 
 -(void)setProgress:(CGFloat)proge {

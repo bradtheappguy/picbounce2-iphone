@@ -24,6 +24,9 @@ static const NSUInteger kPaddingBetweenNameLabelAndVerifiedIcon = 3;
 @synthesize verifiedIconImageView = _verifiedIconImageView;
 
 - (void)dealloc {
+  [_user removeObserver:self forKeyPath:@"post_count"];
+  [_user removeObserver:self forKeyPath:@"followers_count"];
+  [_user release];
   [_followingRequest cancel];
   [_followingRequest release];
   [_followButton release];
@@ -36,34 +39,59 @@ static const NSUInteger kPaddingBetweenNameLabelAndVerifiedIcon = 3;
 }
 
 
-
--(void) setUser:(NSDictionary *)user {
-  _user = user;
-  NSString *name = [user objectForKeyNotNull:@"name"];
-  NSNumber *followersCount = [user objectForKeyNotNull:@"follower_count"];
-  NSNumber *photosCount = [user objectForKeyNotNull:@"post_count"];
-
-  NSString *avatarURL = [user objectForKeyNotNull:@"avatar"];
+-(void) updateUI {
+  NSString *name = [_user objectForKeyNotNull:@"name"];
+  NSNumber *followersCount = [_user objectForKeyNotNull:@"follower_count"];
+  NSNumber *photosCount = [_user objectForKeyNotNull:@"post_count"];
+  
+  NSString *avatarURL = [_user objectForKeyNotNull:@"avatar"];
   if (![avatarURL isEqual:[NSNull null]]) {
     self.avatarImageView.imageURL = [NSURL URLWithString: avatarURL];
   }
   
-  BOOL verified = [[user objectForKeyNotNull:@"verified"] boolValue];
+  BOOL verified = [[_user objectForKeyNotNull:@"verified"] boolValue];
   self.verifiedIconImageView.hidden = !verified;
-  [self.followButton setUser:user];
+  [self.followButton setUser:_user];
   
   
-  BOOL followsMe = [[user objectForKeyNotNull:@"follows_me"] boolValue];
+  BOOL followsMe = [[_user objectForKeyNotNull:@"follows_me"] boolValue];
   if (followsMe) {
     self.isFollowingYouLabel.text = [NSString stringWithFormat:@"%@ is following you",name];
   }
   else {
     self.isFollowingYouLabel.text = [NSString stringWithFormat:@"%@ is not following you",name];
   }
-   
+  
   self.nameLabel.text = name;
   [self.photoCountButton setTitle:[photosCount stringValue] forState:UIControlStateNormal];
-  [self.followersCountButton setTitle:[followersCount stringValue] forState:UIControlStateNormal];  
+  [self.followersCountButton setTitle:[followersCount stringValue] forState:UIControlStateNormal]; 
+}
+
+
+
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  if (object == _user) { //Sanity Check
+    [self updateUI];
+  }
+}
+
+
+-(void) setUser:(NSDictionary *)user {
+  if (_user == user) {
+    return;
+  }
+  
+  if (_user) {
+    [_user removeObserver:self forKeyPath:@"post_count"];
+    [_user removeObserver:self forKeyPath:@"followers_count"];
+    [_user release];
+  }
+  
+  _user = [user retain];
+  [_user addObserver:self forKeyPath:@"post_count" options:NSKeyValueChangeReplacement context:nil];
+  [_user addObserver:self forKeyPath:@"followers_count" options:NSKeyValueChangeReplacement context:nil];
+  
+  [self updateUI];
 }
 
 

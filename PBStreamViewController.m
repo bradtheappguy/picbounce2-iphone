@@ -606,7 +606,7 @@
 }
 
 -(void) yyy:(NSIndexSet *)indexSet {
-  [self.tableView reloadData];
+  [self reload];
 }
 
 

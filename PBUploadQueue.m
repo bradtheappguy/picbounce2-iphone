@@ -46,6 +46,7 @@ crossPostingToFacebook:(BOOL)shouldCrossPostToFacebook {
   
   [x addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
   [images addObject:x];
+  [x startUpload];
   self.count = images.count;
   [x release];
 }

@@ -31,6 +31,7 @@
 @synthesize commentCountIcon;
 @synthesize leaveCommentButton;
 @synthesize commentPreview;
+@synthesize actionButton;
 @synthesize photo = _photo;
 
 +(NSAttributedString *) attributedStringForComments:(NSArray *)comments withString:(NSString *)string {
@@ -118,21 +119,34 @@
   return heoght;
 }
 
--(void) receiveFlaggedNotification:(NSNotification *) notification {
+- (void)setFlagged:(BOOL)flagged {
+  if (flagged) {
+    [self.actionButton setImage:[UIImage imageNamed:@"btn_unflag_n"] forState:UIControlStateNormal];
+    [self.actionButton setImage:[UIImage imageNamed:@"btn_unflag_s"] forState:UIControlStateHighlighted];  
+  }
+  else {
+    [self.actionButton setImage:[UIImage imageNamed:@"btn_flag_n"] forState:UIControlStateNormal];
+    [self.actionButton setImage:[UIImage imageNamed:@"btn_flag_s"] forState:UIControlStateHighlighted];   
+  }
+}
 
+
+
+-(void) receiveFlaggedNotification:(NSNotification *) notification {
   NSString *flagPhotoID = [notification object];
   NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
   if ([flagPhotoID isEqualToString:photoID]) {
-    self.imageView.alpha = 0.5;
+    [self setFlagged:YES];
   }
 }
+
 
 -(void) receiveUnflaggedNotification:(NSNotification *) notification {
   
   NSString *flagPhotoID = [notification object];
   NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
   if ([flagPhotoID isEqualToString:photoID]) {
-    self.imageView.alpha = 1.0;
+    [self setFlagged:NO];
   }
 }
 
@@ -141,7 +155,7 @@
   NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
   if ([flagPhotoID isEqualToString:photoID]) {
     [UIView animateWithDuration:0.44 animations:^(void) {
-      self.contentView.alpha = 0;
+      self.alpha = 0;
     }];
   }
 }
@@ -179,6 +193,7 @@
   [commentPreview release];
   [actionBar release];
   [commentCountIcon release];
+  [actionButton release];
   [super dealloc];
 }
 
@@ -281,6 +296,18 @@
   }
   if (deleted) {
     self.captionLabel.text = @"<DELETED>";
+  }
+  
+  NSString *userID = [[[self.photo objectForKey:@"user"] objectForKey:@"id"] stringValue];
+  NSString *myUserID = [PBSharedUser userID];
+  
+  if ([userID isEqualToString:myUserID]) {
+    [self.actionButton setImage:[UIImage imageNamed:@"btn_delete_n"] forState:UIControlStateNormal];
+    [self.actionButton setImage:[UIImage imageNamed:@"btn_delete_s"] forState:UIControlStateHighlighted];
+    
+  }
+  else {
+    [self setFlagged:flagged];
   }
 }
 

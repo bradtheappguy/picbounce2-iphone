@@ -52,6 +52,9 @@
   self.nameLabel.text = name;
 
   NSNumber *viewCount = [photo objectForKeyNotNull:@"view_count"];
+  if (!viewCount) {
+    viewCount = [NSNumber numberWithInt:0];
+  }
   self.nameLabel.text = screenname?screenname:(name?name:@"");
   self.viewCountLabel.text = [NSString stringWithFormat:@"%@ %@",
   [viewCount stringValue],NSLocalizedString(@"Views", nil)];
