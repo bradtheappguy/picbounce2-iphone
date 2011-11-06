@@ -14,6 +14,7 @@
 #import "NSString+SBJSON.h"
 #import "PBStreamViewController.h"
 #import "PBAPI.h"
+#import "PBSharedUser.h"
 
 //#define PhotoCellHeight 363
 //#define PhotoCellHeight 385
@@ -21,6 +22,7 @@
 
 
 @implementation PBPhotoCell
+
 @synthesize tableViewController;
 @synthesize actionBar;
 @synthesize photoImageView;
@@ -98,7 +100,7 @@
 }
 
 
-+ (CGFloat) heightWithPhoto:(NSDictionary *)photo {
++ (CGFloat) heightWithPhoto:(NSDictionary *)photo {  
   NSString *caption = [photo objectForKeyNotNull:@"text"];
   CGFloat captionHeight = [PBPhotoCell sizeForCaptionWithString:caption].height;
   CGFloat photoHeight;
@@ -109,15 +111,45 @@
     photoHeight = 0;
   }
   
-  NSDictionary *comments = [photo objectForKeyNotNull:@"comments"];
+  NSArray *comments = [photo objectForKeyNotNull:@"comments"];
   CGFloat commentsSize = [PBPhotoCell sizeForCommentViewWithComments:comments].height;
   
   CGFloat heoght = captionHeight + photoHeight + 35 + commentsSize + 20;
   return heoght;
 }
 
+-(void) receiveFlaggedNotification:(NSNotification *) notification {
+
+  NSString *flagPhotoID = [notification object];
+  NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+  if ([flagPhotoID isEqualToString:photoID]) {
+    self.imageView.alpha = 0.5;
+  }
+}
+
+-(void) receiveUnflaggedNotification:(NSNotification *) notification {
+  
+  NSString *flagPhotoID = [notification object];
+  NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+  if ([flagPhotoID isEqualToString:photoID]) {
+    self.imageView.alpha = 1.0;
+  }
+}
+
+-(void)receiveDeletedNotification:(NSNotification *) notification {  
+  NSString *flagPhotoID = [notification object];
+  NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+  if ([flagPhotoID isEqualToString:photoID]) {
+    [UIView animateWithDuration:0.44 animations:^(void) {
+      self.contentView.alpha = 0;
+    }];
+  }
+}
 
 -(void) awakeFromNib {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveFlaggedNotification:) name:@"com.viame.flagged" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUnflaggedNotification:) name:@"com.viame.unflagged" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveDeletedNotification:) name:@"com.viame.deleted" object:nil];
   for (int c=0; c<30; c++) {
     UIView *view = [[EGOImageButton alloc] initWithPlaceholderImage:nil];
     view.frame = CGRectMake(0, 0, 20, 20);
@@ -129,11 +161,15 @@
 
 
 -(void) addPhotoView:(UIView *)view ToFollowerScrollViewAtIndex:(NSUInteger) index {
+  
   view.frame = CGRectMake(index * 25, 0, 20, 20);
 }
 
 
 -(void) dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.flagged" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.unflagged" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.deleted" object:nil];
   self.photoImageView = nil;
   self.captionLabel = nil;
   self.commentCountLabel = nil;
@@ -147,9 +183,9 @@
 }
 
 
-
 -(void) setComments:(NSArray *)comments {
-  NSMutableAttributedString *attString = [PBPhotoCell attributedStringForComments:comments withString:nil];
+  
+  NSAttributedString *attString = [PBPhotoCell attributedStringForComments:comments withString:nil];
   OHAttributedLabel *label = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
   label.linkColor = [UIColor blackColor];
   label.backgroundColor = [UIColor clearColor];
@@ -178,20 +214,13 @@
     count++;
   }
   
-  
-
-  
   //CGFloat height = 100.0f;
   CGSize size = [label sizeThatFits:CGSizeMake(300, 1000)];
   label.frame = CGRectMake(10, self.captionLabel.frame.size.height+self.photoImageView.frame.size.height+self.actionBar.frame.size.height, 300, size.height+10);
 }
 
-
-
-
-
-
 -(void) setPhoto:(NSDictionary *)photo {
+  self.alpha = 1;
   self.captionLabel.backgroundColor = [UIColor clearColor];
   self.actionBar.backgroundColor = [UIColor clearColor];
   self.contentView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
@@ -206,6 +235,8 @@
   NSString *mediaURL = [photo objectForKeyNotNull:@"media_url"];
   NSString *mediaType  = [photo objectForKeyNotNull:@"media_type"];
   
+  BOOL deleted = [[photo objectForKeyNotNull:@"deleted"] boolValue];
+  BOOL flagged = [[photo objectForKeyNotNull:@"flagged"] boolValue];
   if ([mediaType isEqualToString:@"photo"]) {
     self.photoImageView.imageURL = [NSURL URLWithString:mediaURL];
   }
@@ -244,15 +275,24 @@
   
   NSArray *comments = [photo objectForKeyNotNull:@"comments"];
   [self setComments:comments];
+  
+  if (flagged) {
+    self.imageView.alpha = 0.5;
+  }
+  if (deleted) {
+    self.captionLabel.text = @"<DELETED>";
+  }
 }
 
 
 -(IBAction)commentButtonPressed:(UIButton *)sender {
+  
   NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
   
   
   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments",API_BASE,photoID]];
   PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
+  vc.navigationItem.title = @"Comments";
   vc.url = url;
   vc.hidesBottomBarWhenPushed = YES;
   [tableViewController.navigationController pushViewController:vc animated:YES];
@@ -268,18 +308,50 @@
 
 
 -(IBAction)actionButtonPressed:(id)sender {
-  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Flag Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Flag Post", nil];
+  UIActionSheet *actionSheet;
+  NSString *userID = [[[self.photo objectForKey:@"user"] objectForKey:@"id"] stringValue];
+  NSString *myUserID = [PBSharedUser userID];
+  
+  if ([userID isEqualToString:myUserID]) {
+    actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete Post?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
+  }
+  else {
+    if ([[self.photo objectForKey:@"flagged"] boolValue]) {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:@"Remove Flag" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Remove Flag", nil];
+    }
+    else {
+      actionSheet = [[UIActionSheet alloc] initWithTitle:@"Flag Post?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Flag Post", nil];
+    }
+  }
   actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
   [actionSheet showFromTabBar:tableViewController.tabBarController.tabBar];
   [actionSheet release];
 }
 
+
 #pragma mark UIACtionSheetDelegate 
-- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{} // before animation and hiding view
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+  NSString *userID = [[[self.photo objectForKey:@"user"] objectForKey:@"id"] stringValue];
+  NSString *myUserID = [PBSharedUser userID];
+  NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+  
+  if ([userID isEqualToString:myUserID]) {
+    if (buttonIndex == 0) {
+      [[PBAPI sharedAPI] deletePhotoWithID:photoID];
+      return;
+    }
+  }
+  else {
+  
   if (buttonIndex == 0) {
-    NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
-    [[PBAPI sharedAPI] flagPhotoWithID:photoID];
+   
+    if ([[self.photo objectForKey:@"flagged"] boolValue]) {
+      [[PBAPI sharedAPI] unflagPhotoWithID:photoID];
+    }
+    else {
+      [[PBAPI sharedAPI] flagPhotoWithID:photoID];
+    }
+  }
   }
 }  // after animation
 

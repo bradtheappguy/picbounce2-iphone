@@ -33,8 +33,6 @@ typedef enum {
 @property (nonatomic, retain) NSMutableDictionary *facebookWall;
 @property (nonatomic, assign) id<ModalDismissDelegate> delegate;
 
-- (IBAction)dismissModalViewControllerAnimated;
-
 - (void) loadPagesFromFacebook;
 
 @end

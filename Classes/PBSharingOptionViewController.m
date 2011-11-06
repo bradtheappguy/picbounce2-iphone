@@ -214,7 +214,7 @@
  
     if ([facebookWall valueForKey:@"Selected"] == nil) {
       [facebookWall setObject:@"0" forKey:@"Selected"];
-      EWCheckbox.selected = NO;
+      EWCheckbox.selected = NO; 
     } else {
       if ([[facebookWall valueForKey:@"Selected"] isEqualToString:@"1"]) {
         EWCheckbox.selected = YES;

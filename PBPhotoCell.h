@@ -15,7 +15,7 @@
 @interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate, OHAttributedLabelDelegate> {
   UITableViewController *tableViewController;
 
-    ASIHTTPRequest *_followingRequest;
+  ASIHTTPRequest *_followingRequest;
 }
 
 + (CGFloat) heightWithPhoto:(NSDictionary *)photo;
@@ -39,7 +39,9 @@
 
 
 @property (nonatomic, retain) IBOutlet UIButton *leaveCommentButton;
-@property (retain, nonatomic) IBOutlet id commentPreview;
+@property (retain, nonatomic) IBOutlet UIView *commentPreview;
 
+
+-(void) receiveFlaggedNotification:(NSNotification *) notification;
 
 @end

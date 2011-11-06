@@ -29,6 +29,7 @@
 #import "ASIDownloadCache.h"
 #import "PBSharedUser.h"
 #import "PBNavigationController.h"
+#import "ImageFilterController.h"
 
 UIImage *scaleAndRotateImage(UIImage *image)
 {
@@ -153,7 +154,7 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 @implementation PBCameraViewController
 
 @synthesize unfilteredImage;
-
+@synthesize filterProgressIndicator;
 - (UIImage*) getSubImageFrom: (UIImage*) img WithRect: (CGRect) rect {
   
   UIGraphicsBeginImageContext(rect.size);
@@ -336,14 +337,53 @@ bail:
 	}
 }
 
+
 -(void) filterButtonPressed:(UIButton *)sender {
-  if (sender.tag == -1) {
-    uploadPreviewImage.image = unfilteredImage;
-  }
-  else {
-    NSString *filterName = [[PBFilteredImage availableFilters] objectAtIndex:sender.tag];
-    uploadPreviewImage.image = [PBFilteredImage filteredImageWithImage:unfilteredImage filter:filterName];
-  }
+    
+   NSString *btnTag = [NSString stringWithFormat:@"%d",sender.tag];
+   NSLog(@"btnTag:-%@",btnTag);
+   filterProgressIndicator.hidden = NO;  
+   [filterProgressIndicator startAnimating];
+   [self performSelector:@selector(imageFilterController:) withObject:btnTag afterDelay:1.0];
+    
+//  if (sender.tag == -1) {
+//    uploadPreviewImage.image = unfilteredImage;
+//    
+//  }
+//  else {
+////    NSString *filterName = [[PBFilteredImage availableFilters] objectAtIndex:sender.tag];
+////    uploadPreviewImage.image = [PBFilteredImage filteredImageWithImage:unfilteredImage filter:filterName];
+//      
+//      uploadPreviewImage.image = [ImageFilterController filteredImageWithImage:unfilteredImage filter:sender.tag];
+//  }
+    
+}
+
+-(void) indicatorStart{
+    filterProgressIndicator.hidden = NO;  
+    [filterProgressIndicator startAnimating];
+}
+
+- (void) imageFilterController:(NSString *)tag{
+    
+    if ([tag intValue] == -1) {
+        uploadPreviewImage.image = unfilteredImage;
+        
+    }
+    else {
+//        if ([tag intValue] == 4) {
+//            NSLog(@"Filter unloaded");
+//        }else{
+        //    NSString *filterName = [[PBFilteredImage availableFilters] objectAtIndex:sender.tag];
+        //    uploadPreviewImage.image = [PBFilteredImage filteredImageWithImage:unfilteredImage filter:filterName];
+        
+        uploadPreviewImage.image = [ImageFilterController filteredImageWithImage:unfilteredImage filter:[tag intValue]];
+     // }
+    }
+    
+    [filterProgressIndicator stopAnimating];
+    filterProgressIndicator.hidden = YES;
+    
 }
 
 -(void) configureFilterScrollView {
@@ -387,7 +427,7 @@ bail:
   UIButton *button5 = [UIButton buttonWithType:UIButtonTypeCustom];
   [button5 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_n@2x"] forState:UIControlStateNormal];
   [button5 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_s@2x"] forState:UIControlStateSelected];
-  [button5 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+ // [button5 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   button5.frame = CGRectMake(0, 0, 58, 58);
   button5.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
   button5.tag = x++;
@@ -434,7 +474,6 @@ bail:
   else
     flashButton = nil;
   
-  
   HDRButton = [UIButton buttonWithType:UIButtonTypeCustom];
   [HDRButton setBackgroundImage:[UIImage imageNamed:@"btn_hdr_n"] forState:UIControlStateNormal];
   [HDRButton addTarget:self action:@selector(hdrButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -444,6 +483,9 @@ bail:
   queue = dispatch_queue_create("com.picbounce.internalqueue", NULL);
 
   [self setupAVCapture];
+    
+   //--------- Implement Activity Indicator --------
+    filterProgressIndicator.hidden = YES;
   
 }
 
@@ -454,6 +496,7 @@ bail:
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
+       
   if ([PBSharedUser shouldCrosspostToFB] == YES) {
     facebookButton.selected = YES;
   }
@@ -508,7 +551,6 @@ bail:
 }
 
 -(IBAction) cameraButtonPressed:(id)sender {
-  
   [self closeShutter];
   // Find out the current orientation and tell the still image output.
   AVCaptureConnection *stillImageConnection = nil;
@@ -525,42 +567,42 @@ bail:
                                                                     forKey:AVVideoCodecKey]]; 
 	
 	[stillImageOutput captureStillImageAsynchronouslyFromConnection:stillImageConnection
-                        completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-                            if (error) {
-                            }
-                            NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-                            UIImage *image = [[UIImage alloc] initWithData:jpegData];
-                            
-                            UIImage *scaledImage = scaleAndRotateImage(image);
-                            
-                            [image release];
-                            CGImageRef scaledCGImage = CGImageCreateWithImageInRect([scaledImage CGImage],CGRectMake(0, 0, 600, 600));
-                            UIImage *i3 = [UIImage imageWithCGImage:scaledCGImage];
-                            CGImageRelease(scaledCGImage);
-                            
-                            self.unfilteredImage = i3;
-                           
-                            uploadPreviewImage.contentMode = UIViewContentModeScaleAspectFit;
-                            uploadPreviewImage.image = i3;
-                            uploadPreviewImage.layer.masksToBounds = NO;
-                            uploadPreviewImage.layer.cornerRadius = 0;
-                            uploadPreviewImage.layer.shadowOffset = CGSizeMake(0, 0);
-                            uploadPreviewImage.layer.shadowRadius = 4;
-                            uploadPreviewImage.layer.shadowOpacity = 1;
-                            uploadPreviewImage.layer.shadowColor = [UIColor blackColor].CGColor;
-                            
-                            CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, imageDataSampleBuffer,kCMAttachmentMode_ShouldPropagate);
-                            /*ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-                            [library writeImageDataToSavedPhotosAlbum:jpegData metadata:(id)attachments completionBlock:^(NSURL *assetURL, NSError *error) {
-                              if (error) {
-                                //[self displayErrorOnMainQueue:error withMessage:@"Save to camera roll failed"];
-                              }
-                            }];*/
-                            
-                            if (attachments)
-                              CFRelease(attachments);
-                            //[library release];
-                          }];
+                                                completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+                                                  if (error) {
+                                                  }
+                                                  NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+                                                  UIImage *image = [[UIImage alloc] initWithData:jpegData];
+                                                  
+                                                  UIImage *scaledImage = scaleAndRotateImage(image);
+                                                  
+                                                  [image release];
+                                                  CGImageRef scaledCGImage = CGImageCreateWithImageInRect([scaledImage CGImage],CGRectMake(0, 0, 600, 600));
+                                                  UIImage *i3 = [UIImage imageWithCGImage:scaledCGImage];
+                                                  CGImageRelease(scaledCGImage);
+                                                  
+                                                  self.unfilteredImage = i3;
+                                                 
+                                                  uploadPreviewImage.contentMode = UIViewContentModeScaleAspectFit;
+                                                  uploadPreviewImage.image = i3;
+                                                  uploadPreviewImage.layer.masksToBounds = NO;
+                                                  uploadPreviewImage.layer.cornerRadius = 0;
+                                                  uploadPreviewImage.layer.shadowOffset = CGSizeMake(0, 0);
+                                                  uploadPreviewImage.layer.shadowRadius = 4;
+                                                  uploadPreviewImage.layer.shadowOpacity = 1;
+                                                  uploadPreviewImage.layer.shadowColor = [UIColor blackColor].CGColor;
+                                                  
+                                                  CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault,                                                                                                              imageDataSampleBuffer,                                                                                                               kCMAttachmentMode_ShouldPropagate);
+                                                  /*ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+                                                  [library writeImageDataToSavedPhotosAlbum:jpegData metadata:(id)attachments completionBlock:^(NSURL *assetURL, NSError *error) {
+                                                    if (error) {
+                                                      //[self displayErrorOnMainQueue:error withMessage:@"Save to camera roll failed"];
+                                                    }
+                                                  }];*/
+                                                  
+                                                  if (attachments)
+                                                    CFRelease(attachments);
+                                                  //[library release];
+                                                }];
 }
 
 -(void) facebookButtonClicked:(id)sender {
@@ -609,29 +651,30 @@ bail:
 }
 
 - (IBAction)captionButtonPressed:(id)sender {
-  PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
-  newPostViewController.isCaptionView = YES;
-  newPostViewController.hidesBottomBarWhenPushed = YES;
-  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
+  PBNewPostViewController *PBNewPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"PBNewPostViewController" bundle:nil];
+  PBNewPostViewController.isCaptionView = YES;
+  PBNewPostViewController.hidesBottomBarWhenPushed = YES;
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:PBNewPostViewController style:1];
   
   
-  UIBarButtonItem *lcancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  newPostViewController.navigationItem.leftBarButtonItem = lcancelButton;
-  newPostViewController.navigationItem.title = @"New Post";
-  [lcancelButton release];
+  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  PBNewPostViewController.navigationItem.leftBarButtonItem = cancelButton;
+  PBNewPostViewController.navigationItem.title = @"New Post";
+  [cancelButton release];
   [self presentModalViewController:navigationController animated:YES];
-  [newPostViewController release];
+  [PBNewPostViewController release];
   
   return;
-/*
-  PBCaptionViewController *a_NewPostViewController = [[PBCaptionViewController alloc] initWithNibName:@"PBCaptionViewController" bundle:nil];
-  a_NewPostViewController.hidesBottomBarWhenPushed = YES;
-  //a_NewPostViewController.isCaptionView = YES;
-  a_NewPostViewController.delegate = self;
-  [self presentModalViewController:a_NewPostViewController animated:YES];
-  //[self.navigationController pushViewController:a_NewPostViewController animated:YES];
-  [a_NewPostViewController release];
-*/
+  PBCaptionViewController *a_PBNewPostViewController = [[PBCaptionViewController alloc] initWithNibName:@"PBCaptionViewController" bundle:nil];
+
+  a_PBNewPostViewController.hidesBottomBarWhenPushed = YES;
+      //a_PBNewPostViewController.isCaptionView = YES;
+
+  a_PBNewPostViewController.delegate = self;
+
+  [self presentModalViewController:a_PBNewPostViewController animated:YES];
+      //[self.navigationController pushViewController:a_PBNewPostViewController animated:YES];
+  [a_PBNewPostViewController release];
 }
 
 - (void)didDismissModalView {
@@ -718,10 +761,10 @@ bail:
 - (IBAction)optionsButtonPressed:(id)sender {
   PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
   PBNavigationController *nav = [[PBNavigationController alloc] initWithRootViewController:vc style:1];
-  UIBarButtonItem *leftDoneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(dismissModalViewControllerAnimated:)];
-  vc.navigationItem.leftBarButtonItem = leftDoneButton;
+  UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  vc.navigationItem.leftBarButtonItem = cancel;
   vc.delegate = self;
-  [leftDoneButton release];
+  [cancel release];
   [self presentModalViewController:nav animated:YES];
   [vc release];
   [nav release];
@@ -792,7 +835,7 @@ bail:
 
 -(IBAction) retakeButtonPressed:(id)sender{
   [UIView animateWithDuration:.4f
-                   animations:^{
+                   animations:^{ 
                        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
                      cameraToolbar.center = CGPointMake(cameraToolbar.center.x + 320, cameraToolbar.center.y);
                      flipButton.alpha = 1;

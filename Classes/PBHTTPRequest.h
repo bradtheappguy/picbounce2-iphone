@@ -18,5 +18,6 @@
 @interface PBHTTPRequest : ASIHTTPRequest
 
 +(ASIFormDataRequest *)  formDataRequestWithURL:(NSURL *)URL;
++(PBHTTPRequest *) requestWithURL:(NSURL *)URL;
 
 @end
