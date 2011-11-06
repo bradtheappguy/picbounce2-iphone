@@ -23,4 +23,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *a_CommentLabel;
 @property (nonatomic, retain) IBOutlet PBFollowButton *a_FollowButton;
 @property (nonatomic, assign) UIViewController *viewController;
+
+-(void) setComment:(NSDictionary *)comment;
+
 @end

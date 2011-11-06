@@ -151,15 +151,6 @@
 #pragma mark Facebbok Session Delegate
 - (void)fbDidLogin {
   [postTextView resignFirstResponder];  
-  
-  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/me/likes?limit=30&access_token=%@",_facebook.accessToken]];
-
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:40.0]autorelease];
-	NSURLResponse *returnedResponse = nil;
-	NSError *returnedError = nil;
-	NSData *itemData  = [NSURLConnection sendSynchronousRequest:request returningResponse:&returnedResponse error:&returnedError];
-	NSString* theString = [[NSString alloc] initWithData:itemData encoding:NSASCIIStringEncoding];
-  NSMutableArray *array = [theString JSONValue];
 }
 
 
