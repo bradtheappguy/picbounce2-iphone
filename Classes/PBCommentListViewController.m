@@ -61,6 +61,7 @@
   [self.getCommentsRequest setDidFailSelector:@selector(getCommentsRequestDidFail:)];
   [self.getCommentsRequest setDidFinishSelector:@selector(getCommentsRequestDidFinish:)];
   [self.getCommentsRequest startAsynchronous];
+    [myView.a_CommentTextView becomeFirstResponder];
 
 }
 
@@ -70,9 +71,12 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postComment) name:@"PostComment" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)  name:UIKeyboardWillShowNotification object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)  name:UIKeyboardWillHideNotification object:nil];
+  myView.a_CommentTextView.inputAccessoryView = myView;
+  [myView.a_CommentTextView becomeFirstResponder];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
+  [myView.a_CommentTextView resignFirstResponder];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PostComment" object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
@@ -193,7 +197,7 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:animationDuration];
     [UIView setAnimationCurve:animationCurve];
-    myView.center = CGPointMake(myView.center.x, myView.center.y + 216);   
+    //keyboardWillShowmyView.center = CGPointMake(myView.center.x, myView.center.y + 216);   
     tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [UIView commitAnimations];
@@ -217,7 +221,7 @@
   [UIView setAnimationCurve:animationCurve];
 
   
-  myView.center = CGPointMake(myView.center.x, myView.center.y - 216);   
+  //myView.center = CGPointMake(myView.center.x, myView.center.y - 216);   
   tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardEndFrame.size.height, 0);
   tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardEndFrame.size.height, 0);
 
