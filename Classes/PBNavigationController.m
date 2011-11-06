@@ -17,7 +17,7 @@
 	
   UIView *backgroundImageView = [self viewWithTag:kNavBarImageTag];
   if (backgroundImageView != nil) {
-    [self biInsertSubview:backgroundImageView atIndex:1];
+    [self biInsertSubview:backgroundImageView atIndex:0];
   }
 }
 
@@ -26,7 +26,7 @@
 	
   UIView *backgroundImageView = [self viewWithTag:kNavBarImageTag];
   if (backgroundImageView != nil) {
-    [self biInsertSubview:backgroundImageView atIndex:1];
+    [self biInsertSubview:backgroundImageView atIndex:0];
   }
 }
 

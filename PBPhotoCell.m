@@ -292,6 +292,7 @@
   
   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments",API_BASE,photoID]];
   PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
+  vc.navigationItem.title = @"Comments";
   vc.url = url;
   vc.hidesBottomBarWhenPushed = YES;
   [tableViewController.navigationController pushViewController:vc animated:YES];

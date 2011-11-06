@@ -377,6 +377,17 @@
 		A25CF3771466268900FC75AD /* ico_footer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A25CF22B1466268800FC75AD /* ico_footer@2x.png */; };
 		A25CF3791466268900FC75AD /* ico_verified.png in Resources */ = {isa = PBXBuildFile; fileRef = A25CF22D1466268800FC75AD /* ico_verified.png */; };
 		A25CF37A1466268900FC75AD /* ico_verified@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A25CF22E1466268800FC75AD /* ico_verified@2x.png */; };
+		A25CF39914662DCB00FC75AD /* BezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CF38214662DCB00FC75AD /* BezierCurve.m */; };
+		A25CF39A14662DCB00FC75AD /* CatmullRomSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CF38414662DCB00FC75AD /* CatmullRomSpline.m */; };
+		A25CF39B14662DCB00FC75AD /* CubicBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CF38714662DCB00FC75AD /* CubicBezierCurve.m */; };
+		A25CF39C14662DCB00FC75AD /* LinearBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CF38914662DCB00FC75AD /* LinearBezierCurve.m */; };
+		A25CF39D14662DCB00FC75AD /* NSArray_PointArray.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CF38B14662DCB00FC75AD /* NSArray_PointArray.m */; };
+		A25CF39E14662DCB00FC75AD /* QuadraticBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CF38D14662DCB00FC75AD /* QuadraticBezierCurve.m */; };
+		A25CF39F14662DCB00FC75AD /* Spline.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CF38F14662DCB00FC75AD /* Spline.m */; };
+		A25CF3A014662DCB00FC75AD /* ImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CF39214662DCB00FC75AD /* ImageFilter.m */; };
+		A25CF3A114662DCB00FC75AD /* ImageFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CF39414662DCB00FC75AD /* ImageFilterController.m */; };
+		A25CF3A214662DCB00FC75AD /* PBCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25CF39714662DCB00FC75AD /* PBCameraViewController.m */; };
+		A25CF3A314662DCB00FC75AD /* PBCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A25CF39814662DCB00FC75AD /* PBCameraViewController.xib */; };
 		A2620D0F14611EBC00E5F0FE /* PBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2620D0E14611EBC00E5F0FE /* PBNavigationController.m */; };
 		A2626FE614197BB300F873B7 /* PBPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2626FE514197BB300F873B7 /* PBPersonTableViewCell.m */; };
 		A2627B4A13FF312F00B6E5C7 /* PBUploadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A2627B4913FF312F00B6E5C7 /* PBUploadQueue.m */; };
@@ -446,12 +457,10 @@
 		A29A930B131DA68300DB6D46 /* PBAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A29A930A131DA68300DB6D46 /* PBAPIResponse.m */; };
 		A29A9579131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = A29A9578131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m */; };
 		A2A0E6FC13C3BFC9002CC14F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A0E6FB13C3BFC9002CC14F /* AVFoundation.framework */; };
-		A2A0E6FF13C3C146002CC14F /* PBCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A0E6FE13C3C146002CC14F /* PBCameraViewController.m */; };
 		A2A0FE9813CC2ADC0058908D /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A0FE3B13CC2ADC0058908D /* TTTAttributedLabel.m */; };
 		A2A0FEA413CC2ADC0058908D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A0FEA313CC2ADC0058908D /* CoreText.framework */; };
 		A2BE3DB9129E00EB003E8F44 /* PBStreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BE3DB7129E00EB003E8F44 /* PBStreamViewController.xib */; };
 		A2BE3E3C129E0E94003E8F44 /* PBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BE3E3B129E0E94003E8F44 /* PBTableViewCell.m */; };
-		A2C0469913FC9950001CD0BC /* PBCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C0469813FC9950001CD0BC /* PBCameraViewController.xib */; };
 		A2C04B3B13FCAFBB001CD0BC /* PBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */; };
 		A2C04B3C13FCAFBB001CD0BC /* PBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3913FCAFBB001CD0BC /* PBTabBarController.m */; };
 		A2C0592A13FDEDFB001CD0BC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C0592913FDEDFB001CD0BC /* CoreMedia.framework */; };
@@ -933,12 +942,35 @@
 		A25CF22B1466268800FC75AD /* ico_footer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_footer@2x.png"; sourceTree = "<group>"; };
 		A25CF22D1466268800FC75AD /* ico_verified.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_verified.png; sourceTree = "<group>"; };
 		A25CF22E1466268800FC75AD /* ico_verified@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_verified@2x.png"; sourceTree = "<group>"; };
+		A25CF38114662DCB00FC75AD /* BezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurve.h; sourceTree = "<group>"; };
+		A25CF38214662DCB00FC75AD /* BezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierCurve.m; sourceTree = "<group>"; };
+		A25CF38314662DCB00FC75AD /* CatmullRomSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatmullRomSpline.h; sourceTree = "<group>"; };
+		A25CF38414662DCB00FC75AD /* CatmullRomSpline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatmullRomSpline.m; sourceTree = "<group>"; };
+		A25CF38514662DCB00FC75AD /* CGPointArithmetic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointArithmetic.h; sourceTree = "<group>"; };
+		A25CF38614662DCB00FC75AD /* CubicBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubicBezierCurve.h; sourceTree = "<group>"; };
+		A25CF38714662DCB00FC75AD /* CubicBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CubicBezierCurve.m; sourceTree = "<group>"; };
+		A25CF38814662DCB00FC75AD /* LinearBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearBezierCurve.h; sourceTree = "<group>"; };
+		A25CF38914662DCB00FC75AD /* LinearBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearBezierCurve.m; sourceTree = "<group>"; };
+		A25CF38A14662DCB00FC75AD /* NSArray_PointArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArray_PointArray.h; sourceTree = "<group>"; };
+		A25CF38B14662DCB00FC75AD /* NSArray_PointArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_PointArray.m; sourceTree = "<group>"; };
+		A25CF38C14662DCB00FC75AD /* QuadraticBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadraticBezierCurve.h; sourceTree = "<group>"; };
+		A25CF38D14662DCB00FC75AD /* QuadraticBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadraticBezierCurve.m; sourceTree = "<group>"; };
+		A25CF38E14662DCB00FC75AD /* Spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spline.h; sourceTree = "<group>"; };
+		A25CF38F14662DCB00FC75AD /* Spline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spline.m; sourceTree = "<group>"; };
+		A25CF39114662DCB00FC75AD /* ImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilter.h; sourceTree = "<group>"; };
+		A25CF39214662DCB00FC75AD /* ImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilter.m; sourceTree = "<group>"; };
+		A25CF39314662DCB00FC75AD /* ImageFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilterController.h; sourceTree = "<group>"; };
+		A25CF39414662DCB00FC75AD /* ImageFilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilterController.m; sourceTree = "<group>"; };
+		A25CF39614662DCB00FC75AD /* PBCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBCameraViewController.h; sourceTree = "<group>"; };
+		A25CF39714662DCB00FC75AD /* PBCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBCameraViewController.m; sourceTree = "<group>"; };
+		A25CF39814662DCB00FC75AD /* PBCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBCameraViewController.xib; sourceTree = "<group>"; };
 		A2620D0D14611EBB00E5F0FE /* PBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBNavigationController.h; sourceTree = "<group>"; };
 		A2620D0E14611EBC00E5F0FE /* PBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBNavigationController.m; sourceTree = "<group>"; };
 		A2626FE414197BB300F873B7 /* PBPersonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPersonTableViewCell.h; sourceTree = "<group>"; };
 		A2626FE514197BB300F873B7 /* PBPersonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPersonTableViewCell.m; sourceTree = "<group>"; };
 		A2627B4813FF312F00B6E5C7 /* PBUploadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBUploadQueue.h; path = ../PBUploadQueue.h; sourceTree = "<group>"; };
 		A2627B4913FF312F00B6E5C7 /* PBUploadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBUploadQueue.m; path = ../PBUploadQueue.m; sourceTree = "<group>"; };
+		A2679AD414663A5D0022B955 /* PicBounce2 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PicBounce2 copy-Info.plist"; path = "/Users/brad/ViaMeSource/viame-iphone/PicBounce2 copy-Info.plist"; sourceTree = "<absolute>"; };
 		A26E720B1334243800BD737D /* PBPhotoHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPhotoHeaderView.h; sourceTree = SOURCE_ROOT; };
 		A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPhotoHeaderView.m; sourceTree = SOURCE_ROOT; };
 		A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBPhotoHeaderView.xib; sourceTree = "<group>"; };
@@ -1054,15 +1086,12 @@
 		A29A9577131F21E500DB6D46 /* NSDate+TimeFromNowFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeFromNowFormat.h"; sourceTree = "<group>"; };
 		A29A9578131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeFromNowFormat.m"; sourceTree = "<group>"; };
 		A2A0E6FB13C3BFC9002CC14F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		A2A0E6FD13C3C146002CC14F /* PBCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBCameraViewController.h; path = ../PBCameraViewController.h; sourceTree = "<group>"; };
-		A2A0E6FE13C3C146002CC14F /* PBCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBCameraViewController.m; path = ../PBCameraViewController.m; sourceTree = "<group>"; };
 		A2A0FE3A13CC2ADC0058908D /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		A2A0FE3B13CC2ADC0058908D /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		A2A0FEA313CC2ADC0058908D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		A2BE3DB7129E00EB003E8F44 /* PBStreamViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBStreamViewController.xib; sourceTree = "<group>"; };
 		A2BE3E3A129E0E94003E8F44 /* PBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTableViewCell.h; sourceTree = "<group>"; };
 		A2BE3E3B129E0E94003E8F44 /* PBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTableViewCell.m; sourceTree = "<group>"; };
-		A2C0469813FC9950001CD0BC /* PBCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PBCameraViewController.xib; path = ../PBCameraViewController.xib; sourceTree = "<group>"; };
 		A2C04B3613FCAFBB001CD0BC /* PBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTabBar.h; sourceTree = SOURCE_ROOT; };
 		A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTabBar.m; sourceTree = SOURCE_ROOT; };
 		A2C04B3813FCAFBB001CD0BC /* PBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTabBarController.h; sourceTree = SOURCE_ROOT; };
@@ -1178,6 +1207,7 @@
 				A2A0FDB213CC2ADC0058908D /* External */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				A2679AD414663A5D0022B955 /* PicBounce2 copy-Info.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1617,6 +1647,7 @@
 			isa = PBXGroup;
 			children = (
 				A25CF0E01466268700FC75AD /* brownAssets */,
+				A25CF37F14662DCA00FC75AD /* iOS4Filters */,
 				A2EE48BF1423F0E900853658 /* Filters */,
 				74A1CA361368109C00F63EF5 /* Localization */,
 				A25CEA3A134FDE0000CD33D9 /* Tests */,
@@ -1920,6 +1951,59 @@
 			path = capture;
 			sourceTree = "<group>";
 		};
+		A25CF37F14662DCA00FC75AD /* iOS4Filters */ = {
+			isa = PBXGroup;
+			children = (
+				A25CF38014662DCB00FC75AD /* Curve */,
+				A25CF39014662DCB00FC75AD /* ImageFilter */,
+				A25CF39514662DCB00FC75AD /* PBCameraViewController */,
+			);
+			path = iOS4Filters;
+			sourceTree = "<group>";
+		};
+		A25CF38014662DCB00FC75AD /* Curve */ = {
+			isa = PBXGroup;
+			children = (
+				A25CF38114662DCB00FC75AD /* BezierCurve.h */,
+				A25CF38214662DCB00FC75AD /* BezierCurve.m */,
+				A25CF38314662DCB00FC75AD /* CatmullRomSpline.h */,
+				A25CF38414662DCB00FC75AD /* CatmullRomSpline.m */,
+				A25CF38514662DCB00FC75AD /* CGPointArithmetic.h */,
+				A25CF38614662DCB00FC75AD /* CubicBezierCurve.h */,
+				A25CF38714662DCB00FC75AD /* CubicBezierCurve.m */,
+				A25CF38814662DCB00FC75AD /* LinearBezierCurve.h */,
+				A25CF38914662DCB00FC75AD /* LinearBezierCurve.m */,
+				A25CF38A14662DCB00FC75AD /* NSArray_PointArray.h */,
+				A25CF38B14662DCB00FC75AD /* NSArray_PointArray.m */,
+				A25CF38C14662DCB00FC75AD /* QuadraticBezierCurve.h */,
+				A25CF38D14662DCB00FC75AD /* QuadraticBezierCurve.m */,
+				A25CF38E14662DCB00FC75AD /* Spline.h */,
+				A25CF38F14662DCB00FC75AD /* Spline.m */,
+			);
+			path = Curve;
+			sourceTree = "<group>";
+		};
+		A25CF39014662DCB00FC75AD /* ImageFilter */ = {
+			isa = PBXGroup;
+			children = (
+				A25CF39114662DCB00FC75AD /* ImageFilter.h */,
+				A25CF39214662DCB00FC75AD /* ImageFilter.m */,
+				A25CF39314662DCB00FC75AD /* ImageFilterController.h */,
+				A25CF39414662DCB00FC75AD /* ImageFilterController.m */,
+			);
+			path = ImageFilter;
+			sourceTree = "<group>";
+		};
+		A25CF39514662DCB00FC75AD /* PBCameraViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A25CF39614662DCB00FC75AD /* PBCameraViewController.h */,
+				A25CF39714662DCB00FC75AD /* PBCameraViewController.m */,
+				A25CF39814662DCB00FC75AD /* PBCameraViewController.xib */,
+			);
+			path = PBCameraViewController;
+			sourceTree = "<group>";
+		};
 		A273CB1F130AF148003FE8DA /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -2139,9 +2223,6 @@
 		A2A0E6F713C3BE30002CC14F /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				A2C0469813FC9950001CD0BC /* PBCameraViewController.xib */,
-				A2A0E6FD13C3C146002CC14F /* PBCameraViewController.h */,
-				A2A0E6FE13C3C146002CC14F /* PBCameraViewController.m */,
 				D1212B7D145E03A700370D89 /* ModalDismissDelegate.h */,
 			);
 			name = Camera;
@@ -2301,9 +2382,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* PicBounce2 */ = {
+		1D6058900D05DD3D006BFB54 /* viame-iphone */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PicBounce2" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "viame-iphone" */;
 			buildPhases = (
 				A26982B7140F2DD400175A7A /* ShellScript */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
@@ -2314,14 +2395,14 @@
 			);
 			dependencies = (
 			);
-			name = PicBounce2;
+			name = "viame-iphone";
 			productName = PathBoxes;
 			productReference = 1D6058910D05DD3D006BFB54 /* PicBounce2.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A25CEA35134FDE0000CD33D9 /* PicBounce2 Tests */ = {
+		A25CEA35134FDE0000CD33D9 /* viame-tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A25CEA47134FDE0000CD33D9 /* Build configuration list for PBXNativeTarget "PicBounce2 Tests" */;
+			buildConfigurationList = A25CEA47134FDE0000CD33D9 /* Build configuration list for PBXNativeTarget "viame-tests" */;
 			buildPhases = (
 				A25CEA31134FDE0000CD33D9 /* Sources */,
 				A25CEA32134FDE0000CD33D9 /* Frameworks */,
@@ -2333,7 +2414,7 @@
 			dependencies = (
 				A25CEA55134FE18000CD33D9 /* PBXTargetDependency */,
 			);
-			name = "PicBounce2 Tests";
+			name = "viame-tests";
 			productName = "PicBounce2 Tests";
 			productReference = A25CEA36134FDE0000CD33D9 /* PicBounce2 Tests.octest */;
 			productType = "com.apple.product-type.bundle";
@@ -2369,8 +2450,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* PicBounce2 */,
-				A25CEA35134FDE0000CD33D9 /* PicBounce2 Tests */,
+				1D6058900D05DD3D006BFB54 /* viame-iphone */,
+				A25CEA35134FDE0000CD33D9 /* viame-tests */,
 			);
 		};
 /* End PBXProject section */
@@ -2395,7 +2476,6 @@
 				A28DE347138B34D100B56C12 /* PBLoginViewController.xib in Resources */,
 				A2317F8613908CA100761C47 /* Entitlements.plist in Resources */,
 				A2988AE413F0BE420007E7F4 /* DONORS in Resources */,
-				A2C0469913FC9950001CD0BC /* PBCameraViewController.xib in Resources */,
 				A2CED4CA1416C5AB00400DF8 /* PBPersonTableViewCell.xib in Resources */,
 				A2EE48C81423F0FB00853658 /* borderRoughInstagram.png in Resources */,
 				A2EE48CC1423F0FB00853658 /* one.xml in Resources */,
@@ -2704,6 +2784,7 @@
 				A25CF3771466268900FC75AD /* ico_footer@2x.png in Resources */,
 				A25CF3791466268900FC75AD /* ico_verified.png in Resources */,
 				A25CF37A1466268900FC75AD /* ico_verified@2x.png in Resources */,
+				A25CF3A314662DCB00FC75AD /* PBCameraViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2798,7 +2879,6 @@
 				A22C149E1385B58F001ACB13 /* PBTwitterViewController.m in Sources */,
 				A22C14A21385B5D3001ACB13 /* PBAuthWebViewController.m in Sources */,
 				A28DE346138B34D100B56C12 /* PBLoginViewController.m in Sources */,
-				A2A0E6FF13C3C146002CC14F /* PBCameraViewController.m in Sources */,
 				A2E8EFDE13CCEA9400CB9B76 /* FlashButton.m in Sources */,
 				A259B42C13CFA1C000BEB6D3 /* PBToggleButton.m in Sources */,
 				A2EC99CB13DA414200822659 /* PBFollowButton.m in Sources */,
@@ -2868,6 +2948,16 @@
 				A2058F9A145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.m in Sources */,
 				A2E830EF145F5C0D002493DC /* PBAPI.m in Sources */,
 				A2620D0F14611EBC00E5F0FE /* PBNavigationController.m in Sources */,
+				A25CF39914662DCB00FC75AD /* BezierCurve.m in Sources */,
+				A25CF39A14662DCB00FC75AD /* CatmullRomSpline.m in Sources */,
+				A25CF39B14662DCB00FC75AD /* CubicBezierCurve.m in Sources */,
+				A25CF39C14662DCB00FC75AD /* LinearBezierCurve.m in Sources */,
+				A25CF39D14662DCB00FC75AD /* NSArray_PointArray.m in Sources */,
+				A25CF39E14662DCB00FC75AD /* QuadraticBezierCurve.m in Sources */,
+				A25CF39F14662DCB00FC75AD /* Spline.m in Sources */,
+				A25CF3A014662DCB00FC75AD /* ImageFilter.m in Sources */,
+				A25CF3A114662DCB00FC75AD /* ImageFilterController.m in Sources */,
+				A25CF3A214662DCB00FC75AD /* PBCameraViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2885,7 +2975,7 @@
 /* Begin PBXTargetDependency section */
 		A25CEA55134FE18000CD33D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1D6058900D05DD3D006BFB54 /* PicBounce2 */;
+			target = 1D6058900D05DD3D006BFB54 /* viame-iphone */;
 			targetProxy = A25CEA54134FE18000CD33D9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2935,7 +3025,7 @@
 					"/Users/amperesoftware/picbounce2-iphone/facebook-ios-sdk/src/**",
 				);
 				INFOPLIST_FILE = "PicBounce2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/AviarySDK\"",
@@ -2966,7 +3056,7 @@
 					"/Users/amperesoftware/picbounce2-iphone/facebook-ios-sdk/src/**",
 				);
 				INFOPLIST_FILE = "PicBounce2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/AviarySDK\"",
@@ -3082,7 +3172,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PicBounce2" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "viame-iphone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -3091,7 +3181,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A25CEA47134FDE0000CD33D9 /* Build configuration list for PBXNativeTarget "PicBounce2 Tests" */ = {
+		A25CEA47134FDE0000CD33D9 /* Build configuration list for PBXNativeTarget "viame-tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A25CEA45134FDE0000CD33D9 /* Debug */,
