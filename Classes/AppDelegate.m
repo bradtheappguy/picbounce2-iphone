@@ -76,16 +76,21 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
   
   [ABNotifier startNotifierWithAPIKey:hopToadAPIKey environmentName:ABNotifierDevelopmentEnvironment useSSL:YES delegate:nil];
+  
+  
   feedViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/users/me/feed.json",API_BASE];
-  feedViewController.shouldShowUplodingItems = YES;
+  feedViewController.shouldShowUplodingItems = NO;
   feedViewController.shouldShowProfileHeader = NO;
+  feedViewController.pullsToRefresh = YES;
   
   
-  profileViewController.shouldShowProfileHeader = YES;
-
+ 
   profileViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/users/me/posts",API_BASE];
+  feedViewController.shouldShowUplodingItems = YES;
+  profileViewController.shouldShowProfileHeader = YES;
+  profileViewController.pullsToRefresh = YES;
   
-  popularViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/popular",API_BASE];
+  
   
   [self.window addSubview:self.tabBarController.view];
   [self.window makeKeyAndVisible];

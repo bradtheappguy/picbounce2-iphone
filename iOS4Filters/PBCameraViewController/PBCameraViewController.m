@@ -651,30 +651,19 @@ bail:
 }
 
 - (IBAction)captionButtonPressed:(id)sender {
-  PBNewPostViewController *PBNewPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"PBNewPostViewController" bundle:nil];
-  PBNewPostViewController.isCaptionView = YES;
-  PBNewPostViewController.hidesBottomBarWhenPushed = YES;
-  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:PBNewPostViewController style:1];
+  PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"PBNewPostViewController" bundle:nil];
+  newPostViewController.isCaptionView = YES;
+  newPostViewController.hidesBottomBarWhenPushed = YES;
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
   
   
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  PBNewPostViewController.navigationItem.leftBarButtonItem = cancelButton;
-  PBNewPostViewController.navigationItem.title = @"New Post";
-  [cancelButton release];
+  UIBarButtonItem *_cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  newPostViewController.navigationItem.leftBarButtonItem = _cancelButton;
+  newPostViewController.navigationItem.title = @"New Post";
+  [_cancelButton release];
   [self presentModalViewController:navigationController animated:YES];
   [PBNewPostViewController release];
   
-  return;
-  PBCaptionViewController *a_PBNewPostViewController = [[PBCaptionViewController alloc] initWithNibName:@"PBCaptionViewController" bundle:nil];
-
-  a_PBNewPostViewController.hidesBottomBarWhenPushed = YES;
-      //a_PBNewPostViewController.isCaptionView = YES;
-
-  a_PBNewPostViewController.delegate = self;
-
-  [self presentModalViewController:a_PBNewPostViewController animated:YES];
-      //[self.navigationController pushViewController:a_PBNewPostViewController animated:YES];
-  [a_PBNewPostViewController release];
 }
 
 - (void)didDismissModalView {

@@ -397,6 +397,10 @@
 		A2679ADE146653C90022B955 /* btn_flag_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2679AD8146653C90022B955 /* btn_flag_s@2x.png */; };
 		A2679ADF146653C90022B955 /* btn_unflag_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2679AD9146653C90022B955 /* btn_unflag_n@2x.png */; };
 		A2679AE0146653C90022B955 /* btn_unflag_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2679ADA146653C90022B955 /* btn_unflag_s@2x.png */; };
+		A2679AE614671EC30022B955 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2679AE214671EC30022B955 /* libTestFlight.a */; };
+		A2679AE714671EC30022B955 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2679AE314671EC30022B955 /* README.txt */; };
+		A2679AE814671EC30022B955 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2679AE414671EC30022B955 /* release_notes.txt */; };
+		A2679AEA1467210E0022B955 /* hr_end@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2679AE91467210E0022B955 /* hr_end@2x.png */; };
 		A26E720D1334244E00BD737D /* PBPhotoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */; };
 		A26E721B133431C800BD737D /* PBPhotoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */; };
 		A273CA89130AEC12003FE8DA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A273CA88130AEC12003FE8DA /* libz.dylib */; };
@@ -983,6 +987,11 @@
 		A2679AD8146653C90022B955 /* btn_flag_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_flag_s@2x.png"; sourceTree = "<group>"; };
 		A2679AD9146653C90022B955 /* btn_unflag_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unflag_n@2x.png"; sourceTree = "<group>"; };
 		A2679ADA146653C90022B955 /* btn_unflag_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unflag_s@2x.png"; sourceTree = "<group>"; };
+		A2679AE214671EC30022B955 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		A2679AE314671EC30022B955 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		A2679AE414671EC30022B955 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
+		A2679AE514671EC30022B955 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		A2679AE91467210E0022B955 /* hr_end@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hr_end@2x.png"; sourceTree = "<group>"; };
 		A26E720B1334243800BD737D /* PBPhotoHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPhotoHeaderView.h; sourceTree = SOURCE_ROOT; };
 		A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPhotoHeaderView.m; sourceTree = SOURCE_ROOT; };
 		A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBPhotoHeaderView.xib; sourceTree = "<group>"; };
@@ -1171,6 +1180,7 @@
 				74AED8DE136EAB0B00CC6164 /* AddressBook.framework in Frameworks */,
 				74AED8DF136EAB0B00CC6164 /* AddressBookUI.framework in Frameworks */,
 				A29506B6143E7493002E07DD /* libAviarySDK-universal.a in Frameworks */,
+				A2679AE614671EC30022B955 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1671,6 +1681,7 @@
 		A25CF0E01466268700FC75AD /* brownAssets */ = {
 			isa = PBXGroup;
 			children = (
+				A2679AE91467210E0022B955 /* hr_end@2x.png */,
 				A2679AD5146653C90022B955 /* btn_delete_n@2x.png */,
 				A2679AD6146653C90022B955 /* btn_delete_s@2x.png */,
 				A2679AD7146653C90022B955 /* btn_flag_n@2x.png */,
@@ -1709,9 +1720,9 @@
 				A25CF1021466268800FC75AD /* bg_commentCell@2x.png */,
 				A25CF1031466268800FC75AD /* bg_filters.png */,
 				A25CF1071466268800FC75AD /* bg_follow_bar.png */,
+				A25CF10A1466268800FC75AD /* bg_listView_avatar@2x.png */,
 				A25CF1081466268800FC75AD /* bg_follow_bar@2x@2x.png */,
 				A25CF1091466268800FC75AD /* bg_listView_avatar.png */,
-				A25CF10A1466268800FC75AD /* bg_listView_avatar@2x.png */,
 				A25CF10B1466268800FC75AD /* bg_listView_emptyAvatar.png */,
 				A25CF10C1466268800FC75AD /* bg_listView_emptyAvatar@2x.png */,
 				A25CF10D1466268800FC75AD /* bg_login_shadowbtm.png */,
@@ -2022,6 +2033,17 @@
 			path = PBCameraViewController;
 			sourceTree = "<group>";
 		};
+		A2679AE114671EC30022B955 /* TestFlightSDK0.7.2 */ = {
+			isa = PBXGroup;
+			children = (
+				A2679AE214671EC30022B955 /* libTestFlight.a */,
+				A2679AE314671EC30022B955 /* README.txt */,
+				A2679AE414671EC30022B955 /* release_notes.txt */,
+				A2679AE514671EC30022B955 /* TestFlight.h */,
+			);
+			path = TestFlightSDK0.7.2;
+			sourceTree = "<group>";
+		};
 		A273CB1F130AF148003FE8DA /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -2249,6 +2271,7 @@
 		A2A0FDB213CC2ADC0058908D /* External */ = {
 			isa = PBXGroup;
 			children = (
+				A2679AE114671EC30022B955 /* TestFlightSDK0.7.2 */,
 				A2058EF5145C8A79004A8E87 /* hoptoad-ios */,
 				A2058F39145C8A79004A8E87 /* OHAttributedLabel */,
 				A29506AE143E7493002E07DD /* AviarySDK */,
@@ -2809,6 +2832,9 @@
 				A2679ADE146653C90022B955 /* btn_flag_s@2x.png in Resources */,
 				A2679ADF146653C90022B955 /* btn_unflag_n@2x.png in Resources */,
 				A2679AE0146653C90022B955 /* btn_unflag_s@2x.png in Resources */,
+				A2679AE714671EC30022B955 /* README.txt in Resources */,
+				A2679AE814671EC30022B955 /* release_notes.txt in Resources */,
+				A2679AEA1467210E0022B955 /* hr_end@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3053,6 +3079,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/AviarySDK\"",
+					"\"$(SRCROOT)/External/TestFlightSDK0.7.2\"",
 				);
 				PRODUCT_NAME = PicBounce2;
 				PROVISIONING_PROFILE = "B2D8DC4F-C0C2-4268-B1C2-FE7476082BF4";
@@ -3084,6 +3111,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/AviarySDK\"",
+					"\"$(SRCROOT)/External/TestFlightSDK0.7.2\"",
 				);
 				PRODUCT_NAME = PicBounce2;
 				PROVISIONING_PROFILE = "16885754-5FDF-44D7-900B-A6981126A53C";

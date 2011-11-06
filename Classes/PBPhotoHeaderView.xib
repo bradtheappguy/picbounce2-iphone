@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">11C74</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
 		<string key="IBDocument.AppKitVersion">1138.23</string>
 		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">931</string>
+			<string key="NS.object.0">933</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -55,7 +55,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">photo_header_bg@2x.png</string>
+							<string key="NSResourceName">bg_photoheader.png</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="104266852">
@@ -493,6 +493,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>actionBar</string>
+							<string>actionButton</string>
 							<string>captionLabel</string>
 							<string>commentCountIcon</string>
 							<string>commentCountLabel</string>
@@ -503,10 +504,11 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIView</string>
+							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UIImageView</string>
 							<string>UILabel</string>
-							<string>id</string>
+							<string>UIView</string>
 							<string>UIButton</string>
 							<string>EGOImageView</string>
 						</object>
@@ -516,6 +518,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>actionBar</string>
+							<string>actionButton</string>
 							<string>captionLabel</string>
 							<string>commentCountIcon</string>
 							<string>commentCountLabel</string>
@@ -528,6 +531,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">actionBar</string>
 								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">actionButton</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">captionLabel</string>
@@ -543,7 +550,7 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">commentPreview</string>
-								<string key="candidateClassName">id</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">leaveCommentButton</string>
@@ -631,59 +638,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PBProfileHeaderView</string>
 					<string key="superclassName">UIView</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>followButtonPressed:</string>
-							<string>followersCountButtonPressed:</string>
-							<string>followingCountButtonPressed:</string>
-							<string>photoCountButtonPressed:</string>
-							<string>unfollowButtonPressed:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>followButtonPressed:</string>
-							<string>followersCountButtonPressed:</string>
-							<string>followingCountButtonPressed:</string>
-							<string>photoCountButtonPressed:</string>
-							<string>unfollowButtonPressed:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">followButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">followersCountButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">followingCountButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">photoCountButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">unfollowButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
@@ -691,22 +645,20 @@
 							<string>avatarImageView</string>
 							<string>followButton</string>
 							<string>followersCountButton</string>
-							<string>followingCountButton</string>
 							<string>isFollowingYouLabel</string>
 							<string>nameLabel</string>
 							<string>photoCountButton</string>
-							<string>unfollowButton</string>
+							<string>verifiedIconImageView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>EGOImageView</string>
 							<string>PBFollowButton</string>
 							<string>UIButton</string>
-							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
-							<string>UIButton</string>
+							<string>UIImageView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -716,11 +668,10 @@
 							<string>avatarImageView</string>
 							<string>followButton</string>
 							<string>followersCountButton</string>
-							<string>followingCountButton</string>
 							<string>isFollowingYouLabel</string>
 							<string>nameLabel</string>
 							<string>photoCountButton</string>
-							<string>unfollowButton</string>
+							<string>verifiedIconImageView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -737,10 +688,6 @@
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">followingCountButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">isFollowingYouLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
@@ -753,8 +700,8 @@
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">unfollowButton</string>
-								<string key="candidateClassName">UIButton</string>
+								<string key="name">verifiedIconImageView</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 						</object>
 					</object>
@@ -780,14 +727,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>badgesButtonPressed</string>
 							<string>followersButtonPressed</string>
-							<string>followingButtonPressed</string>
 							<string>loginButtonPressed:</string>
 							<string>photosButtonPressed</string>
 							<string>taggedPeopleButtonPressed:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -801,7 +746,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>badgesButtonPressed</string>
 							<string>followersButtonPressed</string>
-							<string>followingButtonPressed</string>
 							<string>loginButtonPressed:</string>
 							<string>photosButtonPressed</string>
 							<string>taggedPeopleButtonPressed:</string>
@@ -814,10 +758,6 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">followersButtonPressed</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">followingButtonPressed</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -1018,19 +958,19 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>avatar_holder.png</string>
 				<string>avatar_pHeader_stroke@2x.png</string>
+				<string>bg_photoheader.png</string>
 				<string>ico_time@2x.png</string>
 				<string>ico_verified@2x.png</string>
-				<string>photo_header_bg@2x.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{100, 100}</string>
 				<string>{68, 70}</string>
+				<string>{320, 43}</string>
 				<string>{22, 24}</string>
 				<string>{26, 28}</string>
-				<string>{640, 86}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">931</string>
+		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
 </archive>

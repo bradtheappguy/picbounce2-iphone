@@ -22,6 +22,7 @@
 #import "PBNewPostViewController.h"
 #import "NSDictionary+NotNull.h"
 #import "PBNavigationController.h"
+#import "PBSharedUser.h"
 
 #define CELL_PADDING 15
 #define TABBAR_PROFILE_INDEX 2
@@ -83,7 +84,7 @@
   [emptyView release];
 
   if (self.tabBarController.selectedIndex == TABBAR_FEED_INDEX) {
-    UILabel *a_DefaultViewNameLabel = [[UILabel alloc]initWithFrame: CGRectMake(26, 64.5, 268, 32)];
+    UILabel *a_DefaultViewNameLabel = [[UILabel alloc]initWithFrame: CGRectMake(10, 64.5, 300, 32)];
     a_DefaultViewNameLabel.text = [NSString stringWithFormat:@"Welcome, %@",self.navigationItem.title];
     a_DefaultViewNameLabel.backgroundColor = [UIColor clearColor];
     a_DefaultViewNameLabel.textAlignment = UITextAlignmentCenter;
@@ -94,7 +95,7 @@
   }
 
   if (self.tabBarController.selectedIndex == TABBAR_FEED_INDEX) {
-    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(93, 228, 135, 58)];
+    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(10, 228, 300, 58)];
     a_DefaultViewNameLabel1.numberOfLines = 2;
     a_DefaultViewNameLabel1.text = @"Snap a photo\nto start sharing!";
     a_DefaultViewNameLabel1.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
@@ -104,7 +105,7 @@
     [a_EmptyStateView addSubview:a_DefaultViewNameLabel1];
     [a_DefaultViewNameLabel1 release];
   } else {
-    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(52, 195, 195, 58)];
+    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(10, 195, 300, 58)];
     a_DefaultViewNameLabel1.numberOfLines = 2;
     a_DefaultViewNameLabel1.text = [NSString stringWithFormat:@"%@, Snap\na photo to start sharing!",self.navigationItem.title];
     a_DefaultViewNameLabel1.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
@@ -119,8 +120,11 @@
 }
 
 -(void) showEmptyState {
-
-    [self.tableView addSubview:[self createDefaultView]]; 
+  UIView *emptyView = [self.view viewWithTag:-37];
+  if (!emptyView) {
+    emptyView = [self createDefaultView];
+  }
+    [self.tableView addSubview:emptyView]; 
     self.tableView.scrollEnabled = NO;
 }
 
@@ -408,7 +412,7 @@
 -(UITableViewCell *) uploadingCellForRowAtIndexPath:(NSIndexPath *)indexPath {
   PBUploadingTableViewCell *upcell = [[[NSBundle mainBundle] loadNibNamed:@"PBUploadingTableViewCell" owner:nil options:nil] lastObject];
   NSDictionary *photo = [[PBUploadQueue sharedQueue] photoAtIndex:indexPath.section];
-  [upcell setPhoto:photo];
+  [upcell setPost:photo];
   return upcell;
 }
 
@@ -490,7 +494,12 @@
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
   PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
   NSString *screenName = [[header.photo objectForKey:@"user"] objectForKeyNotNull:@"screen_name"];
-  [self pushNewStreamViewControllerWithUserID:header.userID screenName:screenName];
+  NSString *userID = [[[header.photo objectForKey:@"user"] objectForKeyNotNull:@"id"] stringValue];
+
+  NSString *thisPageUSerID = [[self.responseData.user objectForKeyNotNull:@"id"] stringValue];
+  if ([userID isEqualToString:thisPageUSerID] == NO) {
+    [self pushNewStreamViewControllerWithUserID:header.userID screenName:screenName];
+  }
 }
 
 

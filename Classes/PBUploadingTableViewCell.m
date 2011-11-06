@@ -17,9 +17,9 @@
 @synthesize textLabel;
 
 - (void)dealloc {
-  [_photo removeObserver:self forKeyPath:@"uploadFailed"];
-  [_photo removeObserver:self forKeyPath:@"uploadSucceded"];
-  [_photo removeObserver:self forKeyPath:@"uploadProgress"];
+  [_post removeObserver:self forKeyPath:@"uploadFailed"];
+  [_post removeObserver:self forKeyPath:@"uploadSucceded"];
+  [_post removeObserver:self forKeyPath:@"uploadProgress"];
   
   [imageView release];
   [progeressBar release];
@@ -30,24 +30,35 @@
 }
 
 - (IBAction)retryButtonPressed:(id)sender {
-  [_photo retry];
+  [_post retry];
 }
 
 - (IBAction)deleteButtonPressed:(id)sender {
 }
 
--(void) setPhoto:(PBPost *)photo {
+-(void) setPost:(PBPost *)post {
+  if (post == _post) {
+    return;
+  }
+  
+  if (_post) {
+    [_post removeObserver:self forKeyPath:@"uploadFailed"];
+    [_post removeObserver:self forKeyPath:@"uploadSucceded"];
+    [_post removeObserver:self forKeyPath:@"uploadProgress"];
+    [_post release];
+  }
+  
   self.retryButton.hidden = YES;
   self.deleteButton.hidden = YES;
-  _photo = [photo retain];
-  [_photo addObserver:self forKeyPath:@"uploadFailed" options:NSKeyValueChangeSetting context:nil];
-  [_photo addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
-  [_photo addObserver:self forKeyPath:@"uploadProgress" options:NSKeyValueChangeSetting context:nil];
+  _post = [post retain];
+  [_post addObserver:self forKeyPath:@"uploadFailed" options:NSKeyValueChangeSetting context:nil];
+  [_post addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
+  [_post addObserver:self forKeyPath:@"uploadProgress" options:NSKeyValueChangeSetting context:nil];
   
   [self observeValueForKeyPath:nil ofObject:nil change:nil context:nil];
   [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_1"]];
   
-  self.imageView.image = [_photo image];
+  self.imageView.image = [_post image];
 }
 
 -(void) success {
@@ -56,16 +67,16 @@
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
   if ([keyPath isEqualToString:@"uploadProgress"]) {
-    NSLog(@"xxxx %f",_photo.uploadProgress);
-    if (_photo.uploadProgress >= 1.0) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_6"]];
-    else if (_photo.uploadProgress >= 0.75) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_5"]];
-    else if (_photo.uploadProgress >= 0.50) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_4"]];
-    else if (_photo.uploadProgress >= 0.25) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_3"]];
+    NSLog(@"xxxx %f",_post.uploadProgress);
+    if (_post.uploadProgress >= 1.0) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_6"]];
+    else if (_post.uploadProgress >= 0.75) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_5"]];
+    else if (_post.uploadProgress >= 0.50) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_4"]];
+    else if (_post.uploadProgress >= 0.25) [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_3"]];
     //[self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_2"]];
           
   }
   
-  if (_photo.uploadFailed) {
+  if (_post.uploadFailed) {
     self.retryButton.hidden = NO;
     self.deleteButton.hidden = NO;
     self.progeressBar.hidden = YES;
@@ -74,7 +85,7 @@
   else {
     self.retryButton.hidden = YES;
     self.deleteButton.hidden = YES;
-    if (_photo.uploadSucceded) {
+    if (_post.uploadSucceded) {
       self.textLabel.text = @"uploaded";
     }
     else {
