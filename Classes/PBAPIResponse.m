@@ -75,6 +75,19 @@
   }
 }
 
+-(void)receiveDeletedNotification:(NSNotification *) notification {
+  NSString *flagPhotoID = [notification object];
+  NSArray *arrayOfPhotos = [self posts];
+  for (NSDictionary *photo in arrayOfPhotos) {
+    id actualPhoto = [photo objectForKeyNotNull:@"item"];
+    NSString *photoID = [actualPhoto objectForKeyNotNull:@"id"];
+    if ([flagPhotoID isEqualToString:photoID]) {
+      [actualPhoto setValue:[NSNumber numberWithBool:YES] forKey:@"deleted"];
+      NSLog(@"Flagging %u inside api response",(uint)photo);
+    }  
+  }
+}
+
 
 
 -(BOOL) validate:(id)_data {

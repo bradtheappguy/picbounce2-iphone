@@ -20,6 +20,7 @@ extern NSString *const PBAPIUserWasUnfollowedNotification;
 
 + (PBAPI *)sharedAPI;
 -(void) flagPhotoWithID:(NSString *)photoID;
+-(void) unflagPhotoWithID:(NSString *)photoID;
 -(void) deletePhotoWithID:(NSString *)photoID;
 
 

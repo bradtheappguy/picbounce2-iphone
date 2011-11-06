@@ -249,7 +249,12 @@
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoadingIndicator11) name:@"ShowLoadingView" object:nil];
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoadingIndicator11) name:@"HideLoadingView" object:nil];
   [self.profileHeader.followButton setViewController:self];
-  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveDeletedNotification:) name:@"com.viame.deleted" object:nil];
+}
+
+- (void) viewDidUnload {
+  [super viewDidUnload];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.deleted" object:nil];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -287,49 +292,55 @@
   return nSections;
 }
 
+-(NSDictionary *) postForTableViewIndex:(NSInteger)index {
+  if (self.shouldShowUplodingItems == NO) {
+    return [self.responseData photoAtIndex:index];
+  }
+  else {
+    NSInteger count = [[PBUploadQueue sharedQueue] count];
+    if (index >= count && (index-count >= 0)) {
+      return [self.responseData photoAtIndex:index - count];
+    }  
+    return nil;
+  }
+}
+
 //one row for each photo
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  NSDictionary *post = [self postForTableViewIndex:section];
+  if ([[post objectForKeyNotNull:@"deleted"] boolValue]) {
+    return 0;
+  }
   return 1;
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
   if (self.shouldShowUplodingItems == NO) {
-    return 42;
+    NSDictionary *post = [self postForTableViewIndex:section];
+    if ([[post objectForKeyNotNull:@"deleted"] boolValue]== NO) {
+      return 42;
+    }
   }
   else {
     if (section >= [[PBUploadQueue sharedQueue] count]) {
-      return 42;
+      NSDictionary *post = [self postForTableViewIndex:section];
+      if ([[post objectForKeyNotNull:@"deleted"] boolValue] == NO) {
+        return 42;
+      }
     }  
     else {
       return 0;
     }
   }
+  return 0;
 } 
-/*
- if (self.shouldShowUplodingItems == NO) {
- return [self photoCellForRowAtIndex:indexPath.section];
- }
- else {
- NSUInteger count = [[PBUploadQueue sharedQueue] count];
- if (indexPath.section >= count) {
- return [self photoCellForRowAtIndex:indexPath.section - count];
- }  
- */
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
-  if (self.shouldShowUplodingItems == NO) {
-    return [PBPhotoCell heightWithPhoto:[self.responseData photoAtIndex:indexPath.section]];
-  }
-  else {
-    NSUInteger count = [[PBUploadQueue sharedQueue] count];
-    if (indexPath.section >= count) {
-      return [PBPhotoCell heightWithPhoto:[self.responseData photoAtIndex:indexPath.section - count]];
-    }  
-    else {
-      return 65;
-    }
-  }
+  NSDictionary *post = [self postForTableViewIndex:indexPath.section];
+  return [PBPhotoCell heightWithPhoto:post];
 }
 
 
@@ -592,5 +603,16 @@
         [loadingView removeFromSuperview];
         loadingView = nil;
     }
+}
+
+-(void) yyy:(NSIndexSet *)indexSet {
+  [self.tableView reloadData];
+}
+
+
+-(void)receiveDeletedNotification:(NSNotification *)notification {
+  
+    [self performSelector:@selector(yyy:) withObject:nil afterDelay:0.75];
+  
 }
 @end

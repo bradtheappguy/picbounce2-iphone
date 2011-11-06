@@ -42,7 +42,7 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
 -(void) unflagPhotoWithID:(NSString *)photoID {
   flaggedPhotoID = photoID;
   NSString *urlString = [NSString stringWithFormat:@"http://%@/api/posts/%@/flags",API_BASE,photoID];
-  PBHTTPRequest *request = [[PBHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+  PBHTTPRequest *request = [PBHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
   [request setRequestMethod:@"DELETE"];
   [request setDelegate:self];
   [request setDidFinishSelector:@selector(unflagPhotoRequestDidFinish:)];
@@ -71,7 +71,7 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
 -(void) flagPhotoWithID:(NSString *)photoID {
   flaggedPhotoID = photoID;
   NSString *urlString = [NSString stringWithFormat:@"http://%@/api/posts/%@/flags",API_BASE,photoID];
-  PBHTTPRequest *request = [[PBHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+  PBHTTPRequest *request = [PBHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
   [request setRequestMethod:@"POST"];
   [request setDelegate:self];
   [request setDidFinishSelector:@selector(flagPhotoRequestDidFinish:)];
@@ -100,7 +100,7 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
 -(void) deletePhotoWithID:(NSString *)photoID {
   flaggedPhotoID = photoID;
   NSString *urlString = [NSString stringWithFormat:@"http://%@/api/posts/%@",API_BASE,photoID];
-  PBHTTPRequest *request = [[PBHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+  PBHTTPRequest *request = [PBHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
   [request setRequestMethod:@"DELETE"];
   [request setDelegate:self];
   [request setDidFinishSelector:@selector(deletePhotoRequestDidFinish:)];
@@ -109,15 +109,17 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
 }
 
 -(void) deletePhotoRequestDidFail:(ASIHTTPRequest *)request {
-  NSLog(@"Failed");
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"We were unable to delete this photo at this time." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [alert show];
+  [alert release];
 }
 
 - (void) deletePhotoRequestDidFinish:(ASIHTTPRequest *)request {
-  if ([request responseStatusCode] != 201) {
-    [self flagPhotoRequestDidFail:request];
+  if ([request responseStatusCode] != 205) {
+    [self deletePhotoRequestDidFail:request];
   }
   else {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.viame.flagged" object:flaggedPhotoID];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.viame.deleted" object:flaggedPhotoID];
   }
 }
 

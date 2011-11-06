@@ -14,6 +14,7 @@
 #import "NSString+SBJSON.h"
 #import "PBStreamViewController.h"
 #import "PBAPI.h"
+#import "PBSharedUser.h"
 
 //#define PhotoCellHeight 363
 //#define PhotoCellHeight 385
@@ -99,7 +100,7 @@
 }
 
 
-+ (CGFloat) heightWithPhoto:(NSDictionary *)photo {
++ (CGFloat) heightWithPhoto:(NSDictionary *)photo {  
   NSString *caption = [photo objectForKeyNotNull:@"text"];
   CGFloat captionHeight = [PBPhotoCell sizeForCaptionWithString:caption].height;
   CGFloat photoHeight;
@@ -122,7 +123,7 @@
   NSString *flagPhotoID = [notification object];
   NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
   if ([flagPhotoID isEqualToString:photoID]) {
-    flaggedView.backgroundColor = [UIColor redColor];
+    self.imageView.alpha = 0.5;
   }
 }
 
@@ -131,7 +132,17 @@
   NSString *flagPhotoID = [notification object];
   NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
   if ([flagPhotoID isEqualToString:photoID]) {
-    flaggedView.backgroundColor = [UIColor greenColor];
+    self.imageView.alpha = 1.0;
+  }
+}
+
+-(void)receiveDeletedNotification:(NSNotification *) notification {  
+  NSString *flagPhotoID = [notification object];
+  NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+  if ([flagPhotoID isEqualToString:photoID]) {
+    [UIView animateWithDuration:0.44 animations:^(void) {
+      self.contentView.alpha = 0;
+    }];
   }
 }
 
@@ -209,7 +220,7 @@
 }
 
 -(void) setPhoto:(NSDictionary *)photo {
-  
+  self.alpha = 1;
   self.captionLabel.backgroundColor = [UIColor clearColor];
   self.actionBar.backgroundColor = [UIColor clearColor];
   self.contentView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
@@ -224,6 +235,7 @@
   NSString *mediaURL = [photo objectForKeyNotNull:@"media_url"];
   NSString *mediaType  = [photo objectForKeyNotNull:@"media_type"];
   
+  BOOL deleted = [[photo objectForKeyNotNull:@"deleted"] boolValue];
   BOOL flagged = [[photo objectForKeyNotNull:@"flagged"] boolValue];
   if ([mediaType isEqualToString:@"photo"]) {
     self.photoImageView.imageURL = [NSURL URLWithString:mediaURL];
@@ -264,11 +276,12 @@
   NSArray *comments = [photo objectForKeyNotNull:@"comments"];
   [self setComments:comments];
   
-  flaggedView = [[UILabel alloc] initWithFrame:CGRectMake(25, 25, 100, 25)];
-  [(UILabel *)flaggedView setText:[NSString stringWithFormat:@"%u",photo]];
-  flaggedView.backgroundColor = [UIColor redColor];
-  [self.contentView addSubview:flaggedView];
-  flaggedView.backgroundColor = flagged?[UIColor redColor]:[UIColor greenColor];
+  if (flagged) {
+    self.imageView.alpha = 0.5;
+  }
+  if (deleted) {
+    self.captionLabel.text = @"<DELETED>";
+  }
 }
 
 
@@ -295,11 +308,19 @@
 
 -(IBAction)actionButtonPressed:(id)sender {
   UIActionSheet *actionSheet;
-  if ([[self.photo objectForKey:@"flagged"] boolValue]) {
-      actionSheet = [[UIActionSheet alloc] initWithTitle:@"Remove Flag" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Remove Flag", nil];
+  NSString *userID = [[[self.photo objectForKey:@"user"] objectForKey:@"id"] stringValue];
+  NSString *myUserID = [PBSharedUser userID];
+  
+  if ([userID isEqualToString:myUserID]) {
+    actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete Post?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
   }
   else {
-    actionSheet = [[UIActionSheet alloc] initWithTitle:@"Flag Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Flag Post", nil];
+    if ([[self.photo objectForKey:@"flagged"] boolValue]) {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:@"Remove Flag" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Remove Flag", nil];
+    }
+    else {
+      actionSheet = [[UIActionSheet alloc] initWithTitle:@"Flag Post?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Flag Post", nil];
+    }
   }
   actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
   [actionSheet showFromTabBar:tableViewController.tabBarController.tabBar];
@@ -308,16 +329,28 @@
 
 
 #pragma mark UIACtionSheetDelegate 
-- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{} // before animation and hiding view
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+  NSString *userID = [[[self.photo objectForKey:@"user"] objectForKey:@"id"] stringValue];
+  NSString *myUserID = [PBSharedUser userID];
+  NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+  
+  if ([userID isEqualToString:myUserID]) {
+    if (buttonIndex == 0) {
+      [[PBAPI sharedAPI] deletePhotoWithID:photoID];
+      return;
+    }
+  }
+  else {
+  
   if (buttonIndex == 0) {
-    NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
+   
     if ([[self.photo objectForKey:@"flagged"] boolValue]) {
       [[PBAPI sharedAPI] unflagPhotoWithID:photoID];
     }
     else {
       [[PBAPI sharedAPI] flagPhotoWithID:photoID];
     }
+  }
   }
 }  // after animation
 
