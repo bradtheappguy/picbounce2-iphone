@@ -33,7 +33,9 @@
   [x addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
   [images addObject:x];
   self.count = images.count;
+  [x startUpload];
   [x release];
+
 }
 
 -(void) uploadText:(NSString *)text 

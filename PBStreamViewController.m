@@ -175,7 +175,12 @@
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {  
-  if ([[PBUploadQueue sharedQueue] count] == 0 ) {
+  if (self.shouldShowUplodingItems == NO) {
+    return;
+  }
+  NSUInteger uploadCount = [[PBUploadQueue sharedQueue] count];
+  
+  if (uploadCount == 0 ) {
     [self reloadTableViewDataSourceUsingCache:NO];
   }
   else {
@@ -189,9 +194,7 @@
 
 
 -(void) awakeFromNib {
-  if (self.shouldShowUplodingItems) {
-    [[PBUploadQueue sharedQueue] addObserver:self forKeyPath:@"count" options:NSKeyValueChangeSetting context:nil];
-  }
+  [[PBUploadQueue sharedQueue] addObserver:self forKeyPath:@"count" options:NSKeyValueChangeSetting context:nil];
 }
 
 -(void) configureNavigationBar {

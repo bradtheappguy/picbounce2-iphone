@@ -30,6 +30,7 @@
 #import "PBSharedUser.h"
 #import "PBNavigationController.h"
 #import "ImageFilterController.h"
+#import "PBProgressHUD.h"
 
 UIImage *scaleAndRotateImage(UIImage *image)
 {
@@ -339,22 +340,15 @@ bail:
 
 
 -(void) filterButtonPressed:(UIButton *)sender {
-  if (filterProgressIndicator.hidden == NO) {
-    return;
-  }  
+
   
    NSString *btnTag = [NSString stringWithFormat:@"%d",sender.tag];
    NSLog(@"btnTag:-%@",btnTag);
-   filterProgressIndicator.hidden = NO;  
-   [filterProgressIndicator startAnimating];
+  [filterProgressIndicator show:YES];
    [self performSelector:@selector(imageFilterController:) withObject:btnTag afterDelay:1.0];
     
 }
 
--(void) indicatorStart{
-    filterProgressIndicator.hidden = NO;  
-    [filterProgressIndicator startAnimating];
-}
 
 - (void) imageFilterController:(NSString *)tag{
     
@@ -373,8 +367,7 @@ bail:
      // }
     }
     
-    [filterProgressIndicator stopAnimating];
-    filterProgressIndicator.hidden = YES;
+  [filterProgressIndicator hide:YES];
     
 }
 
@@ -416,14 +409,14 @@ bail:
   button4.tag = x++;
   [filterScrollView addSubview:button4];
   
-/*  UIButton *button5 = [UIButton buttonWithType:UIButtonTypeCustom];
+  UIButton *button5 = [UIButton buttonWithType:UIButtonTypeCustom];
   [button5 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_n@2x"] forState:UIControlStateNormal];
   [button5 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_s@2x"] forState:UIControlStateSelected];
- // [button5 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  [button5 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   button5.frame = CGRectMake(0, 0, 58, 58);
   button5.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
   button5.tag = x++;
-  [filterScrollView addSubview:button5];*/
+  [filterScrollView addSubview:button5];
   
 /*
   for (NSString *filterName in [PBFilteredImage availableFilters]) {
@@ -477,7 +470,9 @@ bail:
   [self setupAVCapture];
     
    //--------- Implement Activity Indicator --------
-    filterProgressIndicator.hidden = YES;
+  filterProgressIndicator = [[PBProgressHUD alloc] initWithView:uploadPreviewImage];
+  filterProgressIndicator.fillColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:0.5];
+  [uploadPreviewImage addSubview:filterProgressIndicator];
   
 }
 
@@ -792,7 +787,7 @@ bail:
 
 -(IBAction) uploadButtonPressed:(id)sender{
   [[PBUploadQueue sharedQueue] uploadImage:uploadPreviewImage.image];
-  
+    [[(AppDelegate *)[[UIApplication sharedApplication] delegate] tabBarController] setSelectedIndex:2];
   if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]) {
     [self dismissViewControllerAnimated:YES 
                              completion:^(void) {

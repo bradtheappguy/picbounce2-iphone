@@ -42,7 +42,7 @@
 #pragma mark Accessors
 
 @synthesize mode;
-
+@synthesize fillColor;
 @synthesize delegate;
 @synthesize labelText;
 @synthesize detailsLabelText;
@@ -203,6 +203,9 @@
         detailsLabel = [[UILabel alloc] initWithFrame:self.bounds];
 		
 		taskInProgress = NO;
+
+      
+      self.fillColor = [UIColor colorWithRed:144/255.0 green:124/255.0 blue:109/255.0 alpha:0.90];
     }
     return self;
 }
@@ -492,8 +495,9 @@
     float radius = 10.0f;
 
     CGContextBeginPath(context);
-  CGContextSetRGBFillColor(context, 144/255.0, 124/255.0, 109/255.0, 0.90);
-     CGContextMoveToPoint(context, CGRectGetMinX(rect) + radius, CGRectGetMinY(rect));
+  CGContextSetFillColorWithColor(context, [self fillColor].CGColor);
+  
+  CGContextMoveToPoint(context, CGRectGetMinX(rect) + radius, CGRectGetMinY(rect));
     CGContextAddArc(context, CGRectGetMaxX(rect) - radius, CGRectGetMinY(rect) + radius, radius, 3 * M_PI / 2, 0, 0);
     CGContextAddArc(context, CGRectGetMaxX(rect) - radius, CGRectGetMaxY(rect) - radius, radius, 0, M_PI / 2, 0);
     CGContextAddArc(context, CGRectGetMinX(rect) + radius, CGRectGetMaxY(rect) - radius, radius, M_PI / 2, M_PI, 0);

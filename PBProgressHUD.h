@@ -147,6 +147,8 @@ typedef enum {
  */
 @property (nonatomic, assign) PBProgressHUDMode mode;
 
+@property (nonatomic, retain) UIColor *fillColor;
+
 /** 
  * The HUD delegate object. If set the delegate will receive hudWasHidden callbacks when the HUD was hidden. The
  * delegate should conform to the MBProgressHUDDelegate protocol and implement the hudWasHidden method. The delegate

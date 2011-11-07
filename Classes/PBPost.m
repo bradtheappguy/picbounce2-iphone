@@ -118,6 +118,10 @@
 }
 
 -(void) retry {
+  self.uploadFailed = NO;
+  self.uploading = YES;
+  self.uploadSucceded = NO;
+  
   if (self.image) {
     NSData *jpegData = UIImageJPEGRepresentation(self.image, 0.80);
     NSString *key = [[jpegData MD5] stringByAppendingString:@".jpg"];
@@ -138,9 +142,6 @@
     [req setDidFailSelector:@selector(uploadDidFail:)];
     [req startAsynchronous];
     
-    self.uploadFailed = NO;
-    self.uploading = YES;
-    self.uploadSucceded = NO;
   }
   else {
     [self postToServer];
@@ -157,11 +158,12 @@
 
 -(void) uploadDidFinish:(ASIHTTPRequest *)request {
   self.uploadProgress = 0.50f;
-  if ([request responseStatusCode] != 200 || [[request responseHeaders] objectForKey:@"x-amz-id-2"] == nil) {
+  if ([request responseStatusCode] != 200 || [[request responseHeaders] objectForKey:@"X-Amz-Id-2"] == nil) {
     [self uploadDidFail:request];
   }
-  
-  [self postToServer];
+  else {
+    [self postToServer];
+  }
 }
 
 -(void) uploadStep2DidFinish:(ASIHTTPRequest *)request {

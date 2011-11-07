@@ -86,7 +86,7 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   
  
   profileViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/users/me/posts",API_BASE];
-  feedViewController.shouldShowUplodingItems = YES;
+  profileViewController.shouldShowUplodingItems = YES;
   profileViewController.shouldShowProfileHeader = YES;
   profileViewController.pullsToRefresh = YES;
   

@@ -475,7 +475,6 @@
 		A2BE3DB9129E00EB003E8F44 /* PBStreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BE3DB7129E00EB003E8F44 /* PBStreamViewController.xib */; };
 		A2BE3E3C129E0E94003E8F44 /* PBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BE3E3B129E0E94003E8F44 /* PBTableViewCell.m */; };
 		A2C04B3B13FCAFBB001CD0BC /* PBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */; };
-		A2C04B3C13FCAFBB001CD0BC /* PBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C04B3913FCAFBB001CD0BC /* PBTabBarController.m */; };
 		A2C0592A13FDEDFB001CD0BC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C0592913FDEDFB001CD0BC /* CoreMedia.framework */; };
 		A2CED4CA1416C5AB00400DF8 /* PBPersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */; };
 		A2D461BE142A8CA30037F87B /* PBHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D461BD142A8CA30037F87B /* PBHTTPRequest.m */; };
@@ -1121,8 +1120,6 @@
 		A2BE3E3B129E0E94003E8F44 /* PBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTableViewCell.m; sourceTree = "<group>"; };
 		A2C04B3613FCAFBB001CD0BC /* PBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTabBar.h; sourceTree = SOURCE_ROOT; };
 		A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTabBar.m; sourceTree = SOURCE_ROOT; };
-		A2C04B3813FCAFBB001CD0BC /* PBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTabBarController.h; sourceTree = SOURCE_ROOT; };
-		A2C04B3913FCAFBB001CD0BC /* PBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTabBarController.m; sourceTree = SOURCE_ROOT; };
 		A2C0592913FDEDFB001CD0BC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		A2CED4C91416C5AB00400DF8 /* PBPersonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBPersonTableViewCell.xib; sourceTree = "<group>"; };
 		A2D461BC142A8CA30037F87B /* PBHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBHTTPRequest.h; sourceTree = "<group>"; };
@@ -2317,8 +2314,6 @@
 				A247A3F114085C840068FDCA /* CircleView.m */,
 				A2C04B3613FCAFBB001CD0BC /* PBTabBar.h */,
 				A2C04B3713FCAFBB001CD0BC /* PBTabBar.m */,
-				A2C04B3813FCAFBB001CD0BC /* PBTabBarController.h */,
-				A2C04B3913FCAFBB001CD0BC /* PBTabBarController.m */,
 				A2BE3E3A129E0E94003E8F44 /* PBTableViewCell.h */,
 				A2BE3E3B129E0E94003E8F44 /* PBTableViewCell.m */,
 				A24259D012949C2300EBC83A /* PBExpandingPhotoView.h */,
@@ -2970,7 +2965,6 @@
 				A2988AD413F0BE420007E7F4 /* ASIS3ServiceRequest.m in Sources */,
 				A2988AE613F0BE420007E7F4 /* Reachability.m in Sources */,
 				A2C04B3B13FCAFBB001CD0BC /* PBTabBar.m in Sources */,
-				A2C04B3C13FCAFBB001CD0BC /* PBTabBarController.m in Sources */,
 				A2627B4A13FF312F00B6E5C7 /* PBUploadQueue.m in Sources */,
 				A251198B1406FB820093E023 /* PBIconLabel.m in Sources */,
 				A2512C93140731640093E023 /* PBButtonWithLabel.m in Sources */,

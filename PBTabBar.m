@@ -86,7 +86,7 @@ static  NSString *selectedIndex = @"selectedIndex";
   if (index == 0) {
     [self setSelectedButton:feedTabButton];
   }
-  if (index == 1) {
+  if (index == 2) {
     [self setSelectedButton:profileTabButton];
   }
 }
@@ -135,7 +135,7 @@ static  NSString *selectedIndex = @"selectedIndex";
     [(AppDelegate *)[[UIApplication sharedApplication] delegate] cameraButtonPressed:sender];
   }
   else  {
-    [self setSelectedButton:sender];
+    //[self setSelectedButton:sender];
     [tabBarController setSelectedIndex:sender.tag];
   }
 }

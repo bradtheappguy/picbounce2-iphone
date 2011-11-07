@@ -551,7 +551,7 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	{
 		CGPoint point = ((NSValue*)[points objectAtIndex:idx]).CGPointValue;
 		[spline addPoint:point];
-		NSLog(@"Adding point %@",NSStringFromCGPoint(point));
+		//NSLog(@"Adding point %@",NSStringFromCGPoint(point));
 	}		
 	
 	NSArray *splinePoints = [spline asPointArray];		
@@ -561,7 +561,7 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	for (idx = 0; idx < length; idx++)
 	{
 		CGPoint point = ((NSValue*)[splinePoints objectAtIndex:idx]).CGPointValue;
-		NSLog(@"Adding point %@",NSStringFromCGPoint(point));
+		//NSLog(@"Adding point %@",NSStringFromCGPoint(point));
 		cgPoints[idx].x = point.x;
 		cgPoints[idx].y = point.y;
 	}

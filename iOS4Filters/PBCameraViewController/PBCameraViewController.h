@@ -12,7 +12,7 @@
 #import "ModalDismissDelegate.h"
 #import "FacebookButton.h"
 #import "FBConnect.h"
-
+#import "PBProgressHUD.h"
 
 @interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, ModalDismissDelegate> {
   
@@ -59,13 +59,13 @@
   
   IBOutlet UIImageView *uploadPreviewImage;
  //------ Implement indicater view --------------  
-  IBOutlet UIActivityIndicatorView *filterProgressIndicator;
+  IBOutlet PBProgressHUD *filterProgressIndicator;
     
 }
 
 @property (nonatomic, retain)  UIImage *unfilteredImage;
 //------ Implement indicater view --------------
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *filterProgressIndicator;
+@property (nonatomic, retain) IBOutlet PBProgressHUD *filterProgressIndicator;
 -(IBAction) photoLibraryButtonPressed:(id)sender;
 -(IBAction) cameraButtonPressed:(id)sender;
 -(IBAction) closeButtonPressed:(id)sender;
