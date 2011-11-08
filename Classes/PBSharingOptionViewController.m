@@ -78,20 +78,14 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-  
-  NSMutableArray *array = [[NSMutableArray alloc] init];
-  for (int i = 0; i < [facebookPages count]; i++) {
-    if ([[[facebookPages objectAtIndex:i] valueForKey:@"Selected"] isEqualToString:@"1"]) {
-      [array addObject:[facebookPages objectAtIndex:i]]; 
-    }
-  }
-  
-  [PBSharedUser setFacebookPages:array];
+  [PBSharedUser setFacebookPages:self.facebookPages];
 }
 
 - (void) loadPagesFromFacebook {
   
   NSString *path = @"/fql?q=select%20page_id,%20type,%20name,%20page_url,pic_small%20from%20page%20where%20page_id%20in%20(%20select%20page_id,type%20from%20page_admin%20where%20uid=me()%20and%20type!%3d'APPLICATION')";
+  
+  path = @"/me/accounts";
   
   [[FacebookSingleton sharedFacebook] requestWithGraphPath:path andDelegate:self];
 }
@@ -338,10 +332,21 @@
  * depending on thee format of the API response.
  */
 - (void)request:(FBRequest *)request didLoad:(id)result {
-
   [self.progressHUD hide:YES];
-  id x  = [result objectForKey:@"data"];
-  self.facebookPages = x;
+  
+  
+  NSMutableArray *pagesFromFacebook  = [[result objectForKey:@"data"] mutableCopy];
+  NSArray *lastSAvedPages = [PBSharedUser facebookPages];
+  
+  for (NSDictionary *page in pagesFromFacebook) {
+    for (NSDictionary *lastSavedPAge in lastSAvedPages) {
+      if ([[page objectForKey:@"id"] isEqualToString: [lastSavedPAge objectForKey:@"id"]]) {
+        [page setValue:[lastSavedPAge objectForKey:@"Selected"] forKey:@"Selected"];
+      }
+    }
+  }
+  
+  self.facebookPages = pagesFromFacebook;
   [tableView reloadData];
 }
 

@@ -105,9 +105,9 @@
 - (IBAction)optionsButtonPressed:(id)sender {
   PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
   PBNavigationController *nav = [[PBNavigationController alloc] initWithRootViewController:vc style:1];
-  UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  vc.navigationItem.leftBarButtonItem = cancel;
-  [cancel release];
+  UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissModalViewControllerAnimated:)];
+  vc.navigationItem.rightBarButtonItem = done;
+  [done release];
   [self presentModalViewController:nav animated:YES];
   [vc release];
   [nav release];

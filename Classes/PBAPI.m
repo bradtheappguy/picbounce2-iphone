@@ -123,6 +123,13 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
   }
 }
 
+
+#pragma mark updateFacebbokPages 
+-(void) updateFacebookPages:(NSArray *)pages {
+  
+}
+ 
+
 #pragma mark Delegate Management
 -(void) addDelegate:(id) delegate {
   [_delegates addObject:delegate];

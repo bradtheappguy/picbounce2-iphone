@@ -72,6 +72,9 @@
 }
 
 + (void) setFacebookPages:(NSMutableArray *)token {
+  NSArray *oldFacebbokPages = [self facebookPages];
+  
+  
   [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"FBSelectedPagesArray"];
 }
 
