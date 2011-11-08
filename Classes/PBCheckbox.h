@@ -13,7 +13,6 @@
 
 }
 
-@property (nonatomic, readwrite) BOOL selected;
 @property (nonatomic, retain) UILabel *label;
 
 - (void) setText:(NSString *)text;

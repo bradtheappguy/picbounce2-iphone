@@ -23,7 +23,6 @@
 @synthesize tableView;
 @synthesize progressHUD;
 @synthesize facebookPages;
-@synthesize facebookWall;
 @synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -58,8 +57,6 @@
   self.progressHUD = hud;
   [hud release];
 
-  self.facebookWall = [PBSharedUser facebookWall];
-
   tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   tableView.separatorColor = [UIColor lightGrayColor];
   [tableView reloadData];
@@ -90,7 +87,6 @@
   }
   
   [PBSharedUser setFacebookPages:array];
-  [PBSharedUser setFacebookWall:facebookWall];
 }
 
 - (void) loadPagesFromFacebook {
@@ -184,49 +180,36 @@
       [customCell.titleLabel setText:@""];
     }
 
-    PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
-    [EWCheckbox setText:[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"name"]];
-    [EWCheckbox setTag:indexPath.row-3];
+    PBCheckbox *checkbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
+    [checkbox setText:[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"name"]];
+    [checkbox setTag:indexPath.row-3];
     if ([[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] == nil) {
       [[facebookPages objectAtIndex:indexPath.row-3] setObject:@"0" forKey:@"Selected"];
-      EWCheckbox.selected = NO;
+      checkbox.selected = NO;
     } else {
       if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] isEqualToString:@"1"]) {
-        EWCheckbox.selected = YES;
+        checkbox.selected = YES;
       } else if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] isEqualToString:@"0"]) {
-        EWCheckbox.selected = NO;
+        checkbox.selected = NO;
       }
     }
 
-    [EWCheckbox addTarget:self action:@selector(fbPageTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [customCell.contentView addSubview:EWCheckbox];
-    [EWCheckbox release];
+    [checkbox addTarget:self action:@selector(fbPageTouched:) forControlEvents:UIControlEventTouchUpInside];
+    [customCell.contentView addSubview:checkbox];
+    [checkbox release];
   } else if (indexPath.row == kFacebookWallCell) {
 
     [customCell.statusButton setHidden:YES];
     [customCell.titleLabel setText:@"  My Wall"];  
 
-    PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
-    [EWCheckbox setTag:indexPath.row];
-    if (facebookWall == nil) {
-      self.facebookWall = [[NSMutableDictionary alloc] initWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys: @"0", @"Selected", nil]];
-    }
- 
-    if ([facebookWall valueForKey:@"Selected"] == nil) {
-      [facebookWall setObject:@"0" forKey:@"Selected"];
-      EWCheckbox.selected = NO; 
-    } else {
-      if ([[facebookWall valueForKey:@"Selected"] isEqualToString:@"1"]) {
-        EWCheckbox.selected = YES;
-      }
-      else  if ([[facebookWall valueForKey:@"Selected"] isEqualToString:@"0"]) {
-        EWCheckbox.selected = NO;
-      }
-    }
+    PBCheckbox *checkbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
+    [checkbox setTag:indexPath.row];
+    BOOL sel = [PBSharedUser shouldCrosspostToFBWall];
+    checkbox.selected = sel;
 
-    [EWCheckbox addTarget:self action:@selector(fbWallTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [customCell.contentView addSubview:EWCheckbox];
-    [EWCheckbox release];
+    [checkbox addTarget:self action:@selector(fbWallTouched:) forControlEvents:UIControlEventTouchUpInside];
+    [customCell.contentView addSubview:checkbox];
+    [checkbox release];
   }
 
   return customCell;
@@ -240,10 +223,7 @@
 }
 
 - (void)fbWallTouched:(UIButton *)sender {
-  
-  int i = [[self.facebookWall valueForKey:@"Selected"] intValue];
-  i = !i;
-  [self.facebookWall setObject:[NSString stringWithFormat:@"%d",i] forKey:@"Selected"];
+  [PBSharedUser setShouldCrosspostToFBWall:sender.selected];
 }
 
 - (void)loginlogoutButton:(UIButton *)sender {
@@ -295,7 +275,9 @@
   [currStatusButtons setTitle:@"Logout" forState:UIControlStateNormal];
   [PBSharedUser setFacebookAccessToken:[[FacebookSingleton sharedFacebook] accessToken]];
   [PBSharedUser setFacebookExpirationDate:[[FacebookSingleton sharedFacebook] expirationDate]];
+  [[NSUserDefaults standardUserDefaults] synchronize];
   [self loadPagesFromFacebook];
+  [PBSharedUser setShouldCrosspostToFBWall:YES];
 }
 
 
@@ -341,7 +323,11 @@
  * Called when an error prevents the request from completing successfully.
  */
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
-
+  NSString *errorDescription = [[[error userInfo] objectForKey:@"error"] objectForKey:@"message"];
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:errorDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+  [self.progressHUD hide:YES];
 }
 
 /**

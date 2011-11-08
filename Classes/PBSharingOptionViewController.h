@@ -30,7 +30,6 @@ typedef enum {
 @property (nonatomic, retain) PBProgressHUD *progressHUD;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *facebookPages;
-@property (nonatomic, retain) NSMutableDictionary *facebookWall;
 @property (nonatomic, assign) id<ModalDismissDelegate> delegate;
 
 - (void) loadPagesFromFacebook;

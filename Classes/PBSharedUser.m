@@ -83,11 +83,23 @@
   }
 }
 
++ (void) setShouldCrosspostToFBWall:(BOOL)value {
+   [[NSUserDefaults standardUserDefaults] setBool:value forKey:@"ShouldCrosspostToFBWall"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL) shouldCrosspostToFBWall {
+   return [[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldCrosspostToFBWall"];
+}
+
+
 + (NSMutableDictionary *) facebookWall {
+  NSAssert(false, @"");
   return [[[NSUserDefaults standardUserDefaults] objectForKey:@"FBSelectedWallArray"] retain];
 }
 
 + (void) setFacebookWall:(NSMutableDictionary *)wall {
+   NSAssert(false, @"");
   [[NSUserDefaults standardUserDefaults] setObject:wall forKey:@"FBSelectedWallArray"];
 }
 

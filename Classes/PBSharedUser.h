@@ -34,4 +34,7 @@
 + (void) setFacebookWall:(NSMutableDictionary *)wall;
 + (void) removeFacebookWall;
 
+
++ (void) setShouldCrosspostToFBWall:(BOOL)value;
++ (BOOL) shouldCrosspostToFBWall;
 @end
