@@ -88,7 +88,7 @@
   viewController.authenticationURLString = [NSString stringWithFormat:@"http://%@%@",API_BASE,@"/appsupport/iphone/tos.html"];
   viewController.title = @"Via.me";
   
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissModalViewControllerAnimated:)];
   viewController.navigationItem.rightBarButtonItem = cancelButton;
   
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:viewController];

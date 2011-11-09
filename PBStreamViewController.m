@@ -68,7 +68,7 @@
   [self.view addSubview:a_EmptyStateView];
   self.tableView.scrollEnabled = NO;
     
-  UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+  UIImageView *emptyView = nil;
   emptyView.tag = 12;
   emptyView.backgroundColor = [UIColor colorWithRed:240/255.0 green:237/255.0 blue:235/255.05 alpha:1];
   emptyView.image = [UIImage imageNamed:@"ico_feed_empty.png"];
@@ -85,7 +85,7 @@
 
   if (self.tabBarController.selectedIndex == TABBAR_FEED_INDEX) {
     UILabel *a_DefaultViewNameLabel = [[UILabel alloc]initWithFrame: CGRectMake(10, 64.5, 300, 32)];
-    a_DefaultViewNameLabel.text = [NSString stringWithFormat:@"Welcome, %@",self.navigationItem.title];
+    a_DefaultViewNameLabel.text = [NSString stringWithFormat:@"Welcome, %@!",self.navigationItem.title];
     a_DefaultViewNameLabel.backgroundColor = [UIColor clearColor];
     a_DefaultViewNameLabel.textAlignment = UITextAlignmentCenter;
     a_DefaultViewNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:26];
@@ -95,25 +95,38 @@
   }
 
   if (self.tabBarController.selectedIndex == TABBAR_FEED_INDEX) {
-    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(10, 228, 300, 58)];
-    a_DefaultViewNameLabel1.numberOfLines = 2;
-    a_DefaultViewNameLabel1.text = @"Snap a photo\nto start sharing!";
+    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(10, 228-150, 300, 108)];
+    a_DefaultViewNameLabel1.numberOfLines = 4;
+    a_DefaultViewNameLabel1.text = [NSString stringWithFormat:@"Get started by uploading a photo.\nOr... Upload a photo at\nwww.via.me/%@\n*Arrow to camera",self.navigationItem.title ];
     a_DefaultViewNameLabel1.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
     a_DefaultViewNameLabel1.backgroundColor = [UIColor clearColor];
     a_DefaultViewNameLabel1.textAlignment = UITextAlignmentCenter;
-    a_DefaultViewNameLabel1.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+    a_DefaultViewNameLabel1.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
     [a_EmptyStateView addSubview:a_DefaultViewNameLabel1];
     [a_DefaultViewNameLabel1 release];
   } else {
-    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(10, 195, 300, 58)];
+    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(10, 50, 300, 58)];
     a_DefaultViewNameLabel1.numberOfLines = 2;
-    a_DefaultViewNameLabel1.text = [NSString stringWithFormat:@"%@, Snap\na photo to start sharing!",self.navigationItem.title];
+    a_DefaultViewNameLabel1.text = 
+    [NSString stringWithFormat:@"We cant wait to see what you've got.",self.navigationItem.title];
     a_DefaultViewNameLabel1.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
     a_DefaultViewNameLabel1.backgroundColor = [UIColor clearColor];
     a_DefaultViewNameLabel1.textAlignment = UITextAlignmentCenter;
     a_DefaultViewNameLabel1.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
     [a_EmptyStateView addSubview:a_DefaultViewNameLabel1];
     [a_DefaultViewNameLabel1 release];
+    
+    UILabel *a_DefaultViewNameLabel2 = [[UILabel alloc]initWithFrame: CGRectMake(10, 80, 300, 58)];
+    a_DefaultViewNameLabel2.numberOfLines = 2;
+    a_DefaultViewNameLabel2.text = 
+    [NSString stringWithFormat:@"Upoad your first photo now!",self.navigationItem.title];
+    a_DefaultViewNameLabel2.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
+    a_DefaultViewNameLabel2.backgroundColor = [UIColor clearColor];
+    a_DefaultViewNameLabel2.textAlignment = UITextAlignmentCenter;
+    a_DefaultViewNameLabel2.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+    [a_EmptyStateView addSubview:a_DefaultViewNameLabel2];
+    [a_DefaultViewNameLabel2 release];
+    
   }
 
   return [a_EmptyStateView autorelease];

@@ -32,7 +32,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A25CEA35134FDE0000CD33D9"
-               BuildableName = "PicBounce2 Tests.octest"
+               BuildableName = "viame-tests.octest"
                BlueprintName = "viame-tests"
                ReferencedContainer = "container:PicBounce2.xcodeproj">
             </BuildableReference>

@@ -163,11 +163,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PBStreamViewController.m"
-         timestampString = "342327323.063963"
+         timestampString = "342493094.892697"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "349"
-         endingLineNumber = "349"
+         startingLineNumber = "362"
+         endingLineNumber = "362"
          landmarkName = "-tableView:heightForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -177,11 +177,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PBStreamViewController.m"
-         timestampString = "342327408.711373"
+         timestampString = "342493094.892697"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "309"
-         endingLineNumber = "309"
+         startingLineNumber = "322"
+         endingLineNumber = "322"
          landmarkName = "-postForTableViewIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -197,34 +197,6 @@
          startingLineNumber = "83"
          endingLineNumber = "83"
          landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/PBPost.m"
-         timestampString = "342330305.694849"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
-         landmarkName = "-postToServer"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/PBPost.m"
-         timestampString = "342330307.069789"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
-         landmarkName = "-postToServer"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -252,8 +224,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "97"
          endingLineNumber = "97"
-         landmarkName = "+facebookWall"
-         landmarkType = "5">
+         landmarkName = "@implementation PBSharedUser"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -266,7 +238,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "102"
          endingLineNumber = "102"
-         landmarkName = "+setFacebookWall:"
+         landmarkName = "+facebookWall"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -280,7 +252,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "87"
          endingLineNumber = "87"
-         landmarkName = "+setShouldCrosspostToFBWall:"
+         landmarkName = "+removeFacebookPages"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -294,7 +266,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "92"
          endingLineNumber = "92"
-         landmarkName = "+shouldCrosspostToFBWall"
+         landmarkName = "+setShouldCrosspostToFBWall:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -308,8 +280,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "88"
          endingLineNumber = "88"
-         landmarkName = "+setShouldCrosspostToFBWall:"
-         landmarkType = "5">
+         landmarkName = "@implementation PBSharedUser"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -317,26 +289,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PBSharingOptionViewController.m"
-         timestampString = "342409958.356792"
+         timestampString = "342572362.225242"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "216"
-         endingLineNumber = "216"
+         startingLineNumber = "214"
+         endingLineNumber = "214"
          landmarkName = "-fbPageTouched:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/PBSharedUser.m"
-         timestampString = "342409949.873777"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "75"
-         endingLineNumber = "75"
-         landmarkName = "+setFacebookPages:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -143,18 +143,14 @@
   if (indexPath.row == kTwitterLoginCell) {
       
     AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    if ([appDelegate authToken] == nil) {
-      [customCell.statusButton setTitle:@"Login" forState:UIControlStateNormal];
-    }else {
-      [customCell.statusButton setTitle:@"Logout" forState:UIControlStateNormal];  
-    }
+    customCell.statusButton.hidden = YES;
 
     [customCell.contentView setBackgroundColor:[UIColor colorWithRed:208.0f/255.0f green:205.0f/255.0f blue:205.0f/255.0f alpha:1.0f]];
     [customCell.titleLabel setText:@"Twitter"];
     [customCell.statusButton setTag:indexPath.row];
     [customCell.statusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
   } else if (indexPath.row == kFaceBookLoginCell) {
-  
+    customCell.nameLabel.hidden = YES;
     if ([[FacebookSingleton sharedFacebook] isSessionValid]) {
       [customCell.statusButton setTitle:@"Logout" forState:UIControlStateNormal];
     }
@@ -187,7 +183,7 @@
         checkbox.selected = NO;
       }
     }
-
+    customCell.nameLabel.hidden = YES;
     [checkbox addTarget:self action:@selector(fbPageTouched:) forControlEvents:UIControlEventTouchUpInside];
     [customCell.contentView addSubview:checkbox];
     [checkbox release];
@@ -195,9 +191,11 @@
 
     [customCell.statusButton setHidden:YES];
     [customCell.titleLabel setText:@"  My Wall"];  
-
+    customCell.nameLabel.hidden = YES;
+    
     PBCheckbox *checkbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
     [checkbox setTag:indexPath.row];
+    [checkbox setText:@"Brad Smith"];
     BOOL sel = [PBSharedUser shouldCrosspostToFBWall];
     checkbox.selected = sel;
 
