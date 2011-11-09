@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PBCheckbox : UIButton {
-
+@interface PBCheckbox : UIView {
+  UIButton *_button;
 }
 
 @property (nonatomic, retain) UILabel *label;
+@property (nonatomic, readwrite) BOOL selected;
 
 - (void) setText:(NSString *)text;
 - (id)initWithPosition:(CGPoint)position withFontName:(NSString *)fontName withFontSize:(NSInteger)size;
-
+- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
 @end
