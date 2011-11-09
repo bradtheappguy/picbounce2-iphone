@@ -142,7 +142,10 @@ static  NSString *selectedIndex = @"selectedIndex";
 
 
 -(void) buttonWasLongPressed:(UIGestureRecognizer *)longPressGestureRecoginer {
-  [self buttonWasPressed:(UIButton *)longPressGestureRecoginer.view];
+  UIButton *button = (UIButton *)longPressGestureRecoginer.view;
+  if (button != cameraButton) {
+    [self buttonWasPressed:button];
+  }
 }
 
 

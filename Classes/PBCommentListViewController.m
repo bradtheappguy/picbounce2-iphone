@@ -66,6 +66,9 @@
 }
 
 
+- (void)viewDidDisappear:(BOOL)animated  {
+  [myView.a_CommentTextView resignFirstResponder];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postComment) name:@"PostComment" object:nil];
@@ -76,7 +79,6 @@
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
-  [myView.a_CommentTextView resignFirstResponder];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PostComment" object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
