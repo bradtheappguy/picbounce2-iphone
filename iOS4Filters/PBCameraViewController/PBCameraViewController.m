@@ -22,7 +22,6 @@
 #import "PBNewPostViewController.h"
 #import "AppDelegate.h"
 #import "PBCaptionViewController.h"
-#import "AFFeatherController.h"
 #import "PBSharingOptionViewController.h"
 #import "PBProgressHUD.h"
 #import "ASIDownloadCache.h"
