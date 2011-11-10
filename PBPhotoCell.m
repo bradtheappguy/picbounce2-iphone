@@ -26,7 +26,7 @@
 @synthesize tableViewController;
 @synthesize actionBar;
 @synthesize photoImageView;
-@synthesize captionLabel;
+@synthesize captionBubble;
 @synthesize commentCountLabel;
 @synthesize commentCountIcon;
 @synthesize leaveCommentButton;
@@ -91,19 +91,9 @@
 }
 
 
-+(CGSize) sizeForCaptionWithString:(NSString*)string {
-  CGSize size = [string sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeWordWrap]; 
-  
-  
-  
-  return CGSizeMake(300, size.height+10);
-  
-}
-
-
 + (CGFloat) heightWithPhoto:(NSDictionary *)photo {  
   NSString *caption = [photo objectForKeyNotNull:@"text"];
-  CGFloat captionHeight = [PBPhotoCell sizeForCaptionWithString:caption].height;
+  CGFloat captionHeight = [PBCaptionBubble sizeForCaptionWithString:caption].height;
   CGFloat photoHeight;
   if ([[photo objectForKeyNotNull:@"media_type"] isEqualToString:@"photo"]) {
     photoHeight = 300;
@@ -185,7 +175,7 @@
   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.unflagged" object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.deleted" object:nil];
   self.photoImageView = nil;
-  self.captionLabel = nil;
+  self.captionBubble = nil;
   self.commentCountLabel = nil;
   self.leaveCommentButton = nil;
   
@@ -231,12 +221,12 @@
   
   //CGFloat height = 100.0f;
   CGSize size = [label sizeThatFits:CGSizeMake(300, 1000)];
-  label.frame = CGRectMake(10, self.captionLabel.frame.size.height+self.photoImageView.frame.size.height+self.actionBar.frame.size.height, 300, size.height+10);
+  label.frame = CGRectMake(10, self.captionBubble.frame.size.height+self.photoImageView.frame.size.height+self.actionBar.frame.size.height, 300, size.height+10);
 }
 
 -(void) setPhoto:(NSDictionary *)photo {
   self.alpha = 1;
-  self.captionLabel.backgroundColor = [UIColor clearColor];
+  self.captionBubble.backgroundColor = [UIColor clearColor];
   self.actionBar.backgroundColor = [UIColor clearColor];
   self.contentView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
   
@@ -271,21 +261,19 @@
                                              self.leaveCommentButton.frame.size.width, 
                                              self.leaveCommentButton.frame.size.height);
   
-  self.captionLabel.numberOfLines = 0;
-  self.captionLabel.lineBreakMode = UILineBreakModeWordWrap;
-  self.captionLabel.text = caption;
-  CGSize captionSize = [PBPhotoCell sizeForCaptionWithString:caption];
-  self.captionLabel.frame = CGRectMake(self.captionLabel.frame.origin.x,
-                                       self.captionLabel.frame.origin.y, 
+  [self.captionBubble setText: caption ];
+  CGSize captionSize = [PBCaptionBubble sizeForCaptionWithString:caption];
+  self.captionBubble.frame = CGRectMake(self.captionBubble.frame.origin.x,
+                                       self.captionBubble.frame.origin.y, 
                                        captionSize.width, captionSize.height);
   
   if ([mediaType isEqualToString:@"photo"]) {
-    self.photoImageView.frame = CGRectMake(10, self.captionLabel.frame.size.height, 300, 300);
+    self.photoImageView.frame = CGRectMake(10, self.captionBubble.frame.size.height, 300, 300);
   }
   else {
-    self.photoImageView.frame = CGRectMake(10, self.captionLabel.frame.size.height, 300, 0);
+    self.photoImageView.frame = CGRectMake(10, self.captionBubble.frame.size.height, 300, 0);
   }
-  self.actionBar.frame = CGRectMake(0, self.captionLabel.frame.size.height+self.photoImageView.frame.size.height , 320, self.actionBar.frame.size.height);
+  self.actionBar.frame = CGRectMake(0, self.captionBubble.frame.size.height+self.photoImageView.frame.size.height , 320, self.actionBar.frame.size.height);
   
   
   NSArray *comments = [photo objectForKeyNotNull:@"comments"];
@@ -293,9 +281,6 @@
   
   if (flagged) {
     self.imageView.alpha = 0.5;
-  }
-  if (deleted) {
-    self.captionLabel.text = @"<DELETED>";
   }
   
   NSString *userID = [[[self.photo objectForKey:@"user"] objectForKey:@"id"] stringValue];

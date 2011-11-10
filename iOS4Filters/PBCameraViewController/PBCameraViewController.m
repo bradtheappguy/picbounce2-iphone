@@ -20,7 +20,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "PBUploadQueue.h"
 #import "PBNewPostViewController.h"
-//#import "CaptureSessionManager.h"
 #import "AppDelegate.h"
 #import "PBCaptionViewController.h"
 #import "AFFeatherController.h"
@@ -482,31 +481,8 @@ bail:
 
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  [self.navigationController setNavigationBarHidden:YES animated:animated];
   
-       
-  if ([PBSharedUser shouldCrosspostToFB] == YES) {
-    facebookButton.selected = YES;
-  }
-  else {
-    facebookButton.selected = NO;
-  }
-  
-  if ([PBSharedUser shouldCrosspostToTW] == YES) {
-    twitterButton.selected = YES;
-  }
-  else {
-    twitterButton.selected = NO;
-  }
-  
-  /*
-   UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-   if (UIDeviceOrientationIsLandscape(orientation)) {
-   NSLog(@" ");
-   }
-   else {
-   NSLog(@" ");
-   }
-   */
   if (cameraToolbar.frame.origin.x < 0) {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
   }
@@ -525,6 +501,11 @@ bail:
    CGRect layerRect = CGRectMake(0, 0, width, 426);
    
    */
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+  [super viewDidDisappear:animated];
+  [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (AVCaptureVideoOrientation)avOrientationForDeviceOrientation:(UIDeviceOrientation)deviceOrientation
@@ -592,63 +573,22 @@ bail:
                                                 }];
 }
 
--(void) facebookButtonClicked:(id)sender {
-  if ([PBSharedUser shouldCrosspostToFB] == YES) {
-    [PBSharedUser setShouldCrosspostToFB:NO];
-    facebookButton.selected = NO;
-  }
-  else {
-    [PBSharedUser setShouldCrosspostToFB:YES];
-    facebookButton.selected = YES;
-  }
-}
-
--(void) twitterButtonClicked:(id)sender {
-  if ([PBSharedUser shouldCrosspostToTW] == YES) {
-    [PBSharedUser setShouldCrosspostToTW:NO];
-    twitterButton.selected = NO;
-  }
-  else {
-    [PBSharedUser setShouldCrosspostToTW:YES];
-    twitterButton.selected = YES;
-  }
-/*
-  AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-  if ([appDelegate authToken] == nil) {
-    [appDelegate presentLoginViewController:YES];
-    twitterButton.selected = YES;
-  }else {
-    [(AppDelegate *)[[UIApplication sharedApplication] delegate] setAuthToken:nil];
-    [[ASIDownloadCache sharedCache] clearCachedResponsesForStoragePolicy:ASICacheForSessionDurationCacheStoragePolicy];
-    [[ASIDownloadCache sharedCache] clearCachedResponsesForStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-    [ASIHTTPRequest setSessionCookies:nil];
-    appDelegate.authToken = nil;
-    twitterButton.selected = NO;
-  }
-*/
-}
 
 -(void) cancelButtonPressed:(id)sender {
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
   [self dismissModalViewControllerAnimated:YES];
 }
 
--(void) flashButtonPressed:(id)sender {
-  
-}
 
-- (IBAction)captionButtonPressed:(id)sender {
+- (IBAction)nextButtonPressed:(id)sender {
   PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"PBNewPostViewController" bundle:nil];
-  newPostViewController.isCaptionView = YES;
   newPostViewController.hidesBottomBarWhenPushed = YES;
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
   
   
-  UIBarButtonItem *_cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  newPostViewController.navigationItem.leftBarButtonItem = _cancelButton;
-  newPostViewController.navigationItem.title = @"New Post";
-  [_cancelButton release];
-  [self presentModalViewController:navigationController animated:YES];
+  newPostViewController.navigationItem.title = @"Post";
+
+  [self.navigationController pushViewController:newPostViewController animated:YES];
   [PBNewPostViewController release];
   
 }
@@ -730,9 +670,7 @@ bail:
 
 }
 
--(void) hdrButtonPressed:(id)sender {
-  
-}
+
 
 - (IBAction)optionsButtonPressed:(id)sender {
   PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
@@ -805,7 +743,6 @@ bail:
 
       
     }
- 
 }
 
 

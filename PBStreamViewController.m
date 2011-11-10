@@ -223,7 +223,11 @@
   }
    
   
-  UIBarButtonItem *createPostButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+  [button setImage:[UIImage imageNamed:@"btn_tweet_n.png"] forState:UIControlStateNormal];
+  [button addTarget:self action:@selector(createPost) forControlEvents:UIControlEventTouchUpInside];
+  button.frame = CGRectMake(0, 0, 32, 33);
+  UIBarButtonItem *createPostButton = [[UIBarButtonItem alloc] initWithCustomView:button];
   self.navigationItem.rightBarButtonItem = createPostButton;
   [createPostButton release];
 }

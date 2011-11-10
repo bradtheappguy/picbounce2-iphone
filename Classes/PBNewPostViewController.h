@@ -17,7 +17,6 @@
   TwitterButton *twitterButton;
 }
 
-@property (nonatomic, assign) BOOL isCaptionView;
 - (IBAction)optionsButtonPressed:(id)sender;
 - (IBAction)dismissModalViewControllerAnimated;
 @end

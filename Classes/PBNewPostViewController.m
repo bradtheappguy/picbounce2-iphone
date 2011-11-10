@@ -23,7 +23,7 @@
 #import "PBNavigationController.h"
 
 @implementation PBNewPostViewController
-@synthesize isCaptionView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
@@ -51,13 +51,6 @@
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
   
-  if (isCaptionView) {
-    optionButtonView.hidden = YES;
-    CGRect frame = postTextView.frame;
-    frame.size.height += 45;
-    postTextView.frame = frame;
-    postTextView.returnKeyType = UIReturnKeyDone;
-  }else {
     FacebookButton *a_FacebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(117, 164)];
     [a_FacebookButton setText:@"Market Edition"];
     
@@ -76,7 +69,6 @@
     [self.view bringSubviewToFront:twitterButton];
     [twitterButton release];
     
-  }
   [postTextView becomeFirstResponder];
 }
 

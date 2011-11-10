@@ -42,27 +42,44 @@
 
 -(void) setStyle:(NSUInteger)_style {
   UINavigationBar *navBar = [self navigationBar];
-  UIImageView *imageView = (UIImageView *)[navBar viewWithTag:kNavBarImageTag];
+  UIImage *image;
+  if ([navBar respondsToSelector:@selector(backgroundImageForBarMetrics:)]) {
+    image = [navBar backgroundImageForBarMetrics:UIBarMetricsDefault];
+  }
+  else {
+    image = [(UIImageView *)[navBar viewWithTag:kNavBarImageTag] image];
+  }
   
-  if ((style == _style) && (imageView != nil)) {
+  if ((style == _style) && (image != nil)) {
     return;
   }
+  
   style = _style;
   [[navBar viewWithTag:kNavBarImageTag] removeFromSuperview];
   if (style == 1) {
     navBar.tintColor = [UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1];
-    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_navbar_black.png"]];
-    [imageView setTag:kNavBarImageTag];
-    [navBar insertSubview:imageView atIndex:1];
-    [imageView release];
     
+    if ([navBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
+      [navBar setBackgroundImage:[UIImage imageNamed:@"bg_navbar_black.png"] forBarMetrics:UIBarMetricsDefault];
+    }
+    else {
+      UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_navbar_black.png"]];
+      [imageView setTag:kNavBarImageTag];
+      [navBar insertSubview:imageView atIndex:1];
+      [imageView release];
+    }
   }
   else {
-    navBar.tintColor = kNavBarColor;
-    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_navbar.png"]];
-    [imageView setTag:kNavBarImageTag];
-    [navBar insertSubview:imageView atIndex:1];
-    [imageView release];
+    if ([navBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
+      [navBar setBackgroundImage:[UIImage imageNamed:@"bg_navbar.png"] forBarMetrics:UIBarMetricsDefault];
+    }
+    else {
+      navBar.tintColor = kNavBarColor;
+      UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_navbar.png"]];
+      [imageView setTag:kNavBarImageTag];
+      [navBar insertSubview:imageView atIndex:1];
+      [imageView release];
+    }
   }
   
   

@@ -10,7 +10,7 @@
 #import "EGOImageView.h"
 #import "ASIHTTPRequest.h"
 #import "OHAttributedLabel.h"
-
+#import "PBCaptionBubble.h"
 
 @interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate, OHAttributedLabelDelegate> {
   UITableViewController *tableViewController;
@@ -32,7 +32,7 @@
 
 @property (nonatomic, retain)IBOutlet  EGOImageView  *photoImageView;
 
-@property (nonatomic, retain) IBOutlet UILabel *captionLabel;
+@property (nonatomic, retain) IBOutlet PBCaptionBubble *captionBubble;
 @property (nonatomic, retain) IBOutlet UILabel *commentCountLabel;
 
 @property (retain, nonatomic) IBOutlet UIImageView *commentCountIcon;

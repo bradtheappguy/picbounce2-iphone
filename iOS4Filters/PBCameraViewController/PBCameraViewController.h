@@ -17,7 +17,6 @@
 @interface PBCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, ModalDismissDelegate> {
   
   IBOutlet UIView *previewView;
-	IBOutlet UISegmentedControl *camerasControl;
 	AVCaptureVideoPreviewLayer *previewLayer;
 	AVCaptureVideoDataOutput *videoDataOutput;
 	BOOL detectFaces;
@@ -50,32 +49,22 @@
   
   UIImageView *cameraStill;
 
-  IBOutlet UIButton *facebookButton;
-  IBOutlet UIButton *twitterButton;
 
   IBOutlet UIScrollView *filterScrollView;
-  
   IBOutlet UIView *cameraToolbar;
-  
   IBOutlet UIImageView *uploadPreviewImage;
- //------ Implement indicater view --------------  
-  IBOutlet PBProgressHUD *filterProgressIndicator;
     
 }
 
 @property (nonatomic, retain)  UIImage *unfilteredImage;
 //------ Implement indicater view --------------
-@property (nonatomic, retain) IBOutlet PBProgressHUD *filterProgressIndicator;
+@property (nonatomic, retain) PBProgressHUD *filterProgressIndicator;
 -(IBAction) photoLibraryButtonPressed:(id)sender;
 -(IBAction) cameraButtonPressed:(id)sender;
--(IBAction) closeButtonPressed:(id)sender;
--(IBAction) optionsButtonPressed:(id)sender;
 -(IBAction) cancelButtonPressed:(id)sender;
--(IBAction) uploadButtonPressed:(id)sender;
+
 -(IBAction) retakeButtonPressed:(id)sender;
--(IBAction) captionButtonPressed:(id)sender;
--(IBAction) facebookButtonClicked:(id)sender;
--(IBAction) twitterButtonClicked:(id)sender;
+- (IBAction)nextButtonPressed:(id)sender;
 
 - (BOOL) hasFlash;
 - (void) imageFilterController:(NSString *)tag;
