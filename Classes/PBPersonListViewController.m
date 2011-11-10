@@ -85,7 +85,6 @@
   NSString *profileURL = [user objectForKey:@"profile_url"];
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
   vc.baseURL = profileURL;
-  vc.shouldShowFollowingBar = YES;
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
   vc.pullsToRefresh = YES;

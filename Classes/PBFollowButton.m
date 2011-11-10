@@ -102,7 +102,10 @@
 
 
 -(void) performRequestToSetFollowing:(BOOL)follow {
+  NSAssert(self.user, @"ERROR: USER NOT SET");
   NSString *screenName = [self.user objectForKeyNotNull:@"screen_name"];
+  NSAssert(screenName, @"ERROR: USER DOES NOT HAVE A SCREEN NAME");
+  
   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/%@/followers",API_BASE,screenName]];
   if (_followingRequest) {
     [_followingRequest cancel];
