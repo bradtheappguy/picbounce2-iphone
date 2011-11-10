@@ -392,7 +392,6 @@
   
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
   vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,userID];
-  vc.shouldShowFollowingBar = YES;
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
   vc.pullsToRefresh = YES;

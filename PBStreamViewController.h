@@ -26,7 +26,6 @@
   
   BOOL shouldShowProfileHeader;
   BOOL shouldShowProfileHeaderBeforeNetworkLoad;
-  BOOL shouldShowFollowingBar;
   
   
   NSURL *preloadedAvatarURL;
@@ -47,7 +46,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet PBProfileHeaderView *profileHeader;
-@property (nonatomic, retain) IBOutlet UIView *profileHeaderWithFollowBar;
 @property (nonatomic, retain) IBOutlet EGOImageView *avatarIcon;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *locationLabel;
@@ -70,7 +68,6 @@
 
 @property (readwrite) BOOL shouldShowProfileHeader;
 @property (readwrite) BOOL shouldShowProfileHeaderBeforeNetworkLoad;
-@property (readwrite) BOOL shouldShowFollowingBar;
 @property (readwrite) BOOL shouldShowUplodingItems;
 
 

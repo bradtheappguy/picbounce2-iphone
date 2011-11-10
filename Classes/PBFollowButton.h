@@ -23,6 +23,6 @@ typedef enum {
 }
 
 @property (nonatomic, retain) NSDictionary *user;
-@property (nonatomic, assign) UIViewController *viewController;
+@property (nonatomic, assign) IBOutlet UIViewController *viewController;
 
 @end
