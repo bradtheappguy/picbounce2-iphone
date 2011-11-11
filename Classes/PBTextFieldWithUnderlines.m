@@ -8,6 +8,68 @@
 
 #import "PBTextFieldWithUnderlines.h"
 
+
+@interface PBTextFieldWithUnderlinesInternalUnderlineView : UIView 
+
+@end
+@implementation PBTextFieldWithUnderlinesInternalUnderlineView
+
+-(void) drawRect:(CGRect)rect {
+  [super drawRect:rect];
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  
+  CGFloat lineHeight = 18 + 8;
+  
+  while (lineHeight < rect.size.height) {
+    CGContextBeginPath(context);
+    CGContextSetLineWidth(context, 0.5);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:210/255.0 green:207/255.0 blue:207/255.0 alpha:1].CGColor);
+    CGContextMoveToPoint(context, 8, lineHeight);
+    CGContextAddLineToPoint(context, 210, lineHeight);
+    CGContextStrokePath(context);
+    lineHeight += 18;
+  }
+
+}
+
+@end
+
+
 @implementation PBTextFieldWithUnderlines
+
+-(void) awakeFromNib {
+  undelineView = [[PBTextFieldWithUnderlinesInternalUnderlineView alloc] initWithFrame:CGRectZero];
+  undelineView.clipsToBounds = NO;
+  undelineView.backgroundColor = [UIColor clearColor];
+  
+  [self addSubview:undelineView];
+}
+
+
+
+
+-(void) layoutSubviews {
+  undelineView.frame = CGRectMake(0, 0, 300, MAX(self.contentSize.height, self.bounds.size.height));
+  [undelineView setNeedsDisplay];
+}
+
+-(void) setContentSize:(CGSize)contentSize {
+  
+  [super setContentSize:CGSizeMake(self.bounds.size.width, contentSize.height)];
+}
+
+-(void) setContentOffset:(CGPoint)contentOffset {
+  NSLog(@"%f, %f",contentOffset.x, contentOffset.y);
+  [super setContentOffset:contentOffset];
+}
+
+-(void)setContentInset:(UIEdgeInsets)s
+{
+	UIEdgeInsets insets = s;
+  
+  s.right = 30;
+  
+	[super setContentInset:insets];
+}
 
 @end

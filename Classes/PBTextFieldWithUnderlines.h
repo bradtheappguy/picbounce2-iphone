@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PBTextFieldWithUnderlines : UITextView
-
+@interface PBTextFieldWithUnderlines : UITextView {
+  UIView *undelineView;
+}
 @end

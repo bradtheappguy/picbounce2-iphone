@@ -50,8 +50,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
-  
-    FacebookButton *a_FacebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(117, 164)];
+  self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_upload_screens"]];
+    FacebookButton *a_FacebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(140, 164)];
     [a_FacebookButton setText:@"Market Edition"];
     
     a_FacebookButton.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];

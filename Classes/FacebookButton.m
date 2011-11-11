@@ -13,7 +13,7 @@
 @synthesize label;
 
 - (id)initWithPosition:(CGPoint)position {
-	CGRect frame = CGRectMake(position.x, position.y, 24, 27);
+	CGRect frame = CGRectMake(position.x, position.y, 54, 25);
     if ((self = [super initWithFrame:frame])) {
             // Initialization code
 		[self setBackgroundImage:[[UIImage imageNamed:@"check_no.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
