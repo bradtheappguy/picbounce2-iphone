@@ -18,7 +18,7 @@
   if ((self = [super initWithFrame:frame])) {
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
     _button.frame = CGRectMake(0, 0, 20, 20);
-    _button.backgroundColor = [UIColor redColor];
+    _button.backgroundColor = [UIColor clearColor];
     [_button addTarget:self action:@selector(touched:) forControlEvents:UIControlEventTouchUpInside];
 		
 		self.label = [[UILabel alloc] initWithFrame:CGRectMake(-160, 0.0, 150, 28.0)];

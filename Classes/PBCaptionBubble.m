@@ -40,6 +40,7 @@ static CGFloat kCaptionFontSize = 14.0;
   
   [self addSubview:self.bubbleView];
   [self addSubview:self.captionLabel];
+  self.hidden = YES;
   
 }
 
@@ -50,6 +51,9 @@ static CGFloat kCaptionFontSize = 14.0;
 }
 
 -(void) setText:(NSString *) text {
+  if ([text length] > 0) {
+    self.hidden = NO;
+  }
   [self.captionLabel setText:text];
 }
 

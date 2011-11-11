@@ -338,6 +338,7 @@
 		A267AC17146CD2A20022B955 /* bg_upload_screens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267AC14146CD2A20022B955 /* bg_upload_screens@2x.png */; };
 		A267AC18146CD2A20022B955 /* btn_configure_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267AC15146CD2A20022B955 /* btn_configure_arrow@2x.png */; };
 		A267AC19146CD2A20022B955 /* btn_post_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267AC16146CD2A20022B955 /* btn_post_n@2x.png */; };
+		A267AC2E146DB0EF0022B955 /* PBCommentsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A267AC2D146DB0EF0022B955 /* PBCommentsButton.m */; };
 		A26E720D1334244E00BD737D /* PBPhotoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */; };
 		A26E721B133431C800BD737D /* PBPhotoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */; };
 		A273CA89130AEC12003FE8DA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A273CA88130AEC12003FE8DA /* libz.dylib */; };
@@ -861,6 +862,8 @@
 		A267AC14146CD2A20022B955 /* bg_upload_screens@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_upload_screens@2x.png"; sourceTree = "<group>"; };
 		A267AC15146CD2A20022B955 /* btn_configure_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_configure_arrow@2x.png"; sourceTree = "<group>"; };
 		A267AC16146CD2A20022B955 /* btn_post_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_post_n@2x.png"; sourceTree = "<group>"; };
+		A267AC2C146DB0EE0022B955 /* PBCommentsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBCommentsButton.h; sourceTree = "<group>"; };
+		A267AC2D146DB0EF0022B955 /* PBCommentsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBCommentsButton.m; sourceTree = "<group>"; };
 		A26E720B1334243800BD737D /* PBPhotoHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPhotoHeaderView.h; sourceTree = SOURCE_ROOT; };
 		A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPhotoHeaderView.m; sourceTree = SOURCE_ROOT; };
 		A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBPhotoHeaderView.xib; sourceTree = "<group>"; };
@@ -2098,6 +2101,8 @@
 				A267ABD9146BA5990022B955 /* PBCaptionBubble.m */,
 				A267ABF3146CBEBE0022B955 /* PBTextFieldWithUnderlines.h */,
 				A267ABF4146CBEBE0022B955 /* PBTextFieldWithUnderlines.m */,
+				A267AC2C146DB0EE0022B955 /* PBCommentsButton.h */,
+				A267AC2D146DB0EF0022B955 /* PBCommentsButton.m */,
 			);
 			name = "UI Components";
 			sourceTree = "<group>";
@@ -2708,6 +2713,7 @@
 				A25CF3A214662DCB00FC75AD /* PBCameraViewController.m in Sources */,
 				A267ABDA146BA59A0022B955 /* PBCaptionBubble.m in Sources */,
 				A267ABF5146CBEBE0022B955 /* PBTextFieldWithUnderlines.m in Sources */,
+				A267AC2E146DB0EF0022B955 /* PBCommentsButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

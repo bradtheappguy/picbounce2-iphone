@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 int main(int argc, char *argv[]) {    
-  
-   
     [Utilities swizzleSelector:@selector(insertSubview:atIndex:)
 					   ofClass:[UINavigationBar class]
 				  withSelector:@selector(biInsertSubview:atIndex:)];
