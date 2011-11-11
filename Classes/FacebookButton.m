@@ -9,19 +9,15 @@
 #import "FacebookButton.h"
 
 @implementation FacebookButton
-@synthesize selected;
-@synthesize label;
 
 - (id)initWithPosition:(CGPoint)position {
 	CGRect frame = CGRectMake(position.x, position.y, 54, 25);
     if ((self = [super initWithFrame:frame])) {
             // Initialization code
-		[self setBackgroundImage:[[UIImage imageNamed:@"check_no.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"btn_facebook_s.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
+		[self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_n"] forState:UIControlStateNormal];
+		[self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_s"] forState:UIControlStateSelected];
 		[self addTarget:self action:@selector(touched:) forControlEvents:UIControlEventTouchUpInside];
-		selected = NO;
-		
-		    }
+    }
     return self;
 }
 
@@ -29,35 +25,12 @@
 
 -(void)touched:(id)sender
 {
-	selected = !selected;
-	[self setSelected:selected];
+	[self setSelected:!self.selected];
 }
 
--(void)setSelected:(BOOL)isSelected
-{
-	selected = isSelected;
-	if (selected)
-        {
-		[self setBackgroundImage:[[UIImage imageNamed:@"btn_facebook_s.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"check_no.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
-		
-        }
-	else {
-		[self setBackgroundImage:[[UIImage imageNamed:@"check_no.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"btn_facebook_s.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
-		
-	}
-}
-
--(void)setText:(NSString *)text
-{
-	label.text = text;
-}
-
-
-- (void)dealloc {
-	[label release];
-    [super dealloc];
+-(void) setSelected:(BOOL)selected {
+  [super setSelected:selected];
+  [self setBackgroundImage:[self imageForState:(selected?UIControlStateSelected:UIControlStateNormal)] forState:UIControlStateHighlighted];
 }
 
 

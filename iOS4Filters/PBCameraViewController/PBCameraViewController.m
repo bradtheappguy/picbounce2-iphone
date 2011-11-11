@@ -582,11 +582,9 @@ bail:
 - (IBAction)nextButtonPressed:(id)sender {
   PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"PBNewPostViewController" bundle:nil];
   newPostViewController.hidesBottomBarWhenPushed = YES;
-  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
-  
-  
   newPostViewController.navigationItem.title = @"Post";
-
+  [newPostViewController view];
+  newPostViewController.previewImageView.image = uploadPreviewImage.image;
   [self.navigationController pushViewController:newPostViewController animated:YES];
   [PBNewPostViewController release];
   

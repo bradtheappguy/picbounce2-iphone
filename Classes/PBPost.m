@@ -74,7 +74,7 @@
   [postRequest setShowAccurateProgress:YES];
   [postRequest setUploadProgressDelegate:self];
   [postRequest setRequestMethod:@"POST"];
-  [postRequest setPostValue:@"message" forKey:@"media_type"];
+  [postRequest setPostValue:@"text" forKey:@"media_type"];
   
   if (self.image) {
     NSData *jpegData = UIImageJPEGRepresentation(self.image, 0.80);

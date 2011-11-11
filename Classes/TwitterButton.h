@@ -9,12 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TwitterButton : UIButton {
-	BOOL selected;
-	UILabel *label;
+
 }
 
-@property (nonatomic) BOOL selected;
-@property (nonatomic, retain) UILabel *label;
-- (void) setText:(NSString *)text;
 - (id)initWithPosition:(CGPoint)position;
 @end

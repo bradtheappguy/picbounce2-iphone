@@ -8,13 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FacebookButton : UIButton {
-	BOOL selected;
-	UILabel *label;
-}
+@interface FacebookButton : UIButton
 
-@property (nonatomic) BOOL selected;
-@property (nonatomic, retain) UILabel *label;
-- (void) setText:(NSString *)text;
 - (id)initWithPosition:(CGPoint)position;
+
 @end

@@ -23,6 +23,7 @@
 #import "PBNavigationController.h"
 
 @implementation PBNewPostViewController
+@synthesize previewImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,6 +35,7 @@
 
 
 - (void)dealloc {
+  [previewImageView release];
   [super dealloc];  
 }
 
@@ -52,10 +54,8 @@
   // Do any additional setup after loading the view from its nib.
   self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_upload_screens"]];
     FacebookButton *a_FacebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(140, 164)];
-    [a_FacebookButton setText:@"Market Edition"];
     
-    a_FacebookButton.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];
-    [a_FacebookButton addTarget:self action:@selector(facebookButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    a_FacebookButton.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:a_FacebookButton];
     [self.view bringSubviewToFront:a_FacebookButton];
     [a_FacebookButton release];
@@ -70,10 +70,15 @@
     [twitterButton release];
     
   [postTextView becomeFirstResponder];
+  
+  UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(postButtonPressed:)];
+  self.navigationItem.rightBarButtonItem = postButton;
+  [postButton release];
 }
 
 
 - (void)viewDidUnload {
+  [self setPreviewImageView:nil];
   [super viewDidUnload];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
@@ -96,25 +101,10 @@
 
 - (IBAction)optionsButtonPressed:(id)sender {
   PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
-  PBNavigationController *nav = [[PBNavigationController alloc] initWithRootViewController:vc style:1];
-  UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissModalViewControllerAnimated:)];
-  vc.navigationItem.rightBarButtonItem = done;
-  [done release];
-  [self presentModalViewController:nav animated:YES];
+  [self.navigationController pushViewController:vc animated:YES];
   [vc release];
-  [nav release];
 }
 
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {  
-  BOOL shouldChangeText = YES;  
-  
-  if ([text isEqualToString:@"\n"]) {  
-    [self performSelector:@selector(postOnServer) withObject:nil afterDelay:0.01];
-    shouldChangeText = NO;  
-  }  
-  return shouldChangeText;  
-} 
 
 
 #pragma mark New Post Upload to Facebook 
@@ -130,11 +120,20 @@
 
 
 #pragma mark New Post Upload to Server 
-- (void)postOnServer {
-  [[PBUploadQueue sharedQueue] uploadText:postTextView.text 
+- (void)postButtonPressed:(id)sender {
+  
+  
+  if (self.previewImageView.image) {
+    [[PBUploadQueue sharedQueue] uploadImage:self.previewImageView.image];
+  }
+  else {
+    [[PBUploadQueue sharedQueue] uploadText:postTextView.text 
                     crossPostingToTwitter:twitterButton.selected 
                    crossPostingToFacebook:NO];
+  }
   [[(AppDelegate *)[[UIApplication sharedApplication] delegate] tabBarController] setSelectedIndex:2];
+  
+  
   [self dismissModalViewControllerAnimated:YES];
 }
 

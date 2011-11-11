@@ -234,7 +234,6 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
 }
 
 -(void) userDidLogin:(id)dender {
-  [loginViewController dismissModalViewControllerAnimated:YES];
   [self performSelector:@selector(xxx) withObject:nil afterDelay:0.5];
 }
 

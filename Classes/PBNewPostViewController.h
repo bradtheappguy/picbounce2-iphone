@@ -13,9 +13,10 @@
 @interface PBNewPostViewController : UIViewController < UITextViewDelegate, FBSessionDelegate, FBDialogDelegate >{
   IBOutlet UITextView *postTextView;
   Facebook *_facebook;
-  IBOutlet UIView *optionButtonView;
   TwitterButton *twitterButton;
+ 
 }
+@property (retain, nonatomic) IBOutlet UIImageView *previewImageView;
 
 - (IBAction)optionsButtonPressed:(id)sender;
 - (IBAction)dismissModalViewControllerAnimated;
