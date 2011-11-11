@@ -28,14 +28,19 @@
   return self;
 }
 
--(void) uploadImage:(UIImage *)image {
+-(void) uploadText:(NSString *)text withImage:(UIImage *)image
+crossPostingToTwitter:(BOOL)shouldCrossPostToTwitter
+crossPostingToFacebook:(BOOL)shouldCrossPostToFacebook {
+  
   PBPost *x = [[PBPost alloc] initWithImage:image];
+  x.text = text;
+  x.shouldCrossPostToTwitter = shouldCrossPostToTwitter;
+  x.shouldCrossPostToFacebook = shouldCrossPostToFacebook;
   [x addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
   [images addObject:x];
   self.count = images.count;
   [x startUpload];
   [x release];
-
 }
 
 -(void) uploadText:(NSString *)text 

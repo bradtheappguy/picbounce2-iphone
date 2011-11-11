@@ -17,10 +17,9 @@
 #import "SBJSON.h"
 #import "NSString+SBJSON.h"
 #import "ASIFormDataRequest.h"
-#import "TwitterButton.h"
-#import "FacebookButton.h"
 #import "PBUploadQueue.h"
 #import "PBNavigationController.h"
+#import "PBSharedUser.h"
 
 @implementation PBNewPostViewController
 @synthesize previewImageView;
@@ -53,13 +52,14 @@
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
   self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_upload_screens"]];
-    FacebookButton *a_FacebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(140, 164)];
+    facebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(140, 164)];
     
-    a_FacebookButton.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:a_FacebookButton];
-    [self.view bringSubviewToFront:a_FacebookButton];
-    [a_FacebookButton release];
-    
+    facebookButton.selected = YES;//[getValDef(@"ewEdition",[NSNumber numberWithInt:1]) boolValue];forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:facebookButton];
+    [self.view bringSubviewToFront:facebookButton];
+    [facebookButton release];
+  
+  
     twitterButton = [[TwitterButton alloc] initWithPosition:CGPointMake(79, 164)];
     
     
@@ -84,6 +84,18 @@
   // e.g. self.myOutlet = nil;
 }
 
+-(void) viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  facebookButton.selected = [PBSharedUser shouldCrosspostToFB];
+  twitterButton.selected = [PBSharedUser shouldCrosspostToTW];
+  
+  if ([PBSharedUser facebookAccessToken]) {
+    facebookButton.hidden = NO;
+  }
+  else {
+    facebookButton.hidden = YES;
+  }
+}
 
 #pragma mark -
 #pragma mark CustomNavigationBar Methods
@@ -124,12 +136,15 @@
   
   
   if (self.previewImageView.image) {
-    [[PBUploadQueue sharedQueue] uploadImage:self.previewImageView.image];
+    [[PBUploadQueue sharedQueue] uploadText:postTextView.text  
+                                  withImage:self.previewImageView.image 
+                      crossPostingToTwitter:twitterButton.selected 
+                     crossPostingToFacebook:facebookButton.selected];
   }
   else {
-    [[PBUploadQueue sharedQueue] uploadText:postTextView.text 
-                    crossPostingToTwitter:twitterButton.selected 
-                   crossPostingToFacebook:NO];
+    [[PBUploadQueue sharedQueue] uploadText: postTextView.text 
+                      crossPostingToTwitter: twitterButton.selected 
+                     crossPostingToFacebook: facebookButton.selected];
   }
   [[(AppDelegate *)[[UIApplication sharedApplication] delegate] tabBarController] setSelectedIndex:2];
   

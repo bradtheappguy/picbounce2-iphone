@@ -7,6 +7,7 @@
 //
 
 #import "FacebookButton.h"
+#import "PBSharedUser.h"
 
 @implementation FacebookButton
 
@@ -21,11 +22,9 @@
     return self;
 }
 
-
-
--(void)touched:(id)sender
-{
+-(void)touched:(id)sender {
 	[self setSelected:!self.selected];
+  [PBSharedUser setShouldCrosspostToFB:self.selected];
 }
 
 -(void) setSelected:(BOOL)selected {

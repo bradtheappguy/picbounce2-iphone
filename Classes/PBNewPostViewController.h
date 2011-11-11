@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
 #import "TwitterButton.h"
+#import "FacebookButton.h"
 
 @interface PBNewPostViewController : UIViewController < UITextViewDelegate, FBSessionDelegate, FBDialogDelegate >{
   IBOutlet UITextView *postTextView;
   Facebook *_facebook;
   TwitterButton *twitterButton;
- 
+  FacebookButton *facebookButton;
 }
 @property (retain, nonatomic) IBOutlet UIImageView *previewImageView;
 

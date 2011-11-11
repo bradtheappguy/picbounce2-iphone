@@ -7,6 +7,7 @@
 //
 
 #import "TwitterButton.h"
+#import "PBSharedUser.h"
 
 @implementation TwitterButton
 
@@ -25,6 +26,7 @@
 
 -(void)touched:(id)sender {
 	[self setSelected:!self.selected];
+  [PBSharedUser setShouldCrosspostToTW:self.selected];
 }
 
 -(void)setSelected:(BOOL)selected {

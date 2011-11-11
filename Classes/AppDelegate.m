@@ -14,6 +14,7 @@
 #import "CaptureSessionManager.h"
 #import "PBLoginViewController.h"
 #import "PBSharedUser.h"
+#import "PBNavigationController.h"
 
 @implementation AppDelegate
 
@@ -151,7 +152,8 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
     [photoLibraryPicker release];
   }
   else {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraViewController];
+    PBNavigationController *nav = [[PBNavigationController alloc] initWithRootViewController:cameraViewController];
+    [nav setStyle:1];
     nav.navigationBarHidden = YES;
     [self.tabBarController presentModalViewController:nav animated:YES];
     [nav release];

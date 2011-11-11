@@ -53,23 +53,4 @@
   [undelineView setNeedsDisplay];
 }
 
--(void) setContentSize:(CGSize)contentSize {
-  
-  [super setContentSize:CGSizeMake(self.bounds.size.width, contentSize.height)];
-}
-
--(void) setContentOffset:(CGPoint)contentOffset {
-  NSLog(@"%f, %f",contentOffset.x, contentOffset.y);
-  [super setContentOffset:contentOffset];
-}
-
--(void)setContentInset:(UIEdgeInsets)s
-{
-	UIEdgeInsets insets = s;
-  
-  s.right = 30;
-  
-	[super setContentInset:insets];
-}
-
 @end
