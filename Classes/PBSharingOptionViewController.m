@@ -142,7 +142,6 @@
 
   if (indexPath.row == kTwitterLoginCell) {
       
-    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     customCell.statusButton.hidden = YES;
 
     [customCell.contentView setBackgroundColor:[UIColor colorWithRed:208.0f/255.0f green:205.0f/255.0f blue:205.0f/255.0f alpha:1.0f]];
@@ -173,17 +172,18 @@
     PBCheckbox *checkbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
     [checkbox setText:[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"name"]];
     [checkbox setTag:indexPath.row-3];
-    if ([[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] == nil) {
-      [[facebookPages objectAtIndex:indexPath.row-3] setObject:@"0" forKey:@"Selected"];
+    if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] boolValue] == NO) {
+      [[facebookPages objectAtIndex:indexPath.row-3] setObject:[NSNumber numberWithBool:NO] forKey:@"Selected"];
       checkbox.selected = NO;
     } else {
-      if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] isEqualToString:@"1"]) {
+      if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] boolValue]) {
         checkbox.selected = YES;
-      } else if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] isEqualToString:@"0"]) {
+      } else if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] boolValue] == NO) {
         checkbox.selected = NO;
       }
     }
     customCell.nameLabel.hidden = YES;
+  
     [checkbox addTarget:self action:@selector(fbPageTouched:) forControlEvents:UIControlEventTouchUpInside];
     [customCell.contentView addSubview:checkbox];
     [checkbox release];
@@ -208,10 +208,10 @@
 }
 
 - (void)fbPageTouched:(UIButton *)sender {
-  
-  int i = [[[facebookPages objectAtIndex:sender.tag] valueForKey:@"Selected"] intValue];
+  NSDictionary *page = [facebookPages objectAtIndex:sender.tag];
+  BOOL i = [[page valueForKey:@"Selected"] boolValue];
   i = !i;
-  [[facebookPages objectAtIndex:sender.tag] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"Selected"];
+  [[facebookPages objectAtIndex:sender.tag] setObject:[NSNumber numberWithBool:i] forKey:@"Selected"];
 }
 
 - (void)fbWallTouched:(UIButton *)sender {

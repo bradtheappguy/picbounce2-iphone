@@ -12,6 +12,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "AppDelegate.h"
 #import "PBHTTPRequest.h"
+#import "PBSharedUser.h"
 
 @implementation NSData(MD5)
 
@@ -84,10 +85,27 @@
     [postRequest setPostValue:originURL forKey:@"origin_url"];
   }
   if (self.shouldCrossPostToTwitter) {
-    [postRequest setPostValue:@"1" forKey:@"twitter_crosspost"];
+    [postRequest setPostValue:@"1" forKey:@"tw_crosspost"];
   }
   if (self.shouldCrossPostToFacebook) {
-    [postRequest setPostValue:@"1" forKey:@"facebook_crosspost"];
+    [postRequest setPostValue:@"1" forKey:@"fb_crosspost"];
+    NSArray *facebookPages = [PBSharedUser facebookPages];
+   
+    if ([PBSharedUser shouldCrosspostToFBWall]) {
+      [postRequest setPostValue:@"me" forKey:@"fb_crosspost_pages[]"];
+    }
+    
+    
+    for (NSDictionary *fbPage in facebookPages) {
+      if ([[fbPage objectForKey:@"Selected"] boolValue]) {
+        NSString *value = @"";
+        NSString *fbid = [fbPage objectForKey:@"id"];
+        NSString *fbat = [fbPage objectForKey:@"access_token"];
+        value = [value stringByAppendingFormat:@"%@:%@",fbid,fbat];
+        [postRequest setPostValue:value forKey:@"fb_crosspost_pages[]"];
+      }
+    }
+    
   }
   if (self.text) {
     [postRequest setPostValue:self.text forKey:@"text"];

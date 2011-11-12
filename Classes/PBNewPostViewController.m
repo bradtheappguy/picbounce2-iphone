@@ -22,6 +22,7 @@
 #import "PBSharedUser.h"
 
 @implementation PBNewPostViewController
+@synthesize takePhotoButton;
 @synthesize previewImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -35,6 +36,7 @@
 
 - (void)dealloc {
   [previewImageView release];
+  [takePhotoButton release];
   [super dealloc];  
 }
 
@@ -79,6 +81,7 @@
 
 - (void)viewDidUnload {
   [self setPreviewImageView:nil];
+  [self setTakePhotoButton:nil];
   [super viewDidUnload];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
@@ -205,5 +208,7 @@
   
 }
 
+- (IBAction)takePhotoButtonPressed:(id)sender {
+}
 
 @end

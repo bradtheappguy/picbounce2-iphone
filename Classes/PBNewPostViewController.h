@@ -17,6 +17,7 @@
   TwitterButton *twitterButton;
   FacebookButton *facebookButton;
 }
+@property (retain, nonatomic) IBOutlet UIButton *takePhotoButton;
 @property (retain, nonatomic) IBOutlet UIImageView *previewImageView;
 
 - (IBAction)optionsButtonPressed:(id)sender;

@@ -59,6 +59,7 @@
 
 - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents {
   [_button addTarget:target action:action forControlEvents:controlEvents];
+  _button.tag = self.tag;
 }
 
 - (void)dealloc {
