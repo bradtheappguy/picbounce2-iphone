@@ -438,6 +438,7 @@ bail:
   [self configureFilterScrollView];
     self.wantsFullScreenLayout = YES;
   [super viewDidLoad];
+
   [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
   self.view.frame = CGRectMake(0, 0, 320, 480);
   

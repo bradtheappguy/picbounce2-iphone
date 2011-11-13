@@ -71,7 +71,7 @@
     [self.view bringSubviewToFront:twitterButton];
     [twitterButton release];
     
-  [postTextView becomeFirstResponder];
+  
   
   UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(postButtonPressed:)];
   self.navigationItem.rightBarButtonItem = postButton;
@@ -89,9 +89,13 @@
 
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  [self.navigationController setNavigationBarHidden:NO animated:YES];
+  [self.navigationController setWantsFullScreenLayout:NO];
+  self.wantsFullScreenLayout = NO;
+  [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
   facebookButton.selected = [PBSharedUser shouldCrosspostToFB];
   twitterButton.selected = [PBSharedUser shouldCrosspostToTW];
-  
+  [postTextView becomeFirstResponder];
   if ([PBSharedUser facebookAccessToken]) {
     facebookButton.hidden = NO;
   }
@@ -100,6 +104,9 @@
   }
 }
 
+-(void) viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+}
 #pragma mark -
 #pragma mark CustomNavigationBar Methods
 - (IBAction)dismissModalViewControllerAnimated {

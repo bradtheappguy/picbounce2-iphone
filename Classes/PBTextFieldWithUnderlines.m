@@ -37,18 +37,21 @@
 
 @implementation PBTextFieldWithUnderlines
 
+
 -(void) awakeFromNib {
   undelineView = [[PBTextFieldWithUnderlinesInternalUnderlineView alloc] initWithFrame:CGRectZero];
   undelineView.clipsToBounds = NO;
   undelineView.backgroundColor = [UIColor clearColor];
-  
+  undelineView.userInteractionEnabled = NO;
   [self addSubview:undelineView];
 }
+ 
 
 
 
 
 -(void) layoutSubviews {
+  [super layoutSubviews];
   undelineView.frame = CGRectMake(0, 0, 300, MAX(self.contentSize.height, self.bounds.size.height));
   [undelineView setNeedsDisplay];
 }

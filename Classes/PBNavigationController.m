@@ -30,6 +30,51 @@
   }
 }
 
+
+  -(void) setStyle:(NSUInteger)style {
+    UINavigationBar *navBar = self;
+    UIImage *image;
+    if ([navBar respondsToSelector:@selector(backgroundImageForBarMetrics:)]) {
+      image = [navBar backgroundImageForBarMetrics:UIBarMetricsDefault];
+    }
+    else {
+      image = [(UIImageView *)[navBar viewWithTag:kNavBarImageTag] image];
+    }
+    
+    if ((image != nil)) {
+      return;
+    }
+
+    [[navBar viewWithTag:kNavBarImageTag] removeFromSuperview];
+    if (style == 1) {
+      navBar.tintColor = [UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1];
+      
+      if ([navBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
+        [navBar setBackgroundImage:[UIImage imageNamed:@"bg_navbar_black.png"] forBarMetrics:UIBarMetricsDefault];
+      }
+      else {
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_navbar_black.png"]];
+        [imageView setTag:kNavBarImageTag];
+        [navBar insertSubview:imageView atIndex:1];
+        [imageView release];
+      }
+    }
+    else {
+      if ([navBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
+        [navBar setBackgroundImage:[UIImage imageNamed:@"bg_navbar.png"] forBarMetrics:UIBarMetricsDefault];
+      }
+      else {
+        navBar.tintColor = kNavBarColor;
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_navbar.png"]];
+        [imageView setTag:kNavBarImageTag];
+        [navBar insertSubview:imageView atIndex:1];
+        [imageView release];
+      }
+    }
+    
+    
+  }
+
 @end
 
 
@@ -37,57 +82,14 @@
 @synthesize style;
 
 -(void) customizeNavBar {
-  [self setStyle:style];
+  [[self navigationBar] setStyle:style];
 }
 
--(void) setStyle:(NSUInteger)_style {
-  UINavigationBar *navBar = [self navigationBar];
-  UIImage *image;
-  if ([navBar respondsToSelector:@selector(backgroundImageForBarMetrics:)]) {
-    image = [navBar backgroundImageForBarMetrics:UIBarMetricsDefault];
-  }
-  else {
-    image = [(UIImageView *)[navBar viewWithTag:kNavBarImageTag] image];
-  }
-  
-  if ((style == _style) && (image != nil)) {
-    return;
-  }
-  
-  style = _style;
-  [[navBar viewWithTag:kNavBarImageTag] removeFromSuperview];
-  if (style == 1) {
-    navBar.tintColor = [UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1];
-    
-    if ([navBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
-      [navBar setBackgroundImage:[UIImage imageNamed:@"bg_navbar_black.png"] forBarMetrics:UIBarMetricsDefault];
-    }
-    else {
-      UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_navbar_black.png"]];
-      [imageView setTag:kNavBarImageTag];
-      [navBar insertSubview:imageView atIndex:1];
-      [imageView release];
-    }
-  }
-  else {
-    if ([navBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
-      [navBar setBackgroundImage:[UIImage imageNamed:@"bg_navbar.png"] forBarMetrics:UIBarMetricsDefault];
-    }
-    else {
-      navBar.tintColor = kNavBarColor;
-      UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_navbar.png"]];
-      [imageView setTag:kNavBarImageTag];
-      [navBar insertSubview:imageView atIndex:1];
-      [imageView release];
-    }
-  }
-  
-  
-}
 -(void) viewDidLoad {
   [super viewDidLoad];
   [self customizeNavBar];
   self.delegate = self;
+  self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController {
