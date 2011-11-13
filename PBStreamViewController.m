@@ -272,6 +272,10 @@
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoadingIndicator11) name:@"HideLoadingView" object:nil];
   [self.profileHeader.followButton setViewController:self];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveDeletedNotification:) name:@"com.viame.deleted" object:nil];
+  
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"B2" style:UIBarButtonItemStyleBordered target:nil action:nil];
+  self.navigationItem.backBarButtonItem = backButton;
+  [backButton release];
 }
 
 - (void) viewDidUnload {

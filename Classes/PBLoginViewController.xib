@@ -46,13 +46,28 @@
 						<int key="NSvFlags">292</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUIImageView" id="510853888">
+								<reference key="NSNextResponder" ref="336751269"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrameSize">{320, 482}</string>
+								<reference key="NSSuperview" ref="336751269"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="405758866"/>
+								<string key="NSReuseIdentifierKey">_NS:567</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">bg_signin_gradient@2x.png</string>
+								</object>
+							</object>
 							<object class="IBUIButton" id="277993021">
 								<reference key="NSNextResponder" ref="336751269"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{19, 64}, {283, 47}}</string>
 								<reference key="NSSuperview" ref="336751269"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="164341638"/>
+								<reference key="NSNextKeyView" ref="871474209"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -128,7 +143,7 @@
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="33728494">
+							<object class="IBUIImageView" id="405758866">
 								<reference key="NSNextResponder" ref="336751269"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{68, 20}, {163, 28}}</string>
@@ -143,7 +158,7 @@
 									<string key="NSResourceName">ico_signin_header@2x.png</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="128178634">
+							<object class="IBUIImageView" id="423161879">
 								<reference key="NSNextResponder" ref="336751269"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{56, 402}, {200, 28}}</string>
@@ -158,13 +173,13 @@
 									<string key="NSResourceName">ico_signin_text@2x.png</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="164341638">
+							<object class="IBUIImageView" id="871474209">
 								<reference key="NSNextResponder" ref="336751269"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{6, 130}, {309, 246}}</string>
+								<string key="NSFrame">{{0, 129}, {309, 246}}</string>
 								<reference key="NSSuperview" ref="336751269"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="128178634"/>
+								<reference key="NSNextKeyView" ref="423161879"/>
 								<string key="NSReuseIdentifierKey">_NS:567</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -177,7 +192,7 @@
 						<string key="NSFrameSize">{320, 883}</string>
 						<reference key="NSSuperview" ref="53516180"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="33728494"/>
+						<reference key="NSNextKeyView" ref="510853888"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC45NzY0NzA1ODgyIDAuOTcyNTQ5MDE5NiAwLjk2ODYyNzQ1MQA</bytes>
@@ -269,9 +284,10 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="277993021"/>
 							<reference ref="910862332"/>
-							<reference ref="33728494"/>
-							<reference ref="128178634"/>
-							<reference ref="164341638"/>
+							<reference ref="405758866"/>
+							<reference ref="423161879"/>
+							<reference ref="871474209"/>
+							<reference ref="510853888"/>
 						</object>
 						<reference key="parent" ref="53516180"/>
 					</object>
@@ -287,17 +303,22 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">70</int>
-						<reference key="object" ref="33728494"/>
+						<reference key="object" ref="405758866"/>
 						<reference key="parent" ref="336751269"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">71</int>
-						<reference key="object" ref="128178634"/>
+						<reference key="object" ref="423161879"/>
 						<reference key="parent" ref="336751269"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">72</int>
-						<reference key="object" ref="164341638"/>
+						<reference key="object" ref="871474209"/>
+						<reference key="parent" ref="336751269"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">73</int>
+						<reference key="object" ref="510853888"/>
 						<reference key="parent" ref="336751269"/>
 					</object>
 				</object>
@@ -318,6 +339,7 @@
 					<string>70.IBPluginDependency</string>
 					<string>71.IBPluginDependency</string>
 					<string>72.IBPluginDependency</string>
+					<string>73.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -328,6 +350,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<real value="0.0"/>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -347,7 +370,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">72</int>
+			<int key="maxID">73</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -456,6 +479,7 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>bg_signin_gradient@2x.png</string>
 				<string>btn_twitter_logIn_n@2x.png</string>
 				<string>btn_twitter_logIn_s@2x.png</string>
 				<string>ico_signin@2x.png</string>
@@ -464,6 +488,7 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{2, 786}</string>
 				<string>{502, 90}</string>
 				<string>{502, 90}</string>
 				<string>{618, 492}</string>
