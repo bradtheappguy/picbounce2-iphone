@@ -306,6 +306,14 @@
 		A267ACAB146F3D020022B955 /* PBNewCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A267ACAA146F3D000022B955 /* PBNewCameraViewController.m */; };
 		A267ACB0146F48BD0022B955 /* PBNewFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A267ACAE146F48BA0022B955 /* PBNewFilterViewController.xib */; };
 		A267ACB1146F4BCC0022B955 /* PBFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A267ACAD146F48B80022B955 /* PBFilterViewController.m */; };
+		A267ACC0147066060022B955 /* bg_launchscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACB8147066060022B955 /* bg_launchscreen@2x.png */; };
+		A267ACC1147066060022B955 /* bg_signin_gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACB9147066060022B955 /* bg_signin_gradient@2x.png */; };
+		A267ACC2147066060022B955 /* ico_signin_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBA147066060022B955 /* ico_signin_header@2x.png */; };
+		A267ACC3147066060022B955 /* ico_signin_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBB147066060022B955 /* ico_signin_text@2x.png */; };
+		A267ACC4147066060022B955 /* ico_signin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBC147066060022B955 /* ico_signin@2x.png */; };
+		A267ACC5147066060022B955 /* btn_stockholm_s.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBD147066060022B955 /* btn_stockholm_s.png */; };
+		A267ACC6147066060022B955 /* btn_original_n.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBE147066060022B955 /* btn_original_n.png */; };
+		A267ACC7147066060022B955 /* btn_original_s.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBF147066060022B955 /* btn_original_s.png */; };
 		A26E720D1334244E00BD737D /* PBPhotoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */; };
 		A26E721B133431C800BD737D /* PBPhotoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */; };
 		A273CA89130AEC12003FE8DA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A273CA88130AEC12003FE8DA /* libz.dylib */; };
@@ -799,6 +807,14 @@
 		A267ACAC146F48B70022B955 /* PBNewFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBNewFilterViewController.h; sourceTree = "<group>"; };
 		A267ACAD146F48B80022B955 /* PBFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBFilterViewController.m; sourceTree = "<group>"; };
 		A267ACAE146F48BA0022B955 /* PBNewFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBNewFilterViewController.xib; sourceTree = "<group>"; };
+		A267ACB8147066060022B955 /* bg_launchscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_launchscreen@2x.png"; sourceTree = "<group>"; };
+		A267ACB9147066060022B955 /* bg_signin_gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_signin_gradient@2x.png"; sourceTree = "<group>"; };
+		A267ACBA147066060022B955 /* ico_signin_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_signin_header@2x.png"; sourceTree = "<group>"; };
+		A267ACBB147066060022B955 /* ico_signin_text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_signin_text@2x.png"; sourceTree = "<group>"; };
+		A267ACBC147066060022B955 /* ico_signin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_signin@2x.png"; sourceTree = "<group>"; };
+		A267ACBD147066060022B955 /* btn_stockholm_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_stockholm_s.png; sourceTree = "<group>"; };
+		A267ACBE147066060022B955 /* btn_original_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_original_n.png; sourceTree = "<group>"; };
+		A267ACBF147066060022B955 /* btn_original_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_original_s.png; sourceTree = "<group>"; };
 		A26E720B1334243800BD737D /* PBPhotoHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPhotoHeaderView.h; sourceTree = SOURCE_ROOT; };
 		A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPhotoHeaderView.m; sourceTree = SOURCE_ROOT; };
 		A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBPhotoHeaderView.xib; sourceTree = "<group>"; };
@@ -1479,6 +1495,14 @@
 		A25CF0E01466268700FC75AD /* brownAssets */ = {
 			isa = PBXGroup;
 			children = (
+				A267ACB8147066060022B955 /* bg_launchscreen@2x.png */,
+				A267ACB9147066060022B955 /* bg_signin_gradient@2x.png */,
+				A267ACBA147066060022B955 /* ico_signin_header@2x.png */,
+				A267ACBB147066060022B955 /* ico_signin_text@2x.png */,
+				A267ACBC147066060022B955 /* ico_signin@2x.png */,
+				A267ACBD147066060022B955 /* btn_stockholm_s.png */,
+				A267ACBE147066060022B955 /* btn_original_n.png */,
+				A267ACBF147066060022B955 /* btn_original_s.png */,
 				A267AC2F146E015D0022B955 /* btn_add_photo_n@2x.png */,
 				A267AC30146E015D0022B955 /* btn_add_photo_s@2x.png */,
 				A267AC31146E015E0022B955 /* btn_caption_photo@2x.png */,
@@ -2410,6 +2434,14 @@
 				A267AC33146E015E0022B955 /* btn_add_photo_s@2x.png in Resources */,
 				A267AC34146E015E0022B955 /* btn_caption_photo@2x.png in Resources */,
 				A267ACB0146F48BD0022B955 /* PBNewFilterViewController.xib in Resources */,
+				A267ACC0147066060022B955 /* bg_launchscreen@2x.png in Resources */,
+				A267ACC1147066060022B955 /* bg_signin_gradient@2x.png in Resources */,
+				A267ACC2147066060022B955 /* ico_signin_header@2x.png in Resources */,
+				A267ACC3147066060022B955 /* ico_signin_text@2x.png in Resources */,
+				A267ACC4147066060022B955 /* ico_signin@2x.png in Resources */,
+				A267ACC5147066060022B955 /* btn_stockholm_s.png in Resources */,
+				A267ACC6147066060022B955 /* btn_original_n.png in Resources */,
+				A267ACC7147066060022B955 /* btn_original_s.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

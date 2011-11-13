@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>IBUILabel</string>
 			<string>IBUIButton</string>
+			<string>IBUIImageView</string>
 			<string>IBUIView</string>
 			<string>IBUIScrollView</string>
 			<string>IBProxyObject</string>
@@ -49,17 +49,16 @@
 							<object class="IBUIButton" id="277993021">
 								<reference key="NSNextResponder" ref="336751269"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{19, 66}, {283, 47}}</string>
+								<string key="NSFrame">{{19, 64}, {283, 47}}</string>
 								<reference key="NSSuperview" ref="336751269"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="600354907"/>
+								<reference key="NSNextKeyView" ref="164341638"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<bool key="IBUIReversesTitleShadowWhenHighlighted">YES</bool>
 								<string key="IBUITitleShadowOffset">{0, -1}</string>
-								<string key="IBUINormalTitle">Sign in with Twitter</string>
 								<object class="NSColor" key="IBUIHighlightedTitleColor" id="681069676">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -100,7 +99,7 @@
 							<object class="IBUIButton" id="910862332">
 								<reference key="NSNextResponder" ref="336751269"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{59, 367}, {202, 37}}</string>
+								<string key="NSFrame">{{59, 425}, {202, 37}}</string>
 								<reference key="NSSuperview" ref="336751269"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -129,72 +128,56 @@
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
-							<object class="IBUILabel" id="600354907">
+							<object class="IBUIImageView" id="33728494">
 								<reference key="NSNextResponder" ref="336751269"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, -25}, {282, 109}}</string>
+								<string key="NSFrame">{{68, 20}, {163, 28}}</string>
 								<reference key="NSSuperview" ref="336751269"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="839380170"/>
-								<string key="NSReuseIdentifierKey">_NS:328</string>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">7</int>
+								<reference key="NSNextKeyView" ref="277993021"/>
+								<string key="NSReuseIdentifierKey">_NS:567</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Let's Get Started</string>
-								<object class="NSColor" key="IBUITextColor" id="363610073">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
-								</object>
-								<nil key="IBUIHighlightedColor"/>
-								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">10</float>
-								<int key="IBUINumberOfLines">0</int>
-								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<int key="type">1</int>
-									<double key="pointSize">26</double>
-								</object>
-								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica</string>
-									<double key="NSSize">26</double>
-									<int key="NSfFlags">16</int>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">ico_signin_header@2x.png</string>
 								</object>
 							</object>
-							<object class="IBUILabel" id="839380170">
+							<object class="IBUIImageView" id="128178634">
 								<reference key="NSNextResponder" ref="336751269"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{26, 151}, {300, 114}}</string>
+								<string key="NSFrame">{{56, 402}, {200, 28}}</string>
 								<reference key="NSSuperview" ref="336751269"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="910862332"/>
-								<string key="NSReuseIdentifierKey">_NS:328</string>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">7</int>
+								<string key="NSReuseIdentifierKey">_NS:567</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Sign in with your Twitter account to start sharing with all of your friends, fans, and followers</string>
-								<reference key="IBUITextColor" ref="363610073"/>
-								<nil key="IBUIHighlightedColor"/>
-								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">10</float>
-								<int key="IBUINumberOfLines">6</int>
-								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<int key="type">1</int>
-									<double key="pointSize">17</double>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">ico_signin_text@2x.png</string>
 								</object>
-								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica</string>
-									<double key="NSSize">17</double>
-									<int key="NSfFlags">16</int>
+							</object>
+							<object class="IBUIImageView" id="164341638">
+								<reference key="NSNextResponder" ref="336751269"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{6, 130}, {309, 246}}</string>
+								<reference key="NSSuperview" ref="336751269"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="128178634"/>
+								<string key="NSReuseIdentifierKey">_NS:567</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">ico_signin@2x.png</string>
 								</object>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 58}, {320, 825}}</string>
+						<string key="NSFrameSize">{320, 883}</string>
 						<reference key="NSSuperview" ref="53516180"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="277993021"/>
+						<reference key="NSNextKeyView" ref="33728494"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC45NzY0NzA1ODgyIDAuOTcyNTQ5MDE5NiAwLjk2ODYyNzQ1MQA</bytes>
@@ -286,8 +269,9 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="277993021"/>
 							<reference ref="910862332"/>
-							<reference ref="600354907"/>
-							<reference ref="839380170"/>
+							<reference ref="33728494"/>
+							<reference ref="128178634"/>
+							<reference ref="164341638"/>
 						</object>
 						<reference key="parent" ref="53516180"/>
 					</object>
@@ -302,13 +286,18 @@
 						<reference key="parent" ref="336751269"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">68</int>
-						<reference key="object" ref="600354907"/>
+						<int key="objectID">70</int>
+						<reference key="object" ref="33728494"/>
 						<reference key="parent" ref="336751269"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">69</int>
-						<reference key="object" ref="839380170"/>
+						<int key="objectID">71</int>
+						<reference key="object" ref="128178634"/>
+						<reference key="parent" ref="336751269"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">72</int>
+						<reference key="object" ref="164341638"/>
 						<reference key="parent" ref="336751269"/>
 					</object>
 				</object>
@@ -326,8 +315,9 @@
 					<string>37.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>39.IBPluginDependency</string>
 					<string>66.IBPluginDependency</string>
-					<string>68.IBPluginDependency</string>
-					<string>69.IBPluginDependency</string>
+					<string>70.IBPluginDependency</string>
+					<string>71.IBPluginDependency</string>
+					<string>72.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -338,6 +328,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<real value="0.0"/>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -356,7 +347,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">69</int>
+			<int key="maxID">72</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -467,11 +458,17 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>btn_twitter_logIn_n@2x.png</string>
 				<string>btn_twitter_logIn_s@2x.png</string>
+				<string>ico_signin@2x.png</string>
+				<string>ico_signin_header@2x.png</string>
+				<string>ico_signin_text@2x.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{588, 116}</string>
-				<string>{588, 116}</string>
+				<string>{502, 90}</string>
+				<string>{502, 90}</string>
+				<string>{618, 492}</string>
+				<string>{327, 57}</string>
+				<string>{399, 57}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>

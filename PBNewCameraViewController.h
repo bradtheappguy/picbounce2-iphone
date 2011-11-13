@@ -12,6 +12,7 @@
 
 @interface PBNewCameraViewController : UIImagePickerController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
   UIView *toolBar;
+  UIImagePickerController *libraryPicker;
 }
 
 @end

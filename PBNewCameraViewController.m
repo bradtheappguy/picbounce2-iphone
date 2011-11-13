@@ -63,7 +63,7 @@
   
   UIButton *library = [UIButton buttonWithType:UIButtonTypeCustom];
   library.frame = CGRectMake(62, 10, 42, 30);
-  //[library addTarget:self action:@selector(libraryButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  [library addTarget:self action:@selector(libraryButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   [library setBackgroundImage:[UIImage imageNamed:@"btn_camRoll_n.png"] forState:UIControlStateNormal];
   [v addSubview:library];
   
@@ -96,9 +96,6 @@
       }
     }
   }
-   NSLog(@"----------------------------------------------------------------")
-  
-  ;
 }
 
 
@@ -141,7 +138,7 @@
       [delegate addSubview:self.cameraOverlayView];
     }
   }
-  //IOS4
+  
   if ([note.name isEqualToString:@"PLCameraViewIrisAnimationWillBeginNotification"]) {
     UIView *delegate = note.object;
     self.cameraOverlayView.hidden = NO;
@@ -176,14 +173,32 @@
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+  UIImage *oringialImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+  
+  
+  
+  
+  if (picker == libraryPicker) {
+    PBNewFilterViewController *newPostViewController = [self nextViewController];
+    newPostViewController.imageView.image = oringialImage;
+    [self pushViewController:newPostViewController animated:NO];
+    [self dismissModalViewControllerAnimated:YES];
+    return;
+  }
+  
+  
   PBNewFilterViewController *newPostViewController = [self nextViewController];
   if (newPostViewController.imageView.image != nil) {
     return;
   }
   
-  UIImage *oringialImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+  
+  
   newPostViewController.imageView.image = oringialImage;
   NSLog(@"didFinishPickingMediaWithInfo: %@",info);
+
+
+  
 }
 
 
@@ -196,4 +211,17 @@
   [self dismissModalViewControllerAnimated:YES];
 }
 
+-(void) libraryButtonPressed:(id)sender {
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+  if (!libraryPicker) {
+    libraryPicker = [[UIImagePickerController alloc] init];
+  }
+  libraryPicker.view.backgroundColor = [UIColor blackColor];
+  libraryPicker.topViewController.view.backgroundColor = [UIColor blackColor];
+  libraryPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+  [[libraryPicker navigationBar] setStyle:1];
+  libraryPicker.delegate = self;
+  [self presentModalViewController:libraryPicker animated:YES];
+}
 @end
