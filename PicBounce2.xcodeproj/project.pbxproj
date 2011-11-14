@@ -256,7 +256,6 @@
 		A25CF3621466268900FC75AD /* btn_stockholm_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A25CF2151466268800FC75AD /* btn_stockholm_s@2x.png */; };
 		A25CF3631466268900FC75AD /* btn_toronto_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A25CF2161466268800FC75AD /* btn_toronto_n@2x.png */; };
 		A25CF3641466268900FC75AD /* btn_toronto_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A25CF2171466268800FC75AD /* btn_toronto_s@2x.png */; };
-		A25CF3651466268900FC75AD /* btn_twitter_n.png in Resources */ = {isa = PBXBuildFile; fileRef = A25CF2181466268800FC75AD /* btn_twitter_n.png */; };
 		A25CF3691466268900FC75AD /* ico_flash.png in Resources */ = {isa = PBXBuildFile; fileRef = A25CF21C1466268800FC75AD /* ico_flash.png */; };
 		A25CF36A1466268900FC75AD /* ico_flash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A25CF21D1466268800FC75AD /* ico_flash@2x.png */; };
 		A25CF36B1466268900FC75AD /* ico_torch.png in Resources */ = {isa = PBXBuildFile; fileRef = A25CF21E1466268800FC75AD /* ico_torch.png */; };
@@ -311,9 +310,6 @@
 		A267ACC2147066060022B955 /* ico_signin_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBA147066060022B955 /* ico_signin_header@2x.png */; };
 		A267ACC3147066060022B955 /* ico_signin_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBB147066060022B955 /* ico_signin_text@2x.png */; };
 		A267ACC4147066060022B955 /* ico_signin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBC147066060022B955 /* ico_signin@2x.png */; };
-		A267ACC5147066060022B955 /* btn_stockholm_s.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBD147066060022B955 /* btn_stockholm_s.png */; };
-		A267ACC6147066060022B955 /* btn_original_n.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBE147066060022B955 /* btn_original_n.png */; };
-		A267ACC7147066060022B955 /* btn_original_s.png in Resources */ = {isa = PBXBuildFile; fileRef = A267ACBF147066060022B955 /* btn_original_s.png */; };
 		A26E720D1334244E00BD737D /* PBPhotoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */; };
 		A26E721B133431C800BD737D /* PBPhotoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */; };
 		A273CA89130AEC12003FE8DA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A273CA88130AEC12003FE8DA /* libz.dylib */; };
@@ -737,7 +733,6 @@
 		A25CF2151466268800FC75AD /* btn_stockholm_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_stockholm_s@2x.png"; sourceTree = "<group>"; };
 		A25CF2161466268800FC75AD /* btn_toronto_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_toronto_n@2x.png"; sourceTree = "<group>"; };
 		A25CF2171466268800FC75AD /* btn_toronto_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_toronto_s@2x.png"; sourceTree = "<group>"; };
-		A25CF2181466268800FC75AD /* btn_twitter_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_twitter_n.png; sourceTree = "<group>"; };
 		A25CF21C1466268800FC75AD /* ico_flash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_flash.png; sourceTree = "<group>"; };
 		A25CF21D1466268800FC75AD /* ico_flash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_flash@2x.png"; sourceTree = "<group>"; };
 		A25CF21E1466268800FC75AD /* ico_torch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_torch.png; sourceTree = "<group>"; };
@@ -812,9 +807,6 @@
 		A267ACBA147066060022B955 /* ico_signin_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_signin_header@2x.png"; sourceTree = "<group>"; };
 		A267ACBB147066060022B955 /* ico_signin_text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_signin_text@2x.png"; sourceTree = "<group>"; };
 		A267ACBC147066060022B955 /* ico_signin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_signin@2x.png"; sourceTree = "<group>"; };
-		A267ACBD147066060022B955 /* btn_stockholm_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_stockholm_s.png; sourceTree = "<group>"; };
-		A267ACBE147066060022B955 /* btn_original_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_original_n.png; sourceTree = "<group>"; };
-		A267ACBF147066060022B955 /* btn_original_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_original_s.png; sourceTree = "<group>"; };
 		A26E720B1334243800BD737D /* PBPhotoHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBPhotoHeaderView.h; sourceTree = SOURCE_ROOT; };
 		A26E720C1334244E00BD737D /* PBPhotoHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBPhotoHeaderView.m; sourceTree = SOURCE_ROOT; };
 		A26E721A133431B700BD737D /* PBPhotoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBPhotoHeaderView.xib; sourceTree = "<group>"; };
@@ -1500,9 +1492,6 @@
 				A267ACBA147066060022B955 /* ico_signin_header@2x.png */,
 				A267ACBB147066060022B955 /* ico_signin_text@2x.png */,
 				A267ACBC147066060022B955 /* ico_signin@2x.png */,
-				A267ACBD147066060022B955 /* btn_stockholm_s.png */,
-				A267ACBE147066060022B955 /* btn_original_n.png */,
-				A267ACBF147066060022B955 /* btn_original_s.png */,
 				A267AC2F146E015D0022B955 /* btn_add_photo_n@2x.png */,
 				A267AC30146E015D0022B955 /* btn_add_photo_s@2x.png */,
 				A267AC31146E015E0022B955 /* btn_caption_photo@2x.png */,
@@ -1696,7 +1685,6 @@
 				A25CF2151466268800FC75AD /* btn_stockholm_s@2x.png */,
 				A25CF2161466268800FC75AD /* btn_toronto_n@2x.png */,
 				A25CF2171466268800FC75AD /* btn_toronto_s@2x.png */,
-				A25CF2181466268800FC75AD /* btn_twitter_n.png */,
 				A25CF21C1466268800FC75AD /* ico_flash.png */,
 				A25CF21D1466268800FC75AD /* ico_flash@2x.png */,
 				A25CF21E1466268800FC75AD /* ico_torch.png */,
@@ -2403,7 +2391,6 @@
 				A25CF3621466268900FC75AD /* btn_stockholm_s@2x.png in Resources */,
 				A25CF3631466268900FC75AD /* btn_toronto_n@2x.png in Resources */,
 				A25CF3641466268900FC75AD /* btn_toronto_s@2x.png in Resources */,
-				A25CF3651466268900FC75AD /* btn_twitter_n.png in Resources */,
 				A25CF3691466268900FC75AD /* ico_flash.png in Resources */,
 				A25CF36A1466268900FC75AD /* ico_flash@2x.png in Resources */,
 				A25CF36B1466268900FC75AD /* ico_torch.png in Resources */,
@@ -2439,9 +2426,6 @@
 				A267ACC2147066060022B955 /* ico_signin_header@2x.png in Resources */,
 				A267ACC3147066060022B955 /* ico_signin_text@2x.png in Resources */,
 				A267ACC4147066060022B955 /* ico_signin@2x.png in Resources */,
-				A267ACC5147066060022B955 /* btn_stockholm_s.png in Resources */,
-				A267ACC6147066060022B955 /* btn_original_n.png in Resources */,
-				A267ACC7147066060022B955 /* btn_original_s.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
