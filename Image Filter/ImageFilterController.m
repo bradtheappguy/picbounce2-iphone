@@ -22,7 +22,7 @@
        switch (filterCase) {
 			
            case 0:{
-                //return [image sepia];
+               //return [image sepia];
                
                UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"Snow flakes.png"]];
                [filterFrame release];
@@ -31,9 +31,9 @@
                break;
            }
            case 1:{
-				//return [[image greyscale] adjust:0.0 g:0.0 b:0.360912];
-                //return [[image gamma:0.9169] adjust:0.0025 g:0.0169 b:0.0606];
-             //   return [[image bias:0.9969] adjust:0.0025 g:0.0169 b:0.3806];
+               //return [[image greyscale] adjust:0.0 g:0.0 b:0.360912];
+               //return [[image gamma:0.9169] adjust:0.0025 g:0.0169 b:0.0606];
+               //   return [[image bias:0.9969] adjust:0.0025 g:0.0169 b:0.3806];
                
                UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"boughs.png"]];
                [filterFrame release];
@@ -61,7 +61,7 @@
                break;
            }  
            case 4:{
-              
+               
                UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"toronto.PNG"]];
                [filterFrame release];
                //UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
@@ -85,44 +85,23 @@
            }
            case 7:{
                
-               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"Old  BW Film.png"]];
+               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"july4.png"]];
                [filterFrame release];
                return img;
                break;
            }
            case 8:{
                
-               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"Grainy film.png"]];
-               [filterFrame release];
-               return img;
-               break;
-           }
-           case 9:{
-               
                UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"chicago.PNG"]];
                [filterFrame release];
                return img;
                break;
            }
-           case 10:{
-               
-               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"bordeaux.PNG"]];
-               [filterFrame release];
-               return img;
+             
+           default:
+               return image;
                break;
-           }
-           case 11:{
-               
-               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"july4.png"]];
-               [filterFrame release];
-               return img;
-               break;
-           }
-           
-			default:
-                return image;
-				break;
-		}
+       }
     return image;
     
 	}
