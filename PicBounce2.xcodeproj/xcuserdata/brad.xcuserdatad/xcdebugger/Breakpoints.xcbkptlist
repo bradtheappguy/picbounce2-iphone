@@ -163,11 +163,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PBStreamViewController.m"
-         timestampString = "342924202.119555"
+         timestampString = "342934116.824439"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "369"
-         endingLineNumber = "369"
+         startingLineNumber = "368"
+         endingLineNumber = "368"
          landmarkName = "-tableView:heightForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -177,11 +177,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PBStreamViewController.m"
-         timestampString = "342924202.119555"
+         timestampString = "342934116.824439"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "329"
-         endingLineNumber = "329"
+         startingLineNumber = "328"
+         endingLineNumber = "328"
          landmarkName = "-postForTableViewIndex:"
          landmarkType = "5">
       </FileBreakpoint>

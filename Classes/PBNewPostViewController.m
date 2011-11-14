@@ -20,6 +20,7 @@
 #import "PBUploadQueue.h"
 #import "PBNavigationController.h"
 #import "PBSharedUser.h"
+#import "PBNavigationBarButtonItem.h"
 
 @implementation PBNewPostViewController
 @synthesize takePhotoButton;
@@ -73,9 +74,7 @@
     
   
   [self setTitle:@"New Post"];
-  UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(postButtonPressed:)];
-  self.navigationItem.rightBarButtonItem = postButton;
-  [postButton release];
+  self.navigationItem.rightBarButtonItem = [PBNavigationBarButtonItem itemWithTitle:@"Post" target:self action:@selector(postButtonPressed:)];
 }
 
 

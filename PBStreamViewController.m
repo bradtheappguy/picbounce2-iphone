@@ -23,6 +23,7 @@
 #import "NSDictionary+NotNull.h"
 #import "PBNavigationController.h"
 #import "PBSharedUser.h"
+#import "PBNavigationBarButtonItem.h"
 
 #define CELL_PADDING 15
 #define TABBAR_PROFILE_INDEX 2
@@ -246,12 +247,10 @@
 - (void)createPost {
     PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"PBNewPostViewController" bundle:nil];
     newPostViewController.hidesBottomBarWhenPushed = YES;
-  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
-        
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  newPostViewController.navigationItem.leftBarButtonItem = cancelButton;
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:0];
+  newPostViewController.navigationItem.leftBarButtonItem = [PBNavigationBarButtonItem itemWithTitle:@"Cancel" target:self action:@selector(dismissModalViewControllerAnimated:)];
+  ;
   newPostViewController.navigationItem.title = @"New Post";
-  [cancelButton release];
   [self presentModalViewController:navigationController animated:YES];
     [newPostViewController release];
 }
