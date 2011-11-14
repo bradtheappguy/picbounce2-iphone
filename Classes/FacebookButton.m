@@ -12,7 +12,7 @@
 @implementation FacebookButton
 
 - (id)initWithPosition:(CGPoint)position {
-	CGRect frame = CGRectMake(position.x, position.y, 54, 25);
+	CGRect frame = CGRectMake(position.x, position.y, 56, 27);
     if ((self = [super initWithFrame:frame])) {
             // Initialization code
 		[self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_n"] forState:UIControlStateNormal];

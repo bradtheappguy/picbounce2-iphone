@@ -56,18 +56,22 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
 }
 
 -(void) presentLoginViewController:(BOOL)useCameraViewController {
+  
   loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:loginViewController style:0];
+  
   if (useCameraViewController == YES)
   {
-    [self.currentController presentModalViewController:loginViewController animated:YES];
+    [self.currentController presentModalViewController:navigationController animated:YES];
     usingCameraView = YES;
   }
   else
   {
-    [self.tabBarController presentModalViewController:loginViewController animated:YES];
+    [self.tabBarController presentModalViewController:navigationController animated:YES];
     usingCameraView = NO;
   }
   [loginViewController release];
+  [navigationController release];
 }
 
 
@@ -84,14 +88,15 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   feedViewController.shouldShowUplodingItems = NO;
   feedViewController.shouldShowProfileHeader = NO;
   feedViewController.pullsToRefresh = YES;
-  
+  [feedViewController setTitle:@"Feed"];
   
  
   profileViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/users/me/posts",API_BASE];
   profileViewController.shouldShowUplodingItems = YES;
   profileViewController.shouldShowProfileHeader = YES;
   profileViewController.pullsToRefresh = YES;
-  
+  [profileViewController setTitle:@"Profile"];
+
   
   
   [self.window addSubview:self.tabBarController.view];

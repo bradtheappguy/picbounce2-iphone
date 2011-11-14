@@ -51,7 +51,6 @@ static  NSString *selectedIndex = @"selectedIndex";
   UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
   button.adjustsImageWhenHighlighted = NO;
   [button setBackgroundImage:[UIImage imageNamed:normalImageName] forState:UIControlStateNormal];
-  //[button setBackgroundImage:[UIImage imageNamed:normalImageName] forState:UIControlStateHighlighted];
   [button setBackgroundImage:[UIImage imageNamed:selectedImageNamed] forState:UIControlStateSelected];
   button.frame = CGRectMake((self.bounds.size.width/kNumberOfTabs*index), 
                             0-2,
@@ -92,7 +91,7 @@ static  NSString *selectedIndex = @"selectedIndex";
 }
 
 -(UILabel *)labelForButtonWithTitle:(NSString *)title {
-  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(33, feedTabButton.bounds.size.height-15, 61, 10)];
+  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, feedTabButton.bounds.size.height-15, 320/3, 10)];
   label.backgroundColor = [UIColor clearColor];
   label.text = title;
   label.alpha = 0.25;
@@ -119,7 +118,6 @@ static  NSString *selectedIndex = @"selectedIndex";
     profileTabButton = [self buttonForIndex:2 withNormalImageNamed:@"btn_profile_n" selectedImageNamed:@"btn_profile_s"];
     UILabel *l = [self labelForButtonWithTitle:@"Profile"];
     [profileTabButton addSubview:l];
-    l.center = CGPointMake(l.center.x-23, l.center.y);
   }
   [self addSubview:profileTabButton];
   if (!selectedButton) {
