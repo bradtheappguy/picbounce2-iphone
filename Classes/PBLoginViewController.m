@@ -165,14 +165,10 @@
   PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
   viewController.authenticationURLString = [NSString stringWithFormat:@"http://%@/users/auth/twitter", API_BASE];
   viewController.title = NSLocalizedString(@"Twitter", nil);
-  viewController.webView.backgroundColor = [UIColor blueColor];
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  viewController.navigationItem.rightBarButtonItem = cancelButton;
-  
+  viewController.navigationItem.rightBarButtonItem = [PBNavigationBarButtonItem itemWithTitle:@"Cancel" target:self action:@selector(dismissModalViewControllerAnimated:)];  
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:viewController];
   [self presentModalViewController:navigationController animated:YES];
   [navigationController release];
-  [cancelButton release];
   [viewController release];
 }
 
