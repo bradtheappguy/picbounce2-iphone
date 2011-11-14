@@ -32,6 +32,8 @@
 
 
   -(void) setStyle:(NSUInteger)style {
+   
+    
     UINavigationBar *navBar = self;
     UIImage *image;
     if ([navBar respondsToSelector:@selector(backgroundImageForBarMetrics:)]) {
@@ -41,10 +43,12 @@
       image = [(UIImageView *)[navBar viewWithTag:kNavBarImageTag] image];
     }
     
-    if ((image != nil)) {
+    if ((image != nil) && (self.tag*10 != style)) {
       return;
     }
 
+     self.tag = style * 10;
+    
     [[navBar viewWithTag:kNavBarImageTag] removeFromSuperview];
     if (style == 1) {
       navBar.tintColor = [UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1];
@@ -79,10 +83,12 @@
 
 
 @implementation PBNavigationController
-@synthesize style;
+
+
+static NSUInteger staticStyle = -1;
 
 -(void) customizeNavBar {
-  [[self navigationBar] setStyle:style];
+  [[self navigationBar] setStyle:staticStyle];
 }
 
 -(void) viewDidLoad {
@@ -100,9 +106,13 @@
   return self;
 }
 
-- (id)initWithRootViewController:(UIViewController *)rootViewController style:(NSUInteger)style {
+- (id)initWithRootViewController:(UIViewController *)rootViewController style:(NSUInteger)_style {
+  staticStyle = _style;
+  
   if (self = [super initWithRootViewController:rootViewController]) {
-    self.style = 1;
+
+    
+    NSLog(@"hi");
   }
   return self;
 }
