@@ -544,6 +544,9 @@ bail:
   queue = dispatch_queue_create("com.picbounce.internalqueue", NULL);
 
   [self setupAVCapture];
+    
+    //--------- Implement Activity Indicator --------
+    filterProgressIndicator.hidden = YES;
   
 }
 
