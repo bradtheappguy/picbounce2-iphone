@@ -14,6 +14,7 @@
 #import <Twitter/Twitter.h>
 #import "PBNavigationController.h"
 #import "PBSharedUser.h"
+#import "PBNavigationBarButtonItem.h"
 
 @implementation PBLoginViewController
 
@@ -88,23 +89,15 @@
   viewController.authenticationURLString = [NSString stringWithFormat:@"http://%@%@",API_BASE,@"/appsupport/iphone/tos.html"];
   viewController.title = @"Via.me";
   
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissModalViewControllerAnimated:)];
-  viewController.navigationItem.rightBarButtonItem = cancelButton;
+  viewController.navigationItem.rightBarButtonItem = [PBNavigationBarButtonItem itemWithTitle:@"Done" target:self action:@selector(dismissModalViewControllerAnimated:)];
+
   
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:viewController];
   [self presentModalViewController:navigationController animated:YES];
   [navigationController release];
   [viewController release];
-  [cancelButton release];
-/*
-  
-  UIViewController *tosWebViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tosWebViewController];
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  tosWebViewController.navigationItem.leftBarButtonItem = cancelButton;
-  [self presentModalViewController:navigationController animated:YES];
-  [tosWebViewController release];
-  [navigationController release];*/
+
+
 }
 
 -(IBAction) facebookButtonPressed:(id)sender {
