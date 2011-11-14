@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-        //self.view.backgroundColor = [UIColor redColor];
+  self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_pattern"]];
 
     tableView.separatorStyle    = UITableViewCellSeparatorStyleNone;
   PBProgressHUD *hud =  [[PBProgressHUD alloc] initWithView:self.view];
