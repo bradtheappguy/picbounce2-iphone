@@ -17,6 +17,8 @@
 
 @interface PBNavigationController : UINavigationController <UINavigationControllerDelegate>
 
+@property (readwrite, nonatomic) NSUInteger style;
+
 - (id)initWithRootViewController:(UIViewController *)rootViewController style:(NSUInteger)style;
 
 @end
