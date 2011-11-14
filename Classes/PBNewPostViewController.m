@@ -72,7 +72,7 @@
     [twitterButton release];
     
   
-  
+  [self setTitle:@"New Post"];
   UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(postButtonPressed:)];
   self.navigationItem.rightBarButtonItem = postButton;
   [postButton release];
@@ -216,6 +216,24 @@
 }
 
 - (IBAction)takePhotoButtonPressed:(id)sender {
+}
+
+-(void) setTitle:(NSString *)title {
+  [super setTitle:title];
+  UILabel *l = (UILabel *)self.navigationItem.titleView;
+  
+  if ([l.text isEqualToString:self.navigationItem.title] == NO) {
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = UITextAlignmentCenter;
+    label.textColor = kNavBarTitleTextColor
+    
+    label.text = self.navigationItem.title;
+    [label sizeToFit];
+    self.navigationItem.titleView = label;
+  }
 }
 
 @end

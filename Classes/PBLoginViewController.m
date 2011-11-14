@@ -191,6 +191,11 @@
   self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
   [self.submitButton.titleLabel setShadowOffset:CGSizeMake(0,0)];
   [self.submitButton setEnabled:NO];
+  
+  
+  UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_signin"]];
+  self.navigationItem.titleView = logo;
+  [logo release];
 }
 
 #pragma mark Facebbok Session Delegate
