@@ -174,10 +174,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
   UIImage *oringialImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-  
-  
-  
-  
+
   if (picker == libraryPicker) {
     PBNewFilterViewController *newPostViewController = [self nextViewController];
     newPostViewController.imageView.image = oringialImage;
@@ -186,19 +183,13 @@
     return;
   }
   
-  
   PBNewFilterViewController *newPostViewController = [self nextViewController];
   if (newPostViewController.imageView.image != nil) {
     return;
   }
   
-  
-  
   newPostViewController.imageView.image = oringialImage;
   NSLog(@"didFinishPickingMediaWithInfo: %@",info);
-
-
-  
 }
 
 
