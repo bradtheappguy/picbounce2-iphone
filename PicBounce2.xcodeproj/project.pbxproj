@@ -45,6 +45,20 @@
 		74C514F3135EE3C800ED9844 /* AccountSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C514F2135EE3C800ED9844 /* AccountSettingView.m */; };
 		74F7A4E71360450F005D2F98 /* AboutWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F7A4E61360450E005D2F98 /* AboutWebView.m */; };
 		74F7A4FE13605C3B005D2F98 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F7A4FD13605C3B005D2F98 /* MessageUI.framework */; };
+		7F8377AD1471061600FBFC9C /* boughs.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377A31471061600FBFC9C /* boughs.png */; };
+		7F8377AE1471061600FBFC9C /* saopaulo.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377A41471061600FBFC9C /* saopaulo.PNG */; };
+		7F8377AF1471061600FBFC9C /* scratched.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377A51471061600FBFC9C /* scratched.PNG */; };
+		7F8377B01471061600FBFC9C /* Snow flakes.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377A61471061600FBFC9C /* Snow flakes.png */; };
+		7F8377B11471061600FBFC9C /* ImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377A81471061600FBFC9C /* ImageFilter.m */; };
+		7F8377B21471061600FBFC9C /* ImageFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377AA1471061600FBFC9C /* ImageFilterController.m */; };
+		7F8377B31471061600FBFC9C /* ImageFilterForFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377AC1471061600FBFC9C /* ImageFilterForFrame.m */; };
+		7F8377C51471064900FBFC9C /* BezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377B71471064900FBFC9C /* BezierCurve.m */; };
+		7F8377C61471064900FBFC9C /* CatmullRomSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377B91471064900FBFC9C /* CatmullRomSpline.m */; };
+		7F8377C71471064900FBFC9C /* CubicBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377BC1471064900FBFC9C /* CubicBezierCurve.m */; };
+		7F8377C81471064900FBFC9C /* LinearBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377BE1471064900FBFC9C /* LinearBezierCurve.m */; };
+		7F8377C91471064900FBFC9C /* NSArray_PointArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377C01471064900FBFC9C /* NSArray_PointArray.m */; };
+		7F8377CA1471064900FBFC9C /* QuadraticBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377C21471064900FBFC9C /* QuadraticBezierCurve.m */; };
+		7F8377CB1471064900FBFC9C /* Spline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377C41471064900FBFC9C /* Spline.m */; };
 		A2058F58145C8A79004A8E87 /* GCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2058EFA145C8A79004A8E87 /* GCAlertView.m */; };
 		A2058F59145C8A79004A8E87 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A2058EFE145C8A79004A8E87 /* DDXMLElementAdditions.m */; };
 		A2058F5A145C8A79004A8E87 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = A2058F01145C8A79004A8E87 /* NSString+DDXML.m */; };
@@ -788,6 +802,31 @@
 		74F7A4E51360450E005D2F98 /* AboutWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWebView.h; sourceTree = "<group>"; };
 		74F7A4E61360450E005D2F98 /* AboutWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWebView.m; sourceTree = "<group>"; };
 		74F7A4FD13605C3B005D2F98 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		7F8377A31471061600FBFC9C /* boughs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boughs.png; sourceTree = "<group>"; };
+		7F8377A41471061600FBFC9C /* saopaulo.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saopaulo.PNG; sourceTree = "<group>"; };
+		7F8377A51471061600FBFC9C /* scratched.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scratched.PNG; sourceTree = "<group>"; };
+		7F8377A61471061600FBFC9C /* Snow flakes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Snow flakes.png"; sourceTree = "<group>"; };
+		7F8377A71471061600FBFC9C /* ImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilter.h; sourceTree = "<group>"; };
+		7F8377A81471061600FBFC9C /* ImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilter.m; sourceTree = "<group>"; };
+		7F8377A91471061600FBFC9C /* ImageFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilterController.h; sourceTree = "<group>"; };
+		7F8377AA1471061600FBFC9C /* ImageFilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilterController.m; sourceTree = "<group>"; };
+		7F8377AB1471061600FBFC9C /* ImageFilterForFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilterForFrame.h; sourceTree = "<group>"; };
+		7F8377AC1471061600FBFC9C /* ImageFilterForFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilterForFrame.m; sourceTree = "<group>"; };
+		7F8377B61471064900FBFC9C /* BezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurve.h; sourceTree = "<group>"; };
+		7F8377B71471064900FBFC9C /* BezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierCurve.m; sourceTree = "<group>"; };
+		7F8377B81471064900FBFC9C /* CatmullRomSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatmullRomSpline.h; sourceTree = "<group>"; };
+		7F8377B91471064900FBFC9C /* CatmullRomSpline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatmullRomSpline.m; sourceTree = "<group>"; };
+		7F8377BA1471064900FBFC9C /* CGPointArithmetic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointArithmetic.h; sourceTree = "<group>"; };
+		7F8377BB1471064900FBFC9C /* CubicBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubicBezierCurve.h; sourceTree = "<group>"; };
+		7F8377BC1471064900FBFC9C /* CubicBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CubicBezierCurve.m; sourceTree = "<group>"; };
+		7F8377BD1471064900FBFC9C /* LinearBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearBezierCurve.h; sourceTree = "<group>"; };
+		7F8377BE1471064900FBFC9C /* LinearBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearBezierCurve.m; sourceTree = "<group>"; };
+		7F8377BF1471064900FBFC9C /* NSArray_PointArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArray_PointArray.h; sourceTree = "<group>"; };
+		7F8377C01471064900FBFC9C /* NSArray_PointArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_PointArray.m; sourceTree = "<group>"; };
+		7F8377C11471064900FBFC9C /* QuadraticBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadraticBezierCurve.h; sourceTree = "<group>"; };
+		7F8377C21471064900FBFC9C /* QuadraticBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadraticBezierCurve.m; sourceTree = "<group>"; };
+		7F8377C31471064900FBFC9C /* Spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spline.h; sourceTree = "<group>"; };
+		7F8377C41471064900FBFC9C /* Spline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spline.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PicBounce2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PicBounce2-Info.plist"; path = "../PicBounce2-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A2058EF9145C8A79004A8E87 /* GCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAlertView.h; sourceTree = "<group>"; };
 		A2058EFA145C8A79004A8E87 /* GCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAlertView.m; sourceTree = "<group>"; };
@@ -1906,6 +1945,53 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		7F8377A11471061600FBFC9C /* Image Filter */ = {
+			isa = PBXGroup;
+			children = (
+				7F8377A21471061600FBFC9C /* FiterImages */,
+				7F8377A71471061600FBFC9C /* ImageFilter.h */,
+				7F8377A81471061600FBFC9C /* ImageFilter.m */,
+				7F8377A91471061600FBFC9C /* ImageFilterController.h */,
+				7F8377AA1471061600FBFC9C /* ImageFilterController.m */,
+				7F8377AB1471061600FBFC9C /* ImageFilterForFrame.h */,
+				7F8377AC1471061600FBFC9C /* ImageFilterForFrame.m */,
+			);
+			path = "Image Filter";
+			sourceTree = "<group>";
+		};
+		7F8377A21471061600FBFC9C /* FiterImages */ = {
+			isa = PBXGroup;
+			children = (
+				7F8377A31471061600FBFC9C /* boughs.png */,
+				7F8377A41471061600FBFC9C /* saopaulo.PNG */,
+				7F8377A51471061600FBFC9C /* scratched.PNG */,
+				7F8377A61471061600FBFC9C /* Snow flakes.png */,
+			);
+			path = FiterImages;
+			sourceTree = "<group>";
+		};
+		7F8377B51471064900FBFC9C /* Curve */ = {
+			isa = PBXGroup;
+			children = (
+				7F8377B61471064900FBFC9C /* BezierCurve.h */,
+				7F8377B71471064900FBFC9C /* BezierCurve.m */,
+				7F8377B81471064900FBFC9C /* CatmullRomSpline.h */,
+				7F8377B91471064900FBFC9C /* CatmullRomSpline.m */,
+				7F8377BA1471064900FBFC9C /* CGPointArithmetic.h */,
+				7F8377BB1471064900FBFC9C /* CubicBezierCurve.h */,
+				7F8377BC1471064900FBFC9C /* CubicBezierCurve.m */,
+				7F8377BD1471064900FBFC9C /* LinearBezierCurve.h */,
+				7F8377BE1471064900FBFC9C /* LinearBezierCurve.m */,
+				7F8377BF1471064900FBFC9C /* NSArray_PointArray.h */,
+				7F8377C01471064900FBFC9C /* NSArray_PointArray.m */,
+				7F8377C11471064900FBFC9C /* QuadraticBezierCurve.h */,
+				7F8377C21471064900FBFC9C /* QuadraticBezierCurve.m */,
+				7F8377C31471064900FBFC9C /* Spline.h */,
+				7F8377C41471064900FBFC9C /* Spline.m */,
+			);
+			path = Curve;
+			sourceTree = "<group>";
+		};
 		A2058EF5145C8A79004A8E87 /* hoptoad-ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -2086,6 +2172,7 @@
 		A25CEAB3134FF46600CD33D9 /* PicBounce2 */ = {
 			isa = PBXGroup;
 			children = (
+				7F8377A11471061600FBFC9C /* Image Filter */,
 				A26208E41460F1AC00E5F0FE /* ArtAssets */,
 				A2EE48BF1423F0E900853658 /* Filters */,
 				74A1CA361368109C00F63EF5 /* Localization */,
@@ -2927,6 +3014,7 @@
 		A2A0FDB213CC2ADC0058908D /* External */ = {
 			isa = PBXGroup;
 			children = (
+				7F8377B51471064900FBFC9C /* Curve */,
 				A2058EF5145C8A79004A8E87 /* hoptoad-ios */,
 				A2058F39145C8A79004A8E87 /* OHAttributedLabel */,
 				A29506AE143E7493002E07DD /* AviarySDK */,
@@ -3716,6 +3804,10 @@
 				A2620D091460F1AE00E5F0FE /* Wrath.acorn in Resources */,
 				A2620D0A1460F1AE00E5F0FE /* Wrath.png in Resources */,
 				A2620D0C1460FA0100E5F0FE /* btn_camera_h@2x.png in Resources */,
+				7F8377AD1471061600FBFC9C /* boughs.png in Resources */,
+				7F8377AE1471061600FBFC9C /* saopaulo.PNG in Resources */,
+				7F8377AF1471061600FBFC9C /* scratched.PNG in Resources */,
+				7F8377B01471061600FBFC9C /* Snow flakes.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3880,6 +3972,16 @@
 				A2058F9A145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.m in Sources */,
 				A2E830EF145F5C0D002493DC /* PBAPI.m in Sources */,
 				A2620D0F14611EBC00E5F0FE /* PBNavigationController.m in Sources */,
+				7F8377B11471061600FBFC9C /* ImageFilter.m in Sources */,
+				7F8377B21471061600FBFC9C /* ImageFilterController.m in Sources */,
+				7F8377B31471061600FBFC9C /* ImageFilterForFrame.m in Sources */,
+				7F8377C51471064900FBFC9C /* BezierCurve.m in Sources */,
+				7F8377C61471064900FBFC9C /* CatmullRomSpline.m in Sources */,
+				7F8377C71471064900FBFC9C /* CubicBezierCurve.m in Sources */,
+				7F8377C81471064900FBFC9C /* LinearBezierCurve.m in Sources */,
+				7F8377C91471064900FBFC9C /* NSArray_PointArray.m in Sources */,
+				7F8377CA1471064900FBFC9C /* QuadraticBezierCurve.m in Sources */,
+				7F8377CB1471064900FBFC9C /* Spline.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
