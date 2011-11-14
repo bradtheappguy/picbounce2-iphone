@@ -23,6 +23,7 @@
 #import "NSDictionary+NotNull.h"
 #import "PBNavigationController.h"
 #import "PBSharedUser.h"
+#import "PBNavigationBarButtonItem.h"
 
 #define CELL_PADDING 15
 #define TABBAR_PROFILE_INDEX 2
@@ -154,7 +155,7 @@
   NSDictionary *user = [self.responseData user];
   NSString *name = [user objectForKeyNotNull:@"screen_name"]; 
   if (name) {
-    self.navigationItem.title = name;
+    [self setTitle:name];
   }
   if (user && shouldShowProfileHeader) {
     self.tableView.tableHeaderView = self.profileHeader;
@@ -209,18 +210,7 @@
 }
 
 -(void) configureNavigationBar {
-  UILabel *l = (UILabel *)self.navigationItem.titleView;
-  if ([l.text isEqualToString:self.navigationItem.title] == NO) {
-    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont boldSystemFontOfSize:20.0];
-    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-    label.textAlignment = UITextAlignmentCenter;
-    label.textColor = kNavBarTitleTextColor
-    self.navigationItem.titleView = label;
-    label.text = self.navigationItem.title;
-    [label sizeToFit];
-  }
+  
    
   
   UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -232,16 +222,35 @@
   [createPostButton release];
 }
 
+-(void) setTitle:(NSString *)title {
+  [super setTitle:title];
+  UILabel *l = (UILabel *)self.navigationItem.titleView;
+  
+  if ([l.text isEqualToString:@"Profile"]) {
+    return;
+  }  
+  
+  if ([l.text isEqualToString:self.navigationItem.title] == NO) {
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = UITextAlignmentCenter;
+    label.textColor = kNavBarTitleTextColor
+    
+    label.text = self.navigationItem.title;
+    [label sizeToFit];
+    self.navigationItem.titleView = label;
+  }
+}
 #pragma mark Open Create Post View
 - (void)createPost {
     PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"PBNewPostViewController" bundle:nil];
     newPostViewController.hidesBottomBarWhenPushed = YES;
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
-        
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  newPostViewController.navigationItem.leftBarButtonItem = cancelButton;
+  newPostViewController.navigationItem.leftBarButtonItem = [PBNavigationBarButtonItem itemWithTitle:@"Cancel" target:self action:@selector(dismissModalViewControllerAnimated:)];
+  ;
   newPostViewController.navigationItem.title = @"New Post";
-  [cancelButton release];
   [self presentModalViewController:navigationController animated:YES];
     [newPostViewController release];
 }
@@ -283,11 +292,6 @@
   [super viewWillAppear:animated];
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
-  
-  if (!self.navigationItem.title) {
-      NSLog(@"%@", NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE"));
-      self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
-  }
   
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
@@ -495,13 +499,20 @@
 
 
 -(void) pushNewStreamViewControllerWithUserID:(NSString *)userID screenName:(NSString*)screenName {
+
+ 
+
+  
+  
   
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
+
   vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,userID];
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
   vc.pullsToRefresh = YES;
-  vc.navigationItem.title = screenName;
+  [vc setTitle:screenName];
+  //vc.navigationItem.title = screenName;
   [self.navigationController pushViewController:vc animated:YES];
   [vc release];
 }

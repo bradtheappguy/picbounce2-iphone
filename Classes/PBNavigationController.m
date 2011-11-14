@@ -40,10 +40,7 @@
     else {
       image = [(UIImageView *)[navBar viewWithTag:kNavBarImageTag] image];
     }
-    
-    if ((image != nil)) {
-      return;
-    }
+  
 
     [[navBar viewWithTag:kNavBarImageTag] removeFromSuperview];
     if (style == 1) {
@@ -71,9 +68,12 @@
         [imageView release];
       }
     }
-    
-    
   }
+
+-(void) layoutSubviews {
+  [super layoutSubviews];
+  [self setStyle:self.tag];
+}
 
 @end
 
@@ -81,28 +81,23 @@
 @implementation PBNavigationController
 @synthesize style;
 
--(void) customizeNavBar {
-  [[self navigationBar] setStyle:style];
-}
 
 -(void) viewDidLoad {
   [super viewDidLoad];
-  [self customizeNavBar];
   self.delegate = self;
   self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController {
   if (self = [super initWithRootViewController:rootViewController]) {
-    //[self customizeNavBar];
-    //self.delegate = self;
   }
   return self;
 }
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController style:(NSUInteger)style {
   if (self = [super initWithRootViewController:rootViewController]) {
-    self.style = 1;
+    self.navigationBar.tag = style;
+    [self.navigationBar layoutSubviews];
   }
   return self;
 }
@@ -110,7 +105,29 @@
 
 // Called when the navigation controller shows a new top view controller via a push, pop or setting of the view controller stack.
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+  if ([navigationController.viewControllers count] == 1) {
+    return;
+  }
+  UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+  back.frame = CGRectMake(1, 0, 53, 33);	
+  back.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
+  back.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
+  if (navigationController.navigationBar.tag == 1) {
+    [back setBackgroundImage:[UIImage imageNamed:@"btn_back_dark_n"] forState:UIControlStateNormal];
+  }else {
+    [back setBackgroundImage:[UIImage imageNamed:@"btn_back_n"] forState:UIControlStateNormal];
+    
+  }
   
+  [back setTitle:@"Back" forState:UIControlStateNormal];
+  //back.titleLabel.shadowColor = [UIColor colorWithRedInt:1 greenInt:1 blueInt:1 alphaInt:0.5];
+  //back.titleLabel.shadowOffset = CGSizeMake(0, 0.5);
+  back.titleLabel.textColor = [UIColor blackColor];
+  [back addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+  
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:back];
+  viewController.navigationItem.leftBarButtonItem = backButton;
+  [backButton release];
 }
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
   

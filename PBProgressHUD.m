@@ -205,7 +205,7 @@
 		taskInProgress = NO;
 
       
-      self.fillColor = [UIColor colorWithRed:144/255.0 green:124/255.0 blue:109/255.0 alpha:0.90];
+      self.fillColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.80];
     }
     return self;
 }

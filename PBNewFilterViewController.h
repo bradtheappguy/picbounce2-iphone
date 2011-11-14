@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PBFilterNotifierDelegate.h"
 
-@interface PBNewFilterViewController : UIViewController
+@class PBFilterManager;
+
+@interface PBNewFilterViewController : UIViewController <PBFilterNotifierDelegate> {
+
+  PBFilterManager *filterManager;
+
+}
 
 @property (retain, nonatomic) IBOutlet UIImageView *imageView;
+@property (retain, nonatomic) IBOutlet UIScrollView *filterScrollView;
 @end
