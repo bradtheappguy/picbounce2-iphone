@@ -181,7 +181,12 @@ PBFilterManager *createButtonObject = nil;
   // Get the resized image from the context and a UIImage
   CGImageRef newImageRef = CGBitmapContextCreateImage(context);
   UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-  
+
+  int h = CGImageGetHeight(newImageRef);
+	int w = CGImageGetWidth(newImageRef);
+  NSLog(@"resizeImage width = %d", w);
+  NSLog(@"resizeImage height = %d", h);
+
   CGImageRelease(newImageRef);
   UIGraphicsEndImageContext();    
   
