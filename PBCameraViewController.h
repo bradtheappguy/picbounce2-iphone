@@ -58,9 +58,13 @@
   IBOutlet UIView *cameraToolbar;
   
   IBOutlet UIImageView *uploadPreviewImage;
+  //------ Implement indicater view --------------  
+  IBOutlet UIActivityIndicatorView *filterProgressIndicator;
 }
 
 @property (nonatomic, retain)  UIImage *unfilteredImage;
+//------ Implement indicater view --------------
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *filterProgressIndicator;
 -(IBAction) photoLibraryButtonPressed:(id)sender;
 -(IBAction) cameraButtonPressed:(id)sender;
 -(IBAction) closeButtonPressed:(id)sender;
@@ -73,6 +77,7 @@
 -(IBAction) twitterButtonClicked:(id)sender;
 
 - (BOOL) hasFlash;
+- (void) imageFilterController:(NSString *)tag;
 
 @end
 
