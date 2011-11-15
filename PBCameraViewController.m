@@ -422,7 +422,7 @@ bail:
     UIButton *button6 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button6 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_n@2x"] forState:UIControlStateNormal];
     [button6 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_s@2x"] forState:UIControlStateSelected];
-    // [button6 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [button6 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     button6.frame = CGRectMake(0, 0, 58, 58);
     button6.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
     button6.tag = x++;
@@ -431,7 +431,7 @@ bail:
     UIButton *button7 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button7 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_n@2x"] forState:UIControlStateNormal];
     [button7 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_s@2x"] forState:UIControlStateSelected];
-    // [button7 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [button7 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     button7.frame = CGRectMake(0, 0, 58, 58);
     button7.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
     button7.tag = x++;
@@ -440,7 +440,7 @@ bail:
     UIButton *button8 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button8 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_n@2x"] forState:UIControlStateNormal];
     [button8 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_s@2x"] forState:UIControlStateSelected];
-    // [button8 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [button8 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     button8.frame = CGRectMake(0, 0, 58, 58);
     button8.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
     button8.tag = x++;
@@ -449,7 +449,7 @@ bail:
     UIButton *button9 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button9 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_n@2x"] forState:UIControlStateNormal];
     [button9 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_s@2x"] forState:UIControlStateSelected];
-    // [button9 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [button9 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     button9.frame = CGRectMake(0, 0, 58, 58);
     button9.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
     button9.tag = x++;
@@ -458,7 +458,7 @@ bail:
     UIButton *button10 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button10 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_n@2x"] forState:UIControlStateNormal];
     [button10 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_s@2x"] forState:UIControlStateSelected];
-    // [button10 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [button10 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     button10.frame = CGRectMake(0, 0, 58, 58);
     button10.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
     button10.tag = x++;
