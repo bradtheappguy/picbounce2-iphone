@@ -8,9 +8,11 @@
 
 #import "PBNewFilterViewController.h"
 #import "PBNewPostViewController.h"
+#import "PBFilterManager.h"
 
 @implementation PBNewFilterViewController
 @synthesize imageView;
+@synthesize filterScrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,10 +33,24 @@
 
 #pragma mark - View lifecycle
 
+-(void) configureFilterScrollView {
+
+  filterManager = [[PBFilterManager alloc] init:self];
+  [filterManager loadFilterPList];
+  [PBFilterManager createFilterButtonImages:NO];
+  CGFloat width = [filterManager layoutFilterView:filterScrollView];
+  [filterManager setDelegate:self];
+  
+  CGSize newSize = filterScrollView.bounds.size;
+  newSize.width = width;
+  filterScrollView.contentSize = newSize;
+  filterScrollView.alwaysBounceHorizontal = YES;
+}
+
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+  [super viewDidLoad];
+  // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
@@ -62,6 +78,8 @@
     NSLog(@"Camera did not send data to filter view controller!!!=");
     
   }
+
+  [self configureFilterScrollView];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -86,6 +104,14 @@
 
   
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma filter notifier delegate
+- (void)filterProcessingCompleteRefreshView:(UIImage *)image {
+
+  self.imageView.image = image;
+  [self.imageView setNeedsDisplay];
+  NSLog(@"filterProcessingCompleteRefreshView");
 }
 
 @end
