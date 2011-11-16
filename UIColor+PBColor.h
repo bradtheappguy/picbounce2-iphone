@@ -10,6 +10,7 @@
 
 @interface UIColor (PBColor)
 + (UIColor *) PBGrayButtonTextColor;
-+ (UIColor *) PBBlueButtonTextColor;
-
++ (UIColor *) PBBlueTextColor;
++ (UIColor *) PBRefreshCircleColor;
++ (UIColor *) PBRefreshCircleBackgroundColor;
 @end

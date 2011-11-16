@@ -53,7 +53,7 @@ static NSString *backgroundImangeName = @"btn_comment_n";
     NSRange range = NSMakeRange([base length], [commentsString length] - [base length]);
     
     [attrStr setFont:font range:range];
-    [attrStr setTextColor:[UIColor PBBlueButtonTextColor] range:range];
+    [attrStr setTextColor:[UIColor PBBlueTextColor] range:range];
     
   }
   else {
