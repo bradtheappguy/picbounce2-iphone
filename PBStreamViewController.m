@@ -162,10 +162,10 @@
     [self.profileHeader setUser:user];
   }
   else {
-    UIView *transparentHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
+    /*UIView *transparentHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
     transparentHeader.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = transparentHeader;
-    [transparentHeader release];
+    [transparentHeader release];*/
   }    
 
   if ([self numberOfSectionsInTableView:self.tableView] == 0) {
