@@ -406,6 +406,7 @@
 		A2F2663F1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F2663D1315C07C00F4E0A0 /* PBTableTitleTableViewCell.m */; };
 		A2F513C813ABF786000FD084 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F513C713ABF786000FD084 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A2F513CA13ABF83D000FD084 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F513C913ABF83D000FD084 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A2FADFD71474524C00CA615B /* UIColor+PBColor.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FADFD61474524C00CA615B /* UIColor+PBColor.m */; };
 		D136E6851471017400A2FEB3 /* PBNewFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D136E6831471017400A2FEB3 /* PBNewFilterViewController.m */; };
 		D136E6861471017400A2FEB3 /* PBNewFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D136E6841471017400A2FEB3 /* PBNewFilterViewController.xib */; };
 		D1927A0F147087FC0026C421 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1927A0E147087FC0026C421 /* Accelerate.framework */; };
@@ -973,6 +974,8 @@
 		A2F2663E1315C07C00F4E0A0 /* PBTableTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBTableTitleTableViewCell.h; path = ../PBTableTitleTableViewCell.h; sourceTree = "<group>"; };
 		A2F513C713ABF786000FD084 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		A2F513C913ABF83D000FD084 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		A2FADFD51474524C00CA615B /* UIColor+PBColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PBColor.h"; sourceTree = "<group>"; };
+		A2FADFD61474524C00CA615B /* UIColor+PBColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PBColor.m"; sourceTree = "<group>"; };
 		D1212B7D145E03A700370D89 /* ModalDismissDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalDismissDelegate.h; sourceTree = "<group>"; };
 		D136E6821471017400A2FEB3 /* PBNewFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBNewFilterViewController.h; sourceTree = "<group>"; };
 		D136E6831471017400A2FEB3 /* PBNewFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBNewFilterViewController.m; sourceTree = "<group>"; };
@@ -1059,6 +1062,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A2FADFD51474524C00CA615B /* UIColor+PBColor.h */,
+				A2FADFD61474524C00CA615B /* UIColor+PBColor.m */,
 				D136E6821471017400A2FEB3 /* PBNewFilterViewController.h */,
 				D136E6831471017400A2FEB3 /* PBNewFilterViewController.m */,
 				D136E6841471017400A2FEB3 /* PBNewFilterViewController.xib */,
@@ -2652,6 +2657,7 @@
 				D1927A1A14708CB00026C421 /* PBFilterManager.m in Sources */,
 				A267ACEE1470B9CA0022B955 /* PBNavigationBarButtonItem.m in Sources */,
 				D136E6851471017400A2FEB3 /* PBNewFilterViewController.m in Sources */,
+				A2FADFD71474524C00CA615B /* UIColor+PBColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
