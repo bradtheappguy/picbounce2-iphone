@@ -246,21 +246,6 @@
     self.photoImageView.imageURL = [NSURL URLWithString:mediaURL];
   }
   
-  self.commentCountLabel.text = [NSString stringWithFormat:@"%d",commentsCount];
-  CGSize commentCountLabelSize = [self.commentCountLabel.text sizeWithFont:self.commentCountLabel.font];
-  self.commentCountLabel.frame = CGRectMake(self.commentCountLabel.frame.origin.x, 
-                                            self.commentCountLabel.frame.origin.y, 
-                                            commentCountLabelSize.width, 
-                                            self.commentCountLabel.frame.size.height);
-  self.commentCountIcon.frame = CGRectMake(self.commentCountLabel.frame.origin.x+self.commentCountLabel.frame.size.width+3, 
-                                           self.commentCountIcon.frame.origin.y,
-                                           self.commentCountIcon.frame.size.width, 
-                                           self.commentCountIcon.frame.size.height);
-  self.leaveCommentButton.frame = CGRectMake(self.commentCountIcon.frame.origin.x+self.commentCountIcon.frame.size.width+6, 
-                                             self.leaveCommentButton.frame.origin.y, 
-                                             self.leaveCommentButton.frame.size.width, 
-                                             self.leaveCommentButton.frame.size.height);
-  
   [self.captionBubble setText: caption ];
   CGSize captionSize = [PBCaptionBubble sizeForCaptionWithString:caption];
   self.captionBubble.frame = CGRectMake(self.captionBubble.frame.origin.x,

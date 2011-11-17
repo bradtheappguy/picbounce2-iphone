@@ -91,7 +91,7 @@ static  NSString *selectedIndex = @"selectedIndex";
 }
 
 -(UILabel *)labelForButtonWithTitle:(NSString *)title {
-  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, feedTabButton.bounds.size.height-15, 320/3, 10)];
+  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(33, feedTabButton.bounds.size.height-15, 61, 10)];
   label.backgroundColor = [UIColor clearColor];
   label.text = title;
   label.alpha = 0.25;
@@ -99,6 +99,7 @@ static  NSString *selectedIndex = @"selectedIndex";
   label.textColor = kNavBarTitleTextColor
   label.textAlignment = UITextAlignmentCenter;
   label.tag = 1;
+  label.center = CGPointMake(label.center.x-23, label.center.y);
   return [label autorelease];
 }
 
@@ -106,7 +107,9 @@ static  NSString *selectedIndex = @"selectedIndex";
   self.clipsToBounds = NO;
   if (!feedTabButton) {
     feedTabButton = [self buttonForIndex:0 withNormalImageNamed:@"btn_feed_n" selectedImageNamed:@"btn_feed_s"];
-    [feedTabButton addSubview:[self labelForButtonWithTitle:@"Feed"]];
+    UILabel *l = [self labelForButtonWithTitle:@"Feed"];
+    l.center = CGPointMake(l.center.x + 23, l.center.y);
+    [feedTabButton addSubview:l];
   }
   [self addSubview:feedTabButton];
   if (!cameraButton) {
