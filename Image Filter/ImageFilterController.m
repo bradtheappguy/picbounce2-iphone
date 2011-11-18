@@ -32,7 +32,7 @@
                               
                UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"boughs.png"]];
                [filterFrame release];
-               return [[[img bias:0.9999] adjust:0.0018 g:0.0169 b:0.0606] brightness:1.226044];
+               return [[[img bias:0.8699] adjust:0.1018 g:0.0169 b:0.0406] brightness:1.001644];
                break;
            }
            case 2:{
@@ -58,10 +58,9 @@
            }
            case 5:{
                
-               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"stockholm.PNG"]];
+               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"stockholm.png"]];
                [filterFrame release];
-               //UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
-               return img;
+               return [[img bias:0.9969] adjust:0.0000 g:0.0000 b:2.0806];
                break;
            }
            case 6:{
@@ -83,6 +82,34 @@
                UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"chicago.PNG"]];
                [filterFrame release];
                return [img greyscale];
+               break;
+           }
+           case 9:{
+               
+               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"Grainy-film.png"]];
+               [filterFrame release];
+               return img;
+               break;
+           }
+           case 10:{
+               
+               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"bordeaux.png"]];
+               [filterFrame release];
+               return img;
+               break;
+           }
+           case 11:{
+               
+               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"Scratched-Soft-Sepia.png"]];
+               [filterFrame release];
+               return img;
+               break;
+           }
+           case 12:{
+               
+               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"Old--BW-Film.png"]];
+               [filterFrame release];
+               return img;
                break;
            }
              
