@@ -62,12 +62,12 @@
 		7F8377CD1471533400FBFC9C /* july4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377CC1471533400FBFC9C /* july4.png */; };
 		7F8377CF1471537900FBFC9C /* toronto.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377CE1471537900FBFC9C /* toronto.PNG */; };
 		7F8377D31471548C00FBFC9C /* newYork.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377D21471548C00FBFC9C /* newYork.PNG */; };
-		7F8377EC1476A10B00FBFC9C /* stockholm.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377EB1476A10B00FBFC9C /* stockholm.png */; };
 		7F8377EE1476A12800FBFC9C /* Scratched-Soft-Sepia.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377ED1476A12800FBFC9C /* Scratched-Soft-Sepia.png */; };
 		7F8377F01476A13700FBFC9C /* Old--BW-Film.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377EF1476A13700FBFC9C /* Old--BW-Film.png */; };
 		7F8377F21476A14800FBFC9C /* Grainy-film.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377F11476A14800FBFC9C /* Grainy-film.png */; };
 		7F8377F41476A1A500FBFC9C /* chicago.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377F31476A1A500FBFC9C /* chicago.PNG */; };
 		7F8377F61476A1B400FBFC9C /* bordeaux.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377F51476A1B400FBFC9C /* bordeaux.png */; };
+		7F8377F81476A60900FBFC9C /* stockholm.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377F71476A60800FBFC9C /* stockholm.png */; };
 		A2058F58145C8A79004A8E87 /* GCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2058EFA145C8A79004A8E87 /* GCAlertView.m */; };
 		A2058F59145C8A79004A8E87 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A2058EFE145C8A79004A8E87 /* DDXMLElementAdditions.m */; };
 		A2058F5A145C8A79004A8E87 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = A2058F01145C8A79004A8E87 /* NSString+DDXML.m */; };
@@ -839,12 +839,12 @@
 		7F8377CC1471533400FBFC9C /* july4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = july4.png; sourceTree = "<group>"; };
 		7F8377CE1471537900FBFC9C /* toronto.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toronto.PNG; sourceTree = "<group>"; };
 		7F8377D21471548C00FBFC9C /* newYork.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newYork.PNG; sourceTree = "<group>"; };
-		7F8377EB1476A10B00FBFC9C /* stockholm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stockholm.png; sourceTree = "<group>"; };
 		7F8377ED1476A12800FBFC9C /* Scratched-Soft-Sepia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Scratched-Soft-Sepia.png"; sourceTree = "<group>"; };
 		7F8377EF1476A13700FBFC9C /* Old--BW-Film.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Old--BW-Film.png"; sourceTree = "<group>"; };
 		7F8377F11476A14800FBFC9C /* Grainy-film.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grainy-film.png"; sourceTree = "<group>"; };
 		7F8377F31476A1A500FBFC9C /* chicago.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chicago.PNG; sourceTree = "<group>"; };
 		7F8377F51476A1B400FBFC9C /* bordeaux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bordeaux.png; sourceTree = "<group>"; };
+		7F8377F71476A60800FBFC9C /* stockholm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stockholm.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PicBounce2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PicBounce2-Info.plist"; path = "../PicBounce2-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A2058EF9145C8A79004A8E87 /* GCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAlertView.h; sourceTree = "<group>"; };
 		A2058EFA145C8A79004A8E87 /* GCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAlertView.m; sourceTree = "<group>"; };
@@ -1982,8 +1982,8 @@
 			children = (
 				7F8377A31471061600FBFC9C /* boughs.png */,
 				7F8377CC1471533400FBFC9C /* july4.png */,
-				7F8377EB1476A10B00FBFC9C /* stockholm.png */,
 				7F8377F51476A1B400FBFC9C /* bordeaux.png */,
+				7F8377F71476A60800FBFC9C /* stockholm.png */,
 				7F8377F11476A14800FBFC9C /* Grainy-film.png */,
 				7F8377F31476A1A500FBFC9C /* chicago.PNG */,
 				7F8377EF1476A13700FBFC9C /* Old--BW-Film.png */,
@@ -3838,12 +3838,12 @@
 				7F8377CD1471533400FBFC9C /* july4.png in Resources */,
 				7F8377CF1471537900FBFC9C /* toronto.PNG in Resources */,
 				7F8377D31471548C00FBFC9C /* newYork.PNG in Resources */,
-				7F8377EC1476A10B00FBFC9C /* stockholm.png in Resources */,
 				7F8377EE1476A12800FBFC9C /* Scratched-Soft-Sepia.png in Resources */,
 				7F8377F01476A13700FBFC9C /* Old--BW-Film.png in Resources */,
 				7F8377F21476A14800FBFC9C /* Grainy-film.png in Resources */,
 				7F8377F41476A1A500FBFC9C /* chicago.PNG in Resources */,
 				7F8377F61476A1B400FBFC9C /* bordeaux.png in Resources */,
+				7F8377F81476A60900FBFC9C /* stockholm.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
