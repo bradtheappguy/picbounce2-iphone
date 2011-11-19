@@ -174,7 +174,7 @@
 						<string key="NSFrameSize">{320, 80}</string>
 						<reference key="NSSuperview" ref="729704536"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="974333057"/>
+						<reference key="NSNextKeyView" ref="321881444"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEgMAA</bytes>
@@ -219,29 +219,29 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="321881444">
-						<reference key="NSNextResponder" ref="729704536"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{12, 12}, {60, 60}}</string>
-						<reference key="NSSuperview" ref="729704536"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="341098698"/>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
 					<object class="IBUIImageView" id="974333057">
 						<reference key="NSNextResponder" ref="729704536"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{6, 6}, {72, 72}}</string>
 						<reference key="NSSuperview" ref="729704536"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="321881444"/>
+						<reference key="NSNextKeyView" ref="341098698"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">bg_avatar_profile</string>
+							<string key="NSResourceName">bg_profileheader@2x.png</string>
 						</object>
+					</object>
+					<object class="IBUIImageView" id="321881444">
+						<reference key="NSNextResponder" ref="729704536"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{12, 12}, {60, 60}}</string>
+						<reference key="NSSuperview" ref="729704536"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="974333057"/>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<object class="IBUILabel" id="341098698">
 						<reference key="NSNextResponder" ref="729704536"/>
@@ -625,12 +625,12 @@
 							<reference ref="907406078"/>
 							<reference ref="112137664"/>
 							<reference ref="321881444"/>
-							<reference ref="974333057"/>
 							<reference ref="795865078"/>
 							<reference ref="302053678"/>
 							<reference ref="341098698"/>
 							<reference ref="1045482042"/>
 							<reference ref="224396617"/>
+							<reference ref="974333057"/>
 							<reference ref="694902565"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -1327,16 +1327,16 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>bg_avatar_profile</string>
 				<string>bg_profileheader.png</string>
+				<string>bg_profileheader@2x.png</string>
 				<string>btn_profile_score_n.png</string>
 				<string>ico_verified.png</string>
 				<string>placeholder_image@2x.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{16, 16}</string>
 				<string>{320, 81}</string>
+				<string>{640, 168}</string>
 				<string>{68, 41}</string>
 				<string>{13, 14}</string>
 				<string>{660, 660}</string>

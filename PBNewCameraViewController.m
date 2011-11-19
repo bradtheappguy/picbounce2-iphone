@@ -72,6 +72,8 @@
   takePhoto.frame = CGRectMake(110, 3, 100, 46);
   [takePhoto addTarget:self action:@selector(takePictureButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   [takePhoto setImage:[UIImage imageNamed:@"btn_capture_n.png"] forState:UIControlStateNormal];
+  [takePhoto setAccessibilityLabel:@"Take Photo Button"];
+  
   [takePhoto setBackgroundImage:[UIImage imageNamed:@"btn_bg_capture_upload_n@2x.png"] forState:UIControlStateNormal];
   [v addSubview:takePhoto];
   
