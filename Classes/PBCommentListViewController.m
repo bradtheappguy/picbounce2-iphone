@@ -234,7 +234,7 @@
 
   NSString *textToPost = myView.a_CommentTextView.text;
   
-  NSDictionary *user = [NSDictionary dictionaryWithObjectsAndKeys:@"http://bigfrosty.heroku.com/images/empty_avatar_large.png",@"avatar",
+  NSDictionary *user = [NSDictionary dictionaryWithObjectsAndKeys:@"http://chopin.herokuapp.com/images/empty_avatar_large.png",@"avatar",
                         @"my name",@"screen_name",nil];
   NSDictionary *item = [NSDictionary dictionaryWithObjectsAndKeys:textToPost,@"text", user, @"user",nil];
   
