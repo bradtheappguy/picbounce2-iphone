@@ -60,7 +60,8 @@
                
                UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"stockholm.png"]];
                [filterFrame release];
-               return [[img bias:0.9969] adjust:0.0000 g:0.0000 b:2.0806];
+               //return [[img bias:0.9969] adjust:0.0000 g:0.0000 b:2.0806];
+               return img;
                break;
            }
            case 6:{
