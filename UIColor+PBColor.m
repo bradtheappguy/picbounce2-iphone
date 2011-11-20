@@ -24,4 +24,13 @@
 + (UIColor *) PBRefreshCircleBackgroundColor {
     return [UIColor colorWithRedInt:202 greenInt:212 blueInt:213 alphaInt:255];
 }
+
++ (UIColor *) PBPhotoViewBackgroundColor {
+  return [UIColor colorWithRed:241/255.0 green:233/255.0 blue:227/255.0 alpha:1];
+}
+
++ (UIColor *) PBPhotoViewBorderColor {
+  return [UIColor colorWithRed:169/255.0 green:164/255.0 blue:154/255.0 alpha:1];
+}
+
 @end

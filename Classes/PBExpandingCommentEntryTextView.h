@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MyView : UIImageView <UITextViewDelegate>{
+@interface PBExpandingCommentEntryTextView : UIImageView <UITextViewDelegate>{
   NSUInteger numberOfLines;
   
-  UITextView *a_CommentTextView;
   
   CGFloat textHeight;
   UIView *textViewClipp;
@@ -21,5 +20,5 @@
 }
 
 @property (nonatomic, retain) UIScrollView *scrollView;
-@property (nonatomic, retain) UITextView *a_CommentTextView;
+@property (nonatomic, retain) UITextView *commentTextView;
 @end

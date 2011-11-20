@@ -13,4 +13,6 @@
 + (UIColor *) PBBlueTextColor;
 + (UIColor *) PBRefreshCircleColor;
 + (UIColor *) PBRefreshCircleBackgroundColor;
++ (UIColor *) PBPhotoViewBackgroundColor;
++ (UIColor *) PBPhotoViewBorderColor;
 @end

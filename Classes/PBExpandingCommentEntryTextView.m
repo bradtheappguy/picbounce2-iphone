@@ -6,13 +6,13 @@
 //  Copyright 2011 Clixtr. All rights reserved.
 //
 
-#import "MyView.h"
+#import "PBExpandingCommentEntryTextView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "HPTextViewInternal.h"
-@implementation MyView
+@implementation PBExpandingCommentEntryTextView
 
 @synthesize scrollView;
-@synthesize a_CommentTextView;
+@synthesize commentTextView;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -36,17 +36,17 @@
   
   [self addSubview:textViewClipp];
   
-  a_CommentTextView = [[HPTextViewInternal alloc] initWithFrame:CGRectMake(0, -4, 300, 36)];
-  a_CommentTextView.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
-  a_CommentTextView.font = [UIFont systemFontOfSize:16];
-    a_CommentTextView.returnKeyType = UIReturnKeySend;
-  a_CommentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(3, 0, 5, 0);
-  a_CommentTextView.backgroundColor = [UIColor clearColor];
-  a_CommentTextView.delegate = self;
-  a_CommentTextView.alpha = 1;
-  textHeight = a_CommentTextView.contentSize.height;
-      a_CommentTextView.scrollEnabled = NO;
-  [textViewClipp addSubview:a_CommentTextView];
+  commentTextView = [[HPTextViewInternal alloc] initWithFrame:CGRectMake(0, -4, 300, 36)];
+  commentTextView.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
+  commentTextView.font = [UIFont systemFontOfSize:16];
+    commentTextView.returnKeyType = UIReturnKeySend;
+  commentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(3, 0, 5, 0);
+  commentTextView.backgroundColor = [UIColor clearColor];
+  commentTextView.delegate = self;
+  commentTextView.alpha = 1;
+  textHeight = commentTextView.contentSize.height;
+      commentTextView.scrollEnabled = NO;
+  [textViewClipp addSubview:commentTextView];
     
     //add the avatar
     
@@ -70,27 +70,27 @@
 
 - (void)textViewDidChange:(UITextView *)aTtextView
 {
-  CGFloat height = a_CommentTextView.contentSize.height;
-  if ([a_CommentTextView.text length] < 2) {
+  CGFloat height = commentTextView.contentSize.height;
+  if ([commentTextView.text length] < 2) {
     height = 36;
       
   }
-  if (a_CommentTextView.contentSize.height < 36) {
+  if (commentTextView.contentSize.height < 36) {
     height = 36;
   }
-  if (a_CommentTextView.contentSize.height > 36) {
+  if (commentTextView.contentSize.height > 36) {
     textViewClipp.clipsToBounds = YES;
   }
   else {
     textViewClipp.clipsToBounds = NO;
   }
   
-  if (a_CommentTextView.contentSize.height >= 100) {
+  if (commentTextView.contentSize.height >= 100) {
     height = 100;
-    a_CommentTextView.scrollEnabled = YES;
+    commentTextView.scrollEnabled = YES;
   }
   else {
-    a_CommentTextView.scrollEnabled = NO;
+    commentTextView.scrollEnabled = NO;
   }
   if (height != textHeight) {
     CGFloat diff = textHeight - height;
@@ -103,11 +103,11 @@
     frame.size.height -= diff;
     self.frame = frame;
     
-    a_CommentTextView.frame = CGRectMake(a_CommentTextView.frame.origin.x, a_CommentTextView.frame.origin.y, a_CommentTextView.frame.size.width, a_CommentTextView.frame.size.height - diff);
+    commentTextView.frame = CGRectMake(commentTextView.frame.origin.x, commentTextView.frame.origin.y, commentTextView.frame.size.width, commentTextView.frame.size.height - diff);
     
     textViewClipp.frame = CGRectMake(textViewClipp.frame.origin.x, textViewClipp.frame.origin.y, textViewClipp.frame.size.width, textViewClipp.frame.size.height - diff);
     
-    [a_CommentTextView scrollRectToVisible:CGRectMake(0,0,1,1) animated:NO];
+    [commentTextView scrollRectToVisible:CGRectMake(0,0,1,1) animated:NO];
     scrollView.contentInset = UIEdgeInsetsMake(0, 0, scrollView.contentInset.bottom - diff, 0);
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, scrollView.scrollIndicatorInsets.bottom - diff, 0);
     [UIView commitAnimations]; 
@@ -122,7 +122,7 @@
             // Find the next entry field  
         
             
-        [a_CommentTextView resignFirstResponder];
+        [commentTextView resignFirstResponder];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"PostComment" object:nil userInfo:nil];
         shouldChangeText = NO;  
     }  
@@ -175,7 +175,7 @@
 - (void)dealloc
 {
     [super dealloc];
-    [a_CommentTextView release];
+    [commentTextView release];
 }
 
 @end

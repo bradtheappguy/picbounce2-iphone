@@ -8,19 +8,24 @@
 
 #import "PBPhotoView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIColor+PBColor.h"
 
 @implementation PBPhotoView
 
+static CGFloat kProgressBarWidth = 180.0f;
+static CGFloat kProgressBarHeight = 180.0f;
+
+
 -(void) awakeFromNib {
-  self.backgroundColor = [UIColor colorWithRed:241/255.0 green:233/255.0 blue:227/255.0 alpha:1];
-    progressBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 13, 180, 17)];
+  self.backgroundColor = [UIColor PBPhotoViewBackgroundColor];
+    progressBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kProgressBarWidth, kProgressBarHeight)];
     progressBarImageView.center = self.center;
     [self addSubview:progressBarImageView];
     [self bringSubviewToFront:progressBarImageView];
     progressBarImageView.hidden = YES;
   progressBarImageView.backgroundColor = [UIColor clearColor];
     progressBarImageView.image = [UIImage imageNamed:@"bg_pb@2x.png"];
-  self.layer.borderColor = [UIColor colorWithRed:169/255.0 green:164/255.0 blue:154/255.0 alpha:1].CGColor;
+  self.layer.borderColor = [UIColor PBPhotoViewBorderColor].CGColor;
   self.layer.borderWidth = 1;
     
     
@@ -43,6 +48,7 @@
     progressBarImageView.animationRepeatCount = 1;
 
       [progressBarImageView startAnimating];
+    progressBarImageView.image = [UIImage imageNamed:@"bg_pb_6@2x.png"];
  progressBarImageView.hidden = NO;
 
   }
@@ -62,7 +68,7 @@
 }
 
 -(void) layoutSubviews {
-  progressBarImageView.center = self.center;
+  progressBarImageView.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
 }
 
 @end

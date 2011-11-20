@@ -66,7 +66,7 @@
 		A205F92C1314B41E003756CA /* PBPersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A205F92A1314B41E003756CA /* PBPersonListViewController.xib */; };
 		A205F9421314B556003756CA /* PBBadgeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A205F9401314B556003756CA /* PBBadgeCollectionViewController.m */; };
 		A205F9431314B556003756CA /* PBBadgeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */; };
-		A2222831133F075E00239E0F /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A222282F133F075E00239E0F /* MyView.m */; };
+		A2222831133F075E00239E0F /* PBExpandingCommentEntryTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A222282F133F075E00239E0F /* PBExpandingCommentEntryTextView.m */; };
 		A227E36412FB38A600701013 /* PBRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36312FB38A600701013 /* PBRefreshTableHeaderView.m */; };
 		A227E36712FB38B000701013 /* PBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36612FB38B000701013 /* PBRootViewController.m */; };
 		A227E37312FB38E300701013 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A227E37212FB38E300701013 /* QuartzCore.framework */; };
@@ -538,8 +538,8 @@
 		A205F93F1314B556003756CA /* PBBadgeCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBadgeCollectionViewController.h; sourceTree = "<group>"; };
 		A205F9401314B556003756CA /* PBBadgeCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBBadgeCollectionViewController.m; sourceTree = "<group>"; };
 		A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBBadgeCollectionViewController.xib; sourceTree = "<group>"; };
-		A222282F133F075E00239E0F /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
-		A2222830133F075E00239E0F /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		A222282F133F075E00239E0F /* PBExpandingCommentEntryTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBExpandingCommentEntryTextView.m; sourceTree = "<group>"; };
+		A2222830133F075E00239E0F /* PBExpandingCommentEntryTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBExpandingCommentEntryTextView.h; sourceTree = "<group>"; };
 		A227E36212FB38A600701013 /* PBRefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRefreshTableHeaderView.h; sourceTree = "<group>"; };
 		A227E36312FB38A600701013 /* PBRefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBRefreshTableHeaderView.m; sourceTree = "<group>"; };
 		A227E36512FB38B000701013 /* PBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRootViewController.h; sourceTree = "<group>"; };
@@ -1154,8 +1154,8 @@
 			children = (
 				A2E415F61343EE3F000D9CFA /* HPTextViewInternal.m */,
 				A2E415F71343EE3F000D9CFA /* HPTextViewInternal.h */,
-				A222282F133F075E00239E0F /* MyView.m */,
-				A2222830133F075E00239E0F /* MyView.h */,
+				A222282F133F075E00239E0F /* PBExpandingCommentEntryTextView.m */,
+				A2222830133F075E00239E0F /* PBExpandingCommentEntryTextView.h */,
 			);
 			name = "Increase Text Box";
 			sourceTree = "<group>";
@@ -2550,7 +2550,7 @@
 				A29A930B131DA68300DB6D46 /* PBAPIResponse.m in Sources */,
 				A29A9579131F21E500DB6D46 /* NSDate+TimeFromNowFormat.m in Sources */,
 				A26E720D1334244E00BD737D /* PBPhotoHeaderView.m in Sources */,
-				A2222831133F075E00239E0F /* MyView.m in Sources */,
+				A2222831133F075E00239E0F /* PBExpandingCommentEntryTextView.m in Sources */,
 				A2E415F81343EE3F000D9CFA /* HPTextViewInternal.m in Sources */,
 				7452D1AE135D916F0024C63C /* ProfileSettingView.m in Sources */,
 				7452D1C0135DB8220024C63C /* ProfileAboutView.m in Sources */,
@@ -2726,7 +2726,7 @@
 				);
 				PRODUCT_NAME = PicBounce2;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9B003753-546F-4816-ADF8-B62DA21EEEFD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DF3E0269-FBEE-47F5-9469-F330303037CF";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7 i386";

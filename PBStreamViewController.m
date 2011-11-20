@@ -224,6 +224,7 @@
 
 -(void) setTitle:(NSString *)title {
   [super setTitle:title];
+  self.navigationItem.title = title;
   UILabel *l = (UILabel *)self.navigationItem.titleView;
   
   if ([l.text isEqualToString:@"Profile"]) {

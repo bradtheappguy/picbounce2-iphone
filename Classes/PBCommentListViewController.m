@@ -47,6 +47,7 @@
 	self.navigationController.title = @"Comments";
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWasFollowedNotificationReceived:) name:PBAPIUserWasFollowedNotification object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWasUnfollowedNotificationReceived:) name:PBAPIUserWasUnfollowedNotification object:nil];  
+  
 }
 
 
@@ -65,21 +66,21 @@
   [self.getCommentsRequest setDidFailSelector:@selector(getCommentsRequestDidFail:)];
   [self.getCommentsRequest setDidFinishSelector:@selector(getCommentsRequestDidFinish:)];
   [self.getCommentsRequest startAsynchronous];
-  [myView.a_CommentTextView becomeFirstResponder];
+  [myView.commentTextView becomeFirstResponder];
   
 }
 
 
 - (void)viewDidDisappear:(BOOL)animated  {
-  [myView.a_CommentTextView resignFirstResponder];
+  [myView.commentTextView resignFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postComment) name:@"PostComment" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)  name:UIKeyboardWillShowNotification object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)  name:UIKeyboardWillHideNotification object:nil];
-  myView.a_CommentTextView.inputAccessoryView = myView;
-  [myView.a_CommentTextView becomeFirstResponder];
+  myView.commentTextView.inputAccessoryView = myView;
+  [myView.commentTextView becomeFirstResponder];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -247,7 +248,7 @@
   NSString *name = [PBSharedUser name];
   
   NSDictionary *commentToInsert = 
-  [NSDictionary dictionaryWithObject: [NSDictionary dictionaryWithObjectsAndKeys:myView.a_CommentTextView.text, @"text", 
+  [NSDictionary dictionaryWithObject: [NSDictionary dictionaryWithObjectsAndKeys:myView.commentTextView.text, @"text", 
                                                                                  [NSDictionary dictionaryWithObject:name forKey:@"name"], @"user", 
                                                                                  nil] 
                               forKey: @"comment"];
@@ -266,7 +267,7 @@
   [self yyy];
   
   [self xxx];
-  NSString *textToPost = myView.a_CommentTextView.text;
+  NSString *textToPost = myView.commentTextView.text;
   
   NSDictionary *user = [NSDictionary dictionaryWithObjectsAndKeys:@"http://chopin.herokuapp.com/images/empty_avatar_large.png",@"avatar",
                         @"my name",@"screen_name",nil];
@@ -303,7 +304,7 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[followingRequest.responseString JSONValue]];
     NSLog(@"%@",[[[dict valueForKey:@"response"] valueForKey:@"comments"] valueForKey:@"items"] );
   }
-  myView.a_CommentTextView.text = @"";
+  myView.commentTextView.text = @"";
 }
 
 

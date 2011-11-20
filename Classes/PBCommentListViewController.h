@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyView.h"
+#import "PBExpandingCommentEntryTextView.h"
 #import "PBRootViewController.h"
 #import "ASIHTTPRequest.h"
 #import "PBProgressHUD.h"
 
 @interface PBCommentListViewController :UIViewController {
   
-  IBOutlet MyView *myView;
+  IBOutlet PBExpandingCommentEntryTextView *myView;
   
   IBOutlet UITableView *tableView;
   
