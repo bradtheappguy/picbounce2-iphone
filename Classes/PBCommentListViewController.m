@@ -234,8 +234,16 @@
   
 }
 
+-(void) yyy {
+  NSNumber *currentCommentCount = [self.post objectForKeyNotNull:@"comment_count"];
+  [self.post setValue:[NSNumber numberWithInt:[currentCommentCount intValue] + 1] forKey:@"comment_count"];
+}
+
 
 -(void) xxx {
+  
+  
+  
   NSString *name = [PBSharedUser name];
   
   NSDictionary *commentToInsert = 
@@ -255,7 +263,7 @@
 
 - (void)postComment {
   //Update the preview (first three comments on the post object)
-  
+  [self yyy];
   
   [self xxx];
   NSString *textToPost = myView.a_CommentTextView.text;

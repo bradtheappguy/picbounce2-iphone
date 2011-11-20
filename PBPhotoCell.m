@@ -189,7 +189,6 @@
 
 
 -(void) setComments:(NSArray *)comments {
-  [self.leaveCommentButton setCommentCount:comments.count];
   NSAttributedString *attString = [PBPhotoCell attributedStringForComments:comments withString:nil];
   OHAttributedLabel *label = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
   label.linkColor = [UIColor blackColor];
@@ -262,6 +261,8 @@
   
   
   NSArray *comments = [photo objectForKeyNotNull:@"comments"];
+  NSNumber *commentCount = [photo objectForKeyNotNull:@"comment_count"];
+  [self.leaveCommentButton setCommentCount:[commentCount intValue]];
   [self setComments:comments];
   
   if (flagged) {
