@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface PBSharedUser : NSObject
+
 + (NSString *) userID;
 + (void) setUserID:(NSString *)userID;
 
@@ -37,4 +38,8 @@
 
 + (void) setShouldCrosspostToFBWall:(BOOL)value;
 + (BOOL) shouldCrosspostToFBWall;
+
++ (void) setName:(NSString *)userID;
++ (NSString *) name;
+    
 @end

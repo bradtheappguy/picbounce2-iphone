@@ -228,7 +228,11 @@
   
   if ([l.text isEqualToString:@"Profile"]) {
     return;
-  }  
+  }
+  if ([l.text isEqualToString:@"Feed"]) {
+    return;
+  }
+  
   
   if ([l.text isEqualToString:self.navigationItem.title] == NO) {
     UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
@@ -290,7 +294,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  
+  [self.tableView reloadData];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
   
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
@@ -493,7 +497,9 @@
 
 -(void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  [self reloadTableViewDataSourceUsingCache:NO];
+  
+  
+  //[self reloadTableViewDataSourceUsingCache:NO];
   //[self configureNavigationBar];
 }
 
