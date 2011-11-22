@@ -3,6 +3,8 @@
 #import "ASIDownloadCache.h"
 #import "PBProgressHUD.h"
 #import "AppDelegate.h"
+
+
 @interface PBRootViewController (Private)
 
 - (void)dataSourceDidFinishLoadingNewData;
@@ -240,37 +242,18 @@
 }
 
 -(void) showLoadingIndicator {
-  if (loadingView) {
-    [loadingView removeFromSuperview];
-    loadingView = nil;
+  if (!loadingView) {
+    loadingView = [[PBProgressHUD alloc] initWithView:self.view];
+    [loadingView setLabelText:@"Loading..."];
+    
   }
-  loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 108, 58)];
-  loadingView.layer.cornerRadius = 10;
-  loadingView.backgroundColor = [UIColor colorWithRed:144/255.0 green:124/255.0 blue:109/255.0 alpha:0.90];
-  
-  UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-  spinner.center = CGPointMake(108/2, 20);
-  [spinner startAnimating];
-  
-  UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 35, 108, 15)];
-  loadingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
-  loadingLabel.textColor = [UIColor colorWithRed:252/255.0 green:251/255.0 blue:251/255.0 alpha:1.0];
-  loadingLabel.textAlignment = UITextAlignmentCenter;
-  loadingLabel.text = @"Loading...";
-  loadingLabel.backgroundColor = [UIColor clearColor];
-  
-  [loadingView addSubview:spinner];
-  [spinner release];
-  [loadingView addSubview:loadingLabel];
-  [loadingLabel release];
-  loadingView.center = self.view.center;
-  [self.view  addSubview:loadingView];
-  
+  [self.view addSubview:loadingView];
+  [loadingView showUsingAnimation:YES];
+
 }
 
 -(void) hideLoadingIndicator {
-  [loadingView removeFromSuperview];
-  loadingView = nil;
+  [loadingView hide:YES];
 }
 
 -(void) loadDataFromCacheIfAvailable {

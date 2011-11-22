@@ -181,8 +181,9 @@
   [self.submitButton.titleLabel setShadowOffset:CGSizeMake(0,0)];
   [self.submitButton setEnabled:NO];
   
-  
   UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_signin"]];
+  logo.frame = self.navigationController.navigationBar.bounds;
+  logo.contentMode = UIViewContentModeCenter;
   self.navigationItem.titleView = logo;
   [logo release];
 }

@@ -1,4 +1,4 @@
-//
+ //
 //  PBAPI.m
 //  PicBounce2
 //
@@ -36,7 +36,7 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
   [super dealloc];
 }  
 
-#pragma mark Follow User
+
 
 #pragma mark Flag Photo
 -(void) unflagPhotoWithID:(NSString *)photoID {

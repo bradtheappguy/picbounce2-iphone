@@ -4,6 +4,8 @@
 #import "ASIHTTPRequest.h"
 #import "SBJSON.h"
 #import "PBAPIResponse.h"
+#import "PBProgressHUD.h"
+
 
 @class PBRefreshTableHeaderView, PBProgressHUD;
 
@@ -18,7 +20,7 @@
   
   PBProgressHUD *errorHud;
   NSURL *loadMoreDataURL;
-  UIView *loadingView;
+  PBProgressHUD *loadingView;
   ASIHTTPRequest *request;
 }
 

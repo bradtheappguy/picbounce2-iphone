@@ -90,8 +90,12 @@
     patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
     NSString *userID = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
     [PBSharedUser setUserID:userID];
-    [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
-    
+
+    pattern = [NSRegularExpression regularExpressionWithPattern:@"screen_name=(.+)" options:NSRegularExpressionCaseInsensitive error:nil];
+    patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
+    NSString *name = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
+    [PBSharedUser setName:name];
+
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
 

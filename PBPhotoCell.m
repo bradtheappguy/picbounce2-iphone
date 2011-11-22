@@ -189,7 +189,6 @@
 
 
 -(void) setComments:(NSArray *)comments {
-  [self.leaveCommentButton setCommentCount:comments.count];
   NSAttributedString *attString = [PBPhotoCell attributedStringForComments:comments withString:nil];
   OHAttributedLabel *label = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
   label.linkColor = [UIColor blackColor];
@@ -246,21 +245,6 @@
     self.photoImageView.imageURL = [NSURL URLWithString:mediaURL];
   }
   
-  self.commentCountLabel.text = [NSString stringWithFormat:@"%d",commentsCount];
-  CGSize commentCountLabelSize = [self.commentCountLabel.text sizeWithFont:self.commentCountLabel.font];
-  self.commentCountLabel.frame = CGRectMake(self.commentCountLabel.frame.origin.x, 
-                                            self.commentCountLabel.frame.origin.y, 
-                                            commentCountLabelSize.width, 
-                                            self.commentCountLabel.frame.size.height);
-  self.commentCountIcon.frame = CGRectMake(self.commentCountLabel.frame.origin.x+self.commentCountLabel.frame.size.width+3, 
-                                           self.commentCountIcon.frame.origin.y,
-                                           self.commentCountIcon.frame.size.width, 
-                                           self.commentCountIcon.frame.size.height);
-  self.leaveCommentButton.frame = CGRectMake(self.commentCountIcon.frame.origin.x+self.commentCountIcon.frame.size.width+6, 
-                                             self.leaveCommentButton.frame.origin.y, 
-                                             self.leaveCommentButton.frame.size.width, 
-                                             self.leaveCommentButton.frame.size.height);
-  
   [self.captionBubble setText: caption ];
   CGSize captionSize = [PBCaptionBubble sizeForCaptionWithString:caption];
   self.captionBubble.frame = CGRectMake(self.captionBubble.frame.origin.x,
@@ -277,6 +261,8 @@
   
   
   NSArray *comments = [photo objectForKeyNotNull:@"comments"];
+  NSNumber *commentCount = [photo objectForKeyNotNull:@"comment_count"];
+  [self.leaveCommentButton setCommentCount:[commentCount intValue]];
   [self setComments:comments];
   
   if (flagged) {
@@ -299,13 +285,10 @@
 
 -(IBAction)commentButtonPressed:(UIButton *)sender {
   
-  NSString *photoID = [self.photo objectForKeyNotNull:@"id"];
-  
-  
-  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments",API_BASE,photoID]];
   PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
   vc.navigationItem.title = @"Comments";
-  vc.url = url;
+  vc.post = self.photo;
+  
   vc.hidesBottomBarWhenPushed = YES;
   [tableViewController.navigationController pushViewController:vc animated:YES];
   [vc release];

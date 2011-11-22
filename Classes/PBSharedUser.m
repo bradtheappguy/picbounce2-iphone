@@ -18,6 +18,14 @@
   [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"USER_ID"];
 }
 
++ (NSString *) name {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:@"USER_NAME"];
+}
+
++ (void) setName:(NSString *)userID {
+  [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"USER_NAME"];
+}
+
 + (BOOL) shouldCrosspostToFB {
   return [[NSUserDefaults standardUserDefaults] boolForKey:@"CROSSPOST_FB"];
 }

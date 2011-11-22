@@ -51,7 +51,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    
+  return;
     
   
     
@@ -75,8 +75,8 @@
     
 
     
-     urladdress = @"http://smooth-night-98.heroku.com/auth/twitter";
-    // urladdress = @"http://smooth-night-98.heroku.com/auth/users/twitter";
+   //  urladdress = @"http://smooth-night-98.heroku.com/auth/twitter";
+
     
     
 

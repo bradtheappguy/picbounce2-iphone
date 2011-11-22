@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OHAttributedLabel.h"
 
-@interface PBCommentsButton : UIButton
+@interface PBCommentsButton : UIButton {
+  OHAttributedLabel *label;
+}
 
 -(void) setCommentCount:(NSUInteger)commentCount;
 

@@ -148,40 +148,26 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/PBLoginViewController.m"
-         timestampString = "342933081.062702"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "188"
-         endingLineNumber = "188"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "PBStreamViewController.m"
-         timestampString = "342934116.824439"
+         timestampString = "343439011.927532"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "368"
-         endingLineNumber = "368"
+         startingLineNumber = "372"
+         endingLineNumber = "372"
          landmarkName = "-tableView:heightForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PBStreamViewController.m"
-         timestampString = "342934116.824439"
+         timestampString = "343439011.927532"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "328"
-         endingLineNumber = "328"
+         startingLineNumber = "332"
+         endingLineNumber = "332"
          landmarkName = "-postForTableViewIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -205,11 +191,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PBSharedUser.m"
-         timestampString = "342407008.056047"
+         timestampString = "343442737.141218"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "97"
-         endingLineNumber = "97"
+         startingLineNumber = "105"
+         endingLineNumber = "105"
          landmarkName = "@implementation PBSharedUser"
          landmarkType = "3">
       </FileBreakpoint>
@@ -219,11 +205,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PBSharedUser.m"
-         timestampString = "342407008.056047"
+         timestampString = "343442737.141218"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
          landmarkName = "+facebookWall"
          landmarkType = "5">
       </FileBreakpoint>
@@ -233,11 +219,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PBSharedUser.m"
-         timestampString = "342407084.22104"
+         timestampString = "343442737.141218"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
+         startingLineNumber = "95"
+         endingLineNumber = "95"
          landmarkName = "+removeFacebookPages"
          landmarkType = "5">
       </FileBreakpoint>
@@ -247,11 +233,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PBSharedUser.m"
-         timestampString = "342407104.253534"
+         timestampString = "343442737.141218"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "92"
-         endingLineNumber = "92"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
          landmarkName = "+setShouldCrosspostToFBWall:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -261,11 +247,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/PBSharedUser.m"
-         timestampString = "342407284.256825"
+         timestampString = "343442737.141218"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "88"
-         endingLineNumber = "88"
+         startingLineNumber = "96"
+         endingLineNumber = "96"
          landmarkName = "@implementation PBSharedUser"
          landmarkType = "3">
       </FileBreakpoint>
@@ -337,6 +323,132 @@
          startingLineNumber = "35"
          endingLineNumber = "35"
          landmarkName = "-setStyle:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/FacebookButton.m"
+         timestampString = "342938231.595163"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "26"
+         endingLineNumber = "26"
+         landmarkName = "-touched:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBAPI.m"
+         timestampString = "343368657.440916"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "118"
+         endingLineNumber = "118"
+         landmarkName = "-deletePhotoRequestDidFinish:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBAPI.m"
+         timestampString = "343368745.23539"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
+         landmarkName = "-deletePhotoWithID:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBAPI.m"
+         timestampString = "343368900.307644"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "112"
+         endingLineNumber = "112"
+         landmarkName = "-deletePhotoRequestDidFail:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBSharedUser.m"
+         timestampString = "343442699.093034"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "18"
+         endingLineNumber = "18"
+         landmarkName = "+setUserID:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBSharedUser.m"
+         timestampString = "343442700.237018"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "14"
+         endingLineNumber = "14"
+         landmarkName = "+userID"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBSharedUser.m"
+         timestampString = "343442702.94062"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "26"
+         endingLineNumber = "26"
+         landmarkName = "+setName:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBSharedUser.m"
+         timestampString = "343444163.741036"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "22"
+         endingLineNumber = "22"
+         landmarkName = "+name"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/PBRootViewController.m"
+         timestampString = "343444337.022969"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "53"
+         endingLineNumber = "53"
+         landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
