@@ -15,8 +15,8 @@
 	CGRect frame = CGRectMake(position.x, position.y, 56, 27);
     if ((self = [super initWithFrame:frame])) {
             // Initialization code
-		[self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_n"] forState:UIControlStateNormal];
-		[self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_s"] forState:UIControlStateSelected];
+		[self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_off_n"] forState:UIControlStateNormal];
+		[self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_off_s"] forState:UIControlStateSelected];
 		[self addTarget:self action:@selector(touched:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
@@ -29,7 +29,15 @@
 
 -(void) setSelected:(BOOL)selected {
   [super setSelected:selected];
-  [self setBackgroundImage:[self imageForState:(selected?UIControlStateSelected:UIControlStateNormal)] forState:UIControlStateHighlighted];
+  if (selected) {
+    [self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_on_n"] forState:UIControlStateNormal];
+		[self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_on_s"] forState:UIControlStateSelected];
+  }
+  else {
+    [self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_off_n"] forState:UIControlStateNormal];
+		[self setBackgroundImage:[UIImage imageNamed:@"btn_facebook_off_s"] forState:UIControlStateSelected];
+  }
+  
 }
 
 

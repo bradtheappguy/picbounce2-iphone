@@ -13,7 +13,7 @@
 @implementation PBPhotoView
 
 static CGFloat kProgressBarWidth = 180.0f;
-static CGFloat kProgressBarHeight = 180.0f;
+static CGFloat kProgressBarHeight = 16.0f;
 
 
 -(void) awakeFromNib {

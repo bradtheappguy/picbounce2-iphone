@@ -79,7 +79,7 @@
     
   }
 
-  [self configureFilterScrollView];
+  //[self configureFilterScrollView];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

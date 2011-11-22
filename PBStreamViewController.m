@@ -225,7 +225,26 @@
 -(void) setTitle:(NSString *)title {
   [super setTitle:title];
   self.navigationItem.title = title;
-  UILabel *l = (UILabel *)self.navigationItem.titleView;
+  //UILabel *l = (UILabel *)self.navigationItem.titleView;
+  UIView *vw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+  UILabel *lbl = [[UILabel alloc] init];
+  lbl.text = @"Home";
+  lbl.textAlignment = UITextAlignmentCenter;
+  lbl.backgroundColor = [UIColor clearColor];
+  lbl.textColor = [UIColor whiteColor];
+  lbl.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+  lbl.shadowColor = [UIColor blackColor];
+  lbl.shadowOffset = CGSizeMake(0,1);
+  [lbl sizeToFit];
+  [vw setBackgroundColor:[UIColor clearColor]];
+  [lbl setBackgroundColor:[UIColor clearColor]];
+  self.navigationItem.titleView = vw;
+  [self.navigationItem.titleView addSubview:lbl];
+  lbl.center = vw.center;
+  
+  
+  
+  /*
   
   if ([l.text isEqualToString:@"Profile"]) {
     return;
@@ -244,9 +263,10 @@
     label.textColor = kNavBarTitleTextColor
     
     label.text = self.navigationItem.title;
-    [label sizeToFit];
+    
     self.navigationItem.titleView = label;
-  }
+    [label sizeToFit];
+  }*/
 }
 #pragma mark Open Create Post View
 - (void)createPost {
