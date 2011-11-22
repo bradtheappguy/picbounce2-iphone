@@ -39,8 +39,6 @@
 // Layout the filter interface in the parent view
 - (CGFloat) layoutFilterView:(UIScrollView *)view;
 
-- (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize;
-
 - (UIImage *) applyFilter:(int)index withImage:(UIImage *)image;
 
 + (void) createInitialScriptPListFiles;

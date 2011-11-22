@@ -1,5 +1,5 @@
 //
-//  NSObject+UIImage_Scale_h.h
+//  UIImage+Scale.h
 //  PicBounce2
 //
 //  Created by Thomas DiZoglio on 11/14/11.
@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSObject (UIImage_Scale_h)
+@interface UIImage (scale)
+
+-(UIImage*)scaleToSize:(CGSize)size;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "PBFilterManager.h"
 #import "ImageFilter.h"
+#import "UIImage+Scale.h"
+#import "UIImage+Resize.h"
 
 NSMutableArray *lFilterObjects = nil;
 NSDictionary *lFilterInformation = nil;
@@ -89,7 +91,7 @@ PBFilterManager *createButtonObject = nil;
     // to documents directory so PBFilterObjects can create there own versions
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *dirPath = [[dirPaths objectAtIndex:0] stringByAppendingPathComponent:FILTER_DATA_DIRECTORY];
-    // Create direcotry if doesn't exist
+    // Create directory if doesn't exist
     if (![fileManager fileExistsAtPath:dirPath])
     {
       NSError *error;
@@ -162,44 +164,14 @@ PBFilterManager *createButtonObject = nil;
   }
 }
 
-- (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize {
-  
-  CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
-  CGImageRef imageRef = image.CGImage;
-  
-  UIGraphicsBeginImageContextWithOptions(newSize, NO, 0);
-  CGContextRef context = UIGraphicsGetCurrentContext();
-  
-  // Set the quality level to use when rescaling
-  CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
-  CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, newSize.height);
-  
-  CGContextConcatCTM(context, flipVertical);  
-  // Draw into the context; this scales the image
-  CGContextDrawImage(context, newRect, imageRef);
-  
-  // Get the resized image from the context and a UIImage
-  CGImageRef newImageRef = CGBitmapContextCreateImage(context);
-  UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-
-  int h = CGImageGetHeight(newImageRef);
-	int w = CGImageGetWidth(newImageRef);
-  NSLog(@"resizeImage width = %d", w);
-  NSLog(@"resizeImage height = %d", h);
-
-  CGImageRelease(newImageRef);
-  UIGraphicsEndImageContext();    
-  
-  return newImage;
-}
-
 - (UIImage *) applyFilter:(int)index withImage:(UIImage *)image {
 
   UIImage *filterApplyImage = image;
   if (filterApplyImage == nil)
   {
     filterApplyImage = [self createCleanImageFilter:cleanImage];
-    filterApplyImage = [self resizeImage:filterApplyImage newSize:CGSizeMake(600, 600)];
+    //filterApplyImage = [filterApplyImage scaleToSize:CGSizeMake(600.0f, 600.0f)];
+    filterApplyImage = [filterApplyImage resizedImage:CGSizeMake(600.0f, 600.0f) interpolationQuality:kCGInterpolationDefault];
   }
 
   PBFilterObject *filter = [filterObjects objectAtIndex:index];
@@ -344,23 +316,23 @@ PBFilterManager *createButtonObject = nil;
       // Action: COLOR COMPOSITE
       else if ([action_name isEqualToString:@"colorComposite"]) {
         int red = [[action objectForKey:@"red"] intValue];
-        int green = [[action objectForKey:@"red"] intValue];
-        int blue = [[action objectForKey:@"red"] intValue];
-        int alpha = [[action objectForKey:@"red"] doubleValue];
+        int green = [[action objectForKey:@"green"] intValue];
+        int blue = [[action objectForKey:@"blue"] intValue];
+        int alpha = [[action objectForKey:@"alpha"] doubleValue];
         int blendmode = [[action objectForKey:@"blendmode"] intValue];
         return [UIImage imageColorComposite:red withGreen:green withBlue:blue withAlpha:alpha withBlendMode:blendmode withImage:filterApplyImage];
       }
       // Action: IMAGE COMPOSITE
       else if ([action_name isEqualToString:@"imageComposite"]) {
         NSString *fileName = [action objectForKey:@"image_name"];
-        int alpha = [[action objectForKey:@"red"] doubleValue];
+        int alpha = [[action objectForKey:@"alpha"] doubleValue];
         int blendmode = [[action objectForKey:@"blendmode"] intValue];
         return [UIImage imageCompositeImageNamed:fileName withAlpha:alpha withBlendMode:blendmode withImage:filterApplyImage];
       }
       // Action: IMAGE TILED COMPOSITE
       else if ([action_name isEqualToString:@"imageTiledComposite"]) {
         NSString *fileName = [action objectForKey:@"image_name"];
-        int alpha = [[action objectForKey:@"red"] doubleValue];
+        int alpha = [[action objectForKey:@"alpha"] doubleValue];
         int blendmode = [[action objectForKey:@"blendmode"] intValue];
         return [UIImage imageCompositeImageTiledNamed:fileName withAlpha:alpha withBlendMode:blendmode withImage:filterApplyImage];
       }
