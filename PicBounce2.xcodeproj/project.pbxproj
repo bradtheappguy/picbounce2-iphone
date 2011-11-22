@@ -1062,15 +1062,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				D136E6911471FF2F00A2FEB3 /* UIImage+Resize.h */,
-				D136E6921471FF2F00A2FEB3 /* UIImage+Resize.m */,
-				D136E68D1471FA9F00A2FEB3 /* UIImage+Scale.h */,
-				D136E68E1471FA9F00A2FEB3 /* UIImage+Scale.m */,
-=======
 				A2FADFD51474524C00CA615B /* UIColor+PBColor.h */,
 				A2FADFD61474524C00CA615B /* UIColor+PBColor.m */,
->>>>>>> e05f2f0a746f994a6079186365311500b625162a
 				D136E6821471017400A2FEB3 /* PBNewFilterViewController.h */,
 				D136E6831471017400A2FEB3 /* PBNewFilterViewController.m */,
 				D136E6841471017400A2FEB3 /* PBNewFilterViewController.xib */,
@@ -2658,12 +2651,7 @@
 				D1927A1A14708CB00026C421 /* PBFilterManager.m in Sources */,
 				A267ACEE1470B9CA0022B955 /* PBNavigationBarButtonItem.m in Sources */,
 				D136E6851471017400A2FEB3 /* PBNewFilterViewController.m in Sources */,
-<<<<<<< HEAD
-				D136E68F1471FA9F00A2FEB3 /* UIImage+Scale.m in Sources */,
-				D136E6931471FF2F00A2FEB3 /* UIImage+Resize.m in Sources */,
-=======
 				A2FADFD71474524C00CA615B /* UIColor+PBColor.m in Sources */,
->>>>>>> e05f2f0a746f994a6079186365311500b625162a
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
