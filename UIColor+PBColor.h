@@ -15,4 +15,5 @@
 + (UIColor *) PBRefreshCircleBackgroundColor;
 + (UIColor *) PBPhotoViewBackgroundColor;
 + (UIColor *) PBPhotoViewBorderColor;
++ (UIColor *) grayCellBackgroundColor;
 @end

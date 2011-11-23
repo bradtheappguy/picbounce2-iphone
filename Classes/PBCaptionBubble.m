@@ -29,13 +29,18 @@ static CGFloat kCaptionFontSize = 14.0;
 
 
 -(void) awakeFromNib {
-   self.captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 47)];
+  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 47)];
+   self.captionLabel = label;
+  [label release];
    self.captionLabel.numberOfLines = 0;
   self.captionLabel.backgroundColor = [UIColor clearColor];
   self.captionLabel.font = [PBCaptionBubble captionfont];
    self.captionLabel.lineBreakMode = UILineBreakModeWordWrap;
   
-  self.bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 47)];
+  UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 47)];
+  self.bubbleView = iv;
+  [iv release];
+  
   self.bubbleView.image = [[UIImage imageNamed:@"bg_caption_text"] stretchableImageWithLeftCapWidth:30 topCapHeight:18];
   
   [self addSubview:self.bubbleView];

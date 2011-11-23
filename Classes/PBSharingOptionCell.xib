@@ -118,7 +118,6 @@
 								<string key="NSFrame">{{214, 10}, {76, 30}}</string>
 								<reference key="NSSuperview" ref="246560316"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -330,8 +329,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="btn_follow_n@2x.png">{156, 66}</string>
-			<string key="btn_follow_s@2x.png">{156, 66}</string>
+			<string key="btn_follow_n@2x.png">{151, 65}</string>
+			<string key="btn_follow_s@2x.png">{151, 65}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

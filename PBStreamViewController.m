@@ -324,7 +324,7 @@
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
   
-        //self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
+    //self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
     [self configureNavigationBar];
   
 }

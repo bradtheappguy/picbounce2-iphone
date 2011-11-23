@@ -106,7 +106,6 @@
   [parser release];
   
   
-  
   loadMoreDataURL = [NSURL URLWithString: [[[(NSDictionary *)self.data objectForKey:@"response"] objectForKey:@"posts"] objectForKey:@"next"]];
   [loadMoreDataURL retain];
   /* 
@@ -284,6 +283,7 @@
 #pragma mark Dealloc
 
 - (void)dealloc {
+   [loadMoreDataURL release];
   // [request cancel];
   // [request release];
 	refreshHeaderView = nil;

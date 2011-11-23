@@ -21,7 +21,10 @@
     _button.backgroundColor = [UIColor clearColor];
     [_button addTarget:self action:@selector(touched:) forControlEvents:UIControlEventTouchUpInside];
 		
-		self.label = [[UILabel alloc] initWithFrame:CGRectMake(-160, 0.0, 150, 28.0)];
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(-160, 0.0, 150, 28.0)];
+    self.label = label;
+    [label release];
+
     self.label.font = [UIFont fontWithName:fontName size:size];
 		self.label.backgroundColor = [UIColor clearColor];
 		self.label.textColor = [UIColor colorWithRed:102.0/255.0 green:102.0/255.0 blue:102.0/255.0 alpha:1.0];

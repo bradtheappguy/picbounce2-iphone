@@ -33,4 +33,7 @@
   return [UIColor colorWithRed:169/255.0 green:164/255.0 blue:154/255.0 alpha:1];
 }
 
++ (UIColor *) grayCellBackgroundColor {
+  return [UIColor colorWithRed:207.0f/255.0f green:205.0f/255.0f blue:205.0f/255.0f alpha:1.0f];
+}
 @end

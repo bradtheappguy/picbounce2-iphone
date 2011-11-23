@@ -60,7 +60,7 @@
   }
   
   NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:comment];
-  
+  [comment release];
   pos = 0;
   for (NSDictionary *c in comments) {
     NSString *name = [[[c objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"user"] objectForKeyNotNull:@"name"];
@@ -71,7 +71,10 @@
     [attString addAttribute:(NSString *)kCTFontAttributeName value:(id)boldFont range:NSMakeRange(pos, [name length])];
     pos  += [name length] + [text length] + 2;
   }
-  return attString;
+  
+  CFRelease(boldFont);
+  
+  return [attString autorelease];
 }
 
 
@@ -87,7 +90,9 @@
   [label setAttributedText:attString];  
   //CGFloat height = 100.0f;
   CGSize size = [label sizeThatFits:CGSizeMake(300, 1000)];
-  return CGSizeMake(300, size.height+10);
+  size = CGSizeMake(300, size.height+10);
+  [label release];
+  return size;
 }
 
 

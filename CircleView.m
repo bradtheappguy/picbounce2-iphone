@@ -177,7 +177,6 @@ const CGFloat krefreshEllipseHeight = 50.0f;
 	drawRect.size.height = roundf(resolution * drawRect.size.height) / resolution;
 	CGPathAddEllipseInRect(path, NULL, drawRect);
 	colors = [NSMutableArray arrayWithCapacity:2];
-	color = [UIColor colorWithRed:0.878f green:0.835f blue:0.8f alpha:1.0f];
 	color = [UIColor colorWithRedInt:210 greenInt:220 blueInt:222 alphaInt:255];
   
   [colors addObject:(id)[color CGColor]];

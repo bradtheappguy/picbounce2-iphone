@@ -13,7 +13,7 @@
 #import "AppDelegate.h"
 #import "PBSharedUser.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "UIColor+PBColor.h"
 
 #define kIndent 40
 #define kOffset(val) 10
@@ -60,8 +60,10 @@
   tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   tableView.separatorColor = [UIColor lightGrayColor];
   [tableView reloadData];
-  [tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_sharing_settings.png"]]];
+  [tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_pattern.png"]]];
   [self.view addSubview:self.progressHUD];
+  
+ 
 }
 
 - (void)viewDidUnload {
@@ -140,15 +142,23 @@
     }
   }
 
+  customCell.clipsToBounds = NO;
+  [customCell.contentView.layer setCornerRadius:10];
+  [customCell.layer setShadowColor:[UIColor redColor].CGColor];
+  [customCell.layer setShadowOffset:CGSizeMake(2, 2)];
+  [customCell.layer setShadowRadius:5];
+  
   if (indexPath.row == kTwitterLoginCell) {
       
     customCell.statusButton.hidden = YES;
-
-    [customCell.contentView setBackgroundColor:[UIColor colorWithRed:208.0f/255.0f green:205.0f/255.0f blue:205.0f/255.0f alpha:1.0f]];
+    [customCell setBackgroundColor:[UIColor grayCellBackgroundColor]];
+    [customCell.contentView setBackgroundColor:[UIColor grayCellBackgroundColor]];
     [customCell.titleLabel setText:@"Twitter"];
     [customCell.statusButton setTag:indexPath.row];
     [customCell.statusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
-  } else if (indexPath.row == kFaceBookLoginCell) {
+  } 
+  
+  else if (indexPath.row == kFaceBookLoginCell) {
     customCell.nameLabel.hidden = YES;
     if ([[FacebookSingleton sharedFacebook] isSessionValid]) {
       [customCell.statusButton setTitle:@"Logout" forState:UIControlStateNormal];
@@ -156,11 +166,13 @@
     else {
       [customCell.statusButton setTitle:@"Login" forState:UIControlStateNormal];
     }
-    [customCell.contentView setBackgroundColor:[UIColor colorWithRed:239.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1.0f]];
+    [customCell.contentView setBackgroundColor:[UIColor colorWithRed:237.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1.0f]];
     [customCell.titleLabel setText:@"Facebook"];
     [customCell.statusButton setTag:indexPath.row];
     [customCell.statusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
-  } else if (indexPath.row >= kFacebookPagesCell) {
+  } 
+  
+  else if (indexPath.row >= kFacebookPagesCell) {
 
     [customCell.statusButton setHidden:YES];
     if (indexPath.row == 3) {
@@ -168,7 +180,10 @@
     }else {
       [customCell.titleLabel setText:@""];
     }
-
+    [customCell setBackgroundColor:[UIColor whiteColor
+                                                ]];
+        [customCell.contentView setBackgroundColor:[UIColor whiteColor
+                                                    ]];
     PBCheckbox *checkbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
     [checkbox setText:[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"name"]];
     [checkbox setTag:indexPath.row-3];
@@ -188,9 +203,12 @@
     [customCell.contentView addSubview:checkbox];
     [checkbox release];
   } else if (indexPath.row == kFacebookWallCell) {
-
+    [customCell setBackgroundColor:[UIColor whiteColor
+                                    ]];
+    [customCell.contentView setBackgroundColor:[UIColor whiteColor
+                                                ]];
     [customCell.statusButton setHidden:YES];
-    [customCell.titleLabel setText:@"  My Wall"];  
+    [customCell.titleLabel setText:@"  Wall"];  
     customCell.nameLabel.hidden = YES;
     
     PBCheckbox *checkbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
@@ -203,6 +221,12 @@
     [customCell.contentView addSubview:checkbox];
     [checkbox release];
   }
+  
+  NSArray *x = [tableView subviews];
+  for (UIView *view in x) {
+    [view.layer setShadowColor:[UIColor redColor].CGColor];
+  }
+  
 
   return customCell;
 }
@@ -345,6 +369,7 @@
   }
   
   self.facebookPages = pagesFromFacebook;
+  [pagesFromFacebook release];
   [tableView reloadData];
 }
 
