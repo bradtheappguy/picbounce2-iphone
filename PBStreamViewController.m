@@ -225,16 +225,21 @@
 -(void) setTitle:(NSString *)title {
   [super setTitle:title];
   self.navigationItem.title = title;
-  //UILabel *l = (UILabel *)self.navigationItem.titleView;
+  UILabel *l = (UILabel *)[self.navigationItem.titleView viewWithTag:1]; 
+  if ([l.text isEqualToString:@"Feed"]) {
+    return;
+  }
+  
   UIView *vw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
   UILabel *lbl = [[UILabel alloc] init];
-  lbl.text = @"Home";
+  lbl.text = title;
   lbl.textAlignment = UITextAlignmentCenter;
   lbl.backgroundColor = [UIColor clearColor];
   lbl.textColor = [UIColor whiteColor];
   lbl.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
   lbl.shadowColor = [UIColor blackColor];
   lbl.shadowOffset = CGSizeMake(0,1);
+  lbl.tag = 1;
   [lbl sizeToFit];
   [vw setBackgroundColor:[UIColor clearColor]];
   [lbl setBackgroundColor:[UIColor clearColor]];
@@ -249,9 +254,7 @@
   if ([l.text isEqualToString:@"Profile"]) {
     return;
   }
-  if ([l.text isEqualToString:@"Feed"]) {
-    return;
-  }
+
   
   
   if ([l.text isEqualToString:self.navigationItem.title] == NO) {

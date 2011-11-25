@@ -224,10 +224,11 @@
   if ([l.text isEqualToString:self.navigationItem.title] == NO) {
     UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
     label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont boldSystemFontOfSize:20.0];
-    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+    label.shadowColor = [UIColor colorWithRedInt:148 greenInt:148 blueInt:148 alphaInt:128];
+    label.shadowOffset = CGSizeMake(-1, 1);
     label.textAlignment = UITextAlignmentCenter;
-    label.textColor = kNavBarTitleTextColor
+    label.textColor = kNavBarDarkTitleTextColor
     
     label.text = self.navigationItem.title;
     [label sizeToFit];

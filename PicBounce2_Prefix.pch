@@ -18,6 +18,9 @@
     //colors
 #define kNavBarColor		[UIColor colorWithRed:89/255.0 green:66/255.0 blue:50/255.0 alpha:1];
 #define kNavBarTitleTextColor [UIColor colorWithRed:210/255.0 green:213/255.0 blue:214/255.0 alpha:1];
+
+#define kNavBarDarkTitleTextColor [UIColor colorWithRed:31/255.0 green:31/255.0 blue:31/255.0 alpha:1];
+
 #define kBrownTextColor		[UIColor colorWithRedInt:96 greenInt:68 blueInt:42 alphaInt:255];
 #define kBlueTextColor		[UIColor colorWithRedInt:4 greenInt:95 blueInt:180 alphaInt:255];
 
