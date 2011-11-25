@@ -24,7 +24,7 @@ static CGFloat kProgressBarHeight = 16.0f;
     [self bringSubviewToFront:progressBarImageView];
     progressBarImageView.hidden = YES;
   progressBarImageView.backgroundColor = [UIColor clearColor];
-    progressBarImageView.image = [UIImage imageNamed:@"bg_pb@2x.png"];
+    progressBarImageView.image = [UIImage imageNamed:@"bg_pb.png"];
   self.layer.borderColor = [UIColor PBPhotoViewBorderColor].CGColor;
   self.layer.borderWidth = 1;
     
@@ -36,19 +36,19 @@ static CGFloat kProgressBarHeight = 16.0f;
 - (void)setImageURL:(NSURL *)aURL {
   [super setImageURL:aURL];
   if (!self.image && aURL) {
-      progressBarImageView.animationImages = [NSArray arrayWithObjects:[UIImage imageNamed:@"bg_pb@2x.png"],
-                                              [UIImage imageNamed:@"bg_pb_1@2x.png"],
-                                              [UIImage imageNamed:@"bg_pb_2@2x.png"],
-                                              [UIImage imageNamed:@"bg_pb_3@2x.png"],
-                                              [UIImage imageNamed:@"bg_pb_4@2x.png"],
-                                              [UIImage imageNamed:@"bg_pb_5@2x.png"],
-                                              [UIImage imageNamed:@"bg_pb_6@2x.png"],
+      progressBarImageView.animationImages = [NSArray arrayWithObjects:[UIImage imageNamed:@"bg_pb.png"],
+                                              [UIImage imageNamed:@"bg_pb_1.png"],
+                                              [UIImage imageNamed:@"bg_pb_2.png"],
+                                              [UIImage imageNamed:@"bg_pb_3.png"],
+                                              [UIImage imageNamed:@"bg_pb_4.png"],
+                                              [UIImage imageNamed:@"bg_pb_5.png"],
+                                              [UIImage imageNamed:@"bg_pb_6.png"],
                                               nil];
       progressBarImageView.animationDuration = 4;
     progressBarImageView.animationRepeatCount = 1;
 
       [progressBarImageView startAnimating];
-    progressBarImageView.image = [UIImage imageNamed:@"bg_pb_6@2x.png"];
+    progressBarImageView.image = [UIImage imageNamed:@"bg_pb_6.png"];
  progressBarImageView.hidden = NO;
 
   }

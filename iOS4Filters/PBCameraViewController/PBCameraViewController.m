@@ -372,8 +372,8 @@ bail:
 -(void) configureFilterScrollView {
   CGFloat x = 0;
   UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
-  [button1 setBackgroundImage:[UIImage imageNamed:@"btn_original_n@2x"] forState:UIControlStateNormal];
-  [button1 setBackgroundImage:[UIImage imageNamed:@"btn_original_s@2x"] forState:UIControlStateSelected];
+  [button1 setBackgroundImage:[UIImage imageNamed:@"btn_original_n"] forState:UIControlStateNormal];
+  [button1 setBackgroundImage:[UIImage imageNamed:@"btn_original_s"] forState:UIControlStateSelected];
   [button1 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   button1.frame = CGRectMake(0, 0, 58, 58);
   button1.center = CGPointMake(((58/2) + 2), filterScrollView.frame.size.height/2);
@@ -381,8 +381,8 @@ bail:
   [filterScrollView addSubview:button1];
 
   UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-  [button2 setBackgroundImage:[UIImage imageNamed:@"btn_toronto_n@2x"] forState:UIControlStateNormal];
-  [button2 setBackgroundImage:[UIImage imageNamed:@"btn_toronto_s@2x"] forState:UIControlStateSelected];
+  [button2 setBackgroundImage:[UIImage imageNamed:@"btn_toronto_n"] forState:UIControlStateNormal];
+  [button2 setBackgroundImage:[UIImage imageNamed:@"btn_toronto_s"] forState:UIControlStateSelected];
   [button2 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   button2.frame = CGRectMake(0, 0, 58, 58);
   button2.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
@@ -390,8 +390,8 @@ bail:
   [filterScrollView addSubview:button2];
 
   UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
-  [button3 setBackgroundImage:[UIImage imageNamed:@"btn_stockholm_n@2x"] forState:UIControlStateNormal];
-  [button3 setBackgroundImage:[UIImage imageNamed:@"btn_stockholm_s@2x"] forState:UIControlStateSelected];
+  [button3 setBackgroundImage:[UIImage imageNamed:@"btn_stockholm_n"] forState:UIControlStateNormal];
+  [button3 setBackgroundImage:[UIImage imageNamed:@"btn_stockholm_s"] forState:UIControlStateSelected];
   [button3 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   button3.frame = CGRectMake(0, 0, 58, 58);
   button3.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
@@ -399,8 +399,8 @@ bail:
   [filterScrollView addSubview:button3];
   
   UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
-  [button4 setBackgroundImage:[UIImage imageNamed:@"btn_chicago_n@2x"] forState:UIControlStateNormal];
-  [button4 setBackgroundImage:[UIImage imageNamed:@"btn_chicago_s@2x"] forState:UIControlStateSelected];
+  [button4 setBackgroundImage:[UIImage imageNamed:@"btn_chicago_n"] forState:UIControlStateNormal];
+  [button4 setBackgroundImage:[UIImage imageNamed:@"btn_chicago_s"] forState:UIControlStateSelected];
   [button4 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   button4.frame = CGRectMake(0, 0, 58, 58);
   button4.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
@@ -408,28 +408,14 @@ bail:
   [filterScrollView addSubview:button4];
   
   UIButton *button5 = [UIButton buttonWithType:UIButtonTypeCustom];
-  [button5 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_n@2x"] forState:UIControlStateNormal];
-  [button5 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_s@2x"] forState:UIControlStateSelected];
+  [button5 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_n"] forState:UIControlStateNormal];
+  [button5 setBackgroundImage:[UIImage imageNamed:@"btn_sanpaulo_s"] forState:UIControlStateSelected];
   [button5 addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   button5.frame = CGRectMake(0, 0, 58, 58);
   button5.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
   button5.tag = x++;
   [filterScrollView addSubview:button5];
   
-/*
-  for (NSString *filterName in [PBFilteredImage availableFilters]) {
-  //UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-  UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-  [button setBackgroundImage:[UIImage imageNamed:@"btn_original_n@2x"] forState:UIControlStateNormal];
-  [button setBackgroundImage:[UIImage imageNamed:@"btn_original_s@2x"] forState:UIControlStateSelected];
-  [button addTarget:self action:@selector(filterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-  button.frame = CGRectMake(0, 0, 58, 58);
-  button.center = CGPointMake(((58/2) + 2)+(60*(x+1)), filterScrollView.frame.size.height/2);
-  button.tag = x;
-  x++;
-  [filterScrollView addSubview:button];
-  }
-*/
   filterScrollView.contentSize = filterScrollView.bounds.size;
   filterScrollView.alwaysBounceHorizontal = YES;
 }

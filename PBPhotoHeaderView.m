@@ -10,7 +10,7 @@
 #import "NSDictionary+NotNull.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kSpacingBetweenClockIconAndTimeLabel 5
+#define kSpacingBetweenClockIconAndTimeLabel 11
 #define kSpacingBetweenNameLabelAndLocationLabel 3
 
 @implementation PBPhotoHeaderView
@@ -28,8 +28,9 @@
 	[super layoutSubviews];	
 	//Float the clock icon to the left of the time label
   CGSize textSize = [self.timeLabel.text sizeWithFont:self.timeLabel.font];	
-	CGFloat x = self.frame.size.width - textSize.width;
-	self.clockIcon.center = CGPointMake(x - (self.clockIcon.frame.size.width) - kSpacingBetweenClockIconAndTimeLabel, self.clockIcon.center.y);
+	CGFloat x = (self.timeLabel.frame.origin.x + self.timeLabel.frame.size.width) - textSize.width;
+	
+  self.clockIcon.center = CGPointMake(x  - kSpacingBetweenClockIconAndTimeLabel, self.clockIcon.center.y);
   
   CGSize nameTextSize = [self.nameLabel.text sizeWithFont:self.nameLabel.font];	
 	CGRect verfifiedIconFrame = self.verifiedIcon.frame;
@@ -37,7 +38,7 @@
   self.verifiedIcon.frame = verfifiedIconFrame;
   self.avatarImage.layer.cornerRadius = 6;
   self.avatarImage.layer.masksToBounds = YES;
-  self.avatarImage.backgroundColor = [UIColor redColor];
+  self.avatarImage.backgroundColor = [UIColor clearColor];
 }
 
 
@@ -61,7 +62,7 @@
   }
   self.nameLabel.text = screenname?screenname:(name?name:@"");
   self.viewCountLabel.text = [NSString stringWithFormat:@"%@ %@",
-  [viewCount stringValue],NSLocalizedString(@"Views", nil)];
+  [viewCount stringValue],NSLocalizedString(@"views", nil)];
 
   self.timeLabel.text =[(NSNumber *)[photo objectForKeyNotNull:@"created"] cuteTimeString];
   

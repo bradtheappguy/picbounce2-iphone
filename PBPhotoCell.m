@@ -92,7 +92,6 @@
   label.numberOfLines = 0;
   label.underlineLinks = NO;
   [label setAttributedText:attString];  
-  //CGFloat height = 100.0f;
   CGSize size = [label sizeThatFits:CGSizeMake(300, 1000)];
   size = CGSizeMake(300, size.height+10);
   [label release];
@@ -240,9 +239,10 @@
 
 -(void) setPhoto:(NSDictionary *)photo {
   self.alpha = 1;
+  
   self.captionBubble.backgroundColor = [UIColor clearColor];
   self.actionBar.backgroundColor = [UIColor clearColor];
-  self.contentView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+  self.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_pattern"]];
   
   self.bounds = CGRectMake(0, 0, 320, [PBPhotoCell heightWithPhoto:photo]);
   [_photo release];

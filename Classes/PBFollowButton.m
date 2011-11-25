@@ -74,13 +74,13 @@
 -(void) setMode:(PBFollowButtonMode)mode {
   _mode = mode;
   if (mode == PBFollowButtonModeFollowing) {
-    [self setBackgroundImage:[UIImage imageNamed:@"btn_following_s@2x.png"] forState:UIControlStateNormal];
+    [self setBackgroundImage:[UIImage imageNamed:@"btn_following_s.png"] forState:UIControlStateNormal];
     [self setTitle:@"Following" forState:UIControlStateNormal];
     [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [spinner stopAnimating];
   }
   else if (mode == PBFollowButtonModeNotFollowing) {
-    [self setBackgroundImage:[UIImage imageNamed:@"btn_follow_s@2x.png"] forState:UIControlStateNormal];
+    [self setBackgroundImage:[UIImage imageNamed:@"btn_follow_s.png"] forState:UIControlStateNormal];
     [self setTitle:@"Follow" forState:UIControlStateNormal];
     [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [spinner stopAnimating];

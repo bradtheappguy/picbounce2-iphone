@@ -47,12 +47,12 @@
   _selected = isSelected;
 	[_button setSelected:isSelected];
 	if (isSelected) {
-		[_button setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_on@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
+		[_button setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_on.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
 		[_button setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_off.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];		
 	}
 	else {
 		[_button setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_off.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[_button setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_on@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
+		[_button setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_on.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
 	}
 }
 

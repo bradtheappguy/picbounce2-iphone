@@ -19,8 +19,8 @@ static NSUInteger secondaryFontSize = 10;
 static NSUInteger labelInsetTop = 4;
 static NSUInteger labelHeight = 12;
 static NSUInteger backgroundEndCap = 30;
-static NSString *backgroundImangeName = @"btn_comment_n";
-
+static NSString *backgroundImageName = @"btn_comment_n";
+static NSString *backgroundSelectedImageName = @"btn_comment_s";
 
 -(void) awakeFromNib {
   self.titleEdgeInsets = UIEdgeInsetsMake(0, labelInsetLeft, 0, labelInsetRight);
@@ -77,9 +77,11 @@ static NSString *backgroundImangeName = @"btn_comment_n";
   
   [self addSubview:label];
   [self sizeToFit];
-  UIImage *backgroundImage = [[UIImage imageNamed:backgroundImangeName] stretchableImageWithLeftCapWidth:backgroundEndCap topCapHeight:0];
+  UIImage *backgroundImage = [[UIImage imageNamed:backgroundImageName] stretchableImageWithLeftCapWidth:backgroundEndCap topCapHeight:0];
+  UIImage *backgroundSelectedImage = [[UIImage imageNamed:backgroundSelectedImageName] stretchableImageWithLeftCapWidth:backgroundEndCap topCapHeight:0];
+  
   [self setBackgroundImage:backgroundImage forState:UIControlStateNormal];
-  [self setBackgroundImage:backgroundImage forState:UIControlStateHighlighted];
+  [self setBackgroundImage:backgroundSelectedImage forState:UIControlStateHighlighted];
 }
 
 

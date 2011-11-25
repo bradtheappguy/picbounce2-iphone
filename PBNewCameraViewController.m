@@ -74,7 +74,7 @@
   [takePhoto setImage:[UIImage imageNamed:@"btn_capture_n.png"] forState:UIControlStateNormal];
   [takePhoto setAccessibilityLabel:@"Take Photo Button"];
   
-  [takePhoto setBackgroundImage:[UIImage imageNamed:@"btn_bg_capture_upload_n@2x.png"] forState:UIControlStateNormal];
+  [takePhoto setBackgroundImage:[UIImage imageNamed:@"btn_bg_capture_upload_n.png"] forState:UIControlStateNormal];
   [v addSubview:takePhoto];
   
   return v;

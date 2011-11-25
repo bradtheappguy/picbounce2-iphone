@@ -61,13 +61,13 @@
 					<object class="IBUILabel" id="104266852">
 						<reference key="NSNextResponder" ref="201613342"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{237, 4}, {74, 23}}</string>
+						<string key="NSFrame">{{232, 4}, {74, 23}}</string>
 						<reference key="NSSuperview" ref="201613342"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="711562993"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
+						<object class="NSColor" key="IBUIBackgroundColor" id="115379723">
 							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MSAwAA</bytes>
+							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -77,7 +77,7 @@
 						<string key="IBUIText">24 Days</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4zODQzMTM3MjU1IDAuNTMzMzMzMzMzMyAwLjU3MjU0OTAxOTYAA</bytes>
+							<bytes key="NSRGB">MC40NTA5ODAzOTIyIDAuNDkwMTk2MDc4NCAwLjQ5ODAzOTIxNTcAA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<object class="NSColor" key="IBUIShadowColor">
@@ -113,14 +113,11 @@
 					<object class="IBUILabel" id="999968042">
 						<reference key="NSNextResponder" ref="201613342"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{53, 21}, {248, 21}}</string>
+						<string key="NSFrame">{{50, 21}, {251, 21}}</string>
 						<reference key="NSSuperview" ref="201613342"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="104266852"/>
-						<object class="NSColor" key="IBUIBackgroundColor" id="115379723">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MCAwAA</bytes>
-						</object>
+						<reference key="IBUIBackgroundColor" ref="115379723"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -129,7 +126,7 @@
 						<string key="IBUIText">1000 Views</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yIDAuMiAwLjIAA</bytes>
+							<bytes key="NSRGB">MC40ODYyNzQ1MDk4IDAuNTIxNTY4NjI3NSAwLjUyOTQxMTc2NDcAA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -162,7 +159,7 @@
 						<string key="IBUIText">Michael Sorrentino</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yIDAuMiAwLjIAA</bytes>
+							<bytes key="NSRGB">MC4yMzkyMTU2ODYzIDAuNCAwLjU4NDMxMzcyNTUAA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -971,9 +968,9 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{68, 70}</string>
-				<string>{320, 43}</string>
-				<string>{30, 30}</string>
-				<string>{30, 30}</string>
+				<string>{320, 44}</string>
+				<string>{26, 28}</string>
+				<string>{34, 34}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
