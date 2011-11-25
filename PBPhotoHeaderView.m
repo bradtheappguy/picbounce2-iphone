@@ -8,6 +8,7 @@
 #import "PBPhotoHeaderView.h"
 #import "NSString+CuteTime.h"
 #import "NSDictionary+NotNull.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define kSpacingBetweenClockIconAndTimeLabel 5
 #define kSpacingBetweenNameLabelAndLocationLabel 3
@@ -34,6 +35,9 @@
 	CGRect verfifiedIconFrame = self.verifiedIcon.frame;
   verfifiedIconFrame.origin.x = self.nameLabel.frame.origin.x + nameTextSize.width +kSpacingBetweenNameLabelAndLocationLabel;
   self.verifiedIcon.frame = verfifiedIconFrame;
+  self.avatarImage.layer.cornerRadius = 6;
+  self.avatarImage.layer.masksToBounds = YES;
+  self.avatarImage.backgroundColor = [UIColor redColor];
 }
 
 
