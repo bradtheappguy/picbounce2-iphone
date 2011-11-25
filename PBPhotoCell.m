@@ -41,7 +41,8 @@
   }
   
   int pos = 0;
-  UIFont *boldSystemFont = [UIFont boldSystemFontOfSize:14]; 
+  
+  UIFont *boldSystemFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10];
   CTFontRef boldFont = CTFontCreateWithName((CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
   
   for (NSDictionary *c in comments) {
@@ -55,11 +56,15 @@
     [comment appendString:@" "];
     pos++;
     [comment appendString:text];    
-    [comment appendString:@"\n"];
+    if (c != [comments lastObject]) {
+      [comment appendString:@"\n\n"];
+    }  
     pos += [text length] + 1;
   }
   
   NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:comment];
+  [attString setFont:[UIFont fontWithName:@"HelveticaNeue" size:10]];
+  
   [comment release];
   pos = 0;
   for (NSDictionary *c in comments) {
@@ -69,7 +74,7 @@
       text = @"";
     }
     [attString addAttribute:(NSString *)kCTFontAttributeName value:(id)boldFont range:NSMakeRange(pos, [name length])];
-    pos  += [name length] + [text length] + 2;
+    pos  += [name length] + [text length] + 3;
   }
   
   CFRelease(boldFont);
@@ -82,7 +87,6 @@
   NSAttributedString *attString = [PBPhotoCell attributedStringForComments:comments withString:nil];
   OHAttributedLabel *label = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
   label.linkColor = [UIColor blackColor];
-  label.font = [UIFont systemFontOfSize:14];
   label.textColor = [UIColor darkGrayColor];
   label.lineBreakMode = UILineBreakModeWordWrap;
   label.numberOfLines = 0;
@@ -110,7 +114,7 @@
   NSArray *comments = [photo objectForKeyNotNull:@"comments"];
   CGFloat commentsSize = [PBPhotoCell sizeForCommentViewWithComments:comments].height;
   
-  CGFloat heoght = captionHeight + photoHeight + 35 + commentsSize + 20;
+  CGFloat heoght = captionHeight + photoHeight + 35 + commentsSize + 7;
   return heoght;
 }
 
@@ -196,18 +200,18 @@
 -(void) setComments:(NSArray *)comments {
   NSAttributedString *attString = [PBPhotoCell attributedStringForComments:comments withString:nil];
   OHAttributedLabel *label = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
-  label.linkColor = [UIColor blackColor];
+
+  label.linkColor = [UIColor colorWithRedInt:115 greenInt:125 blueInt:127 alphaInt:255];
   label.backgroundColor = [UIColor clearColor];
   int pos = 0;
-  self.commentPreview = label;
-  [self addSubview:self.commentPreview];
-  label.font = [UIFont systemFontOfSize:14];
-  label.textColor = [UIColor darkGrayColor];
+  
+  //label.textColor = [UIColor colorWithRedInt:51 greenInt:51 blueInt:51 alphaInt:255];
   label.lineBreakMode = UILineBreakModeWordWrap;
   label.numberOfLines = 0;
   label.underlineLinks = NO;
   label.delegate = self;
   [label setAttributedText:attString];
+  
   
   int count = 0;
   for (NSDictionary *c in comments) {
@@ -219,13 +223,19 @@
       text = @"";
     }
     [label addCustomLink:[NSURL URLWithString:[NSString stringWithFormat:@"%d",count]] inRange:NSMakeRange(pos, [name length])];
-    pos += [name length] + 1 + [text length] + 1;
+    
+    pos += [name length] + 1 + [text length] + 1 + 1;
     count++;
   }
   
   //CGFloat height = 100.0f;
   CGSize size = [label sizeThatFits:CGSizeMake(300, 1000)];
   label.frame = CGRectMake(10, self.captionBubble.frame.size.height+self.photoImageView.frame.size.height+self.actionBar.frame.size.height, 300, size.height+10);
+  [label setBackgroundColor:[UIColor clearColor]];
+  
+
+  //self.commentPreview = label;
+  [self addSubview:label];
 }
 
 -(void) setPhoto:(NSDictionary *)photo {
