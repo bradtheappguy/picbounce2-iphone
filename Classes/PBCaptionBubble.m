@@ -9,7 +9,8 @@
 #import "PBCaptionBubble.h"
 
 static NSString *kCaptionFontName = @"HelveticaNeue";
-static CGFloat kCaptionFontSize = 14.0;
+static CGFloat kCaptionFontSize = 12.0;
+static CGFloat kVerticalPadding = 5;
 
 
 @implementation PBCaptionBubble
@@ -22,9 +23,10 @@ static CGFloat kCaptionFontSize = 14.0;
   return [UIFont fontWithName:kCaptionFontName size:kCaptionFontSize];
 }
 
+
 +(CGSize) sizeForCaptionWithString:(NSString*)string {
-  CGSize size = [string sizeWithFont:[PBCaptionBubble captionfont] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeWordWrap]; 
-  return CGSizeMake(300, size.height+30);
+  CGSize size = [string sizeWithFont:[PBCaptionBubble captionfont] constrainedToSize:CGSizeMake(255, 1000) lineBreakMode:UILineBreakModeWordWrap]; 
+  return CGSizeMake(300, size.height+47);
 }
 
 
@@ -35,13 +37,14 @@ static CGFloat kCaptionFontSize = 14.0;
    self.captionLabel.numberOfLines = 0;
   self.captionLabel.backgroundColor = [UIColor clearColor];
   self.captionLabel.font = [PBCaptionBubble captionfont];
-   self.captionLabel.lineBreakMode = UILineBreakModeWordWrap;
+  self.captionLabel.textColor = [UIColor colorWithRedInt:107 greenInt:107 blueInt:107 alphaInt:255];
+  self.captionLabel.lineBreakMode = UILineBreakModeWordWrap;
   
   UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 47)];
   self.bubbleView = iv;
   [iv release];
   
-  self.bubbleView.image = [[UIImage imageNamed:@"bg_caption_text"] stretchableImageWithLeftCapWidth:30 topCapHeight:18];
+  self.bubbleView.image = [[UIImage imageNamed:@"bg_caption_text"] stretchableImageWithLeftCapWidth:30 topCapHeight:30];
   
   [self addSubview:self.bubbleView];
   [self addSubview:self.captionLabel];
@@ -64,8 +67,14 @@ static CGFloat kCaptionFontSize = 14.0;
 
 -(void) setFrame:(CGRect)frame {
   [super setFrame:frame];
+  
+  
   self.bubbleView.frame = CGRectMake(0, 0, 300, self.bounds.size.height-5);
-  self.captionLabel.frame = CGRectMake(10, 5, 280, self.bounds.size.height-10);
+  
+  CGSize size = [self.captionLabel.text sizeWithFont:[PBCaptionBubble captionfont] constrainedToSize:CGSizeMake(255, 1000) lineBreakMode:UILineBreakModeWordWrap]; 
+
+  self.captionLabel.frame = CGRectMake((300-255)/2, (frame.size.height/2)-(size.height/2) + 2, 255, size.height);
+  
 }
 
 
