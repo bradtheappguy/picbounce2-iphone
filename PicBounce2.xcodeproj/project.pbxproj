@@ -487,6 +487,7 @@
 		A2FFB80A1480305500F98E28 /* resizer in Resources */ = {isa = PBXBuildFile; fileRef = A2FFB6F11480305500F98E28 /* resizer */; };
 		A2FFB80B1480305500F98E28 /* signin_header.png in Resources */ = {isa = PBXBuildFile; fileRef = A2FFB6F21480305500F98E28 /* signin_header.png */; };
 		A2FFB80C1480305500F98E28 /* signin_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2FFB6F31480305500F98E28 /* signin_header@2x.png */; };
+		A2FFB80F1480743900F98E28 /* PBEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FFB80E1480743800F98E28 /* PBEmptyView.m */; };
 		D136E6851471017400A2FEB3 /* PBNewFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D136E6831471017400A2FEB3 /* PBNewFilterViewController.m */; };
 		D136E6861471017400A2FEB3 /* PBNewFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D136E6841471017400A2FEB3 /* PBNewFilterViewController.xib */; };
 		D1927A0F147087FC0026C421 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1927A0E147087FC0026C421 /* Accelerate.framework */; };
@@ -1136,6 +1137,8 @@
 		A2FFB6F11480305500F98E28 /* resizer */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = resizer; sourceTree = "<group>"; };
 		A2FFB6F21480305500F98E28 /* signin_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_header.png; sourceTree = "<group>"; };
 		A2FFB6F31480305500F98E28 /* signin_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin_header@2x.png"; sourceTree = "<group>"; };
+		A2FFB80D1480743800F98E28 /* PBEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBEmptyView.h; sourceTree = "<group>"; };
+		A2FFB80E1480743800F98E28 /* PBEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBEmptyView.m; sourceTree = "<group>"; };
 		D1212B7D145E03A700370D89 /* ModalDismissDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalDismissDelegate.h; sourceTree = "<group>"; };
 		D136E6821471017400A2FEB3 /* PBNewFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBNewFilterViewController.h; sourceTree = "<group>"; };
 		D136E6831471017400A2FEB3 /* PBNewFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBNewFilterViewController.m; sourceTree = "<group>"; };
@@ -1222,6 +1225,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A2FFB80D1480743800F98E28 /* PBEmptyView.h */,
+				A2FFB80E1480743800F98E28 /* PBEmptyView.m */,
 				A2FADFD51474524C00CA615B /* UIColor+PBColor.h */,
 				A2FADFD61474524C00CA615B /* UIColor+PBColor.m */,
 				D136E6821471017400A2FEB3 /* PBNewFilterViewController.h */,
@@ -2978,6 +2983,7 @@
 				A267ACEE1470B9CA0022B955 /* PBNavigationBarButtonItem.m in Sources */,
 				D136E6851471017400A2FEB3 /* PBNewFilterViewController.m in Sources */,
 				A2FADFD71474524C00CA615B /* UIColor+PBColor.m in Sources */,
+				A2FFB80F1480743900F98E28 /* PBEmptyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

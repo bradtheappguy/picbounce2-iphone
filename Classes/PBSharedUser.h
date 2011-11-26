@@ -42,4 +42,6 @@
 + (void) setName:(NSString *)userID;
 + (NSString *) name;
     
++ (NSString *) screenname;
++ (void) setScreenname:(NSString *)screenname;
 @end

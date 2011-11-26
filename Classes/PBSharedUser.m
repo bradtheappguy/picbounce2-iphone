@@ -18,12 +18,20 @@
   [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"USER_ID"];
 }
 
++ (void) setName:(NSString *)name {
+  [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"USER_NAME"];
+}
+
 + (NSString *) name {
   return [[NSUserDefaults standardUserDefaults] objectForKey:@"USER_NAME"];
 }
 
-+ (void) setName:(NSString *)userID {
-  [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"USER_NAME"];
++ (NSString *) screenname {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:@"USER_SCREEN_NAME"];
+}
+
++ (void) setScreenname:(NSString *)screenname {
+  [[NSUserDefaults standardUserDefaults] setObject:screenname forKey:@"USER_SCREEN_NAME"];
 }
 
 + (BOOL) shouldCrosspostToFB {

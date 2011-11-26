@@ -50,6 +50,7 @@
 @synthesize followersCountLabel;
 @synthesize followingCountLabel;
 @synthesize badgesCountLabel;
+@synthesize emptyView;
 
 - (UIView *)createDefaultView {
    
@@ -132,21 +133,32 @@
 }
 
 -(void) showEmptyState {
-  UIView *emptyView = [self.view viewWithTag:-37];
-  if (!emptyView) {
-    emptyView = [self createDefaultView];
+  if ([self.navigationController.viewControllers count] > 1 ) {
+    UILabel *view = [[UILabel alloc] initWithFrame:CGRectMake(0, self.profileHeader.frame.size.height, 320, 200)];
+    view.numberOfLines = 2;
+    view.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    view.textAlignment = UITextAlignmentCenter;
+    view.textColor = [UIColor colorWithRedInt:57 greenInt:77 blueInt:97 alphaInt:255];
+    view.text = @"This person hasn't been sharing the love.\nMaybe they need a nudge from you.";
+    view.backgroundColor = [UIColor clearColor];
+    [self.tableView addSubview:view];
   }
-    [self.tableView addSubview:emptyView]; 
+  else {
+    NSString *name = [PBSharedUser name];
+    NSString *screenname= [PBSharedUser screenname];
+    [self.emptyView setUserName:name];
+    [self.emptyView setScreenName:screenname];
+    self.emptyView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_pattern"]];
+    [self.tableView addSubview:self.emptyView]; 
     self.tableView.scrollEnabled = NO;
+  }
 }
 
 
 -(void) hideEmptyState {
-       
-        [[self.view viewWithTag:-37] removeFromSuperview];
-        //[self.tableView addSubview:[self createDefaultView]];
-    
-    self.tableView.scrollEnabled = YES;
+  
+  [self.emptyView removeFromSuperview];
+  self.tableView.scrollEnabled = YES;
 }
 
 - (void) reload {
@@ -430,6 +442,7 @@
   [spinner startAnimating];
   spinner.center = loadMoreCell.center;
   [spinner release];
+  
   return loadMoreCell;
 }
 
@@ -495,9 +508,15 @@
 }
 
 -(void) loadMoreData {
-  [footerView startLoadingAnimation];
-  [footerView setBottomReachedIndicatorHidden:YES];
-  [self loadMoreFromNetwork];
+  if ([self.responseData numberOfPosts] < 5) {
+    [footerView setBottomReachedIndicatorHidden:YES];
+    [footerView stopLoadingAnimation];
+  }
+  else {
+    [footerView startLoadingAnimation];
+    [footerView setBottomReachedIndicatorHidden:YES];
+    [self loadMoreFromNetwork];
+  }
 }
 
 -(void) moreDataDidLoad {
@@ -509,11 +528,12 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.section == [self numberOfSectionsInTableView:tableView] - 1) {
     if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1) {
-      if ([self.responseData numberOfPosts] > 0) {
+
         if ([self moreDataAvailable]) {
           [self loadMoreData];
         }
-      }
+      
+      
     }
   }
 }

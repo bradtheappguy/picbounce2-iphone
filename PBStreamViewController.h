@@ -12,6 +12,7 @@
 #import "PBRootViewController.h"
 #import "EGOImageView.h"
 #import "PBLoadMoreTablewViewFooter.h"
+#import "PBEmptyView.h"
 
 @class PBPhotoHeaderView, PBTableTitleTableViewCell, PBPhotoCell;
 
@@ -42,9 +43,10 @@
   UINavigationBar *customNavigationBar;
   PBLoadMoreTablewViewFooter *footerView;
     
-    IBOutlet UIView *a_DefaultView;
+    
 }
 
+@property (nonatomic, retain) IBOutlet PBEmptyView *emptyView;
 @property (nonatomic, retain) IBOutlet PBProfileHeaderView *profileHeader;
 @property (nonatomic, retain) IBOutlet EGOImageView *avatarIcon;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;

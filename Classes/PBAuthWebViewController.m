@@ -91,10 +91,17 @@
     NSString *userID = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
     [PBSharedUser setUserID:userID];
 
-    pattern = [NSRegularExpression regularExpressionWithPattern:@"screen_name=(.+)" options:NSRegularExpressionCaseInsensitive error:nil];
+    pattern = [NSRegularExpression regularExpressionWithPattern:@"screen_name=(.+)&" options:NSRegularExpressionCaseInsensitive error:nil]; 
+    patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
+    NSString *screenname = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
+    screenname = [screenname stringByReplacingOccurrencesOfString:@"&" withString:@""];
+    [PBSharedUser setScreenname:screenname];
+    
+    pattern = [NSRegularExpression regularExpressionWithPattern:@"&name=(.+)" options:NSRegularExpressionCaseInsensitive error:nil];
     patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
     NSString *name = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
-    [PBSharedUser setName:name];
+    [PBSharedUser setName:[name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
 
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
