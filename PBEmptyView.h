@@ -12,6 +12,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (retain, nonatomic) IBOutlet UILabel *urlLabel;
 
-- (void) setUserName:(NSDictionary *)name;
-- (void) setScreenName:(NSDictionary *)screenname;
+- (void) setUserName:(NSString *)name;
+- (void) setScreenName:(NSString *)screenname;
 @end

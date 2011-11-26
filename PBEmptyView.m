@@ -17,11 +17,11 @@
   
 }
 
-- (void) setUserName:(NSDictionary *)userName {
+- (void) setUserName:(NSString *)userName {
   self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome, %@",userName];
 }
 
-- (void) setScreenName:(NSDictionary *)screenname {
+- (void) setScreenName:(NSString *)screenname {
   self.urlLabel.text = [NSString stringWithFormat:@"Upload a photo at www.via.me/%@",screenname];
   [self.urlLabel sizeToFit];
   CGRect frame = self.urlLabel.frame;

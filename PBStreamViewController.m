@@ -134,14 +134,18 @@
 
 -(void) showEmptyState {
   if ([self.navigationController.viewControllers count] > 1 ) {
-    UILabel *view = [[UILabel alloc] initWithFrame:CGRectMake(0, self.profileHeader.frame.size.height, 320, 200)];
+    UILabel *view = [[UILabel alloc] initWithFrame:CGRectMake(0, self.profileHeader.frame.size.height, 320, 71)];
     view.numberOfLines = 2;
-    view.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    view.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
     view.textAlignment = UITextAlignmentCenter;
     view.textColor = [UIColor colorWithRedInt:57 greenInt:77 blueInt:97 alphaInt:255];
+    view.shadowColor = [UIColor whiteColor];
+    view.shadowOffset = CGSizeMake(0, -1);
+    
     view.text = @"This person hasn't been sharing the love.\nMaybe they need a nudge from you.";
     view.backgroundColor = [UIColor clearColor];
     [self.tableView addSubview:view];
+
   }
   else {
     NSString *name = [PBSharedUser name];
@@ -162,7 +166,7 @@
 }
 
 - (void) reload {
-  [self.tableView reloadData];
+  [super reload];
   
   NSDictionary *user = [self.responseData user];
   NSString *name = [user objectForKeyNotNull:@"screen_name"]; 
@@ -193,7 +197,9 @@
     [footerView startLoadingAnimation];
   }
   else {
-    [footerView setBottomReachedIndicatorHidden:NO];
+    if ([self.responseData numberOfPosts] > 0) {
+      [footerView setBottomReachedIndicatorHidden:NO];
+    }
     [footerView stopLoadingAnimation];
   }
 }
