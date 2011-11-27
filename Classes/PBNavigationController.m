@@ -70,8 +70,8 @@
     }
   }
 
--(void) layoutSubviews {
-  [super layoutSubviews];
+-(void) biLayoutSubviews {
+  [self biLayoutSubviews];
   [self setStyle:self.tag];
 }
 

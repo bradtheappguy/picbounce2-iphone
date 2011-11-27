@@ -301,7 +301,7 @@
 -(IBAction)commentButtonPressed:(UIButton *)sender {
   
   PBCommentListViewController *vc = [[PBCommentListViewController alloc] initWithNibName:@"PBCommentListViewController" bundle:nil];
-  vc.navigationItem.title = @"Comments";
+  [vc setTitle:@"Comments"];
   vc.post = self.photo;
   
   vc.hidesBottomBarWhenPushed = YES;
@@ -369,20 +369,11 @@
 -(BOOL)attributedLabel:(OHAttributedLabel*)attributedLabel shouldFollowLink:(NSTextCheckingResult*)linkInfo {
   NSUInteger index = [[[linkInfo URL] absoluteString] intValue];
   NSDictionary *comment = [[self.photo objectForKeyNotNull:@"comments"] objectAtIndex:index];
+  NSDictionary *user = [[comment objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"user"];
+  NSString *userID = [user objectForKeyNotNull:@"id"];
+  NSString *screenName = [user objectForKeyNotNull:@"screen_name"];
   
-  NSString *userID = [[[comment objectForKeyNotNull:@"comment"] objectForKeyNotNull:@"user"] objectForKeyNotNull:@"id"];
-  
-  
-  PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
-  vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,userID];
-  vc.shouldShowProfileHeader = YES;
-  vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
-  vc.pullsToRefresh = YES;
-  [self.tableViewController.navigationController pushViewController:vc animated:YES];
-  NSString *title = [[[comment objectForKeyNotNull:@"comment"] objectForKey:@"user"] objectForKeyNotNull:@"screen_name"];
-                      //vc.title = title;
-  vc.navigationItem.title = title;
-  [vc release];
+  [tableViewController pushNewStreamViewControllerWithUserID:userID screenName:screenName];
   
   return NO;
 }

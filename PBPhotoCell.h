@@ -11,9 +11,9 @@
 #import "ASIHTTPRequest.h"
 #import "OHAttributedLabel.h"
 #import "PBCaptionBubble.h"
+#import "PBStreamViewController.h"
 
 @interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate, OHAttributedLabelDelegate> {
-  UITableViewController *tableViewController;
 
   ASIHTTPRequest *_followingRequest;
 }
@@ -24,7 +24,7 @@
 - (IBAction)commentButtonPressed:(id)sender;
 - (IBAction)actionButtonPressed:(id)sender;
 
-@property (nonatomic, assign) UITableViewController *tableViewController;
+@property (nonatomic, assign) PBStreamViewController *tableViewController;
 @property (retain, nonatomic) IBOutlet UIView *actionBar;
 
 @property (nonatomic, retain) NSDictionary *photo; 

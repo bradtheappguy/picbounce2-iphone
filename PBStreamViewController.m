@@ -255,37 +255,14 @@
 -(void) setTitle:(NSString *)title {
   [super setTitle:title];
   self.navigationItem.title = title;
-  UILabel *l = (UILabel *)[self.navigationItem.titleView viewWithTag:1]; 
+  UILabel *l = (UILabel *)self.navigationItem.titleView;
+  
   if ([l.text isEqualToString:@"Feed"]) {
     return;
   }
-  
-  UIView *vw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-  UILabel *lbl = [[UILabel alloc] init];
-  lbl.text = title;
-  lbl.textAlignment = UITextAlignmentCenter;
-  lbl.backgroundColor = [UIColor clearColor];
-  lbl.textColor = [UIColor whiteColor];
-  lbl.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
-  lbl.shadowColor = [UIColor blackColor];
-  lbl.shadowOffset = CGSizeMake(0,1);
-  lbl.tag = 1;
-  [lbl sizeToFit];
-  [vw setBackgroundColor:[UIColor clearColor]];
-  [lbl setBackgroundColor:[UIColor clearColor]];
-  self.navigationItem.titleView = vw;
-  [self.navigationItem.titleView addSubview:lbl];
-  lbl.center = vw.center;
-  
-  
-  
-  /*
-  
   if ([l.text isEqualToString:@"Profile"]) {
     return;
   }
-
-  
   
   if ([l.text isEqualToString:self.navigationItem.title] == NO) {
     UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
@@ -299,8 +276,9 @@
     
     self.navigationItem.titleView = label;
     [label sizeToFit];
-  }*/
+  }
 }
+
 #pragma mark Open Create Post View
 - (void)createPost {
     PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"PBNewPostViewController" bundle:nil];
@@ -572,23 +550,16 @@
 
 
 -(void) pushNewStreamViewControllerWithUserID:(NSString *)userID screenName:(NSString*)screenName {
-
- 
-
-  
-  
-  
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
-
   vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,userID];
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
   vc.pullsToRefresh = YES;
   [vc setTitle:screenName];
-  //vc.navigationItem.title = screenName;
   [self.navigationController pushViewController:vc animated:YES];
   [vc release];
 }
+
 
 #pragma mark Buttons and Gesture Recoginizers
 
@@ -678,7 +649,6 @@
   profileAvatarImageView.image = [info objectForKey:UIImagePickerControllerEditedImage];
 }
 
--(IBAction)leaveCommentButtonPressed:(id)sender{}
 
 -(void) showLoadingIndicator11 {
     if (loadingView) {

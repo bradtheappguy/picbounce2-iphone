@@ -19,6 +19,7 @@ res = Net::HTTP.start(url.host, url.port) {|http|
 }
 
 xml_data = res.body
+puts xml_data
 story_name = ""
 
 doc = REXML::Document.new(xml_data)
@@ -29,4 +30,4 @@ end
 my_file = File.new("/tmp/msg", 'w')
 puts "[#{verb} ##{storyID}] #{story_name}"
 
-`git commit -t /tmp/msg`
+system("git commit -t /tmp/msg")

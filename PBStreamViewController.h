@@ -83,4 +83,5 @@
 -(BOOL) moreDataAvailable;
 -(void) configureNavigationBar;
 - (UIView *) footerViewForTable:(UITableView *)tableView;
+-(void) pushNewStreamViewControllerWithUserID:(NSString *)userID screenName:(NSString*)screenName;
 @end
