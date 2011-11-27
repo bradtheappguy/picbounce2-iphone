@@ -59,7 +59,7 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
 
 
 - (void) unflagPhotoRequestDidFinish:(ASIHTTPRequest *)request {
-  if ([request responseStatusCode] != 205) {
+  if ([request responseStatusCode] != 201) {
     [self unflagPhotoRequestDidFail:request];
   }
   else {
@@ -115,7 +115,7 @@ NSString *const PBAPIUserWasUnfollowedNotification = @"PBAPIUserWasUnfollowedNot
 }
 
 - (void) deletePhotoRequestDidFinish:(ASIHTTPRequest *)request {
-  if ([request responseStatusCode] != 205) {
+  if ([request responseStatusCode] != 201) {
     [self deletePhotoRequestDidFail:request];
   }
   else {
