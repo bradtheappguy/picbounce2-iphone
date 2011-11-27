@@ -196,7 +196,7 @@
 							<int key="traits">0</int>
 							<double key="pointSize">12</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="983892793">
+						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">HelveticaNeue-Medium</string>
 							<double key="NSSize">12</double>
 							<int key="NSfFlags">16</int>
@@ -279,7 +279,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<string key="NSFrameSize">{320, 80}</string>
 						<reference key="NSSuperview" ref="729704536"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="974333057"/>
+						<reference key="NSNextKeyView" ref="321881444"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEgMAA</bytes>
@@ -295,7 +295,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 					<object class="IBUIButton" id="907406078">
 						<reference key="NSNextResponder" ref="729704536"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{240, 42}, {76, 30}}</string>
+						<string key="NSFrame">{{237, 38}, {76, 34}}</string>
 						<reference key="NSSuperview" ref="729704536"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -314,34 +314,22 @@ AAgACAAIAAEAAQABAAE</bytes>
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<int key="type">2</int>
-							<double key="pointSize">15</double>
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="297899801">
+							<string key="name">HelveticaNeue-Bold</string>
+							<string key="family">Helvetica Neue</string>
+							<int key="traits">2</int>
+							<double key="pointSize">13</double>
 						</object>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">15</double>
+						<object class="NSFont" key="IBUIFont" id="536063478">
+							<string key="NSName">HelveticaNeue-Bold</string>
+							<double key="NSSize">13</double>
 							<int key="NSfFlags">16</int>
-						</object>
-					</object>
-					<object class="IBUIImageView" id="974333057">
-						<reference key="NSNextResponder" ref="729704536"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{6, 6}, {72, 72}}</string>
-						<reference key="NSSuperview" ref="729704536"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="321881444"/>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">bg_profileheader@2x.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="321881444">
 						<reference key="NSNextResponder" ref="729704536"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{12, 12}, {60, 60}}</string>
+						<string key="NSFrame">{{12, 11}, {60, 60}}</string>
 						<reference key="NSSuperview" ref="729704536"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="341098698"/>
@@ -351,10 +339,11 @@ AAgACAAIAAEAAQABAAE</bytes>
 					<object class="IBUILabel" id="341098698">
 						<reference key="NSNextResponder" ref="729704536"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{83, 0}, {246, 36}}</string>
+						<string key="NSFrame">{{80, -1}, {246, 36}}</string>
 						<reference key="NSSuperview" ref="729704536"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="112137664"/>
+						<reference key="IBUIBackgroundColor" ref="618064314"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -363,7 +352,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<string key="IBUIText">Michael Sorrentino.</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yIDAuMiAwLjIAA</bytes>
+							<bytes key="NSRGB">MC4yODIzNTI5NDEyIDAuNTU2ODYyNzQ1MSAwLjY5MDE5NjA3ODQAA</bytes>
 						</object>
 						<reference key="IBUIHighlightedColor" ref="741675772"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -383,7 +372,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 					<object class="IBUIButton" id="224396617">
 						<reference key="NSNextResponder" ref="729704536"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{81, 36}, {70, 42}}</string>
+						<string key="NSFrame">{{79, 38}, {70, 34}}</string>
 						<reference key="NSSuperview" ref="729704536"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="694902565"/>
@@ -391,7 +380,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<double key="IBUIContentEdgeInsets.top">-15</double>
+						<double key="IBUIContentEdgeInsets.top">-9</double>
 						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
 						<double key="IBUIContentEdgeInsets.left">0.0</double>
 						<double key="IBUIContentEdgeInsets.right">0.0</double>
@@ -400,29 +389,20 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<reference key="IBUIHighlightedTitleColor" ref="741675772"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yMTU2ODYyNzQ1IDAuNDIzNTI5NDExOCAwLjQ0MzEzNzI1NDkAA</bytes>
+							<bytes key="NSRGB">MC40Mjc0NTA5ODA0IDAuNDk0MTE3NjQ3MSAwLjQ5ODAzOTIxNTcAA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="451562483"/>
 						<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="986102169">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">btn_profile_score_n.png</string>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="699466553">
-							<string key="name">HelveticaNeue-Bold</string>
-							<string key="family">Helvetica Neue</string>
-							<int key="traits">2</int>
-							<double key="pointSize">18</double>
-						</object>
-						<object class="NSFont" key="IBUIFont" id="519405874">
-							<string key="NSName">HelveticaNeue-Bold</string>
-							<double key="NSSize">18</double>
-							<int key="NSfFlags">16</int>
-						</object>
+						<reference key="IBUIFontDescription" ref="297899801"/>
+						<reference key="IBUIFont" ref="536063478"/>
 					</object>
 					<object class="IBUIButton" id="694902565">
 						<reference key="NSNextResponder" ref="729704536"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{162, 36}, {70, 42}}</string>
+						<string key="NSFrame">{{157, 38}, {70, 34}}</string>
 						<reference key="NSSuperview" ref="729704536"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="302053678"/>
@@ -431,7 +411,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<double key="IBUIContentEdgeInsets.top">-15</double>
+						<double key="IBUIContentEdgeInsets.top">-9</double>
 						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
 						<double key="IBUIContentEdgeInsets.left">0.0</double>
 						<double key="IBUIContentEdgeInsets.right">0.0</double>
@@ -440,17 +420,17 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<reference key="IBUIHighlightedTitleColor" ref="741675772"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yMTU2ODYyNzQ1IDAuNDIzNTI5NDExOCAwLjQ0MzEzNzI1NDkAA</bytes>
+							<bytes key="NSRGB">MC40Mjc0NTA5ODA0IDAuNDk0MTE3NjQ3MSAwLjQ5ODAzOTIxNTcAA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="451562483"/>
 						<reference key="IBUINormalBackgroundImage" ref="986102169"/>
-						<reference key="IBUIFontDescription" ref="699466553"/>
-						<reference key="IBUIFont" ref="519405874"/>
+						<reference key="IBUIFontDescription" ref="297899801"/>
+						<reference key="IBUIFont" ref="536063478"/>
 					</object>
 					<object class="IBUILabel" id="302053678">
 						<reference key="NSNextResponder" ref="729704536"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{162, 59}, {70, 16}}</string>
+						<string key="NSFrame">{{157, 56}, {70, 16}}</string>
 						<reference key="NSSuperview" ref="729704536"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="907406078"/>
@@ -462,28 +442,33 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<string key="IBUIText">Followers</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yMTU2ODYyNzQ1IDAuNDIzNTI5NDExOCAwLjQ0MzEzNzI1NDkAA</bytes>
+							<bytes key="NSRGB">MC40Mjc0NTA5ODA0IDAuNDk0MTE3NjQ3MSAwLjQ5ODAzOTIxNTcAA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="328119072">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="858492775">
 							<string key="name">HelveticaNeue</string>
 							<string key="family">Helvetica Neue</string>
 							<int key="traits">0</int>
-							<double key="pointSize">12</double>
+							<double key="pointSize">10</double>
 						</object>
-						<reference key="IBUIFont" ref="983892793"/>
+						<object class="NSFont" key="IBUIFont" id="514007445">
+							<string key="NSName">HelveticaNeue-Medium</string>
+							<double key="NSSize">10</double>
+							<int key="NSfFlags">16</int>
+						</object>
 					</object>
 					<object class="IBUILabel" id="795865078">
 						<reference key="NSNextResponder" ref="729704536"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{80, 59}, {70, 16}}</string>
+						<string key="NSFrame">{{80, 56}, {70, 16}}</string>
 						<reference key="NSSuperview" ref="729704536"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="224396617"/>
+						<reference key="IBUIBackgroundColor" ref="618064314"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -492,15 +477,15 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<string key="IBUIText">Posts</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yMTU2ODYyNzQ1IDAuNDIzNTI5NDExOCAwLjQ0MzEzNzI1NDkAA</bytes>
+							<bytes key="NSRGB">MC40Mjc0NTA5ODA0IDAuNDk0MTE3NjQ3MSAwLjQ5ODAzOTIxNTcAA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
-						<reference key="IBUIFontDescription" ref="328119072"/>
-						<reference key="IBUIFont" ref="983892793"/>
+						<reference key="IBUIFontDescription" ref="858492775"/>
+						<reference key="IBUIFont" ref="514007445"/>
 					</object>
 					<object class="IBUIImageView" id="112137664">
 						<reference key="NSNextResponder" ref="729704536"/>
@@ -744,7 +729,6 @@ AAgACAAIAAEAAQABAAE</bytes>
 							<reference ref="341098698"/>
 							<reference ref="1045482042"/>
 							<reference ref="224396617"/>
-							<reference ref="974333057"/>
 							<reference ref="694902565"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -800,12 +784,6 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<string key="objectName">Followers Count Button</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">88</int>
-						<reference key="object" ref="974333057"/>
-						<reference key="parent" ref="729704536"/>
-						<string key="objectName">Photo Cover</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">109</int>
 						<reference key="object" ref="786285617"/>
 						<reference key="parent" ref="994916943"/>
@@ -839,7 +817,6 @@ AAgACAAIAAEAAQABAAE</bytes>
 					<string>86.IBPluginDependency</string>
 					<string>87.CustomClassName</string>
 					<string>87.IBPluginDependency</string>
-					<string>88.IBPluginDependency</string>
 					<string>89.IBPluginDependency</string>
 					<string>90.IBPluginDependency</string>
 					<string>91.IBPluginDependency</string>
@@ -872,7 +849,6 @@ AAgACAAIAAEAAQABAAE</bytes>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>EGOImageView</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1497,7 +1473,6 @@ AAgACAAIAAEAAQABAAE</bytes>
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>bg_empty_feed.png</string>
 				<string>bg_profileheader.png</string>
-				<string>bg_profileheader@2x.png</string>
 				<string>btn_profile_score_n.png</string>
 				<string>ico_verified.png</string>
 			</object>
@@ -1505,7 +1480,6 @@ AAgACAAIAAEAAQABAAE</bytes>
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{265, 340}</string>
 				<string>{320, 84}</string>
-				<string>{640, 168}</string>
 				<string>{70, 34}</string>
 				<string>{17, 17}</string>
 			</object>

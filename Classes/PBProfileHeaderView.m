@@ -8,6 +8,7 @@
 
 #import "PBProfileHeaderView.h"
 #import "NSDictionary+NotNull.h"
+#import <QuartzCore/QuartzCore.h>
 
 static const NSUInteger kPaddingBetweenNameLabelAndVerifiedIcon = 3;
 
@@ -40,6 +41,9 @@ static const NSUInteger kPaddingBetweenNameLabelAndVerifiedIcon = 3;
 
 
 -(void) updateUI {
+  self.avatarImageView.layer.cornerRadius = 8;
+  self.avatarImageView.layer.masksToBounds = YES;
+  
   NSString *name = [_user objectForKeyNotNull:@"name"];
   NSNumber *followersCount = [_user objectForKeyNotNull:@"follower_count"];
   NSNumber *photosCount = [_user objectForKeyNotNull:@"post_count"];
@@ -48,6 +52,7 @@ static const NSUInteger kPaddingBetweenNameLabelAndVerifiedIcon = 3;
   if (![avatarURL isEqual:[NSNull null]]) {
     self.avatarImageView.imageURL = [NSURL URLWithString: avatarURL];
   }
+  
   
   BOOL verified = [[_user objectForKeyNotNull:@"verified"] boolValue];
   self.verifiedIconImageView.hidden = !verified;
