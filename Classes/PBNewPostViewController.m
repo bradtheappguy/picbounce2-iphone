@@ -155,7 +155,7 @@
                       crossPostingToTwitter: twitterButton.selected 
                      crossPostingToFacebook: facebookButton.selected];
   }
-  [[(AppDelegate *)[[UIApplication sharedApplication] delegate] tabBarController] setSelectedIndex:2];
+  [(AppDelegate *)[[UIApplication sharedApplication] delegate] switchToProfileTabPopToRootAndScrollToTop];
   
   
   [self dismissModalViewControllerAnimated:YES];

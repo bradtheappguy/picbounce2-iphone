@@ -27,7 +27,9 @@ doc.elements.each('story/name') do |element|
 	story_name = element.text
 end
 
-my_file = File.new("/tmp/msg", 'w')
-puts "[#{verb} ##{storyID}] #{story_name}"
+message = "[#{verb} ##{storyID}] #{story_name}"
+
+File.open("/tmp/msg", 'w') {|f| f.write(message) }
+
 
 system("git commit -t /tmp/msg")

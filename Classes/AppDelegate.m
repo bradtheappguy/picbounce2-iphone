@@ -246,4 +246,9 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   [self performSelector:@selector(xxx) withObject:nil afterDelay:0.5];
 }
 
+-(void) switchToProfileTabPopToRootAndScrollToTop {
+  [profileViewController.navigationController popToRootViewControllerAnimated:NO];
+  [profileViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 320, 1) animated:NO];
+  [[self tabBarController] setSelectedIndex:2];
+}
 @end

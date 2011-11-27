@@ -709,7 +709,10 @@ bail:
 
 -(IBAction) uploadButtonPressed:(id)sender{
   [[PBUploadQueue sharedQueue] uploadImage:uploadPreviewImage.image];
-    [[(AppDelegate *)[[UIApplication sharedApplication] delegate] tabBarController] setSelectedIndex:2];
+  
+  [(AppDelegate *)[[UIApplication sharedApplication] delegate] switchToProfileTabPopToRootAndScrollToTop];
+  
+  
   if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]) {
     [self dismissViewControllerAnimated:YES 
                              completion:^(void) {
