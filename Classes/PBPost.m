@@ -13,7 +13,7 @@
 #import "AppDelegate.h"
 #import "PBHTTPRequest.h"
 #import "PBSharedUser.h"
-
+#import "PBUploadQueue.h"
 @implementation NSData(MD5)
 
 - (NSString*)MD5
@@ -76,6 +76,7 @@
   [postRequest setUploadProgressDelegate:self];
   [postRequest setRequestMethod:@"POST"];
   [postRequest setPostValue:@"text" forKey:@"media_type"];
+  [postRequest setQueue:[PBUploadQueue sharedQueue]];
   
   if (self.image) {
     NSData *jpegData = UIImageJPEGRepresentation(self.image, 0.80);
@@ -113,6 +114,7 @@
   
   [postRequest setDelegate:self];
   [postRequest setDidFinishSelector:@selector(uploadStep2DidFinish:)];
+  [postRequest setDidFailSelector:@selector(uploadDidFail:)];
   [postRequest startAsynchronous];
 }
 
@@ -131,11 +133,11 @@
   }
 }
 
--(void) startUpload {
-  [self retry];
+-(void) retry {
+  [self startUpload];
 }
 
--(void) retry {
+-(void) startUpload {
   self.uploadFailed = NO;
   self.uploading = YES;
   self.uploadSucceded = NO;
@@ -151,7 +153,7 @@
     [ASIS3Request setSharedAccessKey:@"AKIAIIZEL3OLHCBIZBBQ"];
     [req setAccessPolicy:@"public-read"];
     [req setMimeType:@"image/jpeg"];
-    
+    [req setQueue:[PBUploadQueue sharedQueue]];
     
     
     
@@ -194,6 +196,7 @@
     self.uploading = NO;
     self.uploadSucceded = YES;
   }
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_DID_UPLOAD" object:nil];
 }
 
 -(void) dealloc {

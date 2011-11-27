@@ -7,6 +7,7 @@
 //
 
 #import "PBUploadingTableViewCell.h"
+#import "PBUploadQueue.h"
 
 @implementation PBUploadingTableViewCell
 
@@ -34,6 +35,7 @@
 }
 
 - (IBAction)deleteButtonPressed:(id)sender {
+  [[PBUploadQueue sharedQueue] removePost:_post];
 }
 
 -(void) setPost:(PBPost *)post {
@@ -56,8 +58,13 @@
   [_post addObserver:self forKeyPath:@"uploadProgress" options:NSKeyValueChangeSetting context:nil];
   
   [self observeValueForKeyPath:nil ofObject:nil change:nil context:nil];
-  [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_1"]];
   
+  if (_post.uploadSucceded) {
+    [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_6"]];
+  }
+  else {
+    [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_1"]];
+  } 
   self.imageView.image = [_post image];
 }
 
@@ -87,6 +94,7 @@
     self.deleteButton.hidden = YES;
     if (_post.uploadSucceded) {
       self.textLabel.text = @"uploaded";
+      [self.progeressBar setImage:[UIImage imageNamed:@"bg_pb_6"]];
     }
     else {
       self.textLabel.hidden = NO;

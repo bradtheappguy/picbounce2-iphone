@@ -16,7 +16,17 @@
 + (id)sharedQueue {
   static dispatch_once_t once;
   static PBUploadQueue *sharedQueue;
-  dispatch_once(&once, ^ { sharedQueue = [[self alloc] init]; });
+  dispatch_once(&once, ^ { 
+    sharedQueue = [[self alloc] init]; 
+    [sharedQueue setMaxConcurrentOperationCount:1];
+    sharedQueue.delegate = sharedQueue;
+    sharedQueue.requestDidStartSelector = @selector(requestDidStart:);
+    sharedQueue.requestDidFinishSelector = @selector(requestDidFinish:);
+    sharedQueue.requestDidFailSelector = @selector(requestDidFail:);
+  });
+  
+
+  
   return sharedQueue;
 }
 
@@ -36,7 +46,7 @@ crossPostingToFacebook:(BOOL)shouldCrossPostToFacebook {
   x.text = text;
   x.shouldCrossPostToTwitter = shouldCrossPostToTwitter;
   x.shouldCrossPostToFacebook = shouldCrossPostToFacebook;
-  [x addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
+
   [images addObject:x];
   self.count = images.count;
   [x startUpload];
@@ -50,8 +60,7 @@ crossPostingToFacebook:(BOOL)shouldCrossPostToFacebook {
   PBPost *x = [[PBPost alloc] initWithText:text];
   x.shouldCrossPostToTwitter = shouldCrossPostToTwitter;
   x.shouldCrossPostToFacebook = shouldCrossPostToFacebook;
-  
-  [x addObserver:self forKeyPath:@"uploadSucceded" options:NSKeyValueChangeSetting context:nil];
+
   [images addObject:x];
   [x startUpload];
   self.count = images.count;
@@ -59,22 +68,48 @@ crossPostingToFacebook:(BOOL)shouldCrossPostToFacebook {
 }
 
 -(PBPost *) photoAtIndex:(NSUInteger)index {
-  return [images objectAtIndex:index];
+  if (index < images.count) {
+    return [images objectAtIndex:index];
+  }
+  return nil;
+  
 }
 
--(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-  BOOL test = NO;
-  for (PBPost *photo in images) {
-    if (photo.uploadSucceded) {
-      test = YES;
-      [images removeObject:photo];
-      self.count = images.count;
+-(void) removePost:(PBPost *)post {
+  [images removeObject:post];
+  self.count = images.count;
+}
+
+-(void) removeCompletedPosts {
+  NSMutableArray *postsToRemove = [[NSMutableArray alloc] init];
+  for (PBPost *post in images) {
+    if (post.uploadSucceded) {
+      [postsToRemove addObject:post];
     }
   }
-  if (test) {
-    NSLog(@"Complete@");
-  }
+  
+  [images removeObjectsInArray:postsToRemove];
+  [postsToRemove release];
+  _count = images.count;
 }
+
+
+
+-(void) requestDidStart:(ASIHTTPRequest *)request {
+  
+}
+
+-(void) requestDidFinish:(ASIHTTPRequest *)request {
+  //PBPost *x = request.delegate;
+  //[images removeObject:x];
+}
+
+-(void) requestDidFail:(ASIHTTPRequest *)request {
+  
+}
+
+
+
 
 
 @end

@@ -39,7 +39,7 @@
 - (NSString *) followingURL;
 - (NSDictionary *) user;
 - (NSArray *) people;
-
+- (NSUInteger) numberOfPostsNotDeleted;
 - (void) receiveFlaggedNotification:(NSNotification *) notification;
 
 @end

@@ -55,7 +55,7 @@
 } 
 
 - (void) viewWillDisappear:(BOOL)animated {
-  [[ASIHTTPRequest sharedQueue] cancelAllOperations];
+  //[[ASIHTTPRequest sharedQueue] cancelAllOperations];
 }
 
 
@@ -153,7 +153,7 @@
   ASICachePolicy cachePolicy = useCache?ASIOnlyLoadIfNotCachedCachePolicy:ASIDoNotReadFromCacheCachePolicy;
   
   request = [ASIHTTPRequest requestWithURL:[self url]
-                                usingCache:useCache?[ASIDownloadCache sharedCache]:nil
+                                usingCache:nil
                             andCachePolicy:cachePolicy];
   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
   if (authToken) {
@@ -189,6 +189,7 @@
   request = [ASIHTTPRequest requestWithURL:loadMoreDataURL
                                 usingCache:[ASIDownloadCache sharedCache]
                             andCachePolicy:ASIUseDefaultCachePolicy];
+  [request addRequestHeader:@"Accept" value:@"application/json"];
   [request setTimeOutSeconds:60];
   [request setUseCookiePersistence:NO];
   [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];

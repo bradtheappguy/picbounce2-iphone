@@ -168,6 +168,8 @@
 - (void) reload {
   [super reload];
   
+  [[PBUploadQueue sharedQueue] removeCompletedPosts];
+  
   NSDictionary *user = [self.responseData user];
   NSString *name = [user objectForKeyNotNull:@"screen_name"]; 
   if (name) {
@@ -184,7 +186,12 @@
     [transparentHeader release];*/
   }    
 
-  if ([self numberOfSectionsInTableView:self.tableView] == 0) {
+  NSUInteger nUploading = 0;
+  if (self.shouldShowUplodingItems) {
+    nUploading =[[PBUploadQueue sharedQueue] count]; 
+  }
+  
+  if ([self.responseData numberOfPostsNotDeleted] + nUploading < 1) {
     [self showEmptyState];
   }
   else {
@@ -192,14 +199,19 @@
   }
   [self configureNavigationBar];
   
-  if ([self.responseData loadMoreDataURL]) {
+  
+  if ([self.responseData numberOfPostsNotDeleted] > 0) {
+   if ([self.responseData loadMoreDataURL]) {
     [footerView setBottomReachedIndicatorHidden:YES];
     [footerView startLoadingAnimation];
+   }
+   else {
+    [footerView setBottomReachedIndicatorHidden:NO];
+    [footerView stopLoadingAnimation];
+   }
   }
-  else {
-    if ([self.responseData numberOfPosts] > 0) {
-      [footerView setBottomReachedIndicatorHidden:NO];
-    }
+  else { //There are no posts, loading more from the bottom does not make sense
+    [footerView setBottomReachedIndicatorHidden:YES];
     [footerView stopLoadingAnimation];
   }
 }
@@ -327,11 +339,16 @@
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoadingIndicator11) name:@"HideLoadingView" object:nil];
   [self.profileHeader.followButton setViewController:self];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveDeletedNotification:) name:@"com.viame.deleted" object:nil];
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewDataSourceUsingCache:) name:@"USER_DID_UPLOAD" object:nil];
+  
 }
 
 - (void) viewDidUnload {
   [super viewDidUnload];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.deleted" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"USER_DID_UPLOAD" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"USER_LOGGED_IN" object:nil];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -514,7 +531,7 @@
 }
 
 -(void) loadMoreData {
-  if ([self.responseData numberOfPosts] < 5) {
+  if ([self.responseData numberOfPostsNotDeleted] < 5) {
     [footerView setBottomReachedIndicatorHidden:YES];
     [footerView stopLoadingAnimation];
   }

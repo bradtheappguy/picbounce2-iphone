@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "PBPost.h"
+#import "ASINetworkQueue.h"
 
-@interface PBUploadQueue : NSObject {
+@interface PBUploadQueue : ASINetworkQueue {
   NSMutableArray *images;
+  
+  NSMutableDictionary *pdict;
 
 }
 
@@ -22,5 +25,5 @@
 -(void) uploadText:(NSString *)text crossPostingToTwitter:(BOOL)shouldCrossPostToTwitter crossPostingToFacebook:(BOOL)shouldCrossPostToFacebook;
 -(NSUInteger) count;
 -(PBPost *) photoAtIndex:(NSUInteger)index;
-
+-(void) removePost:(PBPost *)post;
 @end

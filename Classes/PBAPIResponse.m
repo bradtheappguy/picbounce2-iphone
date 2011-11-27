@@ -77,10 +77,9 @@
 
 -(void)receiveDeletedNotification:(NSNotification *) notification {
   NSString *deletdPhotoID = [notification object];
-  NSArray *arrayOfPhotos = [self posts];
   NSDictionary *actualPhoto = nil;
   
-  for (NSDictionary *photo in arrayOfPhotos) {
+  for (NSDictionary *photo in self.posts) {
     actualPhoto = [photo objectForKeyNotNull:@"item"];
     NSString *photoID = [actualPhoto objectForKeyNotNull:@"id"];
     if ([deletdPhotoID isEqualToString:photoID]) {
@@ -129,8 +128,11 @@
     else {
       _next = nil;
     }
-   
   }
+  if (!newData) {
+    _next = nil;
+  }
+  
   [newData release];
   [parser release];
 }
@@ -178,6 +180,19 @@
     people = [[response objectForKeyNotNull:@"users"] retain]; //TODD
   }
   return people;
+}
+
+
+-(NSUInteger) numberOfPostsNotDeleted {
+  NSUInteger count = 0;
+  for (NSDictionary *photo in self.posts) {
+    NSDictionary *actualPhoto = [photo objectForKeyNotNull:@"item"];
+    BOOL deleted = [[actualPhoto objectForKeyNotNull:@"deleted"] boolValue];
+    if (!deleted) {
+      count++;
+    }
+  }
+  return count;
 }
 
 
