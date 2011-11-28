@@ -6,15 +6,15 @@
 //  Copyright (c) 2011 Clixtr, Inc. All rights reserved.
 //
 
-#import "QuadraticBezierCurve.h"
+#import "TVQuadraticBezierCurve.h"
 #import "CGPointArithmetic.h"
 #import <math.h>
 
 
-@implementation QuadraticBezierCurve
+@implementation TVQuadraticBezierCurve
 
-+(QuadraticBezierCurve *)quadraticCurveWithStartPoint:(CGPoint)start controlPoint:(CGPoint)control endPoint:(CGPoint)end {
-	return [[[QuadraticBezierCurve alloc] initWithStartPoint:start controlPoint:control endPoint:end] autorelease];
++(TVQuadraticBezierCurve *)quadraticCurveWithStartPoint:(CGPoint)start controlPoint:(CGPoint)control endPoint:(CGPoint)end {
+	return [[[TVQuadraticBezierCurve alloc] initWithStartPoint:start controlPoint:control endPoint:end] autorelease];
 }
 
 -(id)initWithStartPoint:(CGPoint)start controlPoint:(CGPoint)control endPoint:(CGPoint)end {
@@ -53,8 +53,8 @@
 	CGPoint ctrl2 = CGPointMidpoint(p2, ctrl);
 	CGPoint mid = CGPointMidpoint(ctrl1, ctrl2);
 	
-	QuadraticBezierCurve *curve1 = [[QuadraticBezierCurve alloc] initWithStartPoint:p1 controlPoint:ctrl1 endPoint:mid];
-	QuadraticBezierCurve *curve2 = [[QuadraticBezierCurve alloc] initWithStartPoint:mid controlPoint:ctrl2 endPoint:p2];
+	TVQuadraticBezierCurve *curve1 = [[TVQuadraticBezierCurve alloc] initWithStartPoint:p1 controlPoint:ctrl1 endPoint:mid];
+	TVQuadraticBezierCurve *curve2 = [[TVQuadraticBezierCurve alloc] initWithStartPoint:mid controlPoint:ctrl2 endPoint:p2];
 	
 	NSArray *result = [NSArray arrayWithObjects:curve1, curve2, nil];
 	

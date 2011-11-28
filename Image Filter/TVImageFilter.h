@@ -16,7 +16,7 @@ enum {
 };
 typedef NSUInteger CurveChannel;
 
-@interface UIImage (ImageFilter)
+@interface UIImage (TVImageFilter)
 
 /* Filters */
 - (UIImage*) greyscale;

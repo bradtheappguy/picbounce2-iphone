@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-@class ImageFilterForFrame;
-@interface ImageFilterController : NSObject
+@class TVImageFilterForFrame;
+@interface TVImageFilterController : NSObject
 {
-    ImageFilterForFrame *imageFilterForFrame;
+    TVImageFilterForFrame *imageFilterForFrame;
 }
 + (UIImage *) filteredImageWithImage:(UIImage *)image filter:(int)filterCase;
 

@@ -7,15 +7,15 @@
 //
 
 #include <math.h>
-#import "ImageFilter.h"
-#import "CatmullRomSpline.h"
+#import "TVImageFilter.h"
+#import "TVCatmullRomSpline.h"
 
 #define SAFECOLOR(color) MIN(255,MAX(0,color))
 
 typedef void (*FilterCallback)(UInt8 *pixelBuf, UInt32 offset, void *context);
 typedef void (*FilterBlendCallback)(UInt8 *pixelBuf, UInt8 *pixelBlendBuf, UInt32 offset, void *context);
 
-@implementation UIImage (ImageFilter)
+@implementation UIImage (TVImageFilter)
 
 #pragma mark -
 #pragma mark Basic Filters
@@ -547,7 +547,7 @@ void filterAdjust(UInt8 *pixelBuf, UInt32 offset, void *context)
 	assert([points count] > 1);
 	
 	CGPoint firstPoint = ((NSValue*)[points objectAtIndex:0]).CGPointValue;
-	CatmullRomSpline *spline = [CatmullRomSpline catmullRomSplineAtPoint:firstPoint];	
+	TVCatmullRomSpline *spline = [TVCatmullRomSpline catmullRomSplineAtPoint:firstPoint];	
 	NSInteger idx = 0;
 	NSInteger length = [points count];
 	for (idx = 1; idx < length; idx++)

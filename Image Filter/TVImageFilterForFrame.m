@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 Clixtr, Inc. All rights reserved.
 //
 
-#import "ImageFilterForFrame.h"
+#import "TVImageFilterForFrame.h"
 
-@implementation ImageFilterForFrame
+@implementation TVImageFilterForFrame
 
 -(id) initImage
 {

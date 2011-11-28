@@ -8,13 +8,13 @@
 
 
 #import <Foundation/Foundation.h>
-#import "Spline.h"
+#import "TVSpline.h"
 
-@interface CatmullRomSpline : Spline {
+@interface TVCatmullRomSpline : TVSpline {
 	CGPoint p3, p2, p1, p;
 }
 
-+(CatmullRomSpline *)catmullRomSplineAtPoint:(CGPoint)start;
++(TVCatmullRomSpline *)catmullRomSplineAtPoint:(CGPoint)start;
 
 // Add a control point, through which the spline must pass, to the end of the spline.
 -(void)addPoint:(CGPoint)point;

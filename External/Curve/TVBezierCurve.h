@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface BezierCurve : NSObject {
+@interface TVBezierCurve : NSObject {
 	CGPoint p1, p2;
 }
 

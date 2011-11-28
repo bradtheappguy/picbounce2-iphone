@@ -7,18 +7,17 @@
 //
 
 //#import <QuartzCore/QuartzCore.h>
-#import "ImageFilterController.h"
-#import "ImageFilter.h"
-#import "PBCameraViewController.h"
-#import "ImageFilterForFrame.h"
+#import "TVImageFilterController.h"
+#import "TVImageFilter.h"
+#import "TVImageFilterForFrame.h"
 
-@implementation ImageFilterController
+@implementation TVImageFilterController
 
 + (UIImage *) filteredImageWithImage:(UIImage *)image filter:(int)filterCase{
 
     NSLog(@"filterCase := %d",filterCase);
     
-    ImageFilterForFrame *filterFrame = [[ImageFilterForFrame alloc] initImage];
+    TVImageFilterForFrame *filterFrame = [[TVImageFilterForFrame alloc] initImage];
        switch (filterCase) {
 			
            case 0:{

@@ -28,7 +28,7 @@
 #import "PBProgressHUD.h"
 #import "ASIDownloadCache.h"
 #import "PBSharedUser.h"
-#import "ImageFilterController.h"
+#import "TVImageFilterController.h"
 #import "PBNavigationController.h"
 
 //------- set buttons globlly for setBackgroundImage --------
@@ -378,7 +378,7 @@ bail:
     }
     else {
                
-        uploadPreviewImage.image = [ImageFilterController filteredImageWithImage:unfilteredImage filter:[tag intValue]];
+        uploadPreviewImage.image = [TVImageFilterController filteredImageWithImage:unfilteredImage filter:[tag intValue]];
        
     }
     
@@ -721,50 +721,50 @@ bail:
     // ------- Method for setBackgroundImage of filter buttons ---------
 -(void)ImposeImageOnButton:(UIImage *)Image
     {
-        [button1 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button1.tag] forState:UIControlStateNormal];
-        [button1 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button1.tag] forState:UIControlStateSelected];
+        [button1 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button1.tag] forState:UIControlStateNormal];
+        [button1 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button1.tag] forState:UIControlStateSelected];
         
-        [button2 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button2.tag] forState:UIControlStateNormal];
-        [button2 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button2.tag] forState:UIControlStateSelected];
+        [button2 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button2.tag] forState:UIControlStateNormal];
+        [button2 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button2.tag] forState:UIControlStateSelected];
         
-        [button3 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button3.tag] forState:UIControlStateNormal];
-        [button3 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button3.tag] forState:UIControlStateSelected]; 
+        [button3 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button3.tag] forState:UIControlStateNormal];
+        [button3 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button3.tag] forState:UIControlStateSelected]; 
         
-        [button4 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button4.tag] forState:UIControlStateNormal];
-        [button4 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button4.tag] forState:UIControlStateSelected]; 
+        [button4 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button4.tag] forState:UIControlStateNormal];
+        [button4 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button4.tag] forState:UIControlStateSelected]; 
         
-        [button5 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button5.tag] forState:UIControlStateNormal];
-        [button5 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button5.tag] forState:UIControlStateSelected]; 
+        [button5 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button5.tag] forState:UIControlStateNormal];
+        [button5 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button5.tag] forState:UIControlStateSelected]; 
         
-        [button6 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button6.tag] forState:UIControlStateNormal];
-        [button6 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button6.tag] forState:UIControlStateSelected]; 
+        [button6 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button6.tag] forState:UIControlStateNormal];
+        [button6 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button6.tag] forState:UIControlStateSelected]; 
         
-        [button7 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button7.tag] forState:UIControlStateNormal];
-        [button7 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button7.tag] forState:UIControlStateSelected]; 
+        [button7 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button7.tag] forState:UIControlStateNormal];
+        [button7 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button7.tag] forState:UIControlStateSelected]; 
         
-        [button7 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button7.tag] forState:UIControlStateNormal];
-        [button7 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button7.tag] forState:UIControlStateSelected]; 
+        [button7 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button7.tag] forState:UIControlStateNormal];
+        [button7 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button7.tag] forState:UIControlStateSelected]; 
         
-        [button8 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button8.tag] forState:UIControlStateNormal];
-        [button8 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button8.tag] forState:UIControlStateSelected]; 
+        [button8 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button8.tag] forState:UIControlStateNormal];
+        [button8 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button8.tag] forState:UIControlStateSelected]; 
         
-        [button9 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button9.tag] forState:UIControlStateNormal];
-        [button9 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button9.tag] forState:UIControlStateSelected]; 
+        [button9 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button9.tag] forState:UIControlStateNormal];
+        [button9 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button9.tag] forState:UIControlStateSelected]; 
         
-        [button10 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button10.tag] forState:UIControlStateNormal];
-        [button10 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button10.tag] forState:UIControlStateSelected];
+        [button10 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button10.tag] forState:UIControlStateNormal];
+        [button10 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button10.tag] forState:UIControlStateSelected];
         
-        [ button11 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button11.tag] forState:UIControlStateNormal];
-        [ button11 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button11.tag] forState:UIControlStateSelected]; 
+        [ button11 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button11.tag] forState:UIControlStateNormal];
+        [ button11 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button11.tag] forState:UIControlStateSelected]; 
         
-        [ button12 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button12.tag] forState:UIControlStateNormal];
-        [ button12 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button12.tag] forState:UIControlStateSelected]; 
+        [ button12 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button12.tag] forState:UIControlStateNormal];
+        [ button12 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button12.tag] forState:UIControlStateSelected]; 
         
-        [ button13 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button13.tag] forState:UIControlStateNormal];
-        [ button13 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button13.tag] forState:UIControlStateSelected];
+        [ button13 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button13.tag] forState:UIControlStateNormal];
+        [ button13 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button13.tag] forState:UIControlStateSelected];
         
-        [ button14 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button14.tag] forState:UIControlStateNormal];
-        [ button14 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button14.tag] forState:UIControlStateSelected]; 
+        [ button14 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button14.tag] forState:UIControlStateNormal];
+        [ button14 setBackgroundImage:[TVImageFilterController filteredImageWithImage:Image filter:button14.tag] forState:UIControlStateSelected]; 
     
     }
 

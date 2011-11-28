@@ -49,16 +49,16 @@
 		7F8377AE1471061600FBFC9C /* saopaulo.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377A41471061600FBFC9C /* saopaulo.PNG */; };
 		7F8377AF1471061600FBFC9C /* scratched.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377A51471061600FBFC9C /* scratched.PNG */; };
 		7F8377B01471061600FBFC9C /* Snow flakes.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377A61471061600FBFC9C /* Snow flakes.png */; };
-		7F8377B11471061600FBFC9C /* ImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377A81471061600FBFC9C /* ImageFilter.m */; };
-		7F8377B21471061600FBFC9C /* ImageFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377AA1471061600FBFC9C /* ImageFilterController.m */; };
-		7F8377B31471061600FBFC9C /* ImageFilterForFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377AC1471061600FBFC9C /* ImageFilterForFrame.m */; };
-		7F8377C51471064900FBFC9C /* BezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377B71471064900FBFC9C /* BezierCurve.m */; };
-		7F8377C61471064900FBFC9C /* CatmullRomSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377B91471064900FBFC9C /* CatmullRomSpline.m */; };
-		7F8377C71471064900FBFC9C /* CubicBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377BC1471064900FBFC9C /* CubicBezierCurve.m */; };
-		7F8377C81471064900FBFC9C /* LinearBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377BE1471064900FBFC9C /* LinearBezierCurve.m */; };
+		7F8377B11471061600FBFC9C /* TVImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377A81471061600FBFC9C /* TVImageFilter.m */; };
+		7F8377B21471061600FBFC9C /* TVImageFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377AA1471061600FBFC9C /* TVImageFilterController.m */; };
+		7F8377B31471061600FBFC9C /* TVImageFilterForFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377AC1471061600FBFC9C /* TVImageFilterForFrame.m */; };
+		7F8377C51471064900FBFC9C /* TVBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377B71471064900FBFC9C /* TVBezierCurve.m */; };
+		7F8377C61471064900FBFC9C /* TVCatmullRomSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377B91471064900FBFC9C /* TVCatmullRomSpline.m */; };
+		7F8377C71471064900FBFC9C /* TVCubicBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377BC1471064900FBFC9C /* TVCubicBezierCurve.m */; };
+		7F8377C81471064900FBFC9C /* TVLinearBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377BE1471064900FBFC9C /* TVLinearBezierCurve.m */; };
 		7F8377C91471064900FBFC9C /* NSArray_PointArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377C01471064900FBFC9C /* NSArray_PointArray.m */; };
-		7F8377CA1471064900FBFC9C /* QuadraticBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377C21471064900FBFC9C /* QuadraticBezierCurve.m */; };
-		7F8377CB1471064900FBFC9C /* Spline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377C41471064900FBFC9C /* Spline.m */; };
+		7F8377CA1471064900FBFC9C /* TVQuadraticBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377C21471064900FBFC9C /* TVQuadraticBezierCurve.m */; };
+		7F8377CB1471064900FBFC9C /* TVSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8377C41471064900FBFC9C /* TVSpline.m */; };
 		7F8377CD1471533400FBFC9C /* july4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377CC1471533400FBFC9C /* july4.png */; };
 		7F8377CF1471537900FBFC9C /* toronto.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377CE1471537900FBFC9C /* toronto.PNG */; };
 		7F8377D31471548C00FBFC9C /* newYork.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7F8377D21471548C00FBFC9C /* newYork.PNG */; };
@@ -815,27 +815,27 @@
 		7F8377A41471061600FBFC9C /* saopaulo.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saopaulo.PNG; sourceTree = "<group>"; };
 		7F8377A51471061600FBFC9C /* scratched.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scratched.PNG; sourceTree = "<group>"; };
 		7F8377A61471061600FBFC9C /* Snow flakes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Snow flakes.png"; sourceTree = "<group>"; };
-		7F8377A71471061600FBFC9C /* ImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilter.h; sourceTree = "<group>"; };
-		7F8377A81471061600FBFC9C /* ImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilter.m; sourceTree = "<group>"; };
-		7F8377A91471061600FBFC9C /* ImageFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilterController.h; sourceTree = "<group>"; };
-		7F8377AA1471061600FBFC9C /* ImageFilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilterController.m; sourceTree = "<group>"; };
-		7F8377AB1471061600FBFC9C /* ImageFilterForFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilterForFrame.h; sourceTree = "<group>"; };
-		7F8377AC1471061600FBFC9C /* ImageFilterForFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilterForFrame.m; sourceTree = "<group>"; };
-		7F8377B61471064900FBFC9C /* BezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurve.h; sourceTree = "<group>"; };
-		7F8377B71471064900FBFC9C /* BezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierCurve.m; sourceTree = "<group>"; };
-		7F8377B81471064900FBFC9C /* CatmullRomSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatmullRomSpline.h; sourceTree = "<group>"; };
-		7F8377B91471064900FBFC9C /* CatmullRomSpline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatmullRomSpline.m; sourceTree = "<group>"; };
+		7F8377A71471061600FBFC9C /* TVImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVImageFilter.h; sourceTree = "<group>"; };
+		7F8377A81471061600FBFC9C /* TVImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVImageFilter.m; sourceTree = "<group>"; };
+		7F8377A91471061600FBFC9C /* TVImageFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TVImageFilterController.h; sourceTree = "<group>"; };
+		7F8377AA1471061600FBFC9C /* TVImageFilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVImageFilterController.m; sourceTree = "<group>"; };
+		7F8377AB1471061600FBFC9C /* TVImageFilterForFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TVImageFilterForFrame.h; sourceTree = "<group>"; };
+		7F8377AC1471061600FBFC9C /* TVImageFilterForFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVImageFilterForFrame.m; sourceTree = "<group>"; };
+		7F8377B61471064900FBFC9C /* TVBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVBezierCurve.h; sourceTree = "<group>"; };
+		7F8377B71471064900FBFC9C /* TVBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVBezierCurve.m; sourceTree = "<group>"; };
+		7F8377B81471064900FBFC9C /* TVCatmullRomSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TVCatmullRomSpline.h; sourceTree = "<group>"; };
+		7F8377B91471064900FBFC9C /* TVCatmullRomSpline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCatmullRomSpline.m; sourceTree = "<group>"; };
 		7F8377BA1471064900FBFC9C /* CGPointArithmetic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointArithmetic.h; sourceTree = "<group>"; };
-		7F8377BB1471064900FBFC9C /* CubicBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubicBezierCurve.h; sourceTree = "<group>"; };
-		7F8377BC1471064900FBFC9C /* CubicBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CubicBezierCurve.m; sourceTree = "<group>"; };
-		7F8377BD1471064900FBFC9C /* LinearBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearBezierCurve.h; sourceTree = "<group>"; };
-		7F8377BE1471064900FBFC9C /* LinearBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearBezierCurve.m; sourceTree = "<group>"; };
+		7F8377BB1471064900FBFC9C /* TVCubicBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TVCubicBezierCurve.h; sourceTree = "<group>"; };
+		7F8377BC1471064900FBFC9C /* TVCubicBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCubicBezierCurve.m; sourceTree = "<group>"; };
+		7F8377BD1471064900FBFC9C /* TVLinearBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TVLinearBezierCurve.h; sourceTree = "<group>"; };
+		7F8377BE1471064900FBFC9C /* TVLinearBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVLinearBezierCurve.m; sourceTree = "<group>"; };
 		7F8377BF1471064900FBFC9C /* NSArray_PointArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArray_PointArray.h; sourceTree = "<group>"; };
 		7F8377C01471064900FBFC9C /* NSArray_PointArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_PointArray.m; sourceTree = "<group>"; };
-		7F8377C11471064900FBFC9C /* QuadraticBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadraticBezierCurve.h; sourceTree = "<group>"; };
-		7F8377C21471064900FBFC9C /* QuadraticBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadraticBezierCurve.m; sourceTree = "<group>"; };
-		7F8377C31471064900FBFC9C /* Spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spline.h; sourceTree = "<group>"; };
-		7F8377C41471064900FBFC9C /* Spline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spline.m; sourceTree = "<group>"; };
+		7F8377C11471064900FBFC9C /* TVQuadraticBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVQuadraticBezierCurve.h; sourceTree = "<group>"; };
+		7F8377C21471064900FBFC9C /* TVQuadraticBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVQuadraticBezierCurve.m; sourceTree = "<group>"; };
+		7F8377C31471064900FBFC9C /* TVSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TVSpline.h; sourceTree = "<group>"; };
+		7F8377C41471064900FBFC9C /* TVSpline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVSpline.m; sourceTree = "<group>"; };
 		7F8377CC1471533400FBFC9C /* july4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = july4.png; sourceTree = "<group>"; };
 		7F8377CE1471537900FBFC9C /* toronto.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toronto.PNG; sourceTree = "<group>"; };
 		7F8377D21471548C00FBFC9C /* newYork.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newYork.PNG; sourceTree = "<group>"; };
@@ -1963,17 +1963,18 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		7F8377A11471061600FBFC9C /* Image Filter */ = {
+		7F8377A11471061600FBFC9C /* Image Filters - TechValen */ = {
 			isa = PBXGroup;
 			children = (
 				7F8377A21471061600FBFC9C /* FiterImages */,
-				7F8377A71471061600FBFC9C /* ImageFilter.h */,
-				7F8377A81471061600FBFC9C /* ImageFilter.m */,
-				7F8377A91471061600FBFC9C /* ImageFilterController.h */,
-				7F8377AA1471061600FBFC9C /* ImageFilterController.m */,
-				7F8377AB1471061600FBFC9C /* ImageFilterForFrame.h */,
-				7F8377AC1471061600FBFC9C /* ImageFilterForFrame.m */,
+				7F8377A71471061600FBFC9C /* TVImageFilter.h */,
+				7F8377A81471061600FBFC9C /* TVImageFilter.m */,
+				7F8377A91471061600FBFC9C /* TVImageFilterController.h */,
+				7F8377AA1471061600FBFC9C /* TVImageFilterController.m */,
+				7F8377AB1471061600FBFC9C /* TVImageFilterForFrame.h */,
+				7F8377AC1471061600FBFC9C /* TVImageFilterForFrame.m */,
 			);
+			name = "Image Filters - TechValen";
 			path = "Image Filter";
 			sourceTree = "<group>";
 		};
@@ -2000,21 +2001,21 @@
 		7F8377B51471064900FBFC9C /* Curve */ = {
 			isa = PBXGroup;
 			children = (
-				7F8377B61471064900FBFC9C /* BezierCurve.h */,
-				7F8377B71471064900FBFC9C /* BezierCurve.m */,
-				7F8377B81471064900FBFC9C /* CatmullRomSpline.h */,
-				7F8377B91471064900FBFC9C /* CatmullRomSpline.m */,
+				7F8377B61471064900FBFC9C /* TVBezierCurve.h */,
+				7F8377B71471064900FBFC9C /* TVBezierCurve.m */,
+				7F8377B81471064900FBFC9C /* TVCatmullRomSpline.h */,
+				7F8377B91471064900FBFC9C /* TVCatmullRomSpline.m */,
 				7F8377BA1471064900FBFC9C /* CGPointArithmetic.h */,
-				7F8377BB1471064900FBFC9C /* CubicBezierCurve.h */,
-				7F8377BC1471064900FBFC9C /* CubicBezierCurve.m */,
-				7F8377BD1471064900FBFC9C /* LinearBezierCurve.h */,
-				7F8377BE1471064900FBFC9C /* LinearBezierCurve.m */,
+				7F8377BB1471064900FBFC9C /* TVCubicBezierCurve.h */,
+				7F8377BC1471064900FBFC9C /* TVCubicBezierCurve.m */,
+				7F8377BD1471064900FBFC9C /* TVLinearBezierCurve.h */,
+				7F8377BE1471064900FBFC9C /* TVLinearBezierCurve.m */,
 				7F8377BF1471064900FBFC9C /* NSArray_PointArray.h */,
 				7F8377C01471064900FBFC9C /* NSArray_PointArray.m */,
-				7F8377C11471064900FBFC9C /* QuadraticBezierCurve.h */,
-				7F8377C21471064900FBFC9C /* QuadraticBezierCurve.m */,
-				7F8377C31471064900FBFC9C /* Spline.h */,
-				7F8377C41471064900FBFC9C /* Spline.m */,
+				7F8377C11471064900FBFC9C /* TVQuadraticBezierCurve.h */,
+				7F8377C21471064900FBFC9C /* TVQuadraticBezierCurve.m */,
+				7F8377C31471064900FBFC9C /* TVSpline.h */,
+				7F8377C41471064900FBFC9C /* TVSpline.m */,
 			);
 			path = Curve;
 			sourceTree = "<group>";
@@ -2199,7 +2200,7 @@
 		A25CEAB3134FF46600CD33D9 /* PicBounce2 */ = {
 			isa = PBXGroup;
 			children = (
-				7F8377A11471061600FBFC9C /* Image Filter */,
+				7F8377A11471061600FBFC9C /* Image Filters - TechValen */,
 				A26208E41460F1AC00E5F0FE /* ArtAssets */,
 				A2EE48BF1423F0E900853658 /* Filters */,
 				74A1CA361368109C00F63EF5 /* Localization */,
@@ -4008,16 +4009,16 @@
 				A2058F9A145E01C0004A8E87 /* PBLoadMoreTablewViewFooter.m in Sources */,
 				A2E830EF145F5C0D002493DC /* PBAPI.m in Sources */,
 				A2620D0F14611EBC00E5F0FE /* PBNavigationController.m in Sources */,
-				7F8377B11471061600FBFC9C /* ImageFilter.m in Sources */,
-				7F8377B21471061600FBFC9C /* ImageFilterController.m in Sources */,
-				7F8377B31471061600FBFC9C /* ImageFilterForFrame.m in Sources */,
-				7F8377C51471064900FBFC9C /* BezierCurve.m in Sources */,
-				7F8377C61471064900FBFC9C /* CatmullRomSpline.m in Sources */,
-				7F8377C71471064900FBFC9C /* CubicBezierCurve.m in Sources */,
-				7F8377C81471064900FBFC9C /* LinearBezierCurve.m in Sources */,
+				7F8377B11471061600FBFC9C /* TVImageFilter.m in Sources */,
+				7F8377B21471061600FBFC9C /* TVImageFilterController.m in Sources */,
+				7F8377B31471061600FBFC9C /* TVImageFilterForFrame.m in Sources */,
+				7F8377C51471064900FBFC9C /* TVBezierCurve.m in Sources */,
+				7F8377C61471064900FBFC9C /* TVCatmullRomSpline.m in Sources */,
+				7F8377C71471064900FBFC9C /* TVCubicBezierCurve.m in Sources */,
+				7F8377C81471064900FBFC9C /* TVLinearBezierCurve.m in Sources */,
 				7F8377C91471064900FBFC9C /* NSArray_PointArray.m in Sources */,
-				7F8377CA1471064900FBFC9C /* QuadraticBezierCurve.m in Sources */,
-				7F8377CB1471064900FBFC9C /* Spline.m in Sources */,
+				7F8377CA1471064900FBFC9C /* TVQuadraticBezierCurve.m in Sources */,
+				7F8377CB1471064900FBFC9C /* TVSpline.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

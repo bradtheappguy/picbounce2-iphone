@@ -8,12 +8,12 @@
 
 
 #import <Foundation/Foundation.h>
-#import "BezierCurve.h"
+#import "TVBezierCurve.h"
 
-@interface LinearBezierCurve : BezierCurve {
+@interface TVLinearBezierCurve : TVBezierCurve {
 }
 
-+(LinearBezierCurve *)linearCurveWithStartPoint:(CGPoint)start endPoint:(CGPoint)end;
++(TVLinearBezierCurve *)linearCurveWithStartPoint:(CGPoint)start endPoint:(CGPoint)end;
 -(id)initWithStartPoint:(CGPoint)start endPoint:(CGPoint)end;
 
 @end

@@ -8,13 +8,13 @@
 
 
 #import <Foundation/Foundation.h>
-#import "BezierCurve.h"
+#import "TVBezierCurve.h"
 
-@interface QuadraticBezierCurve : BezierCurve {
+@interface TVQuadraticBezierCurve : TVBezierCurve {
 	CGPoint ctrl;
 }
 
-+(QuadraticBezierCurve *)quadraticCurveWithStartPoint:(CGPoint)start controlPoint:(CGPoint)control endPoint:(CGPoint)end;
++(TVQuadraticBezierCurve *)quadraticCurveWithStartPoint:(CGPoint)start controlPoint:(CGPoint)control endPoint:(CGPoint)end;
 -(id)initWithStartPoint:(CGPoint)start controlPoint:(CGPoint)control endPoint:(CGPoint)end;
 
 @end

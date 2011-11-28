@@ -6,10 +6,10 @@
 //  Copyright (c) 2011 Clixtr, Inc. All rights reserved.
 //
 
-#import "BezierCurve.h"
+#import "TVBezierCurve.h"
 
 
-@implementation BezierCurve
+@implementation TVBezierCurve
 @synthesize p1, p2;
 
 - (NSArray *)subdivided {

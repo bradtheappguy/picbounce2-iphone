@@ -6,15 +6,15 @@
 //  Copyright (c) 2011 Clixtr, Inc. All rights reserved.
 //
 
-#import "Spline.h"
-#import "CubicBezierCurve.h"
-#import "QuadraticBezierCurve.h"
-#import "LinearBezierCurve.h"
+#import "TVSpline.h"
+#import "TVCubicBezierCurve.h"
+#import "TVQuadraticBezierCurve.h"
+#import "TVLinearBezierCurve.h"
 
-@implementation Spline
+@implementation TVSpline
 
-+(Spline *)splineAtPoint:(CGPoint)start {
-	return [[[Spline alloc] initAtPoint:start] autorelease];
++(TVSpline *)splineAtPoint:(CGPoint)start {
+	return [[[TVSpline alloc] initAtPoint:start] autorelease];
 }
 
 -(id)initAtPoint:(CGPoint)start {
@@ -28,7 +28,7 @@
 
 
 -(void)addCubicCurveWithControl1:(CGPoint)ctrl1 control2:(CGPoint)ctrl2 toPoint:(CGPoint)end {
-	CubicBezierCurve *cubic = [[CubicBezierCurve alloc] initWithStart:current
+	TVCubicBezierCurve *cubic = [[TVCubicBezierCurve alloc] initWithStart:current
 														controlPoint1:ctrl1
 														controlPoint2:ctrl2
 																  end:end];
@@ -39,7 +39,7 @@
 }
 
 -(void)addQuadCurveWithControl:(CGPoint)ctrl toPoint:(CGPoint)end {
-	QuadraticBezierCurve *quad = [[QuadraticBezierCurve alloc] initWithStartPoint:current
+	TVQuadraticBezierCurve *quad = [[TVQuadraticBezierCurve alloc] initWithStartPoint:current
 																	 controlPoint:ctrl
 																		 endPoint:end];
 	
@@ -49,7 +49,7 @@
 }
 
 -(void)addLinearCurveToPoint:(CGPoint)end {
-	LinearBezierCurve *linear = [[LinearBezierCurve alloc] initWithStartPoint:current endPoint:end];
+	TVLinearBezierCurve *linear = [[TVLinearBezierCurve alloc] initWithStartPoint:current endPoint:end];
 	[curves addObject:linear];
 	[linear release];
 	current = end;

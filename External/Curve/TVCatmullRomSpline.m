@@ -7,15 +7,15 @@
 //
 
 
-#import "CatmullRomSpline.h"
+#import "TVCatmullRomSpline.h"
 #import "CGPointArithmetic.h"
 
 
-@implementation CatmullRomSpline
+@implementation TVCatmullRomSpline
 
 
-+(CatmullRomSpline *)catmullRomSplineAtPoint:(CGPoint)start {
-	return [[[CatmullRomSpline alloc] initAtPoint:start] autorelease];
++(TVCatmullRomSpline *)catmullRomSplineAtPoint:(CGPoint)start {
+	return [[[TVCatmullRomSpline alloc] initAtPoint:start] autorelease];
 }
  
 

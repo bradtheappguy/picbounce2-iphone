@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BezierCurve.h"
+#import "TVBezierCurve.h"
 
-@interface CubicBezierCurve : BezierCurve {
+@interface TVCubicBezierCurve : TVBezierCurve {
 	CGPoint ctrl1, ctrl2;
 }
 
-+(CubicBezierCurve *)cubicCurveWithStart:(CGPoint)start controlPoint1:(CGPoint)control1 controlPoint2:(CGPoint)control2 end:(CGPoint)end;
++(TVCubicBezierCurve *)cubicCurveWithStart:(CGPoint)start controlPoint1:(CGPoint)control1 controlPoint2:(CGPoint)control2 end:(CGPoint)end;
 -(id)initWithStart:(CGPoint)start controlPoint1:(CGPoint)control1 controlPoint2:(CGPoint)control2 end:(CGPoint)end;
 
 @end

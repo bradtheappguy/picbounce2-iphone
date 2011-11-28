@@ -10,14 +10,14 @@
 #import <UIKit/UIKit.h>
 
 
-@interface Spline : NSObject {
+@interface TVSpline : NSObject {
 	NSMutableArray *curves;
 	CGPoint begin;
 	CGPoint current;
 }
 
 // Initialization methods - start a spline at a particular point.
-+(Spline *)splineAtPoint:(CGPoint)start;
++(TVSpline *)splineAtPoint:(CGPoint)start;
 -(id)initAtPoint:(CGPoint)start;
 
 // Add a linear bezier curve (i.e. a line segment) to the spline, starting at the previous endpoint.

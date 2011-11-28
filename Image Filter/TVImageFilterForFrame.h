@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-@interface ImageFilterForFrame : NSObject
+@interface TVImageFilterForFrame : NSObject
 -(id) initImage;
 - (UIImage*)imageWithBorderFromImage:(UIImage*)image:(UIImage*)frameImage;
 @end

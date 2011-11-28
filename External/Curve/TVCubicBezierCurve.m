@@ -7,14 +7,14 @@
 //
 
 
-#import "CubicBezierCurve.h"
+#import "TVCubicBezierCurve.h"
 #import "CGPointArithmetic.h"
 
 
-@implementation CubicBezierCurve
+@implementation TVCubicBezierCurve
 
-+(CubicBezierCurve *)cubicCurveWithStart:(CGPoint)start controlPoint1:(CGPoint)control1 controlPoint2:(CGPoint)control2 end:(CGPoint)end {
-	return [[[CubicBezierCurve alloc] initWithStart:start
++(TVCubicBezierCurve *)cubicCurveWithStart:(CGPoint)start controlPoint1:(CGPoint)control1 controlPoint2:(CGPoint)control2 end:(CGPoint)end {
+	return [[[TVCubicBezierCurve alloc] initWithStart:start
 									  controlPoint1:control1
 									  controlPoint2:control2 
 												end:end] autorelease];
@@ -66,11 +66,11 @@
 	CGPoint newCtrl2 = CGPointMidpoint(midCtrl1Ctrl2, midCtrl2End);
 	CGPoint mid = CGPointMidpoint(newCtrl1, newCtrl2);
 	
-	CubicBezierCurve *curve1 = [[CubicBezierCurve alloc] initWithStart:p1
+	TVCubicBezierCurve *curve1 = [[TVCubicBezierCurve alloc] initWithStart:p1
 														 controlPoint1:midStartCtrl1
 														 controlPoint2:newCtrl1 
 																   end:mid];
-	CubicBezierCurve *curve2 = [[CubicBezierCurve alloc] initWithStart:mid 
+	TVCubicBezierCurve *curve2 = [[TVCubicBezierCurve alloc] initWithStart:mid 
 														 controlPoint1:newCtrl2 
 														 controlPoint2:midCtrl2End 
 																   end:p2];
