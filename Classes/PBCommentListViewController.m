@@ -66,6 +66,7 @@
   [self.getCommentsRequest setDidFailSelector:@selector(getCommentsRequestDidFail:)];
   [self.getCommentsRequest setDidFinishSelector:@selector(getCommentsRequestDidFinish:)];
   [self.getCommentsRequest startAsynchronous];
+  [self.view addSubview:myView];
   [myView.commentTextView becomeFirstResponder];
   
 }
@@ -203,7 +204,6 @@
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:animationDuration];
   [UIView setAnimationCurve:animationCurve];
-  //keyboardWillShowmyView.center = CGPointMake(myView.center.x, myView.center.y + 216);   
   tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
   tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
   [UIView commitAnimations];
@@ -226,8 +226,6 @@
   [UIView setAnimationDuration:animationDuration];
   [UIView setAnimationCurve:animationCurve];
   
-  
-  //myView.center = CGPointMake(myView.center.x, myView.center.y - 216);   
   tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardEndFrame.size.height, 0);
   tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardEndFrame.size.height, 0);
   
@@ -279,7 +277,7 @@
 
   
   NSString *postID = [self.post objectForKeyNotNull:@"id"];
-  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments?text=%@",API_BASE,postID,[textToPost urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments?text=%@",API_BASE,postID,[textToPost urlEncodeUsingEncoding :NSUTF8StringEncoding]]];
   
   if (self.postCommentRequest) {
     [self.postCommentRequest cancel];
