@@ -716,9 +716,10 @@ bail:
     [PBSharedUser setShouldCrosspostToTW:YES];
     twitterButton.selected = YES;
   }
+}
 
     // ------- Method for setBackgroundImage of filter buttons ---------
-    -(void)ImposeImageOnButton:(UIImage *)Image
+-(void)ImposeImageOnButton:(UIImage *)Image
     {
         [button1 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button1.tag] forState:UIControlStateNormal];
         [button1 setBackgroundImage:[ImageFilterController filteredImageWithImage:Image filter:button1.tag] forState:UIControlStateSelected];
@@ -782,7 +783,7 @@ bail:
     twitterButton.selected = NO;
   }
 */
-}
+
 
 -(void) cancelButtonPressed:(id)sender {
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
