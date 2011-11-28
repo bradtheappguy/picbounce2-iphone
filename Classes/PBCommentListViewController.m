@@ -13,6 +13,7 @@
 #import "NSDictionary+NotNull.h"
 #import "PBAPI.h"
 #import "PBSharedUser.h"
+#import "NSString+URLEncoding.h"
 
 @implementation PBCommentListViewController
 @synthesize uploadedComments;
@@ -58,7 +59,6 @@
   
   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments",API_BASE,postID]];
 
-  // [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:24 inSection:0] atScrollPosition://UITableViewScrollPositionTop animated:YES];
   [self.progressHUD showUsingAnimation:YES];
   self.getCommentsRequest = [PBHTTPRequest requestWithURL:url];
   self.getCommentsRequest.requestMethod = @"GET";
@@ -279,7 +279,7 @@
 
   
   NSString *postID = [self.post objectForKeyNotNull:@"id"];
-  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments?text=%@",API_BASE,postID,[textToPost stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+  NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/posts/%@/comments?text=%@",API_BASE,postID,[textToPost urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
   
   if (self.postCommentRequest) {
     [self.postCommentRequest cancel];

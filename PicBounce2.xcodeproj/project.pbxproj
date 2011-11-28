@@ -69,6 +69,7 @@
 		A215F54D148306BB004F45F2 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = A215F54C148306BA004F45F2 /* UIImage+Crop.m */; };
 		A215F552148308F3004F45F2 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = A215F54F148308F2004F45F2 /* UIImage+Resize.m */; };
 		A215F553148308F3004F45F2 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = A215F551148308F3004F45F2 /* UIImage+Scale.m */; };
+		A215F55614832F4F004F45F2 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A215F55514832F4E004F45F2 /* NSString+URLEncoding.m */; };
 		A2222831133F075E00239E0F /* PBExpandingCommentEntryTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A222282F133F075E00239E0F /* PBExpandingCommentEntryTextView.m */; };
 		A227E36412FB38A600701013 /* PBRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36312FB38A600701013 /* PBRefreshTableHeaderView.m */; };
 		A227E36712FB38B000701013 /* PBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36612FB38B000701013 /* PBRootViewController.m */; };
@@ -629,6 +630,8 @@
 		A215F54F148308F2004F45F2 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		A215F550148308F2004F45F2 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		A215F551148308F3004F45F2 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		A215F55414832F4E004F45F2 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		A215F55514832F4E004F45F2 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		A222282F133F075E00239E0F /* PBExpandingCommentEntryTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBExpandingCommentEntryTextView.m; sourceTree = "<group>"; };
 		A2222830133F075E00239E0F /* PBExpandingCommentEntryTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBExpandingCommentEntryTextView.h; sourceTree = "<group>"; };
 		A227E36212FB38A600701013 /* PBRefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRefreshTableHeaderView.h; sourceTree = "<group>"; };
@@ -1234,6 +1237,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A215F55414832F4E004F45F2 /* NSString+URLEncoding.h */,
+				A215F55514832F4E004F45F2 /* NSString+URLEncoding.m */,
 				A215F54E148308F1004F45F2 /* UIImage+Resize.h */,
 				A215F54F148308F2004F45F2 /* UIImage+Resize.m */,
 				A215F550148308F2004F45F2 /* UIImage+Scale.h */,
@@ -3002,6 +3007,7 @@
 				A215F54D148306BB004F45F2 /* UIImage+Crop.m in Sources */,
 				A215F552148308F3004F45F2 /* UIImage+Resize.m in Sources */,
 				A215F553148308F3004F45F2 /* UIImage+Scale.m in Sources */,
+				A215F55614832F4F004F45F2 /* NSString+URLEncoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
