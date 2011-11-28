@@ -10,4 +10,6 @@
 
 @interface UIImage (Crop)
 
+- (UIImage *)imageCroppedToRect:(CGRect)rect;
+
 @end

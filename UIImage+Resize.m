@@ -49,7 +49,7 @@
     
     UIImage *transparentBorderImage = borderSize ? [croppedImage transparentBorderImage:borderSize] : croppedImage;
 
-    return [transparentBorderImage roundedCornerImage:cornerRadius borderSize:borderSize];
+    return croppedImage;
 }
 
 // Returns a rescaled copy of the image, taking into account its orientation

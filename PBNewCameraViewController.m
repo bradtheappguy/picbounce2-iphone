@@ -9,6 +9,9 @@
 #import "PBNewCameraViewController.h"
 #import "PBNewFilterViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "UIImage+Crop.m"
+#import "UIImage+Resize.h"
+
 @implementation PBNewCameraViewController
 
 - (id)init {
@@ -159,7 +162,7 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     PBNewFilterViewController *newPostViewController = [self nextViewController];
-    newPostViewController.imageView.image = image;
+    newPostViewController.imageView.image = [image thumbnailImage:600 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
     [image release];
     newPostViewController.hidesBottomBarWhenPushed = YES;
     newPostViewController.navigationItem.title = @"Post";
@@ -179,7 +182,7 @@
 
   if (picker == libraryPicker) {
     PBNewFilterViewController *newPostViewController = [self nextViewController];
-    newPostViewController.imageView.image = oringialImage;
+    newPostViewController.imageView.image = [oringialImage thumbnailImage:600 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
     [self pushViewController:newPostViewController animated:NO];
     [self dismissModalViewControllerAnimated:YES];
     return;
@@ -190,7 +193,7 @@
     return;
   }
   
-  newPostViewController.imageView.image = oringialImage;
+  newPostViewController.imageView.image = [oringialImage thumbnailImage:600 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
   NSLog(@"didFinishPickingMediaWithInfo: %@",info);
 }
 

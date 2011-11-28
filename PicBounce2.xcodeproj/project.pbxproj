@@ -66,6 +66,9 @@
 		A205F92C1314B41E003756CA /* PBPersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A205F92A1314B41E003756CA /* PBPersonListViewController.xib */; };
 		A205F9421314B556003756CA /* PBBadgeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A205F9401314B556003756CA /* PBBadgeCollectionViewController.m */; };
 		A205F9431314B556003756CA /* PBBadgeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */; };
+		A215F54D148306BB004F45F2 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = A215F54C148306BA004F45F2 /* UIImage+Crop.m */; };
+		A215F552148308F3004F45F2 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = A215F54F148308F2004F45F2 /* UIImage+Resize.m */; };
+		A215F553148308F3004F45F2 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = A215F551148308F3004F45F2 /* UIImage+Scale.m */; };
 		A2222831133F075E00239E0F /* PBExpandingCommentEntryTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A222282F133F075E00239E0F /* PBExpandingCommentEntryTextView.m */; };
 		A227E36412FB38A600701013 /* PBRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36312FB38A600701013 /* PBRefreshTableHeaderView.m */; };
 		A227E36712FB38B000701013 /* PBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A227E36612FB38B000701013 /* PBRootViewController.m */; };
@@ -620,6 +623,12 @@
 		A205F93F1314B556003756CA /* PBBadgeCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBadgeCollectionViewController.h; sourceTree = "<group>"; };
 		A205F9401314B556003756CA /* PBBadgeCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBBadgeCollectionViewController.m; sourceTree = "<group>"; };
 		A205F9411314B556003756CA /* PBBadgeCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBBadgeCollectionViewController.xib; sourceTree = "<group>"; };
+		A215F54B148306BA004F45F2 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
+		A215F54C148306BA004F45F2 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
+		A215F54E148308F1004F45F2 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		A215F54F148308F2004F45F2 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		A215F550148308F2004F45F2 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
+		A215F551148308F3004F45F2 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		A222282F133F075E00239E0F /* PBExpandingCommentEntryTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBExpandingCommentEntryTextView.m; sourceTree = "<group>"; };
 		A2222830133F075E00239E0F /* PBExpandingCommentEntryTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBExpandingCommentEntryTextView.h; sourceTree = "<group>"; };
 		A227E36212FB38A600701013 /* PBRefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRefreshTableHeaderView.h; sourceTree = "<group>"; };
@@ -1225,6 +1234,12 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A215F54E148308F1004F45F2 /* UIImage+Resize.h */,
+				A215F54F148308F2004F45F2 /* UIImage+Resize.m */,
+				A215F550148308F2004F45F2 /* UIImage+Scale.h */,
+				A215F551148308F3004F45F2 /* UIImage+Scale.m */,
+				A215F54B148306BA004F45F2 /* UIImage+Crop.h */,
+				A215F54C148306BA004F45F2 /* UIImage+Crop.m */,
 				A2FFB80D1480743800F98E28 /* PBEmptyView.h */,
 				A2FFB80E1480743800F98E28 /* PBEmptyView.m */,
 				A2FADFD51474524C00CA615B /* UIColor+PBColor.h */,
@@ -2984,6 +2999,9 @@
 				D136E6851471017400A2FEB3 /* PBNewFilterViewController.m in Sources */,
 				A2FADFD71474524C00CA615B /* UIColor+PBColor.m in Sources */,
 				A2FFB80F1480743900F98E28 /* PBEmptyView.m in Sources */,
+				A215F54D148306BB004F45F2 /* UIImage+Crop.m in Sources */,
+				A215F552148308F3004F45F2 /* UIImage+Resize.m in Sources */,
+				A215F553148308F3004F45F2 /* UIImage+Scale.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
