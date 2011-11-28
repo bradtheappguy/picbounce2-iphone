@@ -8,7 +8,7 @@
 
 #import "PBNewFilterViewController.h"
 #import "PBNewPostViewController.h"
-#import "PBFilterManager.h"
+//#import "PBFilterManager.h"
 
 @implementation PBNewFilterViewController
 @synthesize imageView;
@@ -35,15 +35,15 @@
 
 -(void) configureFilterScrollView {
 
-  filterManager = [[PBFilterManager alloc] init:self];
-  [filterManager loadFilterPList];
-  [PBFilterManager createFilterButtonImages:NO];
-  CGFloat width = [filterManager layoutFilterView:filterScrollView];
+//  filterManager = [[PBFilterManager alloc] init:self];
+//  [filterManager loadFilterPList];
+//  [PBFilterManager createFilterButtonImages:NO];
+//  CGFloat width = [filterManager layoutFilterView:filterScrollView];
   [filterManager setDelegate:self];
   
-  CGSize newSize = filterScrollView.bounds.size;
-  newSize.width = width;
-  filterScrollView.contentSize = newSize;
+//  CGSize newSize = filterScrollView.bounds.size;
+//  newSize.width = width;
+//  filterScrollView.contentSize = newSize;
   filterScrollView.alwaysBounceHorizontal = YES;
 }
 
