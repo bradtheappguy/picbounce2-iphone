@@ -14,7 +14,7 @@
 @interface PBNewFilterViewController : UIViewController <PBFilterNotifierDelegate> {
 
   PBFilterManager *filterManager;
-
+  UIImage *originalImage;
 }
 
 @property (retain, nonatomic) IBOutlet UIImageView *imageView;
