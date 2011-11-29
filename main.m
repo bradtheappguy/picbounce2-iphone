@@ -9,15 +9,20 @@
 #import <UIKit/UIKit.h>
 
 int main(int argc, char *argv[]) {    
-  
-   
     [Utilities swizzleSelector:@selector(insertSubview:atIndex:)
 					   ofClass:[UINavigationBar class]
 				  withSelector:@selector(biInsertSubview:atIndex:)];
-    [Utilities swizzleSelector:@selector(sendSubviewToBack:)
+  
+  [Utilities swizzleSelector:@selector(sendSubviewToBack:)
 					   ofClass:[UINavigationBar class]
 				  withSelector:@selector(biSendSubviewToBack:)];
-    
+  
+  
+  [Utilities swizzleSelector:@selector(layoutSubviews)
+                     ofClass:[UINavigationBar class]
+                withSelector:@selector(biLayoutSubviews)];
+  
+  
   NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
   int retVal = UIApplicationMain(argc, argv, nil, nil);
   [pool release];

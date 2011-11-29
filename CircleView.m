@@ -8,6 +8,7 @@
 
 #import "CircleView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIColor+PBColor.h"
 
 @implementation CircleView
 @synthesize progress = _progess;
@@ -96,7 +97,7 @@ const CGFloat krefreshEllipseHeight = 50.0f;
 	drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
 	drawRect.size.height = roundf(resolution * drawRect.size.height) / resolution;
 	CGPathAddEllipseInRect(path, NULL, drawRect);
-	color = [UIColor colorWithRed:0.89f green:0.859f blue:0.835f alpha:0.46f];
+	color = [UIColor colorWithRedInt:255 greenInt:255 blueInt:255 alphaInt:128];
 	[color setFill];
 	CGContextAddPath(context, path);
 	CGContextFillPath(context);
@@ -176,10 +177,12 @@ const CGFloat krefreshEllipseHeight = 50.0f;
 	drawRect.size.height = roundf(resolution * drawRect.size.height) / resolution;
 	CGPathAddEllipseInRect(path, NULL, drawRect);
 	colors = [NSMutableArray arrayWithCapacity:2];
-	color = [UIColor colorWithRed:0.878f green:0.835f blue:0.8f alpha:1.0f];
-	[colors addObject:(id)[color CGColor]];
+	color = [UIColor colorWithRedInt:210 greenInt:220 blueInt:222 alphaInt:255];
+  
+  [colors addObject:(id)[color CGColor]];
 	locations[0] = 0.0f;
-	color = [UIColor colorWithRed:0.969f green:0.949f blue:0.933f alpha:1.0f];
+	color = [UIColor colorWithRedInt:185 greenInt:194 blueInt:194 alphaInt:255];
+  
 	[colors addObject:(id)[color CGColor]];
 	locations[1] = 1.0f;
 	gradient = CGGradientCreateWithColors(space, (CFArrayRef)colors, locations);
@@ -214,14 +217,8 @@ const CGFloat krefreshEllipseHeight = 50.0f;
 
   
   CGContextSetLineWidth(context, 2.0);
-  CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:103.0/255.0
-                                                            green:89.0/255.0 
-                                                             blue:77.0/255.0 
-                                                            alpha:1.0].CGColor);
-  CGContextSetFillColorWithColor(context, [UIColor colorWithRed:103.0/255.0
-                                                            green:89.0/255.0 
-                                                             blue:77.0/255.0 
-                                                            alpha:1.0].CGColor);
+  CGContextSetStrokeColorWithColor(context, [UIColor PBRefreshCircleColor].CGColor);
+  CGContextSetFillColorWithColor(context, [UIColor PBRefreshCircleColor].CGColor);
   
   
   

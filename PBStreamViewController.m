@@ -7,7 +7,6 @@
 
 #import "ASIFormDataRequest.h"
 #import <QuartzCore/QuartzCore.h>
-#define CELL_PADDING 15
 #import "PBCommentListViewController.h"
 #import "ProfileSettingView.h"
 #import "PBLoginViewController.h"
@@ -20,16 +19,20 @@
 #import "PBUploadingTableViewCell.h"
 #import "PBPersonListViewController.h"
 #import "PBHTTPRequest.h"
-#import "NewPostViewController.h"
+#import "PBNewPostViewController.h"
 #import "NSDictionary+NotNull.h"
 #import "PBNavigationController.h"
+#import "PBSharedUser.h"
+#import "PBNavigationBarButtonItem.h"
+
+#define CELL_PADDING 15
+#define TABBAR_PROFILE_INDEX 2
+#define TABBAR_FEED_INDEX 0
 
 @implementation PBStreamViewController
 
 @synthesize shouldShowProfileHeader;
 @synthesize shouldShowProfileHeaderBeforeNetworkLoad;
-@synthesize profileHeaderWithFollowBar;
-@synthesize shouldShowFollowingBar;
 @synthesize shouldShowUplodingItems;
 
 @synthesize segmentedControl;
@@ -47,84 +50,148 @@
 @synthesize followersCountLabel;
 @synthesize followingCountLabel;
 @synthesize badgesCountLabel;
+@synthesize emptyView;
 
 - (UIView *)createDefaultView {
    
-    UIView *a_EmptyStateView; 
-    if (self.tabBarController.selectedIndex == 2) {
-        a_EmptyStateView = [[UIView alloc] initWithFrame:CGRectMake(0,_profileHeader.frame.size.height +5, self.view.bounds.size.width, self.view.bounds.size.height)];
-    }else
+  UIView *a_EmptyStateView; 
+  int idx = self.tabBarController.selectedIndex;
+  NSLog(@"index = %d", idx);
+  if (self.tabBarController.selectedIndex == TABBAR_PROFILE_INDEX) {
+    a_EmptyStateView = [[UIView alloc] initWithFrame:CGRectMake(0,_profileHeader.frame.size.height +5, self.view.bounds.size.width, self.view.bounds.size.height)];
+  } else {
     a_EmptyStateView = [[UIView alloc] initWithFrame:CGRectMake(0,5 , self.view.bounds.size.width, self.view.bounds.size.height)];
-    a_EmptyStateView.tag = -37;
-    a_EmptyStateView.layer.masksToBounds = YES;
-    a_EmptyStateView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:a_EmptyStateView];
-    self.tableView.scrollEnabled = NO;
+  }
+  a_EmptyStateView.tag = -37;
+  a_EmptyStateView.layer.masksToBounds = YES;
+  a_EmptyStateView.backgroundColor = [UIColor clearColor];
+  [self.view addSubview:a_EmptyStateView];
+  self.tableView.scrollEnabled = NO;
     
-    UIImageView *emptyView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    emptyView.tag = 12;
+  UIImageView *emptyView = nil;
+  emptyView.tag = 12;
   emptyView.backgroundColor = [UIColor colorWithRed:240/255.0 green:237/255.0 blue:235/255.05 alpha:1];
-    emptyView.image = [UIImage imageNamed:@"ico_feed_empty.png"];
+  emptyView.image = [UIImage imageNamed:@"ico_feed_empty.png"];
   emptyView.contentMode = UIViewContentModeCenter;
-    [a_EmptyStateView addSubview:emptyView];
-    [emptyView release];
-    
-    
-    UILabel *a_DefaultViewNameLabel = [[UILabel alloc]initWithFrame: CGRectMake(26, 77, 268, 32)];
-    a_DefaultViewNameLabel.text = [NSString stringWithFormat:@"Welcome, %@",self.navigationItem.title];
+  if (self.tabBarController.selectedIndex == TABBAR_FEED_INDEX) {
+    CGFloat newYPos = emptyView.frame.origin.y - 12.5f;
+    emptyView.frame = CGRectMake(emptyView.frame.origin.x, newYPos, emptyView.frame.size.width, emptyView.frame.size.height);
+  }  else {
+    CGFloat newYPos = emptyView.frame.origin.y - 40.5f;
+    emptyView.frame = CGRectMake(emptyView.frame.origin.x, newYPos, emptyView.frame.size.width, emptyView.frame.size.height);
+  }
+  [a_EmptyStateView addSubview:emptyView];
+  [emptyView release];
+
+  if (self.tabBarController.selectedIndex == TABBAR_FEED_INDEX) {
+    UILabel *a_DefaultViewNameLabel = [[UILabel alloc]initWithFrame: CGRectMake(10, 64.5, 300, 32)];
+    a_DefaultViewNameLabel.text = [NSString stringWithFormat:@"Welcome, %@!",self.navigationItem.title];
     a_DefaultViewNameLabel.backgroundColor = [UIColor clearColor];
     a_DefaultViewNameLabel.textAlignment = UITextAlignmentCenter;
     a_DefaultViewNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:26];
     a_DefaultViewNameLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
     [a_EmptyStateView addSubview:a_DefaultViewNameLabel];
     [a_DefaultViewNameLabel release];
-    
-    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(93, 247, 135, 58)];
+  }
+
+  if (self.tabBarController.selectedIndex == TABBAR_FEED_INDEX) {
+    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(10, 228-150, 300, 108)];
+    a_DefaultViewNameLabel1.numberOfLines = 4;
+    a_DefaultViewNameLabel1.text = [NSString stringWithFormat:@"Get started by uploading a photo.\nOr... Upload a photo at\nwww.via.me/%@\n*Arrow to camera",self.navigationItem.title ];
+    a_DefaultViewNameLabel1.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
+    a_DefaultViewNameLabel1.backgroundColor = [UIColor clearColor];
+    a_DefaultViewNameLabel1.textAlignment = UITextAlignmentCenter;
+    a_DefaultViewNameLabel1.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+    [a_EmptyStateView addSubview:a_DefaultViewNameLabel1];
+    [a_DefaultViewNameLabel1 release];
+  } else {
+    UILabel *a_DefaultViewNameLabel1 = [[UILabel alloc]initWithFrame: CGRectMake(10, 50, 300, 58)];
     a_DefaultViewNameLabel1.numberOfLines = 2;
-    a_DefaultViewNameLabel1.text = @"Snap a photo   to start sharing!";
+    a_DefaultViewNameLabel1.text = 
+    [NSString stringWithFormat:@"We cant wait to see what you've got.",self.navigationItem.title];
     a_DefaultViewNameLabel1.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
     a_DefaultViewNameLabel1.backgroundColor = [UIColor clearColor];
     a_DefaultViewNameLabel1.textAlignment = UITextAlignmentCenter;
     a_DefaultViewNameLabel1.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
     [a_EmptyStateView addSubview:a_DefaultViewNameLabel1];
     [a_DefaultViewNameLabel1 release];
-    return [a_EmptyStateView autorelease];
-}
--(void) showEmptyState {
+    
+    UILabel *a_DefaultViewNameLabel2 = [[UILabel alloc]initWithFrame: CGRectMake(10, 80, 300, 58)];
+    a_DefaultViewNameLabel2.numberOfLines = 2;
+    a_DefaultViewNameLabel2.text = 
+    [NSString stringWithFormat:@"Upoad your first photo now!",self.navigationItem.title];
+    a_DefaultViewNameLabel2.textColor = [UIColor colorWithRed:77.0f/255.0f green:52.0f/255.0f blue:49.0f/255.0f alpha:1.0];
+    a_DefaultViewNameLabel2.backgroundColor = [UIColor clearColor];
+    a_DefaultViewNameLabel2.textAlignment = UITextAlignmentCenter;
+    a_DefaultViewNameLabel2.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+    [a_EmptyStateView addSubview:a_DefaultViewNameLabel2];
+    [a_DefaultViewNameLabel2 release];
+    
+  }
 
-    [self.tableView addSubview:[self createDefaultView]]; 
+  return [a_EmptyStateView autorelease];
+}
+
+-(void) showEmptyState {
+  if ([self.navigationController.viewControllers count] > 1 ) {
+    UILabel *view = [[UILabel alloc] initWithFrame:CGRectMake(0, self.profileHeader.frame.size.height, 320, 71)];
+    view.numberOfLines = 2;
+    view.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
+    view.textAlignment = UITextAlignmentCenter;
+    view.textColor = [UIColor colorWithRedInt:57 greenInt:77 blueInt:97 alphaInt:255];
+    view.shadowColor = [UIColor whiteColor];
+    view.shadowOffset = CGSizeMake(0, -1);
+    
+    view.text = @"This person hasn't been sharing the love.\nMaybe they need a nudge from you.";
+    view.backgroundColor = [UIColor clearColor];
+    [self.tableView addSubview:view];
+
+  }
+  else {
+    NSString *name = [PBSharedUser name];
+    NSString *screenname= [PBSharedUser screenname];
+    [self.emptyView setUserName:name];
+    [self.emptyView setScreenName:screenname];
+    self.emptyView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_pattern"]];
+    [self.tableView addSubview:self.emptyView]; 
     self.tableView.scrollEnabled = NO;
+  }
 }
 
 
 -(void) hideEmptyState {
-       
-        [[self.view viewWithTag:-37] removeFromSuperview];
-        //[self.tableView addSubview:[self createDefaultView]];
-    
-    self.tableView.scrollEnabled = YES;
+  
+  [self.emptyView removeFromSuperview];
+  self.tableView.scrollEnabled = YES;
 }
 
 - (void) reload {
-  [self.tableView reloadData];
+  [super reload];
+  
+  [[PBUploadQueue sharedQueue] removeCompletedPosts];
   
   NSDictionary *user = [self.responseData user];
   NSString *name = [user objectForKeyNotNull:@"screen_name"]; 
   if (name) {
-    self.navigationItem.title = name;
+    [self setTitle:name];
   }
   if (user && shouldShowProfileHeader) {
-    self.tableView.tableHeaderView = shouldShowFollowingBar?self.profileHeaderWithFollowBar:self.profileHeader;
+    self.tableView.tableHeaderView = self.profileHeader;
     [self.profileHeader setUser:user];
   }
   else {
-    UIView *transparentHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
+    /*UIView *transparentHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
     transparentHeader.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = transparentHeader;
-    [transparentHeader release];
+    [transparentHeader release];*/
   }    
 
-  if ([self numberOfSectionsInTableView:self.tableView] == 0) {
+  NSUInteger nUploading = 0;
+  if (self.shouldShowUplodingItems) {
+    nUploading =[[PBUploadQueue sharedQueue] count]; 
+  }
+  
+  if ([self.responseData numberOfPostsNotDeleted] + nUploading < 1) {
     [self showEmptyState];
   }
   else {
@@ -132,18 +199,30 @@
   }
   [self configureNavigationBar];
   
-  if ([self.responseData loadMoreDataURL]) {
+  
+  if ([self.responseData numberOfPostsNotDeleted] > 0) {
+   if ([self.responseData loadMoreDataURL]) {
     [footerView setBottomReachedIndicatorHidden:YES];
     [footerView startLoadingAnimation];
-  }
-  else {
+   }
+   else {
     [footerView setBottomReachedIndicatorHidden:NO];
+    [footerView stopLoadingAnimation];
+   }
+  }
+  else { //There are no posts, loading more from the bottom does not make sense
+    [footerView setBottomReachedIndicatorHidden:YES];
     [footerView stopLoadingAnimation];
   }
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {  
-  if ([[PBUploadQueue sharedQueue] count] == 0 ) {
+  if (self.shouldShowUplodingItems == NO) {
+    return;
+  }
+  NSUInteger uploadCount = [[PBUploadQueue sharedQueue] count];
+  
+  if (uploadCount == 0 ) {
     [self reloadTableViewDataSourceUsingCache:NO];
   }
   else {
@@ -157,13 +236,34 @@
 
 
 -(void) awakeFromNib {
-  if (self.shouldShowUplodingItems) {
-    [[PBUploadQueue sharedQueue] addObserver:self forKeyPath:@"count" options:NSKeyValueChangeSetting context:nil];
-  }
+  [[PBUploadQueue sharedQueue] addObserver:self forKeyPath:@"count" options:NSKeyValueChangeSetting context:nil];
 }
 
 -(void) configureNavigationBar {
+  
+   
+  
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+  [button setImage:[UIImage imageNamed:@"btn_tweet_n.png"] forState:UIControlStateNormal];
+  [button addTarget:self action:@selector(createPost) forControlEvents:UIControlEventTouchUpInside];
+  button.frame = CGRectMake(0, 0, 32, 33);
+  UIBarButtonItem *createPostButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+  self.navigationItem.rightBarButtonItem = createPostButton;
+  [createPostButton release];
+}
+
+-(void) setTitle:(NSString *)title {
+  [super setTitle:title];
+  self.navigationItem.title = title;
   UILabel *l = (UILabel *)self.navigationItem.titleView;
+  
+  if ([l.text isEqualToString:@"Feed"]) {
+    return;
+  }
+  if ([l.text isEqualToString:@"Profile"]) {
+    return;
+  }
+  
   if ([l.text isEqualToString:self.navigationItem.title] == NO) {
     UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
     label.backgroundColor = [UIColor clearColor];
@@ -171,27 +271,22 @@
     label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
     label.textAlignment = UITextAlignmentCenter;
     label.textColor = kNavBarTitleTextColor
-    self.navigationItem.titleView = label;
+    
     label.text = self.navigationItem.title;
+    
+    self.navigationItem.titleView = label;
     [label sizeToFit];
   }
-   
-  
-  UIBarButtonItem *createPostButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createPost)];
-  self.navigationItem.rightBarButtonItem = createPostButton;
-  [createPostButton release];
 }
 
 #pragma mark Open Create Post View
 - (void)createPost {
-    NewPostViewController *newPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
+    PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"PBNewPostViewController" bundle:nil];
     newPostViewController.hidesBottomBarWhenPushed = YES;
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
-        
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  newPostViewController.navigationItem.leftBarButtonItem = cancelButton;
+  newPostViewController.navigationItem.leftBarButtonItem = [PBNavigationBarButtonItem itemWithTitle:@"Cancel" target:self action:@selector(dismissModalViewControllerAnimated:)];
+  ;
   newPostViewController.navigationItem.title = @"New Post";
-  [cancelButton release];
   [self presentModalViewController:navigationController animated:YES];
     [newPostViewController release];
 }
@@ -221,18 +316,23 @@
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoadingIndicator11) name:@"ShowLoadingView" object:nil];
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoadingIndicator11) name:@"HideLoadingView" object:nil];
   [self.profileHeader.followButton setViewController:self];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveDeletedNotification:) name:@"com.viame.deleted" object:nil];
   
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewDataSourceUsingCache:) name:@"USER_DID_UPLOAD" object:nil];
+  
+}
+
+- (void) viewDidUnload {
+  [super viewDidUnload];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.deleted" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"USER_DID_UPLOAD" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"USER_LOGGED_IN" object:nil];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  
+  [self.tableView reloadData];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
-  
-  if (!self.navigationItem.title) {
-      NSLog(@"%@", NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE"));
-      self.navigationItem.title = NSLocalizedString(@"PicBounce",@"PICBOUNCE TITLE");
-  }
   
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
@@ -240,7 +340,7 @@
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
   
-        //self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
+    //self.tableView.tableFooterView = [self footerViewForTable:self.tableView];
     [self configureNavigationBar];
   
 }
@@ -259,49 +359,55 @@
   return nSections;
 }
 
+-(NSDictionary *) postForTableViewIndex:(NSInteger)index {
+  if (self.shouldShowUplodingItems == NO) {
+    return [self.responseData photoAtIndex:index];
+  }
+  else {
+    NSInteger count = [[PBUploadQueue sharedQueue] count];
+    if (index >= count && (index-count >= 0)) {
+      return [self.responseData photoAtIndex:index - count];
+    }  
+    return nil;
+  }
+}
+
 //one row for each photo
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  NSDictionary *post = [self postForTableViewIndex:section];
+  if ([[post objectForKeyNotNull:@"deleted"] boolValue]) {
+    return 0;
+  }
   return 1;
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
   if (self.shouldShowUplodingItems == NO) {
-    return 42;
+    NSDictionary *post = [self postForTableViewIndex:section];
+    if ([[post objectForKeyNotNull:@"deleted"] boolValue]== NO) {
+      return 42;
+    }
   }
   else {
     if (section >= [[PBUploadQueue sharedQueue] count]) {
-      return 42;
+      NSDictionary *post = [self postForTableViewIndex:section];
+      if ([[post objectForKeyNotNull:@"deleted"] boolValue] == NO) {
+        return 42;
+      }
     }  
     else {
       return 0;
     }
   }
+  return 0;
 } 
-/*
- if (self.shouldShowUplodingItems == NO) {
- return [self photoCellForRowAtIndex:indexPath.section];
- }
- else {
- NSUInteger count = [[PBUploadQueue sharedQueue] count];
- if (indexPath.section >= count) {
- return [self photoCellForRowAtIndex:indexPath.section - count];
- }  
- */
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
-  if (self.shouldShowUplodingItems == NO) {
-    return [PBPhotoCell heightWithPhoto:[self.responseData photoAtIndex:indexPath.section]];
-  }
-  else {
-    NSUInteger count = [[PBUploadQueue sharedQueue] count];
-    if (indexPath.section >= count) {
-      return [PBPhotoCell heightWithPhoto:[self.responseData photoAtIndex:indexPath.section - count]];
-    }  
-    else {
-      return 65;
-    }
-  }
+  NSDictionary *post = [self postForTableViewIndex:indexPath.section];
+  return [PBPhotoCell heightWithPhoto:post];
 }
 
 
@@ -337,6 +443,7 @@
   [spinner startAnimating];
   spinner.center = loadMoreCell.center;
   [spinner release];
+  
   return loadMoreCell;
 }
 
@@ -369,7 +476,7 @@
 -(UITableViewCell *) uploadingCellForRowAtIndexPath:(NSIndexPath *)indexPath {
   PBUploadingTableViewCell *upcell = [[[NSBundle mainBundle] loadNibNamed:@"PBUploadingTableViewCell" owner:nil options:nil] lastObject];
   NSDictionary *photo = [[PBUploadQueue sharedQueue] photoAtIndex:indexPath.section];
-  [upcell setPhoto:photo];
+  [upcell setPost:photo];
   return upcell;
 }
 
@@ -402,9 +509,15 @@
 }
 
 -(void) loadMoreData {
-  [footerView startLoadingAnimation];
-  [footerView setBottomReachedIndicatorHidden:YES];
-  [self loadMoreFromNetwork];
+  if ([self.responseData numberOfPostsNotDeleted] < 5) {
+    [footerView setBottomReachedIndicatorHidden:YES];
+    [footerView stopLoadingAnimation];
+  }
+  else {
+    [footerView startLoadingAnimation];
+    [footerView setBottomReachedIndicatorHidden:YES];
+    [self loadMoreFromNetwork];
+  }
 }
 
 -(void) moreDataDidLoad {
@@ -416,11 +529,12 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.section == [self numberOfSectionsInTableView:tableView] - 1) {
     if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1) {
-      if ([self.responseData numberOfPosts] > 0) {
+
         if ([self moreDataAvailable]) {
           [self loadMoreData];
         }
-      }
+      
+      
     }
   }
 }
@@ -428,30 +542,36 @@
 
 -(void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  [self reloadTableViewDataSourceUsingCache:NO];
+  
+  
+  //[self reloadTableViewDataSourceUsingCache:NO];
   //[self configureNavigationBar];
 }
 
 
 -(void) pushNewStreamViewControllerWithUserID:(NSString *)userID screenName:(NSString*)screenName {
-  
   PBStreamViewController *vc = [[PBStreamViewController alloc] initWithNibName:@"PBStreamViewController" bundle:nil];
   vc.baseURL = [NSString stringWithFormat:@"http://%@/api/users/%@/posts",API_BASE,userID];
-  vc.shouldShowFollowingBar = YES;
   vc.shouldShowProfileHeader = YES;
   vc.shouldShowProfileHeaderBeforeNetworkLoad = YES;
   vc.pullsToRefresh = YES;
-  vc.navigationItem.title = screenName;
+  [vc setTitle:screenName];
   [self.navigationController pushViewController:vc animated:YES];
   [vc release];
 }
+
 
 #pragma mark Buttons and Gesture Recoginizers
 
 -(void) personHeaderViewWasTapped:(UITapGestureRecognizer *)sender {
   PBPhotoHeaderView *header = (PBPhotoHeaderView *)sender.view;
   NSString *screenName = [[header.photo objectForKey:@"user"] objectForKeyNotNull:@"screen_name"];
-  [self pushNewStreamViewControllerWithUserID:header.userID screenName:screenName];
+  NSString *userID = [[[header.photo objectForKey:@"user"] objectForKeyNotNull:@"id"] stringValue];
+
+  NSString *thisPageUSerID = [[self.responseData.user objectForKeyNotNull:@"id"] stringValue];
+  if ([userID isEqualToString:thisPageUSerID] == NO) {
+    [self pushNewStreamViewControllerWithUserID:header.userID screenName:screenName];
+  }
 }
 
 
@@ -529,7 +649,6 @@
   profileAvatarImageView.image = [info objectForKey:UIImagePickerControllerEditedImage];
 }
 
--(IBAction)leaveCommentButtonPressed:(id)sender{}
 
 -(void) showLoadingIndicator11 {
     if (loadingView) {
@@ -564,5 +683,16 @@
         [loadingView removeFromSuperview];
         loadingView = nil;
     }
+}
+
+-(void) yyy:(NSIndexSet *)indexSet {
+  [self reload];
+}
+
+
+-(void)receiveDeletedNotification:(NSNotification *)notification {
+  
+    [self performSelector:@selector(yyy:) withObject:nil afterDelay:0.75];
+  
 }
 @end

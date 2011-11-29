@@ -18,6 +18,22 @@
   [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"USER_ID"];
 }
 
++ (void) setName:(NSString *)name {
+  [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"USER_NAME"];
+}
+
++ (NSString *) name {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:@"USER_NAME"];
+}
+
++ (NSString *) screenname {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:@"USER_SCREEN_NAME"];
+}
+
++ (void) setScreenname:(NSString *)screenname {
+  [[NSUserDefaults standardUserDefaults] setObject:screenname forKey:@"USER_SCREEN_NAME"];
+}
+
 + (BOOL) shouldCrosspostToFB {
   return [[NSUserDefaults standardUserDefaults] boolForKey:@"CROSSPOST_FB"];
 }
@@ -72,6 +88,9 @@
 }
 
 + (void) setFacebookPages:(NSMutableArray *)token {
+  NSArray *oldFacebbokPages = [self facebookPages];
+  
+  
   [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"FBSelectedPagesArray"];
 }
 
@@ -83,11 +102,23 @@
   }
 }
 
++ (void) setShouldCrosspostToFBWall:(BOOL)value {
+   [[NSUserDefaults standardUserDefaults] setBool:value forKey:@"ShouldCrosspostToFBWall"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL) shouldCrosspostToFBWall {
+   return [[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldCrosspostToFBWall"];
+}
+
+
 + (NSMutableDictionary *) facebookWall {
+  NSAssert(false, @"");
   return [[[NSUserDefaults standardUserDefaults] objectForKey:@"FBSelectedWallArray"] retain];
 }
 
 + (void) setFacebookWall:(NSMutableDictionary *)wall {
+   NSAssert(false, @"");
   [[NSUserDefaults standardUserDefaults] setObject:wall forKey:@"FBSelectedWallArray"];
 }
 

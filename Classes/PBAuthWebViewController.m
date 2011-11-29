@@ -90,8 +90,19 @@
     patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
     NSString *userID = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
     [PBSharedUser setUserID:userID];
-    [(AppDelegate *) [[UIApplication sharedApplication] delegate] setAuthToken:key];
+
+    pattern = [NSRegularExpression regularExpressionWithPattern:@"screen_name=(.+)&" options:NSRegularExpressionCaseInsensitive error:nil]; 
+    patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
+    NSString *screenname = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
+    screenname = [screenname stringByReplacingOccurrencesOfString:@"&" withString:@""];
+    [PBSharedUser setScreenname:screenname];
     
+    pattern = [NSRegularExpression regularExpressionWithPattern:@"&name=(.+)" options:NSRegularExpressionCaseInsensitive error:nil];
+    patt = [pattern rangeOfFirstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
+    NSString *name = [[[urlString substringWithRange:patt] componentsSeparatedByString:@"="] lastObject];
+    [PBSharedUser setName:[name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_LOGGED_IN" object:nil];
 
@@ -118,6 +129,24 @@
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   
+}
+
+-(void) setTitle:(NSString *)title {
+  [super setTitle:title];
+  UILabel *l = (UILabel *)self.navigationItem.titleView;
+  
+  if ([l.text isEqualToString:self.navigationItem.title] == NO) {
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = UITextAlignmentCenter;
+    label.textColor = kNavBarTitleTextColor
+    
+    label.text = self.navigationItem.title;
+    [label sizeToFit];
+    self.navigationItem.titleView = label;
+  }
 }
 
 @end

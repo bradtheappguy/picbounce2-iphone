@@ -12,7 +12,8 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "AppDelegate.h"
 #import "PBHTTPRequest.h"
-
+#import "PBSharedUser.h"
+#import "PBUploadQueue.h"
 @implementation NSData(MD5)
 
 - (NSString*)MD5
@@ -51,7 +52,6 @@
 -(id) initWithImage:(UIImage *)image {
   if (self = [super init]) {
     self.uploadProgress = 0;
-    [self performSelector:@selector(foo) withObject:nil afterDelay:1];
     self.uploading = YES;
     self.image = image;
   }
@@ -61,7 +61,6 @@
 -(id) initWithText:(NSString *)text {
   if (self = [super init]) {
     self.uploadProgress = 0;
-    [self performSelector:@selector(foo) withObject:nil afterDelay:1];
     self.uploading = YES;
     self.text = text;
   }
@@ -76,7 +75,8 @@
   [postRequest setShowAccurateProgress:YES];
   [postRequest setUploadProgressDelegate:self];
   [postRequest setRequestMethod:@"POST"];
-  [postRequest setPostValue:@"message" forKey:@"media_type"];
+  [postRequest setPostValue:@"text" forKey:@"media_type"];
+  [postRequest setQueue:[PBUploadQueue sharedQueue]];
   
   if (self.image) {
     NSData *jpegData = UIImageJPEGRepresentation(self.image, 0.80);
@@ -86,10 +86,27 @@
     [postRequest setPostValue:originURL forKey:@"origin_url"];
   }
   if (self.shouldCrossPostToTwitter) {
-    [postRequest setPostValue:@"1" forKey:@"twitter_crosspost"];
+    [postRequest setPostValue:@"1" forKey:@"tw_crosspost"];
   }
   if (self.shouldCrossPostToFacebook) {
-    [postRequest setPostValue:@"1" forKey:@"facebook_crosspost"];
+    [postRequest setPostValue:@"1" forKey:@"fb_crosspost"];
+    NSArray *facebookPages = [PBSharedUser facebookPages];
+   
+    if ([PBSharedUser shouldCrosspostToFBWall]) {
+      [postRequest setPostValue:@"me" forKey:@"fb_crosspost_pages[]"];
+    }
+    
+    
+    for (NSDictionary *fbPage in facebookPages) {
+      if ([[fbPage objectForKey:@"Selected"] boolValue]) {
+        NSString *value = @"";
+        NSString *fbid = [fbPage objectForKey:@"id"];
+        NSString *fbat = [fbPage objectForKey:@"access_token"];
+        value = [value stringByAppendingFormat:@"%@:%@",fbid,fbat];
+        [postRequest setPostValue:value forKey:@"fb_crosspost_pages[]"];
+      }
+    }
+    
   }
   if (self.text) {
     [postRequest setPostValue:self.text forKey:@"text"];
@@ -97,16 +114,10 @@
   
   [postRequest setDelegate:self];
   [postRequest setDidFinishSelector:@selector(uploadStep2DidFinish:)];
+  [postRequest setDidFailSelector:@selector(uploadDidFail:)];
   [postRequest startAsynchronous];
 }
 
-
-
--(void) foo {
-  self.uploadFailed = YES;
-  self.uploading = NO;
-  self.uploadSucceded = NO;
-}
 
 
 -(void)setProgress:(CGFloat)proge {
@@ -122,11 +133,15 @@
   }
 }
 
--(void) startUpload {
-  [self retry];
+-(void) retry {
+  [self startUpload];
 }
 
--(void) retry {
+-(void) startUpload {
+  self.uploadFailed = NO;
+  self.uploading = YES;
+  self.uploadSucceded = NO;
+  
   if (self.image) {
     NSData *jpegData = UIImageJPEGRepresentation(self.image, 0.80);
     NSString *key = [[jpegData MD5] stringByAppendingString:@".jpg"];
@@ -138,7 +153,7 @@
     [ASIS3Request setSharedAccessKey:@"AKIAIIZEL3OLHCBIZBBQ"];
     [req setAccessPolicy:@"public-read"];
     [req setMimeType:@"image/jpeg"];
-    
+    [req setQueue:[PBUploadQueue sharedQueue]];
     
     
     
@@ -147,9 +162,6 @@
     [req setDidFailSelector:@selector(uploadDidFail:)];
     [req startAsynchronous];
     
-    self.uploadFailed = NO;
-    self.uploading = YES;
-    self.uploadSucceded = NO;
   }
   else {
     [self postToServer];
@@ -166,11 +178,12 @@
 
 -(void) uploadDidFinish:(ASIHTTPRequest *)request {
   self.uploadProgress = 0.50f;
-  if ([request responseStatusCode] != 200 || [[request responseHeaders] objectForKey:@"x-amz-id-2"] == nil) {
+  if ([request responseStatusCode] != 200 || [[request responseHeaders] objectForKey:@"X-Amz-Id-2"] == nil) {
     [self uploadDidFail:request];
   }
-  
-  [self postToServer];
+  else {
+    [self postToServer];
+  }
 }
 
 -(void) uploadStep2DidFinish:(ASIHTTPRequest *)request {
@@ -183,6 +196,7 @@
     self.uploading = NO;
     self.uploadSucceded = YES;
   }
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"USER_DID_UPLOAD" object:nil];
 }
 
 -(void) dealloc {

@@ -7,63 +7,43 @@
 //
 
 #import "TwitterButton.h"
+#import "PBSharedUser.h"
 
 @implementation TwitterButton
-@synthesize selected;
-@synthesize label;
 
 - (id)initWithPosition:(CGPoint)position {
-	CGRect frame = CGRectMake(position.x, position.y, 24, 27);
+	CGRect frame = CGRectMake(position.x, position.y, 56, 27);
     if ((self = [super initWithFrame:frame])) {
             // Initialization code
-		[self setBackgroundImage:[[UIImage imageNamed:@"check_no.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"btn_twitter_s.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
+		[self setBackgroundImage:[UIImage imageNamed:@"btn_twitter_off_n.png"]  forState:UIControlStateNormal];
+		[self setBackgroundImage:[UIImage imageNamed:@"btn_twitter_off_s.png"]  forState:UIControlStateSelected];
 		[self addTarget:self action:@selector(touched:) forControlEvents:UIControlEventTouchUpInside];
-		selected = NO;
-		
-		label = [[UILabel alloc] initWithFrame:CGRectMake(-100, 0.0, 150, 28.0)];
-        label.font = [UIFont systemFontOfSize:13];
-		label.backgroundColor = [UIColor clearColor];
-		label.textColor = [UIColor blackColor];
-		[self addSubview:label];
+      self.adjustsImageWhenHighlighted = NO;
     }
     return self;
 }
 
 
 
--(void)touched:(id)sender
-{
-	selected = !selected;
-	[self setSelected:selected];
+-(void)touched:(id)sender {
+	[self setSelected:!self.selected];
+  [PBSharedUser setShouldCrosspostToTW:self.selected];
 }
 
--(void)setSelected:(BOOL)isSelected
-{
-	selected = isSelected;
-	if (selected)
-        {
-		[self setBackgroundImage:[[UIImage imageNamed:@"btn_twitter_s.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"check_no.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
-		
-        }
-	else {
-		[self setBackgroundImage:[[UIImage imageNamed:@"check_no.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"btn_twitter_s.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
-		
-	}
-}
-
--(void)setText:(NSString *)text
-{
-	label.text = text;
+-(void)setSelected:(BOOL)selected {
+  [super setSelected:selected];
+  [super setSelected:selected];
+  if (selected) {
+    [self setBackgroundImage:[UIImage imageNamed:@"btn_twitter_on_n.png"]  forState:UIControlStateNormal];
+		[self setBackgroundImage:[UIImage imageNamed:@"btn_twitter_on_s.png"]  forState:UIControlStateSelected];
+  }
+  else {
+    [self setBackgroundImage:[UIImage imageNamed:@"btn_twitter_off_n.png"]  forState:UIControlStateNormal];
+		[self setBackgroundImage:[UIImage imageNamed:@"btn_twitter_off_s.png"]  forState:UIControlStateSelected];
+  }
 }
 
 
-- (void)dealloc {
-	[label release];
-    [super dealloc];
-}
 
 
 @end

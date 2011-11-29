@@ -25,8 +25,8 @@
 //
 
 #import "PBRefreshTableHeaderView.h"
+#import "UIColor+PBColor.h"
 
-#define TEXT_COLOR	 [UIColor colorWithRed:103.0/255.0 green:89.0/255.0 blue:77.0/255.0 alpha:1.0]
 #define BORDER_COLOR [UIColor redColor]
 
 
@@ -54,7 +54,7 @@
 		statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(68, frame.size.height - 41.0f, self.frame.size.width-68, 20.0f)];
 		statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     statusLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
-		statusLabel.textColor = TEXT_COLOR;
+		statusLabel.textColor = [UIColor PBBlueTextColor];
 		statusLabel.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
 		statusLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 		statusLabel.backgroundColor = [UIColor clearColor];

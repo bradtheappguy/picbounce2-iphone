@@ -14,7 +14,7 @@
   UIButton *retryButton;
   UIButton *deleteButton;
   UILabel *textLabel;
-  PBPost *_photo;
+  PBPost *_post;
 }
 
 
@@ -26,6 +26,6 @@
 
 - (IBAction)retryButtonPressed:(id)sender;
 - (IBAction)deleteButtonPressed:(id)sender;
-- (void) setPhoto:(NSDictionary *)photo;
+- (void) setPost:(NSDictionary *)photo;
 
 @end

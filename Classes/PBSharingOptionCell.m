@@ -12,6 +12,7 @@
 
 @synthesize titleLabel;
 @synthesize statusButton;
+@synthesize nameLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 
@@ -27,6 +28,7 @@
 
   [titleLabel release];
   [statusButton release];
+    [nameLabel release];
   [super dealloc];
 }
 

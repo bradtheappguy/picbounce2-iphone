@@ -20,8 +20,7 @@
 }
 @property (nonatomic, assign) BOOL isCaptionView;
 @property (nonatomic, assign) id<ModalDismissDelegate> delegate;
-- (IBAction)facebookButtonClicked:(id)sender;
-- (IBAction)twitterButtonClicked:(id)sender;
+
 - (IBAction)optionButtonClicked:(id)sender;
 - (IBAction)dismissModalViewControllerAnimated;
 @end

@@ -19,7 +19,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <QuartzCore/QuartzCore.h>
 #import "PBUploadQueue.h"
-#import "NewPostViewController.h"
+#import "PBNewPostViewController.h"
 //#import "CaptureSessionManager.h"
 #import "AppDelegate.h"
 #import "PBCaptionViewController.h"
@@ -637,6 +637,7 @@ bail:
 }
 
 -(IBAction) cameraButtonPressed:(id)sender {
+  
   [self closeShutter];
   // Find out the current orientation and tell the still image output.
   AVCaptureConnection *stillImageConnection = nil;
@@ -653,47 +654,42 @@ bail:
                                                                     forKey:AVVideoCodecKey]]; 
 	
 	[stillImageOutput captureStillImageAsynchronouslyFromConnection:stillImageConnection
-                                                completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-                                                  if (error) {
-                                                  }
-                                                  NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-                                                  UIImage *image = [[UIImage alloc] initWithData:jpegData];
-                                                  
-                                                  UIImage *scaledImage = scaleAndRotateImage(image);
-                                                  
-                                                  [image release];
-                                                  CGImageRef scaledCGImage = CGImageCreateWithImageInRect([scaledImage CGImage],CGRectMake(0, 0, 600, 600));
-                                                  UIImage *i3 = [UIImage imageWithCGImage:scaledCGImage];
-                                                  CGImageRelease(scaledCGImage);
-                                                  
-                                                  self.unfilteredImage = i3;
-                                                 
-                                          // ---- Call method for setBackgroundImage with filter image picking -----------
-                                                    [self performSelector:@selector(ImposeImageOnButton:) withObject:i3];
-                                                    
-                                                  uploadPreviewImage.contentMode = UIViewContentModeScaleAspectFit;
-                                                  uploadPreviewImage.image = i3;
-                                                  uploadPreviewImage.layer.masksToBounds = NO;
-                                                  uploadPreviewImage.layer.cornerRadius = 0;
-                                                  uploadPreviewImage.layer.shadowOffset = CGSizeMake(0, 0);
-                                                  uploadPreviewImage.layer.shadowRadius = 4;
-                                                  uploadPreviewImage.layer.shadowOpacity = 1;
-                                                  uploadPreviewImage.layer.shadowColor = [UIColor blackColor].CGColor;
-                                                  
-                                                  CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, 
-                                                                                                              imageDataSampleBuffer, 
-                                                                                                               kCMAttachmentMode_ShouldPropagate);
-                                                  /*ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-                                                  [library writeImageDataToSavedPhotosAlbum:jpegData metadata:(id)attachments completionBlock:^(NSURL *assetURL, NSError *error) {
-                                                    if (error) {
-                                                      //[self displayErrorOnMainQueue:error withMessage:@"Save to camera roll failed"];
-                                                    }
-                                                  }];*/
-                                                  
-                                                  if (attachments)
-                                                    CFRelease(attachments);
-                                                  //[library release];
-                                                }];
+                        completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+                            if (error) {
+                            }
+                            NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+                            UIImage *image = [[UIImage alloc] initWithData:jpegData];
+                            
+                            UIImage *scaledImage = scaleAndRotateImage(image);
+                            
+                            [image release];
+                            CGImageRef scaledCGImage = CGImageCreateWithImageInRect([scaledImage CGImage],CGRectMake(0, 0, 600, 600));
+                            UIImage *i3 = [UIImage imageWithCGImage:scaledCGImage];
+                            CGImageRelease(scaledCGImage);
+                            
+                            self.unfilteredImage = i3;
+                           
+                            uploadPreviewImage.contentMode = UIViewContentModeScaleAspectFit;
+                            uploadPreviewImage.image = i3;
+                            uploadPreviewImage.layer.masksToBounds = NO;
+                            uploadPreviewImage.layer.cornerRadius = 0;
+                            uploadPreviewImage.layer.shadowOffset = CGSizeMake(0, 0);
+                            uploadPreviewImage.layer.shadowRadius = 4;
+                            uploadPreviewImage.layer.shadowOpacity = 1;
+                            uploadPreviewImage.layer.shadowColor = [UIColor blackColor].CGColor;
+                            
+                            CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, imageDataSampleBuffer,kCMAttachmentMode_ShouldPropagate);
+                            /*ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+                            [library writeImageDataToSavedPhotosAlbum:jpegData metadata:(id)attachments completionBlock:^(NSURL *assetURL, NSError *error) {
+                              if (error) {
+                                //[self displayErrorOnMainQueue:error withMessage:@"Save to camera roll failed"];
+                              }
+                            }];*/
+                            
+                            if (attachments)
+                              CFRelease(attachments);
+                            //[library release];
+                          }];
 }
 
 -(void) facebookButtonClicked:(id)sender {
@@ -795,30 +791,29 @@ bail:
 }
 
 - (IBAction)captionButtonPressed:(id)sender {
-  NewPostViewController *newPostViewController = [[NewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
+  PBNewPostViewController *newPostViewController = [[PBNewPostViewController alloc] initWithNibName:@"NewPostViewController" bundle:nil];
   newPostViewController.isCaptionView = YES;
   newPostViewController.hidesBottomBarWhenPushed = YES;
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:newPostViewController style:1];
   
   
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  newPostViewController.navigationItem.leftBarButtonItem = cancelButton;
+  UIBarButtonItem *lcancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
+  newPostViewController.navigationItem.leftBarButtonItem = lcancelButton;
   newPostViewController.navigationItem.title = @"New Post";
-  [cancelButton release];
+  [lcancelButton release];
   [self presentModalViewController:navigationController animated:YES];
   [newPostViewController release];
   
   return;
+/*
   PBCaptionViewController *a_NewPostViewController = [[PBCaptionViewController alloc] initWithNibName:@"PBCaptionViewController" bundle:nil];
-
   a_NewPostViewController.hidesBottomBarWhenPushed = YES;
-      //a_NewPostViewController.isCaptionView = YES;
-
+  //a_NewPostViewController.isCaptionView = YES;
   a_NewPostViewController.delegate = self;
-
   [self presentModalViewController:a_NewPostViewController animated:YES];
-      //[self.navigationController pushViewController:a_NewPostViewController animated:YES];
+  //[self.navigationController pushViewController:a_NewPostViewController animated:YES];
   [a_NewPostViewController release];
+*/
 }
 
 - (void)didDismissModalView {
@@ -905,10 +900,10 @@ bail:
 - (IBAction)optionsButtonPressed:(id)sender {
   PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
   PBNavigationController *nav = [[PBNavigationController alloc] initWithRootViewController:vc style:1];
-  UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  vc.navigationItem.leftBarButtonItem = cancel;
+  UIBarButtonItem *leftDoneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(dismissModalViewControllerAnimated:)];
+  vc.navigationItem.leftBarButtonItem = leftDoneButton;
   vc.delegate = self;
-  [cancel release];
+  [leftDoneButton release];
   [self presentModalViewController:nav animated:YES];
   [vc release];
   [nav release];

@@ -13,6 +13,8 @@
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
 #import "PBNavigationController.h"
+#import "PBSharedUser.h"
+#import "PBNavigationBarButtonItem.h"
 
 @implementation PBLoginViewController
 
@@ -87,23 +89,15 @@
   viewController.authenticationURLString = [NSString stringWithFormat:@"http://%@%@",API_BASE,@"/appsupport/iphone/tos.html"];
   viewController.title = @"Via.me";
   
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  viewController.navigationItem.rightBarButtonItem = cancelButton;
+  viewController.navigationItem.rightBarButtonItem = [PBNavigationBarButtonItem itemWithTitle:@"Done" target:self action:@selector(dismissModalViewControllerAnimated:)];
+
   
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:viewController];
   [self presentModalViewController:navigationController animated:YES];
   [navigationController release];
   [viewController release];
-  [cancelButton release];
-/*
-  
-  UIViewController *tosWebViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tosWebViewController];
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  tosWebViewController.navigationItem.leftBarButtonItem = cancelButton;
-  [self presentModalViewController:navigationController animated:YES];
-  [tosWebViewController release];
-  [navigationController release];*/
+
+
 }
 
 -(IBAction) facebookButtonPressed:(id)sender {
@@ -115,9 +109,9 @@
 	if (_facebook == nil) {
 		_facebook = [FacebookSingleton sharedFacebook];
 		_facebook.sessionDelegate = self;
-		NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"access_token"];
-		NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
-		
+		NSString *token = [PBSharedUser facebookAccessToken];
+		NSDate *exp = [PBSharedUser facebookExpirationDate];
+    
 		if (token != nil && exp != nil && [token length] > 2) {
 			//isLoggedIn = YES;
 			_facebook.accessToken = token;
@@ -171,68 +165,31 @@
   PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
   viewController.authenticationURLString = [NSString stringWithFormat:@"http://%@/users/auth/twitter", API_BASE];
   viewController.title = NSLocalizedString(@"Twitter", nil);
-  viewController.webView.backgroundColor = [UIColor blueColor];
-  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-  viewController.navigationItem.rightBarButtonItem = cancelButton;
-  
+  viewController.navigationItem.rightBarButtonItem = [PBNavigationBarButtonItem itemWithTitle:@"Cancel" target:self action:@selector(dismissModalViewControllerAnimated:)];  
   PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:viewController];
   [self presentModalViewController:navigationController animated:YES];
   [navigationController release];
-  [cancelButton release];
   [viewController release];
 }
 
 
-- (void)registerForKeyboardNotifications
-{
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(keyboardWasShown:)
-                                               name:UIKeyboardDidShowNotification object:nil];
-  
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(keyboardWillBeHidden:)
-                                               name:UIKeyboardWillHideNotification object:nil];
-  
-}
-
-// Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification
-{
-  NSDictionary* info = [aNotification userInfo];
-  CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-  
-  UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-  scrollView.contentInset = contentInsets;
-  scrollView.scrollIndicatorInsets = contentInsets;
-}
-
-// Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-  UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-  scrollView.contentInset = contentInsets;
-  scrollView.scrollIndicatorInsets = contentInsets;
-}
-
-
-
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self registerForKeyboardNotifications];
   //self.navigationController.navigationBarHidden = YES;
   UIImage *backgroundPattern = [UIImage imageNamed:@"bg_pattern"];
   self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundPattern];
-  [(UIScrollView *)self.view setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-80)];
-  scrollView = (UIScrollView *)self.view;
   [self.submitButton.titleLabel setShadowOffset:CGSizeMake(0,0)];
   [self.submitButton setEnabled:NO];
   
-  
+  UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_signin"]];
+  logo.frame = self.navigationController.navigationBar.bounds;
+  logo.contentMode = UIViewContentModeCenter;
+  self.navigationItem.titleView = logo;
+  [logo release];
 }
 
-
-
 #pragma mark Facebbok Session Delegate
+
 - (void)fbDidLogin {
   NSString *token = [[FacebookSingleton sharedFacebook] accessToken];
   NSDate *expirationDate = [[FacebookSingleton sharedFacebook] expirationDate];

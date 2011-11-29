@@ -13,16 +13,16 @@
 #import "AppDelegate.h"
 #import "PBSharedUser.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "UIColor+PBColor.h"
 
 #define kIndent 40
 #define kOffset(val) 10
 
 @implementation PBSharingOptionViewController
+
 @synthesize tableView;
 @synthesize progressHUD;
 @synthesize facebookPages;
-@synthesize facebookWall;
 @synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -57,16 +57,13 @@
   self.progressHUD = hud;
   [hud release];
 
-  self.facebookWall = [PBSharedUser facebookWall];
-
   tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   tableView.separatorColor = [UIColor lightGrayColor];
   [tableView reloadData];
-  [tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_sharing_settings.png"]]];
+  [tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_pattern.png"]]];
   [self.view addSubview:self.progressHUD];
-  UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backBarButtonItemClicked)];
-  self.navigationItem.backBarButtonItem = backBarButtonItem;
-  [backBarButtonItem release];    
+  
+ 
 }
 
 - (void)viewDidUnload {
@@ -82,34 +79,17 @@
   }
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+  [PBSharedUser setFacebookPages:self.facebookPages];
+}
+
 - (void) loadPagesFromFacebook {
   
   NSString *path = @"/fql?q=select%20page_id,%20type,%20name,%20page_url,pic_small%20from%20page%20where%20page_id%20in%20(%20select%20page_id,type%20from%20page_admin%20where%20uid=me()%20and%20type!%3d'APPLICATION')";
   
+  path = @"/me/accounts";
+  
   [[FacebookSingleton sharedFacebook] requestWithGraphPath:path andDelegate:self];
-}
-
-- (void)backBarButtonItemClicked {
-  
-  NSMutableArray *array = [[NSMutableArray alloc] init];
-  for (int i = 0; i < [facebookPages count]; i++) {
-    if ([[[facebookPages objectAtIndex:i] valueForKey:@"Selected"] isEqualToString:@"1"]) {
-      [array addObject:[facebookPages objectAtIndex:i]]; 
-    }
-  }
-  
-  [PBSharedUser setFacebookPages:array];
-  [PBSharedUser setFacebookWall:facebookWall];
-}
-
-#pragma mark -
-#pragma mark CustomNavigationBar Methods
-
-- (IBAction)dismissModalViewControllerAnimated {
-  
-  //[self.navigationController popViewControllerAnimated:YES];
-  [self dismissModalViewControllerAnimated:YES];
-  [delegate didDismissModalView];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -162,32 +142,37 @@
     }
   }
 
+  customCell.clipsToBounds = NO;
+  [customCell.contentView.layer setCornerRadius:10];
+  [customCell.layer setShadowColor:[UIColor redColor].CGColor];
+  [customCell.layer setShadowOffset:CGSizeMake(2, 2)];
+  [customCell.layer setShadowRadius:5];
+  
   if (indexPath.row == kTwitterLoginCell) {
       
-    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    if ([appDelegate authToken] == nil) {
-      [customCell.statusButton setTitle:@"Login" forState:UIControlStateNormal];
-    }else {
-      [customCell.statusButton setTitle:@"Logout" forState:UIControlStateNormal];  
-    }
-
-    [customCell.contentView setBackgroundColor:[UIColor colorWithRed:208.0f/255.0f green:205.0f/255.0f blue:205.0f/255.0f alpha:1.0f]];
+    customCell.statusButton.hidden = YES;
+    [customCell setBackgroundColor:[UIColor grayCellBackgroundColor]];
+    [customCell.contentView setBackgroundColor:[UIColor grayCellBackgroundColor]];
     [customCell.titleLabel setText:@"Twitter"];
     [customCell.statusButton setTag:indexPath.row];
     [customCell.statusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
-  } else if (indexPath.row == kFaceBookLoginCell) {
+  } 
   
+  else if (indexPath.row == kFaceBookLoginCell) {
+    customCell.nameLabel.hidden = YES;
     if ([[FacebookSingleton sharedFacebook] isSessionValid]) {
       [customCell.statusButton setTitle:@"Logout" forState:UIControlStateNormal];
     }
     else {
       [customCell.statusButton setTitle:@"Login" forState:UIControlStateNormal];
     }
-    [customCell.contentView setBackgroundColor:[UIColor colorWithRed:239.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1.0f]];
+    [customCell.contentView setBackgroundColor:[UIColor colorWithRed:237.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1.0f]];
     [customCell.titleLabel setText:@"Facebook"];
     [customCell.statusButton setTag:indexPath.row];
     [customCell.statusButton addTarget:self action:@selector(loginlogoutButton:) forControlEvents:UIControlEventTouchUpInside];
-  } else if (indexPath.row >= kFacebookPagesCell) {
+  } 
+  
+  else if (indexPath.row >= kFacebookPagesCell) {
 
     [customCell.statusButton setHidden:YES];
     if (indexPath.row == 3) {
@@ -195,67 +180,66 @@
     }else {
       [customCell.titleLabel setText:@""];
     }
-
-    PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
-    [EWCheckbox setText:[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"name"]];
-    [EWCheckbox setTag:indexPath.row-3];
-    if ([[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] == nil) {
-      [[facebookPages objectAtIndex:indexPath.row-3] setObject:@"0" forKey:@"Selected"];
-      EWCheckbox.selected = NO;
+    [customCell setBackgroundColor:[UIColor whiteColor
+                                                ]];
+        [customCell.contentView setBackgroundColor:[UIColor whiteColor
+                                                    ]];
+    PBCheckbox *checkbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
+    [checkbox setText:[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"name"]];
+    [checkbox setTag:indexPath.row-3];
+    if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] boolValue] == NO) {
+      [[facebookPages objectAtIndex:indexPath.row-3] setObject:[NSNumber numberWithBool:NO] forKey:@"Selected"];
+      checkbox.selected = NO;
     } else {
-      if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] isEqualToString:@"1"]) {
-        EWCheckbox.selected = YES;
-      } else if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] isEqualToString:@"0"]) {
-        EWCheckbox.selected = NO;
+      if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] boolValue]) {
+        checkbox.selected = YES;
+      } else if ([[[facebookPages objectAtIndex:indexPath.row-3] valueForKey:@"Selected"] boolValue] == NO) {
+        checkbox.selected = NO;
       }
     }
-
-    [EWCheckbox addTarget:self action:@selector(fbPageTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [customCell.contentView addSubview:EWCheckbox];
-    [EWCheckbox release];
+    customCell.nameLabel.hidden = YES;
+  
+    [checkbox addTarget:self action:@selector(fbPageTouched:) forControlEvents:UIControlEventTouchUpInside];
+    [customCell.contentView addSubview:checkbox];
+    [checkbox release];
   } else if (indexPath.row == kFacebookWallCell) {
-
+    [customCell setBackgroundColor:[UIColor whiteColor
+                                    ]];
+    [customCell.contentView setBackgroundColor:[UIColor whiteColor
+                                                ]];
     [customCell.statusButton setHidden:YES];
-    [customCell.titleLabel setText:@"  My Wall"];  
+    [customCell.titleLabel setText:@"  Wall"];  
+    customCell.nameLabel.hidden = YES;
+    
+    PBCheckbox *checkbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
+    [checkbox setTag:indexPath.row];
+    [checkbox setText:@"Brad Smith"];
+    BOOL sel = [PBSharedUser shouldCrosspostToFBWall];
+    checkbox.selected = sel;
 
-    PBCheckbox *EWCheckbox = [[PBCheckbox alloc] initWithPosition:CGPointMake(kIndent, kOffset(5)) withFontName:@"HelveticaNeue" withFontSize:12];
-    [EWCheckbox setTag:indexPath.row];
-    if (facebookWall == nil) {
-      self.facebookWall = [[NSMutableDictionary alloc] initWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys: @"0", @"Selected", nil]];
-    }
- 
-    if ([facebookWall valueForKey:@"Selected"] == nil) {
-      [facebookWall setObject:@"0" forKey:@"Selected"];
-      EWCheckbox.selected = NO;
-    } else {
-      if ([[facebookWall valueForKey:@"Selected"] isEqualToString:@"1"]) {
-        EWCheckbox.selected = YES;
-      }
-      else  if ([[facebookWall valueForKey:@"Selected"] isEqualToString:@"0"]) {
-        EWCheckbox.selected = NO;
-      }
-    }
-
-    [EWCheckbox addTarget:self action:@selector(fbWallTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [customCell.contentView addSubview:EWCheckbox];
-    [EWCheckbox release];
+    [checkbox addTarget:self action:@selector(fbWallTouched:) forControlEvents:UIControlEventTouchUpInside];
+    [customCell.contentView addSubview:checkbox];
+    [checkbox release];
   }
+  
+  NSArray *x = [tableView subviews];
+  for (UIView *view in x) {
+    [view.layer setShadowColor:[UIColor redColor].CGColor];
+  }
+  
 
   return customCell;
 }
 
 - (void)fbPageTouched:(UIButton *)sender {
-  
-  int i = [[[facebookPages objectAtIndex:sender.tag] valueForKey:@"Selected"] intValue];
+  NSDictionary *page = [facebookPages objectAtIndex:sender.tag];
+  BOOL i = [[page valueForKey:@"Selected"] boolValue];
   i = !i;
-  [[facebookPages objectAtIndex:sender.tag] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"Selected"];
+  [[facebookPages objectAtIndex:sender.tag] setObject:[NSNumber numberWithBool:i] forKey:@"Selected"];
 }
 
 - (void)fbWallTouched:(UIButton *)sender {
-  
-  int i = [[self.facebookWall valueForKey:@"Selected"] intValue];
-  i = !i;
-  [self.facebookWall setObject:[NSString stringWithFormat:@"%d",i] forKey:@"Selected"];
+  [PBSharedUser setShouldCrosspostToFBWall:sender.selected];
 }
 
 - (void)loginlogoutButton:(UIButton *)sender {
@@ -307,7 +291,9 @@
   [currStatusButtons setTitle:@"Logout" forState:UIControlStateNormal];
   [PBSharedUser setFacebookAccessToken:[[FacebookSingleton sharedFacebook] accessToken]];
   [PBSharedUser setFacebookExpirationDate:[[FacebookSingleton sharedFacebook] expirationDate]];
+  [[NSUserDefaults standardUserDefaults] synchronize];
   [self loadPagesFromFacebook];
+  [PBSharedUser setShouldCrosspostToFBWall:YES];
 }
 
 
@@ -353,7 +339,11 @@
  * Called when an error prevents the request from completing successfully.
  */
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
-
+  NSString *errorDescription = [[[error userInfo] objectForKey:@"error"] objectForKey:@"message"];
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:errorDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+  [self.progressHUD hide:YES];
 }
 
 /**
@@ -364,10 +354,22 @@
  * depending on thee format of the API response.
  */
 - (void)request:(FBRequest *)request didLoad:(id)result {
-
   [self.progressHUD hide:YES];
-  id x  = [result objectForKey:@"data"];
-  self.facebookPages = x;
+  
+  
+  NSMutableArray *pagesFromFacebook  = [[result objectForKey:@"data"] mutableCopy];
+  NSArray *lastSAvedPages = [PBSharedUser facebookPages];
+  
+  for (NSDictionary *page in pagesFromFacebook) {
+    for (NSDictionary *lastSavedPAge in lastSAvedPages) {
+      if ([[page objectForKey:@"id"] isEqualToString: [lastSavedPAge objectForKey:@"id"]]) {
+        [page setValue:[lastSavedPAge objectForKey:@"Selected"] forKey:@"Selected"];
+      }
+    }
+  }
+  
+  self.facebookPages = pagesFromFacebook;
+  [pagesFromFacebook release];
   [tableView reloadData];
 }
 
@@ -378,6 +380,25 @@
  */
 - (void)request:(FBRequest *)request didLoadRawResponse:(NSData *)data {
     
+}
+
+-(void) setTitle:(NSString *)title {
+  [super setTitle:title];
+  UILabel *l = (UILabel *)self.navigationItem.titleView;
+  
+  if ([l.text isEqualToString:self.navigationItem.title] == NO) {
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+    label.shadowColor = [UIColor colorWithRedInt:148 greenInt:148 blueInt:148 alphaInt:128];
+    label.shadowOffset = CGSizeMake(-1, 1);
+    label.textAlignment = UITextAlignmentCenter;
+    label.textColor = kNavBarDarkTitleTextColor
+    
+    label.text = self.navigationItem.title;
+    [label sizeToFit];
+    self.navigationItem.titleView = label;
+  }
 }
 
 @end

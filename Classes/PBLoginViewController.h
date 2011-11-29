@@ -10,7 +10,6 @@
 #import "FBConnect.h"
 
 @interface PBLoginViewController : UIViewController <FBSessionDelegate> {
-  UIScrollView *scrollView;
   
 }
 

@@ -12,6 +12,7 @@
 #import "PBRootViewController.h"
 #import "EGOImageView.h"
 #import "PBLoadMoreTablewViewFooter.h"
+#import "PBEmptyView.h"
 
 @class PBPhotoHeaderView, PBTableTitleTableViewCell, PBPhotoCell;
 
@@ -26,7 +27,6 @@
   
   BOOL shouldShowProfileHeader;
   BOOL shouldShowProfileHeaderBeforeNetworkLoad;
-  BOOL shouldShowFollowingBar;
   
   
   NSURL *preloadedAvatarURL;
@@ -43,11 +43,11 @@
   UINavigationBar *customNavigationBar;
   PBLoadMoreTablewViewFooter *footerView;
     
-    IBOutlet UIView *a_DefaultView;
+    
 }
 
+@property (nonatomic, retain) IBOutlet PBEmptyView *emptyView;
 @property (nonatomic, retain) IBOutlet PBProfileHeaderView *profileHeader;
-@property (nonatomic, retain) IBOutlet UIView *profileHeaderWithFollowBar;
 @property (nonatomic, retain) IBOutlet EGOImageView *avatarIcon;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *locationLabel;
@@ -70,7 +70,6 @@
 
 @property (readwrite) BOOL shouldShowProfileHeader;
 @property (readwrite) BOOL shouldShowProfileHeaderBeforeNetworkLoad;
-@property (readwrite) BOOL shouldShowFollowingBar;
 @property (readwrite) BOOL shouldShowUplodingItems;
 
 
@@ -84,4 +83,5 @@
 -(BOOL) moreDataAvailable;
 -(void) configureNavigationBar;
 - (UIView *) footerViewForTable:(UITableView *)tableView;
+-(void) pushNewStreamViewControllerWithUserID:(NSString *)userID screenName:(NSString*)screenName;
 @end

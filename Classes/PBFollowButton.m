@@ -74,15 +74,19 @@
 -(void) setMode:(PBFollowButtonMode)mode {
   _mode = mode;
   if (mode == PBFollowButtonModeFollowing) {
-    [self setBackgroundImage:[UIImage imageNamed:@"btn_following_s@2x.png"] forState:UIControlStateNormal];
+    [self setBackgroundImage:[UIImage imageNamed:@"btn_follow_s.png"] forState:UIControlStateNormal];
     [self setTitle:@"Following" forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor colorWithRedInt:250 greenInt:246 blueInt:246 alphaInt:255] forState:UIControlStateNormal];
+    [self setTitleShadowColor:[UIColor colorWithRedInt:0 greenInt:0 blueInt:0 alphaInt:128] forState:UIControlStateNormal];
+    self.titleLabel.shadowOffset = CGSizeMake(0, -1);
     [spinner stopAnimating];
   }
   else if (mode == PBFollowButtonModeNotFollowing) {
-    [self setBackgroundImage:[UIImage imageNamed:@"btn_follow_s@2x.png"] forState:UIControlStateNormal];
+    [self setBackgroundImage:[UIImage imageNamed:@"btn_follow_s.png"] forState:UIControlStateNormal];
     [self setTitle:@"Follow" forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor colorWithRedInt:250 greenInt:246 blueInt:246 alphaInt:255] forState:UIControlStateNormal];
+    [self setTitleShadowColor:[UIColor colorWithRedInt:0 greenInt:0 blueInt:0 alphaInt:128] forState:UIControlStateNormal];
+    self.titleLabel.shadowOffset = CGSizeMake(0, -1);
     [spinner stopAnimating];
   }
   else if (mode == PBFollowButtonModeSpinning) {
@@ -102,7 +106,10 @@
 
 
 -(void) performRequestToSetFollowing:(BOOL)follow {
+  NSAssert(self.user, @"ERROR: USER NOT SET");
   NSString *screenName = [self.user objectForKeyNotNull:@"screen_name"];
+  NSAssert(screenName, @"ERROR: USER DOES NOT HAVE A SCREEN NAME");
+  
   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/api/users/%@/followers",API_BASE,screenName]];
   if (_followingRequest) {
     [_followingRequest cancel];

@@ -3,6 +3,8 @@
 #import "ASIDownloadCache.h"
 #import "PBProgressHUD.h"
 #import "AppDelegate.h"
+
+
 @interface PBRootViewController (Private)
 
 - (void)dataSourceDidFinishLoadingNewData;
@@ -53,7 +55,7 @@
 } 
 
 - (void) viewWillDisappear:(BOOL)animated {
-  [[ASIHTTPRequest sharedQueue] cancelAllOperations];
+  //[[ASIHTTPRequest sharedQueue] cancelAllOperations];
 }
 
 
@@ -104,7 +106,6 @@
   [parser release];
   
   
-  
   loadMoreDataURL = [NSURL URLWithString: [[[(NSDictionary *)self.data objectForKey:@"response"] objectForKey:@"posts"] objectForKey:@"next"]];
   [loadMoreDataURL retain];
   /* 
@@ -152,7 +153,7 @@
   ASICachePolicy cachePolicy = useCache?ASIOnlyLoadIfNotCachedCachePolicy:ASIDoNotReadFromCacheCachePolicy;
   
   request = [ASIHTTPRequest requestWithURL:[self url]
-                                usingCache:useCache?[ASIDownloadCache sharedCache]:nil
+                                usingCache:nil
                             andCachePolicy:cachePolicy];
   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
   if (authToken) {
@@ -188,6 +189,7 @@
   request = [ASIHTTPRequest requestWithURL:loadMoreDataURL
                                 usingCache:[ASIDownloadCache sharedCache]
                             andCachePolicy:ASIUseDefaultCachePolicy];
+  [request addRequestHeader:@"Accept" value:@"application/json"];
   [request setTimeOutSeconds:60];
   [request setUseCookiePersistence:NO];
   [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
@@ -240,37 +242,18 @@
 }
 
 -(void) showLoadingIndicator {
-  if (loadingView) {
-    [loadingView removeFromSuperview];
-    loadingView = nil;
+  if (!loadingView) {
+    loadingView = [[PBProgressHUD alloc] initWithView:self.view];
+    [loadingView setLabelText:@"Loading..."];
+    
   }
-  loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 108, 58)];
-  loadingView.layer.cornerRadius = 10;
-  loadingView.backgroundColor = [UIColor colorWithRed:144/255.0 green:124/255.0 blue:109/255.0 alpha:0.90];
-  
-  UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-  spinner.center = CGPointMake(108/2, 20);
-  [spinner startAnimating];
-  
-  UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 35, 108, 15)];
-  loadingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
-  loadingLabel.textColor = [UIColor colorWithRed:252/255.0 green:251/255.0 blue:251/255.0 alpha:1.0];
-  loadingLabel.textAlignment = UITextAlignmentCenter;
-  loadingLabel.text = @"Loading...";
-  loadingLabel.backgroundColor = [UIColor clearColor];
-  
-  [loadingView addSubview:spinner];
-  [spinner release];
-  [loadingView addSubview:loadingLabel];
-  [loadingLabel release];
-  loadingView.center = self.view.center;
-  [self.view  addSubview:loadingView];
-  
+  [self.view addSubview:loadingView];
+  [loadingView showUsingAnimation:YES];
+
 }
 
 -(void) hideLoadingIndicator {
-  [loadingView removeFromSuperview];
-  loadingView = nil;
+  [loadingView hide:YES];
 }
 
 -(void) loadDataFromCacheIfAvailable {
@@ -301,6 +284,7 @@
 #pragma mark Dealloc
 
 - (void)dealloc {
+   [loadMoreDataURL release];
   // [request cancel];
   // [request release];
 	refreshHeaderView = nil;

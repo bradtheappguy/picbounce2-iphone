@@ -14,4 +14,5 @@
 }
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UIButton *statusButton;
+@property (retain, nonatomic) IBOutlet UILabel *nameLabel;
 @end

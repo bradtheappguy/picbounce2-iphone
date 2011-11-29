@@ -10,7 +10,6 @@
 #import "PBStreamViewController.h"
 #import "PBCameraViewController.h"
 #import "PBLoginViewController.h"
-#import "FeedViewController.h"
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
 
   NSString *apnsToken;
@@ -33,6 +32,7 @@
 
 -(void) presentLoginViewController:(BOOL)useCameraViewController;
 -(void) cameraButtonPressed:(id) sender;
+-(void) switchToProfileTabPopToRootAndScrollToTop;
 
 @end
 

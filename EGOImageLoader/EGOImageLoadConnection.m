@@ -88,6 +88,7 @@
 - (void)dealloc {
 	self.response = nil;
 	self.delegate = nil;
+  [_responseData release];
 	[_connection release];
 	[_imageURL release];
 	[super dealloc];

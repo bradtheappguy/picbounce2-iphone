@@ -20,9 +20,9 @@
     dateString = @"Now";
   }
   else if (ago < 3600) {  // < 1 hr ago
-    dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 60)] stringByAppendingString:@" m"];
+    dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 60)] stringByAppendingString:@"m"];
   } else if (ago < 3600 * 24) { // < 24 hr ago
-    dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 3600)] stringByAppendingString:@" h"];
+    dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 3600)] stringByAppendingString:@"h"];
   }
   else if (ago < 3600 * 24 * 2) {  // < 2 days
     dateString = [[NSString stringWithFormat:@"%d", (int)(ago / (24*3600))]stringByAppendingString:@" day"];
@@ -49,9 +49,9 @@
 		  dateString = @"Now";
 	  }
     else if (ago < 3600) {  // < 1 hr ago
-      dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 60)] stringByAppendingString:@" m"];
+      dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 60)] stringByAppendingString:@"m"];
     } else if (ago < 3600 * 24) { // < 24 hr ago
-      dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 3600)] stringByAppendingString:@" h"];
+      dateString = [[NSString stringWithFormat:@"%d", (int)(ago / 3600)] stringByAppendingString:@"h"];
     }
     else if (ago < 3600 * 24 * 2) {  // < 2 days
       dateString = [[NSString stringWithFormat:@"%d", (int)(ago / (24*3600))]stringByAppendingString:@" day"];

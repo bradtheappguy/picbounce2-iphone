@@ -51,7 +51,6 @@ static  NSString *selectedIndex = @"selectedIndex";
   UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
   button.adjustsImageWhenHighlighted = NO;
   [button setBackgroundImage:[UIImage imageNamed:normalImageName] forState:UIControlStateNormal];
-  //[button setBackgroundImage:[UIImage imageNamed:normalImageName] forState:UIControlStateHighlighted];
   [button setBackgroundImage:[UIImage imageNamed:selectedImageNamed] forState:UIControlStateSelected];
   button.frame = CGRectMake((self.bounds.size.width/kNumberOfTabs*index), 
                             0-2,
@@ -86,7 +85,7 @@ static  NSString *selectedIndex = @"selectedIndex";
   if (index == 0) {
     [self setSelectedButton:feedTabButton];
   }
-  if (index == 1) {
+  if (index == 2) {
     [self setSelectedButton:profileTabButton];
   }
 }
@@ -100,6 +99,7 @@ static  NSString *selectedIndex = @"selectedIndex";
   label.textColor = kNavBarTitleTextColor
   label.textAlignment = UITextAlignmentCenter;
   label.tag = 1;
+  label.center = CGPointMake(label.center.x-23, label.center.y);
   return [label autorelease];
 }
 
@@ -107,7 +107,9 @@ static  NSString *selectedIndex = @"selectedIndex";
   self.clipsToBounds = NO;
   if (!feedTabButton) {
     feedTabButton = [self buttonForIndex:0 withNormalImageNamed:@"btn_feed_n" selectedImageNamed:@"btn_feed_s"];
-    [feedTabButton addSubview:[self labelForButtonWithTitle:@"Feed"]];
+    UILabel *l = [self labelForButtonWithTitle:@"Feed"];
+    l.center = CGPointMake(l.center.x + 23, l.center.y);
+    [feedTabButton addSubview:l];
   }
   [self addSubview:feedTabButton];
   if (!cameraButton) {
@@ -119,7 +121,6 @@ static  NSString *selectedIndex = @"selectedIndex";
     profileTabButton = [self buttonForIndex:2 withNormalImageNamed:@"btn_profile_n" selectedImageNamed:@"btn_profile_s"];
     UILabel *l = [self labelForButtonWithTitle:@"Profile"];
     [profileTabButton addSubview:l];
-    l.center = CGPointMake(l.center.x-23, l.center.y);
   }
   [self addSubview:profileTabButton];
   if (!selectedButton) {
@@ -135,14 +136,17 @@ static  NSString *selectedIndex = @"selectedIndex";
     [(AppDelegate *)[[UIApplication sharedApplication] delegate] cameraButtonPressed:sender];
   }
   else  {
-    [self setSelectedButton:sender];
+    //[self setSelectedButton:sender];
     [tabBarController setSelectedIndex:sender.tag];
   }
 }
 
 
 -(void) buttonWasLongPressed:(UIGestureRecognizer *)longPressGestureRecoginer {
-  [self buttonWasPressed:(UIButton *)longPressGestureRecoginer.view];
+  UIButton *button = (UIButton *)longPressGestureRecoginer.view;
+  if (button != cameraButton) {
+    [self buttonWasPressed:button];
+  }
 }
 
 

@@ -10,23 +10,29 @@
 
 @implementation PBCheckbox
 
-@synthesize selected = _selected;
 @synthesize label = _label;
+@synthesize selected = _selected;
 
 - (id)initWithPosition:(CGPoint)position withFontName:(NSString *)fontName withFontSize:(NSInteger)size {
 	CGRect frame = CGRectMake(260, position.y+5, 20, 20);
   if ((self = [super initWithFrame:frame])) {
-    // Initialization code
-		[self setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_off.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_on@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
-		[self addTarget:self action:@selector(touched:) forControlEvents:UIControlEventTouchUpInside];
-		self.selected = NO;
+    _button = [UIButton buttonWithType:UIButtonTypeCustom];
+    _button.frame = CGRectMake(0, 0, 20, 20);
+    _button.backgroundColor = [UIColor clearColor];
+    [_button addTarget:self action:@selector(touched:) forControlEvents:UIControlEventTouchUpInside];
 		
-		self.label = [[UILabel alloc] initWithFrame:CGRectMake(-160, 0.0, 150, 28.0)];
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(-160, 0.0, 150, 28.0)];
+    self.label = label;
+    [label release];
+
     self.label.font = [UIFont fontWithName:fontName size:size];
 		self.label.backgroundColor = [UIColor clearColor];
 		self.label.textColor = [UIColor colorWithRed:102.0/255.0 green:102.0/255.0 blue:102.0/255.0 alpha:1.0];
-		[self addSubview:self.label];
+		_button.selected = NO;
+		
+    [self addSubview:self.label];
+    [self addSubview:_button];
+    
   }
   return self;
 }
@@ -34,19 +40,19 @@
 
 
 -(void)touched:(id)sender {
-	self.selected = !self.selected;
-	[self setSelected:self.selected];
+	[self setSelected:!self.selected];
 }
 
 -(void)setSelected:(BOOL)isSelected {
-	_selected = isSelected;
-	if (self.selected) {
-		[self setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_on@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_off.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];		
+  _selected = isSelected;
+	[_button setSelected:isSelected];
+	if (isSelected) {
+		[_button setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_on.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
+		[_button setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_off.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];		
 	}
 	else {
-		[self setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_off.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
-		[self setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_on@2x.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
+		[_button setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_off.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateNormal];
+		[_button setBackgroundImage:[[UIImage imageNamed:@"bg_sharingCheckbox_on.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:12] forState:UIControlStateHighlighted];
 	}
 }
 
@@ -54,6 +60,10 @@
 	self.label.text = text;
 }
 
+- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents {
+  [_button addTarget:target action:action forControlEvents:controlEvents];
+  _button.tag = self.tag;
+}
 
 - (void)dealloc {
 	[_label release];

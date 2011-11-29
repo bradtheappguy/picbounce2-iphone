@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyView.h"
+#import "PBExpandingCommentEntryTextView.h"
 #import "PBRootViewController.h"
 #import "ASIHTTPRequest.h"
 #import "PBProgressHUD.h"
 
 @interface PBCommentListViewController :UIViewController {
   
-  IBOutlet MyView *myView;
+  IBOutlet PBExpandingCommentEntryTextView *myView;
   
   IBOutlet UITableView *tableView;
   
@@ -24,13 +24,12 @@
   
 }
 
-@property (nonatomic, retain) NSURL *url;
 @property (nonatomic, retain) NSMutableArray *uploadedComments;
 @property (nonatomic, retain) NSMutableArray *comments;
-@property (nonatomic, retain) NSString *postID;
 @property (nonatomic, retain) PBProgressHUD *progressHUD;
 @property (nonatomic, retain) ASIHTTPRequest *postCommentRequest;
 @property (nonatomic, retain) ASIHTTPRequest *getCommentsRequest;
+@property (nonatomic, retain) NSDictionary *post;
 
 - (void) moveViewsForKeyboard:(NSNotification*)aNotification up: (BOOL) up;
 - (void) downViewsForKeyboard:(NSNotification*)aNotification down: (BOOL) up;

@@ -10,12 +10,12 @@
 #import "EGOImageView.h"
 #import "ASIHTTPRequest.h"
 #import "OHAttributedLabel.h"
-
+#import "PBCaptionBubble.h"
+#import "PBStreamViewController.h"
 
 @interface PBPhotoCell : UITableViewCell <UIActionSheetDelegate, OHAttributedLabelDelegate> {
-  UITableViewController *tableViewController;
 
-    ASIHTTPRequest *_followingRequest;
+  ASIHTTPRequest *_followingRequest;
 }
 
 + (CGFloat) heightWithPhoto:(NSDictionary *)photo;
@@ -24,7 +24,7 @@
 - (IBAction)commentButtonPressed:(id)sender;
 - (IBAction)actionButtonPressed:(id)sender;
 
-@property (nonatomic, assign) UITableViewController *tableViewController;
+@property (nonatomic, assign) PBStreamViewController *tableViewController;
 @property (retain, nonatomic) IBOutlet UIView *actionBar;
 
 @property (nonatomic, retain) NSDictionary *photo; 
@@ -32,14 +32,17 @@
 
 @property (nonatomic, retain)IBOutlet  EGOImageView  *photoImageView;
 
-@property (nonatomic, retain) IBOutlet UILabel *captionLabel;
+@property (nonatomic, retain) IBOutlet PBCaptionBubble *captionBubble;
 @property (nonatomic, retain) IBOutlet UILabel *commentCountLabel;
 
 @property (retain, nonatomic) IBOutlet UIImageView *commentCountIcon;
 
 
 @property (nonatomic, retain) IBOutlet UIButton *leaveCommentButton;
-@property (retain, nonatomic) IBOutlet id commentPreview;
+@property (retain, nonatomic) IBOutlet UIView *commentPreview;
 
+@property (retain, nonatomic) IBOutlet UIButton *actionButton;
+
+-(void) receiveFlaggedNotification:(NSNotification *) notification;
 
 @end

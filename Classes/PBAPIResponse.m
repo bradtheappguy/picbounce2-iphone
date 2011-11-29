@@ -16,26 +16,91 @@
 @synthesize next = _next;
 
 -(id) initWithresponseData:(id)json_string {
-    if (self = [super init]) {
-        SBJSON *parser = [[SBJSON alloc] init];
-        data = [[parser objectWithString:json_string error:nil] retain];
-      [parser release];
-        if ([self validate:data]) {
-          NSDictionary *response = [data objectForKeyNotNull:@"response"];
-          posts = [[response objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"items"];
-          people = [response objectForKeyNotNull:@"people"];
-          user = [response objectForKeyNotNull:@"user"];
-          //url = [[data objectForKey:@"response"] objectForKey:@"url"];
-          if ([posts count] > 0) {
-            _next = [[[response objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"next"] retain];
-          }
-          else {
-            _next = nil;
-          }
-        }
+
+  if (self = [super init]) {
+    SBJSON *parser = [[SBJSON alloc] init];
+    if (data != nil)
+      [data release];
+    data = [[parser objectWithString:json_string error:nil] mutableCopy];
+    [parser release];
+    if ([self validate:data]) {
+      NSDictionary *response = [data objectForKeyNotNull:@"response"];
+      posts = [[response objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"items"];
+      people = [response objectForKeyNotNull:@"people"];
+      user = [response objectForKeyNotNull:@"user"];
+      //url = [[data objectForKey:@"response"] objectForKey:@"url"];
+      if ([posts count] > 0) {
+        _next = [[[response objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"next"] retain];
+      }
+      else {
+        _next = nil;
+      }
     }
-    return self;
+  }
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveFlaggedNotification:) name:@"com.viame.flagged" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUnflaggedNotification:) name:@"com.viame.unflagged" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveDeletedNotification:) name:@"com.viame.deleted" object:nil];
+  return self;
 }
+
+- (void)dealloc {
+  [super dealloc];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.flagged" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.unflagged" object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"com.viame.deleted" object:nil];
+}  
+
+- (void) receiveUnflaggedNotification:(NSNotification *) notification {
+  NSString *flagPhotoID = [notification object];
+  NSArray *arrayOfPhotos = [self posts];
+  for (NSDictionary *photo in arrayOfPhotos) {
+    id actualPhoto = [photo objectForKeyNotNull:@"item"];
+    NSString *photoID = [actualPhoto objectForKeyNotNull:@"id"];
+    if ([flagPhotoID isEqualToString:photoID]) {
+      [actualPhoto setValue:[NSNumber numberWithBool:NO] forKey:@"flagged"];
+      NSLog(@"unFlagging %u inside api response",(uint)photo);
+    }  
+  }
+}
+- (void) receiveFlaggedNotification:(NSNotification *) notification {
+  NSString *flagPhotoID = [notification object];
+  NSArray *arrayOfPhotos = [self posts];
+  for (NSDictionary *photo in arrayOfPhotos) {
+    id actualPhoto = [photo objectForKeyNotNull:@"item"];
+    NSString *photoID = [actualPhoto objectForKeyNotNull:@"id"];
+    if ([flagPhotoID isEqualToString:photoID]) {
+      [actualPhoto setValue:[NSNumber numberWithBool:YES] forKey:@"flagged"];
+      NSLog(@"Flagging %u inside api response",(uint)photo);
+    }  
+  }
+}
+
+-(void)receiveDeletedNotification:(NSNotification *) notification {
+  NSString *deletdPhotoID = [notification object];
+  NSDictionary *actualPhoto = nil;
+  
+  for (NSDictionary *photo in self.posts) {
+    actualPhoto = [photo objectForKeyNotNull:@"item"];
+    NSString *photoID = [actualPhoto objectForKeyNotNull:@"id"];
+    if ([deletdPhotoID isEqualToString:photoID]) {
+      [actualPhoto setValue:[NSNumber numberWithBool:YES] forKey:@"deleted"];
+      NSLog(@"Flagging %u inside api response",(uint)photo);
+    }  
+  }
+  
+  
+  if (actualPhoto) {
+    NSDictionary *userFromDletedPhoto = [actualPhoto objectForKeyNotNull:@"user"];
+    NSString *userIDFromDeletedPhoto = [[userFromDletedPhoto objectForKeyNotNull:@"id"] stringValue];
+    if ([[[user objectForKeyNotNull:@"id"] stringValue] isEqualToString:userIDFromDeletedPhoto]) {
+      NSUInteger postCount = [[user objectForKeyNotNull:@"post_count"] intValue];
+      [user setValue:[NSNumber numberWithInt:postCount-1] forKey:@"post_count"];
+    }
+    
+  }
+}
+
+
 
 -(BOOL) validate:(id)_data {
     if (![[_data class] isSubclassOfClass:[NSDictionary class]]) {
@@ -49,7 +114,7 @@
  // id _photos = [[NSMutableArray alloc] initWithArray:[self photos]];
   SBJSON *parser = [[SBJSON alloc] init];
   
-  id newData = [parser objectWithString:json_string error:nil];
+  id newData = [[parser objectWithString:json_string error:nil] mutableCopy];
   if ([self validate:newData]) {
     NSMutableArray *newPosts = [[(NSDictionary *) [(NSDictionary *) newData objectForKeyNotNull:@"response"] objectForKeyNotNull:@"posts"] objectForKeyNotNull:@"items"];;
     NSMutableArray *newPeople = [[(NSDictionary *) [(NSDictionary *) newData objectForKeyNotNull:@"response"] objectForKeyNotNull:@"people"] objectForKeyNotNull:@"items"];;
@@ -63,8 +128,12 @@
     else {
       _next = nil;
     }
-   
   }
+  if (!newData) {
+    _next = nil;
+  }
+  
+  [newData release];
   [parser release];
 }
 
@@ -111,6 +180,19 @@
     people = [[response objectForKeyNotNull:@"users"] retain]; //TODD
   }
   return people;
+}
+
+
+-(NSUInteger) numberOfPostsNotDeleted {
+  NSUInteger count = 0;
+  for (NSDictionary *photo in self.posts) {
+    NSDictionary *actualPhoto = [photo objectForKeyNotNull:@"item"];
+    BOOL deleted = [[actualPhoto objectForKeyNotNull:@"deleted"] boolValue];
+    if (!deleted) {
+      count++;
+    }
+  }
+  return count;
 }
 
 

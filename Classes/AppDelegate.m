@@ -13,6 +13,9 @@
 #import "ABNotifier.h"
 #import "CaptureSessionManager.h"
 #import "PBLoginViewController.h"
+#import "PBSharedUser.h"
+#import "PBNavigationController.h"
+#import "PBNewCameraViewController.h"
 
 @implementation AppDelegate
 
@@ -53,18 +56,22 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
 }
 
 -(void) presentLoginViewController:(BOOL)useCameraViewController {
+  
   loginViewController = [[PBLoginViewController alloc] initWithNibName:@"PBLoginViewController" bundle:nil];
+  PBNavigationController *navigationController = [[PBNavigationController alloc] initWithRootViewController:loginViewController style:0];
+  
   if (useCameraViewController == YES)
   {
-    [self.currentController presentModalViewController:loginViewController animated:YES];
+    [self.currentController presentModalViewController:navigationController animated:YES];
     usingCameraView = YES;
   }
   else
   {
-    [self.tabBarController presentModalViewController:loginViewController animated:YES];
+    [self.tabBarController presentModalViewController:navigationController animated:YES];
     usingCameraView = NO;
   }
   [loginViewController release];
+  [navigationController release];
 }
 
 
@@ -75,16 +82,22 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin:) name:@"USER_LOGGED_IN" object:nil];
   
   [ABNotifier startNotifierWithAPIKey:hopToadAPIKey environmentName:ABNotifierDevelopmentEnvironment useSSL:YES delegate:nil];
+  
+  
   feedViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/users/me/feed.json",API_BASE];
-  feedViewController.shouldShowUplodingItems = YES;
+  feedViewController.shouldShowUplodingItems = NO;
   feedViewController.shouldShowProfileHeader = NO;
+  feedViewController.pullsToRefresh = YES;
+  [feedViewController setTitle:@"Feed"];
   
-  
-  profileViewController.shouldShowProfileHeader = YES;
-
+ 
   profileViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/users/me/posts",API_BASE];
+  profileViewController.shouldShowUplodingItems = YES;
+  profileViewController.shouldShowProfileHeader = YES;
+  profileViewController.pullsToRefresh = YES;
+  [profileViewController setTitle:@"Profile"];
+
   
-  popularViewController.baseURL = [NSString stringWithFormat:@"http://%@/api/popular",API_BASE];
   
   [self.window addSubview:self.tabBarController.view];
   [self.window makeKeyAndVisible];
@@ -92,6 +105,21 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
   if ([self authToken] == nil) {
     [self presentLoginViewController:NO];
   }
+
+  // Set up facebook session if expiry date not expired
+  Facebook *_facebook = [FacebookSingleton sharedFacebook];
+	if (_facebook != nil) {
+		NSString *token = [PBSharedUser facebookAccessToken];
+		NSDate *exp = [PBSharedUser facebookExpirationDate];
+    
+		if (token != nil && exp != nil && [token length] > 2) {
+			_facebook.accessToken = token;
+      _facebook.expirationDate = [NSDate distantFuture];
+		} 
+    
+		[_facebook retain];
+	}
+  
   return YES;
 }
 
@@ -130,7 +158,12 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
     [photoLibraryPicker release];
   }
   else {
-    [self.tabBarController presentModalViewController:cameraViewController animated:YES];
+    //PBNavigationController *nav = [[PBNavigationController alloc] initWithRootViewController:cameraViewController];
+    //[nav setStyle:1];
+    //nav.navigationBarHidden = YES;
+    PBNewCameraViewController *nav = [[PBNewCameraViewController alloc] init];
+    [self.tabBarController presentModalViewController:nav animated:YES];
+    [nav release];
   }
 }
 
@@ -210,8 +243,12 @@ static NSString *hopToadAPIKey = @"57b7289a9cad881773f2ebcc303ff2db";
 }
 
 -(void) userDidLogin:(id)dender {
-  [loginViewController dismissModalViewControllerAnimated:YES];
   [self performSelector:@selector(xxx) withObject:nil afterDelay:0.5];
 }
 
+-(void) switchToProfileTabPopToRootAndScrollToTop {
+  [profileViewController.navigationController popToRootViewControllerAnimated:NO];
+  [profileViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 320, 1) animated:NO];
+  [[self tabBarController] setSelectedIndex:2];
+}
 @end

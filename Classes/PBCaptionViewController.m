@@ -7,7 +7,7 @@
 //
 
 #import "PBCaptionViewController.h"
-#import "NewPostViewController.h"
+#import "PBNewPostViewController.h"
 #import "PBSharingOptionViewController.h"
 #import "PBAuthWebViewController.h"
 #import "FacebookSingleton.h"
@@ -87,32 +87,11 @@
     PBSharingOptionViewController *vc = [[PBSharingOptionViewController alloc] initWithNibName:@"PBSharingOptionViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
-    
-    
-    /*    
-     if (_facebook == nil) {
-     _facebook = [FacebookSingleton sharedFacebook];
-     _facebook.sessionDelegate = self;
-     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"access_token"];
-     NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
-     
-     if (token != nil && exp != nil && [token length] > 2) {
-     //isLoggedIn = YES;
-     _facebook.accessToken = token;
-     _facebook.expirationDate = [NSDate distantFuture];
-     } 
-     
-     [_facebook retain];aqa	
-     //if no session is available login
-     
-     [_facebook authorize:[NSArray arrayWithObject: @"publish_stream"] delegate:self];
-     
-     */  
-    
-    
 }
+
 #pragma mark -
 #pragma mark CustomNavigationBar Methods
+
 - (IBAction)dismissModalViewControllerAnimated {
 	[self dismissModalViewControllerAnimated:YES];
   [delegate didDismissModalView];
@@ -128,46 +107,7 @@
     }  
     return shouldChangeText;  
 }
-#pragma mark New Post Upload to Facebook 
-- (IBAction)facebookButtonClicked:(id)sender {
-        //    
-        //        //BOOL isLoggedIn;
-        //    _facebook = nil;
-        //	if (_facebook == nil) {
-        //		_facebook = [FacebookSingleton sharedFacebook];
-        //		_facebook.sessionDelegate = self;
-        //		NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"access_token"];
-        //		NSDate *exp = [[NSUserDefaults standardUserDefaults] objectForKey:@"exp_date"];
-        //		
-        //		if (token != nil && exp != nil && [token length] > 2) {
-        //                //isLoggedIn = YES;
-        //			_facebook.accessToken = token;
-        //            _facebook.expirationDate = [NSDate distantFuture];
-        //		} 
-        //        
-        //		[_facebook retain];
-        //	}
-        //	
-        //        //if no session is available login
-        //    
-        //	[_facebook authorize:[NSArray arrayWithObject: @"publish_stream"] delegate:self];
-}
-#pragma mark New Post Upload to Twitter 
-- (IBAction)twitterButtonClicked:(id)sender {
-        //    PBAuthWebViewController *viewController = [[PBAuthWebViewController alloc] initWithNibName:@"PBAuthWebViewController" bundle:nil];
-        //    viewController.authenticationURLString = [NSString stringWithFormat:@"http://%@/users/auth/twitter", API_BASE];
-        //    viewController.title = NSLocalizedString(@"Twitter", nil);
-        //    viewController.webView.backgroundColor = [UIColor blueColor];
-        //    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalViewControllerAnimated:)];
-        //    viewController.navigationItem.rightBarButtonItem = cancelButton;
-        //    
-        //    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-        //    [self presentModalViewController:navigationController animated:YES];
-        //    [navigationController release];
-        //    [cancelButton release];
-        //    [viewController release];
-    
-}
+
 
 
 #pragma mark New Post Upload to Server 

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface PBSharedUser : NSObject
+
 + (NSString *) userID;
 + (void) setUserID:(NSString *)userID;
 
@@ -34,4 +35,13 @@
 + (void) setFacebookWall:(NSMutableDictionary *)wall;
 + (void) removeFacebookWall;
 
+
++ (void) setShouldCrosspostToFBWall:(BOOL)value;
++ (BOOL) shouldCrosspostToFBWall;
+
++ (void) setName:(NSString *)userID;
++ (NSString *) name;
+    
++ (NSString *) screenname;
++ (void) setScreenname:(NSString *)screenname;
 @end
