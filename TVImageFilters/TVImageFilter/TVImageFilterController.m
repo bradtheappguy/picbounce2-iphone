@@ -112,7 +112,19 @@
                return img;
                break;
            }
-             
+           case 13:{
+               //-------- Filter for Inkwell ------------
+               [filterFrame release];
+               return [[image greyscale] adjust:0.255 g:0.255 b:0.255];
+               break;
+           }
+           case 14:{
+               //-------- Filter for  Nashville ------------
+               [filterFrame release];
+               return [[[[[image adjust:0.190  g:0 b:0] bias:0.9999] adjust:0.255 g:0.250 b:0.240] polaroidish] contrast:0.812261];        
+               break;
+           }
+
            default:
                return image;
                break;
