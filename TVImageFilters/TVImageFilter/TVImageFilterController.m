@@ -124,6 +124,19 @@
                return [[[[[image adjust:0.190  g:0 b:0] bias:0.9999] adjust:0.255 g:0.250 b:0.240] polaroidish] contrast:0.812261];        
                break;
            }
+           case 15:{
+               //-------- Filter for Hudson ------------
+               [filterFrame release];
+               return [[[[image bias:0.9969] adjust:0.255 g:0.250 b:0.205] brightness:0.899778] adjust:0.0 g:0.0700 b:0.071];
+               break;
+           }
+           case 16:{
+               //-------- Filter for  Earlybird ---------
+               [filterFrame release];
+               return [[[[image polaroidish] adjust:0.21000 g:0 b:0] adjust:0 g:0.1900 b:0] brightness:0.877778];  
+               break;
+               
+           }
 
            default:
                return image;
