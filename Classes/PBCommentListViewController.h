@@ -11,7 +11,8 @@
 #import "PBRootViewController.h"
 #import "ASIHTTPRequest.h"
 #import "PBProgressHUD.h"
-
+//----declare global mutable Array for follw follwing
+NSMutableArray * arrayOfFollow;
 @interface PBCommentListViewController :UIViewController {
   
   IBOutlet PBExpandingCommentEntryTextView *myView;
