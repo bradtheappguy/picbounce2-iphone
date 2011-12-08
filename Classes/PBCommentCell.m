@@ -24,6 +24,9 @@
   [self.a_FollowButton setUser:user];
     
   self.a_CommentUserNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
+  //----- Changes color of comment to #666666
+     self.a_CommentLabel.textColor = [UIColor colorWithRed:102.0f/255.0f  green:102.0f/255.0f blue:102.0f/255.0f alpha:1.0];
+    
   self.a_CommentUserNameLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
   self.a_CommentUserNameLabel.text =  [user valueForKey:@"screen_name"];
   
@@ -44,7 +47,10 @@
   }
   self.a_CommentLabel.numberOfLines = numOfLines;
   self.a_CommentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-  self.a_CommentLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
+  //--- changes color of comment to #666666
+     self.a_CommentLabel.textColor = [UIColor colorWithRed:102.0f/255.0f  green:102.0f/255.0f blue:102.0f/255.0f alpha:1.0];
+    
+ // self.a_CommentLabel.textColor = [UIColor colorWithRed:77.0f/255.0f green:65.0f/255.0f blue:56.0f/255.0f alpha:1.0];
   
   self.a_CommentPersonImageView.imageURL = [NSURL URLWithString:[user objectForKeyNotNull:@"avatar"]];
   self.a_CommentLabel.text = [comment objectForKeyNotNull:@"text"];
