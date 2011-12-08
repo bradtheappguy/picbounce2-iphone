@@ -211,6 +211,8 @@
   label.delegate = self;
   [label setAttributedText:attString];
   
+    //---Added for changing Comment color to #666666
+     label.textColor=[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1.0];
   
   int count = 0;
   for (NSDictionary *c in comments) {
