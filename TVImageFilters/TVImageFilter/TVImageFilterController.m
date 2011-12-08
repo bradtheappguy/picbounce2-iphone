@@ -120,7 +120,7 @@
            }           case 14:{
                //-------- Filter for  Nashville ------------
                [filterFrame release];
-               return [[[[[image adjust:0.190  g:0 b:0] bias:0.9999] adjust:0.255 g:0.250 b:0.240] polaroidish] contrast:0.812261];        
+                return [[[[[image polaroidish] adjust:0.38000 g:0 b:0] adjust:0 g:0.05092 b:0] brightness:0.990999] saturate:0.643678];        
                break;
            }
            case 15:{
@@ -132,10 +132,22 @@
            case 16:{
                //-------- Filter for  Earlybird ---------
                [filterFrame release];
-               return [[[[[image polaroidish] adjust:0.26000 g:0 b:0] adjust:0 g:0.0500 b:0] brightness:1.0000] saturate:0.781100];
+                return [[[[[image polaroidish] adjust:0.26000 g:0 b:0] adjust:0 g:0.0500 b:0] brightness:1.0000] saturate:0.781100];
                break;
                
+           }
+           case 17:{
+               //-------- Filter for Sutro ------------
+               [filterFrame release];
+               return [[[[[image polaroidish] adjust:0.38000 g:0 b:0] adjust:0 g:0.05092 b:0] brightness:0.770948] saturate:0.643678];
+               break;
            } 
+           case 18:{
+               //-------- Filter for Lamo-fi ------------             
+               [filterFrame release];
+               return [[[[image bias:0.9999] adjust:0.255 g:0.250 b:0.295] adjust:0.155 g:0.250 b:0.105] brightness:0.777648];
+               break;
+           }   
            default:
                return image;
                break;
