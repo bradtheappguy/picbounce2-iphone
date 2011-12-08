@@ -11,6 +11,8 @@
 #import "PBSharedUser.h"
 #import "PBProgressHUD.h"
 #import "PBAPI.h"
+//---define extern arrayOfFollow
+extern  NSMutableArray * arrayOfFollow; 
 
 @interface PBFollowButton (private)
 -(void) setMode:(PBFollowButtonMode)mode;
@@ -52,22 +54,32 @@
 
 
 -(void) setUser:(NSDictionary *)user {
-  [_user release];
-  _user = [user retain];
-  
-  NSNumber *userID = [user objectForKeyNotNull:@"id"];
-  NSString *myUserID = [PBSharedUser userID];
-  if ([[userID stringValue] isEqualToString:myUserID]) {
-    self.hidden = YES;
-    return;
-  }
-
-  if ([[user objectForKeyNotNull:@"is_following"] boolValue]) {
-    [self setMode:PBFollowButtonModeFollowing];
-  }
-  else {
-    [self setMode:PBFollowButtonModeNotFollowing];
-  }
+    [_user release];
+    _user = [user retain];
+    
+    NSNumber *userID = [user objectForKeyNotNull:@"id"];
+    NSString *myUserID = [PBSharedUser userID];
+    if ([[userID stringValue] isEqualToString:myUserID]) {
+        self.hidden = YES;
+        return;
+    }
+    
+    if ([[user objectForKeyNotNull:@"is_following"] boolValue]) {
+        [self setMode:PBFollowButtonModeFollowing];
+    }
+    else {
+        [self setMode:PBFollowButtonModeNotFollowing];
+    }
+    if([arrayOfFollow count]!=0)
+    {        
+        for(int i=0;i<[arrayOfFollow  count];i++)
+        {
+            if([[arrayOfFollow objectAtIndex:i ] isEqualToNumber:userID])
+            {
+                [self setMode:PBFollowButtonModeFollowing];
+            }
+        }  
+    }
 }
 
 
@@ -174,6 +186,11 @@
 -(void) followRequestDidFinish:(PBHTTPRequest *)request {
   NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.user forKey:@"user"];
   [[NSNotificationCenter defaultCenter] postNotificationName:PBAPIUserWasFollowedNotification object:[self.user objectForKey:@"id"] userInfo:userInfo];
+    
+    ///add userid to array for follow button
+    if(![arrayOfFollow containsObject:[self.user objectForKey:@"id"] ])
+         [arrayOfFollow addObject:[self.user objectForKey:@"id"]];
+       
 }
 
 
@@ -186,6 +203,11 @@
 -(void) unfollowRequestDidFinish:(PBHTTPRequest *)request {
   NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.user forKey:@"user"];
   [[NSNotificationCenter defaultCenter] postNotificationName:PBAPIUserWasUnfollowedNotification object:[self.user objectForKey:@"id"] userInfo:userInfo];
+    
+    //----remove id of users who unfollow
+    if([arrayOfFollow containsObject:[self.user objectForKey:@"id"] ])
+       [arrayOfFollow removeObject:[self.user objectForKey:@"id"]];
+         
 }
 
 
