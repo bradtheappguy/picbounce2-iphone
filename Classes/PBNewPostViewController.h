@@ -16,7 +16,12 @@
   Facebook *_facebook;
   TwitterButton *twitterButton;
   FacebookButton *facebookButton;
+   //---Implement UIView for done button on Keyboard 
+     UIView *inputAccView;
 }
+//---Define property for UIView for done button on Keyboard 
+@property (nonatomic, retain) UIView *inputAccView;
+
 @property (retain, nonatomic) IBOutlet UIButton *takePhotoButton;
 @property (retain, nonatomic) IBOutlet UIImageView *previewImageView;
 
