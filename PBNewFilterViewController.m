@@ -36,7 +36,7 @@
   
   #ifdef USE_TV_FILTERS
     filterScrollView.alwaysBounceHorizontal = YES;
-    NSUInteger numberOfFilters = 17;
+    NSUInteger numberOfFilters = 19;
     NSUInteger margin = 11; 
     
   
