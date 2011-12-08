@@ -14,6 +14,8 @@
 #import "PBAPI.h"
 #import "PBSharedUser.h"
 #import "NSString+URLEncoding.h"
+//----define mutable array for extern
+extern NSMutableArray *  arrayOfFollow;
 
 @implementation PBCommentListViewController
 @synthesize uploadedComments;
@@ -31,6 +33,8 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    //----allocate memory to follow Mutable array
+     arrayOfFollow=[[NSMutableArray alloc]init]; 
   self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_pattern"]];
   
   tableView.separatorStyle    = UITableViewCellSeparatorStyleNone;
@@ -344,8 +348,8 @@
   }
 }
 
-
--(void) userWasunFollowedNotificationReceived:(NSNotification *)notification {
+//---Changes method name to avoid crashing problem in unfolllow condition
+-(void)userWasUnfollowedNotificationReceived:(NSNotification *)notification{
   NSDictionary *user = [notification userInfo];
   NSLog(@" %@",user);
 }
