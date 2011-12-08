@@ -25,6 +25,8 @@
 @implementation PBNewPostViewController
 @synthesize takePhotoButton;
 @synthesize previewImageView;
+//--------synthesize UIView
+@synthesize inputAccView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -53,6 +55,10 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    //---set deleagate of UITextView
+     postTextView.delegate=self;
+    
+    
   // Do any additional setup after loading the view from its nib.
   self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_upload_screens"]];
     facebookButton = [[FacebookButton alloc] initWithPosition:CGPointMake(140, 164)];
@@ -235,5 +241,54 @@
     self.navigationItem.titleView = label;
   }
 }
+
+#pragma for done button of textView
+
+//---implement method for toolbar with button on keyboard
+
+-(void)createInputAccessoryView{
+    inputAccView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 40.0)];
+    
+    UIToolbar *Toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 40.0)];
+    [Toolbar sizeToFit];
+    Toolbar.barStyle = UIBarStyleBlack;
+    Toolbar.tintColor = [UIColor darkGrayColor];
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    [barItems addObject:flexSpace];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneTyping)];  
+    [barItems addObject:doneButton];
+    
+    [Toolbar setItems:barItems animated:YES];
+    [inputAccView addSubview:Toolbar];
+    
+}
+
+-(void)doneTyping{
+    
+    [postTextView resignFirstResponder];
+    self.navigationItem.rightBarButtonItem.enabled=YES;
+}
+
+
+//TextView delegate method 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    self.navigationItem.rightBarButtonItem.enabled=NO;
+    return  YES;
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    
+    [self createInputAccessoryView];
+    [postTextView setInputAccessoryView:inputAccView];
+    postTextView = textView; 
+    return YES;
+}
+
+
 
 @end
