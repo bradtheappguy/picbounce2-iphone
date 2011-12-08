@@ -115,10 +115,9 @@
            case 13:{
                //-------- Filter for Inkwell ------------
                [filterFrame release];
-               return [[image greyscale] adjust:0.255 g:0.255 b:0.255];
+               return [[[image greyscale] brightness:1.033940] adjust:0.255 g:0.255 b:0.255];
                break;
-           }
-           case 14:{
+           }           case 14:{
                //-------- Filter for  Nashville ------------
                [filterFrame release];
                return [[[[[image adjust:0.190  g:0 b:0] bias:0.9999] adjust:0.255 g:0.250 b:0.240] polaroidish] contrast:0.812261];        
@@ -133,11 +132,10 @@
            case 16:{
                //-------- Filter for  Earlybird ---------
                [filterFrame release];
-               return [[[[image polaroidish] adjust:0.21000 g:0 b:0] adjust:0 g:0.1900 b:0] brightness:0.877778];  
+               return [[[[[image polaroidish] adjust:0.26000 g:0 b:0] adjust:0 g:0.0500 b:0] brightness:1.0000] saturate:0.781100];
                break;
                
-           }
-
+           } 
            default:
                return image;
                break;
