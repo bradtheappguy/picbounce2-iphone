@@ -165,7 +165,9 @@
     newPostViewController.imageView.image = [image thumbnailImage:600 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
     [image release];
     newPostViewController.hidesBottomBarWhenPushed = YES;
-    newPostViewController.navigationItem.title = @"Post";
+      
+      //------commented for adding navigation back button
+   // newPostViewController.navigationItem.title = @"Post";
     [newPostViewController view];
     [self pushViewController:newPostViewController animated:YES];
     [PBNewPostViewController release];
