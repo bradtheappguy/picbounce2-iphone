@@ -117,12 +117,13 @@
                [filterFrame release];
                return [[[image greyscale] brightness:1.033940] adjust:0.255 g:0.255 b:0.255];
                break;
-           }           case 14:{
+           }   
+           case 14:{
                //-------- Filter for  Nashville ------------
                [filterFrame release];
                 return [[[[[image polaroidish] adjust:0.38000 g:0 b:0] adjust:0 g:0.05092 b:0] brightness:0.990999] saturate:0.643678];        
                break;
-           }
+           } 
            case 15:{
                //-------- Filter for Hudson ------------
                [filterFrame release];
@@ -147,7 +148,19 @@
                [filterFrame release];
                return [[[[image bias:0.9999] adjust:0.255 g:0.250 b:0.295] adjust:0.155 g:0.250 b:0.105] brightness:0.777648];
                break;
-           }   
+           } 
+           case 19:{
+               //-------- Filter for Amaro --------------
+               [filterFrame release];
+               return [[[[image bias:0.9999] adjust:0.152 g:0.280 b:0.152] saturate:0.791100] brightness:0.988948];
+               break;
+           }
+           case 20:{
+               //-------- Filter for Valencia ----------- 
+               [filterFrame release];
+               return [[image adjust:0.0 g:0.047970 b:0] brightness:1.089999];
+               break;
+           }
            default:
                return image;
                break;
