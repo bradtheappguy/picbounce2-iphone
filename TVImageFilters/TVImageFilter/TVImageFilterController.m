@@ -113,52 +113,39 @@
                break;
            }
            case 13:{
-               //-------- Filter for Inkwell ------------
+               //-------- Filter for Lamo-fi ------------              
+               UIImage *img = [filterFrame imageWithBorderFromImage: image :[UIImage imageNamed:@"borderRoughInstagram.png"]];
                [filterFrame release];
-               return [[[image greyscale] brightness:1.033940] adjust:0.255 g:0.255 b:0.255];
+               return [[[[img bias:0.9999] adjust:0.255 g:0.250 b:0.295] adjust:0.175 g:0.150 b:0.105] brightness:0.887648];
                break;
-           }   
+           }
            case 14:{
-               //-------- Filter for  Nashville ------------
+               //-------- Filter for Inkwell ------------
+               UIImage *img = [filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"filterBorderPlainWhite.png"]];
                [filterFrame release];
-                return [[[[[image polaroidish] adjust:0.38000 g:0 b:0] adjust:0 g:0.05092 b:0] brightness:0.990999] saturate:0.643678];        
+               //return [[[image greyscale] adjust:0.255 g:0.255 b:0.255] brightness:1.010540];
+               return [[[img greyscale] brightness:1.033940] adjust:0.255 g:0.255 b:0.255];
                break;
-           } 
+           }
            case 15:{
-               //-------- Filter for Hudson ------------
+               //-------- Filter for Valencia ----------- 
                [filterFrame release];
-               return [[[[image bias:0.9969] adjust:0.255 g:0.250 b:0.205] brightness:0.899778] adjust:0.0 g:0.0700 b:0.071];
+               return [[[image adjust:0.0 g:0.049970 b:0] brightness:1.089999] saturate:0.781100];
                break;
            }
            case 16:{
-               //-------- Filter for  Earlybird ---------
+               //-------- Filter for  X-pro || --------------
+               UIImage *img = [filterFrame imageWithBorderFromImage: image :[UIImage imageNamed:@"filterBorderBlackBevel.png"]];
+               UIImage *img1 = [filterFrame imageWithBorderFromImage:img :[UIImage imageNamed:@"redYellowGradient.png"]];
                [filterFrame release];
-                return [[[[[image polaroidish] adjust:0.26000 g:0 b:0] adjust:0 g:0.0500 b:0] brightness:1.0000] saturate:0.781100];
+               return img1;
                break;
-               
            }
            case 17:{
-               //-------- Filter for Sutro ------------
+               //-------- Filter for  Rise ----------
+               UIImage *img = [[filterFrame imageWithBorderFromImage:image :[UIImage imageNamed:@"redYellowGradient.png"]] brightness:0.999999];
                [filterFrame release];
-               return [[[[[image polaroidish] adjust:0.38000 g:0 b:0] adjust:0 g:0.05092 b:0] brightness:0.770948] saturate:0.643678];
-               break;
-           } 
-           case 18:{
-               //-------- Filter for Lamo-fi ------------             
-               [filterFrame release];
-               return [[[[image bias:0.9999] adjust:0.255 g:0.250 b:0.295] adjust:0.155 g:0.250 b:0.105] brightness:0.777648];
-               break;
-           } 
-           case 19:{
-               //-------- Filter for Amaro --------------
-               [filterFrame release];
-               return [[[[image bias:0.9999] adjust:0.152 g:0.280 b:0.152] saturate:0.791100] brightness:0.988948];
-               break;
-           }
-           case 20:{
-               //-------- Filter for Valencia ----------- 
-               [filterFrame release];
-               return [[image adjust:0.0 g:0.047970 b:0] brightness:1.089999];
+               return img;
                break;
            }
            default:
